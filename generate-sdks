@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+
+set -eu
+
+if [ -n "${SWAGGER_CMD+1}" ]
+then
+    echo "Using Swagger command \`${SWAGGER_CMD}\`."
+else
+    if ! which swagger-codegen
+    then
+        echo "swagger-codegen is either not installed on thie system or is"\
+            "unavailable through the \$PATH."
+        while true; do
+            printf "Install it from Homebrew now? [y/N] "
+            read -r  yn
+            case "$yn" in
+                [Yy]* ) break;;
+                [Nn]* ) exit;;
+                '' ) exit;;
+            esac
+        done
+
+        echo "Updating Homebrew and then installing swagger-codegen"
+        brew update
+        brew install swagger-codegen
+    fi
+
+    SWAGGER_CMD="swagger-codegen"
+fi
+
+
+languages=$(ls swagger-templates)
+
+for lang in $languages
+do
+    $SWAGGER_CMD generate \
+        --input-spec "./api.json" \
+        --lang "${lang}" \
+        --config "./swagger-config/config-${lang}.json" \
+        --template-dir "./swagger-templates/${lang}" \
+        --output "./swagger-out/${lang}"
+done
