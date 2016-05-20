@@ -16,6 +16,7 @@ work, but the script will prompt you to install it.
 Currently, we officially support
 [Ruby](https://github.com/square/connect-ruby-sdk) and
 [PHP](https://github.com/square/connect-php-sdk).
+[Python](https://github.com/square/connect-python-sdk).
 
 Contributing
 ------------
