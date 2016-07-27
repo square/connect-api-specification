@@ -1,0 +1,23 @@
+{{#models}}
+{{#model}}
+# {{{packageName}}}.Model.{{{classname}}}
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+{{#vars}}**{{name}}** | {{#datatypeWithEnum}}{{&.}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{#isPrimitiveType}}**{{datatype}}**{{/isPrimitiveType}}{{^isPrimitiveType}}[**{{datatype}}**]({{complexType}}.md){{/isPrimitiveType}}{{/datatypeWithEnum}} | {{description}} | {{^required}}[optional] {{/required}}{{#readOnly}}[readonly] {{/readOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
+{{/vars}}
+
+{{#vars}}{{#isEnum}}
+## {{#datatypeWithEnum}}{{&.}}
+
+Name | Value
+------------ | -------------
+{{#allowableValues}}{{#enumVars}}**{{name}}** | {{{value}}}
+{{/enumVars}}{{/allowableValues}}
+{{/datatypeWithEnum}}{{/isEnum}}{{/vars}}
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+{{/model}}
+{{/models}}
