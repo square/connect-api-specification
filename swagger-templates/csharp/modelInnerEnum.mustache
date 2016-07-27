@@ -14,4 +14,30 @@
             {{name}}{{#isLong}} = {{{value}}}{{/isLong}}{{#isInteger}} = {{{value}}}{{/isInteger}}{{^-last}},
             {{/-last}}{{/enumVars}}{{/allowableValues}}
         }
+
+        /// <summary>
+        /// This function is to convert the String Value to its correspoding Enum value
+        /// </summary>
+        public static {{#datatypeWithEnum}}{{&.}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{classname}}{{/datatypeWithEnum}} To{{datatypeWithEnum}} (string str)
+        {
+            var enumType = typeof({{datatypeWithEnum}});
+            foreach (var name in Enum.GetNames(enumType))
+            {
+                var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+                if (enumMemberAttribute.Value == str) return ({{datatypeWithEnum}})Enum.Parse(enumType, name);
+            }
+            return default({{datatypeWithEnum}});
+        }
+
+        /// <summary>
+        /// This function is to convert the Enum Value to its correspoding String Value
+        /// </summary>
+        public static string {{datatypeWithEnum}}ToString({{datatypeWithEnum}} type)
+        {
+            var enumType = typeof({{datatypeWithEnum}});
+            var name = Enum.GetName(enumType, type);
+            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
+            return enumMemberAttribute.Value;
+            
+        }
         {{/isContainer}}
