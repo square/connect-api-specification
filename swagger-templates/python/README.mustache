@@ -1,0 +1,128 @@
+# Square Connect V2 Python SDK
+
+This repository contains the released Python client SDK. Check out our [API
+specification repository](https://github.com/square/connect-api-specification)
+for the specification and template files we used to generate this.
+
+## Requirements.
+
+Make sure you have Python 2 >=2.7.9 or Python 3 >= 3.4
+
+## Installation & Usage
+### pip install
+
+If the python package is hosted on Github, you can install directly from Github
+
+```sh
+pip install git+https://github.com/square/connect-python-sdk.git
+```
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/square/connect-python-sdk.git`)
+
+### Setuptools
+
+Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
+
+```sh
+python setup.py install --user
+```
+(or `sudo python setup.py install` to install the package for all users)
+
+## Getting Started
+
+
+Please follow the [installation procedure](#installation--usage):
+
+Then import the package:
+```python
+import squareconnect
+```
+
+### Retrieve your location IDs
+```python
+from __future__ import print_function 
+
+import squareconnect
+from squareconnect.rest import ApiException
+from squareconnect.apis.location_api import LocationApi
+
+# create an instance of the Location API class
+api_instance = LocationApi()
+access_token = 'YOUR_ACCESS_TOKEN' 
+
+try:
+    # ListLocations
+    api_response = api_instance.list_locations(access_token)
+    print (api_response.locations)
+except ApiException as e:
+    print ('Exception when calling LocationApi->list_locations: %s\n' % e)
+
+```
+### Charge the card nonce
+```python
+from __future__ import print_function 
+import uuid
+
+import squareconnect
+from squareconnect.rest import ApiException
+from squareconnect.apis.transaction_api import TransactionApi
+
+# create an instance of the Transaction API class
+api_instance = TransactionApi()
+access_token = 'YOUR_ACCESS_TOKEN'
+location_id = 'YOUR_LOCATION_ID' 
+nonce = 'YOUR_NONCE' 
+
+try:
+    # Charge
+    idempotency_key = str(uuid.uuid1())
+    amount = {'amount': 100, 'currency': 'USD'}
+    body = {'idempotency_key': idempotency_key, 'card_nonce': nonce, 'amount_money': amount}
+    api_response = api_instance.charge(access_token, location_id, body)
+    print (api_response.transaction)
+except ApiException as e:
+    print ('Exception when calling TransactionApi->charge: %s\n' % e)
+
+```
+
+## Documentation for API Endpoints
+
+All URIs are relative to [Square Connect V2 Documentation](https://docs.connect.squareup.com/api/connect/v2/#navsection-endpoints)
+
+
+Class | Method | HTTP request 
+------------ | ------------- | ------------- 
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
+
+## Documentation For Models
+
+{{#models}}{{#model}}{{#isEnum}}{{/isEnum}}{{^isEnum}} - [{{{classname}}}]({{modelDocPath}}{{{classname}}}.md)
+{{/isEnum}}{{/model}}{{/models}}
+
+## Documentation For Enums
+
+{{#models}}{{#model}}{{#isEnum}} - [{{{classname}}}]({{modelDocPath}}{{{classname}}}.md)
+{{/isEnum}}{{^isEnum}}{{/isEnum}}{{/model}}{{/models}}
+
+## Contributing
+
+Send bug reports, feature requests, and code contributions to the [API
+specifications repository](https://github.com/square/connect-api-specification),
+as this repository contains only the generated SDK code.
+
+## License
+
+```
+Copyright 2016 Square, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
