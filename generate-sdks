@@ -8,7 +8,7 @@ then
 else
     if ! which swagger-codegen
     then
-        echo "swagger-codegen is either not installed on thie system or is"\
+        echo "swagger-codegen is either not installed on this system or is"\
             "unavailable through the \$PATH."
         while true; do
             printf "Install it from Homebrew now? [y/N] "
