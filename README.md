@@ -1,3 +1,17 @@
+Connecting to the Square API
+=============================
+
+This is the project that _generates_ API clients for connecting to the public Square API. You probably want to just use one of the clients that are pre-built in a language of your choice:
+
+* [Python](https://github.com/square/connect-python-sdk)
+* [C#](https://github.com/square/connect-csharp-sdk)
+* [Ruby](https://github.com/square/connect-ruby-sdk)
+* [PHP](https://github.com/square/connect-php-sdk)
+
+The [Connect Examples](https://github.com/square/connect-api-examples/tree/master/connect-examples/) are working sample applications that you can copy from to build your own.
+
+Should you need them we've also published the protocol buffer files that define the public API: https://github.com/square/connect-protos
+
 Connect v2 API Specifications
 =============================
 
