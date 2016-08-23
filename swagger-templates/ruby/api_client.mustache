@@ -21,7 +21,7 @@ module {{moduleName}}
 
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "square-connect-ruby-#{VERSION}"
+      @user_agent = "square-connect-ruby/#{VERSION}"
       @default_headers = {
         'Content-Type' => "application/json",
         'Accept' => "application/json",
