@@ -1,5 +1,10 @@
 {
   "gemName": "square_connect",
   "moduleName": "SquareConnect",
-  "gemVersion": "2.0.0"
+  "gemVersion": "2.1.0.alpha",
+  "gemHomepage": "https://github.com/Square/connect-ruby-sdk",
+  "gemSummary": "Client library for the Square Connect v2 API",
+  "gemDescription": "Ruby client library for the Square Connect v2 API",
+  "gemAuthor": "Square, Inc",
+  "gemAuthorEmail": "developers@squareup.com"
 }
