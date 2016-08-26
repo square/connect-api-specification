@@ -10,8 +10,6 @@ This is the project that _generates_ API clients for connecting to the public Sq
 
 The [Connect Examples](https://github.com/square/connect-api-examples/tree/master/connect-examples/) are working sample applications that you can copy from to build your own.
 
-Should you need them we've also published the protocol buffer files that define the public API: https://github.com/square/connect-protos
-
 Connect v2 API Specifications
 =============================
 
