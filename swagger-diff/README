@@ -1,0 +1,3 @@
+We usually make small modifications to the default swagger-templates. This
+folder keeps track of these modifications so that it's less annoying to update
+to newer templates from the swagger-codegen project.
