@@ -1,9 +1,11 @@
 {
-  "packagePath": "SquareConnect",
-  "artifactVersion": "2.0.0.1",
-  "invokerPackage": "SquareConnect",
   "modelPackage": "SquareConnect\\Model",
   "apiPackage": "SquareConnect\\Api",
-  "composerVendorName": "square",
-  "composerProjectName": "connect"
+  "variableNamingConvention": "camelCase",
+  "invokerPackage": "SquareConnect",
+  "packagePath": "SquareConnect",
+  "gitUserId": "square",
+  "gitRepoId": "connect",
+  "artifactVersion": "2.0.0.2",
+  "description": "PHP client library for the Square Connect v2 API"
 }
