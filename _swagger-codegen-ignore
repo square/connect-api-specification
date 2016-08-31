@@ -1,0 +1,13 @@
+# Exclude tests from being generated
+*_test.*
+*_spec.*
+spec/
+.rspec
+
+# Exclude git_push
+git_push.sh
+**/git_push.sh
+
+# Exclude .travis.yml (we don't use it)
+.travis.yml
+**/.travis.yml

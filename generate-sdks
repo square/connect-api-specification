@@ -33,7 +33,10 @@ languages=$(ls swagger-templates)
 
 for lang in $languages
 do
+    mkdir -p "./swagger-out/${lang}"
+    ln -sf "${PWD}/_swagger-codegen-ignore" "./swagger-out/${lang}/.swagger-codegen-ignore"
     $SWAGGER_CMD generate \
+        -D apiTests=false,modelTests=false \
         --input-spec "./api.json" \
         --lang "${lang}" \
         --config "./swagger-config/config-${lang}.json" \
