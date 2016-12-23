@@ -230,6 +230,18 @@ class ApiClient
         // obtain the HTTP response headers
         curl_setopt($curl, CURLOPT_HEADER, 1);
 
+        // Make the request
+        $response = curl_exec($curl);
+        $http_header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+        $http_header = $this->httpParseHeaders(substr($response, 0, $http_header_size));
+        $http_body = substr($response, $http_header_size);
+        $response_info = curl_getinfo($curl);
+
+        // debug HTTP response body
+        if ($this->config->getDebug()) {
+            error_log("[DEBUG] HTTP Response body ~BEGIN~".PHP_EOL.print_r($http_body, true).PHP_EOL."~END~".PHP_EOL, 3, $this->config->getDebugFile());
+        }
+
         // Handle the response
         if ($response_info['http_code'] === 0) {
             $curl_error_message = curl_error($curl);
@@ -255,18 +267,6 @@ class ApiClient
             if (json_last_error() > 0) { // if response is a string
                 $data = $http_body;
             }
-        // Make the request
-        $response = curl_exec($curl);
-        $http_header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-        $http_header = $this->httpParseHeaders(substr($response, 0, $http_header_size));
-        $http_body = substr($response, $http_header_size);
-        $response_info = curl_getinfo($curl);
-
-        // debug HTTP response body
-        if ($this->config->getDebug()) {
-            error_log("[DEBUG] HTTP Response body ~BEGIN~".PHP_EOL.print_r($http_body, true).PHP_EOL."~END~".PHP_EOL, 3, $this->config->getDebugFile());
-        }
-
         } else {
             $data = json_decode($http_body);
             if (json_last_error() > 0) { // if response is a string
