@@ -5,10 +5,12 @@
  *
  * @category Class
  * @package  {{invokerPackage}}
- * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link     https://github.com/swagger-api/swagger-codegen
+ * @author   Square Inc.
+ * @license  Apache Licene v2 - http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://squareup.com/developers
  */
+
+{{>partial_header}}
 /**
  *  Copyright 2016 Square, Inc.
  *
@@ -39,9 +41,9 @@ use \Exception;
  *
  * @category Class
  * @package  {{invokerPackage}}
- * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link     https://github.com/swagger-api/swagger-codegen
+ * @author   Square Inc.
+ * @license  Apache Licene v2 - http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://squareup.com/developers
  */
 class ApiException extends Exception
 {
@@ -60,6 +62,7 @@ class ApiException extends Exception
 
     /**
      * The deserialized response object
+     *
      * @var $responseObject;
      */
     protected $responseObject;
@@ -71,7 +74,7 @@ class ApiException extends Exception
      * @param string $responseHeaders HTTP response header
      * @param mixed  $responseBody    HTTP body of the server response either as Json or string
      */
-    public function __construct($message="", $code=0, $responseHeaders=null, $responseBody=null)
+    public function __construct($message = "", $code = 0, $responseHeaders = null, $responseBody = null)
     {
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
@@ -100,7 +103,9 @@ class ApiException extends Exception
 
     /**
      * Sets the deseralized response object (during deserialization)
+     *
      * @param mixed $obj Deserialized response object
+     *
      * @return void
      */
     public function setResponseObject($obj)
