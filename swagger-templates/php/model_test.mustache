@@ -8,10 +8,12 @@
  *
  * @category Class
  * @package  {{invokerPackage}}
- * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link     https://github.com/swagger-api/swagger-codegen
+ * @author   Square Inc.
+ * @license  Apache Licene v2 - http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://squareup.com/developers
  */
+
+{{>partial_header}}
 /**
  *  Copyright 2016 Square, Inc.
  *
@@ -33,42 +35,72 @@
  * Do not edit the class manually.
  */
 
-namespace {{modelPackage}};
+namespace {{invokerPackage}};
 
 /**
  * {{classname}}Test Class Doc Comment
  *
- * @category    Class
- * @description {{description}}
+ * @category    Class */
+// * @description {{#description}}{{description}}{{/description}}{{^description}}{{classname}}{{/description}}
+/**
  * @package     {{invokerPackage}}
- * @author      http://github.com/swagger-api/swagger-codegen
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link        https://github.com/swagger-api/swagger-codegen
+ * @author   Square Inc.
+ * @license  Apache Licene v2 - http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://squareup.com/developers
  */
 class {{classname}}Test extends \PHPUnit_Framework_TestCase
 {
 
     /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass()
+    {
+
+    }
+
+    /**
      * Setup before running each test case
      */
-    public static function setUpBeforeClass() {
+    public function setUp()
+    {
 
     }
 
     /**
      * Clean up after running each test case
      */
-    public static function tearDownAfterClass() {
+    public function tearDown()
+    {
 
     }
 
     /**
-     * Test {{classname}}
+     * Clean up after running all test cases
      */
-    public function test{{classname}}() {
+    public static function tearDownAfterClass()
+    {
 
     }
 
+    /**
+     * Test "{{classname}}"
+     */
+    public function test{{classname}}()
+    {
+
+    }
+
+{{#vars}}
+    /**
+     * Test attribute "{{name}}"
+     */
+    public function testProperty{{nameInCamelCase}}()
+    {
+
+    }
+
+{{/vars}}
 }
 {{/model}}
 {{/models}}
