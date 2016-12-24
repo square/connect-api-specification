@@ -274,7 +274,7 @@ class ApiClient
             }
 
             throw new ApiException(
-                "[".$response_info['http_code']."] Error connecting to the API ($url)",
+                "[".$response_info['http_code']."] Error connecting to the API ($url) Raw response: ".PHP_EOL.print_r($http_body, true).PHP_EOL,
                 $response_info['http_code'],
                 $http_header,
                 $data
