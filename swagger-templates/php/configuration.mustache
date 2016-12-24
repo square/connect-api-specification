@@ -5,11 +5,12 @@
  *
  * @category Class
  * @package  {{invokerPackage}}
- * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link     https://github.com/swagger-api/swagger-codegen
+ * @author   Square Inc.
+ * @license  Apache Licene v2 - http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://squareup.com/developers
  */
 
+{{>partial_header}}
 /**
  *  Copyright 2016 Square, Inc.
  *
@@ -40,28 +41,28 @@ namespace {{invokerPackage}};
  *
  * @category Class
  * @package  {{invokerPackage}}
- * @author   http://github.com/swagger-api/swagger-codegen
- * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link     https://github.com/swagger-api/swagger-codegen
+ * @author   Square Inc.
+ * @license  Apache Licene v2 - http://www.apache.org/licenses/LICENSE-2.0
+ * @link     https://squareup.com/developers
+
  */
 class Configuration
 {
-
-    private static $_defaultConfiguration = null;
+    private static $defaultConfiguration = null;
 
     /**
      * Associate array to store API key(s)
      *
      * @var string[]
      */
-    protected $apiKeys = array();
+    protected $apiKeys = [];
 
     /**
      * Associate array to store API prefix (e.g. Bearer)
      *
      * @var string[]
      */
-    protected $apiKeyPrefixes = array();
+    protected $apiKeyPrefixes = [];
 
     /**
      * Access token for OAuth
@@ -85,11 +86,11 @@ class Configuration
     protected $password = '';
 
     /**
-     * The default instance of ApiClient
+     * The default header(s)
      *
-     * @var \{{invokerPackage}}\ApiClient
+     * @var array
      */
-    protected $defaultHeaders = array();
+    protected $defaultHeaders = [];
 
     /**
      * The host
@@ -164,7 +165,7 @@ class Configuration
         return $this;
     }
 
-    /**
+/**
      * Gets API key
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
@@ -277,7 +278,7 @@ class Configuration
      * @param string $headerName  header name (e.g. Token)
      * @param string $headerValue header value (e.g. 1z8wp3)
      *
-     * @return ApiClient
+     * @return Configuration
      */
     public function addDefaultHeader($headerName, $headerValue)
     {
@@ -487,11 +488,11 @@ class Configuration
      */
     public static function getDefaultConfiguration()
     {
-        if (self::$_defaultConfiguration == null) {
-            self::$_defaultConfiguration = new Configuration();
+        if (self::$defaultConfiguration === null) {
+            self::$defaultConfiguration = new Configuration();
         }
 
-        return self::$_defaultConfiguration;
+        return self::$defaultConfiguration;
     }
 
     /**
@@ -503,7 +504,7 @@ class Configuration
      */
     public static function setDefaultConfiguration(Configuration $config)
     {
-        self::$_defaultConfiguration = $config;
+        self::$defaultConfiguration = $config;
     }
 
     /**
@@ -513,14 +514,15 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = "PHP SDK ({{invokerPackage}}) Debug Report:\n";
-        $report .= "    OS: ".php_uname()."\n";
-        $report .= "    PHP Version: ".phpversion()."\n";
-        $report .= "    OpenAPI Spec Version: {{version}}\n";
-        $report .= "    SDK Package Version: {{artifactVersion}}\n";
-        $report .= "    Temp Folder Path: ".self::getDefaultConfiguration()->getTempFolderPath()."\n";
+        $report  = 'PHP SDK ({{invokerPackage}}) Debug Report:' . PHP_EOL;
+        $report .= '    OS: ' . php_uname() . PHP_EOL;
+        $report .= '    PHP Version: ' . phpversion() . PHP_EOL;
+        $report .= '    OpenAPI Spec Version: {{version}}' . PHP_EOL;
+        {{#artifactVersion}}
+        $report .= '    SDK Package Version: {{artifactVersion}}' . PHP_EOL;
+        {{/artifactVersion}}
+        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
     }
-
 }
