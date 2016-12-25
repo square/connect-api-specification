@@ -58,10 +58,10 @@
         "/v1/me": {
             "get": {
                 "tags": [
-                    "Business"
+                    "v1BusinessManagement"
                 ],
-                "summary": "RetrieveBusiness",
-                "operationId": "RetrieveBusiness",
+                "summary": "v1RetrieveBusiness",
+                "operationId": "v1RetrieveBusiness",
                 "description": "Get a business's information.",
                 "parameters": [],
                 "security": [{
@@ -72,7 +72,33 @@
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "$ref": "#/definitions/BusinessResponse"
+                            "$ref": "#/definitions/v1Merchant"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/locations": {
+            "get": {
+                "tags": [
+                    "v1BusinessManagement"
+                ],
+                "summary": "v1ListLocations",
+                "operationId": "v1ListLocations",
+                "description": "Provides details for a business's locations, including their IDs.",
+                "parameters": [],
+                "security": [{
+                    "personal_access_token": [],
+                    "petstore_auth": ["MERCHANT_PROFILE_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Merchant"
+                            }
                         }
                     }
                 }
@@ -2742,7 +2768,7 @@
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
         },
-        "BusinessResponse": {
+        "v1Merchant": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -2869,7 +2895,13 @@
                     "description": "The merchant's shipping address."
                 },
                 "location_details": {
-                    "type": "string",
+                    "type": "object",
+                    "properties": {
+                        "nickname": {
+                            "type": "string",
+                            "description": "The nickname assigned to the single-location account by the parent business. This value appears in the parent business's multi-location dashboard."
+                        }
+                    },
                     "description": "Additional information for a single-location account specified by its associated business account, if it has one."
                 },
                 "market_url": {
@@ -2878,6 +2910,26 @@
                 }
             },
             "description": "Defines the fields that are included in the response body of\na request to the **RetrieveBusiness** endpoint."
+        },
+        "v1ListLocationsResponse": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "locations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1Merchant"
+                    },
+                    "description": "An array of locations in your business."
+                }
+            },
+            "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
         }
     }
 }
