@@ -66,7 +66,7 @@
                 "parameters": [],
                 "security": [{
                     "personal_access_token": [],
-                    "petstore_auth": ["MERCHANT_PROFILE_READ"]
+                    "oauth2": ["MERCHANT_PROFILE_READ"]
                 }],
                 "responses": {
                     "200": {
@@ -89,7 +89,7 @@
                 "parameters": [],
                 "security": [{
                     "personal_access_token": [],
-                    "petstore_auth": ["MERCHANT_PROFILE_READ"]
+                    "oauth2": ["MERCHANT_PROFILE_READ"]
                 }],
                 "responses": {
                     "200": {
@@ -99,6 +99,182 @@
                             "items": {
                                 "$ref": "#/definitions/v1Merchant"
                             }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/employees": {
+            "post": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1CreateEmployee",
+                "operationId": "v1CreateEmployee",
+                "description": "Creates an employee for a business.",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1CreateEmployeeRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Employee"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1ListEmployees",
+                "operationId": "v1ListEmployees",
+                "parameters": [{
+                    "name": "order",
+                    "in": "query",
+                    "description": "The order in which employees are listed in the response, based on their created_at field.      Default value: ASC ",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ]
+                }, {
+                    "name": "begin_updated_at",
+                    "description": "If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_updated_at",
+                    "description": "If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "begin_created_at",
+                    "description": "If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_created_at",
+                    "description": "If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "status",
+                    "in": "query",
+                    "description": "If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).",
+                    "type": "string",
+                    "enum": [
+                        "ACTIVE",
+                        "INACTIVE"
+                    ]
+                }, {
+                    "name": "external_id",
+                    "in": "query",
+                    "description": "If provided, the endpoint returns only employee entities with the specified external_id.",
+                    "type": "string"
+                }, {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 600
+                }, {
+                    "name": "cursor",
+                    "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Employee"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/employees/{employee_id}": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1RetrieveEmployee",
+                "operationId": "v1RetrieveEmployee",
+                "parameters": [{
+                    "name": "employee_id",
+                    "in": "path",
+                    "description": "If provided, the endpoint returns only employee entities with the specified external_id.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Employee"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1UpdateEmployee",
+                "operationId": "v1UpdateEmployee",
+                "parameters": [{
+                    "name": "employee_id",
+                    "in": "path",
+                    "description": "If provided, the endpoint returns only employee entities with the specified external_id.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1UpdateEmployeeRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Employee"
                         }
                     }
                 }
@@ -348,7 +524,7 @@
                 }],
                 "security": [{
                     "personal_access_token": [],
-                    "petstore_auth": ["CUSTOMERS_READ"]
+                    "oauth2": ["CUSTOMERS_READ"]
                 }],
                 "responses": {
                     "200": {
@@ -2930,6 +3106,112 @@
                 }
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
+        },
+        "v1Employee": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The employee's unique ID."
+                },
+                "first_name": {
+                    "type": "string",
+                    "description": "The employee's first name."
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "The employee's last name."
+                },
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee."
+                },
+                "authorized_location_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IDs of the locations the employee is allowed to clock in at."
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The employee's email address."
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ACTIVE",
+                        "INACTIVE"
+                    ],
+                    "description": "CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. "
+                },
+                "external_id": {
+                    "type": "string",
+                    "description": "An ID the merchant can set to associate the employee with an entity in another system."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the employee entity was created, in ISO 8601 format."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "description": "The time when the employee entity was most recently updated, in ISO 8601 format."
+                }
+            }
+        },
+        "v1CreateEmployeeRequest": {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "description": "The employee's first name."
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "The employee's first name."
+                },
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee."
+                },
+                "email": {
+                    "type": "string",
+                    "description": " An optional email address to associate with the employee."
+                }
+            }
+        },
+        "v1UpdateEmployeeRequest": {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "description": "The employee's first name."
+                },
+                "last_name": {
+                    "type": "string",
+                    "description": "The employee's first name."
+                },
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee."
+                }
+            }
         }
     }
 }
