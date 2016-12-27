@@ -193,7 +193,7 @@
                     "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
                     "type": "integer",
                     "minimum": 100,
-                    "maximum": 600
+                    "maximum": 200
                 }, {
                     "name": "cursor",
                     "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
@@ -228,7 +228,7 @@
                 "parameters": [{
                     "name": "employee_id",
                     "in": "path",
-                    "description": "If provided, the endpoint returns only employee entities with the specified external_id.",
+                    "description": "The employee's ID.",
                     "type": "string",
                     "required": true
                 }],
@@ -254,7 +254,7 @@
                 "parameters": [{
                     "name": "employee_id",
                     "in": "path",
-                    "description": "If provided, the endpoint returns only employee entities with the specified external_id.",
+                    "description": "The ID of the role to modify.",
                     "type": "string",
                     "required": true
                 }, {
@@ -275,6 +275,144 @@
                         "description": "Success",
                         "schema": {
                             "$ref": "#/definitions/v1Employee"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/roles": {
+            "post": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1CreateEmployeeRole",
+                "operationId": "v1CreateEmployeeRole",
+                "description": "Creates an employee role you can then assign to employees.",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1EmployeeRoleRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1EmployeeRole"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1ListEmployeeRoles",
+                "operationId": "v1ListEmployeeRoles",
+                "parameters": [{
+                    "name": "order",
+                    "in": "query",
+                    "description": "The order in which employees are listed in the response, based on their created_at field.      Default value: ASC ",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ]
+                }, {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 200
+                }, {
+                    "name": "cursor",
+                    "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1EmployeeRole"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/roles/{role_id}": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1RetrieveEmployeeRole",
+                "operationId": "v1RetrieveEmployeeRole",
+                "parameters": [{
+                    "name": "role_id",
+                    "in": "path",
+                    "description": "The role's ID.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1EmployeeRole"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1UpdateEmployeeRole",
+                "operationId": "v1UpdateEmployeeRole",
+                "parameters": [{
+                    "name": "role_id",
+                    "in": "path",
+                    "description": "The ID of the role to modify.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1EmployeeRoleRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["EMPLOYEES_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1EmployeeRole"
                         }
                     }
                 }
@@ -3169,6 +3307,54 @@
                 }
             }
         },
+        "v1EmployeeRole": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The role's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The role's merchant-defined name."
+                },
+                "role_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "REGISTER_ACCESS_SALES_HISTORY",
+                            "REGISTER_APPLY_RESTRICTED_DISCOUNTS",
+                            "REGISTER_CHANGE_SETTINGS",
+                            "REGISTER_EDIT_ITEM",
+                            "REGISTER_ISSUE_REFUNDS",
+                            "REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
+                            "REGISTER_VIEW_SUMMARY_REPORTS"
+                        ]
+                    },
+                    "description": "The role's permissions."
+                },
+                "is_owner": {
+                    "type": "boolean",
+                    "description": "If true, employees with this role have all permissions, regardless of the values indicated in permissions."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the employee entity was created, in ISO 8601 format."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "description": "The time when the employee entity was most recently updated, in ISO 8601 format."
+                }
+            }
+        },
         "v1CreateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -3178,7 +3364,7 @@
                 },
                 "last_name": {
                     "type": "string",
-                    "description": "The employee's first name."
+                    "description": "The employee's last name."
                 },
                 "role_ids": {
                     "type": "array",
@@ -3193,6 +3379,36 @@
                 }
             }
         },
+        "v1EmployeeRoleRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The role's name."
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "REGISTER_ACCESS_SALES_HISTORY",
+                            "REGISTER_APPLY_RESTRICTED_DISCOUNTS",
+                            "REGISTER_CHANGE_SETTINGS",
+                            "REGISTER_EDIT_ITEM",
+                            "REGISTER_ISSUE_REFUNDS",
+                            "REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
+                            "REGISTER_VIEW_SUMMARY_REPORTS"
+                        ]
+                    },
+                    "description": "The role's permissions."
+                },
+                "is_owner": {
+                    "type": "boolean",
+                    "description": "If true, employees with this role have all permissions, regardless of the values indicated in permissions."
+                }
+            }
+        },
+
         "v1UpdateEmployeeRequest": {
             "type": "object",
             "properties": {
