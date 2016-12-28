@@ -418,6 +418,250 @@
                 }
             }
         },
+        "/v1/me/timecards": {
+            "post": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1CreateEmployeeTimecard",
+                "operationId": "v1CreateEmployeeTimecard",
+                "description": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1CreateEmployeeTimecardRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1EmployeeTimecard"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1ListEmployeeTimecards",
+                "operationId": "v1ListEmployeeTimecards",
+                "parameters": [{
+                    "name": "order",
+                    "in": "query",
+                    "description": "The order in which timecards are listed in the response, based on their created_at field.",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ],
+                    "required": false
+                }, {
+                    "name": "employee_id",
+                    "description": "If provided, the endpoint returns only timecards for the employee with the specified ID.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "begin_clockin_time",
+                    "description": "If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_clockin_time",
+                    "description": "If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "begin_clockout_time",
+                    "description": "If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_clockout_time",
+                    "description": "If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "begin_updated_at",
+                    "description": "If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_updated_at",
+                    "description": "If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "deleted",
+                    "description": "If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don't provide this parameter, both valid and deleted timecards are returned.",
+                    "type": "boolean",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 200
+                }, {
+                    "name": "cursor",
+                    "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1EmployeeTimecard"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/timecards/{timecard_id}": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1RetrieveEmployeeTimecard",
+                "operationId": "v1RetrieveEmployeeTimecard",
+                "parameters": [{
+                    "name": "timecard_id",
+                    "in": "path",
+                    "description": "The timecard's ID.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1EmployeeTimecard"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1UpdateEmployeeTimecard",
+                "operationId": "v1UpdateEmployeeTimecard",
+                "parameters": [{
+                    "name": "timecard_id",
+                    "in": "path",
+                    "description": "TThe ID of the timecard to modify.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1UpdateEmployeeTimecardRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1EmployeeTimecard"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1DeleteEmployeeTimecard",
+                "operationId": "v1DeleteEmployeeTimecard",
+                "parameters": [{
+                    "name": "timecard_id",
+                    "in": "path",
+                    "description": "The ID of the timecard to delete.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/me/timecards/{timecard_id}/events": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1ListEmployeeTimecardEvents",
+                "operationId": "v1ListEmployeeTimecardEvents",
+                "parameters": [{
+                    "name": "timecard_id",
+                    "in": "path",
+                    "description": "The ID of the timecard to list events for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1EmployeeTimecardEvent"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
@@ -3355,6 +3599,97 @@
                 }
             }
         },
+        "v1EmployeeTimecard": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The timecard's unique ID."
+                },
+                "employee_id": {
+                    "type": "string",
+                    "description": "The ID of the employee the timecard is associated with."
+                },
+                "deleted": {
+                    "type": "boolean",
+                    "description": "If true, the timecard was deleted by the merchant, and it is no longer valid."
+                },
+                "clockin_time": {
+                    "type": "string",
+                    "description": "The clock-in time for the timecard, in ISO 8601 format."
+                },
+                "clockout_time": {
+                    "type": "string",
+                    "description": "The clock-out time for the timecard, in ISO 8601 format. Provide this value only if importing timecard information from another system."
+                },
+                "clockin_location_id": {
+                    "type": "string",
+                    "description": "The ID of the location the employee clocked in from, if any."
+                },
+                "clockout_location_id": {
+                    "type": "string",
+                    "description": "The ID of the location the employee clocked out from. Provide this value only if importing timecard information from another system."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the timecard was created, in ISO 8601 format."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "description": "The time when the timecard was most recently updated, in ISO 8601 format."
+                }
+            }
+        },
+        "v1EmployeeTimecard": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The event's unique ID."
+                },
+                "event_type": {
+                    "type": "string",
+                    "enum": [
+                        "API_CREATE",
+                        "API_EDIT",
+                        "API_DELETE",
+                        "REGISTER_CLOCKIN",
+                        "REGISTER_CLOCKOUT",
+                        "DASHBOARD_SUPERVISOR_CLOSE",
+                        "DASHBOARD_EDIT",
+                        "DASHBOARD_DELETE"
+                    ],
+                    "description": "The ID of the timecard to list events for."
+                },
+
+                "clockin_time": {
+                    "type": "string",
+                    "description": "The time the employee clocked in, in ISO 8601 format."
+                },
+                "clockout_time": {
+                    "type": "string",
+                    "description": "The time the employee clocked out, in ISO 8601 format."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the event was created, in ISO 8601 format."
+                },
+            }
+        },
         "v1CreateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -3408,7 +3743,31 @@
                 }
             }
         },
-
+        "v1CreateEmployeeTimecardRequest": {
+            "type": "object",
+            "properties": {
+                "employee_id": {
+                    "type": "string",
+                    "description": "The employee to create a timecard for."
+                },
+                "clockin_time": {
+                    "type": "string",
+                    "description": "The clock-in time for the timecard, in ISO 8601 format."
+                },
+                "clockout_time": {
+                    "type": "string",
+                    "description": "The clock-out time for the timecard, in ISO 8601 format. Provide this value only if importing timecard information from another system."
+                },
+                "clockin_location_id": {
+                    "type": "string",
+                    "description": "The ID of the location the employee clocked in from, if any."
+                },
+                "clockout_location_id": {
+                    "type": "string",
+                    "description": "The ID of the location the employee clocked out from. Provide this value only if importing timecard information from another system."
+                }
+            }
+        },
         "v1UpdateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -3428,6 +3787,35 @@
                     "description": "The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee."
                 }
             }
+        },
+        "v1UpdateEmployeeTimecardRequest": {
+            "type": "object",
+            "properties": {
+                "clockin_time": {
+                    "type": "string",
+                    "description": "The clock-in time for the timecard, in ISO 8601 format.",
+                    "required": false
+                },
+                "clockout_time": {
+                    "type": "string",
+                    "description": "The clock-out time for the timecard, in ISO 8601 format.",
+                    "required": false
+
+                },
+                "clockin_location_id": {
+                    "type": "string",
+                    "description": "The ID of the location the employee clocked in from, if any.",
+                    "required": false
+
+                },
+                "clockout_location_id": {
+                    "type": "string",
+                    "description": "The ID of the location the employee clocked out from, if any.",
+                    "required": false
+
+                }
+
+            }
+
         }
     }
-}
