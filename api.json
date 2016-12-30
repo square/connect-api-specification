@@ -1399,6 +1399,592 @@
                 }
             }
         },
+        "/v1/{location_id}/items/{item_id}/variations": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreateVariation",
+                "operationId": "v1CreateVariation",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The item's ID.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1CreateItemVariation"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemVariation"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/items/{item_id}/variations/{variation_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateVaration",
+                "operationId": "v1UpdateVaration",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to modify.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "variation_id",
+                    "in": "path",
+                    "description": "The ID of the variation to modify.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1UpdateItemVariation"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemVariation"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateItem",
+                "operationId": "v1UpdateItem",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to delete.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "variation_id",
+                    "in": "path",
+                    "description": "The ID of the variation to delete.",
+                    "type": "string",
+                    "required": true
+                }, ],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemVariation"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/inventory": {
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ListInventory",
+                "operationId": "v1ListInventory",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "limit",
+                    "description": "The maximum number of inventory entries to return in a single response. This value cannot exceed 1000.",
+                    "type": "integer",
+                    "maximum": 1000,
+                    "in": "query",
+                    "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1ItemInventoryEntry"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/inventory/{variation_id}": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1AdjustInventory",
+                "operationId": "v1AdjustInventory",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "variation_id",
+                    "in": "path",
+                    "description": "The ID of the variation to adjust inventory information for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1AdjustItemInventoryRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemInventoryEntry"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/modifier-lists": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreateModifierList",
+                "operationId": "v1CreateModifierList",
+                "description": "Creates an item modifier list and at least one modifier option for it.",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to create a modifier list for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1ItemModifierList"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierList"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ListModifierLists",
+                "operationId": "v1ListModifierLists",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list modifier lists for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1ItemModifierList"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/modifier-lists/{modifier_list_id}": {
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1RetrieveModiferList",
+                "operationId": "v1RetrieveModiferList",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The modifier list's ID.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierList"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateModifierList",
+                "operationId": "v1UpdateModifierList",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to edit.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1UpdateModifierListRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierList"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1DeleteModiferList",
+                "operationId": "v1DeleteModiferList",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to delete.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierList"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ApplyModiferList",
+                "operationId": "v1ApplyModiferList",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to apply.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to add the modifier list to.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1RemoveModiferList",
+                "operationId": "v1RemoveModiferList",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to remove.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to remove the modifier list from.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreateModifierListOption",
+                "operationId": "v1CreateModifierListOption",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to edit.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1ItemModifierOption"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierOption"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateModifierListOption",
+                "operationId": "v1UpdateModifierListOption",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to edit.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_option_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to edit.",
+                    "type": "string",
+                    "required": true
+                },{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1ItemModifierOption"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierOption"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1DeleteModiferListOption",
+                "operationId": "v1DeleteModiferListOption",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "modifier_list_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to delete.",
+                    "type": "string",
+                    "required": true
+                },{
+                    "name": "modifier_option_id",
+                    "in": "path",
+                    "description": "The ID of the modifier list to edit.",
+                    "type": "string",
+                    "required": true
+                },],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1ItemModifierOption"
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
@@ -5535,6 +6121,41 @@
                 }
             }
         },
+        "v1ItemInventoryEntry": {
+            "type": "object",
+            "properties": {
+                "variation_id": {
+                    "type": "string",
+                    "description": "The variation that the entry corresponds to."
+                },
+                "quantity_on_hand": {
+                    "type": "number",
+                    "description": "The current available quantity of the item variation."
+                }
+            }
+        },
+        "v1AdjustItemInventoryRequest": {
+            "type": "object",
+            "properties": {
+                "quantity_delta": {
+                    "type": "number",
+                    "description": "The number to adjust the variation's quantity by."
+                },
+                "adjustment_type": {
+                    "type": "number",
+                    "enum": [
+                        "SALE",
+                        "RECEIVE_STOCK",
+                        "MANUAL_ADJUST"
+                    ],
+                    "description": "The reason for the inventory adjustment."
+                },
+                "memo": {
+                    "type": "string",
+                    "description": "A note about the inventory adjustment."
+                }
+            }
+        },
         "v1CreateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -5843,6 +6464,125 @@
                     "description": "If true, the item can be added to pickup orders from the merchant's online store."
                 }
             }
-        }
+        },
+        "v1CreateItemVariation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The item variation's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The item variation's name."
+                },
+                "pricing_type": {
+                    "type": "string",
+                    "enum": [
+                        "FIXED_PRICING",
+                        "VARIABLE_PRICING"
+                    ],
+                    "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
+                },
+                "price_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The item variation's price, if any."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "The item variation's SKU, if any."
+                },
+                "track_inventory": {
+                    "type": "boolean",
+                    "description": "If true, inventory tracking is active for the variation."
+                },
+                "inventory_alert_type": {
+                    "type": "string",
+                    "enum": [
+                        "LOW_QUANTITY",
+                        "NONE",
+                        "INVESTMENT",
+                        "LOAN",
+                        "SAVINGS",
+                        "OTHER"
+                    ],
+                    "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold."
+                },
+                "inventory_alert_threshold": {
+                    "type": "integer",
+                    "description": "If the inventory quantity for the variation is less than or equal to this value and inventory_alert_type is LOW_QUANTITY, the variation displays an alert in the merchant dashboard."
+                },
+                "user_data": {
+                    "type": "boolean",
+                    "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
+                }
+            }
+        },
+        "v1UpdateItemVariation": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The item variation's name."
+                },
+                "pricing_type": {
+                    "type": "string",
+                    "enum": [
+                        "FIXED_PRICING",
+                        "VARIABLE_PRICING"
+                    ],
+                    "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
+                },
+                "price_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The item variation's price, if any."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "The item variation's SKU, if any."
+                },
+                "track_inventory": {
+                    "type": "boolean",
+                    "description": "If true, inventory tracking is active for the variation."
+                },
+                "inventory_alert_type": {
+                    "type": "string",
+                    "enum": [
+                        "LOW_QUANTITY",
+                        "NONE",
+                        "INVESTMENT",
+                        "LOAN",
+                        "SAVINGS",
+                        "OTHER"
+                    ],
+                    "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold."
+                },
+                "inventory_alert_threshold": {
+                    "type": "integer",
+                    "description": "If the inventory quantity for the variation is less than or equal to this value and inventory_alert_type is LOW_QUANTITY, the variation displays an alert in the merchant dashboard."
+                },
+                "user_data": {
+                    "type": "boolean",
+                    "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
+                }
+            }
+        },
+        "v1UpdateModifierListRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The modifier list's name."
+                },
+                "selection_type": {
+                    "type": "string",
+                    "enum": [
+                        "SINGLE",
+                        "MULTIPLE"
+                    ],
+                    "description": "Indicates whether multiple options from the modifier list can be applied to a single item."
+                }
+            }
+        },
     }
 }
