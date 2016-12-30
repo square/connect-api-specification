@@ -192,7 +192,6 @@
                     "in": "query",
                     "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
                     "type": "integer",
-                    "minimum": 100,
                     "maximum": 200
                 }, {
                     "name": "cursor",
@@ -330,7 +329,6 @@
                     "in": "query",
                     "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
                     "type": "integer",
-                    "minimum": 100,
                     "maximum": 200
                 }, {
                     "name": "cursor",
@@ -517,7 +515,6 @@
                     "in": "query",
                     "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
                     "type": "integer",
-                    "minimum": 100,
                     "maximum": 200
                 }, {
                     "name": "cursor",
@@ -744,6 +741,99 @@
                         "description": "Success",
                         "schema": {
                             "$ref": "#/definitions/v1CashDrawerShift"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/payments": {
+            "get": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1ListPayments",
+                "operationId": "v1ListPayments",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business's locations.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "order",
+                    "in": "query",
+                    "description": "TThe order in which payments are listed in the response.",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ],
+                    "required": false
+                }, {
+                    "name": "begin_time",
+                    "description": "The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_time",
+                    "description": "The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "The maximum number of payments to return in a single response. This value cannot exceed 200.",
+                    "type": "integer",
+                    "maximum": 200
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Payment"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/payments/{payment_id}": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1RetrieveCashDrawerShift",
+                "operationId": "v1RetrieveCashDrawerShift",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the payment's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "payment_id",
+                    "in": "path",
+                    "description": "The payment's Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                                "$ref": "#/definitions/v1Payment"
                         }
                     }
                 }
@@ -3928,7 +4018,406 @@
                 }
             }
         },
-
+        "v1Payment": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The payment's unique identifier."
+                },
+                "merchant_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the merchant that took the payment."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the payment was created, in ISO 8601 format."
+                },
+                "creator_id": {
+                    "type": "boolean",
+                    "description": "The unique identifier of the Square account that took the payment."
+                },
+                "device": {
+                    "$ref": "#/definitions/Device",
+                    "description": "The device that took the payment."
+                },
+                "payment_url": {
+                    "type": "string",
+                    "description": "The URL of the payment's detail page in the merchant dashboard. The merchant must be signed in to the merchant dashboard to view this page."
+                },
+                "receipt_url": {
+                    "type": "string",
+                    "description": "The URL of the receipt for the payment. Note that for split tender payments, this URL corresponds to the receipt for the first tender listed in the payment's tender field. Each Tender object has its own receipt_url field you can use to get the other receipts associated with a split tender payment."
+                },
+                "inclusive_tax_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The sum of all inclusive taxes associated with the payment."
+                },
+                "additive_tax_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The sum of all additive taxes associated with the payment."
+                },
+                "tax_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all taxes applied to the payment. This is always the sum of inclusive_tax_money and additive_tax_money."
+                },
+                "tip_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all tips applied to the payment."
+                },
+                "discount_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all discounts applied to the payment."
+                },
+                "processing_fee_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all processing fees collected by Square for the payment."
+                },
+                "net_total_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount to be deposited into the merchant's bank account for the payment."
+                },
+                "refunded_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all refunds applied to the payment."
+                },
+                "inclusive_tax": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1PaymentTax"
+                    },
+                    "description": "All of the inclusive taxes associated with the payment."
+                },
+                "additive_tax": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1PaymentTax"
+                    },
+                    "description": "All of the additive taxes associated with the payment."
+                },
+                "tender": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1Tender"
+                    },
+                    "description": "All of the additive taxes associated with the payment."
+                },
+                "refunds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1Refund"
+                    },
+                    "description": "All of the refunds applied to the payment."
+                },
+                "itemizations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1PaymentItemization"
+                    },
+                    "description": "The items purchased in the payment."
+                }
+            }
+        },
+        "v1PaymentItemization": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The item's name."
+                },
+                "quantity": {
+                    "type": "number",
+                    "description": "The quantity of the item purchased. This can be a decimal value."
+                },
+                "itemization_type": {
+                    "type": "string",
+                    "enum": [
+                        "ITEM",
+                        "CUSTOM_AMOUNT",
+                        "GIFT_CARD_ACTIVATION",
+                        "GIFT_CARD_RELOAD",
+                        "GIFT_CARD_UNKNOWN",
+                        "OTHER"
+                    ],
+                    "description": "The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT"
+                },
+                "item_detail": {
+                    "$ref": "#/definitions/v1PaymentItemDetail",
+                    "description": "Details of the item, including its unique identifier and the identifier of the item variation purchased."
+                },
+                "notes": {
+                    "type": "string",
+                    "description": "Notes entered by the merchant about the item at the time of payment, if any."
+                },
+                "item_variation_name": {
+                    "type": "string",
+                    "description": "The name of the item variation purchased, if any."
+                },
+                "total_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total cost of the item, including all taxes and discounts."
+                },
+                "single_quantity_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The cost of a single unit of this item."
+                },
+                "gross_sales_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total cost of the itemization and its modifiers, not including taxes or discounts."
+                },
+                "discount_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all discounts applied to the itemization. This value is always negative or zero."
+                },
+                "net_sales_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The sum of gross_sales_money and discount_money."
+                },
+                "taxes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "v1PaymentTax"
+                    },
+                    "description": "All taxes applied to this itemization."
+                },
+                "discounts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "v1PaymentDiscount"
+                    },
+                    "description": "All discounts applied to this itemization."
+                },
+                "modifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "v1PaymentModifier"
+                    },
+                    "description": "All modifier options applied to this itemization."
+                }
+            }
+        },
+        "v1PaymentModifier": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The modifier option's name."
+                },
+                "applied_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money that this modifier option adds to the payment."
+                },
+                "modifier_option_id": {
+                    "type": "string",
+                    "description": "TThe ID of the applied modifier option, if available. Modifier options applied in older versions of Square Register might not have an ID."
+                }
+            }
+        },
+        "v1PaymentDiscount": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The discount's name."
+                },
+                "applied_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money that this discount adds to the payment (note that this value is always negative or zero)."
+                },
+                "discount_id": {
+                    "type": "string",
+                    "description": "The ID of the applied discount, if available. Discounts applied in older versions of Square Register might not have an ID."
+                }
+            }
+        },
+        "v1PaymentItemDetail": {
+            "type": "object",
+            "properties": {
+                "category_name": {
+                    "type": "string",
+                    "description": "The name of the item's merchant-defined category, if any."
+                },
+                "sku": {
+                    "type": "number",
+                    "description": " The item's merchant-defined SKU, if any."
+                },
+                "item_id": {
+                    "type": "string",
+                    "description": "The unique ID of the item purchased, if any."
+                },
+                "item_variation_id": {
+                    "type": "string",
+                    "description": "The unique ID of the item variation purchased, if any."
+                }
+            }
+        },
+        "v1Refund": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "FULL",
+                        "PARTIAL"
+                    ],
+                    "description": "The type of refund "
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "The merchant-specified reason for the refund."
+                },
+                "refunded_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "A human-readable description of the tender."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the merchant initiated the refund for Square to process, in ISO 8601 format.."
+                },
+                "processed_at": {
+                    "type": "string",
+                    "description": "The time when Square processed the refund on behalf of the merchant, in ISO 8601 format."
+                },
+                "payment_id": {
+                    "type": "string",
+                    "description": "The Square-issued ID of the payment the refund is applied to."
+                }
+            }
+        },
+        "v1Tender": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The tender's unique ID."
+                },
+                "event_type": {
+                    "type": "string",
+                    "enum": [
+                        "CREDIT_CARD",
+                        "CASH",
+                        "THIRD_PARTY_CARD",
+                        "NO_SALE",
+                        "SQUARE_WALLET",
+                        "SQUARE_GIFT_CARD",
+                        "UNKNOWN",
+                        "OTHER"
+                    ],
+                    "description": "The type of tender."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable description of the tender."
+                },
+                "employee_id": {
+                    "type": "string",
+                    "description": "The ID of the employee that processed the tender."
+                },
+                "receipt_url": {
+                    "type": "string",
+                    "description": "The URL of the receipt for the tender."
+                },
+                "card_brand": {
+                    "type": "string",
+                    "enum": [
+                        "OTHER_BRAND",
+                        "VISA",
+                        "MASTERCARD",
+                        "AMERICAN_EXPRESS",
+                        "DISCOVER",
+                        "DISCOVER_DINERS",
+                        "JCB",
+                        "CHINA_UNIONPAY",
+                        "SQUARE_GIFT_CARD"
+                    ],
+                    "description": "The brand of credit card provided."
+                },
+                "pan_suffix": {
+                    "type": "string",
+                    "description": "The last four digits of the provided credit card's account number."
+                },
+                "entry_method": {
+                    "type": "string",
+                    "enum": [
+                        "MANUAL",
+                        "SCANNED",
+                        "SQUARE_CASH",
+                        "SQUARE_WALLET",
+                        "SWIPED",
+                        "WEB_FORM",
+                        "OTHER"
+                    ],
+                    "description": "The tender's unique ID."
+                },
+                "payment_note": {
+                    "type": "string",
+                    "description": "Notes entered by the merchant about the tender at the time of payment, if any. Typically only present for tender with the type: OTHER."
+                },
+                "total_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total amount of money provided in this form of tender."
+                },
+                "tendered_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of total_money applied to the payment."
+                },
+                "change_back_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of total_money returned to the buyer as change."
+                },
+                "refunded_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all refunds applied to this tender. This amount is always negative or zero."
+                }
+            }
+        },
+        "v1PaymentTax": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The merchant-defined name of the tax."
+                },
+                "applied_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money that this tax adds to the payment."
+                },
+                "rate": {
+                    "type": "string",
+                    "description": "The rate of the tax, as a string representation of a decimal number. A value of 0.07 corresponds to a rate of 7%."
+                },
+                "inclusion_type": {
+                    "type": "string",
+                    "description": "The payment's unique identifier."
+                },
+                "id": {
+                    "type": "string",
+                    "enum": [
+                        "ADDITIVE",
+                        "INCLUSIVE"
+                    ],
+                    "description": "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax."
+                },
+                "fee_id": {
+                    "type": "string",
+                    "description": "The ID of the tax, if available. Taxes applied in older versions of Square Register might not have an ID."
+                }
+            }
+        },
         "v1CreateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -4048,7 +4537,6 @@
                 }
 
             }
-
         }
     }
 }
