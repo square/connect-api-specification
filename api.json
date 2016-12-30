@@ -1227,6 +1227,178 @@
                 }
             }
         },
+        "/v1/{location_id}/items": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreateItem",
+                "operationId": "v1CreateItem",
+                "description": "Creates an item and at least one variation for it.",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to create an item for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1CreateItemRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ListItems",
+                "operationId": "v1ListItems",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list items for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Item"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/items/{item_id}": {
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1RetrieveItem",
+                "operationId": "v1RetrieveItem",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The item's ID.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateItem",
+                "operationId": "v1UpdateItem",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to modify.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1UpdateItemRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateItem",
+                "operationId": "v1UpdateItem",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to modify.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
@@ -5066,6 +5238,303 @@
                 }
             }
         },
+        "v1ItemVariation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The item variation's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The item variation's name."
+                },
+                "item_id": {
+                    "type": "string",
+                    "description": "The ID of the variation's associated item."
+                },
+                "ordinal": {
+                    "type": "string",
+                    "description": "ndicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order"
+                },
+                "pricing_type": {
+                    "type": "string",
+                    "enum": [
+                        "FIXED_PRICING",
+                        "VARIABLE_PRICING"
+                    ],
+                    "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
+                },
+                "price_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The item variation's price, if any."
+                },
+                "sku": {
+                    "type": "string",
+                    "description": "The item variation's SKU, if any."
+                },
+                "track_inventory": {
+                    "type": "boolean",
+                    "description": "If true, inventory tracking is active for the variation."
+                },
+                "inventory_alert_type": {
+                    "type": "string",
+                    "enum": [
+                        "LOW_QUANTITY",
+                        "NONE",
+                        "INVESTMENT",
+                        "LOAN",
+                        "SAVINGS",
+                        "OTHER"
+                    ],
+                    "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold."
+                },
+                "inventory_alert_threshold": {
+                    "type": "integer",
+                    "description": "If the inventory quantity for the variation is less than or equal to this value and inventory_alert_type is LOW_QUANTITY, the variation displays an alert in the merchant dashboard."
+                },
+                "user_data": {
+                    "type": "boolean",
+                    "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
+                }
+            }
+        },
+        "v1Item": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The item's ID. Must be unique among all entity IDs ever provided on behalf of the merchant. You can never reuse an ID. This value can include alphanumeric characters, dashes (-), and underscores (_)."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The item's name."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The item's description."
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "NORMAL",
+                        "GIFT_CARD",
+                        "OTHER"
+                    ],
+                    "description": "The item's type. This value is NORMAL for almost all items."
+                },
+                "color": {
+                    "type": "string",
+                    "enum": [
+                        "9da2a6",
+                        "4ab200",
+                        "0b8000",
+                        "2952cc",
+                        "a82ee5",
+                        "e5457a",
+                        "b21212",
+                        "593c00",
+                        "e5BF00"
+                    ],
+                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
+                },
+                "abbreviation": {
+                    "type": "string",
+                    "description": "The text of the item's display label in Square Register. Only up to the first five characters of the string are used."
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "PUBLIC",
+                        "PRIVATE"
+                    ],
+                    "description": "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE."
+                },
+                "available_online": {
+                    "type": "string",
+                    "description": "If true, the item can be added to shipping orders from the merchant's online store."
+                },
+                "master_image": {
+                    "$ref": "#/definitions/v1ItemImage",
+                    "description": "The item's master image, if any."
+                },
+                "category": {
+                    "$ref": "#/definitions/v1ItemCategory",
+                    "description": "The category the item belongs to, if any."
+                },
+                "variations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1ItemVariation"
+                    },
+                    "description": "The item's variations. You must specify at least one variation."
+                },
+                "modifier_lists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1ItemVariation"
+                    },
+                    "description": "The modifier lists that apply to the item, if any."
+                },
+                "fees": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1Fee"
+                    },
+                    "description": "The fees that apply to the item, if any."
+                },
+                "taxable": {
+                    "type": "boolean",
+                    "description": "Deprecated. This field is not used."
+                }
+            }
+        },
+        "v1Fee": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The fee's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The fee's name."
+                },
+                "rate": {
+                    "type": "string",
+                    "description": "The rate of the fee, as a string representation of a decimal number. A value of 0.07 corresponds to a rate of 7%."
+                },
+                "calculation_phase": {
+                    "type": "string",
+                    "enum": [
+                        "FEE_SUBTOTAL_PHASE",
+                        "OTHER",
+                        "FEE_TOTAL_PHASE"
+                    ],
+                    "description": "Forthcoming"
+                },
+                "adjustment_type": {
+                    "type": "string",
+                    "enum": [
+                        "TAX"
+                    ],
+                    "description": "The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees."
+                },
+                "applies_to_custom_amounts": {
+                    "type": "boolean",
+                    "description": "If true, the fee applies to custom amounts entered into Square Register that are not associated with a particular item."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "If true, the fee is applied to all appropriate items. If false, the fee is not applied at all."
+                },
+                "inclusion_type": {
+                    "type": "string",
+                    "enum": [
+                        "ADDITIVE",
+                        "INCLUSIVE"
+                    ],
+                    "description": "Whether the fee is ADDITIVE or INCLUSIVE."
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "CA_GST",
+                        "CA_HST",
+                        "CA_PST",
+                        "CA_QST",
+                        "JP_CONSUMPTION_TAX",
+                        "CA_PEI_PST",
+                        "US_SALES_TAX",
+                        "OTHER"
+                    ],
+                    "description": "In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants."
+                }
+            }
+        },
+        "v1ItemModifierList": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The modifier list's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The modifier list's name."
+                },
+                "selection_type": {
+                    "type": "string",
+                    "enum": [
+                        "SINGLE",
+                        "DOUBLE"
+                    ],
+                    "description": "Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item."
+                },
+                "modifier_options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1ItemModifierOption",
+                    },
+                    "description": "The options included in the modifier list."
+                }
+            }
+        },
+        "v1ItemModifierOption": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The modifier option's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The modifier option's name."
+                },
+                "price_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The modifier option's price."
+                },
+                "on_by_default": {
+                    "type": "boolean",
+                    "description": "If true, the modifier option is the default option in a modifier list for which selection_type is SINGLE."
+                },
+                "ordinal": {
+                    "type": "integer",
+                    "description": "Indicates the modifier option's list position when displayed in Square Register and the merchant dashboard. If more than one modifier option in the same modifier list has the same ordinal value, those options are displayed in alphabetical order."
+                },
+                "modifier_list_id": {
+                    "type": "string",
+                    "description": "The ID of the modifier list the option belongs to."
+                }
+            }
+        },
+        "v1ItemCategory": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The category's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The category's name."
+                }
+            }
+        },
+        "v1ItemImage": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The image's unique ID."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The image's publicly accessible URL."
+                }
+            }
+        },
         "v1CreateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -5252,6 +5721,126 @@
                 "canceled_note": {
                     "type": "string",
                     "description": "A merchant-specified note about the canceling of the order. Only valid if action is CANCEL."
+                }
+            }
+        },
+        "v1CreateItemRequest": {
+            "type": "object",
+            "required": [
+                "name",
+                "variations"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The item's ID. Must be unique among all entity IDs ever provided on behalf of the merchant. You can never reuse an ID. This value can include alphanumeric characters, dashes (-), and underscores (_)."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The item's name."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The item's description."
+                },
+                "category_id": {
+                    "type": "string",
+                    "description": "The ID of the item's category, if any."
+                },
+                "color": {
+                    "type": "string",
+                    "enum": [
+                        "9da2a6",
+                        "4ab200",
+                        "0b8000",
+                        "2952cc",
+                        "a82ee5",
+                        "e5457a",
+                        "b21212",
+                        "593c00",
+                        "e5BF00"
+                    ],
+                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
+                },
+                "abbreviation": {
+                    "type": "string",
+                    "description": "The text of the item's display label in Square Register. Only up to the first five characters of the string are used."
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "PUBLIC",
+                        "PRIVATE"
+                    ],
+                    "description": "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE."
+                },
+                "available_online": {
+                    "type": "string",
+                    "description": "If true, the item can be added to shipping orders from the merchant's online store."
+                },
+                "available_for_pickup": {
+                    "type": "string",
+                    "description": "If true, the item can be added to pickup orders from the merchant's online store."
+                },
+                "variations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1ItemVariation"
+                    },
+                    "description": "The item's variations. You must specify at least one variation."
+                }
+            }
+        },
+        "v1UpdateItemRequest": {
+            "type": "object",
+            "required": [],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The item's name."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The item's description."
+                },
+                "category_id": {
+                    "type": "string",
+                    "description": "The ID of the item's category, if any."
+                },
+                "color": {
+                    "type": "string",
+                    "enum": [
+                        "9da2a6",
+                        "4ab200",
+                        "0b8000",
+                        "2952cc",
+                        "a82ee5",
+                        "e5457a",
+                        "b21212",
+                        "593c00",
+                        "e5BF00"
+                    ],
+                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
+                },
+                "abbreviation": {
+                    "type": "string",
+                    "description": "The text of the item's display label in Square Register. Only up to the first five characters of the string are used."
+                },
+                "visibility": {
+                    "type": "string",
+                    "enum": [
+                        "PUBLIC",
+                        "PRIVATE"
+                    ],
+                    "description": "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE."
+                },
+                "available_online": {
+                    "type": "string",
+                    "description": "If true, the item can be added to shipping orders from the merchant's online store."
+                },
+                "available_for_pickup": {
+                    "type": "string",
+                    "description": "If true, the item can be added to pickup orders from the merchant's online store."
                 }
             }
         }
