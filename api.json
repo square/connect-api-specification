@@ -662,6 +662,93 @@
                 }
             }
         },
+        "/v1/{location_id}/cash-drawer-shifts": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1ListCashDrawerShifts",
+                "operationId": "v1ListCashDrawerShifts",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list cash drawer shifts for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "order",
+                    "in": "query",
+                    "description": "The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ],
+                    "required": false
+                }, {
+                    "name": "begin_time",
+                    "description": "The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_time",
+                    "description": "The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1CashDrawerShift"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/cash-drawer-shifts/{shift_id}": {
+            "get": {
+                "tags": [
+                    "v1Employees"
+                ],
+                "summary": "v1RetrieveCashDrawerShift",
+                "operationId": "v1RetrieveCashDrawerShift",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list cash drawer shifts for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "shift_id",
+                    "in": "path",
+                    "description": "The shift's ID.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["TIMECARDS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1CashDrawerShift"
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
@@ -3647,7 +3734,7 @@
                 }
             }
         },
-        "v1EmployeeTimecard": {
+        "v1EmployeeTimecardEvent": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -3675,7 +3762,6 @@
                     ],
                     "description": "The ID of the timecard to list events for."
                 },
-
                 "clockin_time": {
                     "type": "string",
                     "description": "The time the employee clocked in, in ISO 8601 format."
@@ -3687,9 +3773,162 @@
                 "created_at": {
                     "type": "string",
                     "description": "The time when the event was created, in ISO 8601 format."
-                },
+                }
             }
         },
+        "Device": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The device's Square-issued ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The device's merchant-specified name."
+                }
+            }
+        },
+        "CashDrawerEvent": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The event's unique ID."
+                },
+                "employee_id": {
+                    "type": "string",
+                    "description": "The ID of the employee that created the event."
+                },
+                "event_type": {
+                    "type": "string",
+                    "description": "The type of event that occurred.",
+                    "enum": [
+                        "NO_SALE",
+                        "CASH_TENDER_PAYMENT",
+                        "OTHER_TENDER_PAYMENT",
+                        "CASH_TENDER_CANCELED_PAYMENT",
+                        "OTHER_TENDER_CANCELED_PAYMENT",
+                        "CASH_TENDER_REFUND",
+                        "OTHER_TENDER_REFUND",
+                        "PAID_IN",
+                        "PAID_OUT"
+                    ]
+                },
+                "event_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money that was added to or removed from the cash drawer because of the event. This value can be positive (for added money) or negative (for removed money)."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the event occurred, in ISO 8601 format."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the event, entered by the employee that created it."
+                }
+            }
+        },
+        "v1CashDrawerShift": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The shift's unique ID."
+                },
+                "event_type": {
+                    "type": "string",
+                    "enum": [
+                        "OPEN",
+                        "ENDED",
+                        "CLOSED"
+                    ],
+                    "description": "The shift's current state."
+                },
+                "opened_at": {
+                    "type": "string",
+                    "description": "The time when the shift began, in ISO 8601 format."
+                },
+                "ended_at": {
+                    "type": "boolean",
+                    "description": "The time when the shift ended, in ISO 8601 format."
+                },
+                "closed_at": {
+                    "type": "string",
+                    "description": "The time when the shift was closed, in ISO 8601 format."
+                },
+                "employee_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IDs of all employees that were logged into Square Register at some point during the cash drawer shift."
+                },
+                "opening_employee_id": {
+                    "type": "string",
+                    "description": "The ID of the employee that started the cash drawer shift."
+                },
+                "ending_employee_id": {
+                    "type": "string",
+                    "description": "The ID of the employee that ended the cash drawer shift."
+                },
+                "closing_employee_id": {
+                    "type": "string",
+                    "description": "The ID of the employee that closed the cash drawer shift by auditing the cash drawer's contents."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The time when the timecard was created, in ISO 8601 format."
+                },
+                "starting_cash_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money in the cash drawer at the start of the shift."
+                },
+                "cash_payment_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money added to the cash drawer from cash payments."
+                },
+                "cash_refunds_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money removed from the cash drawer from cash refunds. This value is always negative or zero."
+                },
+                "cash_paid_in_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money added to the cash drawer for reasons other than cash payments."
+                },
+                "cash_paid_out_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money removed from the cash drawer for reasons other than cash refunds."
+                },
+                "expected_cash_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money that should be in the cash drawer at the end of the shift, based on the shift's other money amounts."
+                },
+                "closed_cash_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money found in the cash drawer at the end of the shift by an auditing employee."
+                },
+                "device": {
+                    "$ref": "#/definitions/Device",
+                    "description": "The device running Square Register that was connected to the cash drawer."
+                },
+                "events": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CashDrawerEvent"
+                    },
+                    "description": "All of the events (payments, refunds, and so on) that involved the cash drawer during the shift."
+                }
+            }
+        },
+
         "v1CreateEmployeeRequest": {
             "type": "object",
             "properties": {
@@ -3793,29 +4032,23 @@
             "properties": {
                 "clockin_time": {
                     "type": "string",
-                    "description": "The clock-in time for the timecard, in ISO 8601 format.",
-                    "required": false
+                    "description": "The clock-in time for the timecard, in ISO 8601 format."
                 },
                 "clockout_time": {
                     "type": "string",
-                    "description": "The clock-out time for the timecard, in ISO 8601 format.",
-                    "required": false
-
+                    "description": "The clock-out time for the timecard, in ISO 8601 format."
                 },
                 "clockin_location_id": {
                     "type": "string",
-                    "description": "The ID of the location the employee clocked in from, if any.",
-                    "required": false
-
+                    "description": "The ID of the location the employee clocked in from, if any."
                 },
                 "clockout_location_id": {
                     "type": "string",
-                    "description": "The ID of the location the employee clocked out from, if any.",
-                    "required": false
-
+                    "description": "The ID of the location the employee clocked out from, if any."
                 }
 
             }
 
         }
     }
+}
