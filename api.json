@@ -2125,6 +2125,146 @@
                 }
             }
         },
+        "/v1/{location_id}/discounts": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreateDiscount",
+                "operationId": "v1CreateDiscount",
+                "description": "Creates an item category.",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to create an item for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1Discount"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Discount"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ListDiscounts",
+                "operationId": "v1ListDiscounts",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list categories for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Discount"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/discounts/{discount_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateItemDiscount",
+                "operationId": "v1UpdateItemDiscount",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the category's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "discount_id",
+                    "in": "path",
+                    "description": "The ID of the discount to edit.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1Discount"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Discount"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1DeleteItemDiscount",
+                "operationId": "v1DeleteItemDiscount",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the item's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "discount_id",
+                    "in": "path",
+                    "description": "The ID of the discount to delete.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Discount"
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
@@ -6062,7 +6202,7 @@
                         "593c00",
                         "e5BF00"
                     ],
-                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
+                    "description": "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6."
                 },
                 "abbreviation": {
                     "type": "string",
@@ -6347,6 +6487,58 @@
                     "type": "boolean",
                     "description": "If true, employees with this role have all permissions, regardless of the values indicated in permissions."
                 }
+            }
+        },
+        "v1Discount": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The discount's unique ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The discount's name."
+                },
+                "rate": {
+                    "type": "string",
+                    "description": "The rate of the discount, as a string representation of a decimal number. A value of 0.07 corresponds to a rate of 7%. This rate is 0 if discount_type is VARIABLE_PERCENTAGE."
+                },
+                "amount_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of the discount. This amount is 0 if discount_type is VARIABLE_AMOUNT. This field is not included for rate-based discounts."
+                },
+                "discount_type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "FIXED",
+                            "VARIABLE_PERCENTAGE",
+                            "VARIABLE_AMOUNT"
+                        ]
+                    },
+                    "description": "Indicates whether the discount is a FIXED value or entered at the time of sale."
+                },
+                "pin_required": {
+                    "type": "boolean",
+                    "description": "Indicates whether a mobile staff member needs to enter their PIN to apply the discount to a payment."
+                },
+                "color": {
+                    "type": "string",
+                    "enum": [
+                        "9da2a6",
+                        "4ab200",
+                        "0b8000",
+                        "2952cc",
+                        "a82ee5",
+                        "e5457a",
+                        "b21212",
+                        "593c00",
+                        "e5BF00"
+                    ],
+                    "description": "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6."
+                },
             }
         },
         "v1CreateEmployeeTimecardRequest": {
