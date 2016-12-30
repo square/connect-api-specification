@@ -849,7 +849,7 @@
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
-                    "description": "The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business's locations.",
+                    "description": "The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business's locations.",
                     "type": "string",
                     "required": true
                 }, {
@@ -920,7 +920,7 @@
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
-                    "description": "The ID of the payment's associated location.",
+                    "description": "The ID of the settlements's associated location.",
                     "type": "string",
                     "required": true
                 }, {
@@ -1139,7 +1139,7 @@
                     "description": "The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint",
                     "type": "string",
                     "required": true
-                },{
+                }, {
                     "name": "body",
                     "in": "body",
                     "required": true,
@@ -1161,7 +1161,71 @@
                     }
                 }
             }
-
+        },
+        "/v1/{location_id}/bank-accounts": {
+            "get": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1ListBankAccounts",
+                "operationId": "v1ListBankAccounts",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list bank accounts for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["BANK_ACCOUNTS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1BankAccount"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/bank-accounts/{bank_account_id}": {
+            "get": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1RetrieveBankAccount",
+                "operationId": "v1RetrieveBankAccount",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the bank account's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "bank_account_id",
+                    "in": "path",
+                    "description": "The bank account's Square-issued ID. You obtain this value from Settlement objects returned.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["BANK_ACCOUNTS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1BankAccount"
+                        }
+                    }
+                }
+            }
         },
         "/v2/locations/{location_id}/transactions": {
             "post": {
@@ -4953,7 +5017,52 @@
                 },
                 "created_at": {
                     "type": "string",
-                    "description": "TThe time when the action was performed, in ISO 8601 format."
+                    "description": "The time when the action was performed, in ISO 8601 format."
+                }
+            }
+        },
+        "v1BankAccount": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The bank account's Square-issued ID."
+                },
+                "merchant_id": {
+                    "type": "string",
+                    "description": "The Square-issued ID of the merchant associated with the bank account."
+                },
+                "bank_name": {
+                    "type": "string",
+                    "description": "The name of the bank that manages the account."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name associated with the bank account."
+                },
+                "routing_number": {
+                    "type": "string",
+                    "description": "The bank account's routing number."
+                },
+                "account_number_suffix": {
+                    "type": "string",
+                    "description": "The last few digits of the bank account number."
+                },
+                "currency_code": {
+                    "type": "string",
+                    "description": "The currency code of the currency associated with the bank account, in ISO 4217 format. For example, the currency code for US dollars is USD."
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BUSINESS_CHECKING",
+                        "CHECKING",
+                        "INVESTMENT",
+                        "LOAN",
+                        "SAVINGS",
+                        "OTHER"
+                    ],
+                    "description": "The bank account's type (for example, savings or checking)."
                 }
             }
         },
