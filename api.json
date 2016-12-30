@@ -915,8 +915,8 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1RetrieveSettlements",
-                "operationId": "v1RetrieveSettlements",
+                "summary": "v1RetrieveSettlement",
+                "operationId": "v1RetrieveSettlement",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -943,6 +943,225 @@
                     }
                 }
             }
+        },
+        "/v1/{location_id}/refunds": {
+            "get": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1ListRefunds",
+                "operationId": "v1ListRefunds",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list refunds for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "order",
+                    "in": "query",
+                    "description": "TThe order in which payments are listed in the response.",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ],
+                    "required": false
+                }, {
+                    "name": "begin_time",
+                    "description": "The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "end_time",
+                    "description": "The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.",
+                    "type": "string",
+                    "in": "query",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "The maximum number of payments to return in a single response. This value cannot exceed 200.",
+                    "type": "integer",
+                    "maximum": 200,
+                    "required": false
+
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Refund"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1CreateRefund",
+                "operationId": "v1CreateRefund",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the original payment's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1CreateRefundRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Refund"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/orders": {
+            "get": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1ListOrders",
+                "operationId": "v1ListOrders",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list online store orders for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "order",
+                    "in": "query",
+                    "description": "TThe order in which payments are listed in the response.",
+                    "type": "string",
+                    "enum": [
+                        "ASC",
+                        "DESC"
+                    ],
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "in": "query",
+                    "description": "The maximum number of payments to return in a single response. This value cannot exceed 200.",
+                    "type": "integer",
+                    "maximum": 200,
+                    "required": false
+
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ORDERS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Order"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/orders/{order_id}": {
+            "get": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1RetrieveOrder",
+                "operationId": "v1RetrieveOrder",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the order's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "order_id",
+                    "in": "path",
+                    "description": "The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ORDERS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Order"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "v1Transactions"
+                ],
+                "summary": "v1UpdateOrder",
+                "operationId": "v1UpdateOrder",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the order's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "order_id",
+                    "in": "path",
+                    "description": "The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint",
+                    "type": "string",
+                    "required": true
+                },{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1UpdateOrderRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ORDERS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Order"
+                        }
+                    }
+                }
+            }
+
         },
         "/v2/locations/{location_id}/transactions": {
             "post": {
@@ -4585,10 +4804,6 @@
                 },
                 "inclusion_type": {
                     "type": "string",
-                    "description": "The payment's unique identifier."
-                },
-                "id": {
-                    "type": "string",
                     "enum": [
                         "ADDITIVE",
                         "INCLUSIVE"
@@ -4598,6 +4813,147 @@
                 "fee_id": {
                     "type": "string",
                     "description": "The ID of the tax, if available. Taxes applied in older versions of Square Register might not have an ID."
+                }
+            }
+        },
+        "v1Order": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Error"
+                    },
+                    "description": "Any errors that occurred during the request."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The order's unique identifier."
+                },
+                "buyer_email": {
+                    "type": "string",
+                    "description": "The email address of the order's buyer."
+                },
+                "recipient_name": {
+                    "type": "string",
+                    "description": "The name of the order's buyer."
+                },
+                "recipient_phone_number": {
+                    "type": "string",
+                    "description": "The phone number to use for the order's delivery."
+                },
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "PENDING",
+                        "OPEN",
+                        "COMPLETED",
+                        "CANCELED",
+                        "REFUNDED",
+                        "REJECTED"
+                    ],
+                    "description": "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax."
+                },
+                "shipping_address": {
+                    "$ref": "#/definitions/Address",
+                    "description": "The address to ship the order to."
+                },
+                "subtotal_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of all items purchased in the order, before taxes and shipping."
+                },
+                "total_shipping_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The shipping cost for the order."
+                },
+                "total_tax_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all taxes applied to the order."
+                },
+                "total_price_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total cost of the order."
+                },
+                "total_discount_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The total of all discounts applied to the order."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "The time when the order was created, in ISO 8601 format."
+                },
+                "updated_at": {
+                    "type": "string",
+                    "description": "The time when the order was last modified, in ISO 8601 format."
+                },
+                "expires_at": {
+                    "type": "string",
+                    "description": "The time when the order expires if no action is taken, in ISO 8601 format."
+                },
+                "payment_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the payment associated with the order."
+                },
+                "buyer_note": {
+                    "type": "string",
+                    "description": "A note provided by the buyer when the order was created, if any."
+                },
+                "completed_note": {
+                    "type": "string",
+                    "description": "A note provided by the merchant when the order's state was set to COMPLETED, if any"
+                },
+                "refunded_note": {
+                    "type": "string",
+                    "description": "A note provided by the merchant when the order's state was set to REFUNDED, if any."
+                },
+                "canceled_note": {
+                    "type": "string",
+                    "description": "A note provided by the merchant when the order's state was set to CANCELED, if any."
+                },
+                "tender": {
+                    "$ref": "#/definitions/v1Tender",
+                    "description": "The tender used to pay for the order."
+                },
+                "order_history": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "v1OrderHistoryEntry"
+                    },
+                    "description": "The history of actions associated with the order."
+                },
+                "promo_code": {
+                    "type": "string",
+                    "description": "The promo code provided by the buyer, if any."
+                },
+                "btc_receive_address": {
+                    "type": "string",
+                    "description": "For Bitcoin transactions, the address that the buyer sent Bitcoin to."
+                },
+                "btc_price_satoshi": {
+                    "type": "number",
+                    "description": "For Bitcoin transactions, the price of the buyer's order in satoshi (100 million satoshi equals 1 BTC)."
+                }
+            }
+        },
+        "v1OrderHistoryEntry": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "ORDER_PLACED",
+                        "DECLINED",
+                        "PAYMENT_RECEIVED",
+                        "CANCELED",
+                        "COMPLETED",
+                        "REFUNDED",
+                        "EXPIRED"
+                    ],
+                    "description": "The type of action performed on the order."
+                },
+                "created_at": {
+                    "type": "string",
+                    "description": "TThe time when the action was performed, in ISO 8601 format."
                 }
             }
         },
@@ -4719,6 +5075,75 @@
                     "description": "The ID of the location the employee clocked out from, if any."
                 }
 
+            }
+        },
+        "v1CreateRefundRequest": {
+            "type": "object",
+            "required": [
+                "payment_id",
+                "type",
+                "reason"
+            ],
+            "properties": {
+                "payment_id": {
+                    "type": "string",
+                    "description": "The ID of the payment to refund. If you're creating a PARTIAL refund for a split tender payment, instead provide the id of the particular tender you want to refund. See Split Tender Payments for details."
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "FULL",
+                        "PARTIAL"
+                    ],
+                    "description": "TThe type of refund (FULL or PARTIAL)."
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "The reason for the refund."
+                },
+                "refunded_money": {
+                    "$ref": "#/definitions/Money",
+                    "description": "The amount of money to refund. Required only for PARTIAL refunds."
+                },
+
+                "request_idempotence_key": {
+                    "type": "string",
+                    "description": "An optional key to ensure idempotence if you issue the same PARTIAL refund request more than once."
+                }
+
+            }
+        },
+        "v1UpdateOrderRequest": {
+            "type": "object",
+            "required": [
+                "action"
+            ],
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "COMPLETE",
+                        "CANCEL",
+                        "REFUND"
+                    ],
+                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
+                },
+                "shipped_tracking_number": {
+                    "type": "string",
+                    "description": "The tracking number of the shipment associated with the order. Only valid if action is COMPLETE."
+                },
+                "completed_note": {
+                    "type": "string",
+                    "description": "A merchant-specified note about the completion of the order. Only valid if action is COMPLETE."
+                },
+                "refunded_note": {
+                    "type": "string",
+                    "description": "A merchant-specified note about the refunding of the order. Only valid if action is REFUND."
+                },
+                "canceled_note": {
+                    "type": "string",
+                    "description": "A merchant-specified note about the canceling of the order. Only valid if action is CANCEL."
+                }
             }
         }
     }
