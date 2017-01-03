@@ -2482,6 +2482,232 @@
                 }
             }
         },
+        "/v1/{location_id}/pages": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreatePage",
+                "operationId": "v1CreatePage",
+                "description": "Creates a Favorites page in Square Register.",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to create an item for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1Page"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Page"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ListPages",
+                "operationId": "v1ListPages",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list Favorites pages for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Page"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/pages/{page_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdatePage",
+                "operationId": "v1UpdatePage",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the Favorites page's associated location",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "page_id",
+                    "in": "path",
+                    "description": "The ID of the page to modify.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1Page"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Page"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1DeletePage",
+                "operationId": "v1DeletePage",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the Favorites page's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "page_id",
+                    "in": "path",
+                    "description": "The ID of the page to delete.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Page"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/pages/{page_id}/cells": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdatePageCell",
+                "operationId": "v1UpdatePageCell",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the Favorites page's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "page_id",
+                    "in": "path",
+                    "description": "The ID of the page the cell belongs to.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1PageCell"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Page"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1DeletePageCell",
+                "operationId": "v1DeletePageCell",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the Favorites page's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "page_id",
+                    "in": "path",
+                    "description": "The ID of the page to delete.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "row",
+                    "in": "query",
+                    "description": "The row of the cell to clear. Always an integer between 0 and 4, inclusive. Row 0 is the top row.",
+                    "type": "string",
+                    "required": false
+                }, {
+                    "name": "column",
+                    "in": "query",
+                    "description": "The column of the cell to clear. Always an integer between 0 and 4, inclusive. Column 0 is the leftmost column.",
+                    "type": "string",
+                    "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Page"
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
@@ -6756,6 +6982,76 @@
                     ],
                     "description": "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6."
                 },
+            }
+        },
+        "v1Page": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The page's unique identifier."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The page's name, if any."
+                },
+                "page_index": {
+                    "type": "integer",
+                    "description": "The page's position in the merchant's list of pages. Always an integer between 0 and 4, inclusive."
+                },
+                "cells": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1PageCell"
+                    },
+                    "description": "The cells included on the page."
+                }
+            }
+        },
+        "v1PageCell": {
+            "type": "object",
+            "properties": {
+                "page_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the page the cell is included on."
+                },
+                "row": {
+                    "type": "integer",
+                    "description": "The row of the cell. Always an integer between 0 and 4, inclusive."
+                },
+                "column": {
+                    "type": "integer",
+                    "description": "The column of the cell. Always an integer between 0 and 4, inclusive."
+                },
+                "object_type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "ITEM",
+                            "DISCOUNT",
+                            "CATEGORY",
+                            "PLACEHOLDER"
+                        ]
+                    },
+                    "description": "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER)."
+                },
+                "object_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the entity represented in the cell. Not present for cells with an object_type of PLACEHOLDER."
+                },
+                "placeholder_type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "ALL_ITEMS",
+                            "DISCOUNTS_CATEGORY",
+                            "REWARDS_FINDER"
+                        ]
+                    },
+                    "description": "For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior."
+                }
             }
         },
         "v1CreateEmployeeTimecardRequest": {
