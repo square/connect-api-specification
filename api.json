@@ -207,7 +207,7 @@
                 "operationId": "v1CreateEmployee",
                 "description": "Creates an employee for a business.",
                 "parameters": [{
-                    "name": "employee",
+                    "name": "body",
                     "in": "body",
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
@@ -233,8 +233,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1ListEmployees",
+                "summary": "Provides summary information for all of a business's employees.",
                 "operationId": "v1ListEmployees",
+                "description": "Provides summary information for all of a business's employees.",
                 "parameters": [{
                     "name": "order",
                     "in": "query",
@@ -318,8 +319,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1RetrieveEmployee",
+                "summary": "Provides the details for a single employee.",
                 "operationId": "v1RetrieveEmployee",
+                "description": "Provides the details for a single employee.",
                 "parameters": [{
                     "name": "employee_id",
                     "in": "path",
@@ -382,7 +384,7 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1CreateEmployeeRole",
+                "summary": "Creates an employee role you can then assign to employees.",
                 "operationId": "v1CreateEmployeeRole",
                 "description": "Creates an employee role you can then assign to employees.",
                 "parameters": [{
@@ -412,8 +414,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1ListEmployeeRoles",
+                "summary": "Provides summary information for all of a business's employee roles.",
                 "operationId": "v1ListEmployeeRoles",
+                "description": "Provides summary information for all of a business's employee roles.",
                 "parameters": [{
                     "name": "order",
                     "in": "query",
@@ -459,8 +462,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1RetrieveEmployeeRole",
+                "summary": "Provides the details for a single employee role.",
                 "operationId": "v1RetrieveEmployeeRole",
+                "description": "Provides the details for a single employee role.",
                 "parameters": [{
                     "name": "role_id",
                     "in": "path",
@@ -486,8 +490,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1UpdateEmployeeRole",
+                "summary": "Modifies the details of an employee role.",
                 "operationId": "v1UpdateEmployeeRole",
+                "description": "Modifies the details of an employee role.",
                 "parameters": [{
                     "name": "role_id",
                     "in": "path",
@@ -523,7 +528,7 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1CreateEmployeeTimecard",
+                "summary": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
                 "operationId": "v1CreateEmployeeTimecard",
                 "description": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
                 "parameters": [{
@@ -553,8 +558,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1ListEmployeeTimecards",
+                "summary": "Provides summary information for all of a business's employee timecards.",
                 "operationId": "v1ListEmployeeTimecards",
+                "description": "Provides summary information for all of a business's employee timecards.",
                 "parameters": [{
                     "name": "order",
                     "in": "query",
@@ -649,8 +655,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1RetrieveEmployeeTimecard",
+                "summary": "Provides the details for a single timecard.",
                 "operationId": "v1RetrieveEmployeeTimecard",
+                "description": "Provides the details for a single timecard.",
                 "parameters": [{
                     "name": "timecard_id",
                     "in": "path",
@@ -676,8 +683,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1UpdateEmployeeTimecard",
+                "summary": "Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.",
                 "operationId": "v1UpdateEmployeeTimecard",
+                "description": "Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.",
                 "parameters": [{
                     "name": "timecard_id",
                     "in": "path",
@@ -711,8 +719,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1DeleteEmployeeTimecard",
+                "summary": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
                 "operationId": "v1DeleteEmployeeTimecard",
+                "description": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
                 "parameters": [{
                     "name": "timecard_id",
                     "in": "path",
@@ -740,8 +749,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1ListEmployeeTimecardEvents",
+                "summary": "Provides summary information for all events associated with a particular timecard.",
                 "operationId": "v1ListEmployeeTimecardEvents",
+                "description": "Provides summary information for all events associated with a particular timecard.",
                 "parameters": [{
                     "name": "timecard_id",
                     "in": "path",
@@ -772,8 +782,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1ListCashDrawerShifts",
+                "summary": "Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
                 "operationId": "v1ListCashDrawerShifts",
+                "description": "Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -826,8 +837,9 @@
                 "tags": [
                     "v1Employees"
                 ],
-                "summary": "v1RetrieveCashDrawerShift",
+                "summary": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
                 "operationId": "v1RetrieveCashDrawerShift",
+                "description": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -861,8 +873,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1ListPayments",
+                "summary": "Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.",
                 "operationId": "v1ListPayments",
+                "description": "Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -921,8 +934,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1RetrievePayment",
+                "summary": "Provides comprehensive information for a single payment.",
                 "operationId": "v1RetrievePayment",
+                "description": "Provides comprehensive information for a single payment.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -956,8 +970,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1ListSettlements",
+                "summary": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. ",
                 "operationId": "v1ListSettlements",
+                "description": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. ",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1028,8 +1043,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1RetrieveSettlement",
+                "summary": "Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.",
                 "operationId": "v1RetrieveSettlement",
+                "description": "Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1063,8 +1079,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1ListRefunds",
+                "summary": "Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.",
                 "operationId": "v1ListRefunds",
+                "description": "Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1123,8 +1140,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1CreateRefund",
+                "summary": "Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.",
                 "operationId": "v1CreateRefund",
+                "description": "Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1160,8 +1178,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1ListOrders",
+                "summary": "Provides summary information for a merchant's online store orders.",
                 "operationId": "v1ListOrders",
+                "description": "Provides summary information for a merchant's online store orders.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1210,8 +1229,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1RetrieveOrder",
+                "summary": "Provides comprehensive information for a single online store order, including the order's history.",
                 "operationId": "v1RetrieveOrder",
+                "description": "Provides comprehensive information for a single online store order, including the order's history.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1243,8 +1263,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1UpdateOrder",
+                "summary": "Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:",
                 "operationId": "v1UpdateOrder",
+                "description": "Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1286,8 +1307,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1ListBankAccounts",
+                "summary": "Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
                 "operationId": "v1ListBankAccounts",
+                "description": "Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1318,8 +1340,9 @@
                 "tags": [
                     "v1Transactions"
                 ],
-                "summary": "v1RetrieveBankAccount",
+                "summary": "Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
                 "operationId": "v1RetrieveBankAccount",
+                "description": "Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1353,7 +1376,7 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateItem",
+                "summary": "Creates an item and at least one variation for it.",
                 "operationId": "v1CreateItem",
                 "description": "Creates an item and at least one variation for it.",
                 "parameters": [{
@@ -1389,8 +1412,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListItems",
+                "summary": "Provides summary information for all of a location's items.",
                 "operationId": "v1ListItems",
+                "description": "Provides summary information for all of a location's items.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1421,8 +1445,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1RetrieveItem",
+                "summary": "Provides the details for a single item, including associated modifier lists and fees.",
                 "operationId": "v1RetrieveItem",
+                "description": "Provides the details for a single item, including associated modifier lists and fees.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1454,8 +1479,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateItem",
+                "summary": "Modifies the core details of an existing item.",
                 "operationId": "v1UpdateItem",
+                "description": "Modifies the core details of an existing item.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1495,8 +1521,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteItem",
+                "summary": "Deletes an existing item and all item variations associated with it.",
                 "operationId": "v1DeleteItem",
+                "description": "Deletes an existing item and all item variations associated with it.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1530,8 +1557,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateVariation",
+                "summary": "Creates an item variation for an existing item.",
                 "operationId": "v1CreateVariation",
+                "description": "Creates an item variation for an existing item.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1573,8 +1601,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateVaration",
+                "summary": "Modifies the details of an existing item variation.",
                 "operationId": "v1UpdateVaration",
+                "description": "Modifies the details of an existing item variation.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1620,8 +1649,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteVaration",
+                "summary": "Deletes an existing item variation from an item.",
                 "operationId": "v1DeleteVaration",
+                "description": "Deletes an existing item variation from an item.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1661,8 +1691,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListInventory",
+                "summary": "Provides inventory information for all of a merchant's inventory-enabled item variations.",
                 "operationId": "v1ListInventory",
+                "description": "Provides inventory information for all of a merchant's inventory-enabled item variations.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1700,8 +1731,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1AdjustInventory",
+                "summary": "Adjusts an item variation's current available inventory.",
                 "operationId": "v1AdjustInventory",
+                "description": "Adjusts an item variation's current available inventory.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1743,7 +1775,7 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateModifierList",
+                "summary": "Creates an item modifier list and at least one modifier option for it.",
                 "operationId": "v1CreateModifierList",
                 "description": "Creates an item modifier list and at least one modifier option for it.",
                 "parameters": [{
@@ -1779,8 +1811,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListModifierLists",
+                "summary": "Lists all of a location's modifier lists.",
                 "operationId": "v1ListModifierLists",
+                "description": "Lists all of a location's modifier lists.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1811,8 +1844,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1RetrieveModiferList",
+                "summary": "Provides the details for a single modifier list.",
                 "operationId": "v1RetrieveModiferList",
+                "description": "Provides the details for a single modifier list.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1844,8 +1878,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateModifierList",
+                "summary": "Modifies the details of an existing item modifier list.",
                 "operationId": "v1UpdateModifierList",
+                "description": "Modifies the details of an existing item modifier list.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1885,8 +1920,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteModiferList",
+                "summary": "Deletes an existing item modifier list and all modifier options associated with it.",
                 "operationId": "v1DeleteModiferList",
+                "description": "Deletes an existing item modifier list and all modifier options associated with it.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1920,8 +1956,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ApplyModiferList",
+                "summary": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
                 "operationId": "v1ApplyModiferList",
+                "description": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -1959,8 +1996,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1RemoveModiferList",
+                "summary": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
                 "operationId": "v1RemoveModiferList",
+                "description": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2000,8 +2038,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateModifierListOption",
+                "summary": "Creates an item modifier option and adds it to a modifier list.",
                 "operationId": "v1CreateModifierListOption",
+                "description": "Creates an item modifier option and adds it to a modifier list.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2043,8 +2082,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateModifierListOption",
+                "summary": "Modifies the details of an existing item modifier option.",
                 "operationId": "v1UpdateModifierListOption",
+                "description": "Modifies the details of an existing item modifier option.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2090,8 +2130,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteModiferListOption",
+                "summary": "Deletes an existing item modifier option from a modifier list.",
                 "operationId": "v1DeleteModiferListOption",
+                "description": "Deletes an existing item modifier option from a modifier list.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2131,7 +2172,7 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateCategory",
+                "summary": "Creates an item category.",
                 "operationId": "v1CreateCategory",
                 "description": "Creates an item category.",
                 "parameters": [{
@@ -2167,8 +2208,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListItemCategories",
+                "summary": "Lists all of a location's item categories.",
                 "operationId": "v1ListItemCategories",
+                "description": "Lists all of a location's item categories.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2199,8 +2241,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateItemCategory",
+                "summary": "Modifies the details of an existing item category.",
                 "operationId": "v1UpdateItemCategory",
+                "description": "Modifies the details of an existing item category.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2240,8 +2283,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteItemCategory",
+                "summary": "Deletes an existing item category.",
                 "operationId": "v1DeleteItemCategory",
+                "description": "Deletes an existing item category.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2275,9 +2319,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateDiscount",
+                "summary": "Creates a discount.",
                 "operationId": "v1CreateDiscount",
-                "description": "Creates an item category.",
+                "description": "Creates a discount.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2311,8 +2355,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListDiscounts",
+                "summary": "Lists all of a location's discounts.",
                 "operationId": "v1ListDiscounts",
+                "description": "Lists all of a location's discounts.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2343,8 +2388,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateItemDiscount",
+                "summary": "Modifies the details of an existing discount.",
                 "operationId": "v1UpdateItemDiscount",
+                "description": "Modifies the details of an existing discount.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2384,8 +2430,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteItemDiscount",
+                "summary": "Deletes an existing discount.",
                 "operationId": "v1DeleteItemDiscount",
+                "description": "Deletes an existing discount.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2419,8 +2466,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreateFee",
+                "summary": "Creates a fee (tax).",
                 "operationId": "v1CreateFee",
+                "description": "Creates a fee (tax).",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2454,8 +2502,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListFees",
+                "summary": "Lists all of a location's fees (taxes).",
                 "operationId": "v1ListFees",
+                "description": "Lists all of a location's fees (taxes).",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2486,8 +2535,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateFee",
+                "summary": "Modifies the details of an existing fee (tax).",
                 "operationId": "v1UpdateFee",
+                "description": "Modifies the details of an existing fee (tax).",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2527,8 +2577,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteFee",
+                "summary": "Deletes an existing fee (tax).",
                 "operationId": "v1DeleteFee",
+                "description": "Deletes an existing fee (tax).",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2562,8 +2613,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ApplyFee",
+                "summary": "Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.",
                 "operationId": "v1ApplyFee",
+                "description": "Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2601,8 +2653,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1RemoveFee",
+                "summary": "Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.",
                 "operationId": "v1RemoveFee",
+                "description": "Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2642,7 +2695,7 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1CreatePage",
+                "summary": "Creates a Favorites page in Square Register.",
                 "operationId": "v1CreatePage",
                 "description": "Creates a Favorites page in Square Register.",
                 "parameters": [{
@@ -2678,8 +2731,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1ListPages",
+                "summary": "Lists all of a location's Favorites pages in Square Register.",
                 "operationId": "v1ListPages",
+                "description": "Lists all of a location's Favorites pages in Square Register.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2710,8 +2764,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdatePage",
+                "summary": "Modifies the details of a Favorites page in Square Register.",
                 "operationId": "v1UpdatePage",
+                "description": "Modifies the details of a Favorites page in Square Register.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2751,8 +2806,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeletePage",
+                "summary": "Deletes an existing Favorites page and all of its cells.",
                 "operationId": "v1DeletePage",
+                "description": "Deletes an existing Favorites page and all of its cells.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2786,8 +2842,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdatePageCell",
+                "summary": "Modifies a cell of a Favorites page in Square Register.",
                 "operationId": "v1UpdatePageCell",
+                "description": "Modifies a cell of a Favorites page in Square Register.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2827,8 +2884,9 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeletePageCell",
+                "summary": "Deletes a cell from a Favorites page in Square Register.",
                 "operationId": "v1DeletePageCell",
+                "description": "Deletes a cell from a Favorites page in Square Register.",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
