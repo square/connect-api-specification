@@ -6,7 +6,9 @@
         "description": "Client library for accessing the Square Connect APIs",
         "termsOfService": "https://connect.squareup.com/tos",
         "contact": {
-            "name": "developers@squareup.com"
+            "name": "Square Developer Platform",
+            "email": "developers@squareup.com",
+            "url": "https://squareup.com/developers"
         },
         "license": {
             "name": "Apache 2.0",
