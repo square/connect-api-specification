@@ -1492,8 +1492,8 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1UpdateItem",
-                "operationId": "v1UpdateItem",
+                "summary": "v1DeleteItem",
+                "operationId": "v1DeleteItem",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -6462,7 +6462,7 @@
                 "order_history": {
                     "type": "array",
                     "items": {
-                        "$ref": "v1OrderHistoryEntry"
+                        "$ref": "#/definitions/v1OrderHistoryEntry"
                     },
                     "description": "The history of actions associated with the order."
                 },
@@ -7259,7 +7259,6 @@
         },
         "v1UpdateItemRequest": {
             "type": "object",
-            "required": [],
             "properties": {
                 "name": {
                     "type": "string",
