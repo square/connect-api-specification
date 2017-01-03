@@ -219,6 +219,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-employees"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -300,6 +304,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-employees"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -329,6 +337,10 @@
                     "type": "string",
                     "required": true
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-employeeid"
+                },
                 "security": [{
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_READ"]
@@ -368,6 +380,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-employeeid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -400,6 +416,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-roles"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -443,6 +463,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-roles"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -476,6 +500,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-roleid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -512,6 +540,10 @@
                     "personal_access_token": [],
                     "oauth2": ["EMPLOYEES_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-roleid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -544,6 +576,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-timecards"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -636,6 +672,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-timecards"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -669,6 +709,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-timecardid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -705,6 +749,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-timecardid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -733,6 +781,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-timecardid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -763,6 +815,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-events"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -818,6 +874,10 @@
                     "personal_access_token": [],
                     "oauth2": ["PAYMENTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-cashdrawershifts"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -857,6 +917,10 @@
                     "personal_access_token": [],
                     "oauth2": ["TIMECARDS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-cashdrawershiftid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -915,6 +979,10 @@
                     "personal_access_token": [],
                     "oauth2": ["PAYMENTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-payments"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -954,6 +1022,10 @@
                     "personal_access_token": [],
                     "oauth2": ["PAYMENTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-paymentid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1024,6 +1096,10 @@
                     "personal_access_token": [],
                     "oauth2": ["SETTLEMENTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-settlements"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1063,6 +1139,10 @@
                     "personal_access_token": [],
                     "oauth2": ["SETTLEMENTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-settlementid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1123,6 +1203,10 @@
                     "personal_access_token": [],
                     "oauth2": ["PAYMENTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-refunds"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1162,6 +1246,10 @@
                     "personal_access_token": [],
                     "oauth2": ["PAYMENTS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-refunds"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1210,6 +1298,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ORDERS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-ordrers"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1249,6 +1341,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ORDERS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-orderid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1291,6 +1387,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ORDERS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-orderid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1321,6 +1421,10 @@
                     "personal_access_token": [],
                     "oauth2": ["BANK_ACCOUNTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-bankaccounts"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1360,6 +1464,10 @@
                     "personal_access_token": [],
                     "oauth2": ["BANK_ACCOUNTS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-bankaccountid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1398,6 +1506,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-items"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1426,6 +1538,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-items"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1465,6 +1581,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-itemid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1507,6 +1627,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-itemid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1541,6 +1665,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-itemid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1585,6 +1713,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-variations"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1635,6 +1767,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-variationid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1675,6 +1811,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-variationid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1712,6 +1852,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-inventory"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1759,6 +1903,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-inventory-variationid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1797,6 +1945,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-modifierlists"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1825,6 +1977,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-modifierlists"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1864,6 +2020,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-modifierlistid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1906,6 +2066,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-modifierlistid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1940,6 +2104,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-modifierlistid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -1982,6 +2150,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-itemid-modifierlistid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2022,6 +2194,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-itemid-modifierlistid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2066,6 +2242,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-modifieroptions"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2116,6 +2296,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-modifieroptionid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2156,6 +2340,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-modifieroptionid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2194,6 +2382,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-categories"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2222,6 +2414,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-categories"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2269,6 +2465,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-categoryid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2303,6 +2503,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-categoryid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2341,6 +2545,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-discounts"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2369,6 +2577,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-discounts"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2416,6 +2628,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-discountid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2450,6 +2666,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-discountid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2488,6 +2708,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-fees"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2516,6 +2740,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-fees"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2563,6 +2791,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-feeid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2597,6 +2829,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-feeid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2639,6 +2875,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-itemid-feeid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2679,6 +2919,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-itemid-feeid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2717,6 +2961,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#post-pages"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2745,6 +2993,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_READ"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-pages"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2792,6 +3044,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-pageid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2826,6 +3082,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-pageid"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2870,6 +3130,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#put-cells"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
@@ -2916,6 +3180,10 @@
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
                 }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#delete-cells"
+                },
                 "deprecated": false,
                 "responses": {
                     "200": {
