@@ -2265,6 +2265,223 @@
                 }
             }
         },
+        "/v1/{location_id}/fees": {
+            "post": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1CreateFee",
+                "operationId": "v1CreateFee",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to create a fee for.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1Fee"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Fee"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ListFees",
+                "operationId": "v1ListFees",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the location to list fees for.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_READ"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1Fee"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/fees/{fee_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1UpdateFee",
+                "operationId": "v1UpdateFee",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the fee's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "fee_id",
+                    "in": "path",
+                    "description": "The ID of the fee to edit.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/v1Fee"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Fee"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1DeleteFee",
+                "operationId": "v1DeleteFee",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the fee's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "fee_id",
+                    "in": "path",
+                    "description": "The ID of the fee to delete.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Fee"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{location_id}/items/{item_id}/fees/{fee_id}": {
+            "put": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1ApplyFee",
+                "operationId": "v1ApplyFee",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the fee's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to add the fee to.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "fee_id",
+                    "in": "path",
+                    "description": "The ID of the fee to apply.",
+                    "type": "string",
+                    "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "v1Items"
+                ],
+                "summary": "v1RemoveFee",
+                "operationId": "v1RemoveFee",
+                "parameters": [{
+                    "name": "location_id",
+                    "in": "path",
+                    "description": "The ID of the fee's associated location.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "item_id",
+                    "in": "path",
+                    "description": "The ID of the item to add the fee to.",
+                    "type": "string",
+                    "required": true
+                }, {
+                    "name": "fee_id",
+                    "in": "path",
+                    "description": "The ID of the fee to apply.",
+                    "type": "string",
+                    "required": true
+                }, ],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["ITEMS_WRITE"]
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/v1Item"
+                        }
+                    }
+                }
+            }
+        },
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
