@@ -1492,8 +1492,8 @@
                 "tags": [
                     "v1Items"
                 ],
-                "summary": "v1DeleteItem",
-                "operationId": "v1DeleteItem",
+                "summary": "v1DeleteVaration",
+                "operationId": "v1DeleteVaration",
                 "parameters": [{
                     "name": "location_id",
                     "in": "path",
@@ -2105,7 +2105,7 @@
                     "type": "string",
                     "required": true
                 }, {
-                    "name": "item_id",
+                    "name": "category_id",
                     "in": "path",
                     "description": "The ID of the category to delete.",
                     "type": "string",
@@ -2717,12 +2717,6 @@
                 "operationId": "Charge",
                 "description": "Charges a card represented by a token.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "The ID of the location to associate the transaction with.",
                     "type": "string",
@@ -2736,6 +2730,10 @@
                     "schema": {
                         "$ref": "#/definitions/ChargeRequest"
                     }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -2754,12 +2752,6 @@
                 "operationId": "ListTransactions",
                 "description": "Lists transactions for a particular location.\n\nWhen making a request to this endpoint, your request body **must** include either the `cursor` parameter, or it must\ninclude both `begin_time` and `end_time` with an optional `sort_order`.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "The ID of the location to list transactions for.",
                     "type": "string",
@@ -2794,6 +2786,10 @@
                     "in": "query",
                     "required": false
                 }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
+                }],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -2813,12 +2809,6 @@
                 "operationId": "CreateRefund",
                 "description": "Initiates a refund for a previously charged tender.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "The ID of the original transaction\u0027s associated location.",
                     "type": "string",
@@ -2839,6 +2829,10 @@
                         "$ref": "#/definitions/CreateRefundRequest"
                     }
                 }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_WRITE"]
+                }],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -2858,12 +2852,6 @@
                 "operationId": "ListRefunds",
                 "description": "Lists refunds for one of a business\u0027s locations.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "The ID of the location to list refunds for.",
                     "type": "string",
@@ -2898,6 +2886,10 @@
                     "in": "query",
                     "required": false
                 }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
+                }],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -2916,12 +2908,9 @@
                 "summary": "ListLocations",
                 "operationId": "ListLocations",
                 "description": "Provides summary information for all of a business\u0027s locations.",
-                "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["MERCHANT_PROFILE_READ"]
                 }],
                 "responses": {
                     "200": {
@@ -2952,7 +2941,7 @@
                 }],
                 "security": [{
                     "personal_access_token": [],
-                    "oauth2": ["CUSTOMERS_READ"]
+                    "oauth2": ["CUSTOMERS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -2971,17 +2960,15 @@
                 "operationId": "ListCustomers",
                 "description": "Lists a business\u0027s customers.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "cursor",
                     "description": "",
                     "type": "string",
                     "in": "query",
                     "required": false
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["CUSTOMERS_READ"]
                 }],
                 "responses": {
                     "200": {
@@ -3002,12 +2989,6 @@
                 "operationId": "UpdateCustomer",
                 "description": "Updates the details of an existing customer.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "customer_id",
                     "description": "The customer to update.",
                     "type": "string",
@@ -3021,6 +3002,10 @@
                     "schema": {
                         "$ref": "#/definitions/UpdateCustomerRequest"
                     }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["CUSTOMERS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -3039,17 +3024,15 @@
                 "operationId": "RetrieveCustomer",
                 "description": "Returns details for a single customer.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "customer_id",
                     "description": "",
                     "type": "string",
                     "in": "path",
                     "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["CUSTOMERS_READ"]
                 }],
                 "responses": {
                     "200": {
@@ -3068,17 +3051,15 @@
                 "operationId": "DeleteCustomer",
                 "description": "Deletes a customer from a business.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "customer_id",
                     "description": "",
                     "type": "string",
                     "in": "path",
                     "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["CUSTOMERS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -3099,12 +3080,6 @@
                 "operationId": "CreateCustomerCard",
                 "description": "Adds a card on file to an existing customer.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "customer_id",
                     "description": "",
                     "type": "string",
@@ -3118,6 +3093,10 @@
                     "schema": {
                         "$ref": "#/definitions/CreateCustomerCardRequest"
                     }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["CUSTOMERS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -3138,12 +3117,6 @@
                 "operationId": "DeleteCustomerCard",
                 "description": "Removes a card on file from a customer.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "customer_id",
                     "description": "",
                     "type": "string",
@@ -3155,6 +3128,10 @@
                     "type": "string",
                     "in": "path",
                     "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["CUSTOMERS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -3175,12 +3152,6 @@
                 "operationId": "CaptureTransaction",
                 "description": "Captures a transaction that was created with the **Charge**\nendpoint with a `delay_capture` value of `true`.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "",
                     "type": "string",
@@ -3192,6 +3163,10 @@
                     "type": "string",
                     "in": "path",
                     "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -3212,12 +3187,6 @@
                 "operationId": "VoidTransaction",
                 "description": "Cancels a transaction that was created with the **Charge**\nendpoint with a `delay_capture` value of `true`.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "",
                     "type": "string",
@@ -3229,6 +3198,10 @@
                     "type": "string",
                     "in": "path",
                     "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_WRITE"]
                 }],
                 "responses": {
                     "200": {
@@ -3249,12 +3222,6 @@
                 "operationId": "RetrieveTransaction",
                 "description": "Retrieves details for a single transaction.",
                 "parameters": [{
-                    "name": "Authorization",
-                    "in": "header",
-                    "type": "string",
-                    "required": true,
-                    "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-                }, {
                     "name": "location_id",
                     "description": "",
                     "type": "string",
@@ -3266,6 +3233,10 @@
                     "type": "string",
                     "in": "path",
                     "required": true
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["PAYMENTS_READ"]
                 }],
                 "responses": {
                     "200": {
