@@ -1512,7 +1512,7 @@
                     "description": "The ID of the variation to delete.",
                     "type": "string",
                     "required": true
-                }, ],
+                }],
                 "security": [{
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
@@ -1970,7 +1970,7 @@
                     "description": "The ID of the modifier list to edit.",
                     "type": "string",
                     "required": true
-                }, ],
+                }],
                 "security": [{
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
@@ -2467,7 +2467,7 @@
                     "description": "The ID of the fee to apply.",
                     "type": "string",
                     "required": true
-                }, ],
+                }],
                 "security": [{
                     "personal_access_token": [],
                     "oauth2": ["ITEMS_WRITE"]
@@ -6783,7 +6783,7 @@
                 "modifier_options": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/v1ItemModifierOption",
+                        "$ref": "#/definitions/v1ItemModifierOption"
                     },
                     "description": "The options included in the modifier list."
                 }
@@ -6981,7 +6981,7 @@
                         "e5BF00"
                     ],
                     "description": "The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6."
-                },
+                }
             }
         },
         "v1Page": {
@@ -7428,6 +7428,6 @@
                     "description": "Indicates whether multiple options from the modifier list can be applied to a single item."
                 }
             }
-        },
+        }
     }
 }
