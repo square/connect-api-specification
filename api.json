@@ -227,8 +227,21 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Employee"
+                        },
+                        "example": {
+                            "application/json": {
+                                "id": "1f6d3d87-5d70-1893-17061da6f6a2",
+                                "first_name": "Amelia",
+                                "last_name": "Earhart",
+                                "status": "INACTIVE",
+                                "role_ids": ["a1265191-2105-7cd8-7c8539267308"],
+                                "email": "amelia@example.com",
+                                "created_at": "1928-04-16T18:45:00Z",
+                                "updated_at": "1928-04-16T18:45:00Z"
+                            }
                         }
                     }
                 }
@@ -312,11 +325,31 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/v1Employee"
                             }
+                        },
+                        "example": {
+                            "application/json": [{
+                                "authorized_location_ids": ["JGHJ0343"],
+                                "id": "1f6d3d87-5d70-1893-17061da6f6a2",
+                                "first_name": "Amelia",
+                                "last_name": "Earhart",
+                                "status": "ACTIVE",
+                                "external_id": "CANARY",
+                                "role_ids": ["a1265191-2105-7cd8-7c8539267308"],
+                                "email": "amelia@example.com",
+                                "created_at": "1928-04-16T18:45:00Z",
+                                "updated_at": "1928-04-16T18:45:00Z"
+                            }]
                         }
                     }
                 }
@@ -349,6 +382,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Employee"
                         }
@@ -388,6 +422,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Employee"
                         }
@@ -424,6 +459,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1EmployeeRole"
                         }
@@ -508,6 +544,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1EmployeeRole"
                         }
@@ -548,6 +585,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1EmployeeRole"
                         }
@@ -584,6 +622,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1EmployeeTimecard"
                         }
@@ -717,6 +756,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1EmployeeTimecard"
                         }
@@ -757,6 +797,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1EmployeeTimecard"
                         }
@@ -789,6 +830,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "type": "object"
                         }
@@ -925,6 +967,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1CashDrawerShift"
                         }
@@ -1030,6 +1073,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Payment"
                         }
@@ -1147,6 +1191,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Settlement"
                         }
@@ -1254,6 +1299,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Refund"
                         }
@@ -1349,6 +1395,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Order"
                         }
@@ -1395,6 +1442,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Order"
                         }
@@ -1429,6 +1477,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1472,6 +1521,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1BankAccount"
                         }
@@ -1514,6 +1564,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -1589,6 +1640,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -1635,6 +1687,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -1673,6 +1726,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -1721,6 +1775,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemVariation"
                         }
@@ -1775,6 +1830,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemVariation"
                         }
@@ -1819,6 +1875,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemVariation"
                         }
@@ -1860,6 +1917,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1911,6 +1969,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemInventoryEntry"
                         }
@@ -1953,6 +2012,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierList"
                         }
@@ -1985,6 +2045,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2028,6 +2089,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierList"
                         }
@@ -2074,6 +2136,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierList"
                         }
@@ -2112,6 +2175,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierList"
                         }
@@ -2158,6 +2222,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -2202,6 +2267,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -2250,6 +2316,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierOption"
                         }
@@ -2304,6 +2371,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierOption"
                         }
@@ -2348,6 +2416,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemModifierOption"
                         }
@@ -2390,6 +2459,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemCategory"
                         }
@@ -2473,6 +2543,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemCategory"
                         }
@@ -2511,6 +2582,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1ItemCategory"
                         }
@@ -2553,6 +2625,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Discount"
                         }
@@ -2636,6 +2709,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Discount"
                         }
@@ -2674,6 +2748,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Discount"
                         }
@@ -2716,6 +2791,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Fee"
                         }
@@ -2799,6 +2875,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Fee"
                         }
@@ -2837,6 +2914,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Fee"
                         }
@@ -2883,6 +2961,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -2927,6 +3006,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Item"
                         }
@@ -2969,6 +3049,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Page"
                         }
@@ -3001,6 +3082,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "type": "array",
                             "items": {
@@ -3052,6 +3134,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Page"
                         }
@@ -3138,6 +3221,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Page"
                         }
@@ -3188,6 +3272,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Page"
                         }
