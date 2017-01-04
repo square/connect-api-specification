@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "version": "2.0",
+        "version": "3.0",
         "title": "Square Connect API",
         "description": "Client library for accessing the Square Connect APIs",
         "termsOfService": "https://connect.squareup.com/tos",
@@ -66,32 +66,69 @@
                 "tags": [
                     "OAuth"
                 ],
-                "summary": "Get a business's information.",
-                "operationId": "v1RetrieveBusiness",
-                "description": "Get a business's information.",
+                "summary": "Exchange an Authorization code for an Access Token ",
+                "operationId": "GetAccessToken",
+                "description": "Exchange an Authorization code for an Access Token ",
                 "parameters": [{
-                    "name": "OauthAccessTokenRequest",
+                    "name": "AccessTokenRequest",
                     "in": "body",
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/OauthAccessTokenRequest"
+                        "$ref": "#/definitions/AccessTokenRequest"
                     }
                 }],
-                "security": [{
-                    "personal_access_token": [],
-                    "oauth2": ["MERCHANT_PROFILE_READ"]
-                }],
+                "security": [],
                 "externalDocs": {
                     "description": "Read the offical documentation here:",
-                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-merchantid"
+                    "url": "https://docs.connect.squareup.com/api/oauth/#exchangecodefortoken"
                 },
                 "deprecated": true,
                 "responses": {
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "$ref": "#/definitions/OauthAccessTokenResponse"
+                            "$ref": "#/definitions/AccessTokenResponse"
+                        },
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/oauth2/clients/{application_id}/access-token/renew": {
+            "post": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Renew your Access Token.",
+                "operationId": "RenewToken",
+                "description": "Renew your Access Token.",
+                "parameters": [{
+                    "name": "application_id",
+                    "description": "Your Application ID.",
+                    "type": "string",
+                    "in": "path",
+                    "required": true
+                }, {
+                    "name": "AccessTokenRenewRequest",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/AccessTokenRenewRequest"
+                    }
+                }],
+                "security": [],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/oauth/#oauthflowrenewtoken"
+                },
+                "deprecated": true,
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/AccessTokenResponse"
                         },
                         "headers": {}
                     }
@@ -162,10 +199,10 @@
         "/v1/me/employees": {
             "post": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Creates an employee for a business.",
-                "operationId": "v1CreateEmployee",
+                "operationId": "CreateEmployee",
                 "description": "Creates an employee for a business.",
                 "parameters": [{
                     "name": "body",
@@ -173,7 +210,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1CreateEmployeeRequest"
+                        "$ref": "#/definitions/CreateEmployeeRequest"
                     }
                 }],
                 "security": [{
@@ -190,17 +227,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1Employee"
+                            "$ref": "#/definitions/Employee"
                         }
                     }
                 }
             },
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employees.",
-                "operationId": "v1ListEmployees",
+                "operationId": "ListEmployees",
                 "description": "Provides summary information for all of a business's employees.",
                 "parameters": [{
                     "name": "order",
@@ -283,7 +320,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1Employee"
+                                "$ref": "#/definitions/Employee"
                             }
                         }
                     }
@@ -293,10 +330,10 @@
         "/v1/me/employees/{employee_id}": {
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides the details for a single employee.",
-                "operationId": "v1RetrieveEmployee",
+                "operationId": "RetrieveEmployee",
                 "description": "Provides the details for a single employee.",
                 "parameters": [{
                     "name": "employee_id",
@@ -319,17 +356,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1Employee"
+                            "$ref": "#/definitions/Employee"
                         }
                     }
                 }
             },
             "put": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "v1UpdateEmployee",
-                "operationId": "v1UpdateEmployee",
+                "operationId": "UpdateEmployee",
                 "parameters": [{
                     "name": "employee_id",
                     "in": "path",
@@ -342,7 +379,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1UpdateEmployeeRequest"
+                        "$ref": "#/definitions/UpdateEmployeeRequest"
                     }
                 }],
                 "security": [{
@@ -359,7 +396,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1Employee"
+                            "$ref": "#/definitions/Employee"
                         }
                     }
                 }
@@ -368,10 +405,10 @@
         "/v1/me/roles": {
             "post": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Creates an employee role you can then assign to employees.",
-                "operationId": "v1CreateEmployeeRole",
+                "operationId": "CreateRole",
                 "description": "Creates an employee role you can then assign to employees.",
                 "parameters": [{
                     "name": "body",
@@ -379,7 +416,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1EmployeeRoleRequest"
+                        "$ref": "#/definitions/RoleRequest"
                     }
                 }],
                 "security": [{
@@ -396,17 +433,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1EmployeeRole"
+                            "$ref": "#/definitions/Role"
                         }
                     }
                 }
             },
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employee roles.",
-                "operationId": "v1ListEmployeeRoles",
+                "operationId": "ListRoles",
                 "description": "Provides summary information for all of a business's employee roles.",
                 "parameters": [{
                     "name": "order",
@@ -451,7 +488,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1EmployeeRole"
+                                "$ref": "#/definitions/Role"
                             }
                         }
                     }
@@ -461,10 +498,10 @@
         "/v1/me/roles/{role_id}": {
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides the details for a single employee role.",
-                "operationId": "v1RetrieveEmployeeRole",
+                "operationId": "RetrieveRole",
                 "description": "Provides the details for a single employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -487,17 +524,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1EmployeeRole"
+                            "$ref": "#/definitions/Role"
                         }
                     }
                 }
             },
             "put": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Modifies the details of an employee role.",
-                "operationId": "v1UpdateEmployeeRole",
+                "operationId": "UpdateRole",
                 "description": "Modifies the details of an employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -511,7 +548,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1EmployeeRoleRequest"
+                        "$ref": "#/definitions/RoleRequest"
                     }
                 }],
                 "security": [{
@@ -528,7 +565,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1EmployeeRole"
+                            "$ref": "#/definitions/Role"
                         }
                     }
                 }
@@ -537,10 +574,10 @@
         "/v1/me/timecards": {
             "post": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
-                "operationId": "v1CreateEmployeeTimecard",
+                "operationId": "CreateTimecard",
                 "description": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
                 "parameters": [{
                     "name": "body",
@@ -548,7 +585,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1CreateEmployeeTimecardRequest"
+                        "$ref": "#/definitions/CreateTimecardRequest"
                     }
                 }],
                 "security": [{
@@ -565,17 +602,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1EmployeeTimecard"
+                            "$ref": "#/definitions/Timecard"
                         }
                     }
                 }
             },
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employee timecards.",
-                "operationId": "v1ListEmployeeTimecards",
+                "operationId": "ListTimecards",
                 "description": "Provides summary information for all of a business's employee timecards.",
                 "parameters": [{
                     "name": "order",
@@ -669,7 +706,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1EmployeeTimecard"
+                                "$ref": "#/definitions/Timecard"
                             }
                         }
                     }
@@ -679,10 +716,10 @@
         "/v1/me/timecards/{timecard_id}": {
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides the details for a single timecard.",
-                "operationId": "v1RetrieveEmployeeTimecard",
+                "operationId": "RetrieveTimecard",
                 "description": "Provides the details for a single timecard.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -705,17 +742,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1EmployeeTimecard"
+                            "$ref": "#/definitions/Timecard"
                         }
                     }
                 }
             },
             "put": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.",
-                "operationId": "v1UpdateEmployeeTimecard",
+                "operationId": "UpdateTimecard",
                 "description": "Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -729,7 +766,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1UpdateEmployeeTimecardRequest"
+                        "$ref": "#/definitions/UpdateTimecardRequest"
                     }
                 }],
                 "security": [{
@@ -746,17 +783,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1EmployeeTimecard"
+                            "$ref": "#/definitions/Timecard"
                         }
                     }
                 }
             },
             "delete": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
-                "operationId": "v1DeleteEmployeeTimecard",
+                "operationId": "DeleteTimecard",
                 "description": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -788,10 +825,10 @@
         "/v1/me/timecards/{timecard_id}/events": {
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides summary information for all events associated with a particular timecard.",
-                "operationId": "v1ListEmployeeTimecardEvents",
+                "operationId": "ListTimecardEvents",
                 "description": "Provides summary information for all events associated with a particular timecard.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -821,7 +858,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1EmployeeTimecardEvent"
+                                "$ref": "#/definitions/TimecardEvent"
                             }
                         }
                     }
@@ -831,10 +868,10 @@
         "/v1/{location_id}/cash-drawer-shifts": {
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
-                "operationId": "v1ListCashDrawerShifts",
+                "operationId": "ListCashDrawerShifts",
                 "description": "Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
                 "parameters": [{
                     "name": "location_id",
@@ -886,7 +923,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1CashDrawerShift"
+                                "$ref": "#/definitions/CashDrawerShift"
                             }
                         }
                     }
@@ -896,10 +933,10 @@
         "/v1/{location_id}/cash-drawer-shifts/{shift_id}": {
             "get": {
                 "tags": [
-                    "v1Employees"
+                    "Employees"
                 ],
                 "summary": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
-                "operationId": "v1RetrieveCashDrawerShift",
+                "operationId": "RetrieveCashDrawerShift",
                 "description": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
                 "parameters": [{
                     "name": "location_id",
@@ -928,7 +965,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1CashDrawerShift"
+                            "$ref": "#/definitions/CashDrawerShift"
                         }
                     }
                 }
@@ -5938,7 +5975,7 @@
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
         },
-        "OauthAccessTokenRequest": {
+        "AccessTokenRequest": {
             "type": "object",
             "required": [
                 "client_id",
@@ -5960,7 +5997,19 @@
                 }
             }
         },
-        "OauthAccessTokenResponse": {
+        "AccessTokenRenewRequest": {
+            "type": "object",
+            "required": [
+                "access_token"
+            ],
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "description": "Your expiring Access Token"
+                }
+            }
+        },
+        "AccessTokenResponse": {
             "type": "object",
             "required": [
                 "access_token",
@@ -6150,7 +6199,7 @@
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
         },
-        "v1Employee": {
+        "Employee": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -6212,7 +6261,7 @@
                 }
             }
         },
-        "v1EmployeeRole": {
+        "Role": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -6260,7 +6309,7 @@
                 }
             }
         },
-        "v1EmployeeTimecard": {
+        "Timecard": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -6308,7 +6357,7 @@
                 }
             }
         },
-        "v1EmployeeTimecardEvent": {
+        "TimecardEvent": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -6403,7 +6452,7 @@
                 }
             }
         },
-        "v1CashDrawerShift": {
+        "CashDrawerShift": {
             "type": "object",
             "properties": {
                 "errors": {
@@ -7494,7 +7543,7 @@
                 }
             }
         },
-        "v1CreateEmployeeRequest": {
+        "CreateEmployeeRequest": {
             "type": "object",
             "properties": {
                 "first_name": {
@@ -7518,7 +7567,7 @@
                 }
             }
         },
-        "v1EmployeeRoleRequest": {
+        "RoleRequest": {
             "type": "object",
             "properties": {
                 "name": {
@@ -7669,7 +7718,7 @@
                 }
             }
         },
-        "v1CreateEmployeeTimecardRequest": {
+        "CreateTimecardRequest": {
             "type": "object",
             "properties": {
                 "employee_id": {
@@ -7694,7 +7743,7 @@
                 }
             }
         },
-        "v1UpdateEmployeeRequest": {
+        "UpdateEmployeeRequest": {
             "type": "object",
             "properties": {
                 "first_name": {
@@ -7714,7 +7763,7 @@
                 }
             }
         },
-        "v1UpdateEmployeeTimecardRequest": {
+        "UpdateTimecardRequest": {
             "type": "object",
             "properties": {
                 "clockin_time": {
