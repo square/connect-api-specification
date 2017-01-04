@@ -61,6 +61,43 @@
         }
     },
     "paths": {
+        "/oauth2/token": {
+            "post": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Get a business's information.",
+                "operationId": "v1RetrieveBusiness",
+                "description": "Get a business's information.",
+                "parameters": [{
+                    "name": "OauthAccessTokenRequest",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/OauthAccessTokenRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["MERCHANT_PROFILE_READ"]
+                }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/connect/v1/#get-merchantid"
+                },
+                "deprecated": true,
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/OauthAccessTokenResponse"
+                        },
+                        "headers": {}
+                    }
+                }
+            }
+        },
         "/v1/me": {
             "get": {
                 "tags": [
@@ -78,7 +115,7 @@
                     "description": "Read the offical documentation here:",
                     "url": "https://docs.connect.squareup.com/api/connect/v1/#get-merchantid"
                 },
-                "deprecated": false,
+                "deprecated": true,
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -107,7 +144,7 @@
                     "description": "Read the offical documentation here:",
                     "url": "https://docs.connect.squareup.com/api/connect/v1/#get-locations"
                 },
-                "deprecated": false,
+                "deprecated": true,
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -5900,6 +5937,55 @@
                 }
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
+        },
+        "OauthAccessTokenRequest": {
+            "type": "object",
+            "required": [
+                "client_id",
+                "client_secret",
+                "code"
+            ],
+            "properties": {
+                "client_id": {
+                    "type": "string",
+                    "description": "Your Application's Client ID."
+                },
+                "client_secret": {
+                    "type": "string",
+                    "description": "Your Application's Client Secret"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Your Authorization code"
+                }
+            }
+        },
+        "OauthAccessTokenResponse": {
+            "type": "object",
+            "required": [
+                "access_token",
+                "token_type",
+                "expires_at",
+                "merchant_id"
+            ],
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "description": "The Access Token you'll use to make API calls."
+                },
+                "token_type": {
+                    "type": "string",
+                    "description": "The type of access token (usually 'bearer')."
+                },
+                "expires_at": {
+                    "type": "string",
+                    "description": "Date of access token expiration"
+                },
+                "merchant_id": {
+                    "type": "string",
+                    "description": "The ID of your business."
+                }
+            }
         },
         "v1Merchant": {
             "type": "object",
