@@ -85,36 +85,7 @@
                         "schema": {
                             "$ref": "#/definitions/v1Merchant"
                         },
-                        "headers": {},
-                        "example": {
-                            "application/json": {
-                                "account_capabilities": [
-                                    "EMPLOYEE_MANAGEMENT",
-                                    "TIMECARD_MANAGEMENT"
-                                ],
-                                "id": "abc123",
-                                "name": "Tasty Tacos",
-                                "email": "tacos@example.com",
-                                "country_code": "US",
-                                "language_code": "en-US",
-                                "business_type": "OTHER",
-                                "account_type": "BUSINESS",
-                                "currency_code": "USD"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An Error Occured",
-                        "schema": {
-                            "$ref": "#/definitions/v1Error"
-                        },
-                        "headers": {},
-                        "example": {
-                            "application/json": {
-                                "type": "unauthorized",
-                                "message": "Authorization header format incorrect"
-                            }
-                        }
+                        "headers": {}
                     }
                 }
             }
@@ -145,53 +116,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/v1Merchant"
-                            }
-                        },
-                        "example": {
-                            "application/json": [{
-                                "id": "JGHJ0343",
-                                "name": "Dave Davis",
-                                "email": "dave@example.com",
-                                "country_code": "US",
-                                "language_code": "en-US",
-                                "currency_code": "USD",
-                                "business_name": "Dave's Milkshakes",
-                                "business_address": {
-                                    "address_line_1": "1455 Market St",
-                                    "locality": "San Francisco",
-                                    "administrative_district_level_1": "CA",
-                                    "postal_code": "94103"
-                                },
-                                "business_phone": {
-                                    "calling_code": "+1",
-                                    "number": "4155551234"
-                                },
-                                "business_type": "restaurants",
-                                "shipping_address": {
-                                    "address_line_1": "1455 Market St",
-                                    "locality": "San Francisco",
-                                    "administrative_district_level_1": "CA",
-                                    "postal_code": "94103"
-                                },
-                                "account_type": "LOCATION",
-                                "location_details": {
-                                    "nickname": "Milkshakes"
-                                },
-                                "market_url": "https://mkt.com/squared",
-                                "account_capabilities": ["CREDIT_CARD_PROCESSING"]
-                            }]
-                        }
-                    },
-                    "default": {
-                        "description": "An Error Occured",
-                        "schema": {
-                            "$ref": "#/definitions/v1Error"
-                        },
-                        "headers": {},
-                        "example": {
-                            "application/json": {
-                                "type": "unauthorized",
-                                "message": "Authorization header format incorrect"
                             }
                         }
                     }
@@ -230,18 +154,6 @@
                         "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Employee"
-                        },
-                        "example": {
-                            "application/json": {
-                                "id": "1f6d3d87-5d70-1893-17061da6f6a2",
-                                "first_name": "Amelia",
-                                "last_name": "Earhart",
-                                "status": "INACTIVE",
-                                "role_ids": ["a1265191-2105-7cd8-7c8539267308"],
-                                "email": "amelia@example.com",
-                                "created_at": "1928-04-16T18:45:00Z",
-                                "updated_at": "1928-04-16T18:45:00Z"
-                            }
                         }
                     }
                 }
@@ -336,20 +248,6 @@
                             "items": {
                                 "$ref": "#/definitions/v1Employee"
                             }
-                        },
-                        "example": {
-                            "application/json": [{
-                                "authorized_location_ids": ["JGHJ0343"],
-                                "id": "1f6d3d87-5d70-1893-17061da6f6a2",
-                                "first_name": "Amelia",
-                                "last_name": "Earhart",
-                                "status": "ACTIVE",
-                                "external_id": "CANARY",
-                                "role_ids": ["a1265191-2105-7cd8-7c8539267308"],
-                                "email": "amelia@example.com",
-                                "created_at": "1928-04-16T18:45:00Z",
-                                "updated_at": "1928-04-16T18:45:00Z"
-                            }]
                         }
                     }
                 }
@@ -507,6 +405,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -719,6 +623,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -865,6 +775,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -924,6 +840,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1030,6 +952,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1148,6 +1076,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1256,6 +1190,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1352,6 +1292,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1597,6 +1543,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2492,6 +2444,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2658,6 +2616,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -2824,6 +2788,12 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {
+                            "Link": {
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "type": "string"
+                            }
+                        },
                         "schema": {
                             "type": "array",
                             "items": {
@@ -3173,6 +3143,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
+                        "headers": {},
                         "schema": {
                             "$ref": "#/definitions/v1Page"
                         }
@@ -5929,23 +5900,6 @@
                 }
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
-        },
-        "v1Error": {
-            "type": "object",
-            "required": [
-                "type",
-                "message"
-            ],
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "description": ""
-                },
-                "message": {
-                    "type": "string"
-                },
-                "description": ""
-            }
         },
         "v1Merchant": {
             "type": "object",
