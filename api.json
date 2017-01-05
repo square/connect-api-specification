@@ -6202,13 +6202,6 @@
         "Employee": {
             "type": "object",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
                     "description": "The employee's unique ID."
