@@ -411,10 +411,10 @@
                 "operationId": "CreateEmployeeRole",
                 "description": "Creates an employee role you can then assign to employees.",
                 "parameters": [{
-                    "name": "body",
+                    "name": "EmployeeRole",
                     "in": "body",
                     "required": true,
-                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "description": "An EmployeeRole object with a name and permissions, and an optional owner flag.",
                     "schema": {
                         "$ref": "#/definitions/EmployeeRole"
                     }
@@ -448,7 +448,7 @@
                 "parameters": [{
                     "name": "order",
                     "in": "query",
-                    "description": "The order in which employees are listed in the response, based on their created_at field.      Default value: ASC ",
+                    "description": "The order in which employees are listed in the response, based on their created_at field.Default value: ASC ",
                     "type": "string",
                     "enum": [
                         "ASC",
@@ -481,7 +481,7 @@
                         "description": "Success",
                         "headers": {
                             "Link": {
-                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link. ",
+                                "description": "If returned, there are too many items to return in one request and you must paginate with the supplied link.",
                                 "type": "string"
                             }
                         },
@@ -501,7 +501,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for a single employee role.",
-                "operationId": "RetrievEmployeeeRole",
+                "operationId": "RetrieveEmployeeRole",
                 "description": "Provides the details for a single employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -6256,10 +6256,19 @@
         },
         "EmployeeRole": {
             "type": "object",
+            "required": [
+                "name",
+                "permissions"
+            ],
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#datatype-employeerole"
+            },
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The role's unique ID."
+                    "description": "The role's unique ID, Can only be set by Square.",
+                    "readOnly": true
                 },
                 "name": {
                     "type": "string",
@@ -6287,11 +6296,13 @@
                 },
                 "created_at": {
                     "type": "string",
-                    "description": "The time when the employee entity was created, in ISO 8601 format."
+                    "description": "The time when the employee entity was created, in ISO 8601 format. Is set by Square when the Role is created.",
+                    "readOnly": true
                 },
                 "updated_at": {
                     "type": "string",
-                    "description": "The time when the employee entity was most recently updated, in ISO 8601 format."
+                    "description": "The time when the employee entity was most recently updated, in ISO 8601 format. Is set by Square when the Role updated.",
+                    "readOnly": true
                 }
             }
         },
@@ -7550,35 +7561,6 @@
                 "email": {
                     "type": "string",
                     "description": " An optional email address to associate with the employee."
-                }
-            }
-        },
-        "EmployeeRoleRequest": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The role's name."
-                },
-                "permissions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "REGISTER_ACCESS_SALES_HISTORY",
-                            "REGISTER_APPLY_RESTRICTED_DISCOUNTS",
-                            "REGISTER_CHANGE_SETTINGS",
-                            "REGISTER_EDIT_ITEM",
-                            "REGISTER_ISSUE_REFUNDS",
-                            "REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
-                            "REGISTER_VIEW_SUMMARY_REPORTS"
-                        ]
-                    },
-                    "description": "The role's permissions."
-                },
-                "is_owner": {
-                    "type": "boolean",
-                    "description": "If true, employees with this role have all permissions, regardless of the values indicated in permissions."
                 }
             }
         },
