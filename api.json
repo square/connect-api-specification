@@ -292,12 +292,6 @@
                     "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
                     "type": "integer",
                     "maximum": 200
-                }, {
-                    "name": "cursor",
-                    "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
-                    "type": "string",
-                    "in": "query",
-                    "required": false
                 }],
                 "security": [{
                     "personal_access_token": [],
@@ -6201,10 +6195,20 @@
         },
         "Employee": {
             "type": "object",
+            "required": [
+                "first_name",
+                "last_name"
+            ],
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#datatype-employee"
+            },
+            "description": "Represents one of a business's employees.",
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The employee's unique ID."
+                    "description": "The employee's unique ID.",
+                    "readOnly": true
                 },
                 "first_name": {
                     "type": "string",
@@ -6226,7 +6230,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of the locations the employee is allowed to clock in at."
+                    "description": "The IDs of the locations the employee is allowed to clock in at.",
+                    "readOnly": true
                 },
                 "email": {
                     "type": "string",
@@ -6238,19 +6243,23 @@
                         "ACTIVE",
                         "INACTIVE"
                     ],
-                    "description": "CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. "
+                    "description": "CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. ",
+                    "readOnly": true
                 },
                 "external_id": {
                     "type": "string",
-                    "description": "An ID the merchant can set to associate the employee with an entity in another system."
+                    "description": "An ID the merchant can set to associate the employee with an entity in another system.",
+                    "readOnly": true
                 },
                 "created_at": {
                     "type": "string",
-                    "description": "The time when the employee entity was created, in ISO 8601 format."
+                    "description": "The time when the employee entity was created, in ISO 8601 format.",
+                    "readOnly": true
                 },
                 "updated_at": {
                     "type": "string",
-                    "description": "The time when the employee entity was most recently updated, in ISO 8601 format."
+                    "description": "The time when the employee entity was most recently updated, in ISO 8601 format.",
+                    "readOnly": true
                 }
             }
         },
