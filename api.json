@@ -408,7 +408,7 @@
                     "Employees"
                 ],
                 "summary": "Creates an employee role you can then assign to employees.",
-                "operationId": "CreateRole",
+                "operationId": "CreateEmployeeRole",
                 "description": "Creates an employee role you can then assign to employees.",
                 "parameters": [{
                     "name": "body",
@@ -416,7 +416,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/RoleRequest"
+                        "$ref": "#/definitions/EmployeeRole"
                     }
                 }],
                 "security": [{
@@ -433,7 +433,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Role"
+                            "$ref": "#/definitions/EmployeeRole"
                         }
                     }
                 }
@@ -443,7 +443,7 @@
                     "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employee roles.",
-                "operationId": "ListRoles",
+                "operationId": "ListEmployeeRoles",
                 "description": "Provides summary information for all of a business's employee roles.",
                 "parameters": [{
                     "name": "order",
@@ -488,7 +488,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Role"
+                                "$ref": "#/definitions/EmployeeRole"
                             }
                         }
                     }
@@ -501,7 +501,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for a single employee role.",
-                "operationId": "RetrieveRole",
+                "operationId": "RetrievEmployeeeRole",
                 "description": "Provides the details for a single employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -524,7 +524,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Role"
+                            "$ref": "#/definitions/EmployeeRole"
                         }
                     }
                 }
@@ -534,7 +534,7 @@
                     "Employees"
                 ],
                 "summary": "Modifies the details of an employee role.",
-                "operationId": "UpdateRole",
+                "operationId": "UpdateEmployeeRole",
                 "description": "Modifies the details of an employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -548,7 +548,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/RoleRequest"
+                        "$ref": "#/definitions/EmployeeRole"
                     }
                 }],
                 "security": [{
@@ -565,7 +565,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Role"
+                            "$ref": "#/definitions/EmployeeRole"
                         }
                     }
                 }
@@ -6254,16 +6254,9 @@
                 }
             }
         },
-        "Role": {
+        "EmployeeRole": {
             "type": "object",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
                     "description": "The role's unique ID."
@@ -6272,7 +6265,7 @@
                     "type": "string",
                     "description": "The role's merchant-defined name."
                 },
-                "role_ids": {
+                "permissions": {
                     "type": "array",
                     "items": {
                         "type": "string",
@@ -7560,7 +7553,7 @@
                 }
             }
         },
-        "RoleRequest": {
+        "EmployeeRoleRequest": {
             "type": "object",
             "properties": {
                 "name": {
