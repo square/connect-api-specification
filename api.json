@@ -210,7 +210,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/CreateEmployeeRequest"
+                        "$ref": "#/definitions/Employee"
                     }
                 }],
                 "security": [{
@@ -7537,30 +7537,6 @@
                 "memo": {
                     "type": "string",
                     "description": "A note about the inventory adjustment."
-                }
-            }
-        },
-        "CreateEmployeeRequest": {
-            "type": "object",
-            "properties": {
-                "first_name": {
-                    "type": "string",
-                    "description": "The employee's first name."
-                },
-                "last_name": {
-                    "type": "string",
-                    "description": "The employee's last name."
-                },
-                "role_ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee."
-                },
-                "email": {
-                    "type": "string",
-                    "description": " An optional email address to associate with the employee."
                 }
             }
         },
