@@ -6370,6 +6370,10 @@
         },
         "TimecardEvent": {
             "type": "object",
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#datatype-timecardevent"
+            },
             "properties": {
                 "id": {
                     "type": "string",
@@ -6418,6 +6422,10 @@
         },
         "CashDrawerEvent": {
             "type": "object",
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#datatype-cashdrawerevent"
+            },
             "properties": {
                 "id": {
                     "type": "string",
@@ -6458,6 +6466,10 @@
         },
         "CashDrawerShift": {
             "type": "object",
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#get-cashdrawershifts"
+            },
             "properties": {
                 "id": {
                     "type": "string",
