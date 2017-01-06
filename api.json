@@ -6371,13 +6371,6 @@
         "TimecardEvent": {
             "type": "object",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
                     "description": "The event's unique ID."
@@ -6466,13 +6459,6 @@
         "CashDrawerShift": {
             "type": "object",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
                     "description": "The shift's unique ID."
