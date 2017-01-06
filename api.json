@@ -6805,7 +6805,7 @@
                     "description": "The total of all discounts applied to the payment."
                 },
                 "processing_fee_money": {
-                    "$ref": "#/definitionsv1Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all processing fees collected by Square for the payment."
                 },
                 "net_total_money": {
@@ -7104,7 +7104,7 @@
                     "type": "string",
                     "description": "The tender's unique ID."
                 },
-                "event_type": {
+                "type": {
                     "type": "string",
                     "enum": [
                         "CREDIT_CARD",
@@ -7126,7 +7126,7 @@
                     "type": "string",
                     "description": "The ID of the employee that processed the tender."
                 },
-                "receipt_url": {
+                "reciept_url": {
                     "type": "string",
                     "description": "The URL of the receipt for the tender."
                 },
