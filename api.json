@@ -6030,16 +6030,33 @@
                 }
             }
         },
+        "v1PhoneNumber": {
+            "type": "object",
+            "required": [
+                "calling_code",
+                "number"
+            ],
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#datatype-phonenumber"
+            },
+            "description": "Represents a phone number.",
+            "properties": {
+                "calling_code": {
+                    "type": "string",
+                    "description": "The phone number's international calling code. For US phone numbers, this value is +1.",
+                    "readOnly": false
+                },
+                "number": {
+                    "type": "string",
+                    "description": "The phone number.",
+                    "readOnly": false
+                }
+            }
+        },
         "v1Merchant": {
             "type": "object",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
                     "description": "The merchant account's unique identifier."
@@ -6093,7 +6110,7 @@
                     "description": "The address of the merchant's business."
                 },
                 "business_phone": {
-                    "type": "string",
+                    "$ref": "#/definitions/v1PhoneNumber",
                     "description": "The phone number of the merchant's business."
                 },
                 "business_type": {
@@ -6172,26 +6189,6 @@
                 }
             },
             "description": "Defines the fields that are included in the response body of\na request to the **RetrieveBusiness** endpoint."
-        },
-        "v1ListLocationsResponse": {
-            "type": "object",
-            "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
-                "locations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/v1Merchant"
-                    },
-                    "description": "An array of locations in your business."
-                }
-            },
-            "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
         },
         "Employee": {
             "type": "object",
