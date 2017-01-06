@@ -5650,6 +5650,202 @@
             },
             "description": ""
         },
+         "v1Money": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "description": "Amount in the lowest denominated value of this Currency. E.g. in USD\nthese are cents, in JPY they are Yen (which do not have a \u0027cent\u0027 concept)."
+                },
+                "currency_code": {
+                    "type": "string",
+                    "enum": [
+                        "AED",
+                        "AFN",
+                        "ALL",
+                        "AMD",
+                        "ANG",
+                        "AOA",
+                        "ARS",
+                        "AUD",
+                        "AWG",
+                        "AZN",
+                        "BAM",
+                        "BBD",
+                        "BDT",
+                        "BGN",
+                        "BHD",
+                        "BIF",
+                        "BMD",
+                        "BND",
+                        "BOB",
+                        "BOV",
+                        "BRL",
+                        "BSD",
+                        "BTN",
+                        "BWP",
+                        "BYR",
+                        "BZD",
+                        "CAD",
+                        "CDF",
+                        "CHE",
+                        "CHF",
+                        "CHW",
+                        "CLF",
+                        "CLP",
+                        "CNY",
+                        "COP",
+                        "COU",
+                        "CRC",
+                        "CUC",
+                        "CUP",
+                        "CVE",
+                        "CZK",
+                        "DJF",
+                        "DKK",
+                        "DOP",
+                        "DZD",
+                        "EGP",
+                        "ERN",
+                        "ETB",
+                        "EUR",
+                        "FJD",
+                        "FKP",
+                        "GBP",
+                        "GEL",
+                        "GHS",
+                        "GIP",
+                        "GMD",
+                        "GNF",
+                        "GTQ",
+                        "GYD",
+                        "HKD",
+                        "HNL",
+                        "HRK",
+                        "HTG",
+                        "HUF",
+                        "IDR",
+                        "ILS",
+                        "INR",
+                        "IQD",
+                        "IRR",
+                        "ISK",
+                        "JMD",
+                        "JOD",
+                        "JPY",
+                        "KES",
+                        "KGS",
+                        "KHR",
+                        "KMF",
+                        "KPW",
+                        "KRW",
+                        "KWD",
+                        "KYD",
+                        "KZT",
+                        "LAK",
+                        "LBP",
+                        "LKR",
+                        "LRD",
+                        "LSL",
+                        "LTL",
+                        "LVL",
+                        "LYD",
+                        "MAD",
+                        "MDL",
+                        "MGA",
+                        "MKD",
+                        "MMK",
+                        "MNT",
+                        "MOP",
+                        "MRO",
+                        "MUR",
+                        "MVR",
+                        "MWK",
+                        "MXN",
+                        "MXV",
+                        "MYR",
+                        "MZN",
+                        "NAD",
+                        "NGN",
+                        "NIO",
+                        "NOK",
+                        "NPR",
+                        "NZD",
+                        "OMR",
+                        "PAB",
+                        "PEN",
+                        "PGK",
+                        "PHP",
+                        "PKR",
+                        "PLN",
+                        "PYG",
+                        "QAR",
+                        "RON",
+                        "RSD",
+                        "RUB",
+                        "RWF",
+                        "SAR",
+                        "SBD",
+                        "SCR",
+                        "SDG",
+                        "SEK",
+                        "SGD",
+                        "SHP",
+                        "SLL",
+                        "SOS",
+                        "SRD",
+                        "SSP",
+                        "STD",
+                        "SVC",
+                        "SYP",
+                        "SZL",
+                        "THB",
+                        "TJS",
+                        "TMT",
+                        "TND",
+                        "TOP",
+                        "TRY",
+                        "TTD",
+                        "TWD",
+                        "TZS",
+                        "UAH",
+                        "UGX",
+                        "USD",
+                        "USN",
+                        "USS",
+                        "UYI",
+                        "UYU",
+                        "UZS",
+                        "VEF",
+                        "VND",
+                        "VUV",
+                        "WST",
+                        "XAF",
+                        "XAG",
+                        "XAU",
+                        "XBA",
+                        "XBB",
+                        "XBC",
+                        "XBD",
+                        "XCD",
+                        "XDR",
+                        "XOF",
+                        "XPD",
+                        "XPF",
+                        "XPT",
+                        "XTS",
+                        "XXX",
+                        "YER",
+                        "ZAR",
+                        "ZMK",
+                        "ZMW",
+                        "BTC"
+                    ],
+                    "description": ""
+                }
+            },
+            "description": ""
+        },
         "Refund": {
             "type": "object",
             "required": [
@@ -6448,7 +6644,7 @@
                     ]
                 },
                 "event_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money that was added to or removed from the cash drawer because of the event. This value can be positive (for added money) or negative (for removed money)."
                 },
                 "created_at": {
@@ -6517,31 +6713,31 @@
                     "description": "The time when the timecard was created, in ISO 8601 format."
                 },
                 "starting_cash_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money in the cash drawer at the start of the shift."
                 },
                 "cash_payment_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money added to the cash drawer from cash payments."
                 },
                 "cash_refunds_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money removed from the cash drawer from cash refunds. This value is always negative or zero."
                 },
                 "cash_paid_in_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money added to the cash drawer for reasons other than cash payments."
                 },
                 "cash_paid_out_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money removed from the cash drawer for reasons other than cash refunds."
                 },
                 "expected_cash_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money that should be in the cash drawer at the end of the shift, based on the shift's other money amounts."
                 },
                 "closed_cash_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money found in the cash drawer at the end of the shift by an auditing employee."
                 },
                 "device": {
@@ -6560,13 +6756,6 @@
         "v1Payment": {
             "type": "object",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
                     "description": "The payment's unique identifier."
@@ -6596,35 +6785,35 @@
                     "description": "The URL of the receipt for the payment. Note that for split tender payments, this URL corresponds to the receipt for the first tender listed in the payment's tender field. Each Tender object has its own receipt_url field you can use to get the other receipts associated with a split tender payment."
                 },
                 "inclusive_tax_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The sum of all inclusive taxes associated with the payment."
                 },
                 "additive_tax_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The sum of all additive taxes associated with the payment."
                 },
                 "tax_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all taxes applied to the payment. This is always the sum of inclusive_tax_money and additive_tax_money."
                 },
                 "tip_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all tips applied to the payment."
                 },
                 "discount_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all discounts applied to the payment."
                 },
                 "processing_fee_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitionsv1Money",
                     "description": "The total of all processing fees collected by Square for the payment."
                 },
                 "net_total_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount to be deposited into the merchant's bank account for the payment."
                 },
                 "refunded_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all refunds applied to the payment."
                 },
                 "inclusive_tax": {
@@ -6700,23 +6889,23 @@
                     "description": "The name of the item variation purchased, if any."
                 },
                 "total_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total cost of the item, including all taxes and discounts."
                 },
                 "single_quantity_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The cost of a single unit of this item."
                 },
                 "gross_sales_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total cost of the itemization and its modifiers, not including taxes or discounts."
                 },
                 "discount_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all discounts applied to the itemization. This value is always negative or zero."
                 },
                 "net_sales_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The sum of gross_sales_money and discount_money."
                 },
                 "taxes": {
@@ -6750,7 +6939,7 @@
                     "description": "The modifier option's name."
                 },
                 "applied_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money that this modifier option adds to the payment."
                 },
                 "modifier_option_id": {
@@ -6767,7 +6956,7 @@
                     "description": "The discount's name."
                 },
                 "applied_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money that this discount adds to the payment (note that this value is always negative or zero)."
                 },
                 "discount_id": {
@@ -6813,7 +7002,7 @@
                     "description": "The merchant-specified reason for the refund."
                 },
                 "refunded_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money refunded. This amount is always negative."
                 },
                 "created_at": {
@@ -6846,7 +7035,7 @@
                     "description": "The settlement's current status."
                 },
                 "total_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money involved in the settlement. A positive amount indicates a deposit, and a negative amount indicates a withdrawal. This amount is never zero."
                 },
                 "initiated_at": {
@@ -6899,11 +7088,11 @@
                     "description": "The settlement's current status."
                 },
                 "amount_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total amount of money this entry contributes to the total settlement amount."
                 },
                 "fee_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of all Square fees associated with this settlement entry. This value is always negative or zero."
                 }
             }
@@ -6978,19 +7167,19 @@
                     "description": "Notes entered by the merchant about the tender at the time of payment, if any. Typically only present for tender with the type: OTHER."
                 },
                 "total_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total amount of money provided in this form of tender."
                 },
                 "tendered_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of total_money applied to the payment."
                 },
                 "change_back_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of total_money returned to the buyer as change."
                 },
                 "refunded_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all refunds applied to this tender. This amount is always negative or zero."
                 }
             }
@@ -7010,7 +7199,7 @@
                     "description": "The merchant-defined name of the tax."
                 },
                 "applied_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money that this tax adds to the payment."
                 },
                 "rate": {
@@ -7074,23 +7263,23 @@
                     "description": "The address to ship the order to."
                 },
                 "subtotal_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of all items purchased in the order, before taxes and shipping."
                 },
                 "total_shipping_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The shipping cost for the order."
                 },
                 "total_tax_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all taxes applied to the order."
                 },
                 "total_price_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total cost of the order."
                 },
                 "total_discount_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The total of all discounts applied to the order."
                 },
                 "created_at": {
@@ -7245,7 +7434,7 @@
                     "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
                 },
                 "price_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The item variation's price, if any."
                 },
                 "sku": {
@@ -7471,7 +7660,7 @@
                     "description": "The modifier option's name."
                 },
                 "price_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The modifier option's price."
                 },
                 "on_by_default": {
@@ -7565,7 +7754,7 @@
                     "description": "The rate of the discount, as a string representation of a decimal number. A value of 0.07 corresponds to a rate of 7%. This rate is 0 if discount_type is VARIABLE_PERCENTAGE."
                 },
                 "amount_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of the discount. This amount is 0 if discount_type is VARIABLE_AMOUNT. This field is not included for rate-based discounts."
                 },
                 "discount_type": {
@@ -7696,7 +7885,7 @@
                     "description": "The reason for the refund."
                 },
                 "refunded_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The amount of money to refund. Required only for PARTIAL refunds."
                 },
 
@@ -7879,7 +8068,7 @@
                     "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
                 },
                 "price_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The item variation's price, if any."
                 },
                 "sku": {
@@ -7928,7 +8117,7 @@
                     "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
                 },
                 "price_money": {
-                    "$ref": "#/definitions/Money",
+                    "$ref": "#/definitions/v1Money",
                     "description": "The item variation's price, if any."
                 },
                 "sku": {
