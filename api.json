@@ -138,7 +138,7 @@
         "/v1/me": {
             "get": {
                 "tags": [
-                    "v1BusinessManagement"
+                    "Locations"
                 ],
                 "summary": "Get a business's information.",
                 "operationId": "v1RetrieveBusiness",
@@ -167,7 +167,7 @@
         "/v1/me/locations": {
             "get": {
                 "tags": [
-                    "v1BusinessManagement"
+                    "Locations"
                 ],
                 "summary": "Provides details for a business's locations, including their IDs.",
                 "operationId": "v1ListLocations",
@@ -3518,7 +3518,7 @@
         "/v2/locations": {
             "get": {
                 "tags": [
-                    "Location"
+                    "Locations"
                 ],
                 "summary": "ListLocations",
                 "operationId": "ListLocations",
