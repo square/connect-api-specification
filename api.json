@@ -6317,17 +6317,19 @@
         },
         "Timecard": {
             "type": "object",
+            "required": [
+                "employee_id"
+            ],
+            "externalDocs": {
+                "description": "Read the offical documentation here:",
+                "url": "https://docs.connect.squareup.com/api/connect/v1/#datatype-timecard"
+            },
+            "description": "Represents a timecard for an employee.",
             "properties": {
-                "errors": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Error"
-                    },
-                    "description": "Any errors that occurred during the request."
-                },
                 "id": {
                     "type": "string",
-                    "description": "The timecard's unique ID."
+                    "description": "The timecard's unique ID.",
+                    "readOnly": true
                 },
                 "employee_id": {
                     "type": "string",
@@ -6335,7 +6337,8 @@
                 },
                 "deleted": {
                     "type": "boolean",
-                    "description": "If true, the timecard was deleted by the merchant, and it is no longer valid."
+                    "description": "If true, the timecard was deleted by the merchant, and it is no longer valid.",
+                    "readOnly": true
                 },
                 "clockin_time": {
                     "type": "string",
@@ -6355,11 +6358,13 @@
                 },
                 "created_at": {
                     "type": "string",
-                    "description": "The time when the timecard was created, in ISO 8601 format."
+                    "description": "The time when the timecard was created, in ISO 8601 format.",
+                    "readOnly": true
                 },
                 "updated_at": {
                     "type": "string",
-                    "description": "The time when the timecard was most recently updated, in ISO 8601 format."
+                    "description": "The time when the timecard was most recently updated, in ISO 8601 format.",
+                    "readOnly": true
                 }
             }
         },
@@ -7669,73 +7674,6 @@
                     },
                     "description": "For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior."
                 }
-            }
-        },
-        "CreateTimecardRequest": {
-            "type": "object",
-            "properties": {
-                "employee_id": {
-                    "type": "string",
-                    "description": "The employee to create a timecard for."
-                },
-                "clockin_time": {
-                    "type": "string",
-                    "description": "The clock-in time for the timecard, in ISO 8601 format."
-                },
-                "clockout_time": {
-                    "type": "string",
-                    "description": "The clock-out time for the timecard, in ISO 8601 format. Provide this value only if importing timecard information from another system."
-                },
-                "clockin_location_id": {
-                    "type": "string",
-                    "description": "The ID of the location the employee clocked in from, if any."
-                },
-                "clockout_location_id": {
-                    "type": "string",
-                    "description": "The ID of the location the employee clocked out from. Provide this value only if importing timecard information from another system."
-                }
-            }
-        },
-        "UpdateEmployeeRequest": {
-            "type": "object",
-            "properties": {
-                "first_name": {
-                    "type": "string",
-                    "description": "The employee's first name."
-                },
-                "last_name": {
-                    "type": "string",
-                    "description": "The employee's first name."
-                },
-                "role_ids": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee."
-                }
-            }
-        },
-        "UpdateTimecardRequest": {
-            "type": "object",
-            "properties": {
-                "clockin_time": {
-                    "type": "string",
-                    "description": "The clock-in time for the timecard, in ISO 8601 format."
-                },
-                "clockout_time": {
-                    "type": "string",
-                    "description": "The clock-out time for the timecard, in ISO 8601 format."
-                },
-                "clockin_location_id": {
-                    "type": "string",
-                    "description": "The ID of the location the employee clocked in from, if any."
-                },
-                "clockout_location_id": {
-                    "type": "string",
-                    "description": "The ID of the location the employee clocked out from, if any."
-                }
-
             }
         },
         "v1CreateRefundRequest": {
