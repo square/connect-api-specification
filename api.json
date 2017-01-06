@@ -968,7 +968,7 @@
         "/v1/{location_id}/payments": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.",
                 "operationId": "v1ListPayments",
@@ -1039,7 +1039,7 @@
         "/v1/{location_id}/payments/{payment_id}": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides comprehensive information for a single payment.",
                 "operationId": "v1RetrievePayment",
@@ -1080,7 +1080,7 @@
         "/v1/{location_id}/settlements": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. ",
                 "operationId": "v1ListSettlements",
@@ -1163,7 +1163,7 @@
         "/v1/{location_id}/settlements/{settlement_id}": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.",
                 "operationId": "v1RetrieveSettlement",
@@ -1204,7 +1204,7 @@
         "/v1/{location_id}/refunds": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.",
                 "operationId": "v1ListRefunds",
@@ -1275,7 +1275,7 @@
             },
             "post": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.",
                 "operationId": "v1CreateRefund",
@@ -1318,7 +1318,7 @@
         "/v1/{location_id}/orders": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides summary information for a merchant's online store orders.",
                 "operationId": "v1ListOrders",
@@ -1379,7 +1379,7 @@
         "/v1/{location_id}/orders/{order_id}": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides comprehensive information for a single online store order, including the order's history.",
                 "operationId": "v1RetrieveOrder",
@@ -1418,7 +1418,7 @@
             },
             "put": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:",
                 "operationId": "v1UpdateOrder",
@@ -1467,7 +1467,7 @@
         "/v1/{location_id}/bank-accounts": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
                 "operationId": "v1ListBankAccounts",
@@ -1505,7 +1505,7 @@
         "/v1/{location_id}/bank-accounts/{bank_account_id}": {
             "get": {
                 "tags": [
-                    "v1Transactions"
+                    "Transactions"
                 ],
                 "summary": "Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
                 "operationId": "v1RetrieveBankAccount",
