@@ -982,7 +982,7 @@
                 }, {
                     "name": "order",
                     "in": "query",
-                    "description": "TThe order in which payments are listed in the response.",
+                    "description": "The order in which payments are listed in the response.",
                     "type": "string",
                     "enum": [
                         "ASC",
@@ -6946,7 +6946,7 @@
                     "enum": [
                         "OTHER_BRAND",
                         "VISA",
-                        "MASTERCARD",
+                        "MASTER_CARD",
                         "AMERICAN_EXPRESS",
                         "DISCOVER",
                         "DISCOVER_DINERS",
