@@ -1082,7 +1082,7 @@
                 "tags": [
                     "Transactions"
                 ],
-                "summary": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. ",
+                "summary": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.",
                 "operationId": "v1ListSettlements",
                 "description": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. ",
                 "parameters": [{
@@ -5650,7 +5650,7 @@
             },
             "description": ""
         },
-         "v1Money": {
+        "v1Money": {
             "type": "object",
             "properties": {
                 "amount": {
@@ -6804,6 +6804,10 @@
                     "$ref": "#/definitions/v1Money",
                     "description": "The total of all discounts applied to the payment."
                 },
+                "total_collected_money": {
+                    "$ref": "#/definitions/v1Money",
+                    "description": "The total of all discounts applied to the payment."
+                },
                 "processing_fee_money": {
                     "$ref": "#/definitions/v1Money",
                     "description": "The total of all processing fees collected by Square for the payment."
@@ -6815,6 +6819,15 @@
                 "refunded_money": {
                     "$ref": "#/definitions/v1Money",
                     "description": "The total of all refunds applied to the payment."
+                },
+                "swedish_rounding_money": {
+                    "$ref": "#/definitions/v1Money"
+                },
+                "gross_sales_money": {
+                    "$ref": "#/definitions/v1Money"
+                },
+                "net_sales_money": {
+                    "$ref": "#/definitions/v1Money"
                 },
                 "inclusive_tax": {
                     "type": "array",
@@ -7016,6 +7029,10 @@
                 "payment_id": {
                     "type": "string",
                     "description": "The Square-issued ID of the payment the refund is applied to."
+                },
+                "merchant_id": {
+                    "type": "string",
+                    "description": ""
                 }
             }
         },
@@ -7058,7 +7075,7 @@
         "v1SettlementEntry": {
             "type": "object",
             "properties": {
-                "id": {
+                "payment_id": {
                     "type": "string",
                     "description": "The settlement's unique identifier."
                 },
@@ -7126,7 +7143,7 @@
                     "type": "string",
                     "description": "The ID of the employee that processed the tender."
                 },
-                "reciept_url": {
+                "receipt_url": {
                     "type": "string",
                     "description": "The URL of the receipt for the tender."
                 },
