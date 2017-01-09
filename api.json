@@ -7479,7 +7479,7 @@
                     "description": "If the inventory quantity for the variation is less than or equal to this value and inventory_alert_type is LOW_QUANTITY, the variation displays an alert in the merchant dashboard."
                 },
                 "user_data": {
-                    "type": "boolean",
+                    "type": "string",
                     "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
                 }
             }
