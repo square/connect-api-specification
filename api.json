@@ -373,7 +373,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/UpdateEmployeeRequest"
+                        "$ref": "#/definitions/Employee"
                     }
                 }],
                 "security": [{
@@ -579,7 +579,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/CreateTimecardRequest"
+                        "$ref": "#/definitions/Timecard"
                     }
                 }],
                 "security": [{
@@ -760,7 +760,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/UpdateTimecardRequest"
+                        "$ref": "#/definitions/Timecard"
                     }
                 }],
                 "security": [{
