@@ -7652,7 +7652,7 @@
                     "type": "string",
                     "enum": [
                         "SINGLE",
-                        "DOUBLE"
+                        "MULTIPLE"
                     ],
                     "description": "Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item."
                 },
