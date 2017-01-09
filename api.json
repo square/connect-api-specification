@@ -1974,7 +1974,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1AdjustItemInventoryRequest"
+                        "$ref": "#/definitions/v1AdjustInventoryRequest"
                     }
                 }],
                 "security": [{
@@ -7733,7 +7733,7 @@
                 }
             }
         },
-        "v1AdjustItemInventoryRequest": {
+        "v1AdjustInventoryRequest": {
             "type": "object",
             "properties": {
                 "quantity_delta": {
