@@ -2706,7 +2706,7 @@
                     "Items"
                 ],
                 "summary": "Modifies the details of an existing discount.",
-                "operationId": "v1UpdateItemDiscount",
+                "operationId": "v1UpdateDiscount",
                 "description": "Modifies the details of an existing discount.",
                 "parameters": [{
                     "name": "location_id",
@@ -2753,7 +2753,7 @@
                     "Items"
                 ],
                 "summary": "Deletes an existing discount.",
-                "operationId": "v1DeleteItemDiscount",
+                "operationId": "v1DeleteDiscount",
                 "description": "Deletes an existing discount.",
                 "parameters": [{
                     "name": "location_id",
@@ -7775,15 +7775,12 @@
                     "description": "The amount of the discount. This amount is 0 if discount_type is VARIABLE_AMOUNT. This field is not included for rate-based discounts."
                 },
                 "discount_type": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "FIXED",
-                            "VARIABLE_PERCENTAGE",
-                            "VARIABLE_AMOUNT"
-                        ]
-                    },
+                    "type": "string",
+                    "enum": [
+                        "FIXED",
+                        "VARIABLE_PERCENTAGE",
+                        "VARIABLE_AMOUNT"
+                    ],
                     "description": "Indicates whether the discount is a FIXED value or entered at the time of sale."
                 },
                 "pin_required": {
