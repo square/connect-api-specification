@@ -2017,7 +2017,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ModiferList"
+                        "$ref": "#/definitions/v1ModifierList"
                     }
                 }],
                 "security": [{
@@ -2034,7 +2034,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferList"
+                            "$ref": "#/definitions/v1ModifierList"
                         }
                     }
                 }
@@ -2069,7 +2069,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1ModiferList"
+                                "$ref": "#/definitions/v1ModifierList"
                             }
                         }
                     }
@@ -2111,7 +2111,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferList"
+                            "$ref": "#/definitions/v1ModifierList"
                         }
                     }
                 }
@@ -2158,7 +2158,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferList"
+                            "$ref": "#/definitions/v1ModifierList"
                         }
                     }
                 }
@@ -2197,7 +2197,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferList"
+                            "$ref": "#/definitions/v1ModifierList"
                         }
                     }
                 }
@@ -7637,7 +7637,7 @@
                 }
             }
         },
-        "v1ModiferList": {
+        "v1ModifierList": {
             "type": "object",
             "properties": {
                 "id": {
