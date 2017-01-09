@@ -2082,7 +2082,7 @@
                     "Items"
                 ],
                 "summary": "Provides the details for a single modifier list.",
-                "operationId": "v1RetrieveModiferList",
+                "operationId": "v1RetrieveModifierList",
                 "description": "Provides the details for a single modifier list.",
                 "parameters": [{
                     "name": "location_id",
