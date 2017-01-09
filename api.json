@@ -3322,7 +3322,7 @@
         "/v2/locations/{location_id}/transactions": {
             "post": {
                 "tags": [
-                    "Transaction"
+                    "Transactions"
                 ],
                 "summary": "Charge",
                 "operationId": "Charge",
@@ -3416,7 +3416,7 @@
         "/v2/locations/{location_id}/transactions/{transaction_id}/refund": {
             "post": {
                 "tags": [
-                    "Refund"
+                    "Transactions"
                 ],
                 "summary": "CreateRefund",
                 "operationId": "CreateRefund",
@@ -3460,7 +3460,7 @@
         "/v2/locations/{location_id}/refunds": {
             "get": {
                 "tags": [
-                    "Refund"
+                    "Transactions"
                 ],
                 "summary": "ListRefunds",
                 "operationId": "ListRefunds",
@@ -3541,7 +3541,7 @@
         "/v2/customers": {
             "post": {
                 "tags": [
-                    "Customer"
+                    "Customers"
                 ],
                 "summary": "CreateCustomer",
                 "operationId": "CreateCustomer",
@@ -3601,7 +3601,7 @@
         "/v2/customers/{customer_id}": {
             "put": {
                 "tags": [
-                    "Customer"
+                    "Customers"
                 ],
                 "summary": "UpdateCustomer",
                 "operationId": "UpdateCustomer",
@@ -3695,7 +3695,7 @@
         "/v2/customers/{customer_id}/cards": {
             "post": {
                 "tags": [
-                    "Customer.Card"
+                    "Customers"
                 ],
                 "summary": "CreateCustomerCard",
                 "operationId": "CreateCustomerCard",
@@ -3733,7 +3733,7 @@
         "/v2/customers/{customer_id}/cards/{card_id}": {
             "delete": {
                 "tags": [
-                    "Customer.Card"
+                    "Customers"
                 ],
                 "summary": "DeleteCustomerCard",
                 "operationId": "DeleteCustomerCard",
@@ -3769,7 +3769,7 @@
         "/v2/locations/{location_id}/transactions/{transaction_id}/capture": {
             "post": {
                 "tags": [
-                    "Transaction"
+                    "Transactions"
                 ],
                 "summary": "CaptureTransaction",
                 "operationId": "CaptureTransaction",
@@ -3805,7 +3805,7 @@
         "/v2/locations/{location_id}/transactions/{transaction_id}/void": {
             "post": {
                 "tags": [
-                    "Transaction"
+                    "Transactions"
                 ],
                 "summary": "VoidTransaction",
                 "operationId": "VoidTransaction",
@@ -3841,7 +3841,7 @@
         "/v2/locations/{location_id}/transactions/{transaction_id}": {
             "get": {
                 "tags": [
-                    "Transaction"
+                    "Transactions"
                 ],
                 "summary": "RetrieveTransaction",
                 "operationId": "RetrieveTransaction",
