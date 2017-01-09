@@ -1941,7 +1941,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1ItemInventoryEntry"
+                                "$ref": "#/definitions/v1InventoryEntry"
                             }
                         }
                     }
@@ -1991,7 +1991,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemInventoryEntry"
+                            "$ref": "#/definitions/v1InventoryEntry"
                         }
                     }
                 }
@@ -2017,7 +2017,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ItemModifierList"
+                        "$ref": "#/definitions/v1ModiferList"
                     }
                 }],
                 "security": [{
@@ -2034,7 +2034,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierList"
+                            "$ref": "#/definitions/v1ModiferList"
                         }
                     }
                 }
@@ -2069,7 +2069,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1ItemModifierList"
+                                "$ref": "#/definitions/v1ModiferList"
                             }
                         }
                     }
@@ -2111,7 +2111,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierList"
+                            "$ref": "#/definitions/v1ModiferList"
                         }
                     }
                 }
@@ -2158,7 +2158,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierList"
+                            "$ref": "#/definitions/v1ModiferList"
                         }
                     }
                 }
@@ -2197,7 +2197,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierList"
+                            "$ref": "#/definitions/v1ModiferList"
                         }
                     }
                 }
@@ -2321,7 +2321,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ItemModifierOption"
+                        "$ref": "#/definitions/v1ModiferOption"
                     }
                 }],
                 "security": [{
@@ -2338,7 +2338,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierOption"
+                            "$ref": "#/definitions/v1ModiferOption"
                         }
                     }
                 }
@@ -2376,7 +2376,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ItemModifierOption"
+                        "$ref": "#/definitions/v1ModiferOption"
                     }
                 }],
                 "security": [{
@@ -2393,7 +2393,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierOption"
+                            "$ref": "#/definitions/v1ModiferOption"
                         }
                     }
                 }
@@ -2438,7 +2438,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemModifierOption"
+                            "$ref": "#/definitions/v1ModiferOption"
                         }
                     }
                 }
@@ -7637,7 +7637,7 @@
                 }
             }
         },
-        "v1ItemModifierList": {
+        "v1ModiferList": {
             "type": "object",
             "properties": {
                 "id": {
@@ -7659,13 +7659,13 @@
                 "modifier_options": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/v1ItemModifierOption"
+                        "$ref": "#/definitions/v1ModiferOption"
                     },
                     "description": "The options included in the modifier list."
                 }
             }
         },
-        "v1ItemModifierOption": {
+        "v1ModiferOption": {
             "type": "object",
             "properties": {
                 "id": {
@@ -7720,7 +7720,7 @@
                 }
             }
         },
-        "v1ItemInventoryEntry": {
+        "v1InventoryEntry": {
             "type": "object",
             "properties": {
                 "variation_id": {
