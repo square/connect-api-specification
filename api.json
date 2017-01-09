@@ -2301,7 +2301,7 @@
                     "Items"
                 ],
                 "summary": "Creates an item modifier option and adds it to a modifier list.",
-                "operationId": "v1CreateModifierListOption",
+                "operationId": "v1CreateModifierOption",
                 "description": "Creates an item modifier option and adds it to a modifier list.",
                 "parameters": [{
                     "name": "location_id",
@@ -2350,7 +2350,7 @@
                     "Items"
                 ],
                 "summary": "Modifies the details of an existing item modifier option.",
-                "operationId": "v1UpdateModifierListOption",
+                "operationId": "v1UpdateModifierOption",
                 "description": "Modifies the details of an existing item modifier option.",
                 "parameters": [{
                     "name": "location_id",
