@@ -3358,7 +3358,7 @@
             },
             "get": {
                 "tags": [
-                    "Transaction"
+                    "Transactions"
                 ],
                 "summary": "ListTransactions",
                 "operationId": "ListTransactions",
@@ -3571,7 +3571,7 @@
             },
             "get": {
                 "tags": [
-                    "Customer"
+                    "Customers"
                 ],
                 "summary": "ListCustomers",
                 "operationId": "ListCustomers",
@@ -3637,7 +3637,7 @@
             },
             "get": {
                 "tags": [
-                    "Customer"
+                    "Customers"
                 ],
                 "summary": "RetrieveCustomer",
                 "operationId": "RetrieveCustomer",
@@ -3665,7 +3665,7 @@
             },
             "delete": {
                 "tags": [
-                    "Customer"
+                    "Customers"
                 ],
                 "summary": "DeleteCustomer",
                 "operationId": "DeleteCustomer",
