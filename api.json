@@ -2168,7 +2168,7 @@
                     "Items"
                 ],
                 "summary": "Deletes an existing item modifier list and all modifier options associated with it.",
-                "operationId": "v1DeleteModiferList",
+                "operationId": "v1DeleteModifierList",
                 "description": "Deletes an existing item modifier list and all modifier options associated with it.",
                 "parameters": [{
                     "name": "location_id",
@@ -2209,7 +2209,7 @@
                     "Items"
                 ],
                 "summary": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
-                "operationId": "v1ApplyModiferList",
+                "operationId": "v1ApplyModifierList",
                 "description": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
                 "parameters": [{
                     "name": "location_id",
@@ -2254,7 +2254,7 @@
                     "Items"
                 ],
                 "summary": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
-                "operationId": "v1RemoveModiferList",
+                "operationId": "v1RemoveModifierList",
                 "description": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
                 "parameters": [{
                     "name": "location_id",
@@ -2321,7 +2321,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ModiferOption"
+                        "$ref": "#/definitions/v1ModifierOption"
                     }
                 }],
                 "security": [{
@@ -2338,7 +2338,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferOption"
+                            "$ref": "#/definitions/v1ModifierOption"
                         }
                     }
                 }
@@ -2376,7 +2376,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ModiferOption"
+                        "$ref": "#/definitions/v1ModifierOption"
                     }
                 }],
                 "security": [{
@@ -2393,7 +2393,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferOption"
+                            "$ref": "#/definitions/v1ModifierOption"
                         }
                     }
                 }
@@ -2403,7 +2403,7 @@
                     "Items"
                 ],
                 "summary": "Deletes an existing item modifier option from a modifier list.",
-                "operationId": "v1DeleteModiferListOption",
+                "operationId": "v1DeleteModifierOption",
                 "description": "Deletes an existing item modifier option from a modifier list.",
                 "parameters": [{
                     "name": "location_id",
@@ -2438,7 +2438,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ModiferOption"
+                            "$ref": "#/definitions/v1ModifierOption"
                         }
                     }
                 }
@@ -7659,13 +7659,13 @@
                 "modifier_options": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/v1ModiferOption"
+                        "$ref": "#/definitions/v1ModifierOption"
                     },
                     "description": "The options included in the modifier list."
                 }
             }
         },
-        "v1ModiferOption": {
+        "v1ModifierOption": {
             "type": "object",
             "properties": {
                 "id": {
