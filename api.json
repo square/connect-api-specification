@@ -202,7 +202,7 @@
                     "Employees"
                 ],
                 "summary": "Creates an employee for a business.",
-                "operationId": "CreateEmployee",
+                "operationId": "v1CreateEmployee",
                 "description": "Creates an employee for a business.",
                 "parameters": [{
                     "name": "body",
@@ -210,7 +210,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/Employee"
+                        "$ref": "#/definitions/v1Employee"
                     }
                 }],
                 "security": [{
@@ -227,7 +227,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Employee"
+                            "$ref": "#/definitions/v1Employee"
                         }
                     }
                 }
@@ -237,7 +237,7 @@
                     "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employees.",
-                "operationId": "ListEmployees",
+                "operationId": "v1ListEmployees",
                 "description": "Provides summary information for all of a business's employees.",
                 "parameters": [{
                     "name": "order",
@@ -314,7 +314,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Employee"
+                                "$ref": "#/definitions/v1Employee"
                             }
                         }
                     }
@@ -327,7 +327,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for a single employee.",
-                "operationId": "RetrieveEmployee",
+                "operationId": "v1RetrieveEmployee",
                 "description": "Provides the details for a single employee.",
                 "parameters": [{
                     "name": "employee_id",
@@ -350,7 +350,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Employee"
+                            "$ref": "#/definitions/v1Employee"
                         }
                     }
                 }
@@ -360,7 +360,7 @@
                     "Employees"
                 ],
                 "summary": "v1UpdateEmployee",
-                "operationId": "UpdateEmployee",
+                "operationId": "v1UpdateEmployee",
                 "parameters": [{
                     "name": "employee_id",
                     "in": "path",
@@ -373,7 +373,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/Employee"
+                        "$ref": "#/definitions/v1Employee"
                     }
                 }],
                 "security": [{
@@ -390,7 +390,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Employee"
+                            "$ref": "#/definitions/v1Employee"
                         }
                     }
                 }
@@ -402,7 +402,7 @@
                     "Employees"
                 ],
                 "summary": "Creates an employee role you can then assign to employees.",
-                "operationId": "CreateEmployeeRole",
+                "operationId": "v1CreateEmployeeRole",
                 "description": "Creates an employee role you can then assign to employees.",
                 "parameters": [{
                     "name": "EmployeeRole",
@@ -410,7 +410,7 @@
                     "required": true,
                     "description": "An EmployeeRole object with a name and permissions, and an optional owner flag.",
                     "schema": {
-                        "$ref": "#/definitions/EmployeeRole"
+                        "$ref": "#/definitions/v1EmployeeRole"
                     }
                 }],
                 "security": [{
@@ -427,7 +427,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/EmployeeRole"
+                            "$ref": "#/definitions/v1EmployeeRole"
                         }
                     }
                 }
@@ -437,7 +437,7 @@
                     "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employee roles.",
-                "operationId": "ListEmployeeRoles",
+                "operationId": "v1ListEmployeeRoles",
                 "description": "Provides summary information for all of a business's employee roles.",
                 "parameters": [{
                     "name": "order",
@@ -482,7 +482,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/EmployeeRole"
+                                "$ref": "#/definitions/v1EmployeeRole"
                             }
                         }
                     }
@@ -495,7 +495,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for a single employee role.",
-                "operationId": "RetrieveEmployeeRole",
+                "operationId": "v1RetrieveEmployeeRole",
                 "description": "Provides the details for a single employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -518,7 +518,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/EmployeeRole"
+                            "$ref": "#/definitions/v1EmployeeRole"
                         }
                     }
                 }
@@ -528,7 +528,7 @@
                     "Employees"
                 ],
                 "summary": "Modifies the details of an employee role.",
-                "operationId": "UpdateEmployeeRole",
+                "operationId": "v1UpdateEmployeeRole",
                 "description": "Modifies the details of an employee role.",
                 "parameters": [{
                     "name": "role_id",
@@ -542,7 +542,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/EmployeeRole"
+                        "$ref": "#/definitions/v1EmployeeRole"
                     }
                 }],
                 "security": [{
@@ -559,7 +559,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/EmployeeRole"
+                            "$ref": "#/definitions/v1EmployeeRole"
                         }
                     }
                 }
@@ -571,7 +571,7 @@
                     "Employees"
                 ],
                 "summary": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
-                "operationId": "CreateTimecard",
+                "operationId": "v1CreateTimecard",
                 "description": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
                 "parameters": [{
                     "name": "body",
@@ -579,7 +579,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/Timecard"
+                        "$ref": "#/definitions/v1Timecard"
                     }
                 }],
                 "security": [{
@@ -596,7 +596,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Timecard"
+                            "$ref": "#/definitions/v1Timecard"
                         }
                     }
                 }
@@ -606,7 +606,7 @@
                     "Employees"
                 ],
                 "summary": "Provides summary information for all of a business's employee timecards.",
-                "operationId": "ListTimecards",
+                "operationId": "v1ListTimecards",
                 "description": "Provides summary information for all of a business's employee timecards.",
                 "parameters": [{
                     "name": "order",
@@ -700,7 +700,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Timecard"
+                                "$ref": "#/definitions/v1Timecard"
                             }
                         }
                     }
@@ -713,7 +713,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for a single timecard.",
-                "operationId": "RetrieveTimecard",
+                "operationId": "v1RetrieveTimecard",
                 "description": "Provides the details for a single timecard.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -736,7 +736,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Timecard"
+                            "$ref": "#/definitions/v1Timecard"
                         }
                     }
                 }
@@ -746,7 +746,7 @@
                     "Employees"
                 ],
                 "summary": "Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.",
-                "operationId": "UpdateTimecard",
+                "operationId": "v1UpdateTimecard",
                 "description": "Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -760,7 +760,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/Timecard"
+                        "$ref": "#/definitions/v1Timecard"
                     }
                 }],
                 "security": [{
@@ -777,7 +777,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/Timecard"
+                            "$ref": "#/definitions/v1Timecard"
                         }
                     }
                 }
@@ -787,7 +787,7 @@
                     "Employees"
                 ],
                 "summary": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
-                "operationId": "DeleteTimecard",
+                "operationId": "v1DeleteTimecard",
                 "description": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -822,7 +822,7 @@
                     "Employees"
                 ],
                 "summary": "Provides summary information for all events associated with a particular timecard.",
-                "operationId": "ListTimecardEvents",
+                "operationId": "v1ListTimecardEvents",
                 "description": "Provides summary information for all events associated with a particular timecard.",
                 "parameters": [{
                     "name": "timecard_id",
@@ -852,7 +852,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/TimecardEvent"
+                                "$ref": "#/definitions/v1TimecardEvent"
                             }
                         }
                     }
@@ -865,7 +865,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
-                "operationId": "ListCashDrawerShifts",
+                "operationId": "v1ListCashDrawerShifts",
                 "description": "Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
                 "parameters": [{
                     "name": "location_id",
@@ -917,7 +917,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/CashDrawerShift"
+                                "$ref": "#/definitions/v1CashDrawerShift"
                             }
                         }
                     }
@@ -930,7 +930,7 @@
                     "Employees"
                 ],
                 "summary": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
-                "operationId": "RetrieveCashDrawerShift",
+                "operationId": "v1RetrieveCashDrawerShift",
                 "description": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
                 "parameters": [{
                     "name": "location_id",
@@ -959,7 +959,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/CashDrawerShift"
+                            "$ref": "#/definitions/v1CashDrawerShift"
                         }
                     }
                 }
@@ -5715,7 +5715,7 @@
             },
             "description": "Defines the fields that are included in the response body of\na request to the **RetrieveBusiness** endpoint."
         },
-        "Employee": {
+        "v1Employee": {
             "type": "object",
             "required": [
                 "first_name",
@@ -5785,7 +5785,7 @@
                 }
             }
         },
-        "EmployeeRole": {
+        "v1EmployeeRole": {
             "type": "object",
             "required": [
                 "name",
@@ -5837,7 +5837,7 @@
                 }
             }
         },
-        "Timecard": {
+        "v1Timecard": {
             "type": "object",
             "required": [
                 "employee_id"
@@ -5890,7 +5890,7 @@
                 }
             }
         },
-        "TimecardEvent": {
+        "v1TimecardEvent": {
             "type": "object",
             "externalDocs": {
                 "description": "Read the offical documentation here:",
@@ -5942,7 +5942,7 @@
                 }
             }
         },
-        "CashDrawerEvent": {
+        "v1CashDrawerEvent": {
             "type": "object",
             "externalDocs": {
                 "description": "Read the offical documentation here:",
@@ -5986,7 +5986,7 @@
                 }
             }
         },
-        "CashDrawerShift": {
+        "v1CashDrawerShift": {
             "type": "object",
             "externalDocs": {
                 "description": "Read the offical documentation here:",
@@ -6076,7 +6076,7 @@
                 "events": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/CashDrawerEvent"
+                        "$ref": "#/definitions/v1CashDrawerEvent"
                     },
                     "description": "All of the events (payments, refunds, and so on) that involved the cash drawer during the shift."
                 }
