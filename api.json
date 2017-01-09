@@ -1546,7 +1546,7 @@
         "/v1/{location_id}/items": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates an item and at least one variation for it.",
                 "operationId": "v1CreateItem",
@@ -1563,7 +1563,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1CreateItemRequest"
+                        "$ref": "#/definitions/v1Item"
                     }
                 }],
                 "security": [{
@@ -1587,7 +1587,7 @@
             },
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Provides summary information for all of a location's items.",
                 "operationId": "v1ListItems",
@@ -1630,7 +1630,7 @@
         "/v1/{location_id}/items/{item_id}": {
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Provides the details for a single item, including associated modifier lists and fees.",
                 "operationId": "v1RetrieveItem",
@@ -1669,7 +1669,7 @@
             },
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the core details of an existing item.",
                 "operationId": "v1UpdateItem",
@@ -1692,7 +1692,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1UpdateItemRequest"
+                        "$ref": "#/definitions/v1Item"
                     }
                 }],
                 "security": [{
@@ -1716,7 +1716,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing item and all item variations associated with it.",
                 "operationId": "v1DeleteItem",
@@ -1757,7 +1757,7 @@
         "/v1/{location_id}/items/{item_id}/variations": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates an item variation for an existing item.",
                 "operationId": "v1CreateVariation",
@@ -1780,7 +1780,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1CreateItemVariation"
+                        "$ref": "#/definitions/v1Variation"
                     }
                 }],
                 "security": [{
@@ -1797,7 +1797,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemVariation"
+                            "$ref": "#/definitions/v1Variation"
                         }
                     }
                 }
@@ -1806,10 +1806,10 @@
         "/v1/{location_id}/items/{item_id}/variations/{variation_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of an existing item variation.",
-                "operationId": "v1UpdateVaration",
+                "operationId": "v1UpdateVariation",
                 "description": "Modifies the details of an existing item variation.",
                 "parameters": [{
                     "name": "location_id",
@@ -1835,7 +1835,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1UpdateItemVariation"
+                        "$ref": "#/definitions/v1Variation"
                     }
                 }],
                 "security": [{
@@ -1852,17 +1852,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemVariation"
+                            "$ref": "#/definitions/v1Variation"
                         }
                     }
                 }
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing item variation from an item.",
-                "operationId": "v1DeleteVaration",
+                "operationId": "v1DeleteVariation",
                 "description": "Deletes an existing item variation from an item.",
                 "parameters": [{
                     "name": "location_id",
@@ -1897,7 +1897,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemVariation"
+                            "$ref": "#/definitions/v1Variation"
                         }
                     }
                 }
@@ -1906,7 +1906,7 @@
         "/v1/{location_id}/inventory": {
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Provides inventory information for all of a merchant's inventory-enabled item variations.",
                 "operationId": "v1ListInventory",
@@ -1951,7 +1951,7 @@
         "/v1/{location_id}/inventory/{variation_id}": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Adjusts an item variation's current available inventory.",
                 "operationId": "v1AdjustInventory",
@@ -2000,7 +2000,7 @@
         "/v1/{location_id}/modifier-lists": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates an item modifier list and at least one modifier option for it.",
                 "operationId": "v1CreateModifierList",
@@ -2041,7 +2041,7 @@
             },
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Lists all of a location's modifier lists.",
                 "operationId": "v1ListModifierLists",
@@ -2079,7 +2079,7 @@
         "/v1/{location_id}/modifier-lists/{modifier_list_id}": {
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Provides the details for a single modifier list.",
                 "operationId": "v1RetrieveModiferList",
@@ -2118,7 +2118,7 @@
             },
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of an existing item modifier list.",
                 "operationId": "v1UpdateModifierList",
@@ -2165,7 +2165,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing item modifier list and all modifier options associated with it.",
                 "operationId": "v1DeleteModiferList",
@@ -2206,7 +2206,7 @@
         "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
                 "operationId": "v1ApplyModiferList",
@@ -2251,7 +2251,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
                 "operationId": "v1RemoveModiferList",
@@ -2298,7 +2298,7 @@
         "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates an item modifier option and adds it to a modifier list.",
                 "operationId": "v1CreateModifierListOption",
@@ -2347,7 +2347,7 @@
         "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of an existing item modifier option.",
                 "operationId": "v1UpdateModifierListOption",
@@ -2400,7 +2400,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing item modifier option from a modifier list.",
                 "operationId": "v1DeleteModiferListOption",
@@ -2447,7 +2447,7 @@
         "/v1/{location_id}/categories": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates an item category.",
                 "operationId": "v1CreateCategory",
@@ -2464,7 +2464,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ItemCategory"
+                        "$ref": "#/definitions/v1Category"
                     }
                 }],
                 "security": [{
@@ -2481,17 +2481,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemCategory"
+                            "$ref": "#/definitions/v1Category"
                         }
                     }
                 }
             },
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Lists all of a location's item categories.",
-                "operationId": "v1ListItemCategories",
+                "operationId": "v1ListCategories",
                 "description": "Lists all of a location's item categories.",
                 "parameters": [{
                     "name": "location_id",
@@ -2521,7 +2521,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1ItemCategory"
+                                "$ref": "#/definitions/v1Category"
                             }
                         }
                     }
@@ -2531,10 +2531,10 @@
         "/v1/{location_id}/categories/{category_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of an existing item category.",
-                "operationId": "v1UpdateItemCategory",
+                "operationId": "v1UpdateCategory",
                 "description": "Modifies the details of an existing item category.",
                 "parameters": [{
                     "name": "location_id",
@@ -2554,7 +2554,7 @@
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/v1ItemCategory"
+                        "$ref": "#/definitions/v1Category"
                     }
                 }],
                 "security": [{
@@ -2571,17 +2571,17 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemCategory"
+                            "$ref": "#/definitions/v1Category"
                         }
                     }
                 }
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing item category.",
-                "operationId": "v1DeleteItemCategory",
+                "operationId": "v1DeleteCategory",
                 "description": "Deletes an existing item category.",
                 "parameters": [{
                     "name": "location_id",
@@ -2610,7 +2610,7 @@
                         "description": "Success",
                         "headers": {},
                         "schema": {
-                            "$ref": "#/definitions/v1ItemCategory"
+                            "$ref": "#/definitions/v1Category"
                         }
                     }
                 }
@@ -2619,7 +2619,7 @@
         "/v1/{location_id}/discounts": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates a discount.",
                 "operationId": "v1CreateDiscount",
@@ -2660,7 +2660,7 @@
             },
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Lists all of a location's discounts.",
                 "operationId": "v1ListDiscounts",
@@ -2703,7 +2703,7 @@
         "/v1/{location_id}/discounts/{discount_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of an existing discount.",
                 "operationId": "v1UpdateItemDiscount",
@@ -2750,7 +2750,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing discount.",
                 "operationId": "v1DeleteItemDiscount",
@@ -2791,7 +2791,7 @@
         "/v1/{location_id}/fees": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates a fee (tax).",
                 "operationId": "v1CreateFee",
@@ -2832,7 +2832,7 @@
             },
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Lists all of a location's fees (taxes).",
                 "operationId": "v1ListFees",
@@ -2875,7 +2875,7 @@
         "/v1/{location_id}/fees/{fee_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of an existing fee (tax).",
                 "operationId": "v1UpdateFee",
@@ -2922,7 +2922,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing fee (tax).",
                 "operationId": "v1DeleteFee",
@@ -2963,7 +2963,7 @@
         "/v1/{location_id}/items/{item_id}/fees/{fee_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.",
                 "operationId": "v1ApplyFee",
@@ -3008,7 +3008,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.",
                 "operationId": "v1RemoveFee",
@@ -3055,7 +3055,7 @@
         "/v1/{location_id}/pages": {
             "post": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Creates a Favorites page in Square Register.",
                 "operationId": "v1CreatePage",
@@ -3096,7 +3096,7 @@
             },
             "get": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Lists all of a location's Favorites pages in Square Register.",
                 "operationId": "v1ListPages",
@@ -3134,7 +3134,7 @@
         "/v1/{location_id}/pages/{page_id}": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies the details of a Favorites page in Square Register.",
                 "operationId": "v1UpdatePage",
@@ -3181,7 +3181,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes an existing Favorites page and all of its cells.",
                 "operationId": "v1DeletePage",
@@ -3222,7 +3222,7 @@
         "/v1/{location_id}/pages/{page_id}/cells": {
             "put": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Modifies a cell of a Favorites page in Square Register.",
                 "operationId": "v1UpdatePageCell",
@@ -3269,7 +3269,7 @@
             },
             "delete": {
                 "tags": [
-                    "v1Items"
+                    "Items"
                 ],
                 "summary": "Deletes a cell from a Favorites page in Square Register.",
                 "operationId": "v1DeletePageCell",
@@ -7423,7 +7423,7 @@
                 }
             }
         },
-        "v1ItemVariation": {
+        "v1Variation": {
             "type": "object",
             "properties": {
                 "id": {
@@ -7544,20 +7544,20 @@
                     "description": "The item's master image, if any."
                 },
                 "category": {
-                    "$ref": "#/definitions/v1ItemCategory",
+                    "$ref": "#/definitions/v1Category",
                     "description": "The category the item belongs to, if any."
                 },
                 "variations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/v1ItemVariation"
+                        "$ref": "#/definitions/v1Variation"
                     },
                     "description": "The item's variations. You must specify at least one variation."
                 },
                 "modifier_lists": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/v1ItemVariation"
+                        "$ref": "#/definitions/v1Variation"
                     },
                     "description": "The modifier lists that apply to the item, if any."
                 },
@@ -7694,7 +7694,7 @@
                 }
             }
         },
-        "v1ItemCategory": {
+        "v1Category": {
             "type": "object",
             "properties": {
                 "id": {
@@ -7943,227 +7943,6 @@
                 "canceled_note": {
                     "type": "string",
                     "description": "A merchant-specified note about the canceling of the order. Only valid if action is CANCEL."
-                }
-            }
-        },
-        "v1CreateItemRequest": {
-            "type": "object",
-            "required": [
-                "name",
-                "variations"
-            ],
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "The item's ID. Must be unique among all entity IDs ever provided on behalf of the merchant. You can never reuse an ID. This value can include alphanumeric characters, dashes (-), and underscores (_)."
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The item's name."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The item's description."
-                },
-                "category_id": {
-                    "type": "string",
-                    "description": "The ID of the item's category, if any."
-                },
-                "color": {
-                    "type": "string",
-                    "enum": [
-                        "9da2a6",
-                        "4ab200",
-                        "0b8000",
-                        "2952cc",
-                        "a82ee5",
-                        "e5457a",
-                        "b21212",
-                        "593c00",
-                        "e5BF00"
-                    ],
-                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
-                },
-                "abbreviation": {
-                    "type": "string",
-                    "description": "The text of the item's display label in Square Register. Only up to the first five characters of the string are used."
-                },
-                "visibility": {
-                    "type": "string",
-                    "enum": [
-                        "PUBLIC",
-                        "PRIVATE"
-                    ],
-                    "description": "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE."
-                },
-                "available_online": {
-                    "type": "string",
-                    "description": "If true, the item can be added to shipping orders from the merchant's online store."
-                },
-                "available_for_pickup": {
-                    "type": "string",
-                    "description": "If true, the item can be added to pickup orders from the merchant's online store."
-                },
-                "variations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/v1ItemVariation"
-                    },
-                    "description": "The item's variations. You must specify at least one variation."
-                }
-            }
-        },
-        "v1UpdateItemRequest": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The item's name."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The item's description."
-                },
-                "category_id": {
-                    "type": "string",
-                    "description": "The ID of the item's category, if any."
-                },
-                "color": {
-                    "type": "string",
-                    "enum": [
-                        "9da2a6",
-                        "4ab200",
-                        "0b8000",
-                        "2952cc",
-                        "a82ee5",
-                        "e5457a",
-                        "b21212",
-                        "593c00",
-                        "e5BF00"
-                    ],
-                    "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND)."
-                },
-                "abbreviation": {
-                    "type": "string",
-                    "description": "The text of the item's display label in Square Register. Only up to the first five characters of the string are used."
-                },
-                "visibility": {
-                    "type": "string",
-                    "enum": [
-                        "PUBLIC",
-                        "PRIVATE"
-                    ],
-                    "description": "Indicates whether the item is viewable from the merchant's online store (PUBLIC) or PRIVATE."
-                },
-                "available_online": {
-                    "type": "string",
-                    "description": "If true, the item can be added to shipping orders from the merchant's online store."
-                },
-                "available_for_pickup": {
-                    "type": "string",
-                    "description": "If true, the item can be added to pickup orders from the merchant's online store."
-                }
-            }
-        },
-        "v1CreateItemVariation": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "The item variation's unique ID."
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The item variation's name."
-                },
-                "pricing_type": {
-                    "type": "string",
-                    "enum": [
-                        "FIXED_PRICING",
-                        "VARIABLE_PRICING"
-                    ],
-                    "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
-                },
-                "price_money": {
-                    "$ref": "#/definitions/v1Money",
-                    "description": "The item variation's price, if any."
-                },
-                "sku": {
-                    "type": "string",
-                    "description": "The item variation's SKU, if any."
-                },
-                "track_inventory": {
-                    "type": "boolean",
-                    "description": "If true, inventory tracking is active for the variation."
-                },
-                "inventory_alert_type": {
-                    "type": "string",
-                    "enum": [
-                        "LOW_QUANTITY",
-                        "NONE",
-                        "INVESTMENT",
-                        "LOAN",
-                        "SAVINGS",
-                        "OTHER"
-                    ],
-                    "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold."
-                },
-                "inventory_alert_threshold": {
-                    "type": "integer",
-                    "description": "If the inventory quantity for the variation is less than or equal to this value and inventory_alert_type is LOW_QUANTITY, the variation displays an alert in the merchant dashboard."
-                },
-                "user_data": {
-                    "type": "boolean",
-                    "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
-                }
-            }
-        },
-        "v1UpdateItemVariation": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The item variation's name."
-                },
-                "pricing_type": {
-                    "type": "string",
-                    "enum": [
-                        "FIXED_PRICING",
-                        "VARIABLE_PRICING"
-                    ],
-                    "description": "Indicates whether the item variation's price is fixed or determined at the time of sale."
-                },
-                "price_money": {
-                    "$ref": "#/definitions/v1Money",
-                    "description": "The item variation's price, if any."
-                },
-                "sku": {
-                    "type": "string",
-                    "description": "The item variation's SKU, if any."
-                },
-                "track_inventory": {
-                    "type": "boolean",
-                    "description": "If true, inventory tracking is active for the variation."
-                },
-                "inventory_alert_type": {
-                    "type": "string",
-                    "enum": [
-                        "LOW_QUANTITY",
-                        "NONE",
-                        "INVESTMENT",
-                        "LOAN",
-                        "SAVINGS",
-                        "OTHER"
-                    ],
-                    "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold."
-                },
-                "inventory_alert_threshold": {
-                    "type": "integer",
-                    "description": "If the inventory quantity for the variation is less than or equal to this value and inventory_alert_type is LOW_QUANTITY, the variation displays an alert in the merchant dashboard."
-                },
-                "user_data": {
-                    "type": "boolean",
-                    "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
                 }
             }
         },
