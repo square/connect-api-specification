@@ -67,7 +67,7 @@
                     "OAuth"
                 ],
                 "summary": "Exchange an Authorization code for an Access Token ",
-                "operationId": "GetAccessToken",
+                "operationId": "GetToken",
                 "description": "Exchange an Authorization code for an Access Token ",
                 "parameters": [{
                     "name": "AccessTokenRequest",
