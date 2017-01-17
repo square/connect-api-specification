@@ -70,12 +70,12 @@
                 "operationId": "GetToken",
                 "description": "Exchange an Authorization code for an Access Token ",
                 "parameters": [{
-                    "name": "AccessTokenRequest",
+                    "name": "OauthObtainTokenRequest",
                     "in": "body",
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/AccessTokenRequest"
+                        "$ref": "#/definitions/OauthObtainTokenRequest"
                     }
                 }],
                 "security": [],
@@ -83,12 +83,12 @@
                     "description": "Read the offical documentation here:",
                     "url": "https://docs.connect.squareup.com/api/oauth/#exchangecodefortoken"
                 },
-                "deprecated": true,
+                "deprecated": false,
                 "responses": {
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "$ref": "#/definitions/AccessTokenResponse"
+                            "$ref": "#/definitions/OauthAccessToken"
                         },
                         "headers": {}
                     }
@@ -110,25 +110,65 @@
                     "in": "path",
                     "required": true
                 }, {
-                    "name": "AccessTokenRenewRequest",
+                    "name": "OauthRenewRequest",
                     "in": "body",
                     "required": true,
                     "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
                     "schema": {
-                        "$ref": "#/definitions/AccessTokenRenewRequest"
+                        "$ref": "#/definitions/OauthRenewRequest"
                     }
                 }],
-                "security": [],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["MERCHANT_PROFILE_READ"]
+                }],
                 "externalDocs": {
                     "description": "Read the offical documentation here:",
                     "url": "https://docs.connect.squareup.com/api/oauth/#oauthflowrenewtoken"
                 },
-                "deprecated": true,
+                "deprecated": false,
                 "responses": {
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "$ref": "#/definitions/AccessTokenResponse"
+                            "$ref": "#/definitions/OauthAccessToken"
+                        },
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/oauth2/revoke": {
+            "post": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Revoke your Access Token.",
+                "operationId": "RenewToken",
+                "description": "You can use this endpoint to revoke an access token generated with the OAuth flow.",
+                "parameters": [{
+                    "name": "OauthRevokeRequest",
+                    "in": "body",
+                    "required": true,
+                    "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+                    "schema": {
+                        "$ref": "#/definitions/OauthRevokeRequest"
+                    }
+                }],
+                "security": [{
+                    "personal_access_token": [],
+                    "oauth2": ["MERCHANT_PROFILE_READ"]
+                }],
+                "externalDocs": {
+                    "description": "Read the offical documentation here:",
+                    "url": "https://docs.connect.squareup.com/api/oauth/#post-revoke"
+                },
+                "deprecated": false,
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/OauthRevokeResponse"
                         },
                         "headers": {}
                     }
@@ -5494,7 +5534,7 @@
             },
             "description": "Defines the fields that are included in the response body of\na request to the **CaptureTransaction** endpoint."
         },
-        "AccessTokenRequest": {
+        "OauthObtainTokenRequest": {
             "type": "object",
             "required": [
                 "client_id",
@@ -5516,7 +5556,7 @@
                 }
             }
         },
-        "AccessTokenRenewRequest": {
+        "OauthRenewRequest": {
             "type": "object",
             "required": [
                 "access_token"
@@ -5528,7 +5568,39 @@
                 }
             }
         },
-        "AccessTokenResponse": {
+        "OauthRevokeRequest": {
+            "type": "object",
+            "required": [
+                "access_token"
+            ],
+            "properties": {
+                "client_id": {
+                    "type": "string",
+                    "description": "Your Application's Client ID."
+                },
+                "access_token": {
+                    "type": "string",
+                    "description": "Your expiring Access Token"
+                },
+                "merchant_id": {
+                    "type": "string",
+                    "description": "The ID of your business."
+                }
+            }
+        },
+        "OauthRevokeResponse": {
+            "type": "object",
+            "required": [
+                "success"
+            ],
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "description": "if true, your request was successful"
+                }
+            }
+        },
+        "OauthAccessToken": {
             "type": "object",
             "required": [
                 "access_token",
