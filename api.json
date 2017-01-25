@@ -2403,13 +2403,13 @@
           "type": "string",
           "description": "The ID of the tender to refund.\n\nA [`Transaction`](#type-transaction) has one or more `tenders` (i.e., methods\nof payment) associated with it, and you refund each tender separately with\nthe Connect API."
         },
-        "amount_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The amount of money to refund.\n\nNote that you specify the amount in the\n__smallest denomination of the applicable currency__. For example, US dollar\namounts are specified in cents. See\n[Working with monetary amounts](#workingwithmonetaryamounts) for details.\n\nThis amount cannot exceed the amount that was originally charged to the\ntender that corresponds to `tender_id`."
-        },
         "reason": {
           "type": "string",
           "description": "A description of the reason for the refund.\n\nDefault value: `Refund via API`"
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money to refund.\n\nNote that you specify the amount in the\n__smallest denomination of the applicable currency__. For example, US dollar\namounts are specified in cents. See\n[Working with monetary amounts](#workingwithmonetaryamounts) for details.\n\nThis amount cannot exceed the amount that was originally charged to the\ntender that corresponds to `tender_id`."
         }
       },
       "description": "Defines the body parameters that can be included in\na request to the [CreateRefund](#endpoint-createrefund) endpoint.",
@@ -2529,13 +2529,13 @@
           "type": "string",
           "description": "A second ID you can set to associate the customer with an\nentity in another system."
         },
-        "preferences": {
-          "$ref": "#/definitions/CustomerPreferences",
-          "description": "The customer\u0027s preferences."
-        },
         "note": {
           "type": "string",
           "description": "A note to associate with the customer."
+        },
+        "preferences": {
+          "$ref": "#/definitions/CustomerPreferences",
+          "description": "The customer\u0027s preferences."
         },
         "groups": {
           "type": "array",
