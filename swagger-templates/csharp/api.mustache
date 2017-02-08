@@ -5,17 +5,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using {{packageName}}.Client;
-{{#hasImport}}using {{packageName}}.Model;
+{{#hasImport}}using {{packageName}}.{{modelPackage}};
 {{/hasImport}}
 
-namespace {{packageName}}.Api
+namespace {{packageName}}.{{apiPackage}}
 {
     {{#operations}}
-    /// \cond
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface I{{classname}} : IApiAccessor
+    {{>visibility}} interface {{interfacePrefix}}{{classname}} : IApiAccessor
     {
         #region Synchronous Operations
         {{#operation}}
@@ -70,12 +69,11 @@ namespace {{packageName}}.Api
         #endregion Asynchronous Operations
         {{/supportsAsync}}
     }
-    /// \endcond
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class {{classname}} : I{{classname}}
+    {{>visibility}} partial class {{classname}} : {{interfacePrefix}}{{classname}}
     {
         private {{packageName}}.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
@@ -127,7 +125,6 @@ namespace {{packageName}}.Api
             return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
         }
 
-        /// \cond
         /// <summary>
         /// Sets the base path of the API client.
         /// </summary>
@@ -137,7 +134,6 @@ namespace {{packageName}}.Api
         {
             // do nothing
         }
-        /// \endcond
 
         /// <summary>
         /// Gets or sets the configuration object
@@ -196,7 +192,6 @@ namespace {{packageName}}.Api
              return localVarResponse.Data;{{/returnType}}{{^returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{/returnType}}
         }
 
-        /// \cond
         /// <summary>
         /// {{summary}} {{notes}}
         /// </summary>
@@ -316,7 +311,6 @@ namespace {{packageName}}.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);{{/returnType}}
         }
-        /// \endcond
 
         {{#supportsAsync}}
         /// <summary>
@@ -332,7 +326,6 @@ namespace {{packageName}}.Api
 
         }
 
-        /// \cond
         /// <summary>
         /// {{summary}} {{notes}}
         /// </summary>
@@ -453,7 +446,7 @@ namespace {{packageName}}.Api
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);{{/returnType}}
         }
-        /// \endcond
+
         {{/supportsAsync}}
         {{/operation}}
     }

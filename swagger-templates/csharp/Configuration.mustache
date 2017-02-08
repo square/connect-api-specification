@@ -11,7 +11,7 @@ namespace {{packageName}}.Client
     /// <summary>
     /// Represents a set of configuration settings
     /// </summary>
-    public class Configuration
+    {{>visibility}} class Configuration
     {
         /// <summary>
         /// Initializes a new instance of the Configuration class with different settings
@@ -37,7 +37,7 @@ namespace {{packageName}}.Client
                              string tempFolderPath = null,
                              string dateTimeFormat = null,
                              int timeout = 100000,
-                             string userAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}Square-Connect-Csharp/{{packageVersion}}{{/httpUserAgent}}"
+                             string userAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}Swagger-Codegen/{{packageVersion}}/csharp{{/httpUserAgent}}"
                             )
         {
             setApiClientUsingDefault(apiClient);
@@ -158,7 +158,28 @@ namespace {{packageName}}.Client
         /// <returns></returns>
         public void AddDefaultHeader(string key, string value)
         {
-            _defaultHeaderMap.Add(key, value);
+            _defaultHeaderMap[key] = value;
+        }
+
+        /// <summary>
+        /// Add Api Key Header.
+        /// </summary>
+        /// <param name="key">Api Key name.</param>
+        /// <param name="value">Api Key value.</param>
+        /// <returns></returns>
+        public void AddApiKey(string key, string value)
+        {
+            ApiKey[key] = value;
+        }
+
+        /// <summary>
+        /// Sets the API key prefix.
+        /// </summary>
+        /// <param name="key">Api Key name.</param>
+        /// <param name="value">Api Key value.</param>
+        public void AddApiKeyPrefix(string key, string value)
+        {
+            ApiKeyPrefix[key] = value;
         }
 
         /// <summary>
@@ -213,7 +234,7 @@ namespace {{packageName}}.Client
                 return apiKeyValue;
         }
 
-        private string _tempFolderPath = Path.GetTempPath();
+        private string _tempFolderPath;
 
         /// <summary>
         /// Gets or sets the temporary folder path to store the files downloaded from the server.
@@ -221,7 +242,15 @@ namespace {{packageName}}.Client
         /// <value>Folder path.</value>
         public String TempFolderPath
         {
-            get { return _tempFolderPath; }
+            get
+            {
+                // default to Path.GetTempPath() if _tempFolderPath is not set
+                if (String.IsNullOrEmpty(_tempFolderPath))
+                {
+                    _tempFolderPath = Path.GetTempPath();
+                }
+                return _tempFolderPath;
+            }
 
             set
             {
@@ -281,7 +310,7 @@ namespace {{packageName}}.Client
         /// </summary>
         public static String ToDebugReport()
         {
-            String report = "C# SDK ({{packageName}}) Debug Report:\n";
+            String report = "C# SDK ({{{packageName}}}) Debug Report:\n";
             {{^supportsUWP}}
             report += "    OS: " + Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + Assembly
@@ -289,8 +318,8 @@ namespace {{packageName}}.Client
                      .GetReferencedAssemblies()
                      .Where(x => x.Name == "System.Core").First().Version.ToString()  + "\n";
             {{/supportsUWP}}
-            report += "    Version of the API: {{version}}\n";
-            report += "    SDK Package Version: {{packageVersion}}\n";
+            report += "    Version of the API: {{{version}}}\n";
+            report += "    SDK Package Version: {{{packageVersion}}}\n";
 
             return report;
         }
