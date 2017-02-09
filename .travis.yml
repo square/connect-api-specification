@@ -1,0 +1,18 @@
+language: java
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+  - $HOME/.m2
+
+install:
+  - . ./travis-ci/install-swagger-codegen.sh
+
+script:
+  - /bin/sh ./generate-sdks
+
+after_success:
+  - git config --global user.name "Travis CI"
+  - git config --global user.email "${TEAM_EMAIL}"
+  - /bin/sh ./travis-ci/push-csharp-sdk.sh

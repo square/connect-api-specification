@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- The identifier that must be unique within the hosting gallery -->
+        <id>Square.Connect</id>
+        <title>Square.Connect</title>
+
+        <!-- The package version number that is used when resolving dependencies -->
+        <version>{{packageVersion}}</version>
+
+        <!-- Authors contain text that appears directly on the gallery -->
+        <authors>Square</authors>
+
+        <!-- Owners are typically nuget.org identities that allow gallery
+             users to earily find other packages by the same owners.  -->
+        <owners>Square</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <developmentDependency>false</developmentDependency>
+
+        <!-- The description can be used in package manager UI. Note that the
+             nuget.org gallery uses information you add in the portal. -->
+        <description>Square Connect C# SDK</description>
+        <copyright>Copyright 2017</copyright>
+
+        <!-- Dependencies are automatically installed when the package is installed -->
+        <dependencies>
+            <dependency id="NewtonSoft.Json" version="8.0.3" />
+            <dependency id="RestSharp" version="105.1.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <!-- A readme.txt will be displayed when the package is installed -->
+        <file src="bin/Square.Connect.dll" target="lib"/>
+        <file src="bin/Square.Connect.xml" target="lib"/>
+    </files>
+</package>
