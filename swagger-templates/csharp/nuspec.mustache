@@ -14,6 +14,14 @@
         <!-- Owners are typically nuget.org identities that allow gallery
              users to earily find other packages by the same owners.  -->
         <owners>Square</owners>
+
+        <!-- License and project URLs provide links for the gallery -->
+        <licenseUrl>https://github.com/square/connect-csharp-sdk/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/square/connect-csharp-sdk</projectUrl>
+
+        <!-- The icon is used in Visual Studio's package manager UI -->
+        <iconUrl>https://avatars2.githubusercontent.com/u/82592</iconUrl>
+
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <developmentDependency>false</developmentDependency>
 
@@ -24,13 +32,15 @@
 
         <!-- Dependencies are automatically installed when the package is installed -->
         <dependencies>
-            <dependency id="NewtonSoft.Json" version="8.0.3" />
-            <dependency id="RestSharp" version="105.1.0" />
+            <group targetFramework="{{targetFrameworkNuget}}">
+                <dependency id="NewtonSoft.Json" version="8.0.3" />
+                <dependency id="RestSharp" version="105.1.0" />
+            </group>
         </dependencies>
     </metadata>
     <files>
         <!-- A readme.txt will be displayed when the package is installed -->
-        <file src="bin/Square.Connect.dll" target="lib"/>
-        <file src="bin/Square.Connect.xml" target="lib"/>
+        <file src="bin/Square.Connect.dll" target="lib/{{targetFrameworkNuget}}"/>
+        <file src="bin/Square.Connect.xml" target="lib/{{targetFrameworkNuget}}"/>
     </files>
 </package>

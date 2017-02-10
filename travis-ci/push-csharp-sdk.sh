@@ -16,8 +16,19 @@ then
     git clone git@github.com:square/connect-csharp-sdk.git
     cd connect-csharp-sdk
     git checkout -b $BRANCH_NAME
-    rm -rf *
-    cp -r ../swagger-out/csharp/* .
+
+    echo "Copying files..."
+    rm -rf docs src/Square.Connect
+    cp -r ../swagger-out/csharp/docs .
+    cp -r ../swagger-out/csharp/src/Square.Connect ./src/Square.Connect
+    cp ../swagger-out/csharp/.travis.yml .
+    cp ../swagger-out/csharp/.gitignore .
+    cp ../swagger-out/csharp/.swagger-codegen-ignore .
+    cp ../swagger-out/csharp/README.md .
+    cp ../swagger-out/csharp/Square.Connect.sln .
+    cp ../swagger-out/csharp/build.sh .
+    cp ../swagger-out/csharp/mono_nunit_test.sh .
+
     git add .
     git commit -m "Pushed by Travis CI from connect-api-specification. Commit: ${TRAVIS_COMMIT}"
     git remote add deploy git@github.com:square/connect-csharp-sdk.git
