@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Square")]
 [assembly: AssemblyProduct("Square_Connect_V2_SDK")]
-[assembly: AssemblyCopyright("Copyright 2016 Square, Inc.")]
+[assembly: AssemblyCopyright("Copyright 2017 Square, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
