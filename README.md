@@ -1,4 +1,4 @@
-Connecting to the Square API
+Connecting to the Square API [![Build Status](https://travis-ci.org/square/connect-api-specification.svg?branch=master)](https://travis-ci.org/square/connect-api-specification)
 =============================
 
 This is the project that _generates_ API clients for connecting to the public Square API. You probably want to just use one of the clients that are pre-built in a language of your choice:
