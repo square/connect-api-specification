@@ -15,7 +15,7 @@ fi
 
 # build
 echo "Building swagger-codegen cli..."
-mvn -q clean package
+mvn -q clean package -Dmaven.test.skip=true
 
 # set $SWAGGER_CMD
 export SWAGGER_CMD="java -jar $SWAGGER_DIR/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar"

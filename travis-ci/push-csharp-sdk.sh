@@ -3,7 +3,8 @@
 set -e
 
 DIR=$(dirname "$0")
-BRANCH_NAME=travis/build_$TRAVIS_BUILD_NUMBER
+packageVersion=$( cat ./swagger-config/config-csharp.json | jq -r ".packageVersion" )
+BRANCH_NAME=release/$packageVersion
 
 # only push to sdk repo when it's only from pull request
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
@@ -15,7 +16,7 @@ then
 
     git clone git@github.com:square/connect-csharp-sdk.git
     cd connect-csharp-sdk
-    git checkout -b $BRANCH_NAME
+    git checkout $BRANCH_NAME
 
     echo "Copying files..."
     rm -rf docs src/Square.Connect

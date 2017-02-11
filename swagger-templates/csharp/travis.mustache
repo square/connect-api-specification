@@ -11,6 +11,7 @@ install:
 
 script:
   - export frameworkVersion={{targetFrameworkNuget}}
+  - export releaseVersion="{{packageVersion}}"
   - /bin/sh ./mono_nunit_test.sh
 
 after_success:
