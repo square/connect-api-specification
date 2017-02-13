@@ -15,5 +15,3 @@ after_success:
 - git config --global user.email "${TEAM_EMAIL}"
 - "/bin/sh ./travis-ci/push-csharp-sdk.sh"
 - "/bin/sh ./travis-ci/push-php-sdk.sh"
-before_install:
-- 
