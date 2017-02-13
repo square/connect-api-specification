@@ -6,10 +6,11 @@ DIR=$(dirname "$0")
 packageVersion=$( cat ./swagger-config/config-csharp.json | jq -r ".packageVersion" )
 BRANCH_NAME=release/$packageVersion
 
-# only push to sdk repo when it's only from pull request
-if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+echo "Going to update C# SDK..."
+
+# only push to sdk repo when it's merged into master
+if [ "${TRAVIS_PULL_REQUEST_BRANCH}" = "" -a "${TRAVIS_BRANCH}" = "master" ];
 then
-    openssl aes-256-cbc -K $encrypted_b0a304ce21a6_key -iv $encrypted_b0a304ce21a6_iv -in $DIR/csharp-repo.enc -out $DIR/csharp-repo.pem -d
     eval "$(ssh-agent -s)" #start the ssh agent
     chmod 600 $DIR/csharp-repo.pem # this key should have push access
     ssh-add $DIR/csharp-repo.pem
@@ -32,8 +33,7 @@ then
 
     git add .
     git commit -m "Pushed by Travis CI from connect-api-specification. Commit: ${TRAVIS_COMMIT}"
-    git remote add deploy git@github.com:square/connect-csharp-sdk.git
-    git push -u deploy $BRANCH_NAME
+    git push -u origin $BRANCH_NAME
 else
     echo "Skip pull request."
 fi
