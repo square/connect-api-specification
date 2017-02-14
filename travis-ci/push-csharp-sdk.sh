@@ -10,9 +10,6 @@ echo "Going to update C# SDK..."
 
 # only push to sdk repo when it's merged into master
 if [ "${TRAVIS_PULL_REQUEST_BRANCH}" = "" -a "${TRAVIS_BRANCH}" = "master" ];
-||||||| merged common ancestors
-# only push to sdk repo when it's only from pull request
-if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
 then
     eval "$(ssh-agent -s)" #start the ssh agent
     chmod 600 $DIR/csharp-repo.pem # this key should have push access
