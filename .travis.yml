@@ -16,3 +16,4 @@ after_success:
 - "/bin/sh ./travis-ci/push-csharp-sdk.sh"
 - "/bin/sh ./travis-ci/push-php-sdk.sh"
 - "/bin/sh ./travis-ci/push-ruby-sdk.sh"
+- "/bin/sh ./travis-ci/push-python-sdk.sh"
