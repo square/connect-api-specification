@@ -14,8 +14,12 @@ ssh-add $DIR/csharp-repo.pem
 
 git clone git@github.com:square/connect-csharp-sdk.git
 cd connect-csharp-sdk
-git branch $BRANCH_NAME
-git checkout $BRANCH_NAME
+if [ `git branch -r | grep "${BRANCH_NAME}"` ]
+then
+    git checkout $BRANCH_NAME
+else
+    git checkout -b $BRANCH_NAME
+fi
 
 echo "Copying files..."
 rm -rf docs src/Square.Connect
