@@ -8,7 +8,7 @@ for the specification and template files we used to generate this.
 - .NET 4.5 or later
 
 ## Usage
-### **Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommneded)** 
+### **Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommended)** 
 ```
 PM> Install-Package Square.Connect
 ```
@@ -62,8 +62,8 @@ namespace Example
 {
     public class Example
     {
-        // Retriveing your location IDs
-        public static void RetriveLocations()
+        // Retrieving your location IDs
+        public static void RetrieveLocations()
         {
             LocationApi _locationApi = new LocationApi();
             string authorization = "YOUR_ACCESS_TOKEN";
