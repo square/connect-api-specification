@@ -25,7 +25,6 @@ echo "Copying files..."
 rm -rf docs lib
 cp -r ../swagger-out/python/docs .
 cp -r ../swagger-out/python/squareconnect .
-cp ../swagger-out/python/.travis.yml .
 cp ../swagger-out/python/requirements.txt .
 cp ../swagger-out/python/test-requirements.txt .
 cp ../swagger-out/python/setup.py .
