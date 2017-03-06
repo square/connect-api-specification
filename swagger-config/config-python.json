@@ -1,4 +1,5 @@
 {
   "packageName": "squareconnect",
-  "packageVersion": "2.0.2"
+  "packageVersion": "2.0.2",
+  "httpUserAgent": "Square-Connect-Python/2.0.2"
 }
