@@ -32,7 +32,7 @@ cp ../swagger-out/python/tox.ini .
 cp ../swagger-out/python/README.md .
 
 git add .
-git commit -m "Pushed by Travis CI from connect-api-specification. Commit: ${TRAVIS_COMMIT}"
+git commit -m "Pushed by Travis CI from connect-api-specification. Commit: ${TRAVIS_COMMIT} | ${TRAVIS_COMMIT_MESSAGE}"
 
 # only push to sdk repo when it's merged into master
 if [ "${TRAVIS_PULL_REQUEST_BRANCH}" = "" -a "${TRAVIS_BRANCH}" = "master" ];
