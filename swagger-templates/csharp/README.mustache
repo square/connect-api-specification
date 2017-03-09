@@ -1,4 +1,4 @@
-# Square Connect V2 C# SDK [![Build Status](https://travis-ci.org/square/connect-csharp-sdk.svg?branch=master)](https://travis-ci.org/square/connect-csharp-sdk)
+# Square Connect V2 C# SDK [![Build Status](https://travis-ci.org/square/connect-csharp-sdk.svg?branch=master)](https://travis-ci.org/square/connect-csharp-sdk)[![NuGet version](https://badge.fury.io/nu/Square.Connect.svg)](https://badge.fury.io/nu/Square.Connect)
 
 This repository contains the released C# client SDK. Check out our [API
 specification repository](https://github.com/square/connect-api-specification)

@@ -25,13 +25,7 @@ module {{moduleName}}
       @config = config
       
       # Construct user agent string. Returns slightly different string for JRuby
-      @user_agent = "{{{gemName}}}/#{VERSION} "
-      if defined? JRUBY_VERSION
-        @user_agent += "(#{RUBY_ENGINE}/#{JRUBY_VERSION}:ruby/#{RUBY_VERSION})"
-      else
-        @user_agent += "(#{RUBY_ENGINE}/#{RUBY_VERSION}; #{RUBY_PLATFORM})"
-      end
-      
+      @user_agent = "{{#httpUserAgent}}{{{.}}}{{/httpUserAgent}}{{^httpUserAgent}}Swagger-Codegen/#{VERSION}/ruby{{/httpUserAgent}}"
       
       @default_headers = {
         'Content-Type' => "application/json",
