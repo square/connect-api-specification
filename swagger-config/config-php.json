@@ -6,5 +6,7 @@
   "apiPackage": "Api",
   "composerVendorName": "square",
   "composerProjectName": "connect",
-  "httpUserAgent": "Square-Connect-PHP/2.0.2"
+  "httpUserAgent": "Square-Connect-PHP/2.0.2",
+  "gitUserId": "square",
+  "gitRepoId": "connect-php-sdk"
 }

@@ -1,11 +1,13 @@
 {
   "gemName": "square_connect",
   "moduleName": "SquareConnect",
-  "gemVersion": "2.0.2",
   "httpUserAgent": "Square-Connect-Ruby/2.0.2",
+  "gemVersion": "2.0.2",
   "gemAuthor": "Square, Inc.",
   "gemAuthorEmail": "",
   "gemHomepage": "https://github.com/square/connect-ruby-sdk",
   "gemDescription": "Ruby client library for the Square Connect API",
-  "gemLicense": "Apache 2.0"
+  "gemLicense": "Apache 2.0",
+  "gitUserId": "square",
+  "gitRepoId": "connect-ruby-sdk"
 }
