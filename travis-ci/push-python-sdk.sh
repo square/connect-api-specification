@@ -4,7 +4,6 @@ set -e
 
 DIR=$(dirname "$0")
 packageVersion=$( cat ./swagger-config/config-python.json | jq -r ".packageVersion" )
-BRANCH_NAME=release/$packageVersion
 
 echo "Going to update Python SDK..."
 
@@ -14,7 +13,15 @@ ssh-add $DIR/python-repo.pem
 
 git clone git@github.com:square/connect-python-sdk.git
 cd connect-python-sdk
-if [ `git branch -r | grep "${BRANCH_NAME}"` ]
+
+if [ "${TRAVIS_BRANCH}" = "master" ];
+then
+    BRANCH_NAME=release/$packageVersion
+else
+    BRANCH_NAME=travis-ci/$TRAVIS_BRANCH
+fi
+
+if [ `git branch -r | grep "${BRANCH_NAME}"` ];
 then
     git checkout $BRANCH_NAME
 else
@@ -32,12 +39,5 @@ cp ../swagger-out/python/tox.ini .
 cp ../swagger-out/python/README.md .
 
 git add .
-git commit -m "Pushed by Travis CI from connect-api-specification. Commit: ${TRAVIS_COMMIT}"
-
-# only push to sdk repo when it's merged into master
-if [ "${TRAVIS_PULL_REQUEST_BRANCH}" = "" -a "${TRAVIS_BRANCH}" = "master" ];
-then
-    git push -u origin $BRANCH_NAME
-else
-    echo "Skip push because of pull request."
-fi
+git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
+git push -u origin $BRANCH_NAME
