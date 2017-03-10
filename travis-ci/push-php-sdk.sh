@@ -32,7 +32,6 @@ echo "Copying files..."
 rm -rf docs lib
 cp -r ../swagger-out/php/SquareConnect/docs .
 cp -r ../swagger-out/php/SquareConnect/lib .
-cp ../swagger-out/php/SquareConnect/.travis.yml .
 cp ../swagger-out/php/SquareConnect/autoload.php .
 cp ../swagger-out/php/SquareConnect/composer.json .
 cp ../swagger-out/php/SquareConnect/README.md .
