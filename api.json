@@ -32,7 +32,7 @@
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
-      "authorizationUrl": "https://connect.squareup.com/oauth2/authorize?client_id=CLIENT_ID&scope=SCOPES&state=STATE",
+      "authorizationUrl": "https://connect.squareup.com/oauth2/authorize?<PARAMETERS>",
       "flow": "accessCode",
       "tokenUrl": "https://connect.squareup.com/oauth2/token",
       "scopes": {
