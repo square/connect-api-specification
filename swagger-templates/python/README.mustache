@@ -104,6 +104,28 @@ Class | Method | HTTP request
 {{#models}}{{#model}}{{#isEnum}} - [{{{classname}}}]({{modelDocPath}}{{{classname}}}.md)
 {{/isEnum}}{{^isEnum}}{{/isEnum}}{{/model}}{{/models}}
 
+## Documentation For Authorization
+
+{{^authMethods}} All endpoints do not require authorization.
+{{/authMethods}}{{#authMethods}}{{#last}} Authentication schemes defined for the API:{{/last}}{{/authMethods}}
+{{#authMethods}}## {{{name}}}
+
+{{#isApiKey}}- **Type**: API key
+- **API key parameter name**: {{{keyParamName}}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}- **Type**: HTTP basic authentication
+{{/isBasic}}
+{{#isOAuth}}- **Type**: OAuth
+- **Flow**: {{{flow}}}
+- **Authorization URL**: `{{{authorizationUrl}}}`
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}} - **{{{scope}}}**: {{{description}}}
+{{/scopes}}
+{{/isOAuth}}
+
+{{/authMethods}}
+
 ## Contributing
 
 Send bug reports, feature requests, and code contributions to the [API

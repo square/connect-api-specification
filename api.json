@@ -2,7 +2,22 @@
   "swagger": "2.0",
   "info": {
     "version": "2.0",
-    "title": "Square Connect API"
+    "title": "Square Connect API",
+    "description": "Client library for accessing the Square Connect APIs",
+    "termsOfService": "https://connect.squareup.com/tos",
+    "contact": {
+      "name": "Square Developer Platform",
+      "email": "developers@squareup.com",
+      "url": "https://squareup.com/developers"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "externalDocs": {
+    "description": "Read the official documentation here:",
+    "url": "https://docs.connect.squareup.com/"
   },
   "host": "connect.squareup.com",
   "schemes": [
@@ -14,6 +29,31 @@
   "produces": [
     "application/json"
   ],
+  "securityDefinitions": {
+    "oauth2": {
+      "type": "oauth2",
+      "authorizationUrl": "https://connect.squareup.com/oauth2/authorize?<PARAMETERS>",
+      "flow": "accessCode",
+      "tokenUrl": "https://connect.squareup.com/oauth2/token",
+      "scopes": {
+        "MERCHANT_PROFILE_READ": "GET endpoints related to a merchant\u0027s business and location entities. Almost all Connect API applications need this permission in order to obtain a merchant\u0027s location IDs",
+        "PAYMENTS_READ": "GET endpoints related to transactions and refunds",
+        "PAYMENTS_WRITE": "POST, PUT, and DELETE endpoints related to transactions and refunds. E-commerce applications must request this permission",
+        "CUSTOMERS_READ": " GET endpoints related to customer management",
+        "CUSTOMERS_WRITE": "POST, PUT, and DELETE endpoints related to customer management",
+        "SETTLEMENTS_READ": "GET endpoints related to settlements (deposits)",
+        "BANK_ACCOUNTS_READ": "GET endpoints related to a merchant\u0027s bank accounts",
+        "ITEMS_READ": "GET endpoints related to a merchant\u0027s item library",
+        "ITEMS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s item library",
+        "ORDERS_READ": "GET endpoints related to a merchant\u0027s Square online store.",
+        "ORDERS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s Square online store",
+        "EMPLOYEES_READ": "GET endpoints related to employee management",
+        "EMPLOYEES_WRITE": "POST, PUT, and DELETE endpoints related to employee management",
+        "TIMECARDS_READ": "GET endpoints related to employee timecards",
+        "TIMECARDS_WRITE": "POST, PUT, and DELETE endpoints related to employee timecards"
+      }
+    }
+  },
   "paths": {
     "/v2/locations/{location_id}/transactions": {
       "post": {
@@ -1273,6 +1313,7 @@
         "PAYMENT_NOT_REFUNDABLE",
         "INVALID_CARD_DATA",
         "IDEMPOTENCY_KEY_REUSED",
+        "UNEXPECTED_VALUE",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
         "VERIFY_AVS_FAILURE",
@@ -2725,6 +2766,7 @@
             "PAYMENT_NOT_REFUNDABLE",
             "INVALID_CARD_DATA",
             "IDEMPOTENCY_KEY_REUSED",
+            "UNEXPECTED_VALUE",
             "CARD_DECLINED",
             "VERIFY_CVV_FAILURE",
             "VERIFY_AVS_FAILURE",
