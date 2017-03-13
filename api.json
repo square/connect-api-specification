@@ -32,7 +32,7 @@
   "securityDefinitions": {
     "oauth2": {
       "type": "oauth2",
-      "authorizationUrl": "https://connect.squareup.com/oauth2/authorize?<PARAMETERS>",
+      "authorizationUrl": "https://connect.squareup.com/oauth2/authorize?\u003cPARAMETERS\u003e",
       "flow": "accessCode",
       "tokenUrl": "https://connect.squareup.com/oauth2/token",
       "scopes": {
@@ -66,14 +66,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "The ID of the location to associate the created transaction with.",
@@ -110,14 +110,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "The ID of the location to list transactions for.",
@@ -179,14 +179,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "The ID of the original transaction\u0027s associated location.",
@@ -232,14 +232,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "The ID of the location to list refunds for.",
@@ -301,15 +301,14 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
+            "oauth2": [
+              "MERCHANT_PROFILE_READ"
+            ]
           }
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -331,14 +330,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "body",
             "in": "body",
@@ -368,14 +367,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "cursor",
             "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
@@ -405,14 +404,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "customer_id",
             "description": "The ID of the customer to update.",
@@ -449,14 +448,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "customer_id",
             "description": "The ID of the customer to retrieve.",
@@ -484,14 +483,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "customer_id",
             "description": "The ID of the customer to delete.",
@@ -521,14 +520,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "customer_id",
             "description": "The ID of the customer to link the card on file to.",
@@ -567,14 +566,14 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "customer_id",
             "description": "The ID of the customer that the card on file belongs to.",
@@ -611,14 +610,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "",
@@ -655,14 +654,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "",
@@ -699,14 +698,14 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
           {
             "name": "location_id",
             "description": "The ID of the transaction\u0027s associated location.",
@@ -741,17 +740,18 @@
         "operationId": "CreateCheckout",
         "description": "Creates a [Checkout](#type-checkout) response that links a\n`checkoutId` and `checkout_page_url` that customers can be directed to in\norder to provide their payment information using a payment processing\nworkflow hosted on connect.squareup.com.",
         "x-oauthpermissions": [
-          "ORDERS_V2_WRITE",
-          "PAYMENTS_WRITE"
+          "PAYMENTS_WRITE",
+          "ORDERS_V2_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE",
+              "ORDERS_V2_WRITE"
+            ]
+          }
         ],
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string",
-            "required": true,
-            "description": "The value to provide in the Authorization header of\nyour request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`."
-          },
           {
             "name": "location_id",
             "description": "The ID of the business location to associate the checkout with.",
