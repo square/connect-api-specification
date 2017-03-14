@@ -45,13 +45,14 @@ import squareconnect
 from squareconnect.rest import ApiException
 from squareconnect.apis.location_api import LocationApi
 
+# setup authorization
+squareconnect.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the Location API class
 api_instance = LocationApi()
-access_token = 'YOUR_ACCESS_TOKEN' 
 
 try:
     # ListLocations
-    api_response = api_instance.list_locations(access_token)
+    api_response = api_instance.list_locations()
     print (api_response.locations)
 except ApiException as e:
     print ('Exception when calling LocationApi->list_locations: %s\n' % e)
@@ -66,9 +67,10 @@ import squareconnect
 from squareconnect.rest import ApiException
 from squareconnect.apis.transaction_api import TransactionApi
 
+# setup authorization
+squareconnect.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the Transaction API class
 api_instance = TransactionApi()
-access_token = 'YOUR_ACCESS_TOKEN'
 location_id = 'YOUR_LOCATION_ID' 
 nonce = 'YOUR_NONCE' 
 
@@ -77,7 +79,7 @@ try:
     idempotency_key = str(uuid.uuid1())
     amount = {'amount': 100, 'currency': 'USD'}
     body = {'idempotency_key': idempotency_key, 'card_nonce': nonce, 'amount_money': amount}
-    api_response = api_instance.charge(access_token, location_id, body)
+    api_response = api_instance.charge(location_id, body)
     print (api_response.transaction)
 except ApiException as e:
     print ('Exception when calling TransactionApi->charge: %s\n' % e)
