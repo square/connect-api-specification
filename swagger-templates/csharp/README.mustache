@@ -62,16 +62,20 @@ namespace Example
 {
     public class Example
     {
+        public Example()
+        {
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+        }
+
         // Retrieving your location IDs
-        public static void RetrieveLocations()
+        public void RetrieveLocations()
         {
             LocationApi _locationApi = new LocationApi();
-            string authorization = "YOUR_ACCESS_TOKEN";
-            var response = _locationApi.ListLocations(authorization);
+            var response = _locationApi.ListLocations();
         }
 
         // Charge the card nonce
-        public static void ChargeNonce()
+        public void ChargeNonce()
         {
             // Every payment you process for a given business have a unique idempotency key.
             // If you're unsure whether a particular payment succeeded, you can reattempt
@@ -86,11 +90,10 @@ namespace Example
             Money money = new Money(amount, Money.ToCurrencyEnum(currency));
 
             string nonce = "YOUR_NONCE";
-            string authorization = "YOUR_ACCESS_TOKEN";
             string locationId = "YOUR_LOCATION_ID";
             ChargeRequest body = new ChargeRequest(AmountMoney: money, IdempotencyKey: idempotencyKey, CardNonce: nonce);
             TransactionApi transactionApi = new TransactionApi();
-            var response = transactionApi.Charge(authorization, locationId, body);
+            var response = transactionApi.Charge(locationId, body);
         }
     }
 }
