@@ -46,6 +46,6 @@ cp ../swagger-out/ruby/Rakefile .
 cp ../swagger-out/ruby/README.md .
 cp ../swagger-out/ruby/square_connect.gemspec .
 
-git add .
+git add --all .
 git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
 git push -u origin $BRANCH_NAME
