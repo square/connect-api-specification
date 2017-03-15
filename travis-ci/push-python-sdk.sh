@@ -46,6 +46,6 @@ cp ../swagger-out/python/setup.py .
 cp ../swagger-out/python/tox.ini .
 cp ../swagger-out/python/README.md .
 
-git add .
+git add --all .
 git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
 git push -u origin $BRANCH_NAME
