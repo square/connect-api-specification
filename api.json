@@ -58,7 +58,7 @@
     "/v2/locations/{location_id}/transactions": {
       "post": {
         "tags": [
-          "Transaction"
+          "Transactions"
         ],
         "summary": "Charge",
         "operationId": "Charge",
@@ -102,7 +102,7 @@
       },
       "get": {
         "tags": [
-          "Transaction"
+          "Transactions"
         ],
         "summary": "ListTransactions",
         "operationId": "ListTransactions",
@@ -171,7 +171,7 @@
     "/v2/locations/{location_id}/transactions/{transaction_id}/refund": {
       "post": {
         "tags": [
-          "Refund"
+          "Transactions"
         ],
         "summary": "CreateRefund",
         "operationId": "CreateRefund",
@@ -224,7 +224,7 @@
     "/v2/locations/{location_id}/refunds": {
       "get": {
         "tags": [
-          "Refund"
+          "Transactions"
         ],
         "summary": "ListRefunds",
         "operationId": "ListRefunds",
@@ -293,7 +293,7 @@
     "/v2/locations": {
       "get": {
         "tags": [
-          "Location"
+          "Locations"
         ],
         "summary": "ListLocations",
         "operationId": "ListLocations",
@@ -322,7 +322,7 @@
     "/v2/customers": {
       "post": {
         "tags": [
-          "Customer"
+          "Customers"
         ],
         "summary": "CreateCustomer",
         "operationId": "CreateCustomer",
@@ -359,7 +359,7 @@
       },
       "get": {
         "tags": [
-          "Customer"
+          "Customers"
         ],
         "summary": "ListCustomers",
         "operationId": "ListCustomers",
@@ -396,7 +396,7 @@
     "/v2/customers/{customer_id}": {
       "put": {
         "tags": [
-          "Customer"
+          "Customers"
         ],
         "summary": "UpdateCustomer",
         "operationId": "UpdateCustomer",
@@ -440,7 +440,7 @@
       },
       "get": {
         "tags": [
-          "Customer"
+          "Customers"
         ],
         "summary": "RetrieveCustomer",
         "operationId": "RetrieveCustomer",
@@ -475,7 +475,7 @@
       },
       "delete": {
         "tags": [
-          "Customer"
+          "Customers"
         ],
         "summary": "DeleteCustomer",
         "operationId": "DeleteCustomer",
@@ -512,7 +512,7 @@
     "/v2/customers/{customer_id}/cards": {
       "post": {
         "tags": [
-          "Customer.Card"
+          "Customers"
         ],
         "summary": "CreateCustomerCard",
         "operationId": "CreateCustomerCard",
@@ -558,7 +558,7 @@
     "/v2/customers/{customer_id}/cards/{card_id}": {
       "delete": {
         "tags": [
-          "Customer.Card"
+          "Customers"
         ],
         "summary": "DeleteCustomerCard",
         "operationId": "DeleteCustomerCard",
@@ -602,7 +602,7 @@
     "/v2/locations/{location_id}/transactions/{transaction_id}/capture": {
       "post": {
         "tags": [
-          "Transaction"
+          "Transactions"
         ],
         "summary": "CaptureTransaction",
         "operationId": "CaptureTransaction",
@@ -646,7 +646,7 @@
     "/v2/locations/{location_id}/transactions/{transaction_id}/void": {
       "post": {
         "tags": [
-          "Transaction"
+          "Transactions"
         ],
         "summary": "VoidTransaction",
         "operationId": "VoidTransaction",
@@ -690,7 +690,7 @@
     "/v2/locations/{location_id}/transactions/{transaction_id}": {
       "get": {
         "tags": [
-          "Transaction"
+          "Transactions"
         ],
         "summary": "RetrieveTransaction",
         "operationId": "RetrieveTransaction",
@@ -782,10 +782,10 @@
     "/v1/me": {
       "get": {
         "tags": [
-          "Location"
+          "V1Location"
         ],
         "summary": "Get a business\u0027s information.",
-        "operationId": "v1RetrieveBusiness",
+        "operationId": "RetrieveBusiness",
         "description": "Get a business\u0027s information.",
         "parameters": [],
         "security": [
@@ -814,10 +814,10 @@
     "/v1/me/locations": {
       "get": {
         "tags": [
-          "Location"
+          "V1Location"
         ],
         "summary": "Provides details for a business\u0027s locations, including their IDs.",
-        "operationId": "v1ListLocations",
+        "operationId": "ListLocations",
         "description": "Provides details for a business\u0027s locations, including their IDs.",
         "parameters": [],
         "security": [
@@ -849,10 +849,10 @@
     "/v1/me/employees": {
       "post": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Creates an employee for a business.",
-        "operationId": "v1CreateEmployee",
+        "operationId": "CreateEmployee",
         "description": "Creates an employee for a business.",
         "parameters": [
           {
@@ -889,10 +889,10 @@
       },
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides summary information for all of a business\u0027s employees.",
-        "operationId": "v1ListEmployees",
+        "operationId": "ListEmployees",
         "description": "Provides summary information for all of a business\u0027s employees.",
         "parameters": [
           {
@@ -991,10 +991,10 @@
     "/v1/me/employees/{employee_id}": {
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides the details for a single employee.",
-        "operationId": "v1RetrieveEmployee",
+        "operationId": "RetrieveEmployee",
         "description": "Provides the details for a single employee.",
         "parameters": [
           {
@@ -1029,10 +1029,10 @@
       },
       "put": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
-        "summary": "v1UpdateEmployee",
-        "operationId": "v1UpdateEmployee",
+        "summary": "V1 UpdateEmployee",
+        "operationId": "UpdateEmployee",
         "parameters": [
           {
             "name": "employee_id",
@@ -1077,10 +1077,10 @@
     "/v1/me/roles": {
       "post": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Creates an employee role you can then assign to employees.",
-        "operationId": "v1CreateEmployeeRole",
+        "operationId": "CreateEmployeeRole",
         "description": "Creates an employee role you can then assign to employees.",
         "parameters": [
           {
@@ -1117,10 +1117,10 @@
       },
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides summary information for all of a business\u0027s employee roles.",
-        "operationId": "v1ListEmployeeRoles",
+        "operationId": "ListEmployeeRoles",
         "description": "Provides summary information for all of a business\u0027s employee roles.",
         "parameters": [
           {
@@ -1182,10 +1182,10 @@
     "/v1/me/roles/{role_id}": {
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides the details for a single employee role.",
-        "operationId": "v1RetrieveEmployeeRole",
+        "operationId": "RetrieveEmployeeRole",
         "description": "Provides the details for a single employee role.",
         "parameters": [
           {
@@ -1220,10 +1220,10 @@
       },
       "put": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Modifies the details of an employee role.",
-        "operationId": "v1UpdateEmployeeRole",
+        "operationId": "UpdateEmployeeRole",
         "description": "Modifies the details of an employee role.",
         "parameters": [
           {
@@ -1269,10 +1269,10 @@
     "/v1/me/timecards": {
       "post": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
-        "operationId": "v1CreateTimecard",
+        "operationId": "CreateTimecard",
         "description": "Creates a timecard for an employee. Each timecard corresponds to a single shift.",
         "parameters": [
           {
@@ -1309,10 +1309,10 @@
       },
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides summary information for all of a business\u0027s employee timecards.",
-        "operationId": "v1ListTimecards",
+        "operationId": "ListTimecards",
         "description": "Provides summary information for all of a business\u0027s employee timecards.",
         "parameters": [
           {
@@ -1431,10 +1431,10 @@
     "/v1/me/timecards/{timecard_id}": {
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides the details for a single timecard.",
-        "operationId": "v1RetrieveTimecard",
+        "operationId": "RetrieveTimecard",
         "description": "Provides the details for a single timecard.",
         "parameters": [
           {
@@ -1469,10 +1469,10 @@
       },
       "put": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Modifies a timecard\u0027s details. This creates an API_EDIT event for the timecard. You can view a timecard\u0027s event history with the List Timecard Events endpoint.",
-        "operationId": "v1UpdateTimecard",
+        "operationId": "UpdateTimecard",
         "description": "Modifies a timecard\u0027s details. This creates an API_EDIT event for the timecard. You can view a timecard\u0027s event history with the List Timecard Events endpoint.",
         "parameters": [
           {
@@ -1516,10 +1516,10 @@
       },
       "delete": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
-        "operationId": "v1DeleteTimecard",
+        "operationId": "DeleteTimecard",
         "description": "Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.",
         "parameters": [
           {
@@ -1556,10 +1556,10 @@
     "/v1/me/timecards/{timecard_id}/events": {
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides summary information for all events associated with a particular timecard.",
-        "operationId": "v1ListTimecardEvents",
+        "operationId": "ListTimecardEvents",
         "description": "Provides summary information for all events associated with a particular timecard.",
         "parameters": [
           {
@@ -1604,10 +1604,10 @@
     "/v1/{location_id}/cash-drawer-shifts": {
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides the details for all of a location\u0027s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
-        "operationId": "v1ListCashDrawerShifts",
+        "operationId": "ListCashDrawerShifts",
         "description": "Provides the details for all of a location\u0027s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
         "parameters": [
           {
@@ -1677,10 +1677,10 @@
     "/v1/{location_id}/cash-drawer-shifts/{shift_id}": {
       "get": {
         "tags": [
-          "Employees"
+          "V1Employees"
         ],
         "summary": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
-        "operationId": "v1RetrieveCashDrawerShift",
+        "operationId": "RetrieveCashDrawerShift",
         "description": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
         "parameters": [
           {
@@ -1724,10 +1724,10 @@
     "/v1/{location_id}/payments": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides summary information for all payments taken by a merchant or any of the merchant\u0027s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.",
-        "operationId": "v1ListPayments",
+        "operationId": "ListPayments",
         "description": "Provides summary information for all payments taken by a merchant or any of the merchant\u0027s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.",
         "parameters": [
           {
@@ -1804,10 +1804,10 @@
     "/v1/{location_id}/payments/{payment_id}": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides comprehensive information for a single payment.",
-        "operationId": "v1RetrievePayment",
+        "operationId": "RetrievePayment",
         "description": "Provides comprehensive information for a single payment.",
         "parameters": [
           {
@@ -1851,10 +1851,10 @@
     "/v1/{location_id}/settlements": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant\u0027s bank account during a date range. Date ranges cannot exceed one year in length.",
-        "operationId": "v1ListSettlements",
+        "operationId": "ListSettlements",
         "description": "Provides summary information for all deposits and withdrawals initiated by Square to a merchant\u0027s bank account during a date range. Date ranges cannot exceed one year in length. ",
         "parameters": [
           {
@@ -1943,10 +1943,10 @@
     "/v1/{location_id}/settlements/{settlement_id}": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides comprehensive information for a single settlement, including the entries that contribute to the settlement\u0027s total.",
-        "operationId": "v1RetrieveSettlement",
+        "operationId": "RetrieveSettlement",
         "description": "Provides comprehensive information for a single settlement, including the entries that contribute to the settlement\u0027s total.",
         "parameters": [
           {
@@ -1990,10 +1990,10 @@
     "/v1/{location_id}/refunds": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides the details for all refunds initiated by a merchant or any of the merchant\u0027s mobile staff during a date range. Date ranges cannot exceed one year in length.",
-        "operationId": "v1ListRefunds",
+        "operationId": "ListRefunds",
         "description": "Provides the details for all refunds initiated by a merchant or any of the merchant\u0027s mobile staff during a date range. Date ranges cannot exceed one year in length.",
         "parameters": [
           {
@@ -2069,10 +2069,10 @@
       },
       "post": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.",
-        "operationId": "v1CreateRefund",
+        "operationId": "CreateRefund",
         "description": "Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.",
         "parameters": [
           {
@@ -2118,10 +2118,10 @@
     "/v1/{location_id}/orders": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides summary information for a merchant\u0027s online store orders.",
-        "operationId": "v1ListOrders",
+        "operationId": "ListOrders",
         "description": "Provides summary information for a merchant\u0027s online store orders.",
         "parameters": [
           {
@@ -2185,10 +2185,10 @@
     "/v1/{location_id}/orders/{order_id}": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides comprehensive information for a single online store order, including the order\u0027s history.",
-        "operationId": "v1RetrieveOrder",
+        "operationId": "RetrieveOrder",
         "description": "Provides comprehensive information for a single online store order, including the order\u0027s history.",
         "parameters": [
           {
@@ -2230,10 +2230,10 @@
       },
       "put": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:",
-        "operationId": "v1UpdateOrder",
+        "operationId": "UpdateOrder",
         "description": "Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:",
         "parameters": [
           {
@@ -2286,10 +2286,10 @@
     "/v1/{location_id}/bank-accounts": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides non-confidential details for all of a location\u0027s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
-        "operationId": "v1ListBankAccounts",
+        "operationId": "ListBankAccounts",
         "description": "Provides non-confidential details for all of a location\u0027s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
         "parameters": [
           {
@@ -2329,10 +2329,10 @@
     "/v1/{location_id}/bank-accounts/{bank_account_id}": {
       "get": {
         "tags": [
-          "Transactions"
+          "V1Transactions"
         ],
         "summary": "Provides non-confidential details for a merchant\u0027s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
-        "operationId": "v1RetrieveBankAccount",
+        "operationId": "RetrieveBankAccount",
         "description": "Provides non-confidential details for a merchant\u0027s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
         "parameters": [
           {
@@ -2376,10 +2376,10 @@
     "/v1/{location_id}/items": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates an item and at least one variation for it.",
-        "operationId": "v1CreateItem",
+        "operationId": "CreateItem",
         "description": "Creates an item and at least one variation for it.",
         "parameters": [
           {
@@ -2423,10 +2423,10 @@
       },
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Provides summary information for all of a location\u0027s items.",
-        "operationId": "v1ListItems",
+        "operationId": "ListItems",
         "description": "Provides summary information for all of a location\u0027s items.",
         "parameters": [
           {
@@ -2471,10 +2471,10 @@
     "/v1/{location_id}/items/{item_id}": {
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Provides the details for a single item, including associated modifier lists and fees.",
-        "operationId": "v1RetrieveItem",
+        "operationId": "RetrieveItem",
         "description": "Provides the details for a single item, including associated modifier lists and fees.",
         "parameters": [
           {
@@ -2516,10 +2516,10 @@
       },
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the core details of an existing item.",
-        "operationId": "v1UpdateItem",
+        "operationId": "UpdateItem",
         "description": "Modifies the core details of an existing item.",
         "parameters": [
           {
@@ -2570,10 +2570,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing item and all item variations associated with it.",
-        "operationId": "v1DeleteItem",
+        "operationId": "DeleteItem",
         "description": "Deletes an existing item and all item variations associated with it.",
         "parameters": [
           {
@@ -2617,10 +2617,10 @@
     "/v1/{location_id}/items/{item_id}/variations": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates an item variation for an existing item.",
-        "operationId": "v1CreateVariation",
+        "operationId": "CreateVariation",
         "description": "Creates an item variation for an existing item.",
         "parameters": [
           {
@@ -2673,10 +2673,10 @@
     "/v1/{location_id}/items/{item_id}/variations/{variation_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of an existing item variation.",
-        "operationId": "v1UpdateVariation",
+        "operationId": "UpdateVariation",
         "description": "Modifies the details of an existing item variation.",
         "parameters": [
           {
@@ -2734,10 +2734,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing item variation from an item.",
-        "operationId": "v1DeleteVariation",
+        "operationId": "DeleteVariation",
         "description": "Deletes an existing item variation from an item.",
         "parameters": [
           {
@@ -2788,10 +2788,10 @@
     "/v1/{location_id}/inventory": {
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Provides inventory information for all of a merchant\u0027s inventory-enabled item variations.",
-        "operationId": "v1ListInventory",
+        "operationId": "ListInventory",
         "description": "Provides inventory information for all of a merchant\u0027s inventory-enabled item variations.",
         "parameters": [
           {
@@ -2839,10 +2839,10 @@
     "/v1/{location_id}/inventory/{variation_id}": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Adjusts an item variation\u0027s current available inventory.",
-        "operationId": "v1AdjustInventory",
+        "operationId": "AdjustInventory",
         "description": "Adjusts an item variation\u0027s current available inventory.",
         "parameters": [
           {
@@ -2895,10 +2895,10 @@
     "/v1/{location_id}/modifier-lists": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates an item modifier list and at least one modifier option for it.",
-        "operationId": "v1CreateModifierList",
+        "operationId": "CreateModifierList",
         "description": "Creates an item modifier list and at least one modifier option for it.",
         "parameters": [
           {
@@ -2942,10 +2942,10 @@
       },
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Lists all of a location\u0027s modifier lists.",
-        "operationId": "v1ListModifierLists",
+        "operationId": "ListModifierLists",
         "description": "Lists all of a location\u0027s modifier lists.",
         "parameters": [
           {
@@ -2985,10 +2985,10 @@
     "/v1/{location_id}/modifier-lists/{modifier_list_id}": {
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Provides the details for a single modifier list.",
-        "operationId": "v1RetrieveModifierList",
+        "operationId": "RetrieveModifierList",
         "description": "Provides the details for a single modifier list.",
         "parameters": [
           {
@@ -3030,10 +3030,10 @@
       },
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of an existing item modifier list.",
-        "operationId": "v1UpdateModifierList",
+        "operationId": "UpdateModifierList",
         "description": "Modifies the details of an existing item modifier list.",
         "parameters": [
           {
@@ -3084,10 +3084,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing item modifier list and all modifier options associated with it.",
-        "operationId": "v1DeleteModifierList",
+        "operationId": "DeleteModifierList",
         "description": "Deletes an existing item modifier list and all modifier options associated with it.",
         "parameters": [
           {
@@ -3131,10 +3131,10 @@
     "/v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
-        "operationId": "v1ApplyModifierList",
+        "operationId": "ApplyModifierList",
         "description": "Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.",
         "parameters": [
           {
@@ -3183,10 +3183,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
-        "operationId": "v1RemoveModifierList",
+        "operationId": "RemoveModifierList",
         "description": "Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.",
         "parameters": [
           {
@@ -3237,10 +3237,10 @@
     "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates an item modifier option and adds it to a modifier list.",
-        "operationId": "v1CreateModifierOption",
+        "operationId": "CreateModifierOption",
         "description": "Creates an item modifier option and adds it to a modifier list.",
         "parameters": [
           {
@@ -3293,10 +3293,10 @@
     "/v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of an existing item modifier option.",
-        "operationId": "v1UpdateModifierOption",
+        "operationId": "UpdateModifierOption",
         "description": "Modifies the details of an existing item modifier option.",
         "parameters": [
           {
@@ -3354,10 +3354,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing item modifier option from a modifier list.",
-        "operationId": "v1DeleteModifierOption",
+        "operationId": "DeleteModifierOption",
         "description": "Deletes an existing item modifier option from a modifier list.",
         "parameters": [
           {
@@ -3408,10 +3408,10 @@
     "/v1/{location_id}/categories": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates an item category.",
-        "operationId": "v1CreateCategory",
+        "operationId": "CreateCategory",
         "description": "Creates an item category.",
         "parameters": [
           {
@@ -3455,10 +3455,10 @@
       },
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Lists all of a location\u0027s item categories.",
-        "operationId": "v1ListCategories",
+        "operationId": "ListCategories",
         "description": "Lists all of a location\u0027s item categories.",
         "parameters": [
           {
@@ -3503,10 +3503,10 @@
     "/v1/{location_id}/categories/{category_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of an existing item category.",
-        "operationId": "v1UpdateCategory",
+        "operationId": "UpdateCategory",
         "description": "Modifies the details of an existing item category.",
         "parameters": [
           {
@@ -3557,10 +3557,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing item category.",
-        "operationId": "v1DeleteCategory",
+        "operationId": "DeleteCategory",
         "description": "Deletes an existing item category.",
         "parameters": [
           {
@@ -3604,10 +3604,10 @@
     "/v1/{location_id}/discounts": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates a discount.",
-        "operationId": "v1CreateDiscount",
+        "operationId": "CreateDiscount",
         "description": "Creates a discount.",
         "parameters": [
           {
@@ -3651,10 +3651,10 @@
       },
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Lists all of a location\u0027s discounts.",
-        "operationId": "v1ListDiscounts",
+        "operationId": "ListDiscounts",
         "description": "Lists all of a location\u0027s discounts.",
         "parameters": [
           {
@@ -3699,10 +3699,10 @@
     "/v1/{location_id}/discounts/{discount_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of an existing discount.",
-        "operationId": "v1UpdateDiscount",
+        "operationId": "UpdateDiscount",
         "description": "Modifies the details of an existing discount.",
         "parameters": [
           {
@@ -3753,10 +3753,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing discount.",
-        "operationId": "v1DeleteDiscount",
+        "operationId": "DeleteDiscount",
         "description": "Deletes an existing discount.",
         "parameters": [
           {
@@ -3800,10 +3800,10 @@
     "/v1/{location_id}/fees": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates a fee (tax).",
-        "operationId": "v1CreateFee",
+        "operationId": "CreateFee",
         "description": "Creates a fee (tax).",
         "parameters": [
           {
@@ -3847,10 +3847,10 @@
       },
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Lists all of a location\u0027s fees (taxes).",
-        "operationId": "v1ListFees",
+        "operationId": "ListFees",
         "description": "Lists all of a location\u0027s fees (taxes).",
         "parameters": [
           {
@@ -3895,10 +3895,10 @@
     "/v1/{location_id}/fees/{fee_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of an existing fee (tax).",
-        "operationId": "v1UpdateFee",
+        "operationId": "UpdateFee",
         "description": "Modifies the details of an existing fee (tax).",
         "parameters": [
           {
@@ -3949,10 +3949,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing fee (tax).",
-        "operationId": "v1DeleteFee",
+        "operationId": "DeleteFee",
         "description": "Deletes an existing fee (tax).",
         "parameters": [
           {
@@ -3996,10 +3996,10 @@
     "/v1/{location_id}/items/{item_id}/fees/{fee_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.",
-        "operationId": "v1ApplyFee",
+        "operationId": "ApplyFee",
         "description": "Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.",
         "parameters": [
           {
@@ -4048,10 +4048,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.",
-        "operationId": "v1RemoveFee",
+        "operationId": "RemoveFee",
         "description": "Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.",
         "parameters": [
           {
@@ -4102,10 +4102,10 @@
     "/v1/{location_id}/pages": {
       "post": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Creates a Favorites page in Square Register.",
-        "operationId": "v1CreatePage",
+        "operationId": "CreatePage",
         "description": "Creates a Favorites page in Square Register.",
         "parameters": [
           {
@@ -4149,10 +4149,10 @@
       },
       "get": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Lists all of a location\u0027s Favorites pages in Square Register.",
-        "operationId": "v1ListPages",
+        "operationId": "ListPages",
         "description": "Lists all of a location\u0027s Favorites pages in Square Register.",
         "parameters": [
           {
@@ -4192,10 +4192,10 @@
     "/v1/{location_id}/pages/{page_id}": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies the details of a Favorites page in Square Register.",
-        "operationId": "v1UpdatePage",
+        "operationId": "UpdatePage",
         "description": "Modifies the details of a Favorites page in Square Register.",
         "parameters": [
           {
@@ -4246,10 +4246,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes an existing Favorites page and all of its cells.",
-        "operationId": "v1DeletePage",
+        "operationId": "DeletePage",
         "description": "Deletes an existing Favorites page and all of its cells.",
         "parameters": [
           {
@@ -4293,10 +4293,10 @@
     "/v1/{location_id}/pages/{page_id}/cells": {
       "put": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Modifies a cell of a Favorites page in Square Register.",
-        "operationId": "v1UpdatePageCell",
+        "operationId": "UpdatePageCell",
         "description": "Modifies a cell of a Favorites page in Square Register.",
         "parameters": [
           {
@@ -4347,10 +4347,10 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "V1Items"
         ],
         "summary": "Deletes a cell from a Favorites page in Square Register.",
-        "operationId": "v1DeletePageCell",
+        "operationId": "DeletePageCell",
         "description": "Deletes a cell from a Favorites page in Square Register.",
         "parameters": [
           {
@@ -5451,7 +5451,7 @@
         },
         "delay_capture": {
           "type": "boolean",
-          "description": "If `true`, the request will only perform an Auth on the provided\ncard. You can then later perform either a Capture (with the\n[CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void\n(with the [VoidTransation](#endpoint-voidtransaction) endpoint).\n\nDefault value: `false`"
+          "description": "If `true`, the request will only perform an Auth on the provided\ncard. You can then later perform either a Capture (with the\n[CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void\n(with the [VoidTransaction](#endpoint-voidtransaction) endpoint).\n\nDefault value: `false`"
         },
         "reference_id": {
           "type": "string",
@@ -5691,6 +5691,12 @@
           },
           "redirect_url": "https://merchant.website.com/order-confirm"
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.python",
+        "csharp": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.csharp",
+        "php": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.php",
+        "ruby": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.ruby"
       }
     },
     "CreateCheckoutResponse": {
