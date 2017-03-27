@@ -7,10 +7,11 @@ This is the project that _generates_ API clients for connecting to the public Sq
 * [C#](https://github.com/square/connect-csharp-sdk)
 * [Ruby](https://github.com/square/connect-ruby-sdk)
 * [PHP](https://github.com/square/connect-php-sdk)
+* [Java](https://github.com/square/connect-java-sdk)
 
 The [Connect Examples](https://github.com/square/connect-api-examples/tree/master/connect-examples/) are working sample applications that you can copy from to build your own.
 
-Connect v2 API Specifications
+Connect API Specifications
 =============================
 
 This repository contains the specifications for generating client SDKs with
@@ -21,13 +22,7 @@ supported SDKs are located in `swagger-templates`. The configuration for each
 SDK (e.g. name of the library, version number, etc.) are located in
 `swagger-configs`.
 
-To generate an SDK the way we generate them, simply run `make`. You will need
-[Swagger Codegen](https://github.com/swagger-api/swagger-codegen) for this to
-work, but the script will prompt you to install it.
-
-Currently, we officially support
-[Ruby](https://github.com/square/connect-ruby-sdk) and
-[PHP](https://github.com/square/connect-php-sdk).
+We use [Travis CI](https://travis-ci.com/) to build each SDK and push it out the appropriate repository. To learn more about that process, look in the [travis-ci](travis-ci) directory. 
 
 Contributing
 ------------
@@ -38,7 +33,7 @@ License
 -------
 
 ```
-Copyright 2016 Square, Inc.
+Copyright 2016 - 2017 Square, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
