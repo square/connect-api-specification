@@ -37,7 +37,7 @@ else
 fi
 
 echo "Copying files..."
-rm -rf docs lib
+rm -rf docs squareconnect
 cp -r ../swagger-out/python/docs .
 cp -r ../swagger-out/python/squareconnect .
 cp ../swagger-out/python/requirements.txt .
