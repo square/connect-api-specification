@@ -1,4 +1,5 @@
-# Square Connect V2 Python SDK [![Build Status](https://travis-ci.org/square/connect-python-sdk.svg?branch=master)](https://travis-ci.org/square/connect-python-sdk)[![PyPI version](https://badge.fury.io/py/squareconnect.svg)](https://badge.fury.io/py/squareconnect)
+Square Connect Python SDK [![Build Status](https://travis-ci.org/square/connect-python-sdk.svg?branch=master)](https://travis-ci.org/square/connect-python-sdk)[![PyPI version](https://badge.fury.io/py/squareconnect.svg)](https://badge.fury.io/py/squareconnect)
+==================
 
 This repository contains the released Python client SDK. Check out our [API
 specification repository](https://github.com/square/connect-api-specification)
@@ -88,7 +89,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to [Square Connect V2 Documentation](https://docs.connect.squareup.com/api/connect/v2/#navsection-endpoints)
+All URIs are relative to [Square Connect Documentation](https://docs.connect.squareup.com/)
 
 
 Class | Method | HTTP request 
