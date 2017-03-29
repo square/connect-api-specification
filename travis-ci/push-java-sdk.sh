@@ -40,6 +40,7 @@ echo "Copying files..."
 rm -rf docs src/main
 cp -r ../swagger-out/java/docs .
 cp -r ../swagger-out/java/src/main ./src/
+rm ./src/main/AndroidManifest.xml
 cp ../swagger-out/java/build.gradle .
 cp ../swagger-out/java/build.sbt .
 cp ../swagger-out/java/gradle.properties .
@@ -47,6 +48,6 @@ cp ../swagger-out/java/pom.xml .
 cp ../swagger-out/java/settings.gradle .
 cp ../swagger-out/java/README.md .
 
-git add .
+git add --all .
 git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
 git push -u origin $BRANCH_NAME
