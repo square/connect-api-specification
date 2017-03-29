@@ -782,7 +782,7 @@
     "/v1/me": {
       "get": {
         "tags": [
-          "V1Location"
+          "V1Locations"
         ],
         "summary": "Get a business\u0027s information.",
         "operationId": "RetrieveBusiness",
@@ -814,7 +814,7 @@
     "/v1/me/locations": {
       "get": {
         "tags": [
-          "V1Location"
+          "V1Locations"
         ],
         "summary": "Provides details for a business\u0027s locations, including their IDs.",
         "operationId": "ListLocations",
