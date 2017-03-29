@@ -116,6 +116,23 @@ ext {
     commons_lang3_version=3.5
     {{/supportJava6}}
     junit_version = "4.12"
+
+    GROUP = group
+    VERSION_NAME = version
+    POM_PACKAGING = "pom"
+    POM_DESCRIPTION= "Square Connect Java SDK"
+
+    POM_URL="https://github.com/square/connect-java-sdk/"
+    POM_SCM_URL="https://github.com/square/connect-java-sdk/"
+    POM_SCM_CONNECTION="scm:git:https://github.com/square/connect-java-sdk.git"
+    POM_SCM_DEV_CONNECTION="scm:git:git@github.com:square/connect-java-sdk.git"
+
+    POM_LICENCE_NAME="The Apache Software License, Version 2.0"
+    POM_LICENCE_URL="http://www.apache.org/licenses/LICENSE-2.0.txt"
+    POM_LICENCE_DIST="repo"
+
+    POM_DEVELOPER_ID="square"
+    POM_DEVELOPER_NAME="Square, Inc."
 }
 
 dependencies {
@@ -140,3 +157,5 @@ dependencies {
     compile "com.brsanthu:migbase64:2.2"
     testCompile "junit:junit:$junit_version"
 }
+
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
