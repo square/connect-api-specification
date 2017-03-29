@@ -4,7 +4,7 @@
   "httpUserAgent": "Square-Connect-Ruby/2.1.0",
   "gemVersion": "2.1.0",
   "gemAuthor": "Square, Inc.",
-  "gemAuthorEmail": "",
+  "gemAuthorEmail": "developers@squareup.com",
   "gemHomepage": "https://github.com/square/connect-ruby-sdk",
   "gemDescription": "Ruby client library for the Square Connect API",
   "gemLicense": "Apache 2.0",
