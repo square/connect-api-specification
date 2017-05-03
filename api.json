@@ -779,6 +779,431 @@
         }
       }
     },
+    "/v2/catalog/object/{object_id}": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "RetrieveCatalogObject",
+        "operationId": "RetrieveCatalogObject",
+        "description": "Returns a single [CatalogItem](#type-catalogitem) as a\n[CatalogObject](#type-catalogobject) based on the provided ID. The returned\nobject includes all of the relevant [CatalogItem](#type-catalogitem)\ninformation including: [CatalogItemVariation](#type-catalogitemvariation)\nchildren, references to its\n[CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "object_id",
+            "description": "The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.",
+            "type": "string",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "include_related_objects",
+            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.",
+            "type": "boolean",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveCatalogObjectResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "DeleteCatalogObject",
+        "operationId": "DeleteCatalogObject",
+        "description": "Deletes a single [CatalogObject](#type-catalogobject) based on the\nprovided ID and returns the set of successfully deleted IDs in the response.\nDeletion is a cascading event such that all children of the targeted object\nare also deleted. For example, deleting a [CatalogItem](#type-catalogitem)\nwill also delete all of its\n[CatalogItemVariation](#type-catalogitemvariation) children.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "object_id",
+            "description": "The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other\nobjects in the graph that depend on that object will be deleted as well (for example, deleting a\n[CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).",
+            "type": "string",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeleteCatalogObjectResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/object": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "UpsertCatalogObject",
+        "operationId": "UpsertCatalogObject",
+        "description": "Creates or updates the target [CatalogObject](#type-catalogobject).",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpsertCatalogObjectRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpsertCatalogObjectResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/list": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "ListCatalog",
+        "operationId": "ListCatalog",
+        "description": "Returns a list of [CatalogObject](#type-catalogobject)s that includes\nall objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)\nand [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter\nis specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:\n`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`.",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "The pagination cursor returned in the previous response. Leave unset for an initial request.\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "types",
+            "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`,\n`\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListCatalogResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/batch-upsert": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "BatchUpsertCatalogObjects",
+        "operationId": "BatchUpsertCatalogObjects",
+        "description": "Creates or updates up to 10,000 target objects based on the provided\nlist of objects. The target objects are grouped into batches and each batch is\ninserted/updated in an all-or-nothing manner. If an object within a batch is\nmalformed in some way, or violates a database constraint, the entire batch\ncontaining that item will be disregarded. However, other batches in the same\nrequest may still succeed. Each batch may contain up to 1,000 objects, and\nbatches will be processed in order as long as the total object count for the\nrequest (items, variations, modifier lists, discounts, and taxes) is no more\nthan 10,000.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchUpsertCatalogObjectsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchUpsertCatalogObjectsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/batch-retrieve": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "BatchRetrieveCatalogObjects",
+        "operationId": "BatchRetrieveCatalogObjects",
+        "description": "Returns a set of objects based on the provided ID.\n[CatalogItem](#type-catalogitem)s returned in the set include all of the\nchild information including: all\n[CatalogItemVariation](#type-catalogitemvariation) objects, references to\nits [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveCatalogObjectsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveCatalogObjectsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/search": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "SearchCatalogObjects",
+        "operationId": "SearchCatalogObjects",
+        "description": "Queries the targeted catalog using a variety of query types\n([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n([CatalogQueryExact](#type-catalogqueryexact,\n([CatalogQueryRange](#type-catalogqueryrange),\n([CatalogQueryText](#type-catalogquerytext),\n([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax),\n([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchCatalogObjectsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchCatalogObjectsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/batch-delete": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "BatchDeleteCatalogObjects",
+        "operationId": "BatchDeleteCatalogObjects",
+        "description": "Deletes a set of [CatalogItem](#type-catalogitem)s based on the\nprovided list of target IDs and returns a set of successfully deleted IDs in\nthe response. Deletion is a cascading event such that all children of the\ntargeted object are also deleted. For example, deleting a CatalogItem will\nalso delete all of its [CatalogItemVariation](#type-catalogitemvariation)\nchildren.\n\n`BatchDeleteCatalogObjects` succeeds even if only a portion of the targeted\nIDs can be deleted. The response will only include IDs that were\nactually deleted.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchDeleteCatalogObjectsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchDeleteCatalogObjectsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/update-item-taxes": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "UpdateItemTaxes",
+        "operationId": "UpdateItemTaxes",
+        "description": "Updates the [CatalogTax](#type-catalogtax) objects that apply to the\ntargeted [CatalogItem](#type-catalogitem) without having to perform an\nupsert on the entire item.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemTaxesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemTaxesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/update-item-modifier-lists": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "UpdateItemModifierLists",
+        "operationId": "UpdateItemModifierLists",
+        "description": "Updates the [CatalogModifierList](#type-catalogmodifierlist) objects\nthat apply to the targeted [CatalogItem](#type-catalogitem) without having\nto perform an upsert on the entire item.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemModifierListsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemModifierListsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/info": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "CatalogInfo",
+        "operationId": "CatalogInfo",
+        "description": "Returns information about the Square Catalog API, such as batch size\nlimits for `BatchUpsertCatalogObjects`.",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CatalogInfoResponse"
+            }
+          }
+        }
+      }
+    },
     "/v1/me": {
       "get": {
         "tags": [
@@ -4422,6 +4847,56 @@
       ],
       "description": "Indicates a credit card\u0027s brand, such as `VISA`."
     },
+    "CatalogDiscountType": {
+      "type": "string",
+      "enum": [
+        "FIXED_PERCENTAGE",
+        "FIXED_AMOUNT",
+        "VARIABLE_PERCENTAGE",
+        "VARIABLE_AMOUNT"
+      ],
+      "description": "How to apply a [CatalogDiscount](#type-catalogdiscount) to a [CatalogItem](#type-catalogitem)."
+    },
+    "CatalogItemProductType": {
+      "type": "string",
+      "enum": [
+        "REGULAR",
+        "GIFT_CARD",
+        "APPOINTMENTS_SERVICE",
+        "RETAIL_ITEM",
+        "RESTAURANT_ITEM"
+      ],
+      "description": "The type of a [CatalogItem](#type-catalogitem)."
+    },
+    "CatalogModifierListSelectionType": {
+      "type": "string",
+      "enum": [
+        "SINGLE",
+        "MULTIPLE"
+      ],
+      "description": "Indicates whether a [CatalogModifierList](#type-catalogmodifierlist) supports multiple selections."
+    },
+    "CatalogObjectType": {
+      "type": "string",
+      "enum": [
+        "ITEM",
+        "CATEGORY",
+        "ITEM_VARIATION",
+        "TAX",
+        "DISCOUNT",
+        "MODIFIER_LIST",
+        "MODIFIER"
+      ],
+      "description": "Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each\ncontaning type-specific properties in the `*_data` field corresponding to the object type."
+    },
+    "CatalogPricingType": {
+      "type": "string",
+      "enum": [
+        "FIXED_PRICING",
+        "VARIABLE_PRICING"
+      ],
+      "description": "Indicates whether the price of a [CatalogItemVariation](#type-catalogitemvariation) should be entered manually at the time of sale."
+    },
     "Country": {
       "type": "string",
       "enum": [
@@ -4940,6 +5415,8 @@
         "INVALID_CARD_DATA",
         "IDEMPOTENCY_KEY_REUSED",
         "UNEXPECTED_VALUE",
+        "SANDBOX_NOT_SUPPORTED",
+        "INVALID_EMAIL_ADDRESS",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
         "VERIFY_AVS_FAILURE",
@@ -4954,6 +5431,14 @@
         "SERVICE_UNAVAILABLE"
       ],
       "description": "Indicates specific errors that can occur during a request to the\nConnect API."
+    },
+    "InventoryAlertType": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "LOW_QUANTITY"
+      ],
+      "description": "Indicates whether Square should alert the merchant when the inventory quantity of a [CatalogItemVariation](#type-catalogitemvariation) is low."
     },
     "LocationCapability": {
       "type": "string",
@@ -4979,6 +5464,22 @@
         "ASC"
       ],
       "description": "The order (e.g., chronological or alphabetical) in which results from a request are returned."
+    },
+    "TaxCalculationPhase": {
+      "type": "string",
+      "enum": [
+        "TAX_SUBTOTAL_PHASE",
+        "TAX_TOTAL_PHASE"
+      ],
+      "description": "When to calculate the taxes due on a cart."
+    },
+    "TaxInclusionType": {
+      "type": "string",
+      "enum": [
+        "ADDITIVE",
+        "INCLUSIVE"
+      ],
+      "description": "Whether to the tax amount should be additional to or included in to the [CatalogItem](#type-catalogitem) price."
     },
     "TenderCardDetailsEntryMethod": {
       "type": "string",
@@ -5345,6 +5846,520 @@
       },
       "description": "Represents a physical address."
     },
+    "BatchDeleteCatalogObjectsRequest": {
+      "type": "object",
+      "properties": {
+        "object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the [CatalogObject](#type-catalogobject)s to be deleted. When an object is deleted, other objects\nin the graph that depend on that object will be deleted as well (for example, deleting a\n[CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s)."
+        }
+      },
+      "description": ""
+    },
+    "BatchDeleteCatalogObjectsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "deleted_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of all [CatalogObject](#type-catalogobject)s deleted by this request."
+        },
+        "deleted_at": {
+          "type": "string",
+          "description": "The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
+        }
+      },
+      "description": ""
+    },
+    "BatchRetrieveCatalogObjectsRequest": {
+      "type": "object",
+      "required": [
+        "object_ids"
+      ],
+      "properties": {
+        "object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the [CatalogObject](#type-catalogobject)s to be retrieved."
+        },
+        "include_related_objects": {
+          "type": "boolean",
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested objects, as follows:\n\nIf the `objects` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `objects` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/batch-retrieve",
+        "request_body": {
+          "object_ids": [
+            "W62UWFY35CWMYGVWK6TWJDNI",
+            "AA27W3M2GGTF3H6AVPNB77CK"
+          ],
+          "include_related_objects": true
+        }
+      }
+    },
+    "BatchRetrieveCatalogObjectsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "A list of [CatalogObject](#type-catalogobject)s returned."
+        },
+        "related_objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "A list of [CatalogObject](#type-catalogobject)s referenced by the object in the `objects` field."
+        }
+      },
+      "description": "",
+      "example": {
+        "objects": [
+          {
+            "type": "ITEM",
+            "id": "W62UWFY35CWMYGVWK6TWJDNI",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Tea",
+              "description": "Hot Leaf Juice",
+              "visibility": "PRIVATE",
+              "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+              "tax_ids": [
+                "HURXQOOAIC4IZSI2BEXQRYFY"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "2TZFAOHWGG7PAK2QEXWYPZSP",
+                  "updated_at": "2016-11-16T22:25:24.878Z",
+                  "version": 1479335124878,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "W62UWFY35CWMYGVWK6TWJDNI",
+                    "name": "Mug",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 150,
+                      "currency": "USD"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "ITEM",
+            "id": "AA27W3M2GGTF3H6AVPNB77CK",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Coffee",
+              "description": "Hot Bean Juice",
+              "visibility": "PRIVATE",
+              "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+              "tax_ids": [
+                "HURXQOOAIC4IZSI2BEXQRYFY"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "LBTYIHNHU52WOIHWT7SNRIYH",
+                  "updated_at": "2016-11-16T22:25:24.878Z",
+                  "version": 1479335124878,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                    "name": "Regular",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 250,
+                      "currency": "USD"
+                    }
+                  }
+                },
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "PKYIC7HGGKW5CYVSCVDEIMHY",
+                  "updated_at": "2016-11-16T22:25:24.878Z",
+                  "version": 1479335124878,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                    "name": "Large",
+                    "ordinal": 1,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 350,
+                      "currency": "USD"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "related_objects": [
+          {
+            "type": "CATEGORY",
+            "id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "category_data": {
+              "name": "Beverages"
+            }
+          },
+          {
+            "type": "TAX",
+            "id": "HURXQOOAIC4IZSI2BEXQRYFY",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "tax_data": {
+              "name": "Sales Tax",
+              "calculation_phase": "TAX_SUBTOTAL_PHASE",
+              "inclusion_type": "ADDITIVE",
+              "percentage": "5.0",
+              "enabled": true,
+              "tax_type_id": "us_sales_tax",
+              "tax_type_name": "Sales Tax"
+            }
+          }
+        ]
+      }
+    },
+    "BatchUpsertCatalogObjectsRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "type": "string",
+          "description": "A value you specify that uniquely identifies this\nrequest among all your requests. A common way to create\na valid idempotency key is to use a Universally unique\nidentifier (UUID).\n\nIf you\u0027re unsure whether a particular request was successful,\nyou can reattempt it with the same idempotency key without\nworrying about creating duplicate objects.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
+        },
+        "batches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObjectBatch"
+          },
+          "description": "A batch of [CatalogObject](#type-catalogobject)s to be inserted/updated atomically.\nThe objects within a batch will be inserted in an all-or-nothing fashion, i.e., if an error occurs\nattempting to insert or update an object within a batch, the entire batch will be rejected. However, an error\nin one batch will not affect other batches within the same request.\n\nFor each object, its `updated_at` field is ignored and replaced with a current [timestamp](#workingwithdates), and its\n`is_deleted` field must not be set to `true`.\n\nTo modify an existing object, supply its ID. To create a new object, use an ID starting\nwith `#`. These IDs may be used to create relationships between an object and attributes of\nother objects that reference it. For example, you can create a [CatalogItem](#type-catalogitem) with\nID `#ABC` and a [CatalogItemVariation](#type-catalogitemvariation) with its `item_id` attribute set to\n`#ABC` in order to associate the [CatalogItemVariation](#type-catalogitemvariation) with its parent\n[CatalogItem](#type-catalogitem).\n\nAny `#`-prefixed IDs are valid only within a single atomic batch, and will be replaced by server-generated IDs.\n\nEach batch may contain up to 1,000 objects. The total number of objects across all batches for a single request\nmay not exceed 10,000. If either of these limits is violated, an error will be returned and no objects will\nbe inserted or updated."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/batch-upsert",
+        "request_body": {
+          "idempotency_key": "SJKHDUIWQHJKSQ",
+          "batches": [
+            {
+              "objects": [
+                {
+                  "type": "ITEM",
+                  "id": "#Tea",
+                  "present_at_all_locations": true,
+                  "item_data": {
+                    "name": "Tea",
+                    "description": "Hot Leaf Juice",
+                    "visibility": "PRIVATE",
+                    "category_id": "#Beverages",
+                    "tax_ids": [
+                      "#SalesTax"
+                    ],
+                    "variations": [
+                      {
+                        "type": "ITEM_VARIATION",
+                        "id": "#Tea_Mug",
+                        "present_at_all_locations": true,
+                        "item_variation_data": {
+                          "name": "Mug",
+                          "pricing_type": "FIXED_PRICING",
+                          "price_money": {
+                            "amount": 150,
+                            "currency": "USD"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "ITEM",
+                  "id": "#Coffee",
+                  "present_at_all_locations": true,
+                  "item_data": {
+                    "name": "Coffee",
+                    "description": "Hot Bean Juice",
+                    "visibility": "PRIVATE",
+                    "category_id": "#Beverages",
+                    "tax_ids": [
+                      "#SalesTax"
+                    ],
+                    "variations": [
+                      {
+                        "type": "ITEM_VARIATION",
+                        "id": "#Coffee_Regular",
+                        "present_at_all_locations": true,
+                        "item_variation_data": {
+                          "name": "Regular",
+                          "pricing_type": "FIXED_PRICING",
+                          "price_money": {
+                            "amount": 250,
+                            "currency": "USD"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ITEM_VARIATION",
+                        "id": "#Coffee_Large",
+                        "present_at_all_locations": true,
+                        "item_variation_data": {
+                          "name": "Large",
+                          "pricing_type": "FIXED_PRICING",
+                          "price_money": {
+                            "amount": 350,
+                            "currency": "USD"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "CATEGORY",
+                  "id": "#Beverages",
+                  "present_at_all_locations": true,
+                  "category_data": {
+                    "name": "Beverages"
+                  }
+                },
+                {
+                  "type": "TAX",
+                  "id": "#SalesTax",
+                  "present_at_all_locations": true,
+                  "tax_data": {
+                    "name": "Sales Tax",
+                    "calculation_phase": "TAX_SUBTOTAL_PHASE",
+                    "inclusion_type": "ADDITIVE",
+                    "percentage": "5.0",
+                    "fee_applies_to_custom_amounts": true,
+                    "enabled": true,
+                    "tax_type_id": "us_sales_tax",
+                    "tax_type_name": "Sales Tax"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "BatchUpsertCatalogObjectsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "The created [CatalogObject](#type-catalogobject)s"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
+        },
+        "id_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogIdMapping"
+          },
+          "description": "The mapping between client and server IDs for this Upsert."
+        }
+      },
+      "description": "",
+      "example": {
+        "entries": [
+          {
+            "client_object_id": "#Tea",
+            "catalog_object": {
+              "type": "ITEM",
+              "id": "W62UWFY35CWMYGVWK6TWJDNI",
+              "updated_at": "2016-11-16T22:25:24.878Z",
+              "version": 1479335124878,
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_data": {
+                "name": "Tea",
+                "description": "Hot Leaf Juice",
+                "visibility": "PRIVATE",
+                "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+                "tax_ids": [
+                  "HURXQOOAIC4IZSI2BEXQRYFY"
+                ],
+                "variations": [
+                  {
+                    "type": "ITEM_VARIATION",
+                    "id": "2TZFAOHWGG7PAK2QEXWYPZSP",
+                    "updated_at": "2016-11-16T22:25:24.878Z",
+                    "version": 1479335124878,
+                    "is_deleted": false,
+                    "present_at_all_locations": true,
+                    "item_variation_data": {
+                      "item_id": "W62UWFY35CWMYGVWK6TWJDNI",
+                      "name": "Mug",
+                      "ordinal": 0,
+                      "pricing_type": "FIXED_PRICING",
+                      "price_money": {
+                        "amount": 150,
+                        "currency": "USD"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "client_object_id": "#Coffee",
+            "catalog_object": {
+              "type": "ITEM",
+              "id": "AA27W3M2GGTF3H6AVPNB77CK",
+              "updated_at": "2016-11-16T22:25:24.878Z",
+              "version": 1479335124878,
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "item_data": {
+                "name": "Coffee",
+                "description": "Hot Bean Juice",
+                "visibility": "PRIVATE",
+                "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+                "tax_ids": [
+                  "HURXQOOAIC4IZSI2BEXQRYFY"
+                ],
+                "variations": [
+                  {
+                    "type": "ITEM_VARIATION",
+                    "id": "LBTYIHNHU52WOIHWT7SNRIYH",
+                    "updated_at": "2016-11-16T22:25:24.878Z",
+                    "version": 1479335124878,
+                    "is_deleted": false,
+                    "present_at_all_locations": true,
+                    "item_variation_data": {
+                      "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                      "name": "Regular",
+                      "ordinal": 0,
+                      "pricing_type": "FIXED_PRICING",
+                      "price_money": {
+                        "amount": 250,
+                        "currency": "USD"
+                      }
+                    }
+                  },
+                  {
+                    "type": "ITEM_VARIATION",
+                    "id": "PKYIC7HGGKW5CYVSCVDEIMHY",
+                    "updated_at": "2016-11-16T22:25:24.878Z",
+                    "version": 1479335124878,
+                    "is_deleted": false,
+                    "present_at_all_locations": true,
+                    "item_variation_data": {
+                      "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                      "name": "Large",
+                      "ordinal": 1,
+                      "pricing_type": "FIXED_PRICING",
+                      "price_money": {
+                        "amount": 350,
+                        "currency": "USD"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "client_object_id": "#Beverages",
+            "catalog_object": {
+              "type": "CATEGORY",
+              "id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+              "updated_at": "2016-11-16T22:25:24.878Z",
+              "version": 1479335124878,
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "category_data": {
+                "name": "Beverages"
+              }
+            }
+          },
+          {
+            "client_object_id": "#SalesTax",
+            "catalog_object": {
+              "type": "TAX",
+              "id": "HURXQOOAIC4IZSI2BEXQRYFY",
+              "updated_at": "2016-11-16T22:25:24.878Z",
+              "version": 1479335124878,
+              "is_deleted": false,
+              "present_at_all_locations": true,
+              "tax_data": {
+                "name": "Sales Tax",
+                "calculation_phase": "TAX_SUBTOTAL_PHASE",
+                "inclusion_type": "ADDITIVE",
+                "percentage": "5.0",
+                "enabled": true,
+                "tax_type_id": "us_sales_tax",
+                "tax_type_name": "Sales Tax"
+              }
+            }
+          }
+        ]
+      }
+    },
     "CaptureTransactionRequest": {
       "type": "object",
       "properties": {},
@@ -5425,6 +6440,882 @@
         }
       },
       "description": "Represents the non-confidential details of a credit card."
+    },
+    "CatalogCategory": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The category\u0027s name. Searchable."
+        }
+      },
+      "description": "A category to which an [CatalogItem](#type-catalogitem) belongs in the Catalog object model.",
+      "example": {
+        "object": {
+          "type": "CATEGORY",
+          "id": "#Beverages",
+          "present_at_all_locations": true,
+          "category_data": {
+            "name": "Beverages"
+          }
+        }
+      }
+    },
+    "CatalogDiscount": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The discount\u0027s name. Searchable."
+        },
+        "discount_type": {
+          "type": "string",
+          "enum": [
+            "FIXED_PERCENTAGE",
+            "FIXED_AMOUNT",
+            "VARIABLE_PERCENTAGE",
+            "VARIABLE_AMOUNT"
+          ],
+          "description": "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale.\nSee [CatalogDiscountType](#type-catalogdiscounttype) for all possible values."
+        },
+        "percentage": {
+          "type": "string",
+          "description": "The percentage of the discount as a string representation of a decimal number, using a `.` as the decimal\nseparator and without a `%` sign. A value of `7.5` corresponds to `7.5%`. Specify a percentage of `0` if `discount_type`\nis `VARIABLE_PERCENTAGE`.\n\nDo not include this field for amount-based or variable discounts."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of the discount. Specify an amount of `0` if `discount_type` is `VARIABLE_AMOUNT`.\n\nDo not include this field for percentage-based or variable discounts."
+        },
+        "pin_required": {
+          "type": "boolean",
+          "description": "Indicates whether a mobile staff member needs to enter their PIN to apply the\ndiscount to a payment in the Square Point of Sale app."
+        },
+        "label_color": {
+          "type": "string",
+          "description": "The color of the discount\u0027s display label in the Square Point of Sale app."
+        }
+      },
+      "description": "A discount in the Catalog object model.",
+      "example": {
+        "object": {
+          "type": "DISCOUNT",
+          "id": "#Maythe4th",
+          "present_at_all_locations": true,
+          "discount_data": {
+            "name": "Welcome to the Dark(Roast) Side!",
+            "discount_type": "FIXED_PERCENTAGE",
+            "percentage": "5.4",
+            "pin_required": false,
+            "label_color": "red"
+          }
+        }
+      }
+    },
+    "CatalogIdMapping": {
+      "type": "object",
+      "properties": {
+        "client_object_id": {
+          "type": "string",
+          "description": "The client-supplied, temporary `#`-prefixed ID for a new [CatalogObject](#type-catalogobject)."
+        },
+        "object_id": {
+          "type": "string",
+          "description": "The permanent ID for the [CatalogObject](#type-catalogobject) created by the server."
+        }
+      },
+      "description": "A mapping between a client-supplied temporary ID and a permanent server ID."
+    },
+    "CatalogInfoRequest": {
+      "type": "object",
+      "properties": {},
+      "description": ""
+    },
+    "CatalogInfoResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "limits": {
+          "$ref": "#/definitions/CatalogInfoResponseLimits",
+          "description": ""
+        }
+      },
+      "description": ""
+    },
+    "CatalogInfoResponseLimits": {
+      "type": "object",
+      "properties": {
+        "batch_upsert_max_objects_per_batch": {
+          "type": "integer",
+          "description": "The maximum number of objects that may appear within a single batch in a\n`/v2/catalog/batch-upsert` request."
+        },
+        "batch_upsert_max_total_objects": {
+          "type": "integer",
+          "description": "The maximum number of objects that may appear across all batches in a\n`/v2/catalog/batch-upsert` request."
+        },
+        "batch_retrieve_max_object_ids": {
+          "type": "integer",
+          "description": "The maximum number of object IDs that may appear in a `/v2/catalog/batch-retrieve`\nrequest."
+        },
+        "search_max_page_limit": {
+          "type": "integer",
+          "description": "The maximum number of results that may be returned in a page of a\n`/v2/catalog/search` response."
+        },
+        "batch_delete_max_object_ids": {
+          "type": "integer",
+          "description": "The maximum number of object IDs that may be included in a single\n`/v2/catalog/batch-delete` request."
+        },
+        "update_item_taxes_max_item_ids": {
+          "type": "integer",
+          "description": "The maximum number of item IDs that may be included in a single\n`/v2/catalog/update-item-taxes` request."
+        },
+        "update_item_taxes_max_taxes_to_enable": {
+          "type": "integer",
+          "description": "The maximum number of tax IDs to be enabled that may be included in a single\n`/v2/catalog/update-item-taxes` request."
+        },
+        "update_item_taxes_max_taxes_to_disable": {
+          "type": "integer",
+          "description": "The maximum number of tax IDs to be disabled that may be included in a single\n`/v2/catalog/update-item-taxes` request."
+        },
+        "update_item_modifier_lists_max_item_ids": {
+          "type": "integer",
+          "description": "The maximum number of item IDs that may be included in a single\n`/v2/catalog/update-item-modifier-lists` request."
+        },
+        "update_item_modifier_lists_max_modifier_lists_to_enable": {
+          "type": "integer",
+          "description": "The maximum number of modifier list IDs to be enabled that may be included in\na single `/v2/catalog/update-item-modifier-lists` request."
+        },
+        "update_item_modifier_lists_max_modifier_lists_to_disable": {
+          "type": "integer",
+          "description": "The maximum number of modifier list IDs to be disabled that may be included in\na single `/v2/catalog/update-item-modifier-lists` request."
+        }
+      },
+      "description": ""
+    },
+    "CatalogItem": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The item\u0027s name. Searchable."
+        },
+        "description": {
+          "type": "string",
+          "description": "The item\u0027s description. Searchable."
+        },
+        "abbreviation": {
+          "type": "string",
+          "description": "The text of the item\u0027s display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable."
+        },
+        "label_color": {
+          "type": "string",
+          "description": "The color of the item\u0027s display label in the Square Point of Sale app.  Searchable."
+        },
+        "available_online": {
+          "type": "boolean",
+          "description": "If `true`, the item can be added to shipping orders from the merchant\u0027s online store."
+        },
+        "available_for_pickup": {
+          "type": "boolean",
+          "description": "If `true`, the item can be added to pickup orders from the merchant\u0027s online store."
+        },
+        "available_electronically": {
+          "type": "boolean",
+          "description": "If `true`, the item can be added to electronically fulfilled orders from the merchant\u0027s online store."
+        },
+        "category_id": {
+          "type": "string",
+          "description": "The ID of the item\u0027s category, if any."
+        },
+        "tax_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A set of IDs indicating the [CatalogTax](#type-catalogtax)es that are enabled for\nthis item. When updating an item, any taxes listed here will be added to the item.\n[CatalogTax](#type-catalogtax)es may also be added to or deleted from an item using `UpdateItemTaxes`."
+        },
+        "modifier_list_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogItemModifierListInfo"
+          },
+          "description": "A set of [CatalogItemModifierListInfo](#type-catalogitemmodifierlistinfo) objects\nrepresenting the modifier lists that apply to this item, along with the overrides and min\nand max limits that are specific to this item. [CatalogModifierList](#type-catalogmodifierlist)s\nmay also be added to or deleted from an item using `UpdateItemModifierLists`."
+        },
+        "image_url": {
+          "type": "string",
+          "description": "The URL of an image representing this item."
+        },
+        "variations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item."
+        },
+        "product_type": {
+          "type": "string",
+          "enum": [
+            "REGULAR",
+            "GIFT_CARD",
+            "APPOINTMENTS_SERVICE",
+            "RETAIL_ITEM",
+            "RESTAURANT_ITEM"
+          ],
+          "description": "The product type of the item. May not be changed once an item has been created.\n\nOnly items of product type `REGULAR` may be created by this API; items with other product\ntypes are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for all possible values."
+        },
+        "skip_modifier_screen": {
+          "type": "boolean",
+          "description": "If `false`, the Square Point of Sale app will present the [CatalogItem](#type-catalogitem)\u0027s\ndetails screen immediately, allowing the merchant to choose [CatalogModifier](#type-catalogmodifier)s\nbefore adding the item to the cart.  This is the default behavior.\n\nIf `true`, the Square Point of Sale app will immediately add the item to the cart with the pre-selected\nmodifiers, and merchants can edit modifiers by drilling down onto the item\u0027s details.\n\nThird-party clients are encouraged to implement similar behaviors."
+        }
+      },
+      "description": "An item (i.e., product family) in the Catalog object model.",
+      "example": {
+        "object": {
+          "type": "ITEM",
+          "id": "#Cocoa",
+          "present_at_all_locations": true,
+          "item_data": {
+            "name": "Cocoa",
+            "description": "Hot chocolate",
+            "abbreviation": "Ch",
+            "visibility": "PRIVATE"
+          }
+        }
+      }
+    },
+    "CatalogItemModifierListInfo": {
+      "type": "object",
+      "required": [
+        "modifier_list_id"
+      ],
+      "properties": {
+        "modifier_list_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the [CatalogModifierList](#type-catalogmodifierlist) controlled by this [CatalogModifierListInfo](#type-catalogmodifierlistinfo)."
+        },
+        "modifier_overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogModifierOverride"
+          },
+          "description": "A set of [CatalogModifierOverride](#type-catalogmodifieroverride) objects that override whether a given [CatalogModifier](#type-catalogmodifier) is enabled by default."
+        },
+        "min_selected_modifiers": {
+          "type": "integer",
+          "description": "If zero or larger, the smallest number of [CatalogModifier](#type-catalogmodifier)s that must be selected from this [CatalogModifierList](#type-catalogmodifierlist)."
+        },
+        "max_selected_modifiers": {
+          "type": "integer",
+          "description": "If zero or larger, the largest number of [CatalogModifier](#type-catalogmodifier)s that can be selected from this [CatalogModifierList](#type-catalogmodifierlist)."
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "If `true`, enable this [CatalogModifierList](#type-catalogmodifierlist)."
+        }
+      },
+      "description": "Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem)."
+    },
+    "CatalogItemVariation": {
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "description": "The ID of the [CatalogItem](#type-catalogitem) associated with this item variation. Searchable."
+        },
+        "name": {
+          "type": "string",
+          "description": "The item variation\u0027s name. Searchable."
+        },
+        "sku": {
+          "type": "string",
+          "description": "The item variation\u0027s SKU, if any. Searchable."
+        },
+        "upc": {
+          "type": "string",
+          "description": "The item variation\u0027s UPC, if any. Searchable."
+        },
+        "pricing_type": {
+          "type": "string",
+          "enum": [
+            "FIXED_PRICING",
+            "VARIABLE_PRICING"
+          ],
+          "description": "Indicates whether the item variation\u0027s price is fixed or determined at the time\nof sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+        },
+        "price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The item variation\u0027s price, if fixed pricing is used."
+        },
+        "location_overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ItemVariationLocationOverrides"
+          },
+          "description": "Per-location price and inventory overrides."
+        },
+        "track_inventory": {
+          "type": "boolean",
+          "description": "If `true`, inventory tracking is active for the variation."
+        },
+        "inventory_alert_type": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "LOW_QUANTITY"
+          ],
+          "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal\nto its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values."
+        },
+        "inventory_alert_threshold": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
+        },
+        "user_data": {
+          "type": "string",
+          "description": "Arbitrary user metadata to associate with the item variation. Cannot exceed 255 characters. Searchable."
+        },
+        "service_duration": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If the [CatalogItem](#type-catalogitem) that owns this item variation is of type\n`APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For\nexample, a 30 minute appointment would have the value `1800000`, which is equal to\n30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second)."
+        }
+      },
+      "description": "An item variation (i.e., product) in the Catalog object model.",
+      "example": {
+        "object": {
+          "type": "ITEM_VARIATION",
+          "id": "#Coffee_Regular",
+          "present_at_all_locations": true,
+          "item_variation_data": {
+            "name": "Regular",
+            "pricing_type": "FIXED_PRICING",
+            "price_money": {
+              "amount": 250,
+              "currency": "USD"
+            }
+          }
+        }
+      }
+    },
+    "CatalogModifier": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The modifier\u0027s name. Searchable."
+        },
+        "price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The modifier\u0027s price."
+        }
+      },
+      "description": "A modifier in the Catalog object model.",
+      "example": {
+        "object": {
+          "type": "MODIFIER",
+          "present_at_all_locations": true,
+          "item_modifier": {
+            "name": "Almond Milk",
+            "price_money": {
+              "amount": 250,
+              "currency": "USD"
+            }
+          }
+        }
+      }
+    },
+    "CatalogModifierList": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The [CatalogModifierList](#type-catalogmodifierlist)\u0027s name. Searchable."
+        },
+        "selection_type": {
+          "type": "string",
+          "enum": [
+            "SINGLE",
+            "MULTIPLE"
+          ],
+          "description": "Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist)\ncan be applied to a single [CatalogItem](#type-catalogitem). See\n[CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for all possible values."
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "The options included in the [CatalogModifierList](#type-catalogmodifierlist).\nYou must include at least one [CatalogModifier](#type-catalogmodifier).\nEach [CatalogObject](#type-catalogobject) must have type `MODIFIER` and contain\n[CatalogModifier](#type-catalogmodifier) data."
+        }
+      },
+      "description": "A modifier list in the Catalog object model. A [CatalogModifierList](#type-catalogmodifierlist)\ncontains [Modifier](#type-catalogmodifier)s that can be applied to a [CatalogItem](#type-catalogitem)\nat the time of sale.\n\nFor example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\" [CatalogItem](#type-catalogitem) might\ncontain [CatalogModifier](#type-catalogmodifier)s \"Ketchup\", \"Mustard\", and \"Relish\". The\n`selection_type` field specifies whether or not multiple selections from the modifier list are allowed.",
+      "example": {
+        "type": "MODIFIER_LIST",
+        "id": "#MilkType",
+        "present_at_all_locations": true,
+        "modifier_list_data": {
+          "name": "Milk Type",
+          "selection_type": "SINGLE",
+          "modifiers": [
+            {
+              "type": "MODIFIER",
+              "present_at_all_locations": true,
+              "item_modifier": {
+                "name": "Whole Milk",
+                "price_money": {
+                  "amount": 0,
+                  "currency": "USD"
+                }
+              }
+            },
+            {
+              "type": "MODIFIER",
+              "present_at_all_locations": true,
+              "item_modifier": {
+                "name": "Almond Milk",
+                "price_money": {
+                  "amount": 250,
+                  "currency": "USD"
+                }
+              }
+            },
+            {
+              "type": "MODIFIER",
+              "present_at_all_locations": true,
+              "item_modifier": {
+                "name": "Soy Milk",
+                "price_money": {
+                  "amount": 250,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "CatalogModifierOverride": {
+      "type": "object",
+      "required": [
+        "modifier_id"
+      ],
+      "properties": {
+        "modifier_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the [CatalogModifier](#type-catalogmodifier) whose default behavior is being overridden."
+        },
+        "on_by_default": {
+          "type": "boolean",
+          "description": "If `true`, this [CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem](#type-catalogitem)."
+        }
+      },
+      "description": ""
+    },
+    "CatalogObject": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "ITEM",
+            "CATEGORY",
+            "ITEM_VARIATION",
+            "TAX",
+            "DISCOUNT",
+            "MODIFIER_LIST",
+            "MODIFIER"
+          ],
+          "description": "The type of this object. Each object type has expected\nproperties expressed in a structured format within its corresponding `*_data` field below.\n\nSee [CatalogObjectType](#type-catalogobjecttype) for all possible values."
+        },
+        "id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "A unique Square-assigned identifier to reference this object in the catalog."
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "Last modification [timestamp](#workingwithdates) in RFC 3339 format, e.g., `\"2016-08-15T23:59:33.123Z\"`\nwould indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds."
+        },
+        "version": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The version of the object. When updating an object, the version supplied by the\nmust match the version in the database, otherwise the write will be rejected as conflicting."
+        },
+        "is_deleted": {
+          "type": "boolean",
+          "description": "If `true`, the object has been deleted from the database. Must be `false` for new objects\nbeing inserted. When deleted, the `updated_at` field will equal the deletion time.\nbeing inserted. When deleted, the `updated_at` field will equal the deletion time."
+        },
+        "catalog_v1_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogV1Id"
+          },
+          "description": "The Connect V1 IDs for this object at each location where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
+        },
+        "present_at_all_locations": {
+          "type": "boolean",
+          "description": "If `true`, this object is present at all locations (including future locations), except where specified in\nthe `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations),\nexcept where specified in the `present_at_location_ids` field."
+        },
+        "present_at_location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of locations where the object is present, even if `present_at_all_locations` is `false`."
+        },
+        "absent_at_location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of locations where the object is not present, even if `present_at_all_locations` is `true`."
+        },
+        "item_data": {
+          "$ref": "#/definitions/CatalogItem",
+          "description": "Structured data for a [CatalogItem](#type-catalogitem), set for CatalogObjects of type `ITEM`."
+        },
+        "category_data": {
+          "$ref": "#/definitions/CatalogCategory",
+          "description": "Structured data for a [CatalogCategory](#type-catalogcategory), set for CatalogObjects of type `CATEGORY`."
+        },
+        "item_variation_data": {
+          "$ref": "#/definitions/CatalogItemVariation",
+          "description": "Structured data for a [CatalogItemVariation](#type-catalogitemvariation), set for CatalogObjects of type `ITEM_VARIATION`."
+        },
+        "tax_data": {
+          "$ref": "#/definitions/CatalogTax",
+          "description": "Structured data for a [CatalogTax](#type-catalogtax), set for CatalogObjects of type `TAX`."
+        },
+        "discount_data": {
+          "$ref": "#/definitions/CatalogDiscount",
+          "description": "Structured data for a [CatalogDiscount](#type-catalogdiscount), set for CatalogObjects of type `DISCOUNT`."
+        },
+        "modifier_list_data": {
+          "$ref": "#/definitions/CatalogModifierList",
+          "description": "Structured data for a [CatalogModifierList](#type-catalogmodifierlist), set for CatalogObjects of type `MODIFIER_LIST`."
+        },
+        "modifier_data": {
+          "$ref": "#/definitions/CatalogModifier",
+          "description": "Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`."
+        }
+      },
+      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](https://docs.connect.squareup.com/articles/catalog-overview).",
+      "example": {
+        "catalog_object": {
+          "type": "{{ [ITEM | ITEM_VARIATION | MODIFIER | MODIFIER_LIST | CATEGORY | DISCOUNT | TAX] }}",
+          "id": "{{ set by Catalog during object creation }}",
+          "updated_at": "{{ date \u0026 time of most recent update }}",
+          "version": "{{ version of the CatalogObject }}",
+          "is_deleted": "{{ [true | false] }}",
+          "connect_v1_ids": {
+            "catalog_v1_id": "{{ itemID from Catalog v1 }}",
+            "location_id": "{{ location where v1 ID is used }}"
+          },
+          "present_at_all_locations": "{{ [true | false] }}",
+          "present_at_location_ids": [
+            "{{ LOCATIONID-1 }}",
+            "{{ LOCATIONID-N }}"
+          ],
+          "absent_at_location_ids": [
+            "{{ LOCATIONID-1 }}",
+            "{{ LOCATIONID-N }}"
+          ],
+          "item_data": "{{ CatalogItem object only if type\u003dITEM }}",
+          "item_variation_data": "{{ CatalogItemVariation object only if type\u003dITEM_VARIATION }}",
+          "modifier_data": "{{ CatalogModifier object only if type\u003dMODIFIER }}",
+          "modifier_list_data": "{{ CatalogModifierList object only if type\u003dMODIFIER_LIST }}",
+          "category_data": "{{ CatalogCategory object only if type\u003dCATEGORY }}",
+          "discount_data": "{{ CatalogDiscount object only if type\u003dDISCOUNT }}",
+          "tax_data": "{{ CatalogTax object only if type\u003dTAX }}"
+        }
+      }
+    },
+    "CatalogObjectBatch": {
+      "type": "object",
+      "properties": {
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "A list of [CatalogObject](#type-catalogobject)s belonging to this batch."
+        }
+      },
+      "description": "A batch of [CatalogObject](#type-catalogobject)s."
+    },
+    "CatalogQuery": {
+      "type": "object",
+      "properties": {
+        "sorted_attribute_query": {
+          "$ref": "#/definitions/CatalogQuerySortedAttribute",
+          "description": "A query that returns all objects, sorted by the given attribute."
+        },
+        "exact_query": {
+          "$ref": "#/definitions/CatalogQueryExact",
+          "description": "A query that returns only objects for which the given (string-valued) attribute has the\ngiven case-insensitive value."
+        },
+        "prefix_query": {
+          "$ref": "#/definitions/CatalogQueryPrefix",
+          "description": "A query that returns only objects for which the given (string-valued) attribute has the\ngiven case-insensitive prefix."
+        },
+        "range_query": {
+          "$ref": "#/definitions/CatalogQueryRange",
+          "description": "A query that returns only objects for which the given (integer-valued) attribute lies in the given range."
+        },
+        "text_query": {
+          "$ref": "#/definitions/CatalogQueryText",
+          "description": "A query that returns only objects whose searchable attributes contain all of the given\nkeywords as prefixes. For example, if a [CatalogItem](#type-catalogitem) contains attributes `{\"name\": \"t-shirt\"}` and\n`{\"description\": \"Small, Red\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sm\", \"re\"]}`."
+        },
+        "items_for_tax_query": {
+          "$ref": "#/definitions/CatalogQueryItemsForTax",
+          "description": "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogTax](#type-catalogtax)es enabled."
+        },
+        "items_for_modifier_list_query": {
+          "$ref": "#/definitions/CatalogQueryItemsForModifierList",
+          "description": "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled."
+        }
+      },
+      "description": "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest)\nrequest. Only one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\nor [CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify an attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`."
+    },
+    "CatalogQueryExact": {
+      "type": "object",
+      "required": [
+        "attribute_name",
+        "attribute_value"
+      ],
+      "properties": {
+        "attribute_name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The name of the attribute to be searched."
+        },
+        "attribute_value": {
+          "type": "string",
+          "description": "The desired value of the search attribute."
+        }
+      },
+      "description": ""
+    },
+    "CatalogQueryItemsForModifierList": {
+      "type": "object",
+      "required": [
+        "modifier_list_ids"
+      ],
+      "properties": {
+        "modifier_list_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A set of [CatalogModifierList](#type-catalogmodifierlist) IDs to be used to find associated [CatalogItem](#type-catalogitem)s."
+        }
+      },
+      "description": ""
+    },
+    "CatalogQueryItemsForTax": {
+      "type": "object",
+      "required": [
+        "tax_ids"
+      ],
+      "properties": {
+        "tax_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A set of [CatalogTax](#type-catalogtax) IDs to be used to find associated [CatalogItem](#type-catalogitem)s."
+        }
+      },
+      "description": ""
+    },
+    "CatalogQueryPrefix": {
+      "type": "object",
+      "required": [
+        "attribute_name",
+        "attribute_prefix"
+      ],
+      "properties": {
+        "attribute_name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The name of the attribute to be searched."
+        },
+        "attribute_prefix": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The desired prefix of the search attribute value."
+        }
+      },
+      "description": ""
+    },
+    "CatalogQueryRange": {
+      "type": "object",
+      "required": [
+        "attribute_name"
+      ],
+      "properties": {
+        "attribute_name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The name of the attribute to be searched."
+        },
+        "attribute_min_value": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The desired minimum value for the search attribute (inclusive)."
+        },
+        "attribute_max_value": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The desired maximum value for the search attribute (inclusive)."
+        }
+      },
+      "description": ""
+    },
+    "CatalogQuerySortedAttribute": {
+      "type": "object",
+      "required": [
+        "attribute_name"
+      ],
+      "properties": {
+        "attribute_name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The attribute whose value should be used as the sort key."
+        },
+        "initial_attribute_value": {
+          "type": "string",
+          "description": "The first attribute value to be returned by the query. Ascending sorts will return only\nobjects with this value or greater, while descending sorts will return only objects with this value\nor less. If unset, start at the beginning (for ascending sorts) or end (for descending sorts)."
+        },
+        "sort_order": {
+          "type": "string",
+          "enum": [
+            "DESC",
+            "ASC"
+          ],
+          "description": "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending)."
+        }
+      },
+      "description": ""
+    },
+    "CatalogQueryText": {
+      "type": "object",
+      "required": [
+        "keywords"
+      ],
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of one, two, or three search keywords. Keywords with fewer than three characters\nare ignored."
+        }
+      },
+      "description": ""
+    },
+    "CatalogTax": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The tax\u0027s name. Searchable."
+        },
+        "calculation_phase": {
+          "type": "string",
+          "enum": [
+            "TAX_SUBTOTAL_PHASE",
+            "TAX_TOTAL_PHASE"
+          ],
+          "description": "Whether the tax is calculated based on a payment\u0027s subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values."
+        },
+        "inclusion_type": {
+          "type": "string",
+          "enum": [
+            "ADDITIVE",
+            "INCLUSIVE"
+          ],
+          "description": "Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values."
+        },
+        "percentage": {
+          "type": "string",
+          "description": "The percentage of the tax in decimal form, using a \u0027.\u0027 as the decimal separator and without a \u0027%\u0027 sign.\nA value of `7.5` corresponds to 7.5%."
+        },
+        "applies_to_custom_amounts": {
+          "type": "boolean",
+          "description": "If `true`, the fee applies to custom amounts entered into the Square Point of Sale\napp that are not associated with a particular [CatalogItem](#type-catalogitem)."
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "If `true`, the tax will be shown as enabled in the Square Point of Sale app."
+        }
+      },
+      "description": "A tax in the Catalog object model.",
+      "example": {
+        "object": {
+          "type": "TAX",
+          "id": "#SalesTax",
+          "present_at_all_locations": true,
+          "tax_data": {
+            "name": "Sales Tax",
+            "calculation_phase": "TAX_SUBTOTAL_PHASE",
+            "inclusion_type": "ADDITIVE",
+            "percentage": "5.0",
+            "fee_applies_to_custom_amounts": true,
+            "enabled": true,
+            "tax_type_id": "us_sales_tax",
+            "tax_type_name": "Sales Tax"
+          }
+        }
+      }
+    },
+    "CatalogV1Id": {
+      "type": "object",
+      "properties": {
+        "catalog_v1_id": {
+          "type": "string",
+          "description": "The ID for an object in Connect V1, if different from its Connect V2 ID."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the location this Connect V1 ID is associated with."
+        }
+      },
+      "description": "An Items Connect V1 object ID along with its associated location ID."
     },
     "ChargeRequest": {
       "type": "object",
@@ -5582,26 +7473,26 @@
         },
         "ask_for_shipping_address": {
           "type": "boolean",
-          "description": "If `true`, Square Checkout will collect shipping information on your\nbehalf and store that information with the transaction information in your\nSquare Dashboard.\n\nDefault is `false`."
+          "description": "If `true`, Square Checkout will collect shipping information on your\nbehalf and store that information with the transaction information in your\nSquare Dashboard.\n\nDefault: `false`."
         },
         "merchant_support_email": {
           "type": "string",
-          "description": "The email address to display on the Square Checkout confirmation page\nand confirmation email that the buyer can use to contact the merchant.\n\nIf this value is not set, the confirmation page and email will display the\nprimary email address associated with the merchant\u0027s Square account.\n\nDefault is unset."
+          "description": "The email address to display on the Square Checkout confirmation page\nand confirmation email that the buyer can use to contact the merchant.\n\nIf this value is not set, the confirmation page and email will display the\nprimary email address associated with the merchant\u0027s Square account.\n\nDefault: none; only exists if explicitly set."
         },
         "pre_populate_buyer_email": {
           "type": "string",
-          "description": "If provided, the buyer\u0027s email is pre-populated on the checkout page\nas an editable text field.\n\nDefault is unset."
+          "description": "If provided, the buyer\u0027s email is pre-populated on the checkout page\nas an editable text field.\n\nDefault: none; only exists if explicitly set."
         },
         "pre_populate_shipping_address": {
           "$ref": "#/definitions/Address",
-          "description": "If provided, the buyer\u0027s shipping info is pre-populated on the\ncheckout page as editable text fields.\n\nDefault is unset."
+          "description": "If provided, the buyer\u0027s shipping info is pre-populated on the\ncheckout page as editable text fields.\n\nDefault: none; only exists if explicitly set."
         },
         "redirect_url": {
           "type": "string",
           "description": "The URL to redirect to after checkout is completed with `checkoutId`,\nSquare\u0027s `orderId`, `transactionId`, and `referenceId` appended as URL\nparameters. For example, if the provided redirect_url is\n`http://www.example.com/order-complete`, a successful transaction redirects\nthe customer to:\n\n`http://www.example.com/order-complete?checkoutId\u003dxxxxxx\u0026orderId\u003dxxxxxx\u0026referenceId\u003dxxxxxx\u0026transactionId\u003dxxxxxx`\n\nIf you do not provide a redirect URL, Square Checkout will display an order\nconfirmation page on your behalf; however Square strongly recommends that\nyou provide a redirect URL so you can verify the transaction results and\nfinalize the order through your existing/normal confirmation workflow."
         },
         "order": {
-          "$ref": "#/definitions/Order",
+          "$ref": "#/definitions/squareupconnectv2ordersOrder",
           "description": "Order to be checked out."
         },
         "created_at": {
@@ -5625,30 +7516,30 @@
           "description": "A unique string that identifies this checkout among others\nyou\u0027ve created. It can be any valid string but must be unique for every\norder sent to Square Checkout for a given location ID.\n\nThe idempotency key is used to avoid processing the same order more than\nonce. If you\u0027re unsure whether a particular checkout was created\nsuccessfully, you can reattempt it with the same idempotency key and all the\nsame other parameters without worrying about creating duplicates.\n\nWe recommend using a random number/string generator native to the language\nyou are working in to generate strings for your idempotency keys.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
         },
         "order": {
-          "$ref": "#/definitions/CreateOrderRequestOrder",
+          "$ref": "#/definitions/squareupconnectv2ordersserviceCreateOrderRequestOrder",
           "description": "The order including line items to be checked out."
         },
         "ask_for_shipping_address": {
           "type": "boolean",
-          "description": "If `true`, Square Checkout will collect shipping information on your\nbehalf and store that information with the transaction information in your\nSquare Dashboard.\n\nDefault is `false`."
+          "description": "If `true`, Square Checkout will collect shipping information on your\nbehalf and store that information with the transaction information in your\nSquare Dashboard.\n\nDefault: `false`."
         },
         "merchant_support_email": {
           "maxLength": 254,
           "type": "string",
-          "description": "The email address to display on the Square Checkout confirmation page\nand confirmation email that the buyer can use to contact the merchant.\n\nIf this value is not set, the confirmation page and email will display the\nprimary email address associated with the merchant\u0027s Square account.\n\nDefault is unset."
+          "description": "The email address to display on the Square Checkout confirmation page\nand confirmation email that the buyer can use to contact the merchant.\n\nIf this value is not set, the confirmation page and email will display the\nprimary email address associated with the merchant\u0027s Square account.\n\nDefault: none; only exists if explicitly set."
         },
         "pre_populate_buyer_email": {
           "maxLength": 254,
           "type": "string",
-          "description": "If provided, the buyer\u0027s email is pre-populated on the checkout page\nas an editable text field.\n\nDefault is unset."
+          "description": "If provided, the buyer\u0027s email is pre-populated on the checkout page\nas an editable text field.\n\nDefault: none; only exists if explicitly set."
         },
         "pre_populate_shipping_address": {
           "$ref": "#/definitions/Address",
-          "description": "If provided, the buyer\u0027s shipping info is pre-populated on the\ncheckout page as editable text fields.\n\nDefault is unset."
+          "description": "If provided, the buyer\u0027s shipping info is pre-populated on the\ncheckout page as editable text fields.\n\nDefault: none; only exists if explicitly set."
         },
         "redirect_url": {
           "type": "string",
-          "description": "The URL to redirect to after checkout is completed with `checkoutId`,\nSquare\u0027s `orderId`, `transactionId`, and `referenceId` appended as URL\nparameters. For example, if the provided redirect_url is\n`http://www.example.com/order-complete`, a successful transaction redirects\nthe customer to:\n\n`http://www.example.com/order-complete?checkoutId\u003dxxxxxx\u0026orderId\u003dxxxxxx\u0026referenceId\u003dxxxxxx\u0026transactionId\u003dxxxxxx`\n\nIf you do not provide a redirect URL, Square Checkout will display an order\nconfirmation page on your behalf; however Square strongly recommends that\nyou provide a redirect URL so you can verify the transaction results and\nfinalize the order through your existing/normal confirmation workflow.\n\nDefault is unset."
+          "description": "The URL to redirect to after checkout is completed with `checkoutId`,\nSquare\u0027s `orderId`, `transactionId`, and `referenceId` appended as URL\nparameters. For example, if the provided redirect_url is\n`http://www.example.com/order-complete`, a successful transaction redirects\nthe customer to:\n\n`http://www.example.com/order-complete?checkoutId\u003dxxxxxx\u0026orderId\u003dxxxxxx\u0026referenceId\u003dxxxxxx\u0026transactionId\u003dxxxxxx`\n\nIf you do not provide a redirect URL, Square Checkout will display an order\nconfirmation page on your behalf; however Square strongly recommends that\nyou provide a redirect URL so you can verify the transaction results and\nfinalize the order through your existing/normal confirmation workflow.\n\nDefault: none; only exists if explicitly set."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
@@ -6248,6 +8139,53 @@
       },
       "description": "Represents a particular customer\u0027s preferences."
     },
+    "DeleteCatalogObjectRequest": {
+      "type": "object",
+      "required": [
+        "object_id"
+      ],
+      "properties": {
+        "object_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other\nobjects in the graph that depend on that object will be deleted as well (for example, deleting a\n[CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s)."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/object/7SB3ZQYJ5GDMVFL7JK46JCHT"
+      }
+    },
+    "DeleteCatalogObjectResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "deleted_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of all [CatalogObject](#type-catalogobject)s deleted by this request.\nMultiple IDs may be returned when associated objects are also deleted, for example\na [CatalogItemVariation](#type-catalogitemvariation) will be deleted (and its ID included in this field)\nwhen its parent [CatalogItem](#type-catalogitem) is deleted."
+        },
+        "deleted_at": {
+          "type": "string",
+          "description": "The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g.,\n\"2016-09-04T23:59:33.123Z\"."
+        }
+      },
+      "description": "",
+      "example": {
+        "deleted_object_ids": [
+          "7SB3ZQYJ5GDMVFL7JK46JCHT",
+          "KQLFFHA6K6J3YQAQAWDQAL57"
+        ]
+      }
+    },
     "DeleteCustomerCardRequest": {
       "type": "object",
       "properties": {},
@@ -6399,6 +8337,8 @@
             "INVALID_CARD_DATA",
             "IDEMPOTENCY_KEY_REUSED",
             "UNEXPECTED_VALUE",
+            "SANDBOX_NOT_SUPPORTED",
+            "INVALID_EMAIL_ADDRESS",
             "CARD_DECLINED",
             "VERIFY_CVV_FAILURE",
             "VERIFY_AVS_FAILURE",
@@ -6424,6 +8364,118 @@
         }
       },
       "description": "Represents an error encountered during a request to the Connect API.\n\nSee [Handling errors](#handlingerrors) for more information."
+    },
+    "ItemVariationLocationOverrides": {
+      "type": "object",
+      "properties": {
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the location."
+        },
+        "price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given location, or blank for variable pricing."
+        },
+        "pricing_type": {
+          "type": "string",
+          "enum": [
+            "FIXED_PRICING",
+            "VARIABLE_PRICING"
+          ],
+          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given location.\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+        },
+        "track_inventory": {
+          "type": "boolean",
+          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this location."
+        },
+        "inventory_alert_type": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "LOW_QUANTITY"
+          ],
+          "description": "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory\nquantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype)\nfor all possible values."
+        },
+        "inventory_alert_threshold": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
+        }
+      },
+      "description": "Price and inventory overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific location."
+    },
+    "ListCatalogRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor returned in the previous response. Leave unset for an initial request.\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "types": {
+          "type": "string",
+          "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`,\n`\"MODIFIER\"`, or `\"MODIFIER_LIST\"`."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/list?types\u003dcategory,tax"
+      }
+    },
+    "ListCatalogResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset, this is the final response.\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "The [CatalogObject](#type-catalogobject)s returned."
+        }
+      },
+      "description": "",
+      "example": {
+        "objects": [
+          {
+            "type": "CATEGORY",
+            "id": "5ZYQZZ2IECPVJ2IJ5KQPRDC3",
+            "updated_at": "2017-02-21T14:50:26.495Z",
+            "version": 1487688626495,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "category_data": {
+              "name": "Beverages"
+            }
+          },
+          {
+            "type": "TAX",
+            "id": "L5R47DGBZOOVKCAFIXC56AEN",
+            "updated_at": "2017-02-21T14:50:26.495Z",
+            "version": 1487688626495,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "tax_data": {
+              "name": "Sales Tax",
+              "calculation_phase": "TAX_SUBTOTAL_PHASE",
+              "inclusion_type": "ADDITIVE",
+              "percentage": "5.0",
+              "enabled": true,
+              "tax_type_id": "us_sales_tax",
+              "tax_type_name": "Sales Tax"
+            }
+          }
+        ]
+      }
     },
     "ListCustomersRequest": {
       "type": "object",
@@ -7087,6 +9139,90 @@
       },
       "description": "Represents a refund processed for a Square transaction."
     },
+    "RetrieveCatalogObjectRequest": {
+      "type": "object",
+      "required": [
+        "object_id"
+      ],
+      "properties": {
+        "object_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved."
+        },
+        "include_related_objects": {
+          "type": "boolean",
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/object/W62UWFY35CWMYGVWK6TWJDNI"
+      }
+    },
+    "RetrieveCatalogObjectResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "object": {
+          "$ref": "#/definitions/CatalogObject",
+          "description": "The [CatalogObject](#type-catalogobject)s returned."
+        },
+        "related_objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "A list of [CatalogObject](#type-catalogobject)s referenced by the object in the `object` field."
+        }
+      },
+      "description": "",
+      "example": {
+        "object": {
+          "type": "ITEM",
+          "id": "W62UWFY35CWMYGVWK6TWJDNI",
+          "updated_at": "2016-11-16T22:25:24.878Z",
+          "version": 1479335124878,
+          "is_deleted": false,
+          "present_at_all_locations": true,
+          "item_data": {
+            "name": "Tea",
+            "description": "Hot Leaf Juice",
+            "visibility": "PRIVATE",
+            "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+            "tax_ids": [
+              "HURXQOOAIC4IZSI2BEXQRYFY"
+            ],
+            "variations": [
+              {
+                "type": "ITEM_VARIATION",
+                "id": "2TZFAOHWGG7PAK2QEXWYPZSP",
+                "updated_at": "2016-11-16T22:25:24.878Z",
+                "version": 1479335124878,
+                "is_deleted": false,
+                "present_at_all_locations": true,
+                "item_variation_data": {
+                  "item_id": "W62UWFY35CWMYGVWK6TWJDNI",
+                  "name": "Mug",
+                  "ordinal": 0,
+                  "pricing_type": "FIXED_PRICING",
+                  "price_money": {
+                    "amount": 150,
+                    "currency": "USD"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
     "RetrieveCustomerRequest": {
       "type": "object",
       "properties": {},
@@ -7222,6 +9358,91 @@
         "php": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.php",
         "ruby": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.ruby"
       }
+    },
+    "SearchCatalogObjectsRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor returned in the previous response. Leave unset for an initial request.\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "object_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ITEM",
+              "CATEGORY",
+              "ITEM_VARIATION",
+              "TAX",
+              "DISCOUNT",
+              "MODIFIER_LIST",
+              "MODIFIER"
+            ]
+          },
+          "description": "The desired set of object types to apper in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`."
+        },
+        "include_deleted_objects": {
+          "type": "boolean",
+          "description": "If `true`, deleted objects will be included in the results. Deleted objects will have their\n`is_deleted` field set to `true`."
+        },
+        "include_related_objects": {
+          "type": "boolean",
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf a [CatalogItem](#type-catalogitem) is returned in the object field of the response,\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be included in the `related_objects` field of the\nresponse.\n\nIf a [CatalogItemVariation](#type-catalogitemvariation) is returned in the object field of the\nresponse, its parent [CatalogItem](#type-catalogitem) will be included in the `related_objects` field of\nthe response."
+        },
+        "begin_time": {
+          "type": "string",
+          "description": "Return only objects that have been modified after this [timestamp](#workingwithdates) (in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\")."
+        },
+        "query": {
+          "$ref": "#/definitions/CatalogQuery",
+          "description": "A query to be used to filter or sort the results. If no query is specified, the entire catalog will be returned."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "A limit on the number of results to be returned in a single page. The limit is advisory -\nthe implementation may return more or fewer results. If the supplied limit is negative, zero, or\nis higher than the maximum limit of 1,000, it will be ignored."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/search",
+        "request_body": {
+          "object_types": [
+            "ITEM"
+          ]
+        }
+      }
+    },
+    "SearchCatalogObjectsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset, this is the final response.\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "The [CatalogObject](#type-catalogobject)s returned."
+        },
+        "related_objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "A list of [CatalogObject](#type-catalogobject)s referenced by the objects in the `objects` field."
+        }
+      },
+      "description": ""
     },
     "Tender": {
       "type": "object",
@@ -7381,7 +9602,7 @@
           "description": "If the transaction was created in the Square Register app, this value\nis the ID generated for the transaction by Square Register.\n\nThis ID has no relationship to the transaction\u0027s canonical `id`, which is\ngenerated by Square\u0027s backend servers. This value is generated for bookkeeping\npurposes, in case the transaction cannot immediately be completed (for example,\nif the transaction is processed in offline mode).\n\nIt is not currently possible with the Connect API to perform a transaction\nlookup by this value."
         },
         "order": {
-          "$ref": "#/definitions/Order",
+          "$ref": "#/definitions/squareupconnectv2ordersOrder",
           "description": "The order associated with this transaction, if any."
         },
         "shipping_address": {
@@ -7494,6 +9715,174 @@
         "csharp": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.csharp",
         "php": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.php",
         "ruby": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.ruby"
+      }
+    },
+    "UpdateItemModifierListsRequest": {
+      "type": "object",
+      "required": [
+        "item_ids"
+      ],
+      "properties": {
+        "item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The [CatalogItem](#type-catalogitem)s whose [CatalogModifierList](#type-catalogmodifierlist)s are being updated."
+        },
+        "modifier_lists_to_enable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to enable for the [CatalogItem](#type-catalogitem)."
+        },
+        "modifier_lists_to_disable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to disable for the [CatalogItem](#type-catalogitem)."
+        }
+      },
+      "description": ""
+    },
+    "UpdateItemModifierListsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
+        }
+      },
+      "description": ""
+    },
+    "UpdateItemTaxesRequest": {
+      "type": "object",
+      "required": [
+        "item_ids"
+      ],
+      "properties": {
+        "item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The [CatalogItem](#type-catalogitem)s whose enabled/disabled [CatalogTax](#type-catalogtax)es are being updated."
+        },
+        "taxes_to_enable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to enable for the [CatalogItem](#type-catalogitem)."
+        },
+        "taxes_to_disable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem](#type-catalogitem)."
+        }
+      },
+      "description": ""
+    },
+    "UpdateItemTaxesResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
+        }
+      },
+      "description": ""
+    },
+    "UpsertCatalogObjectRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key",
+        "object"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "type": "string",
+          "description": "A value you specify that uniquely identifies this\nrequest among all your requests. A common way to create\na valid idempotency key is to use a Universally unique\nidentifier (UUID).\n\nIf you\u0027re unsure whether a particular request was successful,\nyou can reattempt it with the same idempotency key without\nworrying about creating duplicate objects.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
+        },
+        "object": {
+          "$ref": "#/definitions/CatalogObject",
+          "description": "A [CatalogObject](#type-catalogobject) to be created or updated. The object\u0027s `is_deleted` field must not\nbe set to `true`. When creating a new object, the object\u0027s ID must either start with a `#` character or be left\nblank. In either case it will be replaced with a server-generated ID."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog",
+        "request_body": {
+          "idempotency_key": "67OYYFQPR3RNE2QQ",
+          "object": {
+            "type": "ITEM",
+            "id": "#Cocoa",
+            "item_data": {
+              "name": "Cocoa",
+              "description": "Hot chocolate",
+              "abbreviation": "Ch",
+              "visibility": "PRIVATE"
+            }
+          }
+        }
+      }
+    },
+    "UpsertCatalogObjectResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "The set of [Error](#type-error)s encountered."
+        },
+        "catalog_object": {
+          "$ref": "#/definitions/CatalogObject",
+          "description": "The created [CatalogObject](#type-catalogobject)."
+        },
+        "id_mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogIdMapping"
+          },
+          "description": "The mapping between client and server IDs for this Upsert."
+        }
+      },
+      "description": "",
+      "example": {
+        "catalog_object": {
+          "type": "ITEM",
+          "id": "7SB3ZQYJ5GDMVFL7JK46JCHT",
+          "updated_at": "2016-11-16T22:32:42.996Z",
+          "version": 1479335562996,
+          "is_deleted": false,
+          "item_data": {
+            "name": "Cocoa",
+            "description": "Hot chocolate",
+            "abbreviation": "Ch",
+            "visibility": "PRIVATE"
+          }
+        }
       }
     },
     "VoidTransactionRequest": {
