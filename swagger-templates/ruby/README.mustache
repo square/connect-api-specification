@@ -1,5 +1,5 @@
-Connect v2 Ruby SDKs [![Build Status](https://travis-ci.org/square/connect-ruby-sdk.svg?branch=master)](https://travis-ci.org/square/connect-ruby-sdk)[![Gem Version](https://badge.fury.io/rb/square_connect.svg)](https://badge.fury.io/rb/square_connect)
-===============
+Square Connect Ruby SDKs [![Build Status](https://travis-ci.org/square/connect-ruby-sdk.svg?branch=master)](https://travis-ci.org/square/connect-ruby-sdk)[![Gem Version](https://badge.fury.io/rb/square_connect.svg)](https://badge.fury.io/rb/square_connect)
+==================
 
 This repository contains the released Ruby client SDK. Check out our [API
 specification repository](https://github.com/square/connect-api-specification)

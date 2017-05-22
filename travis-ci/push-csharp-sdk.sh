@@ -49,6 +49,6 @@ cp ../swagger-out/csharp/Square.Connect.sln .
 cp ../swagger-out/csharp/build.sh .
 cp ../swagger-out/csharp/mono_nunit_test.sh .
 
-git add .
+git add --all .
 git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
 git push -u origin $BRANCH_NAME

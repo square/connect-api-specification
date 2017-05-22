@@ -603,11 +603,7 @@ public class ApiClient {
     }
 
     for (String key : headerParams.keySet()) {
-      if (key.equals("Authorization")) {
-        builder = builder.header(key, "Bearer " + headerParams.get(key));
-      } else {
-        builder = builder.header(key, headerParams.get(key));
-      }
+      builder = builder.header(key, headerParams.get(key));
     }
     for (String key : defaultHeaderMap.keySet()) {
       if (!headerParams.containsKey(key)) {

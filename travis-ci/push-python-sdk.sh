@@ -37,7 +37,7 @@ else
 fi
 
 echo "Copying files..."
-rm -rf docs lib
+rm -rf docs squareconnect
 cp -r ../swagger-out/python/docs .
 cp -r ../swagger-out/python/squareconnect .
 cp ../swagger-out/python/requirements.txt .
@@ -46,6 +46,6 @@ cp ../swagger-out/python/setup.py .
 cp ../swagger-out/python/tox.ini .
 cp ../swagger-out/python/README.md .
 
-git add .
+git add --all .
 git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
 git push -u origin $BRANCH_NAME
