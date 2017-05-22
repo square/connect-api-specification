@@ -18,7 +18,7 @@
   "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html",
   "sourceFolder": "src/main/java",
   "dateLibrary": "java8",
-  "useGzipFeature": true,
+  "useGzipFeature": false,
   "library": "jersey2",
   "httpUserAgent": "Square-Connect-Java/2.0.2",
   "hideGenerationTimestamp": true
