@@ -44,7 +44,7 @@ cp ../swagger-out/php/SquareConnect/autoload.php .
 cp ../swagger-out/php/SquareConnect/composer.json .
 cp ../swagger-out/php/SquareConnect/README.md .
 
-git add .
+git add --all .
 git commit -m "From connect-api-specification: ${TRAVIS_COMMIT_MESSAGE}"
 git push -u origin $BRANCH_NAME
 
