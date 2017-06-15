@@ -19,7 +19,7 @@
   "sourceFolder": "src/main/java",
   "dateLibrary": "java8",
   "useGzipFeature": false,
-  "library": "jersey2",
+  "library": "okhttp-gson",
   "httpUserAgent": "Square-Connect-Java/2.0.2",
   "hideGenerationTimestamp": true
 }
