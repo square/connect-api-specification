@@ -73,8 +73,8 @@ namespace Example
         // Retrieving your location IDs
         public void RetrieveLocations()
         {
-            LocationApi _locationApi = new LocationApi();
-            var response = _locationApi.ListLocations();
+            LocationsApi _locationsApi = new LocationsApi();
+            var response = _locationsApi.ListLocations();
         }
 
         // Charge the card nonce
@@ -95,8 +95,8 @@ namespace Example
             string nonce = "YOUR_NONCE";
             string locationId = "YOUR_LOCATION_ID";
             ChargeRequest body = new ChargeRequest(AmountMoney: money, IdempotencyKey: idempotencyKey, CardNonce: nonce);
-            TransactionApi transactionApi = new TransactionApi();
-            var response = transactionApi.Charge(locationId, body);
+            TransactionsApi transactionsApi = new TransactionsApi();
+            var response = transactionsApi.Charge(locationId, body);
         }
     }
 }
