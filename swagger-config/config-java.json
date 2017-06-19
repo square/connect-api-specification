@@ -20,6 +20,6 @@
   "dateLibrary": "java8",
   "useGzipFeature": false,
   "library": "jersey2",
-  "httpUserAgent": "Square-Connect-Java/2.0.2",
+  "httpUserAgent": "Square-Connect-Java/2.1.1",
   "hideGenerationTimestamp": true
 }
