@@ -5448,7 +5448,15 @@
       ],
       "description": "Indicates account capabilities that a business\u0027s location might or\nmight not have enabled."
     },
-    "OrderLineItemDiscountDiscountType": {
+    "OrderLineItemDiscountScope": {
+      "type": "string",
+      "enum": [
+        "LINE_ITEM",
+        "ORDER"
+      ],
+      "description": "Represents whether a discount applied to a line item level or an order level."
+    },
+    "OrderLineItemDiscountType": {
       "type": "string",
       "enum": [
         "UNKNOWN",
@@ -5459,15 +5467,7 @@
       ],
       "description": "Represents how a discount applied to a line item or an order."
     },
-    "OrderLineItemDiscountScope": {
-      "type": "string",
-      "enum": [
-        "LINEITEM",
-        "ORDER"
-      ],
-      "description": "Represents whether a discount applied to a line item level or an order level."
-    },
-    "OrderLineItemTaxTaxType": {
+    "OrderLineItemTaxType": {
       "type": "string",
       "enum": [
         "UNKNOWN",
@@ -7989,11 +7989,6 @@
         "line_items"
       ],
       "properties": {
-        "idempotency_key": {
-          "maxLength": 192,
-          "type": "string",
-          "description": "A value you specify that uniquely identifies this\norder among orders you\u0027ve created.\n\nIf you\u0027re unsure whether a particular order was created successfully,\nyou can reattempt it with the same idempotency key without\nworrying about creating duplicate orders.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
-        },
         "reference_id": {
           "maxLength": 40,
           "type": "string",
@@ -8021,34 +8016,7 @@
           "description": "The discounts include the custom discounts ."
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [CreateOrder](#endpoint-createorder) endpoint.",
-      "example": {
-        "request_url": "/v2/locations/LOCATION_ID/orders",
-        "request_body": {
-          "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
-          "order": {
-            "reference_id": "my-order-001",
-            "line_items": [
-              {
-                "name": "Awesome product",
-                "quantity": "1",
-                "base_price_money": {
-                  "amount": 1599,
-                  "currency": "USD"
-                }
-              },
-              {
-                "name": "Another awesome product",
-                "quantity": "3",
-                "base_price_money": {
-                  "amount": 2000,
-                  "currency": "USD"
-                }
-              }
-            ]
-          }
-        }
-      }
+      "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint."
     },
     "CreateOrderRequestDiscount": {
       "type": "object",
@@ -8060,7 +8028,7 @@
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
@@ -8121,11 +8089,11 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "The type is either `ADDITIVE` or `INCLUSIVE`. The default is ADDITIVE."
+          "description": "The type is either `ADDITIVE` or `INCLUSIVE`.\n\nThe default is ADDITIVE."
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         }
       },
       "description": "Represents a tax that applies to either a single line item or an entire order."
@@ -9341,11 +9309,11 @@
             "VARIABLE_PERCENTAGE",
             "VARIABLE_AMOUNT"
           ],
-          "description": "The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT\nas VARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified."
+          "description": "The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified."
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%."
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%."
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
@@ -9358,7 +9326,7 @@
         "scope": {
           "type": "string",
           "enum": [
-            "LINEITEM",
+            "LINE_ITEM",
             "ORDER"
           ],
           "description": "The scope of the discount."
@@ -9384,7 +9352,7 @@
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%."
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%."
         },
         "applied_money": {
           "$ref": "#/definitions/Money",
