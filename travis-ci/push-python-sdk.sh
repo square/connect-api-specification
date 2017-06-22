@@ -14,11 +14,18 @@ ssh-add $DIR/python-repo.pem
 git clone git@github.com:square/connect-python-sdk.git
 cd connect-python-sdk
 
-git checkout master
+RELEASE_BRANCH=release/$packageVersion
+if [ `git branch -r | grep "${RELEASE_BRANCH}"` ];
+then
+    git checkout $RELEASE_BRANCH
+else
+    git checkout -b $RELEASE_BRANCH
+    git push -u origin $RELEASE_BRANCH
+fi
 
 if [ "${TRAVIS_BRANCH}" = "master" ];
 then
-    BRANCH_NAME=master
+    BRANCH_NAME=$RELEASE_BRANCH
 else
     BRANCH_NAME=travis-ci/$TRAVIS_BRANCH
     if [ `git branch -r | grep "${BRANCH_NAME}"` ];
