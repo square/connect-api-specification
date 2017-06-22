@@ -16,7 +16,7 @@ git clone git@github.com:square/connect-csharp-sdk.git
 cd connect-csharp-sdk
 
 RELEASE_BRANCH=release/$packageVersion
-if [ `git branch -r | grep "${RELEASE_BRANCH}"` ];
+if [ `git branch -r | grep -i "^\s*origin/${RELEASE_BRANCH}$"` ];
 then
     git checkout $RELEASE_BRANCH
 else
@@ -29,7 +29,7 @@ then
     BRANCH_NAME=$RELEASE_BRANCH
 else
     BRANCH_NAME=travis-ci/$TRAVIS_BRANCH
-    if [ `git branch -r | grep "${BRANCH_NAME}"` ];
+    if [ `git branch -r | grep -i "^\s*origin/${BRANCH_NAME}$"` ];
     then
         git checkout $BRANCH_NAME
     else
