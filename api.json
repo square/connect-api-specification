@@ -45,8 +45,8 @@
         "BANK_ACCOUNTS_READ": "GET endpoints related to a merchant\u0027s bank accounts",
         "ITEMS_READ": "GET endpoints related to a merchant\u0027s item library",
         "ITEMS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s item library",
-        "ORDERS_READ": "GET endpoints related to a merchant\u0027s Square online store.",
-        "ORDERS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s Square online store",
+        "ORDERS_READ": "GET endpoints related to a merchant\u0027s orders",
+        "ORDERS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s orders",
         "EMPLOYEES_READ": "GET endpoints related to employee management",
         "EMPLOYEES_WRITE": "POST, PUT, and DELETE endpoints related to employee management",
         "TIMECARDS_READ": "GET endpoints related to employee timecards",
@@ -175,7 +175,7 @@
         ],
         "summary": "CreateRefund",
         "operationId": "CreateRefund",
-        "description": "Initiates a refund for a previously charged tender.",
+        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n(this article)[https://squareup.com/help/us/en/article/5060] for more information\non refund behavior.",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
@@ -400,7 +400,7 @@
         ],
         "summary": "UpdateCustomer",
         "operationId": "UpdateCustomer",
-        "description": "Updates the details of an existing customer.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the\n[CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
+        "description": "Updates the details of an existing customer.\nThe ID of the customer may change if the customer has been merged into another customer.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the\n[CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
@@ -516,7 +516,7 @@
         ],
         "summary": "CreateCustomerCard",
         "operationId": "CreateCustomerCard",
-        "description": "Adds a card on file to an existing customer.",
+        "description": "Adds a card on file to an existing customer. In the United States\nSquare takes care of automatically updating any cards on file that might\nhave expired since you first attached them to a customer.",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
@@ -741,13 +741,13 @@
         "description": "Creates a [Checkout](#type-checkout) response that links a\n`checkoutId` and `checkout_page_url` that customers can be directed to in\norder to provide their payment information using a payment processing\nworkflow hosted on connect.squareup.com.",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE",
-          "ORDERS_V2_WRITE"
+          "ORDERS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
               "PAYMENTS_WRITE",
-              "ORDERS_V2_WRITE"
+              "ORDERS_WRITE"
             ]
           }
         ],
@@ -807,7 +807,7 @@
           },
           {
             "name": "include_related_objects",
-            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.",
+            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.\n\nDefault value: `false`",
             "type": "boolean",
             "in": "query",
             "required": false
@@ -987,7 +987,7 @@
         ],
         "summary": "BatchRetrieveCatalogObjects",
         "operationId": "BatchRetrieveCatalogObjects",
-        "description": "Returns a set of objects based on the provided ID.\n[CatalogItem](#type-catalogitem)s returned in the set include all of the\nchild information including: all\n[CatalogItemVariation](#type-catalogitemvariation) objects, references to\nits [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "description": "Returns a set of objects based on the provided ID.\nEach [CatalogItem](#type-catalogitem) returned in the set includes all of its\nchild information including: all of its\n[CatalogItemVariation](#type-catalogitemvariation) objects, references to\nits [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
@@ -1026,7 +1026,7 @@
         ],
         "summary": "SearchCatalogObjects",
         "operationId": "SearchCatalogObjects",
-        "description": "Queries the targeted catalog using a variety of query types\n([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n([CatalogQueryExact](#type-catalogqueryexact,\n([CatalogQueryRange](#type-catalogqueryrange),\n([CatalogQueryText](#type-catalogquerytext),\n([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax),\n([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).",
+        "description": "Queries the targeted catalog using a variety of query types\n([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n([CatalogQueryExact](#type-catalogqueryexact),\n([CatalogQueryRange](#type-catalogqueryrange),\n([CatalogQueryText](#type-catalogquerytext),\n([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax),\n([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
@@ -4866,7 +4866,7 @@
         "RETAIL_ITEM",
         "RESTAURANT_ITEM"
       ],
-      "description": "The type of a [CatalogItem](#type-catalogitem)."
+      "description": "The type of a [CatalogItem](#type-catalogitem). Connect V2 only allows the creation of `REGULAR` items."
     },
     "CatalogModifierListSelectionType": {
       "type": "string",
@@ -5417,6 +5417,7 @@
         "UNEXPECTED_VALUE",
         "SANDBOX_NOT_SUPPORTED",
         "INVALID_EMAIL_ADDRESS",
+        "CHECKOUT_EXPIRED",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
         "VERIFY_AVS_FAILURE",
@@ -5446,6 +5447,34 @@
         "CREDIT_CARD_PROCESSING"
       ],
       "description": "Indicates account capabilities that a business\u0027s location might or\nmight not have enabled."
+    },
+    "OrderLineItemDiscountScope": {
+      "type": "string",
+      "enum": [
+        "LINE_ITEM",
+        "ORDER"
+      ],
+      "description": "Indicates whether this is a line item or order-level discount."
+    },
+    "OrderLineItemDiscountType": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "FIXED_PERCENTAGE",
+        "FIXED_AMOUNT",
+        "VARIABLE_PERCENTAGE",
+        "VARIABLE_AMOUNT"
+      ],
+      "description": "Indicates how the discount is applied to the associated line item or order."
+    },
+    "OrderLineItemTaxType": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "ADDITIVE",
+        "INCLUSIVE"
+      ],
+      "description": "Indicates how the tax is applied to the associated line item or order."
     },
     "RefundStatus": {
       "type": "string",
@@ -5857,7 +5886,22 @@
           "description": "The IDs of the [CatalogObject](#type-catalogobject)s to be deleted. When an object is deleted, other objects\nin the graph that depend on that object will be deleted as well (for example, deleting a\n[CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s)."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/batch-delete",
+        "request_body": {
+          "object_ids": [
+            "W62UWFY35CWMYGVWK6TWJDNI",
+            "AA27W3M2GGTF3H6AVPNB77CK"
+          ]
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.csharp",
+        "php": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.php",
+        "ruby": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.ruby"
+      }
     },
     "BatchDeleteCatalogObjectsResponse": {
       "type": "object",
@@ -5881,7 +5925,20 @@
           "description": "The database [timestamp](#workingwithdates) of this deletion in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "deleted_object_ids": [
+          "W62UWFY35CWMYGVWK6TWJDNI",
+          "AA27W3M2GGTF3H6AVPNB77CK"
+        ],
+        "deleted_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.csharp",
+        "php": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.php",
+        "ruby": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.ruby"
+      }
     },
     "BatchRetrieveCatalogObjectsRequest": {
       "type": "object",
@@ -5911,6 +5968,12 @@
           ],
           "include_related_objects": true
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.csharp",
+        "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.php",
+        "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.ruby"
       }
     },
     "BatchRetrieveCatalogObjectsResponse": {
@@ -5951,7 +6014,6 @@
             "item_data": {
               "name": "Tea",
               "description": "Hot Leaf Juice",
-              "visibility": "PRIVATE",
               "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
               "tax_ids": [
                 "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -5988,7 +6050,6 @@
             "item_data": {
               "name": "Coffee",
               "description": "Hot Bean Juice",
-              "visibility": "PRIVATE",
               "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
               "tax_ids": [
                 "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -6058,12 +6119,16 @@
               "calculation_phase": "TAX_SUBTOTAL_PHASE",
               "inclusion_type": "ADDITIVE",
               "percentage": "5.0",
-              "enabled": true,
-              "tax_type_id": "us_sales_tax",
-              "tax_type_name": "Sales Tax"
+              "enabled": true
             }
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.csharp",
+        "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.php",
+        "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.ruby"
       }
     },
     "BatchUpsertCatalogObjectsRequest": {
@@ -6089,7 +6154,7 @@
       "example": {
         "request_url": "https://connect.squareup.com/v2/catalog/batch-upsert",
         "request_body": {
-          "idempotency_key": "SJKHDUIWQHJKSQ",
+          "idempotency_key": "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
           "batches": [
             {
               "objects": [
@@ -6100,7 +6165,6 @@
                   "item_data": {
                     "name": "Tea",
                     "description": "Hot Leaf Juice",
-                    "visibility": "PRIVATE",
                     "category_id": "#Beverages",
                     "tax_ids": [
                       "#SalesTax"
@@ -6111,6 +6175,7 @@
                         "id": "#Tea_Mug",
                         "present_at_all_locations": true,
                         "item_variation_data": {
+                          "item_id": "#Tea",
                           "name": "Mug",
                           "pricing_type": "FIXED_PRICING",
                           "price_money": {
@@ -6129,7 +6194,6 @@
                   "item_data": {
                     "name": "Coffee",
                     "description": "Hot Bean Juice",
-                    "visibility": "PRIVATE",
                     "category_id": "#Beverages",
                     "tax_ids": [
                       "#SalesTax"
@@ -6140,6 +6204,7 @@
                         "id": "#Coffee_Regular",
                         "present_at_all_locations": true,
                         "item_variation_data": {
+                          "item_id": "#Coffee",
                           "name": "Regular",
                           "pricing_type": "FIXED_PRICING",
                           "price_money": {
@@ -6153,6 +6218,7 @@
                         "id": "#Coffee_Large",
                         "present_at_all_locations": true,
                         "item_variation_data": {
+                          "item_id": "#Coffee",
                           "name": "Large",
                           "pricing_type": "FIXED_PRICING",
                           "price_money": {
@@ -6181,16 +6247,20 @@
                     "calculation_phase": "TAX_SUBTOTAL_PHASE",
                     "inclusion_type": "ADDITIVE",
                     "percentage": "5.0",
-                    "fee_applies_to_custom_amounts": true,
-                    "enabled": true,
-                    "tax_type_id": "us_sales_tax",
-                    "tax_type_name": "Sales Tax"
+                    "applies_to_custom_amounts": true,
+                    "enabled": true
                   }
                 }
               ]
             }
           ]
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.csharp",
+        "php": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.php",
+        "ruby": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.ruby"
       }
     },
     "BatchUpsertCatalogObjectsResponse": {
@@ -6224,140 +6294,161 @@
       },
       "description": "",
       "example": {
-        "entries": [
+        "objects": [
           {
-            "client_object_id": "#Tea",
-            "catalog_object": {
-              "type": "ITEM",
-              "id": "W62UWFY35CWMYGVWK6TWJDNI",
-              "updated_at": "2016-11-16T22:25:24.878Z",
-              "version": 1479335124878,
-              "is_deleted": false,
-              "present_at_all_locations": true,
-              "item_data": {
-                "name": "Tea",
-                "description": "Hot Leaf Juice",
-                "visibility": "PRIVATE",
-                "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
-                "tax_ids": [
-                  "HURXQOOAIC4IZSI2BEXQRYFY"
-                ],
-                "variations": [
-                  {
-                    "type": "ITEM_VARIATION",
-                    "id": "2TZFAOHWGG7PAK2QEXWYPZSP",
-                    "updated_at": "2016-11-16T22:25:24.878Z",
-                    "version": 1479335124878,
-                    "is_deleted": false,
-                    "present_at_all_locations": true,
-                    "item_variation_data": {
-                      "item_id": "W62UWFY35CWMYGVWK6TWJDNI",
-                      "name": "Mug",
-                      "ordinal": 0,
-                      "pricing_type": "FIXED_PRICING",
-                      "price_money": {
-                        "amount": 150,
-                        "currency": "USD"
-                      }
+            "type": "ITEM",
+            "id": "ZSDZN34NAXDLC6D5ZQMNSOUM",
+            "updated_at": "2017-05-10T18:48:39.798Z",
+            "version": 1494442119798,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Tea",
+              "description": "Hot Leaf Juice",
+              "category_id": "LYT72K3WGJFFCIMB63XARP3I",
+              "tax_ids": [
+                "XHSHLHNWSI3HVI4BW5ZUZXI3"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "NAYHET5R52MIYCEF34ZMAHFM",
+                  "updated_at": "2017-05-10T18:48:39.798Z",
+                  "version": 1494442119798,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "ZSDZN34NAXDLC6D5ZQMNSOUM",
+                    "name": "Mug",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 150,
+                      "currency": "USD"
                     }
                   }
-                ]
-              }
+                }
+              ]
             }
+          },
+          {
+            "type": "ITEM",
+            "id": "PJMCEBHHUS3OKDB6PYUHLCPP",
+            "updated_at": "2017-05-10T18:48:39.798Z",
+            "version": 1494442119798,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Coffee",
+              "description": "Hot Bean Juice",
+              "category_id": "LYT72K3WGJFFCIMB63XARP3I",
+              "tax_ids": [
+                "XHSHLHNWSI3HVI4BW5ZUZXI3"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "OTYDX45SPG7LJQUVCBZI4INH",
+                  "updated_at": "2017-05-10T18:48:39.798Z",
+                  "version": 1494442119798,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "PJMCEBHHUS3OKDB6PYUHLCPP",
+                    "name": "Regular",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 250,
+                      "currency": "USD"
+                    }
+                  }
+                },
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "GZDA3JB37FYVOPI4AOEBOITI",
+                  "updated_at": "2017-05-10T18:48:39.798Z",
+                  "version": 1494442119798,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "PJMCEBHHUS3OKDB6PYUHLCPP",
+                    "name": "Large",
+                    "ordinal": 1,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 350,
+                      "currency": "USD"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "CATEGORY",
+            "id": "LYT72K3WGJFFCIMB63XARP3I",
+            "updated_at": "2017-05-10T18:48:39.798Z",
+            "version": 1494442119798,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "category_data": {
+              "name": "Beverages"
+            }
+          },
+          {
+            "type": "TAX",
+            "id": "XHSHLHNWSI3HVI4BW5ZUZXI3",
+            "updated_at": "2017-05-10T18:48:39.798Z",
+            "version": 1494442119798,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "tax_data": {
+              "name": "Sales Tax",
+              "calculation_phase": "TAX_SUBTOTAL_PHASE",
+              "inclusion_type": "ADDITIVE",
+              "percentage": "5.0",
+              "applies_to_custom_amounts": true,
+              "enabled": true
+            }
+          }
+        ],
+        "id_mappings": [
+          {
+            "client_object_id": "#Tea",
+            "object_id": "ZSDZN34NAXDLC6D5ZQMNSOUM"
           },
           {
             "client_object_id": "#Coffee",
-            "catalog_object": {
-              "type": "ITEM",
-              "id": "AA27W3M2GGTF3H6AVPNB77CK",
-              "updated_at": "2016-11-16T22:25:24.878Z",
-              "version": 1479335124878,
-              "is_deleted": false,
-              "present_at_all_locations": true,
-              "item_data": {
-                "name": "Coffee",
-                "description": "Hot Bean Juice",
-                "visibility": "PRIVATE",
-                "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
-                "tax_ids": [
-                  "HURXQOOAIC4IZSI2BEXQRYFY"
-                ],
-                "variations": [
-                  {
-                    "type": "ITEM_VARIATION",
-                    "id": "LBTYIHNHU52WOIHWT7SNRIYH",
-                    "updated_at": "2016-11-16T22:25:24.878Z",
-                    "version": 1479335124878,
-                    "is_deleted": false,
-                    "present_at_all_locations": true,
-                    "item_variation_data": {
-                      "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
-                      "name": "Regular",
-                      "ordinal": 0,
-                      "pricing_type": "FIXED_PRICING",
-                      "price_money": {
-                        "amount": 250,
-                        "currency": "USD"
-                      }
-                    }
-                  },
-                  {
-                    "type": "ITEM_VARIATION",
-                    "id": "PKYIC7HGGKW5CYVSCVDEIMHY",
-                    "updated_at": "2016-11-16T22:25:24.878Z",
-                    "version": 1479335124878,
-                    "is_deleted": false,
-                    "present_at_all_locations": true,
-                    "item_variation_data": {
-                      "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
-                      "name": "Large",
-                      "ordinal": 1,
-                      "pricing_type": "FIXED_PRICING",
-                      "price_money": {
-                        "amount": 350,
-                        "currency": "USD"
-                      }
-                    }
-                  }
-                ]
-              }
-            }
+            "object_id": "PJMCEBHHUS3OKDB6PYUHLCPP"
           },
           {
             "client_object_id": "#Beverages",
-            "catalog_object": {
-              "type": "CATEGORY",
-              "id": "BJNQCF2FJ6S6UIDT65ABHLRX",
-              "updated_at": "2016-11-16T22:25:24.878Z",
-              "version": 1479335124878,
-              "is_deleted": false,
-              "present_at_all_locations": true,
-              "category_data": {
-                "name": "Beverages"
-              }
-            }
+            "object_id": "LYT72K3WGJFFCIMB63XARP3I"
           },
           {
             "client_object_id": "#SalesTax",
-            "catalog_object": {
-              "type": "TAX",
-              "id": "HURXQOOAIC4IZSI2BEXQRYFY",
-              "updated_at": "2016-11-16T22:25:24.878Z",
-              "version": 1479335124878,
-              "is_deleted": false,
-              "present_at_all_locations": true,
-              "tax_data": {
-                "name": "Sales Tax",
-                "calculation_phase": "TAX_SUBTOTAL_PHASE",
-                "inclusion_type": "ADDITIVE",
-                "percentage": "5.0",
-                "enabled": true,
-                "tax_type_id": "us_sales_tax",
-                "tax_type_name": "Sales Tax"
-              }
-            }
+            "object_id": "XHSHLHNWSI3HVI4BW5ZUZXI3"
+          },
+          {
+            "client_object_id": "#Tea_Mug",
+            "object_id": "NAYHET5R52MIYCEF34ZMAHFM"
+          },
+          {
+            "client_object_id": "#Coffee_Regular",
+            "object_id": "OTYDX45SPG7LJQUVCBZI4INH"
+          },
+          {
+            "client_object_id": "#Coffee_Large",
+            "object_id": "GZDA3JB37FYVOPI4AOEBOITI"
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.csharp",
+        "php": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.php",
+        "ruby": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.ruby"
       }
     },
     "CaptureTransactionRequest": {
@@ -6437,6 +6528,10 @@
         "billing_address": {
           "$ref": "#/definitions/Address",
           "description": "The card\u0027s billing address. This value is present only if this object\nrepresents a customer\u0027s card on file."
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "The unique string fingerprint for the card. \nThe fingerprint is based on the credit card number and is unique to the merchant. \nIf a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case.\nNote: Fingerprint may not exist on old transactions."
         }
       },
       "description": "Represents the non-confidential details of a credit card."
@@ -6536,7 +6631,16 @@
     "CatalogInfoRequest": {
       "type": "object",
       "properties": {},
-      "description": ""
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/catalog/info"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.python",
+        "csharp": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.csharp",
+        "php": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.php",
+        "ruby": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.ruby"
+      }
     },
     "CatalogInfoResponse": {
       "type": "object",
@@ -6553,7 +6657,28 @@
           "description": ""
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "limits": {
+          "batch_upsert_max_objects_per_batch": 1000,
+          "batch_upsert_max_total_objects": 10000,
+          "batch_retrieve_max_object_ids": 1000,
+          "search_max_page_limit": 1000,
+          "batch_delete_max_object_ids": 200,
+          "update_item_taxes_max_item_ids": 1000,
+          "update_item_taxes_max_taxes_to_enable": 1000,
+          "update_item_taxes_max_taxes_to_disable": 1000,
+          "update_item_modifier_lists_max_item_ids": 1000,
+          "update_item_modifier_lists_max_modifier_lists_to_enable": 1000,
+          "update_item_modifier_lists_max_modifier_lists_to_disable": 1000
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.python",
+        "csharp": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.csharp",
+        "php": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.php",
+        "ruby": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.ruby"
+      }
     },
     "CatalogInfoResponseLimits": {
       "type": "object",
@@ -6626,7 +6751,7 @@
         },
         "label_color": {
           "type": "string",
-          "description": "The color of the item\u0027s display label in the Square Point of Sale app.  Searchable."
+          "description": "The color of the item\u0027s display label in the Square Point of Sale app."
         },
         "available_online": {
           "type": "boolean",
@@ -6769,7 +6894,7 @@
           "items": {
             "$ref": "#/definitions/ItemVariationLocationOverrides"
           },
-          "description": "Per-location price and inventory overrides."
+          "description": "Per-[location][#type-location] price and inventory overrides."
         },
         "track_inventory": {
           "type": "boolean",
@@ -6960,7 +7085,7 @@
         "id": {
           "minLength": 1,
           "type": "string",
-          "description": "A unique Square-assigned identifier to reference this object in the catalog."
+          "description": "An identifier to reference this object in the catalog. When a new CatalogObject\nis inserted, the client should set the id to a temporary identifier starting with\na `\u0027#\u0027` character. Other objects being inserted or updated within the same request\nmay use this identifier to refer to the new object.\n\nWhen the server receives the new object, it will supply a unique identifier that\nreplaces the temporary identifier for all future references."
         },
         "updated_at": {
           "type": "string",
@@ -6973,14 +7098,14 @@
         },
         "is_deleted": {
           "type": "boolean",
-          "description": "If `true`, the object has been deleted from the database. Must be `false` for new objects\nbeing inserted. When deleted, the `updated_at` field will equal the deletion time.\nbeing inserted. When deleted, the `updated_at` field will equal the deletion time."
+          "description": "If `true`, the object has been deleted from the database. Must be `false` for new objects\nbeing inserted. When deleted, the `updated_at` field will equal the deletion time."
         },
         "catalog_v1_ids": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CatalogV1Id"
           },
-          "description": "The Connect V1 IDs for this object at each location where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
+          "description": "The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
         },
         "present_at_all_locations": {
           "type": "boolean",
@@ -7095,7 +7220,7 @@
         },
         "text_query": {
           "$ref": "#/definitions/CatalogQueryText",
-          "description": "A query that returns only objects whose searchable attributes contain all of the given\nkeywords as prefixes. For example, if a [CatalogItem](#type-catalogitem) contains attributes `{\"name\": \"t-shirt\"}` and\n`{\"description\": \"Small, Red\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sm\", \"re\"]}`."
+          "description": "A query that returns only objects whose searchable attributes contain all of the given\nkeywords as prefixes. For example, if a [CatalogItem](#type-catalogitem) contains attributes `{\"name\": \"t-shirt\"}` and\n`{\"description\": \"Small, Purple\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`."
         },
         "items_for_tax_query": {
           "$ref": "#/definitions/CatalogQueryItemsForTax",
@@ -7106,7 +7231,7 @@
           "description": "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled."
         }
       },
-      "description": "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest)\nrequest. Only one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\nor [CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify an attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`."
+      "description": "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest).\nOnly one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\n[CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`."
     },
     "CatalogQueryExact": {
       "type": "object",
@@ -7274,7 +7399,7 @@
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax in decimal form, using a \u0027.\u0027 as the decimal separator and without a \u0027%\u0027 sign.\nA value of `7.5` corresponds to 7.5%."
+          "description": "The percentage of the tax in decimal form, using a `\u0027.\u0027` as the decimal separator and without a `\u0027%\u0027` sign.\nA value of `7.5` corresponds to 7.5%."
         },
         "applies_to_custom_amounts": {
           "type": "boolean",
@@ -7297,9 +7422,7 @@
             "inclusion_type": "ADDITIVE",
             "percentage": "5.0",
             "fee_applies_to_custom_amounts": true,
-            "enabled": true,
-            "tax_type_id": "us_sales_tax",
-            "tax_type_name": "Sales Tax"
+            "enabled": true
           }
         }
       }
@@ -7313,10 +7436,10 @@
         },
         "location_id": {
           "type": "string",
-          "description": "The ID of the location this Connect V1 ID is associated with."
+          "description": "The ID of the [location][#type-location] this Connect V1 ID is associated with."
         }
       },
-      "description": "An Items Connect V1 object ID along with its associated location ID."
+      "description": "An Items Connect V1 object ID along with its associated [location][#type-location] ID."
     },
     "ChargeRequest": {
       "type": "object",
@@ -7517,7 +7640,7 @@
           "description": "A unique string that identifies this checkout among others\nyou\u0027ve created. It can be any valid string but must be unique for every\norder sent to Square Checkout for a given location ID.\n\nThe idempotency key is used to avoid processing the same order more than\nonce. If you\u0027re unsure whether a particular checkout was created\nsuccessfully, you can reattempt it with the same idempotency key and all the\nsame other parameters without worrying about creating duplicates.\n\nWe recommend using a random number/string generator native to the language\nyou are working in to generate strings for your idempotency keys.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
         },
         "order": {
-          "$ref": "#/definitions/CreateOrderRequestOrder",
+          "$ref": "#/definitions/CreateOrderRequest",
           "description": "The order including line items to be checked out."
         },
         "ask_for_shipping_address": {
@@ -7547,37 +7670,93 @@
       "example": {
         "request_url": "/v2/locations/LOCATION_ID/checkouts",
         "request_body": {
-          "idempotency_key": "74ae1696-b1e3-4328-af6d-f1e04d947a13",
+          "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
           "order": {
-            "reference_id": "my-order-001",
+            "reference_id": "reference_id",
             "line_items": [
               {
-                "name": "line-item-1",
+                "name": "Printed T Shirt",
+                "quantity": "2",
+                "base_price_money": {
+                  "amount": 1500,
+                  "currency": "USD"
+                },
+                "discounts": [
+                  {
+                    "name": "7% off previous season item",
+                    "percentage": "7"
+                  },
+                  {
+                    "name": "$3 off Customer Discount",
+                    "amount_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Slim Jeans",
                 "quantity": "1",
                 "base_price_money": {
-                  "amount": 1599,
+                  "amount": 2500,
                   "currency": "USD"
                 }
               },
               {
-                "name": "line-item-2",
-                "quantity": "2",
+                "name": "Woven Sweater",
+                "quantity": "3",
                 "base_price_money": {
-                  "amount": 799,
+                  "amount": 3500,
+                  "currency": "USD"
+                },
+                "discounts": [
+                  {
+                    "name": "$11 off Customer Discount",
+                    "amount_money": {
+                      "amount": 1100,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "taxes": [
+                  {
+                    "name": "Fair Trade Tax",
+                    "percentage": "5"
+                  }
+                ]
+              }
+            ],
+            "discounts": [
+              {
+                "name": "Father\u0027s day 12% OFF",
+                "percentage": "12"
+              },
+              {
+                "name": "Global Sales $55 OFF",
+                "amount_money": {
+                  "amount": 5500,
                   "currency": "USD"
                 }
+              }
+            ],
+            "taxes": [
+              {
+                "name": "Sales Tax",
+                "percentage": "8.5"
               }
             ]
           },
           "ask_for_shipping_address": true,
           "merchant_support_email": "merchant+support@website.com",
-          "pre_populate_buyer_email": "buyer@email.com",
+          "pre_populate_buyer_email": "example@email.com",
           "pre_populate_shipping_address": {
-            "address_line_1": "500 Electric Ave",
+            "address_line_1": "1455 Market St.",
             "address_line_2": "Suite 600",
-            "locality": "New York",
-            "administrative_district_level_1": "NY",
-            "postal_code": "10003",
+            "locality": "San Francisco",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94103",
+            "country": "US",
             "first_name": "Jane",
             "last_name": "Doe"
           },
@@ -7613,54 +7792,250 @@
           "checkout_page_url": "https://connect.squareup.com/v2/checkout?c\u003dCAISEHGimXh-C3RIT4og1a6u1qw\u0026l\u003dCYTKRM7R7JMV8",
           "ask_for_shipping_address": true,
           "merchant_support_email": "merchant+support@website.com",
-          "pre_populate_buyer_email": "buyer@email.com",
+          "pre_populate_buyer_email": "example@email.com",
           "pre_populate_shipping_address": {
-            "address_line_1": "500 Electric Ave",
+            "address_line_1": "1455 Market St.",
             "address_line_2": "Suite 600",
-            "locality": "New York",
-            "administrative_district_level_1": "NY",
-            "postal_code": "10003",
+            "locality": "San Francisco",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94103",
+            "country": "US",
             "first_name": "Jane",
             "last_name": "Doe"
           },
+          "redirect_url": "https://merchant.website.com/order-confirm",
           "order": {
-            "id": "CAISEJOSTTqtofh-wiJrEXpkEAg",
             "location_id": "CYTKRM7R7JMV8",
-            "reference_id": "my-order-001",
+            "reference_id": "reference_id",
             "line_items": [
               {
-                "id": "51fa1d80-0720-5b3f-6804-a18f7861d2c7",
-                "name": "line-item-1",
-                "quantity": "1",
+                "name": "Printed T Shirt",
+                "quantity": "2",
+                "taxes": [
+                  {
+                    "name": "Sales Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "8.5",
+                    "applied_money": {
+                      "amount": 103,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "discounts": [
+                  {
+                    "name": "7% off previous season item",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "7",
+                    "applied_money": {
+                      "amount": 210,
+                      "currency": "USD"
+                    },
+                    "scope": "LINE_ITEM"
+                  },
+                  {
+                    "name": "Father\u0027s day 12% OFF",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "12",
+                    "applied_money": {
+                      "amount": 335,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  },
+                  {
+                    "name": "$3 off Customer Discount",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    },
+                    "scope": "LINE_ITEM"
+                  },
+                  {
+                    "name": "Global Sales $55 OFF",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 5500,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 949,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  }
+                ],
                 "base_price_money": {
-                  "amount": 1599,
+                  "amount": 1500,
+                  "currency": "USD"
+                },
+                "total_tax_money": {
+                  "amount": 103,
+                  "currency": "USD"
+                },
+                "total_discount_money": {
+                  "amount": 1794,
                   "currency": "USD"
                 },
                 "total_money": {
-                  "amount": 1599,
+                  "amount": 1309,
                   "currency": "USD"
                 }
               },
               {
-                "id": "0d53440b-b9f4-5271-7555-cb43c7af9575",
-                "name": "line-item-2",
-                "quantity": "2",
+                "name": "Slim Jeans",
+                "quantity": "1",
+                "taxes": [
+                  {
+                    "name": "Sales Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "8.5",
+                    "applied_money": {
+                      "amount": 105,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "discounts": [
+                  {
+                    "name": "Father\u0027s day 12% OFF",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "12",
+                    "applied_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  },
+                  {
+                    "name": "Global Sales $55 OFF",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 5500,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 968,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  }
+                ],
                 "base_price_money": {
-                  "amount": 799,
+                  "amount": 2500,
+                  "currency": "USD"
+                },
+                "total_tax_money": {
+                  "amount": 105,
+                  "currency": "USD"
+                },
+                "total_discount_money": {
+                  "amount": 1268,
                   "currency": "USD"
                 },
                 "total_money": {
-                  "amount": 1598,
+                  "amount": 1337,
+                  "currency": "USD"
+                }
+              },
+              {
+                "name": "Wooven Sweater",
+                "quantity": "3",
+                "taxes": [
+                  {
+                    "name": "Fair Trade Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "5",
+                    "applied_money": {
+                      "amount": 228,
+                      "currency": "USD"
+                    }
+                  },
+                  {
+                    "name": "Sales Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "8.5",
+                    "applied_money": {
+                      "amount": 387,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "discounts": [
+                  {
+                    "name": "Father\u0027s day 12% OFF",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "12",
+                    "applied_money": {
+                      "amount": 1260,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  },
+                  {
+                    "name": "$11 off Customer Discount",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 1100,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 1100,
+                      "currency": "USD"
+                    },
+                    "scope": "LINE_ITEM"
+                  },
+                  {
+                    "name": "Global Sales $55 OFF",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 5500,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 3583,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  }
+                ],
+                "base_price_money": {
+                  "amount": 3500,
+                  "currency": "USD"
+                },
+                "total_tax_money": {
+                  "amount": 615,
+                  "currency": "USD"
+                },
+                "total_discount_money": {
+                  "amount": 5943,
+                  "currency": "USD"
+                },
+                "total_money": {
+                  "amount": 5172,
                   "currency": "USD"
                 }
               }
             ],
             "total_money": {
-              "amount": 3197,
+              "amount": 7818,
+              "currency": "USD"
+            },
+            "total_tax_money": {
+              "amount": 823,
+              "currency": "USD"
+            },
+            "total_discount_money": {
+              "amount": 9005,
               "currency": "USD"
             }
           },
-          "created_at": "2017-01-18T22:25:54Z"
+          "created_at": "2017-06-16T22:25:35Z"
         }
       }
     },
@@ -7858,33 +8233,7 @@
         "ruby": "/sdk_samples/CreateCustomer/CreateCustomerResponse.ruby"
       }
     },
-    "CreateOrderRequestLineItem": {
-      "type": "object",
-      "required": [
-        "name",
-        "quantity",
-        "base_price_money"
-      ],
-      "properties": {
-        "name": {
-          "minLength": 1,
-          "maxLength": 500,
-          "type": "string",
-          "description": "The name of the line item. This value cannot exceed 500 characters."
-        },
-        "quantity": {
-          "minLength": 1,
-          "type": "string",
-          "description": "The quantity to purchase, as a string representation of a number.\nCurrently, only integer values are supported."
-        },
-        "base_price_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The base price for a single unit of the line item\u0027s associated\nvariation. If a line item represents a Custom Amount instead of a\nparticular product, this field indicates that amount."
-        }
-      },
-      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details."
-    },
-    "CreateOrderRequestOrder": {
+    "CreateOrderRequest": {
       "type": "object",
       "required": [
         "line_items"
@@ -7901,9 +8250,103 @@
             "$ref": "#/definitions/CreateOrderRequestLineItem"
           },
           "description": "The line items to associate with this order.\n\nEach line item represents a different product (or a custom monetary amount)\nto include in a purchase."
+        },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderRequestTax"
+          },
+          "description": "The taxes include the custom taxes."
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderRequestDiscount"
+          },
+          "description": "The discounts include the custom discounts ."
         }
       },
-      "description": "The object describes the order."
+      "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint."
+    },
+    "CreateOrderRequestDiscount": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The discount\u0027s name."
+        },
+        "percentage": {
+          "type": "string",
+          "description": "The percentage of the discount, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The monetary amount of the discount."
+        }
+      },
+      "description": "Represents a discount that to either a single line item or an entire order."
+    },
+    "CreateOrderRequestLineItem": {
+      "type": "object",
+      "required": [
+        "quantity"
+      ],
+      "properties": {
+        "name": {
+          "maxLength": 500,
+          "type": "string",
+          "description": "The name of the line item. This value cannot exceed 500 characters."
+        },
+        "quantity": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The quantity to purchase, as a string representation of a number.\nCurrently, only integer values are supported."
+        },
+        "base_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The base price for a single unit of the line item\u0027s associated\nvariation. If a line item represents a Custom Amount instead of a\nparticular product, this field indicates that amount."
+        },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderRequestTax"
+          },
+          "description": "The taxes include the custom taxes."
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderRequestDiscount"
+          },
+          "description": "The discounts include the custom discounts."
+        }
+      },
+      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details."
+    },
+    "CreateOrderRequestTax": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The tax\u0027s name."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "ADDITIVE",
+            "INCLUSIVE"
+          ],
+          "description": "Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
+        },
+        "percentage": {
+          "type": "string",
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+        }
+      },
+      "description": "Represents a tax that applies to either a single line item or an entire order."
     },
     "CreateRefundRequest": {
       "type": "object",
@@ -8099,6 +8542,12 @@
       "description": "",
       "example": {
         "request_url": "https://connect.squareup.com/v2/catalog/object/7SB3ZQYJ5GDMVFL7JK46JCHT"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.python",
+        "csharp": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.csharp",
+        "php": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.php",
+        "ruby": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.ruby"
       }
     },
     "DeleteCatalogObjectResponse": {
@@ -8128,7 +8577,14 @@
         "deleted_object_ids": [
           "7SB3ZQYJ5GDMVFL7JK46JCHT",
           "KQLFFHA6K6J3YQAQAWDQAL57"
-        ]
+        ],
+        "deleted_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.python",
+        "csharp": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.csharp",
+        "php": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.php",
+        "ruby": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.ruby"
       }
     },
     "DeleteCustomerCardRequest": {
@@ -8284,6 +8740,7 @@
             "UNEXPECTED_VALUE",
             "SANDBOX_NOT_SUPPORTED",
             "INVALID_EMAIL_ADDRESS",
+            "CHECKOUT_EXPIRED",
             "CARD_DECLINED",
             "VERIFY_CVV_FAILURE",
             "VERIFY_AVS_FAILURE",
@@ -8315,11 +8772,11 @@
       "properties": {
         "location_id": {
           "type": "string",
-          "description": "The ID of the location."
+          "description": "The ID of the [location][#type-location]."
         },
         "price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given location, or blank for variable pricing."
+          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location], or blank for variable pricing."
         },
         "pricing_type": {
           "type": "string",
@@ -8327,11 +8784,11 @@
             "FIXED_PRICING",
             "VARIABLE_PRICING"
           ],
-          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given location.\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location].\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
         },
         "track_inventory": {
           "type": "boolean",
-          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this location."
+          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location][#type-location]."
         },
         "inventory_alert_type": {
           "type": "string",
@@ -8347,7 +8804,7 @@
           "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
         }
       },
-      "description": "Price and inventory overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific location."
+      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location][#type-location]."
     },
     "ListCatalogRequest": {
       "type": "object",
@@ -8364,6 +8821,12 @@
       "description": "",
       "example": {
         "request_url": "https://connect.squareup.com/v2/catalog/list?types\u003dcategory,tax"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.python",
+        "csharp": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.csharp",
+        "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.php",
+        "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.ruby"
       }
     },
     "ListCatalogResponse": {
@@ -8414,12 +8877,16 @@
               "calculation_phase": "TAX_SUBTOTAL_PHASE",
               "inclusion_type": "ADDITIVE",
               "percentage": "5.0",
-              "enabled": true,
-              "tax_type_id": "us_sales_tax",
-              "tax_type_name": "Sales Tax"
+              "enabled": true
             }
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.python",
+        "csharp": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.csharp",
+        "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.php",
+        "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.ruby"
       }
     },
     "ListCustomersRequest": {
@@ -8731,6 +9198,25 @@
                 }
               }
             ],
+            "refunds": [
+              {
+                "id": "7a5RcVI0CxbOcJ2wMOkE",
+                "location_id": "18YC4JDH91E1H",
+                "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
+                "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
+                "created_at": "2016-03-10T22:59:20Z",
+                "reason": "some reason why",
+                "amount_money": {
+                  "amount": 5000,
+                  "currency": "USD"
+                },
+                "status": "APPROVED",
+                "processing_fee_money": {
+                  "amount": 138,
+                  "currency": "USD"
+                }
+              }
+            ],
             "reference_id": "some optional reference id",
             "product": "EXTERNAL_API"
           }
@@ -8975,10 +9461,6 @@
     "Order": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "The order\u0027s unique ID.\n\nThis value is not present if the order was not created with the\n[CreateOrder](#endpoint-createorder) endpoint."
-        },
         "location_id": {
           "type": "string",
           "description": "The ID of the merchant location this order is associated with."
@@ -8997,6 +9479,14 @@
         "total_money": {
           "$ref": "#/definitions/Money",
           "description": "The total amount of money to collect for the order."
+        },
+        "total_tax_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total tax amount of money to collect for the order."
+        },
+        "total_discount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total discount amount of money to collect for the order."
         }
       },
       "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase"
@@ -9004,10 +9494,6 @@
     "OrderLineItem": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "The line item\u0027s ID, unique only within this order."
-        },
         "name": {
           "type": "string",
           "description": "The name of the line item."
@@ -9016,9 +9502,31 @@
           "type": "string",
           "description": "The quantity of the product to purchase. Currently, this string must\nhave an integer value."
         },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderLineItemTax"
+          },
+          "description": "The taxes applied to this line item."
+        },
+        "discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderLineItemDiscount"
+          },
+          "description": "The discounts applied to this line item."
+        },
         "base_price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The base price for a single unit of the line item\u0027s associated\nvariation.\n\nIf a line item represents a Custom Amount instead of a particular product,\nthis field indicates that amount."
+          "description": "The base price for a single unit of the line item."
+        },
+        "total_tax_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total tax amount of money to collect for the line item."
+        },
+        "total_discount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total discount amount of money to collect for the line item."
         },
         "total_money": {
           "$ref": "#/definitions/Money",
@@ -9026,6 +9534,74 @@
         }
       },
       "description": "Represents a line item in an order. Each line item describes a different\nproduct to purchase, with its own quantity and price details."
+    },
+    "OrderLineItemDiscount": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The discount\u0027s name."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "FIXED_PERCENTAGE",
+            "FIXED_AMOUNT",
+            "VARIABLE_PERCENTAGE",
+            "VARIABLE_AMOUNT"
+          ],
+          "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\n\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values."
+        },
+        "percentage": {
+          "type": "string",
+          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nThe percentage won\u0027t be set for an amount-based discount."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total monetary amount of the applicable discount.\nIf it is at order level, it is the value of the order level discount.\nIf it is at line item level, it is the value of the line item level discount.\n\nThe amount_money won\u0027t be set for a percentage-based discount."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of discount actually applied to this line item.\n\nRepresents the amount of money applied to a line item as a discount\nWhen an amount-based discount is at order-level, this value is different from `amount_money` because the discount is\ndistributed across the line items."
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "LINE_ITEM",
+            "ORDER"
+          ],
+          "description": "Indicates the level at which the discount applies.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values."
+        }
+      },
+      "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal."
+    },
+    "OrderLineItemTax": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The tax\u0027s name."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "ADDITIVE",
+            "INCLUSIVE"
+          ],
+          "description": "Indicates the calculation method used to apply the tax.\n\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
+        },
+        "percentage": {
+          "type": "string",
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of the money applied by the tax in an order."
+        }
+      },
+      "description": "Represents a tax that applies to one or more line items in an order."
     },
     "Refund": {
       "type": "object",
@@ -9089,12 +9665,18 @@
       "properties": {
         "include_related_objects": {
           "type": "boolean",
-          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response."
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.\n\nDefault value: `false`"
         }
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/object/W62UWFY35CWMYGVWK6TWJDNI"
+        "request_url": "https://connect.squareup.com/v2/catalog/object/W62UWFY35CWMYGVWK6TWJDNI?include_related_objects\u003dtrue"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.python",
+        "csharp": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.csharp",
+        "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.php",
+        "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.ruby"
       }
     },
     "RetrieveCatalogObjectResponse": {
@@ -9131,7 +9713,6 @@
           "item_data": {
             "name": "Tea",
             "description": "Hot Leaf Juice",
-            "visibility": "PRIVATE",
             "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
             "tax_ids": [
               "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -9157,7 +9738,41 @@
               }
             ]
           }
-        }
+        },
+        "related_objects": [
+          {
+            "type": "CATEGORY",
+            "id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "category_data": {
+              "name": "Beverages"
+            }
+          },
+          {
+            "type": "TAX",
+            "id": "HURXQOOAIC4IZSI2BEXQRYFY",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "tax_data": {
+              "name": "Sales Tax",
+              "calculation_phase": "TAX_SUBTOTAL_PHASE",
+              "inclusion_type": "ADDITIVE",
+              "percentage": "5.0",
+              "enabled": true
+            }
+          }
+        ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.python",
+        "csharp": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.csharp",
+        "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.php",
+        "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.ruby"
       }
     },
     "RetrieveCustomerRequest": {
@@ -9329,7 +9944,7 @@
         },
         "begin_time": {
           "type": "string",
-          "description": "Return only objects that have been modified after this [timestamp](#workingwithdates) (in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\")."
+          "description": "Return only objects that have been modified after this [timestamp](#workingwithdates)\n(in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"). The timestamp is exclusive -\nobjects whose timestamp is equal to `begin_time` will not be included in the response."
         },
         "query": {
           "$ref": "#/definitions/CatalogQuery",
@@ -9348,6 +9963,12 @@
             "ITEM"
           ]
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.csharp",
+        "php": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.php",
+        "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.ruby"
       }
     },
     "SearchCatalogObjectsResponse": {
@@ -9379,7 +10000,107 @@
           "description": "A list of [CatalogObject](#type-catalogobject)s referenced by the objects in the `objects` field."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "objects": [
+          {
+            "type": "ITEM",
+            "id": "W62UWFY35CWMYGVWK6TWJDNI",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Tea",
+              "description": "Hot Leaf Juice",
+              "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+              "tax_ids": [
+                "HURXQOOAIC4IZSI2BEXQRYFY"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "2TZFAOHWGG7PAK2QEXWYPZSP",
+                  "updated_at": "2016-11-16T22:25:24.878Z",
+                  "version": 1479335124878,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "W62UWFY35CWMYGVWK6TWJDNI",
+                    "name": "Mug",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 150,
+                      "currency": "USD"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "ITEM",
+            "id": "AA27W3M2GGTF3H6AVPNB77CK",
+            "updated_at": "2016-11-16T22:25:24.878Z",
+            "version": 1479335124878,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Coffee",
+              "description": "Hot Bean Juice",
+              "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+              "tax_ids": [
+                "HURXQOOAIC4IZSI2BEXQRYFY"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "LBTYIHNHU52WOIHWT7SNRIYH",
+                  "updated_at": "2016-11-16T22:25:24.878Z",
+                  "version": 1479335124878,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                    "name": "Regular",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 250,
+                      "currency": "USD"
+                    }
+                  }
+                },
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "PKYIC7HGGKW5CYVSCVDEIMHY",
+                  "updated_at": "2016-11-16T22:25:24.878Z",
+                  "version": 1479335124878,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                    "name": "Large",
+                    "ordinal": 1,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 350,
+                      "currency": "USD"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.csharp",
+        "php": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.php",
+        "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.ruby"
+      }
     },
     "Tender": {
       "type": "object",
@@ -9536,7 +10257,7 @@
         },
         "client_id": {
           "type": "string",
-          "description": "If the transaction was created in the Square Register app, this value\nis the ID generated for the transaction by Square Register.\n\nThis ID has no relationship to the transaction\u0027s canonical `id`, which is\ngenerated by Square\u0027s backend servers. This value is generated for bookkeeping\npurposes, in case the transaction cannot immediately be completed (for example,\nif the transaction is processed in offline mode).\n\nIt is not currently possible with the Connect API to perform a transaction\nlookup by this value."
+          "description": "If the transaction was created in the Square Point of Sale app, this value\nis the ID generated for the transaction by Square Point of Sale.\n\nThis ID has no relationship to the transaction\u0027s canonical `id`, which is\ngenerated by Square\u0027s backend servers. This value is generated for bookkeeping\npurposes, in case the transaction cannot immediately be completed (for example,\nif the transaction is processed in offline mode).\n\nIt is not currently possible with the Connect API to perform a transaction\nlookup by this value."
         },
         "order": {
           "$ref": "#/definitions/Order",
@@ -9547,7 +10268,7 @@
           "description": "The shipping address provided in the request, if any."
         }
       },
-      "description": "Represents a transaction processed with Square, either with the\nConnect API or with Square Register.\n\nThe `tenders` field of this object lists all methods of payment used to pay in\nthe transaction."
+      "description": "Represents a transaction processed with Square, either with the\nConnect API or with Square Point of Sale.\n\nThe `tenders` field of this object lists all methods of payment used to pay in\nthe transaction."
     },
     "UpdateCustomerRequest": {
       "type": "object",
@@ -9682,7 +10403,29 @@
           "description": "The set of [CatalogModifierList](#type-catalogmodifierlist)s (referenced by ID) to disable for the [CatalogItem](#type-catalogitem)."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/update-item-taxes",
+        "request_body": {
+          "item_ids": [
+            "H42BRLUJ5KTZTTMPVSLFAACQ",
+            "2JXOBJIHCWBQ4NZ3RIXQGJA6"
+          ],
+          "modifier_lists_to_enable": [
+            "H42BRLUJ5KTZTTMPVSLFAACQ",
+            "2JXOBJIHCWBQ4NZ3RIXQGJA6"
+          ],
+          "modifier_lists_to_disable": [
+            "7WRC16CJZDVLSNDQ35PP6YAD"
+          ]
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.csharp",
+        "php": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.php",
+        "ruby": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.ruby"
+      }
     },
     "UpdateItemModifierListsResponse": {
       "type": "object",
@@ -9699,7 +10442,16 @@
           "description": "The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "updated_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.csharp",
+        "php": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.php",
+        "ruby": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.ruby"
+      }
     },
     "UpdateItemTaxesRequest": {
       "type": "object",
@@ -9729,7 +10481,28 @@
           "description": "The set of [CatalogTax](#type-catalogtax)es (referenced by ID) to disable for the [CatalogItem](#type-catalogitem)."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/update-item-taxes",
+        "request_body": {
+          "item_ids": [
+            "H42BRLUJ5KTZTTMPVSLFAACQ",
+            "2JXOBJIHCWBQ4NZ3RIXQGJA6"
+          ],
+          "taxes_to_enable": [
+            "4WRCNHCJZDVLSNDQ35PP6YAD"
+          ],
+          "taxes_to_disable": [
+            "AQCEGCEBBQONINDOHRGZISEX"
+          ]
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.csharp",
+        "php": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.php",
+        "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.ruby"
+      }
     },
     "UpdateItemTaxesResponse": {
       "type": "object",
@@ -9746,7 +10519,16 @@
           "description": "The database [timestamp](#workingwithdates) of this update in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"."
         }
       },
-      "description": ""
+      "description": "",
+      "example": {
+        "updated_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.csharp",
+        "php": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.php",
+        "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.ruby"
+      }
     },
     "UpsertCatalogObjectRequest": {
       "type": "object",
@@ -9769,18 +10551,23 @@
       "example": {
         "request_url": "https://connect.squareup.com/v2/catalog",
         "request_body": {
-          "idempotency_key": "67OYYFQPR3RNE2QQ",
+          "idempotency_key": "af3d1afc-7212-4300-b463-0bfc5314a5ae",
           "object": {
             "type": "ITEM",
             "id": "#Cocoa",
             "item_data": {
               "name": "Cocoa",
               "description": "Hot chocolate",
-              "abbreviation": "Ch",
-              "visibility": "PRIVATE"
+              "abbreviation": "Ch"
             }
           }
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.python",
+        "csharp": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.csharp",
+        "php": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.php",
+        "ruby": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.ruby"
       }
     },
     "UpsertCatalogObjectResponse": {
@@ -9816,10 +10603,21 @@
           "item_data": {
             "name": "Cocoa",
             "description": "Hot chocolate",
-            "abbreviation": "Ch",
-            "visibility": "PRIVATE"
+            "abbreviation": "Ch"
           }
-        }
+        },
+        "id_mappings": [
+          {
+            "client_object_id": "#Cocoa",
+            "object_id": "7SB3ZQYJ5GDMVFL7JK46JCHT"
+          }
+        ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.python",
+        "csharp": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.csharp",
+        "php": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.php",
+        "ruby": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.ruby"
       }
     },
     "VoidTransactionRequest": {

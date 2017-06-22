@@ -15,18 +15,11 @@ ssh-add $DIR/csharp-repo.pem
 git clone git@github.com:square/connect-csharp-sdk.git
 cd connect-csharp-sdk
 
-RELEASE_BRANCH=release/$packageVersion
-if [ `git branch -r | grep "${RELEASE_BRANCH}"` ];
-then
-    git checkout $RELEASE_BRANCH
-else
-    git checkout -b $RELEASE_BRANCH
-    git push -u origin $RELEASE_BRANCH
-fi
+git checkout master
 
 if [ "${TRAVIS_BRANCH}" = "master" ];
 then
-    BRANCH_NAME=$RELEASE_BRANCH
+    BRANCH_NAME=master
 else
     BRANCH_NAME=travis-ci/$TRAVIS_BRANCH
     if [ `git branch -r | grep "${BRANCH_NAME}"` ];

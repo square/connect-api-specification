@@ -4,7 +4,7 @@
   "invokerPackage": "com.squareup.connect",
   "groupId": "com.squareup",
   "artifactId": "connect",
-  "artifactVersion": "2.1.1",
+  "artifactVersion": "2.2.0",
   "artifactUrl": "https://github.com/square/connect-java-sdk/",
   "artifactDescription": "Java client library for the Square Connect API",
   "developerName": "Square Inc.",
@@ -20,6 +20,6 @@
   "dateLibrary": "java8",
   "useGzipFeature": false,
   "library": "jersey2",
-  "httpUserAgent": "Square-Connect-Java/2.1.1",
+  "httpUserAgent": "Square-Connect-Java/2.2.0",
   "hideGenerationTimestamp": true
 }
