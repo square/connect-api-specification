@@ -741,13 +741,13 @@
         "description": "Creates a [Checkout](#type-checkout) response that links a\n`checkoutId` and `checkout_page_url` that customers can be directed to in\norder to provide their payment information using a payment processing\nworkflow hosted on connect.squareup.com.",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE",
-          "ORDERS_V2_WRITE"
+          "ORDERS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
               "PAYMENTS_WRITE",
-              "ORDERS_V2_WRITE"
+              "ORDERS_WRITE"
             ]
           }
         ],
@@ -5454,7 +5454,7 @@
         "LINE_ITEM",
         "ORDER"
       ],
-      "description": "Represents whether a discount applied to a line item level or an order level."
+      "description": "Indicates whether this is a line item or order-level discount."
     },
     "OrderLineItemDiscountType": {
       "type": "string",
@@ -5465,7 +5465,7 @@
         "VARIABLE_PERCENTAGE",
         "VARIABLE_AMOUNT"
       ],
-      "description": "Represents how a discount applied to a line item or an order."
+      "description": "Indicates how the discount is applied to the associated line item or order."
     },
     "OrderLineItemTaxType": {
       "type": "string",
@@ -5474,7 +5474,7 @@
         "ADDITIVE",
         "INCLUSIVE"
       ],
-      "description": "Represents how a tax applied to a line item or an order."
+      "description": "Indicates how the tax is applied to the associated line item or order."
     },
     "RefundStatus": {
       "type": "string",
@@ -6014,7 +6014,6 @@
             "item_data": {
               "name": "Tea",
               "description": "Hot Leaf Juice",
-              "visibility": "PRIVATE",
               "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
               "tax_ids": [
                 "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -6051,7 +6050,6 @@
             "item_data": {
               "name": "Coffee",
               "description": "Hot Bean Juice",
-              "visibility": "PRIVATE",
               "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
               "tax_ids": [
                 "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -7672,37 +7670,93 @@
       "example": {
         "request_url": "/v2/locations/LOCATION_ID/checkouts",
         "request_body": {
-          "idempotency_key": "74ae1696-b1e3-4328-af6d-f1e04d947a13",
+          "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
           "order": {
-            "reference_id": "my-order-001",
+            "reference_id": "reference_id",
             "line_items": [
               {
-                "name": "line-item-1",
+                "name": "Printed T Shirt",
+                "quantity": "2",
+                "base_price_money": {
+                  "amount": 1500,
+                  "currency": "USD"
+                },
+                "discounts": [
+                  {
+                    "name": "7% off previous season item",
+                    "percentage": "7"
+                  },
+                  {
+                    "name": "$3 off Customer Discount",
+                    "amount_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Slim Jeans",
                 "quantity": "1",
                 "base_price_money": {
-                  "amount": 1599,
+                  "amount": 2500,
                   "currency": "USD"
                 }
               },
               {
-                "name": "line-item-2",
-                "quantity": "2",
+                "name": "Woven Sweater",
+                "quantity": "3",
                 "base_price_money": {
-                  "amount": 799,
+                  "amount": 3500,
+                  "currency": "USD"
+                },
+                "discounts": [
+                  {
+                    "name": "$11 off Customer Discount",
+                    "amount_money": {
+                      "amount": 1100,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "taxes": [
+                  {
+                    "name": "Fair Trade Tax",
+                    "percentage": "5"
+                  }
+                ]
+              }
+            ],
+            "discounts": [
+              {
+                "name": "Father\u0027s day 12% OFF",
+                "percentage": "12"
+              },
+              {
+                "name": "Global Sales $55 OFF",
+                "amount_money": {
+                  "amount": 5500,
                   "currency": "USD"
                 }
+              }
+            ],
+            "taxes": [
+              {
+                "name": "Sales Tax",
+                "percentage": "8.5"
               }
             ]
           },
           "ask_for_shipping_address": true,
           "merchant_support_email": "merchant+support@website.com",
-          "pre_populate_buyer_email": "buyer@email.com",
+          "pre_populate_buyer_email": "example@email.com",
           "pre_populate_shipping_address": {
-            "address_line_1": "500 Electric Ave",
+            "address_line_1": "1455 Market St.",
             "address_line_2": "Suite 600",
-            "locality": "New York",
-            "administrative_district_level_1": "NY",
-            "postal_code": "10003",
+            "locality": "San Francisco",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94103",
+            "country": "US",
             "first_name": "Jane",
             "last_name": "Doe"
           },
@@ -7738,54 +7792,250 @@
           "checkout_page_url": "https://connect.squareup.com/v2/checkout?c\u003dCAISEHGimXh-C3RIT4og1a6u1qw\u0026l\u003dCYTKRM7R7JMV8",
           "ask_for_shipping_address": true,
           "merchant_support_email": "merchant+support@website.com",
-          "pre_populate_buyer_email": "buyer@email.com",
+          "pre_populate_buyer_email": "example@email.com",
           "pre_populate_shipping_address": {
-            "address_line_1": "500 Electric Ave",
+            "address_line_1": "1455 Market St.",
             "address_line_2": "Suite 600",
-            "locality": "New York",
-            "administrative_district_level_1": "NY",
-            "postal_code": "10003",
+            "locality": "San Francisco",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94103",
+            "country": "US",
             "first_name": "Jane",
             "last_name": "Doe"
           },
+          "redirect_url": "https://merchant.website.com/order-confirm",
           "order": {
-            "id": "CAISEJOSTTqtofh-wiJrEXpkEAg",
             "location_id": "CYTKRM7R7JMV8",
-            "reference_id": "my-order-001",
+            "reference_id": "reference_id",
             "line_items": [
               {
-                "id": "51fa1d80-0720-5b3f-6804-a18f7861d2c7",
-                "name": "line-item-1",
-                "quantity": "1",
+                "name": "Printed T Shirt",
+                "quantity": "2",
+                "taxes": [
+                  {
+                    "name": "Sales Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "8.5",
+                    "applied_money": {
+                      "amount": 103,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "discounts": [
+                  {
+                    "name": "7% off previous season item",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "7",
+                    "applied_money": {
+                      "amount": 210,
+                      "currency": "USD"
+                    },
+                    "scope": "LINE_ITEM"
+                  },
+                  {
+                    "name": "Father\u0027s day 12% OFF",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "12",
+                    "applied_money": {
+                      "amount": 335,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  },
+                  {
+                    "name": "$3 off Customer Discount",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    },
+                    "scope": "LINE_ITEM"
+                  },
+                  {
+                    "name": "Global Sales $55 OFF",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 5500,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 949,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  }
+                ],
                 "base_price_money": {
-                  "amount": 1599,
+                  "amount": 1500,
+                  "currency": "USD"
+                },
+                "total_tax_money": {
+                  "amount": 103,
+                  "currency": "USD"
+                },
+                "total_discount_money": {
+                  "amount": 1794,
                   "currency": "USD"
                 },
                 "total_money": {
-                  "amount": 1599,
+                  "amount": 1309,
                   "currency": "USD"
                 }
               },
               {
-                "id": "0d53440b-b9f4-5271-7555-cb43c7af9575",
-                "name": "line-item-2",
-                "quantity": "2",
+                "name": "Slim Jeans",
+                "quantity": "1",
+                "taxes": [
+                  {
+                    "name": "Sales Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "8.5",
+                    "applied_money": {
+                      "amount": 105,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "discounts": [
+                  {
+                    "name": "Father\u0027s day 12% OFF",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "12",
+                    "applied_money": {
+                      "amount": 300,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  },
+                  {
+                    "name": "Global Sales $55 OFF",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 5500,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 968,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  }
+                ],
                 "base_price_money": {
-                  "amount": 799,
+                  "amount": 2500,
+                  "currency": "USD"
+                },
+                "total_tax_money": {
+                  "amount": 105,
+                  "currency": "USD"
+                },
+                "total_discount_money": {
+                  "amount": 1268,
                   "currency": "USD"
                 },
                 "total_money": {
-                  "amount": 1598,
+                  "amount": 1337,
+                  "currency": "USD"
+                }
+              },
+              {
+                "name": "Wooven Sweater",
+                "quantity": "3",
+                "taxes": [
+                  {
+                    "name": "Fair Trade Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "5",
+                    "applied_money": {
+                      "amount": 228,
+                      "currency": "USD"
+                    }
+                  },
+                  {
+                    "name": "Sales Tax",
+                    "type": "ADDITIVE",
+                    "percentage": "8.5",
+                    "applied_money": {
+                      "amount": 387,
+                      "currency": "USD"
+                    }
+                  }
+                ],
+                "discounts": [
+                  {
+                    "name": "Father\u0027s day 12% OFF",
+                    "type": "FIXED_PERCENTAGE",
+                    "percentage": "12",
+                    "applied_money": {
+                      "amount": 1260,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  },
+                  {
+                    "name": "$11 off Customer Discount",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 1100,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 1100,
+                      "currency": "USD"
+                    },
+                    "scope": "LINE_ITEM"
+                  },
+                  {
+                    "name": "Global Sales $55 OFF",
+                    "type": "FIXED_AMOUNT",
+                    "amount_money": {
+                      "amount": 5500,
+                      "currency": "USD"
+                    },
+                    "applied_money": {
+                      "amount": 3583,
+                      "currency": "USD"
+                    },
+                    "scope": "ORDER"
+                  }
+                ],
+                "base_price_money": {
+                  "amount": 3500,
+                  "currency": "USD"
+                },
+                "total_tax_money": {
+                  "amount": 615,
+                  "currency": "USD"
+                },
+                "total_discount_money": {
+                  "amount": 5943,
+                  "currency": "USD"
+                },
+                "total_money": {
+                  "amount": 5172,
                   "currency": "USD"
                 }
               }
             ],
             "total_money": {
-              "amount": 3197,
+              "amount": 7818,
+              "currency": "USD"
+            },
+            "total_tax_money": {
+              "amount": 823,
+              "currency": "USD"
+            },
+            "total_discount_money": {
+              "amount": 9005,
               "currency": "USD"
             }
           },
-          "created_at": "2017-01-18T22:25:54Z"
+          "created_at": "2017-06-16T22:25:35Z"
         }
       }
     },
@@ -8028,11 +8278,11 @@
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+          "description": "The percentage of the discount, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of the discount."
+          "description": "The monetary amount of the discount."
         }
       },
       "description": "Represents a discount that to either a single line item or an entire order."
@@ -8089,7 +8339,7 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "The type is either `ADDITIVE` or `INCLUSIVE`.\n\nThe default is ADDITIVE."
+          "description": "Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
         },
         "percentage": {
           "type": "string",
@@ -9211,10 +9461,6 @@
     "Order": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "The order\u0027s unique ID.\n\nThis value is not present if the order was not created with the\n[CreateOrder](#endpoint-createorder) endpoint."
-        },
         "location_id": {
           "type": "string",
           "description": "The ID of the merchant location this order is associated with."
@@ -9248,10 +9494,6 @@
     "OrderLineItem": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "description": "The line item\u0027s ID, unique only within this order."
-        },
         "name": {
           "type": "string",
           "description": "The name of the line item."
@@ -9309,19 +9551,19 @@
             "VARIABLE_PERCENTAGE",
             "VARIABLE_AMOUNT"
           ],
-          "description": "The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified."
+          "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\n\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values."
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%."
+          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nThe percentage won\u0027t be set for an amount-based discount."
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of the discount."
+          "description": "The total monetary amount of the applicable discount.\nIf it is at order level, it is the value of the order level discount.\nIf it is at line item level, it is the value of the line item level discount.\n\nThe amount_money won\u0027t be set for a percentage-based discount."
         },
         "applied_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of the money applied by the discount in an order."
+          "description": "The amount of discount actually applied to this line item.\n\nRepresents the amount of money applied to a line item as a discount\nWhen an amount-based discount is at order-level, this value is different from `amount_money` because the discount is\ndistributed across the line items."
         },
         "scope": {
           "type": "string",
@@ -9329,10 +9571,10 @@
             "LINE_ITEM",
             "ORDER"
           ],
-          "description": "The scope of the discount."
+          "description": "Indicates the level at which the discount applies.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values."
         }
       },
-      "description": "Represents a discount that applies to one or more line items in an\norder."
+      "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal."
     },
     "OrderLineItemTax": {
       "type": "object",
@@ -9348,7 +9590,7 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "The type of a tax is either INCLUSIVE or ADDITIVE."
+          "description": "Indicates the calculation method used to apply the tax.\n\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
         },
         "percentage": {
           "type": "string",
@@ -9471,7 +9713,6 @@
           "item_data": {
             "name": "Tea",
             "description": "Hot Leaf Juice",
-            "visibility": "PRIVATE",
             "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
             "tax_ids": [
               "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -9772,7 +10013,6 @@
             "item_data": {
               "name": "Tea",
               "description": "Hot Leaf Juice",
-              "visibility": "PRIVATE",
               "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
               "tax_ids": [
                 "HURXQOOAIC4IZSI2BEXQRYFY"
@@ -9809,7 +10049,6 @@
             "item_data": {
               "name": "Coffee",
               "description": "Hot Bean Juice",
-              "visibility": "PRIVATE",
               "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
               "tax_ids": [
                 "HURXQOOAIC4IZSI2BEXQRYFY"
