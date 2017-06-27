@@ -7232,8 +7232,7 @@
           "discount_data": "{{ CatalogDiscount object only if type\u003dDISCOUNT }}",
           "tax_data": "{{ CatalogTax object only if type\u003dTAX }}"
         }
-      },
-      "example_type": "Schema"
+      }
     },
     "CatalogObjectBatch": {
       "type": "object",
