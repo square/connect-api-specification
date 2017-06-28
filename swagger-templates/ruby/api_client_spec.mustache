@@ -116,7 +116,7 @@ describe {{moduleName}}::ApiClient do
       #api_client = {{moduleName}}::ApiClient.new
       #_model = {{moduleName}}::ModelName.new
       # update the model attribute below
-      #_model.id = 1 
+      #_model.id = 1
       # update the expected value (hash) below
       #expected = {id: 1, name: '', tags: []}
       #expect(api_client.object_to_hash(_model)).to eq(expected)
@@ -213,6 +213,45 @@ describe {{moduleName}}::ApiClient do
       expect(api_client.sanitize_filename('\var\tmp\sun.gif')).to eq('sun.gif')
       expect(api_client.sanitize_filename('c:\var\tmp\sun.gif')).to eq('sun.gif')
       expect(api_client.sanitize_filename('.\sun.gif')).to eq('sun.gif')
+    end
+  end
+
+  describe "#get_v1_batch_token_from_headers" do
+    let(:config) { {{moduleName}}::Configuration.new }
+    let(:api_client) { {{moduleName}}::ApiClient.new(config) }
+
+    it "should return nil when no header is available" do
+      headers = {}
+      expect(api_client.get_v1_batch_token_from_headers(headers)).to be_nil
+    end
+
+    it "should return nil when no Link header is available" do
+      headers = {
+        'Accept' => 'text/javascript'
+      }
+      expect(api_client.get_v1_batch_token_from_headers(headers)).to be_nil
+    end
+
+    it "should return nil when Link header doesn't have the expected format" do
+      headers = {
+        'Link' => '<http://connect.squareup.com/v1/payments/?batch_token=TOKEN1>; rel="previous"; title="previous chapter"'
+      }
+      expect(api_client.get_v1_batch_token_from_headers(headers)).to be_nil
+    end
+
+    it "should return nil when batch_token is not present" do
+      headers = {
+        'Link' => "<http://connect.squareup.com/v1/payments/?token=TOKEN1>;rel='next'"
+      }
+      expect(api_client.get_v1_batch_token_from_headers(headers)).to be_nil
+    end
+
+    it "should return token when batch_token is present" do
+      token = "token-#{rand(1000000)}"
+      headers = {
+        'Link' => "<http://connect.squareup.com/v1/payments/?batch_token=#{token}>;rel='next'"
+      }
+      expect(api_client.get_v1_batch_token_from_headers(headers)).to eq(token)
     end
   end
 end
