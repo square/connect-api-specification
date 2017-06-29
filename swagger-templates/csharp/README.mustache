@@ -153,6 +153,61 @@ Authentication schemes defined for the API:
 
 {{/authMethods}}
 
+## Pagination of V1 Endpoints
+
+V1 Endpoints return pagination information via http headers. In order to obtain
+response headers and extract the `batch_token` parameter you will need to follow
+the following steps:
+
+1. Use the full information endpoint methods of each API to get the ApiResponse object.
+They are named as their simple counterpart with a `WithHttpInfo` suffix.
+Hence `ListEmployeeRoles` would be called `ListEmployeeRolesWithHttpInfo`. This
+method returns an `ApiResponse<List<V1EmployeeRole>>` object.
+
+2. Use `string batchToken = response.BatchToken` to get the token and proceed to
+get the following page if a token is present.
+
+### Example
+
+```csharp
+using System;
+using System.Diagnostics;
+using Square.Connect.Api;
+using Square.Connect.Client;
+using Square.Connect.Model;
+
+namespace Example
+{
+    public class ListEmployeeRolesExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new V1EmployeesApi();
+            var order = order_example;  // string | The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+            var limit = 56;  // int? | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+            string batchToken = null;
+
+            try
+            {
+                do {
+                    // Provides summary information for all of a business's employee roles.
+                    ApiResponse<List<V1EmployeeRole>> response = apiInstance.ListEmployeeRolesWithHttpInfo(order, limit, batchToken);
+                    batchToken = response.BatchToken
+                    Debug.WriteLine(response.Data);
+                } while (batchToken != null);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling V1EmployeesApi.ListEmployeeRolesWithHttpInfo: " + e.Message );
+            }
+        }
+    }
+}
+```
+
 ## Contributing
 
 Send bug reports, feature requests, and code contributions to the [API
