@@ -9,6 +9,8 @@ import json
 import ssl
 import certifi
 import logging
+import re
+import urlparse
 
 # python 2 and python 3 compatibility library
 from six import iteritems
@@ -70,6 +72,18 @@ class RESTResponse(io.IOBase):
         Returns a given response header.
         """
         return self.urllib3_response.getheader(name, default)
+
+    def getbatch_token(self):
+        link_header = self.getheader('Link')
+        if link_header != None:
+            match = re.match("^<([^>]+)>;rel='next'$", link_header)
+            if match != None:
+                next_url = match.group(1)
+                parsed_url = urlparse.urlparse(next_url)
+                parameters = urlparse.parse_qs(parsed_url.query)
+                if parameters.has_key('batch_token'):
+                    return parameters['batch_token'][0]
+        return None
 
 
 class RESTClientObject(object):
