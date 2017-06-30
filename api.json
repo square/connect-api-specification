@@ -11636,6 +11636,26 @@
           "$ref": "#/definitions/v1Money",
           "description": "The amount of money refunded. This amount is always negative."
         },
+        "refunded_processing_fee_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of processing fee money refunded."
+        },
+        "refunded_additive_tax_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of additive tax money refunded."
+        },
+        "refunded_inclusive_tax_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of inclusive tax money refunded."
+        },
+        "refunded_tip_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of tip money refunded."
+        },
+        "refunded_discount_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of discount money refunded."
+        },
         "created_at": {
           "type": "string",
           "description": "The time when the merchant initiated the refund for Square to process, in ISO 8601 format.."
