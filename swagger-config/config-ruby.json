@@ -1,8 +1,8 @@
 {
   "gemName": "square_connect",
   "moduleName": "SquareConnect",
-  "httpUserAgent": "Square-Connect-Ruby/2.1.1",
-  "gemVersion": "2.1.1",
+  "httpUserAgent": "Square-Connect-Ruby/2.2.1",
+  "gemVersion": "2.2.1",
   "gemAuthor": "Square, Inc.",
   "gemAuthorEmail": "developers@squareup.com",
   "gemHomepage": "https://github.com/square/connect-ruby-sdk",
