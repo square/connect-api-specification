@@ -1380,6 +1380,13 @@
             "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
             "type": "integer",
             "maximum": 200
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "security": [
@@ -1566,7 +1573,7 @@
             "maximum": 200
           },
           {
-            "name": "cursor",
+            "name": "batch_token",
             "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
             "type": "string",
             "in": "query",
@@ -1815,7 +1822,7 @@
             "maximum": 200
           },
           {
-            "name": "cursor",
+            "name": "batch_token",
             "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
             "type": "string",
             "in": "query",
@@ -2193,6 +2200,13 @@
             "description": "The maximum number of payments to return in a single response. This value cannot exceed 200.",
             "type": "integer",
             "maximum": 200
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "security": [
@@ -2332,6 +2346,13 @@
               "FAILED"
             ],
             "required": false
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "security": [
@@ -2460,6 +2481,13 @@
             "type": "integer",
             "maximum": 200,
             "required": false
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "security": [
@@ -2573,6 +2601,13 @@
             "description": "The maximum number of payments to return in a single response. This value cannot exceed 200.",
             "type": "integer",
             "maximum": 200,
+            "required": false
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
+            "in": "query",
             "required": false
           }
         ],
@@ -2860,6 +2895,13 @@
             "description": "The ID of the location to list items for.",
             "type": "string",
             "required": true
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "security": [
@@ -3231,6 +3273,13 @@
             "description": "The maximum number of inventory entries to return in a single response. This value cannot exceed 1000.",
             "type": "integer",
             "maximum": 1000,
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "batch_token",
+            "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "type": "string",
             "in": "query",
             "required": false
           }
@@ -9932,7 +9981,7 @@
               "MODIFIER"
             ]
           },
-          "description": "The desired set of object types to apper in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`."
+          "description": "The desired set of object types to appear in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`."
         },
         "include_deleted_objects": {
           "type": "boolean",

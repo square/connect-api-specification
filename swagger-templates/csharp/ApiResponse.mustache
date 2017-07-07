@@ -1,6 +1,8 @@
 {{>partial_header}}
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Web;
 
 namespace {{packageName}}.Client
 {
@@ -38,6 +40,28 @@ namespace {{packageName}}.Client
             this.StatusCode= statusCode;
             this.Headers = headers;
             this.Data = data;
+        }
+
+        /// <summary>
+        /// Returns the value of BatchToken to be used on the next page call if present.
+        /// </summary>
+        /// <value>Batch Token when present</value>
+        public string BatchToken {
+            get {
+                if (Headers.ContainsKey("Link"))
+                {
+                    Regex LinkRegex = new Regex("^<([^>]+)>;rel='next'$");
+                    Match match = LinkRegex.Match(Headers["Link"]);
+                    if (match.Success)
+                    {
+                        var nextUrl = new Uri(match.Groups[1].ToString());
+                        var parameters = HttpUtility.ParseQueryString(nextUrl.Query);
+                        return parameters["batch_token"];
+                    }
+                }
+
+                return null;
+            }
         }
 
     }

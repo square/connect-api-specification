@@ -136,6 +136,55 @@ Class | Method | HTTP request | Description
 
 {{/authMethods}}
 
+## Pagination of V1 Endpoints
+
+V1 Endpoints return pagination information via HTTP headers. In order to obtain
+response headers and extract the `batch_token` parameter you will need to follow
+the following steps:
+
+1. Use the full information endpoint methods of each API to get the response HTTP
+Headers. They are named as their simple counterpart with a `WithHttpInfo` suffix.
+Hence `listEmployeeRoles` would be called `listEmployeeRolesWithHttpInfo`. This
+method returns a `CompleteResponse` object with the response data deserialized along
+with a helper to retrieve the token if present.
+
+2. Use `String batchToken = completeResponse.getBatchToken();`
+to extract the token and proceed to get the following page if a token is present.
+
+### Example
+
+```java
+// Import classes:
+//import {{package}}.ApiClient;
+//import {{package}}.ApiException;
+//import {{package}}.Configuration;
+//import {{package}}.CompleteResponse;
+//import {{package}}.auth.*;
+//import {{package}}.api.V1EmployeesApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+V1EmployeesApi apiInstance = new V1EmployeesApi();
+String order = "order_example"; // String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC
+Integer limit = 56; // Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+String batchToken = null;
+try {
+    do {
+        CompleteResponse<List<V1EmployeeRole>> completeResponse = apiInstance.listEmployeeRoles(order, limit, batchToken);
+        System.out.println(completeResponse.getData());
+
+        batchToken = completeResponse.getBatchToken();
+    } while (batchToken != null);
+} catch (ApiException e) {
+    System.err.println("Exception when calling V1EmployeesApi#listEmployeeRoles");
+    e.printStackTrace();
+}
+```
+
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
