@@ -647,7 +647,7 @@ public class ApiClient {
    * @return The response body in type of string
    * @throws ApiException API exception
    */
-   public <T> T invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
+   public <T> CompleteResponse<T> invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
 
     ClientResponse response = getAPIResponse(path, method, queryParams, body, headerParams, formParams, accept, contentType, authNames);
 
@@ -660,7 +660,7 @@ public class ApiClient {
       if (returnType == null)
         return null;
       else
-        return response.getEntity(returnType);
+        return new CompleteResponse<T>(deserialize(response, returnType), response);
     } else {
       String message = "error";
       String respBody = null;

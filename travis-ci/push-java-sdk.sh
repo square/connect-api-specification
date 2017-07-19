@@ -15,7 +15,7 @@ git clone git@github.com:square/connect-java-sdk.git
 cd connect-java-sdk
 
 RELEASE_BRANCH=release/$packageVersion
-if [ `git branch -r | grep "${RELEASE_BRANCH}"` ];
+if [ `git branch -r | grep -i "^\s*origin/${RELEASE_BRANCH}$"` ];
 then
     git checkout $RELEASE_BRANCH
 else
@@ -28,7 +28,7 @@ then
     BRANCH_NAME=$RELEASE_BRANCH
 else
     BRANCH_NAME=travis-ci/$TRAVIS_BRANCH
-    if [ `git branch -r | grep "${BRANCH_NAME}"` ];
+    if [ `git branch -r | grep -i "^\s*origin/${BRANCH_NAME}$"` ];
     then
         git checkout $BRANCH_NAME
     else
@@ -39,6 +39,7 @@ fi
 echo "Copying files..."
 rm -rf docs src/main
 cp -r ../swagger-out/java/docs .
+cp -r ../swagger-templates/java/static ./src/main
 cp -r ../swagger-out/java/src/main ./src/
 rm ./src/main/AndroidManifest.xml
 cp ../swagger-out/java/build.gradle .

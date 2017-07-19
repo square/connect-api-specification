@@ -11,7 +11,7 @@ for the specification and template files we used to generate this.
 - .NET 4.5 or later
 
 ## Usage
-### **Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommended)** 
+### **Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommended)**
 ```
 PM> Install-Package Square.Connect
 ```
@@ -37,7 +37,7 @@ Option 1: Run the following command to generate the DLL
 
 Option 2: Import the `Square.Connect/Square.Connect.csproj` to your solution and build from VS
 
-Then include the DLLs (under the `bin` folder) in the C# project, 
+Then include the DLLs (under the `bin` folder) in the C# project,
 
 - RestSharp.dll
 - Newtonsoft.Json.dll
@@ -73,8 +73,8 @@ namespace Example
         // Retrieving your location IDs
         public void RetrieveLocations()
         {
-            LocationApi _locationApi = new LocationApi();
-            var response = _locationApi.ListLocations();
+            LocationsApi _locationsApi = new LocationsApi();
+            var response = _locationsApi.ListLocations();
         }
 
         // Charge the card nonce
@@ -95,8 +95,8 @@ namespace Example
             string nonce = "YOUR_NONCE";
             string locationId = "YOUR_LOCATION_ID";
             ChargeRequest body = new ChargeRequest(AmountMoney: money, IdempotencyKey: idempotencyKey, CardNonce: nonce);
-            TransactionApi transactionApi = new TransactionApi();
-            var response = transactionApi.Charge(locationId, body);
+            TransactionsApi transactionsApi = new TransactionsApi();
+            var response = transactionsApi.Charge(locationId, body);
         }
     }
 }
@@ -107,8 +107,8 @@ More examples are available at [connect-api-examples](https://github.com/square/
 
 All URIs are relative to [Square Connect Documentation](https://docs.connect.squareup.com/)
 
-Class | Method | HTTP request 
------------- | ------------- | ------------- 
+Class | Method | HTTP request
+------------ | ------------- | -------------
 {{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}}
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
@@ -152,6 +152,61 @@ Authentication schemes defined for the API:
 {{/isOAuth}}
 
 {{/authMethods}}
+
+## Pagination of V1 Endpoints
+
+V1 Endpoints return pagination information via HTTP headers. In order to obtain
+response headers and extract the `batch_token` parameter you will need to follow
+the following steps:
+
+1. Use the full information endpoint methods of each API to get the ApiResponse object.
+They are named as their simple counterpart with a `WithHttpInfo` suffix.
+Hence `ListEmployeeRoles` would be called `ListEmployeeRolesWithHttpInfo`. This
+method returns an `ApiResponse<List<V1EmployeeRole>>` object.
+
+2. Use `string batchToken = response.BatchToken` to get the token and proceed to
+get the following page if a token is present.
+
+### Example
+
+```csharp
+using System;
+using System.Diagnostics;
+using Square.Connect.Api;
+using Square.Connect.Client;
+using Square.Connect.Model;
+
+namespace Example
+{
+    public class ListEmployeeRolesExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new V1EmployeesApi();
+            var order = order_example;  // string | The order in which employees are listed in the response, based on their created_at field.Default value: ASC  (optional)
+            var limit = 56;  // int? | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. (optional)
+            string batchToken = null;
+
+            try
+            {
+                do {
+                    // Provides summary information for all of a business's employee roles.
+                    ApiResponse<List<V1EmployeeRole>> response = apiInstance.ListEmployeeRolesWithHttpInfo(order, limit, batchToken);
+                    batchToken = response.BatchToken
+                    Debug.WriteLine(response.Data);
+                } while (batchToken != null);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling V1EmployeesApi.ListEmployeeRolesWithHttpInfo: " + e.Message );
+            }
+        }
+    }
+}
+```
 
 ## Contributing
 
