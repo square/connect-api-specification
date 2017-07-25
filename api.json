@@ -55,6 +55,52 @@
     }
   },
   "paths": {
+    "/v2/locations/{location_id}/orders": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "CreateOrder",
+        "operationId": "CreateOrder",
+        "description": "Creates an [Order](#type-order) that can then be included as referenced `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.",
+        "x-oauthpermissions": [
+          "ORDERS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the business location to associate the order with.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/locations/{location_id}/transactions": {
       "post": {
         "tags": [
@@ -175,7 +221,7 @@
         ],
         "summary": "CreateRefund",
         "operationId": "CreateRefund",
-        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n(this article)[https://squareup.com/help/us/en/article/5060] for more information\non refund behavior.",
+        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
@@ -516,7 +562,7 @@
         ],
         "summary": "CreateCustomerCard",
         "operationId": "CreateCustomerCard",
-        "description": "Adds a card on file to an existing customer. In the United States\nSquare takes care of automatically updating any cards on file that might\nhave expired since you first attached them to a customer.",
+        "description": "Adds a card on file to an existing customer. In the United States\nSquare takes care of automatically updating any cards on file that might\nhave expired since you first attached them to a customer.\n\nAs with charges, calls to `CreateCustomerCard` are idempotent. Multiple\ncalls with the same card nonce return the same card record that was created\nwith the provided nonce during the _first_ call.",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
@@ -5205,6 +5251,7 @@
     "Currency": {
       "type": "string",
       "enum": [
+        "UNKNOWN_CURRENCY",
         "AED",
         "AFN",
         "ALL",
@@ -5430,6 +5477,8 @@
         "VALUE_TOO_LOW",
         "VALUE_TOO_HIGH",
         "VALUE_EMPTY",
+        "ARRAY_LENGTH_TOO_LONG",
+        "ARRAY_LENGTH_TOO_SHORT",
         "ARRAY_EMPTY",
         "EXPECTED_BOOLEAN",
         "EXPECTED_INTEGER",
@@ -5497,9 +5546,18 @@
       ],
       "description": "Indicates account capabilities that a business\u0027s location might or\nmight not have enabled."
     },
+    "LocationStatus": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "description": "Indicates the location\u0027s status."
+    },
     "OrderLineItemDiscountScope": {
       "type": "string",
       "enum": [
+        "OTHER_DISCOUNT_SCOPE",
         "LINE_ITEM",
         "ORDER"
       ],
@@ -6943,7 +7001,7 @@
           "items": {
             "$ref": "#/definitions/ItemVariationLocationOverrides"
           },
-          "description": "Per-[location][#type-location] price and inventory overrides."
+          "description": "Per-[location](#type-location) price and inventory overrides."
         },
         "track_inventory": {
           "type": "boolean",
@@ -7154,7 +7212,7 @@
           "items": {
             "$ref": "#/definitions/CatalogV1Id"
           },
-          "description": "The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
+          "description": "The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
         },
         "present_at_all_locations": {
           "type": "boolean",
@@ -7485,10 +7543,10 @@
         },
         "location_id": {
           "type": "string",
-          "description": "The ID of the [location][#type-location] this Connect V1 ID is associated with."
+          "description": "The ID of the [location](#type-location) this Connect V1 ID is associated with."
         }
       },
-      "description": "An Items Connect V1 object ID along with its associated [location][#type-location] ID."
+      "description": "An Items Connect V1 object ID along with its associated [location](#type-location) ID."
     },
     "ChargeRequest": {
       "type": "object",
@@ -8288,6 +8346,11 @@
         "line_items"
       ],
       "properties": {
+        "idempotency_key": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "A value you specify that uniquely identifies this\norder among orders you\u0027ve created.\n\nIf you\u0027re unsure whether a particular order was created successfully,\nyou can reattempt it with the same idempotency key without\nworrying about creating duplicate orders.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
+        },
         "reference_id": {
           "maxLength": 40,
           "type": "string",
@@ -8298,34 +8361,90 @@
           "items": {
             "$ref": "#/definitions/CreateOrderRequestLineItem"
           },
-          "description": "The line items to associate with this order.\n\nEach line item represents a different product (or a custom monetary amount)\nto include in a purchase."
+          "description": "The line items to associate with this order.\n\nEach line item represents a different product to include in a purchase."
         },
         "taxes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestTax"
           },
-          "description": "The taxes include the custom taxes."
+          "description": "The taxes to include on the order."
         },
         "discounts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestDiscount"
           },
-          "description": "The discounts include the custom discounts ."
+          "description": "The discounts to include on the order."
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint."
+      "description": "Defines the parameters that can be included in the body of\na request to the [CreateOrder](#endpoint-createorder) endpoint.\n\nIt is also included in the body of a request to the\n[CreateCheckout](#endpoint-createcheckout) endpoint.\nThe idempotency_key field is ignored when the CreateOrderRequest\nis included in a CreateCheckout request",
+      "example": {
+        "request_url": "/v2/locations/LOCATION_ID/orders",
+        "request_body": {
+          "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
+          "reference_id": "my-order-001",
+          "line_items": [
+            {
+              "name": "New York Strip Steak",
+              "quantity": "1",
+              "base_price_money": {
+                "amount": 1599,
+                "currency": "USD"
+              }
+            },
+            {
+              "quantity": "2",
+              "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
+              "modifiers": [
+                {
+                  "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ"
+                }
+              ],
+              "discounts": [
+                {
+                  "name": "Sale - $1.00 off",
+                  "amount_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              ]
+            }
+          ],
+          "taxes": [
+            {
+              "name": "State Sales Tax",
+              "percentage": "9"
+            }
+          ],
+          "discounts": [
+            {
+              "name": "Labor Day Sale",
+              "percentage": "5"
+            },
+            {
+              "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7"
+            }
+          ]
+        }
+      }
     },
     "CreateOrderRequestDiscount": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "maxLength": 30,
+          "type": "string",
+          "description": "The catalog object id from exsiting [CatalogDiscount](#type-catalogdiscount).\n\nDo not provide a value for this field if you provide values in other fields for a custom discount."
+        },
         "name": {
           "maxLength": 255,
           "type": "string",
           "description": "The discount\u0027s name."
         },
         "percentage": {
+          "maxLength": 8,
           "type": "string",
           "description": "The percentage of the discount, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         },
@@ -8349,6 +8468,7 @@
         },
         "quantity": {
           "minLength": 1,
+          "maxLength": 5,
           "type": "string",
           "description": "The quantity to purchase, as a string representation of a number.\nCurrently, only integer values are supported."
         },
@@ -8356,26 +8476,68 @@
           "$ref": "#/definitions/Money",
           "description": "The base price for a single unit of the line item\u0027s associated\nvariation. If a line item represents a Custom Amount instead of a\nparticular product, this field indicates that amount."
         },
+        "variation_name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The variation_name of the line item. This value cannot exceed 255 characters.\n\nIf not set, the default name is `Regular`.\n\nDo not provide a value for this field if you provide a value for the `name` and the `base_price_money`."
+        },
+        "note": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "The note of the line item. This value cannot exceed 50 characters."
+        },
+        "catalog_object_id": {
+          "maxLength": 30,
+          "type": "string",
+          "description": "The catalog object id from existing [CatalogItemVariation](#type-catalogitemvariation).\n\nDo not provide a value for this field if you provide a value for the `name` and the `base_price_money`."
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderRequestModifier"
+          },
+          "description": "The item modifier catalog object ids from exsiting [CatalogModifier](#type-catalogmodifier)s.\n\nDo not provide a value for this field if you provide a value for the `name` and the `base_price_money`."
+        },
         "taxes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestTax"
           },
-          "description": "The taxes include the custom taxes."
+          "description": "The taxes to include on the line item."
         },
         "discounts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestDiscount"
           },
-          "description": "The discounts include the custom discounts."
+          "description": "The discounts to include on the line item."
         }
       },
-      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details."
+      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details.\n\nLine items can either have name and price specified, or they can reference objects from the merchant\u0027s catalog."
+    },
+    "CreateOrderRequestModifier": {
+      "type": "object",
+      "required": [
+        "catalog_object_id"
+      ],
+      "properties": {
+        "catalog_object_id": {
+          "minLength": 1,
+          "maxLength": 30,
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogModifier](#type-catalogmodifier)."
+        }
+      },
+      "description": "Represents a [CatalogModifier](#type-catalogmodifier) applied to a single line item."
     },
     "CreateOrderRequestTax": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "maxLength": 30,
+          "type": "string",
+          "description": "The catalog object id from existing [CatalogTax](#type-catalogtax).\n\nDo not provide a value for this field if you provide values in other fields for a custom tax."
+        },
         "name": {
           "maxLength": 255,
           "type": "string",
@@ -8391,11 +8553,194 @@
           "description": "Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
         },
         "percentage": {
+          "maxLength": 8,
           "type": "string",
           "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         }
       },
       "description": "Represents a tax that applies to either a single line item or an entire order."
+    },
+    "CreateOrderResponse": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/Order",
+          "description": "The newly created order."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [CreateOrder](#endpoint-createorder) endpoint.\n\nOne of `errors` or `order` is present in a given response (never both).",
+      "example": {
+        "order": {
+          "id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "location_id": "LOCATION_ID",
+          "line_items": [
+            {
+              "name": "New York Strip Steak",
+              "quantity": "1",
+              "taxes": [
+                {
+                  "name": "State Sales Tax",
+                  "type": "ADDITIVE",
+                  "percentage": "9",
+                  "applied_money": {
+                    "amount": 136,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "discounts": [
+                {
+                  "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7",
+                  "name": "Membership Discount",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "0.5",
+                  "applied_money": {
+                    "amount": 8,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                },
+                {
+                  "name": "Labor Day Sale",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "5",
+                  "applied_money": {
+                    "amount": 79,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                }
+              ],
+              "base_price_money": {
+                "amount": 1599,
+                "currency": "USD"
+              },
+              "gross_sales_money": {
+                "amount": 1599,
+                "currency": "USD"
+              },
+              "total_tax_money": {
+                "amount": 136,
+                "currency": "USD"
+              },
+              "total_discount_money": {
+                "amount": 87,
+                "currency": "USD"
+              },
+              "total_money": {
+                "amount": 1648,
+                "currency": "USD"
+              }
+            },
+            {
+              "name": "New York Steak",
+              "quantity": "2",
+              "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
+              "variation_name": "Larger",
+              "modifiers": [
+                {
+                  "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ",
+                  "name": "Well",
+                  "base_price_money": {
+                    "amount": 50,
+                    "currency": "USD"
+                  },
+                  "total_price_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "taxes": [
+                {
+                  "name": "State Sales Tax",
+                  "type": "ADDITIVE",
+                  "percentage": "9",
+                  "applied_money": {
+                    "amount": 374,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "discounts": [
+                {
+                  "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7",
+                  "name": "Membership Discount",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "0.5",
+                  "applied_money": {
+                    "amount": 22,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                },
+                {
+                  "name": "Labor Day Sale",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "5",
+                  "applied_money": {
+                    "amount": 224,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                },
+                {
+                  "name": "Sale - $1.00 off",
+                  "type": "FIXED_AMOUNT",
+                  "amount_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  },
+                  "applied_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  },
+                  "scope": "LINE_ITEM"
+                }
+              ],
+              "base_price_money": {
+                "amount": 2200,
+                "currency": "USD"
+              },
+              "gross_sales_money": {
+                "amount": 4500,
+                "currency": "USD"
+              },
+              "total_tax_money": {
+                "amount": 374,
+                "currency": "USD"
+              },
+              "total_discount_money": {
+                "amount": 346,
+                "currency": "USD"
+              },
+              "total_money": {
+                "amount": 4528,
+                "currency": "USD"
+              }
+            }
+          ],
+          "total_money": {
+            "amount": 6176,
+            "currency": "USD"
+          },
+          "total_tax_money": {
+            "amount": 510,
+            "currency": "USD"
+          },
+          "total_discount_money": {
+            "amount": 433,
+            "currency": "USD"
+          }
+        }
+      }
     },
     "CreateRefundRequest": {
       "type": "object",
@@ -8753,6 +9098,8 @@
             "VALUE_TOO_LOW",
             "VALUE_TOO_HIGH",
             "VALUE_EMPTY",
+            "ARRAY_LENGTH_TOO_LONG",
+            "ARRAY_LENGTH_TOO_SHORT",
             "ARRAY_EMPTY",
             "EXPECTED_BOOLEAN",
             "EXPECTED_INTEGER",
@@ -8821,11 +9168,11 @@
       "properties": {
         "location_id": {
           "type": "string",
-          "description": "The ID of the [location][#type-location]."
+          "description": "The ID of the [location](#type-location)."
         },
         "price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location], or blank for variable pricing."
+          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location), or blank for variable pricing."
         },
         "pricing_type": {
           "type": "string",
@@ -8833,11 +9180,11 @@
             "FIXED_PRICING",
             "VARIABLE_PRICING"
           ],
-          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location].\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location).\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
         },
         "track_inventory": {
           "type": "boolean",
-          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location][#type-location]."
+          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location](#type-location)."
         },
         "inventory_alert_type": {
           "type": "string",
@@ -8853,7 +9200,7 @@
           "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
         }
       },
-      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location][#type-location]."
+      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location)."
     },
     "ListCatalogRequest": {
       "type": "object",
@@ -9064,7 +9411,8 @@
             "timezone": "America/Los_Angeles",
             "capabilities": [
               "CREDIT_CARD_PROCESSING"
-            ]
+            ],
+            "status": "ACTIVE"
           }
         ]
       },
@@ -9306,6 +9654,14 @@
             ]
           },
           "description": "Indicates which Square features are enabled for the location.\n\nSee [LocationCapability](#type-locationcapability) for possible values."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "INACTIVE"
+          ],
+          "description": "The location\u0027s status\n\nSee [LocationStatus](#type-locationstatus) for possible values."
         }
       },
       "description": "Represents one of a business\u0027s locations."
@@ -9321,6 +9677,7 @@
         "currency": {
           "type": "string",
           "enum": [
+            "UNKNOWN_CURRENCY",
             "AED",
             "AFN",
             "ALL",
@@ -9510,6 +9867,10 @@
     "Order": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "The order\u0027s unique ID.\n\nThis value is not present if the order was not created with the\n[CreateOrder](#endpoint-createorder) endpoint."
+        },
         "location_id": {
           "type": "string",
           "description": "The ID of the merchant location this order is associated with."
@@ -9551,6 +9912,25 @@
           "type": "string",
           "description": "The quantity of the product to purchase. Currently, this string must\nhave an integer value."
         },
+        "note": {
+          "type": "string",
+          "description": "The note of the line item."
+        },
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item."
+        },
+        "variation_name": {
+          "type": "string",
+          "description": "The name of the variation applied to this line item."
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderLineItemModifier"
+          },
+          "description": "The [CatalogModifier](#type-catalogmodifier)s applied to this line item."
+        },
         "taxes": {
           "type": "array",
           "items": {
@@ -9568,6 +9948,10 @@
         "base_price_money": {
           "$ref": "#/definitions/Money",
           "description": "The base price for a single unit of the line item."
+        },
+        "gross_sales_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The gross sales amount of money calculated as (item base price + modifiers price) * quantity."
         },
         "total_tax_money": {
           "$ref": "#/definitions/Money",
@@ -9587,6 +9971,10 @@
     "OrderLineItemDiscount": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogDiscount](#type-catalogdiscount)."
+        },
         "name": {
           "type": "string",
           "description": "The discount\u0027s name."
@@ -9617,6 +10005,7 @@
         "scope": {
           "type": "string",
           "enum": [
+            "OTHER_DISCOUNT_SCOPE",
             "LINE_ITEM",
             "ORDER"
           ],
@@ -9625,9 +10014,35 @@
       },
       "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal."
     },
+    "OrderLineItemModifier": {
+      "type": "object",
+      "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogModifier](#type-catalogmodifier)."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the item modifier."
+        },
+        "base_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The base price of the item modifier."
+        },
+        "total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total price of the item modifier for its line item.\nThis is the modifier\u0027s base_price_money multiplied by the line item\u0027s quantity."
+        }
+      },
+      "description": "A [CatalogModifier](#type-catalogmodifier)."
+    },
     "OrderLineItemTax": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogTax](#type-catalogtax)."
+        },
         "name": {
           "type": "string",
           "description": "The tax\u0027s name."
@@ -9993,7 +10408,7 @@
         },
         "begin_time": {
           "type": "string",
-          "description": "Return only objects that have been modified after this [timestamp](#workingwithdates)\n(in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"). The timestamp is exclusive -\nobjects whose timestamp is equal to `begin_time` will not be included in the response."
+          "description": "Return objects modified after this [timestamp](#workingwithdates), in RFC 3339\nformat, e.g., \"2016-09-04T23:59:33.123Z\". The timestamp is exclusive - objects with a\ntimestamp equal to `begin_time` will not be included in the response."
         },
         "query": {
           "$ref": "#/definitions/CatalogQuery",
@@ -12107,7 +12522,7 @@
           "description": "The ID of the variation\u0027s associated item."
         },
         "ordinal": {
-          "type": "interger",
+          "type": "integer",
           "description": "Indicates the variation\u0027s list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order"
         },
         "pricing_type": {

@@ -1,8 +1,8 @@
 {
   "packageName": "Square.Connect",
-  "packageVersion": "2.2.0",
+  "packageVersion": "2.3.0",
   "optionalProjectFile": "true",
-  "httpUserAgent": "Square-Connect-CSharp/2.2.0",
+  "httpUserAgent": "Square-Connect-CSharp/2.3.0",
   "packageGuid": "{4A65C772-5862-4E64-B742-0C6997700CD8}",
   "gitUserId": "square",
   "gitRepoId": "connect-csharp-sdk"
