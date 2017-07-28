@@ -46,12 +46,12 @@ from __future__ import print_function
 
 import squareconnect
 from squareconnect.rest import ApiException
-from squareconnect.apis.location_api import LocationApi
+from squareconnect.apis.locations_api import LocationsApi
 
 # setup authorization
 squareconnect.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the Location API class
-api_instance = LocationApi()
+api_instance = LocationsApi()
 
 try:
     # ListLocations
