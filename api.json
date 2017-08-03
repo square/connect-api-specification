@@ -11653,7 +11653,7 @@
           "description": "The name of the item\u0027s merchant-defined category, if any."
         },
         "sku": {
-          "type": "number",
+          "type": "string",
           "description": " The item\u0027s merchant-defined SKU, if any."
         },
         "item_id": {
