@@ -38,6 +38,7 @@ fi
 
 echo "Copying files..."
 rm -rf docs squareconnect
+cp -r ../NOTES.md .
 cp -r ../swagger-out/python/docs .
 cp -r ../swagger-out/python/squareconnect .
 cp ../swagger-out/python/requirements.txt .

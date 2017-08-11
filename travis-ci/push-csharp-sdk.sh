@@ -39,6 +39,7 @@ fi
 
 echo "Copying files..."
 rm -rf docs src/Square.Connect
+cp -r ../NOTES.md .
 cp -r ../swagger-out/csharp/docs .
 cp -r ../swagger-out/csharp/src/Square.Connect ./src/Square.Connect
 cp ../swagger-out/csharp/.travis.yml .

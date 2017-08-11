@@ -38,6 +38,7 @@ fi
 
 echo "Copying files..."
 rm -rf docs lib
+cp -r ../NOTES.md .
 cp -r ../swagger-out/php/SquareConnect/docs .
 cp -r ../swagger-out/php/SquareConnect/lib .
 cp ../swagger-out/php/SquareConnect/autoload.php .

@@ -38,6 +38,7 @@ fi
 
 echo "Copying files..."
 rm -rf docs lib
+cp -r ../NOTES.md .
 cp -r ../swagger-out/ruby/docs .
 cp -r ../swagger-out/ruby/lib .
 cp ../swagger-out/ruby/.rspec .

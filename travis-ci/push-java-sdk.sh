@@ -38,6 +38,7 @@ fi
 
 echo "Copying files..."
 rm -rf docs src/main
+cp -r ../NOTES.md .
 cp -r ../swagger-out/java/docs .
 cp -r ../swagger-templates/java/static ./src/main
 cp -r ../swagger-out/java/src/main ./src/
