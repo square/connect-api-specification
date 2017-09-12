@@ -55,6 +55,98 @@
     }
   },
   "paths": {
+    "/v2/locations/{location_id}/orders": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "CreateOrder",
+        "operationId": "CreateOrder",
+        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-overview).",
+        "x-oauthpermissions": [
+          "ORDERS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the business location to associate the order with.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/orders/batch-retrieve": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "BatchRetrieveOrders",
+        "operationId": "BatchRetrieveOrders",
+        "description": "Retrieves a set of [Order](#type-order)s by their IDs. Only orders that have been\nsuccessfully charged are included in the response.\n\nIf any of the order IDs in the request do not exist, or are associated with uncharged orders,\nthen those orders will not be included in the set of orders in the response.\n\nNote that in the future, uncharged orders may be returned by this endpoint.",
+        "x-oauthpermissions": [
+          "ORDERS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the orders\u0027 associated location.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveOrdersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveOrdersResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/locations/{location_id}/transactions": {
       "post": {
         "tags": [
@@ -175,7 +267,7 @@
         ],
         "summary": "CreateRefund",
         "operationId": "CreateRefund",
-        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n(this article)[https://squareup.com/help/us/en/article/5060] for more information\non refund behavior.",
+        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
@@ -516,7 +608,7 @@
         ],
         "summary": "CreateCustomerCard",
         "operationId": "CreateCustomerCard",
-        "description": "Adds a card on file to an existing customer. In the United States\nSquare takes care of automatically updating any cards on file that might\nhave expired since you first attached them to a customer.",
+        "description": "Adds a card on file to an existing customer. In the United States\nSquare takes care of automatically updating any cards on file that might\nhave expired since you first attached them to a customer.\n\nAs with charges, calls to `CreateCustomerCard` are idempotent. Multiple\ncalls with the same card nonce return the same card record that was created\nwith the provided nonce during the _first_ call.",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
@@ -5205,6 +5297,7 @@
     "Currency": {
       "type": "string",
       "enum": [
+        "UNKNOWN_CURRENCY",
         "AED",
         "AFN",
         "ALL",
@@ -5430,6 +5523,8 @@
         "VALUE_TOO_LOW",
         "VALUE_TOO_HIGH",
         "VALUE_EMPTY",
+        "ARRAY_LENGTH_TOO_LONG",
+        "ARRAY_LENGTH_TOO_SHORT",
         "ARRAY_EMPTY",
         "EXPECTED_BOOLEAN",
         "EXPECTED_INTEGER",
@@ -5497,9 +5592,18 @@
       ],
       "description": "Indicates account capabilities that a business\u0027s location might or\nmight not have enabled."
     },
+    "LocationStatus": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "description": "Indicates the location\u0027s status."
+    },
     "OrderLineItemDiscountScope": {
       "type": "string",
       "enum": [
+        "OTHER_DISCOUNT_SCOPE",
         "LINE_ITEM",
         "ORDER"
       ],
@@ -5508,7 +5612,7 @@
     "OrderLineItemDiscountType": {
       "type": "string",
       "enum": [
-        "UNKNOWN",
+        "UNKNOWN_DISCOUNT",
         "FIXED_PERCENTAGE",
         "FIXED_AMOUNT",
         "VARIABLE_PERCENTAGE",
@@ -5519,7 +5623,7 @@
     "OrderLineItemTaxType": {
       "type": "string",
       "enum": [
-        "UNKNOWN",
+        "UNKNOWN_TAX",
         "ADDITIVE",
         "INCLUSIVE"
       ],
@@ -6178,6 +6282,99 @@
         "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.csharp",
         "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.php",
         "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.ruby"
+      }
+    },
+    "BatchRetrieveOrdersRequest": {
+      "type": "object",
+      "required": [
+        "order_ids"
+      ],
+      "properties": {
+        "order_ids": {
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": "The IDs of the orders to retrieve. A maximum of 100 orders can be retrieved per request."
+        }
+      },
+      "description": "",
+      "example": {
+        "request_url": "/v2/locations/LOCATION_ID/orders",
+        "request_body": {
+          "order_ids": [
+            "CAISEM82RcpmcFBM0TfOyiHV3es",
+            "CAISENgvlJ6jLWAzERDzjyHVybY"
+          ]
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.python",
+        "csharp": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.csharp",
+        "php": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.php",
+        "ruby": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.ruby"
+      }
+    },
+    "BatchRetrieveOrdersResponse": {
+      "type": "object",
+      "properties": {
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order"
+          },
+          "description": "The requested orders. This will omit any requested orders that do not exist or are not charged."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [BatchRetrieveOrders](#endpoint-batchretrieveorders) endpoint.",
+      "example": {
+        "orders": [
+          {
+            "id": "CAISEM82RcpmcFBM0TfOyiHV3es",
+            "location_id": "LOCATION_ID",
+            "reference_id": "my-order-001",
+            "line_items": [
+              {
+                "id": "945986d1-9586-11e6-ad5a-28cfe92138cf",
+                "name": "Awesome product",
+                "quantity": "1",
+                "base_price_money": {
+                  "amount": 1599,
+                  "currency": "USD"
+                },
+                "total_money": {
+                  "amount": 1599,
+                  "currency": "USD"
+                }
+              },
+              {
+                "id": "a8f4168c-9586-11e6-bdf0-28cfe92138cf",
+                "name": "Another awesome product",
+                "quantity": "3",
+                "base_price_money": {
+                  "amount": 2000,
+                  "currency": "USD"
+                },
+                "total_money": {
+                  "amount": 6000,
+                  "currency": "USD"
+                }
+              }
+            ],
+            "total_money": {
+              "amount": 7599,
+              "currency": "USD"
+            }
+          }
+        ]
       }
     },
     "BatchUpsertCatalogObjectsRequest": {
@@ -6943,7 +7140,7 @@
           "items": {
             "$ref": "#/definitions/ItemVariationLocationOverrides"
           },
-          "description": "Per-[location][#type-location] price and inventory overrides."
+          "description": "Per-[location](#type-location) price and inventory overrides."
         },
         "track_inventory": {
           "type": "boolean",
@@ -7154,7 +7351,7 @@
           "items": {
             "$ref": "#/definitions/CatalogV1Id"
           },
-          "description": "The Connect V1 IDs for this object at each [location][#type-location] where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
+          "description": "The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they\ndiffer from the object\u0027s Connect V2 ID. The field will only be present for objects that\nhave been created or modified by legacy APIs."
         },
         "present_at_all_locations": {
           "type": "boolean",
@@ -7232,7 +7429,8 @@
           "discount_data": "{{ CatalogDiscount object only if type\u003dDISCOUNT }}",
           "tax_data": "{{ CatalogTax object only if type\u003dTAX }}"
         }
-      }
+      },
+      "example_type": "Schema"
     },
     "CatalogObjectBatch": {
       "type": "object",
@@ -7484,10 +7682,10 @@
         },
         "location_id": {
           "type": "string",
-          "description": "The ID of the [location][#type-location] this Connect V1 ID is associated with."
+          "description": "The ID of the [location](#type-location) this Connect V1 ID is associated with."
         }
       },
-      "description": "An Items Connect V1 object ID along with its associated [location][#type-location] ID."
+      "description": "An Items Connect V1 object ID along with its associated [location](#type-location) ID."
     },
     "ChargeRequest": {
       "type": "object",
@@ -7497,6 +7695,8 @@
       ],
       "properties": {
         "idempotency_key": {
+          "minLength": 1,
+          "maxLength": 192,
           "type": "string",
           "description": "A value you specify that uniquely identifies this\ntransaction among transactions you\u0027ve created.\n\nIf you\u0027re unsure whether a particular transaction succeeded,\nyou can reattempt it with the same idempotency key without\nworrying about double-charging the buyer.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
         },
@@ -7505,10 +7705,12 @@
           "description": "The amount of money to charge.\n\nNote that you specify the amount in the\n__smallest denomination of the applicable currency__. For example, US dollar\namounts are specified in cents. See\n[Working with monetary amounts](#workingwithmonetaryamounts) for details.\n\nThe value of `currency` must match the currency associated with the business\nthat is charging the card."
         },
         "card_nonce": {
+          "maxLength": 192,
           "type": "string",
           "description": "A nonce generated from the `SqPaymentForm` that represents the card\nto charge.\n\nThe application that provides a nonce to this endpoint must be the\n_same application_ that generated the nonce with the `SqPaymentForm`.\nOtherwise, the nonce is invalid.\n\nDo not provide a value for this field if you provide a value for\n`customer_card_id`."
         },
         "customer_card_id": {
+          "maxLength": 192,
           "type": "string",
           "description": "The ID of the customer card on file to charge. Do\nnot provide a value for this field if you provide a value for `card_nonce`.\n\nIf you provide this value, you _must_ also provide a value for\n`customer_id`."
         },
@@ -7517,14 +7719,17 @@
           "description": "If `true`, the request will only perform an Auth on the provided\ncard. You can then later perform either a Capture (with the\n[CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void\n(with the [VoidTransaction](#endpoint-voidtransaction) endpoint).\n\nDefault value: `false`"
         },
         "reference_id": {
+          "maxLength": 40,
           "type": "string",
           "description": "An optional ID you can associate with the transaction for your own\npurposes (such as to associate the transaction with an entity ID in your\nown database).\n\nThis value cannot exceed 40 characters."
         },
         "note": {
+          "maxLength": 60,
           "type": "string",
           "description": "An optional note to associate with the transaction.\n\nThis value cannot exceed 60 characters."
         },
         "customer_id": {
+          "maxLength": 50,
           "type": "string",
           "description": "The ID of the customer to associate this transaction with. This field\nis required if you provide a value for `customer_card_id`, and optional\notherwise."
         },
@@ -7710,6 +7915,7 @@
           "description": "If provided, the buyer\u0027s shipping info is pre-populated on the\ncheckout page as editable text fields.\n\nDefault: none; only exists if explicitly set."
         },
         "redirect_url": {
+          "maxLength": 800,
           "type": "string",
           "description": "The URL to redirect to after checkout is completed with `checkoutId`,\nSquare\u0027s `orderId`, `transactionId`, and `referenceId` appended as URL\nparameters. For example, if the provided redirect_url is\n`http://www.example.com/order-complete`, a successful transaction redirects\nthe customer to:\n\n`http://www.example.com/order-complete?checkoutId\u003dxxxxxx\u0026orderId\u003dxxxxxx\u0026referenceId\u003dxxxxxx\u0026transactionId\u003dxxxxxx`\n\nIf you do not provide a redirect URL, Square Checkout will display an order\nconfirmation page on your behalf; however Square strongly recommends that\nyou provide a redirect URL so you can verify the transaction results and\nfinalize the order through your existing/normal confirmation workflow.\n\nDefault: none; only exists if explicitly set."
         }
@@ -8108,7 +8314,7 @@
       },
       "description": "Defines the fields that are included in the request body of a request\nto the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
       "example": {
-        "request_url": "/v2/CUSTOMER_ID",
+        "request_url": "/v2/customers/CUSTOMER_ID/cards",
         "request_body": {
           "card_nonce": "YOUR_CARD_NONCE",
           "billing_address": {
@@ -8287,6 +8493,11 @@
         "line_items"
       ],
       "properties": {
+        "idempotency_key": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "A value you specify that uniquely identifies this\norder among orders you\u0027ve created.\n\nIf you\u0027re unsure whether a particular order was created successfully,\nyou can reattempt it with the same idempotency key without\nworrying about creating duplicate orders.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
+        },
         "reference_id": {
           "maxLength": 40,
           "type": "string",
@@ -8297,43 +8508,105 @@
           "items": {
             "$ref": "#/definitions/CreateOrderRequestLineItem"
           },
-          "description": "The line items to associate with this order.\n\nEach line item represents a different product (or a custom monetary amount)\nto include in a purchase."
+          "description": "The line items to associate with this order.\n\nEach line item represents a different product to include in a purchase."
         },
         "taxes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestTax"
           },
-          "description": "The taxes include the custom taxes."
+          "description": "The taxes to include on the order."
         },
         "discounts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestDiscount"
           },
-          "description": "The discounts include the custom discounts ."
+          "description": "The discounts to include on the order."
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint."
+      "description": "",
+      "example": {
+        "request_url": "/v2/locations/LOCATION_ID/orders",
+        "request_body": {
+          "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
+          "reference_id": "my-order-001",
+          "line_items": [
+            {
+              "name": "New York Strip Steak",
+              "quantity": "1",
+              "base_price_money": {
+                "amount": 1599,
+                "currency": "USD"
+              }
+            },
+            {
+              "quantity": "2",
+              "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
+              "modifiers": [
+                {
+                  "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ"
+                }
+              ],
+              "discounts": [
+                {
+                  "name": "Sale - $1.00 off",
+                  "amount_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              ]
+            }
+          ],
+          "taxes": [
+            {
+              "name": "State Sales Tax",
+              "percentage": "9"
+            }
+          ],
+          "discounts": [
+            {
+              "name": "Labor Day Sale",
+              "percentage": "5"
+            },
+            {
+              "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7"
+            }
+          ]
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.python",
+        "csharp": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.csharp",
+        "php": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.php",
+        "ruby": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.ruby"
+      }
     },
     "CreateOrderRequestDiscount": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).\n\nDo not provide a value for this field if you provide values in other fields for an ad hoc discount."
+        },
         "name": {
           "maxLength": 255,
           "type": "string",
-          "description": "The discount\u0027s name."
+          "description": "Only used for ad hoc discounts. The discount\u0027s name."
         },
         "percentage": {
+          "maxLength": 10,
           "type": "string",
-          "description": "The percentage of the discount, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+          "description": "Only used for ad hoc discounts. The percentage of the discount, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The monetary amount of the discount."
+          "description": "Only used for ad hoc discounts. The monetary amount of the discount."
         }
       },
-      "description": "Represents a discount that to either a single line item or an entire order."
+      "description": "Represents a discount that can apply to either a single line item or an entire order."
     },
     "CreateOrderRequestLineItem": {
       "type": "object",
@@ -8344,57 +8617,283 @@
         "name": {
           "maxLength": 500,
           "type": "string",
-          "description": "The name of the line item. This value cannot exceed 500 characters."
+          "description": "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.\n\nDo not provide a value for this field if you provide values in catalog_object_id."
         },
         "quantity": {
           "minLength": 1,
+          "maxLength": 5,
           "type": "string",
-          "description": "The quantity to purchase, as a string representation of a number.\nCurrently, only integer values are supported."
+          "description": "The quantity to purchase, as a string representation of a number.\n\nThis string must have a positive integer value."
         },
         "base_price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The base price for a single unit of the line item\u0027s associated\nvariation. If a line item represents a Custom Amount instead of a\nparticular product, this field indicates that amount."
+          "description": "Only used for ad hoc line items. The base price for a single unit of the line item\u0027s associated variation.\n\nDo not provide a value for this field if you provide a value for the `catalog_object_id`."
+        },
+        "variation_name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.\n\nIf this value is not set for an ad hoc line item, the default value of `Regular` is used.\n\nDo not provide a value for this field if you provide a value for the `catalog_object_id`."
+        },
+        "note": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "The note of the line item. This value cannot exceed 50 characters."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "Only used for Catalog line items.\nThe catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).\n\nDo not provide a value for this field if you provide a value for `name` and `base_price_money`."
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateOrderRequestModifier"
+          },
+          "description": "Only used for Catalog line items. The modifiers to include on the line item."
         },
         "taxes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestTax"
           },
-          "description": "The taxes include the custom taxes."
+          "description": "The taxes to include on the line item."
         },
         "discounts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateOrderRequestDiscount"
           },
-          "description": "The discounts include the custom discounts."
+          "description": "The discounts to include on the line item."
         }
       },
-      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details."
+      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details.\n\nLine items can either reference objects from the merchant\u0027s catalog, or can\nalternatively specify a name and price instead."
+    },
+    "CreateOrderRequestModifier": {
+      "type": "object",
+      "required": [
+        "catalog_object_id"
+      ],
+      "properties": {
+        "catalog_object_id": {
+          "minLength": 1,
+          "maxLength": 192,
+          "type": "string",
+          "description": "The catalog object ID of a [CatalogModifier](#type-catalogmodifier)."
+        }
+      },
+      "description": "Represents a modifier applied to a single line item."
     },
     "CreateOrderRequestTax": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "Only used for catalog taxes. The catalog object ID of an existing [CatalogTax](#type-catalogtax).\n\nDo not provide a value for this field if you provide values in other fields for an ad hoc tax."
+        },
         "name": {
           "maxLength": 255,
           "type": "string",
-          "description": "The tax\u0027s name."
+          "description": "Only used for ad hoc taxes. The tax\u0027s name.\n\nDo not provide a value for this field if you set catalog_object_id."
         },
         "type": {
           "type": "string",
           "enum": [
-            "UNKNOWN",
+            "UNKNOWN_TAX",
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
+          "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
         },
         "percentage": {
+          "maxLength": 10,
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
+          "description": "Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         }
       },
-      "description": "Represents a tax that applies to either a single line item or an entire order."
+      "description": "Represents a tax that can apply to either a single line item or an entire order."
+    },
+    "CreateOrderResponse": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/Order",
+          "description": "The newly created order."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [CreateOrder](#endpoint-createorder) endpoint.\n\nOne of `errors` or `order` is present in a given response (never both).",
+      "example": {
+        "order": {
+          "id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "location_id": "LOCATION_ID",
+          "line_items": [
+            {
+              "name": "New York Strip Steak",
+              "quantity": "1",
+              "taxes": [
+                {
+                  "name": "State Sales Tax",
+                  "type": "ADDITIVE",
+                  "percentage": "9",
+                  "applied_money": {
+                    "amount": 136,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "discounts": [
+                {
+                  "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7",
+                  "name": "Membership Discount",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "0.5",
+                  "applied_money": {
+                    "amount": 8,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                },
+                {
+                  "name": "Labor Day Sale",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "5",
+                  "applied_money": {
+                    "amount": 79,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                }
+              ],
+              "base_price_money": {
+                "amount": 1599,
+                "currency": "USD"
+              },
+              "gross_sales_money": {
+                "amount": 1599,
+                "currency": "USD"
+              },
+              "total_tax_money": {
+                "amount": 136,
+                "currency": "USD"
+              },
+              "total_discount_money": {
+                "amount": 87,
+                "currency": "USD"
+              },
+              "total_money": {
+                "amount": 1648,
+                "currency": "USD"
+              }
+            },
+            {
+              "name": "New York Steak",
+              "quantity": "2",
+              "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
+              "variation_name": "Larger",
+              "modifiers": [
+                {
+                  "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ",
+                  "name": "Well",
+                  "base_price_money": {
+                    "amount": 50,
+                    "currency": "USD"
+                  },
+                  "total_price_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "taxes": [
+                {
+                  "name": "State Sales Tax",
+                  "type": "ADDITIVE",
+                  "percentage": "9",
+                  "applied_money": {
+                    "amount": 374,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "discounts": [
+                {
+                  "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7",
+                  "name": "Membership Discount",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "0.5",
+                  "applied_money": {
+                    "amount": 22,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                },
+                {
+                  "name": "Labor Day Sale",
+                  "type": "FIXED_PERCENTAGE",
+                  "percentage": "5",
+                  "applied_money": {
+                    "amount": 224,
+                    "currency": "USD"
+                  },
+                  "scope": "ORDER"
+                },
+                {
+                  "name": "Sale - $1.00 off",
+                  "type": "FIXED_AMOUNT",
+                  "amount_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  },
+                  "applied_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  },
+                  "scope": "LINE_ITEM"
+                }
+              ],
+              "base_price_money": {
+                "amount": 2200,
+                "currency": "USD"
+              },
+              "gross_sales_money": {
+                "amount": 4500,
+                "currency": "USD"
+              },
+              "total_tax_money": {
+                "amount": 374,
+                "currency": "USD"
+              },
+              "total_discount_money": {
+                "amount": 346,
+                "currency": "USD"
+              },
+              "total_money": {
+                "amount": 4528,
+                "currency": "USD"
+              }
+            }
+          ],
+          "total_money": {
+            "amount": 6176,
+            "currency": "USD"
+          },
+          "total_tax_money": {
+            "amount": 510,
+            "currency": "USD"
+          },
+          "total_discount_money": {
+            "amount": 433,
+            "currency": "USD"
+          }
+        }
+      }
     },
     "CreateRefundRequest": {
       "type": "object",
@@ -8405,14 +8904,19 @@
       ],
       "properties": {
         "idempotency_key": {
+          "minLength": 1,
+          "maxLength": 192,
           "type": "string",
           "description": "A value you specify that uniquely identifies this\nrefund among refunds you\u0027ve created for the tender.\n\nIf you\u0027re unsure whether a particular refund succeeded,\nyou can reattempt it with the same idempotency key without\nworrying about duplicating the refund.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
         },
         "tender_id": {
+          "minLength": 1,
+          "maxLength": 192,
           "type": "string",
           "description": "The ID of the tender to refund.\n\nA [`Transaction`](#type-transaction) has one or more `tenders` (i.e., methods\nof payment) associated with it, and you refund each tender separately with\nthe Connect API."
         },
         "reason": {
+          "maxLength": 192,
           "type": "string",
           "description": "A description of the reason for the refund.\n\nDefault value: `Refund via API`"
         },
@@ -8752,6 +9256,8 @@
             "VALUE_TOO_LOW",
             "VALUE_TOO_HIGH",
             "VALUE_EMPTY",
+            "ARRAY_LENGTH_TOO_LONG",
+            "ARRAY_LENGTH_TOO_SHORT",
             "ARRAY_EMPTY",
             "EXPECTED_BOOLEAN",
             "EXPECTED_INTEGER",
@@ -8820,11 +9326,11 @@
       "properties": {
         "location_id": {
           "type": "string",
-          "description": "The ID of the [location][#type-location]."
+          "description": "The ID of the [location](#type-location)."
         },
         "price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location], or blank for variable pricing."
+          "description": "The price of the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location), or blank for variable pricing."
         },
         "pricing_type": {
           "type": "string",
@@ -8832,11 +9338,11 @@
             "FIXED_PRICING",
             "VARIABLE_PRICING"
           ],
-          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location][#type-location].\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location).\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
         },
         "track_inventory": {
           "type": "boolean",
-          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location][#type-location]."
+          "description": "If `true`, inventory tracking is active for the [CatalogItemVariation](#type-catalogitemvariation) at this [location](#type-location)."
         },
         "inventory_alert_type": {
           "type": "string",
@@ -8852,7 +9358,7 @@
           "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
         }
       },
-      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location][#type-location]."
+      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location)."
     },
     "ListCatalogRequest": {
       "type": "object",
@@ -9063,7 +9569,15 @@
             "timezone": "America/Los_Angeles",
             "capabilities": [
               "CREDIT_CARD_PROCESSING"
-            ]
+            ],
+            "status": "ACTIVE",
+            "created_at": "2016-09-19T17:33:12Z",
+            "merchant_id": "3MYCJG5GVYQ8Q",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 650-354-7217",
+            "business_name": "Pumbaa\u0027s business name"
           }
         ]
       },
@@ -9139,7 +9653,7 @@
             "location_id": "18YC4JDH91E1H",
             "transaction_id": "TRANSACTION_ID",
             "tender_id": "TENDER_ID",
-            "created_at": "2016-02-12T00:28:18Z",
+            "created_at": "2016-01-20T00:28:18Z",
             "reason": "some reason",
             "amount_money": {
               "amount": 100,
@@ -9219,13 +9733,13 @@
           {
             "id": "KnL67ZIwXCPtzOrqj0HrkxMF",
             "location_id": "18YC4JDH91E1H",
-            "created_at": "2016-03-10T22:57:56Z",
+            "created_at": "2016-01-20T22:57:56Z",
             "tenders": [
               {
                 "id": "MtZRYYdDrYNQbOvV7nbuBvMF",
                 "location_id": "18YC4JDH91E1H",
                 "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
-                "created_at": "2016-03-10T22:57:56Z",
+                "created_at": "2016-01-20T22:57:56Z",
                 "note": "some optional note",
                 "amount_money": {
                   "amount": 5000,
@@ -9252,7 +9766,7 @@
                 "location_id": "18YC4JDH91E1H",
                 "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
                 "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
-                "created_at": "2016-03-10T22:59:20Z",
+                "created_at": "2016-01-20T22:59:20Z",
                 "reason": "some reason why",
                 "amount_money": {
                   "amount": 5000,
@@ -9286,7 +9800,7 @@
         },
         "name": {
           "type": "string",
-          "description": "The location\u0027s name."
+          "description": "The location\u0027s name. Location names are set by the location owner and displayed\nin the dashboard as the location\u0027s nickname"
         },
         "address": {
           "$ref": "#/definitions/Address",
@@ -9305,6 +9819,477 @@
             ]
           },
           "description": "Indicates which Square features are enabled for the location.\n\nSee [LocationCapability](#type-locationcapability) for possible values."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "INACTIVE"
+          ],
+          "description": "The location\u0027s status\n\nSee [LocationStatus](#type-locationstatus) for possible values."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The time when the location was created, in RFC 3339 format."
+        },
+        "merchant_id": {
+          "type": "string",
+          "description": "The identifier of the merchant that owns the location."
+        },
+        "country": {
+          "type": "string",
+          "enum": [
+            "ZZ",
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ],
+          "description": "The location\u0027s country, in ISO 3166-1-alpha-2 format.\n\nSee [Country](#type-country) for possible values."
+        },
+        "language_code": {
+          "type": "string",
+          "description": "The language associated with the location in\n[BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A)."
+        },
+        "currency": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN_CURRENCY",
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LTL",
+            "LVL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRO",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STD",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "USN",
+            "USS",
+            "UYI",
+            "UYU",
+            "UZS",
+            "VEF",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XTS",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMK",
+            "ZMW",
+            "BTC"
+          ],
+          "description": "The currency used for all transactions at this location, specified in __ISO 4217 format__.\nFor example, the currency for a location processing transactions in the United States is \u0027USD\u0027.\n\nSee [Currency](#type-currency) for possible values."
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "The location\u0027s phone_number."
+        },
+        "business_name": {
+          "type": "string",
+          "description": "The location\u0027s business_name which is shown to its customers. For example,\nthis is the name printed on its customer\u0027s receipts."
         }
       },
       "description": "Represents one of a business\u0027s locations."
@@ -9313,6 +10298,8 @@
       "type": "object",
       "properties": {
         "amount": {
+          "minimum": 0,
+          "maximum": 99999999,
           "type": "integer",
           "format": "int64",
           "description": "The amount of money, in the smallest denomination of the\ncurrency indicated by `currency`. For example, when `currency` is `USD`,\n`amount` is in cents."
@@ -9320,6 +10307,7 @@
         "currency": {
           "type": "string",
           "enum": [
+            "UNKNOWN_CURRENCY",
             "AED",
             "AFN",
             "ALL",
@@ -9509,6 +10497,10 @@
     "Order": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "The order\u0027s unique ID.\n\nThis value is only present for Order objects created by the Orders API through the\n[CreateOrder](#endpoint-createorder) endpoint."
+        },
         "location_id": {
           "type": "string",
           "description": "The ID of the merchant location this order is associated with."
@@ -9548,7 +10540,26 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The quantity of the product to purchase. Currently, this string must\nhave an integer value."
+          "description": "The quantity purchased, as a string representation of a number."
+        },
+        "note": {
+          "type": "string",
+          "description": "The note of the line item."
+        },
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item."
+        },
+        "variation_name": {
+          "type": "string",
+          "description": "The name of the variation applied to this line item."
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderLineItemModifier"
+          },
+          "description": "The [CatalogModifier](#type-catalogmodifier)s applied to this line item."
         },
         "taxes": {
           "type": "array",
@@ -9568,6 +10579,10 @@
           "$ref": "#/definitions/Money",
           "description": "The base price for a single unit of the line item."
         },
+        "gross_sales_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The gross sales amount of money calculated as (item base price + modifiers price) * quantity."
+        },
         "total_tax_money": {
           "$ref": "#/definitions/Money",
           "description": "The total tax amount of money to collect for the line item."
@@ -9586,6 +10601,10 @@
     "OrderLineItemDiscount": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogDiscount](#type-catalogdiscount)."
+        },
         "name": {
           "type": "string",
           "description": "The discount\u0027s name."
@@ -9593,7 +10612,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "UNKNOWN",
+            "UNKNOWN_DISCOUNT",
             "FIXED_PERCENTAGE",
             "FIXED_AMOUNT",
             "VARIABLE_PERCENTAGE",
@@ -9616,6 +10635,7 @@
         "scope": {
           "type": "string",
           "enum": [
+            "OTHER_DISCOUNT_SCOPE",
             "LINE_ITEM",
             "ORDER"
           ],
@@ -9624,9 +10644,35 @@
       },
       "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal."
     },
+    "OrderLineItemModifier": {
+      "type": "object",
+      "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogModifier](#type-catalogmodifier)."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the item modifier."
+        },
+        "base_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The base price of the item modifier."
+        },
+        "total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total price of the item modifier for its line item.\nThis is the modifier\u0027s base_price_money multiplied by the line item\u0027s quantity."
+        }
+      },
+      "description": "A [CatalogModifier](#type-catalogmodifier)."
+    },
     "OrderLineItemTax": {
       "type": "object",
       "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogTax](#type-catalogtax)."
+        },
         "name": {
           "type": "string",
           "description": "The tax\u0027s name."
@@ -9634,7 +10680,7 @@
         "type": {
           "type": "string",
           "enum": [
-            "UNKNOWN",
+            "UNKNOWN_TAX",
             "ADDITIVE",
             "INCLUSIVE"
           ],
@@ -9992,7 +11038,7 @@
         },
         "begin_time": {
           "type": "string",
-          "description": "Return only objects that have been modified after this [timestamp](#workingwithdates)\n(in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"). The timestamp is exclusive -\nobjects whose timestamp is equal to `begin_time` will not be included in the response."
+          "description": "Return objects modified after this [timestamp](#workingwithdates), in RFC 3339\nformat, e.g., \"2016-09-04T23:59:33.123Z\". The timestamp is exclusive - objects with a\ntimestamp equal to `begin_time` will not be included in the response."
         },
         "query": {
           "$ref": "#/definitions/CatalogQuery",
@@ -10307,13 +11353,13 @@
           "type": "string",
           "description": "If the transaction was created in the Square Point of Sale app, this value\nis the ID generated for the transaction by Square Point of Sale.\n\nThis ID has no relationship to the transaction\u0027s canonical `id`, which is\ngenerated by Square\u0027s backend servers. This value is generated for bookkeeping\npurposes, in case the transaction cannot immediately be completed (for example,\nif the transaction is processed in offline mode).\n\nIt is not currently possible with the Connect API to perform a transaction\nlookup by this value."
         },
-        "order": {
-          "$ref": "#/definitions/Order",
-          "description": "The order associated with this transaction, if any."
-        },
         "shipping_address": {
           "$ref": "#/definitions/Address",
           "description": "The shipping address provided in the request, if any."
+        },
+        "order_id": {
+          "type": "string",
+          "description": "The order_id is an identifier for the order associated with this transaction, if any."
         }
       },
       "description": "Represents a transaction processed with Square, either with the\nConnect API or with Square Point of Sale.\n\nThe `tenders` field of this object lists all methods of payment used to pay in\nthe transaction."
@@ -11488,13 +12534,16 @@
           "description": "The total of all refunds applied to the payment."
         },
         "swedish_rounding_money": {
-          "$ref": "#/definitions/v1Money"
+          "$ref": "#/definitions/v1Money",
+          "description": "The total of all sales, including any applicable taxes, rounded to the smallest legal unit of currency (e.g., the nearest penny in USD, the nearest nickel in CAD)"
         },
         "gross_sales_money": {
-          "$ref": "#/definitions/v1Money"
+          "$ref": "#/definitions/v1Money",
+          "description": "The total of all sales, including any applicable taxes."
         },
         "net_sales_money": {
-          "$ref": "#/definitions/v1Money"
+          "$ref": "#/definitions/v1Money",
+          "description": "The total of all sales, minus any applicable taxes."
         },
         "inclusive_tax": {
           "type": "array",
@@ -11684,26 +12733,6 @@
         "refunded_money": {
           "$ref": "#/definitions/v1Money",
           "description": "The amount of money refunded. This amount is always negative."
-        },
-        "refunded_processing_fee_money": {
-          "$ref": "#/definitions/v1Money",
-          "description": "The amount of processing fee money refunded."
-        },
-        "refunded_additive_tax_money": {
-          "$ref": "#/definitions/v1Money",
-          "description": "The amount of additive tax money refunded."
-        },
-        "refunded_inclusive_tax_money": {
-          "$ref": "#/definitions/v1Money",
-          "description": "The amount of inclusive tax money refunded."
-        },
-        "refunded_tip_money": {
-          "$ref": "#/definitions/v1Money",
-          "description": "The amount of tip money refunded."
-        },
-        "refunded_discount_money": {
-          "$ref": "#/definitions/v1Money",
-          "description": "The amount of discount money refunded."
         },
         "created_at": {
           "type": "string",
