@@ -68,7 +68,7 @@ import uuid
 
 import squareconnect
 from squareconnect.rest import ApiException
-from squareconnect.apis.transaction_api import TransactionApi
+from squareconnect.apis.transactions_api import TransactionsApi
 
 # setup authorization
 squareconnect.configuration.access_token = 'YOUR_ACCESS_TOKEN'
