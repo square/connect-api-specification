@@ -62,7 +62,7 @@
         ],
         "summary": "CreateOrder",
         "operationId": "CreateOrder",
-        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-overview).",
+        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-api-overview).",
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
@@ -7744,6 +7744,11 @@
         "buyer_email_address": {
           "type": "string",
           "description": "The buyer\u0027s email address, if available. This value is optional,\nbut this transaction is ineligible for chargeback protection if it is not\nprovided."
+        },
+        "order_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The ID of the order to associate with this transaction.\n\nIf you provide this value, the `amount_money` value of your request must\n__exactly match__ the `total_money` value of the order\u0027s `order_amounts` field."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [Charge](#endpoint-charge) endpoint.",
