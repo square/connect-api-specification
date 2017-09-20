@@ -1,12 +1,12 @@
 {
   "packagePath": "SquareConnect",
-  "artifactVersion": "2.3.1",
+  "artifactVersion": "2.3.2",
   "invokerPackage": "SquareConnect",
   "modelPackage": "Model",
   "apiPackage": "Api",
   "composerVendorName": "square",
   "composerProjectName": "connect",
-  "httpUserAgent": "Square-Connect-PHP/2.3.1",
+  "httpUserAgent": "Square-Connect-PHP/2.3.2",
   "gitUserId": "square",
   "gitRepoId": "connect-php-sdk"
 }
