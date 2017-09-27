@@ -51,38 +51,23 @@ ruby -Ilib script.rb
 Please follow the [installation](#installation) procedure and then run the following code:
 ```ruby
 # Load the gem
-require '{{{gemName}}}'
-{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}{{#hasAuthMethods}}
+require 'square_connect'
+
 # Setup authorization
-{{{moduleName}}}.configure do |config|{{#authMethods}}{{#isBasic}}
-  # Configure HTTP basic authorization: {{{name}}}
-  config.username = 'YOUR USERNAME'
-  config.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-  # Configure API key authorization: {{{name}}}
-  config.api_key['{{{keyParamName}}}'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['{{{keyParamName}}}'] = 'Bearer'{{/isApiKey}}{{#isOAuth}}
-  # Configure OAuth2 access token for authorization: {{{name}}}
-  config.access_token = 'YOUR ACCESS TOKEN'{{/isOAuth}}
-{{/authMethods}}end
-{{/hasAuthMethods}}
-
-api_instance = {{{moduleName}}}::{{{classname}}}.new{{#hasParams}}
-{{#vendorExtensions.x-codegen-hasRequiredParams}}{{#allParams}}{{#required}}
-{{{paramName}}} = {{{example}}} # {{{dataType}}} | {{{description}}}
-{{/required}}{{/allParams}}{{/vendorExtensions.x-codegen-hasRequiredParams}}{{#hasOptionalParams}}
-opts = { {{#allParams}}{{^required}}
-  {{{paramName}}}: {{{example}}}{{#vendorExtensions.x-codegen-hasMoreOptional}},{{/vendorExtensions.x-codegen-hasMoreOptional}} # {{{dataType}}} | {{{description}}}{{/required}}{{/allParams}}
-}{{/hasOptionalParams}}{{/hasParams}}
-
-begin
-{{#summary}}  #{{{.}}}
-{{/summary}}  {{#returnType}}result = {{/returnType}}api_instance.{{{operationId}}}{{#hasParams}}({{#allParams}}{{#required}}{{{paramName}}}{{#vendorExtensions.x-codegen-hasMoreRequired}}, {{/vendorExtensions.x-codegen-hasMoreRequired}}{{/required}}{{/allParams}}{{#hasOptionalParams}}{{#vendorExtensions.x-codegen-hasRequiredParams}}, {{/vendorExtensions.x-codegen-hasRequiredParams}}opts{{/hasOptionalParams}}){{/hasParams}}{{#returnType}}
-  p result{{/returnType}}
-rescue {{{moduleName}}}::ApiError => e
-  puts "Exception when calling {{classname}}->{{{operationId}}}: #{e}"
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
 end
-{{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
+
+# The SDK throws an exception if a Connect endpoint responds with anything besides 200 (success).
+# This block catches any exceptions that occur from the request.
+locations_api = SquareConnect::LocationsApi.new
+begin
+  locations = locations_api.list_locations.locations
+rescue SquareConnect::ApiError => e
+  puts "Error encountered while loading the locations: #{e.message}"
+  return
+end
 ```
 
 ## Documentation for API Endpoints
