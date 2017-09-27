@@ -55,49 +55,39 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
-import {{{invokerPackage}}}.*;
-import {{{invokerPackage}}}.auth.*;
-import {{{modelPackage}}}.*;
-import {{{package}}}.{{{classname}}};
+import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.api.LocationsApi;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Location;
+import com.squareup.connect.models.Location.CapabilitiesEnum;
 
 import java.io.File;
 import java.util.*;
 
-public class {{{classname}}}Example {
+public class Example {
 
     public static void main(String[] args) {
-        {{#hasAuthMethods}}ApiClient defaultClient = Configuration.getDefaultApiClient();
-        {{#authMethods}}{{#isBasic}}
-        // Configure HTTP basic authorization: {{{name}}}
-        HttpBasicAuth {{{name}}} = (HttpBasicAuth) defaultClient.getAuthentication("{{{name}}}");
-        {{{name}}}.setUsername("YOUR USERNAME");
-        {{{name}}}.setPassword("YOUR PASSWORD");{{/isBasic}}{{#isApiKey}}
-        // Configure API key authorization: {{{name}}}
-        ApiKeyAuth {{{name}}} = (ApiKeyAuth) defaultClient.getAuthentication("{{{name}}}");
-        {{{name}}}.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //{{{name}}}.setApiKeyPrefix("Token");{{/isApiKey}}{{#isOAuth}}
-        // Configure OAuth2 access token for authorization: {{{name}}}
-        OAuth {{{name}}} = (OAuth) defaultClient.getAuthentication("{{{name}}}");
-        {{{name}}}.setAccessToken("YOUR ACCESS TOKEN");{{/isOAuth}}
-        {{/authMethods}}
-        {{/hasAuthMethods}}
+        ApiClient apiClient = Configuration.getDefaultApiClient();
 
-        {{{classname}}} apiInstance = new {{{classname}}}();
-        {{#allParams}}
-        {{{dataType}}} {{{paramName}}} = {{{example}}}; // {{{dataType}}} | {{{description}}}
-        {{/allParams}}
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) apiClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR_ACCESS_TOKEN");
+
+        // List all locations
+        LocationsApi locationsApi = new LocationsApi();
+        locationsApi.setApiClient(apiClient);
+
         try {
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{{paramName}}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{#returnType}}
-            System.out.println(result);{{/returnType}}
+            List<Location> locations = locationsApi.listLocations().getLocations();
+            System.out.println(locations);
         } catch (ApiException e) {
-            System.err.println("Exception when calling {{{classname}}}#{{{operationId}}}");
+            System.err.println("Exception when calling API");
             e.printStackTrace();
         }
     }
 }
-{{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
 ```
 
 ## Documentation for API Endpoints
