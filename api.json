@@ -55,6 +55,41 @@
     }
   },
   "paths": {
+    "/v2/apple-pay/domains": {
+      "post": {
+        "tags": [
+          "ApplePay"
+        ],
+        "summary": "RegisterDomain",
+        "operationId": "RegisterDomain",
+        "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the [Embedding the Square Payment Form](https://docs.connect.squareup.com/articles/adding-payment-form) guide.",
+        "x-oauthpermissions": [],
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/RegisterDomainRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RegisterDomainResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/locations/{location_id}/orders": {
       "post": {
         "tags": [
@@ -5590,7 +5625,7 @@
       "enum": [
         "CREDIT_CARD_PROCESSING"
       ],
-      "description": "Indicates account capabilities that a business\u0027s location might or\nmight not have enabled."
+      "description": "Indicates payment capabilities that a business\u0027s location might or\nmight not have enabled."
     },
     "LocationStatus": {
       "type": "string",
@@ -5599,6 +5634,14 @@
         "INACTIVE"
       ],
       "description": "Indicates the location\u0027s status."
+    },
+    "LocationType": {
+      "type": "string",
+      "enum": [
+        "PHYSICAL",
+        "MOBILE"
+      ],
+      "description": "Indicates the location\u0027s type."
     },
     "OrderLineItemDiscountScope": {
       "type": "string",
@@ -5638,6 +5681,14 @@
         "FAILED"
       ],
       "description": "Indicates a refund\u0027s current status."
+    },
+    "RegisterDomainResponseStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "VERIFIED"
+      ],
+      "description": "The status of domain registration."
     },
     "SortOrder": {
       "type": "string",
@@ -7355,7 +7406,7 @@
         },
         "present_at_all_locations": {
           "type": "boolean",
-          "description": "If `true`, this object is present at all locations (including future locations), except where specified in\nthe `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations),\nexcept where specified in the `present_at_location_ids` field."
+          "description": "If `true`, this object is present at all locations (including future locations), except where specified in\nthe `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations),\nexcept where specified in the `present_at_location_ids` field. If not specified, defaults to `true`."
         },
         "present_at_location_ids": {
           "type": "array",
@@ -9805,7 +9856,7 @@
         },
         "name": {
           "type": "string",
-          "description": "The location\u0027s name. Location names are set by the location owner and displayed\nin the dashboard as the location\u0027s nickname"
+          "description": "The location\u0027s name. Location names are set by the account owner and displayed\nin the dashboard as the location\u0027s nickname"
         },
         "address": {
           "$ref": "#/definitions/Address",
@@ -10295,6 +10346,14 @@
         "business_name": {
           "type": "string",
           "description": "The location\u0027s business_name which is shown to its customers. For example,\nthis is the name printed on its customer\u0027s receipts."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "PHYSICAL",
+            "MOBILE"
+          ],
+          "description": "The location\u0027s type, as set by the account owner in the Square dashboard.\nTypically used to indicate whether or not the location object represents a physical space\nlike a building or mall space.\n\nSee [LocationType](#type-locationtype) for possible values."
         }
       },
       "description": "Represents one of a business\u0027s locations."
@@ -10758,6 +10817,54 @@
         }
       },
       "description": "Represents a refund processed for a Square transaction."
+    },
+    "RegisterDomainRequest": {
+      "type": "object",
+      "required": [
+        "domain_name"
+      ],
+      "properties": {
+        "domain_name": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "A domain name as described in RFC-1034 that will be registered with ApplePay"
+        }
+      },
+      "description": "Defines the parameters that can be included in the body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.",
+      "example": {
+        "request_url": "/v2/apple-pay/domains",
+        "request_body": {
+          "domain_name": "example.com"
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.python",
+        "csharp": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.csharp",
+        "php": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.php",
+        "ruby": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.ruby"
+      }
+    },
+    "RegisterDomainResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "VERIFIED"
+          ],
+          "description": "Status of the domain registration.\n\nSee [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.\n\nEither `errors` or `status` will be present in a given response (never both)."
     },
     "RetrieveCatalogObjectRequest": {
       "type": "object",
