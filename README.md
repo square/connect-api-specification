@@ -1,5 +1,5 @@
-Connecting to the Square API [![Build Status](https://travis-ci.org/square/connect-api-specification.svg?branch=master)](https://travis-ci.org/square/connect-api-specification)
-=============================
+Connecting to the Square API
+============================
 
 This is the project that _generates_ API clients for connecting to the public Square API. You probably want to just use one of the clients that are pre-built in a language of your choice:
 
@@ -20,9 +20,24 @@ This repository contains the specifications for generating client SDKs with
 The canonical specification is defined in `api.json`. The templates for our
 supported SDKs are located in `swagger-templates`. The configuration for each
 SDK (e.g. name of the library, version number, etc.) are located in
-`swagger-configs`.
+`swagger-config`.
 
-We use [Travis CI](https://travis-ci.com/) to build each SDK and push it out the appropriate repository. To learn more about that process, look in the [travis-ci](travis-ci) directory. 
+Configure a new language
+------------------------
+
+Generating an SDK for a new language is possible. You'll need to have a working version of `swagger-codegen` and follow these steps:
+
+1. Check if Swagger Codegen supports the language by running:
+    ```bash
+    swagger-codegen langs
+    ```
+2. If the language is supported, note swagger's name for it. We'll call it {lang}
+3. Add a configuration file on [swagger-config](swagger-config/) named `config-{lang}.json`. You can check [this template](swagger-config/config-{lang}.json).
+4. Create a directory on [swagger-templates](swagger-templates/) named `{lang}`. Generation scripts expect to have a folder even if no custom templates are included:
+    ```bash
+    mkdir $lang
+    ```
+5. (Optional) Add custom templates for your generator. Check [Swagger Codegen Readme](https://github.com/swagger-api/swagger-codegen#modifying-the-client-library-format).
 
 Contributing
 ------------

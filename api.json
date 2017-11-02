@@ -55,6 +55,144 @@
     }
   },
   "paths": {
+    "/v2/locations/{location_id}/additional-recipient-receivables": {
+      "get": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "ListAdditionalRecipientReceivables",
+        "operationId": "ListAdditionalRecipientReceivables",
+        "description": "Lists Additional Recipient Receivables for a particular location.\n\nMax results per [page](#paginatingresults): 50",
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the location to list AdditionalRecipientReceivables for.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "begin_time",
+            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "end_time",
+            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListAdditionalRecipientReceivablesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/additional-recipient-receivable-refunds": {
+      "get": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "ListAdditionalRecipientReceivableRefunds",
+        "operationId": "ListAdditionalRecipientReceivableRefunds",
+        "description": "Lists Additional Recipient Receivable Refunds for a particular location.\n\nMax results per [page](#paginatingresults): 50",
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the location to list AdditionalRecipientReceivableRefunds for.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "begin_time",
+            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "end_time",
+            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListAdditionalRecipientReceivableRefundsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/apple-pay/domains": {
       "post": {
         "tags": [
@@ -1153,7 +1291,7 @@
         ],
         "summary": "SearchCatalogObjects",
         "operationId": "SearchCatalogObjects",
-        "description": "Queries the targeted catalog using a variety of query types\n([CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n([CatalogQueryExact](#type-catalogqueryexact),\n([CatalogQueryRange](#type-catalogqueryrange),\n([CatalogQueryText](#type-catalogquerytext),\n([CatalogQueryItemsForTax](#type-catalogqueryitemsfortax),\n([CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist)).",
+        "description": "Queries the targeted catalog using a variety of query types:\n[CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n[CatalogQueryExact](#type-catalogqueryexact),\n[CatalogQueryRange](#type-catalogqueryrange),\n[CatalogQueryText](#type-catalogquerytext),\n[CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), and\n[CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist).",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
@@ -5579,6 +5717,7 @@
         "INVALID_EXPIRATION_YEAR",
         "INVALID_EXPIRATION_DATE",
         "UNSUPPORTED_CARD_BRAND",
+        "UNSUPPORTED_ENTRY_METHOD",
         "INVALID_CARD",
         "DELAYED_TRANSACTION_EXPIRED",
         "DELAYED_TRANSACTION_CANCELED",
@@ -5596,6 +5735,7 @@
         "UNEXPECTED_VALUE",
         "SANDBOX_NOT_SUPPORTED",
         "INVALID_EMAIL_ADDRESS",
+        "INVALID_PHONE_NUMBER",
         "CHECKOUT_EXPIRED",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
@@ -5760,6 +5900,120 @@
         "OTHER"
       ],
       "description": "Indicates the Square product used to process a transaction."
+    },
+    "AdditionalRecipient": {
+      "type": "object",
+      "required": [
+        "location_id",
+        "description",
+        "amount_money"
+      ],
+      "properties": {
+        "location_id": {
+          "minLength": 1,
+          "maxLength": 50,
+          "type": "string",
+          "description": "The location ID for a recipient (other than the merchant) receiving a portion of this tender."
+        },
+        "description": {
+          "minLength": 1,
+          "maxLength": 100,
+          "type": "string",
+          "description": "The description of the additional recipient."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money distributed to the recipient."
+        },
+        "receivable_id": {
+          "type": "string",
+          "description": "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.\nTODO(botros): add required annotations on this, SETL-7263"
+        }
+      },
+      "description": "Represents an additional recipient (other than the merchant) receiving a portion of this tender."
+    },
+    "AdditionalRecipientReceivable": {
+      "type": "object",
+      "required": [
+        "id",
+        "transaction_id",
+        "transaction_location_id",
+        "amount_money"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The additional recipient receivable\u0027s unique ID, issued by Square payments servers."
+        },
+        "transaction_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the transaction that the additional recipient receivable was applied to."
+        },
+        "transaction_location_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the location that created the receivable. This is the location ID on the associated transaction."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of the receivable. This will always be non-negative."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The time when the additional recipient receivable was created, in RFC 3339 format."
+        },
+        "refunds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipientReceivableRefund"
+          },
+          "description": "Any refunds of the receivable that have been applied."
+        }
+      },
+      "description": "Represents a monetary distribution of part of a [Transaction](#type-transaction)\u0027s amount for Transactions which included additional recipients. The location of this receivable is that same as the one specified in the [AdditionalRecipient](#type-additionalrecipient)."
+    },
+    "AdditionalRecipientReceivableRefund": {
+      "type": "object",
+      "required": [
+        "id",
+        "receivable_id",
+        "refund_id",
+        "transaction_location_id",
+        "amount_money"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The receivable refund\u0027s unique ID, issued by Square payments servers."
+        },
+        "receivable_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the receivable that the refund was applied to."
+        },
+        "refund_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the refund that is associated to this receivable refund."
+        },
+        "transaction_location_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the location that created the receivable. This is the location ID on the associated transaction."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of the refund. This will always be non-negative."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The time when the refund was created, in RFC 3339 format."
+        }
+      },
+      "description": "A refund of an [AdditionalRecipientReceivable](#type-additionalrecipientreceivable). This includes the ID of the additional recipient receivable associated to this object, as well as a reference to the [Refund](#type-refund) that created this receivable refund."
     },
     "Address": {
       "type": "object",
@@ -7800,6 +8054,13 @@
           "maxLength": 192,
           "type": "string",
           "description": "The ID of the order to associate with this transaction.\n\nIf you provide this value, the `amount_money` value of your request must\n__exactly match__ the `total_money` value of the order\u0027s `order_amounts` field."
+        },
+        "additional_recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipient"
+          },
+          "description": "The basic primitive of multi party settlement. The value is optional.\nThe transation facilitated by you can be splited from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in you charge\u0027s request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field is currently not supported in sandbox."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [Charge](#endpoint-charge) endpoint.",
@@ -7823,9 +8084,19 @@
             "country": "US"
           },
           "amount_money": {
-            "amount": 5000,
+            "amount": 200,
             "currency": "USD"
           },
+          "additional_recipients": [
+            {
+              "location_id": "057P5VYJ4A5X1",
+              "description": "Application fees",
+              "amount_money": {
+                "amount": 20,
+                "currency": "USD"
+              }
+            }
+          ],
           "card_nonce": "card_nonce_from_square_123",
           "reference_id": "some optional reference id",
           "note": "some optional note",
@@ -7838,6 +8109,33 @@
         "php": "/sdk_samples/Charge/ChargeRequest.php",
         "ruby": "/sdk_samples/Charge/ChargeRequest.ruby"
       }
+    },
+    "ChargeRequestAdditionalRecipient": {
+      "type": "object",
+      "required": [
+        "location_id",
+        "description",
+        "amount_money"
+      ],
+      "properties": {
+        "location_id": {
+          "minLength": 1,
+          "maxLength": 50,
+          "type": "string",
+          "description": "The location ID for a recipient (other than the merchant) receiving a portion of the tender."
+        },
+        "description": {
+          "minLength": 1,
+          "maxLength": 100,
+          "type": "string",
+          "description": "The description of the additional recipient."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money distributed to the recipient."
+        }
+      },
+      "description": "Represents an additional recipient (other than the merchant) entitled to a portion of the tender.\nSupport is currently limited to USD, CAD and GBP currencies"
     },
     "ChargeResponse": {
       "type": "object",
@@ -7868,9 +8166,19 @@
               "created_at": "2016-03-10T22:57:56Z",
               "note": "some optional note",
               "amount_money": {
-                "amount": 5000,
+                "amount": 200,
                 "currency": "USD"
               },
+              "additional_recipients": [
+                {
+                  "location_id": "057P5VYJ4A5X1",
+                  "description": "Application fees",
+                  "amount_money": {
+                    "amount": 20,
+                    "currency": "USD"
+                  }
+                }
+              ],
               "type": "CARD",
               "card_details": {
                 "status": "CAPTURED",
@@ -7931,6 +8239,13 @@
         "created_at": {
           "type": "string",
           "description": "The time when the checkout was created, in RFC 3339 format."
+        },
+        "additional_recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipient"
+          },
+          "description": "Additional recipients (other than the merchant) receiving a portion of this checkout.\nFor example, fees assessed on the purchase by a third party integration."
         }
       },
       "description": "Square Checkout lets merchants accept online payments for supported\npayment types using a checkout workflow hosted on squareup.com."
@@ -7974,6 +8289,13 @@
           "maxLength": 800,
           "type": "string",
           "description": "The URL to redirect to after checkout is completed with `checkoutId`,\nSquare\u0027s `orderId`, `transactionId`, and `referenceId` appended as URL\nparameters. For example, if the provided redirect_url is\n`http://www.example.com/order-complete`, a successful transaction redirects\nthe customer to:\n\n`http://www.example.com/order-complete?checkoutId\u003dxxxxxx\u0026orderId\u003dxxxxxx\u0026referenceId\u003dxxxxxx\u0026transactionId\u003dxxxxxx`\n\nIf you do not provide a redirect URL, Square Checkout will display an order\nconfirmation page on your behalf; however Square strongly recommends that\nyou provide a redirect URL so you can verify the transaction results and\nfinalize the order through your existing/normal confirmation workflow.\n\nDefault: none; only exists if explicitly set."
+        },
+        "additional_recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargeRequestAdditionalRecipient"
+          },
+          "description": "The basic primitive of multi party settlement. The value is optional.\nThe transation facilitated by you can be splited from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `total_money` calcualted by Square for your order.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field is currently not supported in sandbox."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
@@ -8057,6 +8379,16 @@
               }
             ]
           },
+          "additional_recipients": [
+            {
+              "location_id": "057P5VYJ4A5X1",
+              "description": "Application fees",
+              "amount_money": {
+                "amount": 60,
+                "currency": "USD"
+              }
+            }
+          ],
           "ask_for_shipping_address": true,
           "merchant_support_email": "merchant+support@website.com",
           "pre_populate_buyer_email": "example@email.com",
@@ -8345,7 +8677,17 @@
               "currency": "USD"
             }
           },
-          "created_at": "2017-06-16T22:25:35Z"
+          "created_at": "2017-06-16T22:25:35Z",
+          "additional_recipients": [
+            {
+              "location_id": "057P5VYJ4A5X1",
+              "description": "Application fees",
+              "amount_money": {
+                "amount": 60,
+                "currency": "USD"
+              }
+            }
+          ]
         }
       }
     },
@@ -8357,7 +8699,7 @@
       "properties": {
         "card_nonce": {
           "type": "string",
-          "description": "A card nonce representing the credit card to link to the customer.\n\nCard nonces are generated by the `SqPaymentForm` that buyers enter\ntheir card information into. See\n[Embedding the payment form](/articles/adding-payment-form/) for\nmore information."
+          "description": "A card nonce representing the credit card to link to the customer.\n\nCard nonces are generated by the `SqPaymentForm` that buyers enter\ntheir card information into. See\n[Embedding the payment form](/articles/adding-payment-form/) for\nmore information.\n\n__Note:__ Card nonces generated by digital wallets (e.g., Apple Pay)\ncannot be used to create a customer card."
         },
         "billing_address": {
           "$ref": "#/definitions/Address",
@@ -9029,6 +9371,16 @@
             "amount": 100,
             "currency": "USD"
           },
+          "additional_recipients": [
+            {
+              "location_id": "057P5VYJ4A5X1",
+              "description": "Application fees",
+              "amount_money": {
+                "amount": 10,
+                "currency": "USD"
+              }
+            }
+          ],
           "status": "PENDING"
         }
       },
@@ -9333,6 +9685,7 @@
             "INVALID_EXPIRATION_YEAR",
             "INVALID_EXPIRATION_DATE",
             "UNSUPPORTED_CARD_BRAND",
+            "UNSUPPORTED_ENTRY_METHOD",
             "INVALID_CARD",
             "DELAYED_TRANSACTION_EXPIRED",
             "DELAYED_TRANSACTION_CANCELED",
@@ -9350,6 +9703,7 @@
             "UNEXPECTED_VALUE",
             "SANDBOX_NOT_SUPPORTED",
             "INVALID_EMAIL_ADDRESS",
+            "INVALID_PHONE_NUMBER",
             "CHECKOUT_EXPIRED",
             "CARD_DECLINED",
             "VERIFY_CVV_FAILURE",
@@ -9415,6 +9769,178 @@
         }
       },
       "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location)."
+    },
+    "ListAdditionalRecipientReceivableRefundsRequest": {
+      "type": "object",
+      "properties": {
+        "begin_time": {
+          "type": "string",
+          "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year."
+        },
+        "end_time": {
+          "type": "string",
+          "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time."
+        },
+        "sort_order": {
+          "type": "string",
+          "enum": [
+            "DESC",
+            "ASC"
+          ],
+          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`"
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/additional-recipient-receivable-refunds?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.python",
+        "csharp": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.csharp",
+        "php": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.php",
+        "ruby": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.ruby"
+      }
+    },
+    "ListAdditionalRecipientReceivableRefundsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "receivable_refunds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipientReceivableRefund"
+          },
+          "description": "An array of AdditionalRecipientReceivableRefunds that match your query."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.\n\nOne of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).",
+      "example": {
+        "receivable_refunds": [
+          {
+            "id": "RR1",
+            "receivable_id": "R1",
+            "refund_id": "REFUND_ID_1",
+            "transaction_location_id": "LOC_ID_1",
+            "amount_money": {
+              "amount": 50,
+              "currency": "USD"
+            },
+            "created_at": "2016-01-20T22:57:56Z"
+          }
+        ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.python",
+        "csharp": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.csharp",
+        "php": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.php",
+        "ruby": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.ruby"
+      }
+    },
+    "ListAdditionalRecipientReceivablesRequest": {
+      "type": "object",
+      "properties": {
+        "begin_time": {
+          "type": "string",
+          "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year."
+        },
+        "end_time": {
+          "type": "string",
+          "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time."
+        },
+        "sort_order": {
+          "type": "string",
+          "enum": [
+            "DESC",
+            "ASC"
+          ],
+          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`"
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.",
+      "example": {
+        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/additional-recipient-receivables?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.python",
+        "csharp": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.csharp",
+        "php": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.php",
+        "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.ruby"
+      }
+    },
+    "ListAdditionalRecipientReceivablesResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "receivables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipientReceivable"
+          },
+          "description": "An array of AdditionalRecipientReceivables that match your query."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.\n\nOne of `errors` or `additional_recipient_receivables` is present in a given response (never both).",
+      "example": {
+        "receivables": [
+          {
+            "id": "R1",
+            "transaction_id": "T1",
+            "transaction_location_id": "LOC_ID_1",
+            "amount_money": {
+              "amount": 100,
+              "currency": "USD"
+            },
+            "created_at": "2016-01-19T15:12:41Z",
+            "refunds": [
+              {
+                "id": "RR1",
+                "receivable_id": "R1",
+                "refund_id": "REFUND_ID_1",
+                "transaction_location_id": "LOC_ID_1",
+                "amount_money": {
+                  "amount": 50,
+                  "currency": "USD"
+                },
+                "created_at": "2016-01-20T22:57:56Z"
+              }
+            ]
+          }
+        ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.python",
+        "csharp": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.csharp",
+        "php": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.php",
+        "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.ruby"
+      }
     },
     "ListCatalogRequest": {
       "type": "object",
@@ -9715,6 +10241,16 @@
               "amount": 100,
               "currency": "USD"
             },
+            "additional_recipients": [
+              {
+                "location_id": "057P5VYJ4A5X1",
+                "description": "Application fees",
+                "amount_money": {
+                  "amount": 10,
+                  "currency": "USD"
+                }
+              }
+            ],
             "status": "APPROVED"
           }
         ]
@@ -9813,7 +10349,17 @@
                     "last_4": "1111"
                   },
                   "entry_method": "KEYED"
-                }
+                },
+                "additional_recipients": [
+                  {
+                    "location_id": "057P5VYJ4A5X1",
+                    "description": "Application fees",
+                    "amount_money": {
+                      "amount": 100,
+                      "currency": "USD"
+                    }
+                  }
+                ]
               }
             ],
             "refunds": [
@@ -9832,7 +10378,17 @@
                 "processing_fee_money": {
                   "amount": 138,
                   "currency": "USD"
-                }
+                },
+                "additional_recipients": [
+                  {
+                    "location_id": "057P5VYJ4A5X1",
+                    "description": "Application fees",
+                    "amount_money": {
+                      "amount": 100,
+                      "currency": "USD"
+                    }
+                  }
+                ]
               }
             ],
             "reference_id": "some optional reference id",
@@ -10814,6 +11370,13 @@
         "processing_fee_money": {
           "$ref": "#/definitions/Money",
           "description": "The amount of Square processing fee money refunded to the *merchant*."
+        },
+        "additional_recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipient"
+          },
+          "description": "Additional recipients (other than the merchant) receiving a portion of this refund.\nFor example, fees assessed on a refund of a purchase by a third party integration."
         }
       },
       "description": "Represents a refund processed for a Square transaction."
@@ -10864,7 +11427,10 @@
           "description": "Status of the domain registration.\n\nSee [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.\n\nEither `errors` or `status` will be present in a given response (never both)."
+      "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.\n\nEither `errors` or `status` will be present in a given response (never both).",
+      "example": {
+        "status": "VERIFIED"
+      }
     },
     "RetrieveCatalogObjectRequest": {
       "type": "object",
@@ -11103,7 +11669,17 @@
                   "last_4": "1111"
                 },
                 "entry_method": "KEYED"
-              }
+              },
+              "additional_recipients": [
+                {
+                  "location_id": "057P5VYJ4A5X1",
+                  "description": "Application fees",
+                  "amount_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              ]
             }
           ],
           "reference_id": "some optional reference id",
@@ -11365,6 +11941,13 @@
         "cash_details": {
           "$ref": "#/definitions/TenderCashDetails",
           "description": "The details of the cash tender.\n\nThis value is present only if the value of `type` is `CASH`."
+        },
+        "additional_recipients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalRecipient"
+          },
+          "description": "Additional recipients (other than the merchant) receiving a portion of this tender.\nFor example, fees assessed on the purchase by a third party integration."
         }
       },
       "description": "Represents a tender (i.e., a method of payment) used in a Square transaction."
@@ -13293,7 +13876,8 @@
         },
         "user_data": {
           "type": "string",
-          "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
+          "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters.",
+          "required": false
         }
       }
     },

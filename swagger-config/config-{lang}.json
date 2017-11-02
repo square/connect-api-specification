@@ -1,0 +1,10 @@
+// this file is a template in case you want to add a new language to
+// the generator. Valid configuration settings depend on the language.
+// You can list them by running: swagger-codegen config-help -l {lang}
+{
+  "packageName": "Square.Connect",
+  "packageVersion": "2.5.0",
+  "httpUserAgent": "Square-Connect-{lang}/2.5.0",
+  "gitUserId": "square",
+  "gitRepoId": "connect-{lang}-sdk"
+}
