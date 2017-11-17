@@ -3,8 +3,8 @@
 // You can list them by running: swagger-codegen config-help -l {lang}
 {
   "packageName": "Square.Connect",
-  "packageVersion": "2.5.0",
-  "httpUserAgent": "Square-Connect-{lang}/2.5.0",
+  "packageVersion": "2.5.1",
+  "httpUserAgent": "Square-Connect-{lang}/2.5.1",
   "gitUserId": "square",
   "gitRepoId": "connect-{lang}-sdk"
 }
