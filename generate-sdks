@@ -28,15 +28,26 @@ else
     SWAGGER_CMD="swagger-codegen"
 fi
 
+target_language="${1:-}"
 
-languages=$(ls swagger-templates)
-
-for lang in $languages
-do
+generate_for_language() {
     $SWAGGER_CMD generate \
         --input-spec "./api.json" \
-        --lang "${lang}" \
-        --config "./swagger-config/config-${lang}.json" \
-        --template-dir "./swagger-templates/${lang}" \
-        --output "./swagger-out/${lang}"
-done
+        --lang "$1" \
+        --config "./swagger-config/config-$1.json" \
+        --template-dir "./swagger-templates/$1" \
+        --output "./swagger-out/$1"
+}
+
+if [ -n "$target_language" ]
+then
+    generate_for_language "$target_language"
+else
+    languages=$(ls swagger-templates)
+
+    for lang in $languages
+    do
+        generate_for_language "$lang"
+    done
+fi
+

@@ -50,8 +50,14 @@
         "EMPLOYEES_READ": "GET endpoints related to employee management",
         "EMPLOYEES_WRITE": "POST, PUT, and DELETE endpoints related to employee management",
         "TIMECARDS_READ": "GET endpoints related to employee timecards",
-        "TIMECARDS_WRITE": "POST, PUT, and DELETE endpoints related to employee timecards"
+        "TIMECARDS_WRITE": "POST, PUT, and DELETE endpoints related to employee timecards",
+        "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS": "Allow third party applications to deduct a portion of each transaction amount."
       }
+    },
+    "oauth2ClientSecret": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
     }
   },
   "paths": {
@@ -62,7 +68,7 @@
         ],
         "summary": "ListAdditionalRecipientReceivables",
         "operationId": "ListAdditionalRecipientReceivables",
-        "description": "Lists Additional Recipient Receivables for a particular location.\n\nMax results per [page](#paginatingresults): 50",
+        "description": "Returns a list of receivables (across all possible sending locations) representing monies credited\nto the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
@@ -131,7 +137,7 @@
         ],
         "summary": "ListAdditionalRecipientReceivableRefunds",
         "operationId": "ListAdditionalRecipientReceivableRefunds",
-        "description": "Lists Additional Recipient Receivable Refunds for a particular location.\n\nMax results per [page](#paginatingresults): 50",
+        "description": "Returns a list of refunded transactions (across all possible originating locations) relating to monies\ncredited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
@@ -5927,7 +5933,7 @@
         },
         "receivable_id": {
           "type": "string",
-          "description": "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.\nTODO(botros): add required annotations on this, SETL-7263"
+          "description": "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server."
         }
       },
       "description": "Represents an additional recipient (other than the merchant) receiving a portion of this tender."
@@ -7428,6 +7434,10 @@
           "type": "string",
           "description": "The item variation\u0027s UPC, if any. Searchable."
         },
+        "ordinal": {
+          "type": "integer",
+          "description": "The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal\nfor each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations\u0027s\nposition. On reads, the value is not guaranteed to be sequential or unique."
+        },
         "pricing_type": {
           "type": "string",
           "enum": [
@@ -8060,7 +8070,7 @@
           "items": {
             "$ref": "#/definitions/AdditionalRecipient"
           },
-          "description": "The basic primitive of multi party settlement. The value is optional.\nThe transation facilitated by you can be splited from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in you charge\u0027s request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field is currently not supported in sandbox."
+          "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in you charge\u0027s request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [Charge](#endpoint-charge) endpoint.",
@@ -8176,7 +8186,8 @@
                   "amount_money": {
                     "amount": 20,
                     "currency": "USD"
-                  }
+                  },
+                  "receivable_id": "ISu5xwxJ5v0CMJTQq7RvqyMF"
                 }
               ],
               "type": "CARD",
@@ -8295,7 +8306,7 @@
           "items": {
             "$ref": "#/definitions/ChargeRequestAdditionalRecipient"
           },
-          "description": "The basic primitive of multi party settlement. The value is optional.\nThe transation facilitated by you can be splited from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `total_money` calcualted by Square for your order.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field is currently not supported in sandbox."
+          "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `total_money` calculated by Square for your order.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
@@ -9327,8 +9338,8 @@
       "example": {
         "request_url": "/v2/locations/LOCATION_ID/transactions/TRANSACTION_ID/refund",
         "request_body": {
-          "idempotency_key": "YOUR_IDEMPOTENCY_KEY",
-          "tender_id": "TENDER_ID",
+          "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad2",
+          "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
           "reason": "a reason",
           "amount_money": {
             "amount": 100,
@@ -9363,8 +9374,8 @@
         "refund": {
           "id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
           "location_id": "18YC4JDH91E1H",
-          "transaction_id": "TRANSACTION_ID",
-          "tender_id": "TENDER_ID",
+          "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
+          "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
           "created_at": "2016-02-12T00:28:18Z",
           "reason": "some reason",
           "amount_money": {
@@ -9378,7 +9389,8 @@
               "amount_money": {
                 "amount": 10,
                 "currency": "USD"
-              }
+              },
+              "receivable_id": "ISu5xwxJ5v0CMJTQq7RvqyMF"
             }
           ],
           "status": "PENDING"
@@ -9831,12 +9843,12 @@
       "example": {
         "receivable_refunds": [
           {
-            "id": "RR1",
-            "receivable_id": "R1",
-            "refund_id": "REFUND_ID_1",
-            "transaction_location_id": "LOC_ID_1",
+            "id": "Ge2OT7KA6XAg1GC15qs5S",
+            "receivable_id": "ISu5xwxJ5v0CMJTQq7RvqyMF",
+            "refund_id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
+            "transaction_location_id": "18YC4JDH91E1H",
             "amount_money": {
-              "amount": 50,
+              "amount": 10,
               "currency": "USD"
             },
             "created_at": "2016-01-20T22:57:56Z"
@@ -9911,22 +9923,22 @@
       "example": {
         "receivables": [
           {
-            "id": "R1",
-            "transaction_id": "T1",
-            "transaction_location_id": "LOC_ID_1",
+            "id": "ISu5xwxJ5v0CMJTQq7RvqyMF",
+            "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
+            "transaction_location_id": "18YC4JDH91E1H",
             "amount_money": {
-              "amount": 100,
+              "amount": 20,
               "currency": "USD"
             },
             "created_at": "2016-01-19T15:12:41Z",
             "refunds": [
               {
-                "id": "RR1",
-                "receivable_id": "R1",
-                "refund_id": "REFUND_ID_1",
-                "transaction_location_id": "LOC_ID_1",
+                "id": "Ge2OT7KA6XAg1GC15qs5S",
+                "receivable_id": "ISu5xwxJ5v0CMJTQq7RvqyMF",
+                "refund_id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
+                "transaction_location_id": "18YC4JDH91E1H",
                 "amount_money": {
-                  "amount": 50,
+                  "amount": 10,
                   "currency": "USD"
                 },
                 "created_at": "2016-01-20T22:57:56Z"
@@ -10233,8 +10245,8 @@
           {
             "id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
             "location_id": "18YC4JDH91E1H",
-            "transaction_id": "TRANSACTION_ID",
-            "tender_id": "TENDER_ID",
+            "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
+            "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
             "created_at": "2016-01-20T00:28:18Z",
             "reason": "some reason",
             "amount_money": {
@@ -10355,7 +10367,7 @@
                     "location_id": "057P5VYJ4A5X1",
                     "description": "Application fees",
                     "amount_money": {
-                      "amount": 100,
+                      "amount": 20,
                       "currency": "USD"
                     }
                   }
@@ -10910,6 +10922,10 @@
             "MOBILE"
           ],
           "description": "The location\u0027s type, as set by the account owner in the Square dashboard.\nTypically used to indicate whether or not the location object represents a physical space\nlike a building or mall space.\n\nSee [LocationType](#type-locationtype) for possible values."
+        },
+        "website_url": {
+          "type": "string",
+          "description": "The location\u0027s website, as set by the account owner in the Square dashboard.\n\nDefault: none; only exists if explicitly set."
         }
       },
       "description": "Represents one of a business\u0027s locations."
@@ -11675,7 +11691,7 @@
                   "location_id": "057P5VYJ4A5X1",
                   "description": "Application fees",
                   "amount_money": {
-                    "amount": 100,
+                    "amount": 20,
                     "currency": "USD"
                   }
                 }
@@ -11913,6 +11929,10 @@
         "amount_money": {
           "$ref": "#/definitions/Money",
           "description": "The amount of the tender."
+        },
+        "tip_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The tip\u0027s amount of the tender."
         },
         "processing_fee_money": {
           "$ref": "#/definitions/Money",
@@ -14241,16 +14261,13 @@
           "description": "The column of the cell. Always an integer between 0 and 4, inclusive."
         },
         "object_type": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "ITEM",
-              "DISCOUNT",
-              "CATEGORY",
-              "PLACEHOLDER"
-            ]
-          },
+          "type": "string",
+          "enum": [
+            "ITEM",
+            "DISCOUNT",
+            "CATEGORY",
+            "PLACEHOLDER"
+          ],
           "description": "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER)."
         },
         "object_id": {
@@ -14258,15 +14275,12 @@
           "description": "The unique identifier of the entity represented in the cell. Not present for cells with an object_type of PLACEHOLDER."
         },
         "placeholder_type": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "ALL_ITEMS",
-              "DISCOUNTS_CATEGORY",
-              "REWARDS_FINDER"
-            ]
-          },
+          "type": "string",
+          "enum": [
+            "ALL_ITEMS",
+            "DISCOUNTS_CATEGORY",
+            "REWARDS_FINDER"
+          ],
           "description": "For a cell with an object_type of PLACEHOLDER, this value indicates the cell\u0027s special behavior."
         }
       }
