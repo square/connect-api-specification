@@ -1,0 +1,7 @@
+{
+  "packageName": "Square.Connect",
+  "packageVersion": "2.5.1",
+  "httpUserAgent": "Square-Connect-{nodejs-server}/2.5.1",
+  "gitUserId": "square",
+  "gitRepoId": "connect-{nodejs-server}-sdk"
+}
