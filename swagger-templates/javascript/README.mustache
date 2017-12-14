@@ -1,0 +1,148 @@
+# Square Connect Node SDK [![Build Status](https://travis-ci.org/square/connect-javascript-sdk.svg?branch=master)](https://travis-ci.org/square/connect-javascript-sdk)[![npm version](https://badge.fury.io/js/square-connect.svg)](https://badge.fury.io/js/square-connect)
+
+**If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://docs.google.com/forms/d/e/1FAIpQLSfAZGIEZoNs-XryKqUoW3atFQHdQw5UqXLMOVPq3V4DEq-AJw/viewform?usp=sf_link#response=ACYDBNj5LFgPy8Tcac2gSgv_IjXvgWsPy2CO2xTXwnc0OSSxCvWFgc7SCDHvVQ)**
+
+
+## Requirements
+
+Node.js 6.0 or later
+
+## Installation
+
+### For [Node.js](https://nodejs.org/)
+
+To install the SDK:
+
+```shell
+npm install {{{projectName}}} --save
+```
+
+## Getting Started
+
+Please follow the [installation](#installation) instruction and execute the following JS code:
+
+```javascript
+var {{{moduleName}}} = require('{{{projectName}}}');
+var defaultClient = {{{moduleName}}}.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
+
+var api = new {{{moduleName}}}.LocationsApi();
+
+api.listLocations.then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *{{basePath}}*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{moduleName}}.{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{#summary}}{{summary}}{{/summary}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
+
+## Documentation for Models
+
+{{#models}}{{#model}} - [{{moduleName}}.{{classname}}]({{modelDocPath}}{{classname}}.md)
+{{/model}}{{/models}}
+
+## Documentation for Authorization
+
+{{^authMethods}} All endpoints do not require authorization.
+{{/authMethods}}{{#authMethods}}{{#last}} Authentication schemes defined for the API:{{/last}}{{/authMethods}}
+{{#authMethods}}### {{name}}
+
+{{#isApiKey}}- **Type**: API key
+- **API key parameter name**: {{keyParamName}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}- **Type**: HTTP basic authentication
+{{/isBasic}}
+{{#isOAuth}}- **Type**: OAuth
+- **Flow**: {{flow}}
+- **Authorization URL**: {{authorizationUrl}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}}  - {{scope}}: {{description}}
+{{/scopes}}
+{{/isOAuth}}
+
+{{/authMethods}}
+
+## Pagination of V1 Endpoints
+
+V1 Endpoints return pagination information via HTTP headers. In order to obtain
+response headers and extract the `batch_token` parameter you will need to follow
+the following steps:
+
+1. Use the full information endpoint methods of each API to get the response HTTP
+Headers. They are named as their simple counterpart with a `WithHttpInfo` suffix.
+Hence `listEmployeeRoles` would be called `listEmployeeRolesWithHttpInfo`. This
+method returns a `CompleteResponse` object with the response data deserialized along
+with a helper to retrieve the token if present.
+
+2. Use `var batchToken = completeResponse.batch_token;`
+to extract the token and proceed to get the following page if a token is present.
+
+### Example
+
+```javascript
+var {{{moduleName}}} = require('{{{projectName}}}');
+var defaultClient = {{{moduleName}}}.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
+
+
+var api = new SquareConnect.V1EmployeesApi();
+
+var opts = {
+  order: "order_example",
+  limit: 56,
+  batch_token: null
+}
+
+function getAllEmployeeRoles(batch_token){
+  if (batch_token) {
+    api.listEmployeeRolesWithHttpInfo(opts).then(function(resp) {
+       var batch_token = resp.batch_token;
+       opts['batch_token'] = batch_token;
+       getAllEmployeeRoles(token);
+    }, function(error) {
+      console.error(error);
+    });
+  }
+}
+
+getAllEmployeeRoles(true);
+```
+
+## Contributing
+
+Send bug reports, feature requests, and code contributions to the [API
+specifications repository](https://github.com/square/connect-api-specification),
+as this repository contains only the generated SDK code.
+
+## License
+
+```
+Copyright 2017 Square, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

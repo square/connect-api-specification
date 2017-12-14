@@ -1,0 +1,32 @@
+{{>licenseInfo}}
+const SquareConnect = require('../../src/index');
+
+describe('{{classname}}', function() {
+  beforeEach(function() {
+  {{#models}}
+  {{#model}}
+  {{^isEnum}}
+    this.api = new {{moduleName}}.{{classname}}();
+  {{/isEnum}}
+  {{/model}}
+  {{/models}}
+  });
+
+  it('should create an instance of {{classname}}', function() {
+    // uncomment below and update the code to test {{classname}}
+    //var instane = new {{moduleName}}.{{classname}}();
+    //expect(instance).to.be.a({{moduleName}}.{{classname}});
+  });
+
+{{#models}}
+{{#model}}
+{{#vars}}
+  it('should have the property {{name}} (base name: "{{baseName}}")', function() {
+    // uncomment below and update the code to test the property {{name}}
+    //var instane = new {{moduleName}}.{{classname}}();
+    //expect(instance).to.be();
+  });
+{{/vars}}
+{{/model}}
+{{/models}}
+});
