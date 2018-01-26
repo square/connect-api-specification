@@ -1,0 +1,36 @@
+{
+  "name": "{{{projectName}}}",
+  "version": "{{{projectVersion}}}",
+  "description": "{{{projectDescription}}}",
+  "keywords": [
+    "square",
+    "connect",
+    "v1",
+    "v2",
+    "api",
+    "payments"
+  ],
+  "homepage": "https://docs.connect.squareup.com/",
+  "license": "Apache 2.0",
+  "main": "{{sourceFolder}}{{#invokerPackage}}/{{invokerPackage}}{{/invokerPackage}}/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/square/connect-javascript-sdk"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "dependencies": {
+    "superagent": "3.5.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2017": "^6.24.1",
+    "chai": "*",
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3"
+  },
+  "engines": {
+    "node": ">=6.0"
+  }
+}
