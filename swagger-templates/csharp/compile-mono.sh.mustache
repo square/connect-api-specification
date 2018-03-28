@@ -13,7 +13,7 @@ then
     echo "wget is either not installed on thie system or is"\
     "unavailable through the \$PATH."
 	while true; do
-	    printf "Install it by [ curl -sSL https://nuget.org/nuget.exe ]? [y/N] "
+	    printf "Install it by [ curl -sSL https://dist.nuget.org/win-x86-commandline/latest/nuget.exe ]? [y/N] "
 	    read -r  yn
 	    case "$yn" in
 	        [Yy]* ) break;;
@@ -21,9 +21,9 @@ then
 	        '' ) exit;;
 	    esac
 	done
-	curl -sSL https://nuget.org/nuget.exe -o nuget.exe;
+	curl -sSL https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -o nuget.exe;
 else
-	wget -nc https://nuget.org/nuget.exe;
+	wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe;
 fi
 
 mozroots --import --sync

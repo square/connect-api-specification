@@ -22,7 +22,7 @@ public class CompleteResponse<T> {
     }
 
     public String getBatchToken() {
-        Link link = this.response.getLink("next");
+        Link link = this.response.getLink("'next'");
 
         if (link != null) {
             MultivaluedMap<String, String> parameters = UriComponent.decodeQuery(link.getUri(), true);

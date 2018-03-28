@@ -1,6 +1,6 @@
 {
   "packagePath": "SquareConnect",
-  "artifactVersion": "2.5.1",
+  "artifactVersion": "2.6.0",
   "invokerPackage": "SquareConnect",
   "modelPackage": "Model",
   "apiPackage": "Api",

@@ -62,9 +62,11 @@ Please follow the [installation procedure](#installation--usage):
 ```php
 require 'vendor/autoload.php';
 
+$access_token = 'YOUR_ACCESS_TOKEN';
 # setup authorization
 \SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
-# create an instance of the Location API $locations_api = new \SquareConnect\Api\LocationsApi();
+# create an instance of the Location API
+$locations_api = new \SquareConnect\Api\LocationsApi();
 
 try {
   $locations = $locations_api->listLocations();
@@ -83,7 +85,7 @@ try {
 ```php
 require 'vendor/autoload.php';
 
-
+$access_token = 'YOUR_ACCESS_TOKEN';
 # setup authorization
 \SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken($access_token);
 # create an instance of the Transaction API class
@@ -143,7 +145,7 @@ Class | Method | HTTP request | Description
 {{#isOAuth}}- **Type**: OAuth
 - **Flow**: {{{flow}}}
 - **Authorization URL**: `{{{authorizationUrl}}}`
-- **Scopes**: {{^scopes}}N/A{{/scopes}}
+- **Scopes**:{{^scopes}} N/A{{/scopes}}
 {{#scopes}} - **{{{scope}}}**: {{{description}}}
 {{/scopes}}
 {{/isOAuth}}
