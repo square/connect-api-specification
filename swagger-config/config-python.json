@@ -1,6 +1,6 @@
 {
   "packageName": "squareconnect",
-  "packageVersion": "2.5.1",
+  "packageVersion": "2.6.0",
   "httpUserAgent": "Square-Connect-Python/2.5.1",
   "gitUserId": "square",
   "gitRepoId": "connect-python-sdk"
