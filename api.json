@@ -61,144 +61,6 @@
     }
   },
   "paths": {
-    "/v2/locations/{location_id}/additional-recipient-receivables": {
-      "get": {
-        "tags": [
-          "Reporting"
-        ],
-        "summary": "ListAdditionalRecipientReceivables",
-        "operationId": "ListAdditionalRecipientReceivables",
-        "description": "Returns a list of receivables (across all possible sending locations) representing monies credited\nto the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
-        "x-oauthpermissions": [
-          "PAYMENTS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to list AdditionalRecipientReceivables for.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "begin_time",
-            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "end_time",
-            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "sort_order",
-            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/ListAdditionalRecipientReceivablesResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/additional-recipient-receivable-refunds": {
-      "get": {
-        "tags": [
-          "Reporting"
-        ],
-        "summary": "ListAdditionalRecipientReceivableRefunds",
-        "operationId": "ListAdditionalRecipientReceivableRefunds",
-        "description": "Returns a list of refunded transactions (across all possible originating locations) relating to monies\ncredited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
-        "x-oauthpermissions": [
-          "PAYMENTS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to list AdditionalRecipientReceivableRefunds for.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "begin_time",
-            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "end_time",
-            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "sort_order",
-            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/ListAdditionalRecipientReceivableRefundsResponse"
-            }
-          }
-        }
-      }
-    },
     "/v2/apple-pay/domains": {
       "post": {
         "tags": [
@@ -234,39 +96,32 @@
         }
       }
     },
-    "/v2/locations/{location_id}/orders": {
+    "/v2/catalog/batch-delete": {
       "post": {
         "tags": [
-          "Orders"
+          "Catalog"
         ],
-        "summary": "CreateOrder",
-        "operationId": "CreateOrder",
-        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-api-overview).",
+        "summary": "BatchDeleteCatalogObjects",
+        "operationId": "BatchDeleteCatalogObjects",
+        "description": "Deletes a set of [CatalogItem](#type-catalogitem)s based on the\nprovided list of target IDs and returns a set of successfully deleted IDs in\nthe response. Deletion is a cascading event such that all children of the\ntargeted object are also deleted. For example, deleting a CatalogItem will\nalso delete all of its [CatalogItemVariation](#type-catalogitemvariation)\nchildren.\n\n`BatchDeleteCatalogObjects` succeeds even if only a portion of the targeted\nIDs can be deleted. The response will only include IDs that were\nactually deleted.",
         "x-oauthpermissions": [
-          "ORDERS_WRITE"
+          "ITEMS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "ORDERS_WRITE"
+              "ITEMS_WRITE"
             ]
           }
         ],
         "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the business location to associate the order with.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
           {
             "name": "body",
             "in": "body",
             "required": true,
             "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
             "schema": {
-              "$ref": "#/definitions/CreateOrderRequest"
+              "$ref": "#/definitions/BatchDeleteCatalogObjectsRequest"
             }
           }
         ],
@@ -274,45 +129,38 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/CreateOrderResponse"
+              "$ref": "#/definitions/BatchDeleteCatalogObjectsResponse"
             }
           }
         }
       }
     },
-    "/v2/locations/{location_id}/orders/batch-retrieve": {
+    "/v2/catalog/batch-retrieve": {
       "post": {
         "tags": [
-          "Orders"
+          "Catalog"
         ],
-        "summary": "BatchRetrieveOrders",
-        "operationId": "BatchRetrieveOrders",
-        "description": "Retrieves a set of [Order](#type-order)s by their IDs. Only orders that have been\nsuccessfully charged are included in the response.\n\nIf any of the order IDs in the request do not exist, or are associated with uncharged orders,\nthen those orders will not be included in the set of orders in the response.\n\nNote that in the future, uncharged orders may be returned by this endpoint.",
+        "summary": "BatchRetrieveCatalogObjects",
+        "operationId": "BatchRetrieveCatalogObjects",
+        "description": "Returns a set of objects based on the provided ID.\nEach [CatalogItem](#type-catalogitem) returned in the set includes all of its\nchild information including: all of its\n[CatalogItemVariation](#type-catalogitemvariation) objects, references to\nits [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
         "x-oauthpermissions": [
-          "ORDERS_READ"
+          "ITEMS_READ"
         ],
         "security": [
           {
             "oauth2": [
-              "ORDERS_READ"
+              "ITEMS_READ"
             ]
           }
         ],
         "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the orders\u0027 associated location.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
           {
             "name": "body",
             "in": "body",
             "required": true,
             "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
             "schema": {
-              "$ref": "#/definitions/BatchRetrieveOrdersRequest"
+              "$ref": "#/definitions/BatchRetrieveCatalogObjectsRequest"
             }
           }
         ],
@@ -320,45 +168,38 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/BatchRetrieveOrdersResponse"
+              "$ref": "#/definitions/BatchRetrieveCatalogObjectsResponse"
             }
           }
         }
       }
     },
-    "/v2/locations/{location_id}/transactions": {
+    "/v2/catalog/batch-upsert": {
       "post": {
         "tags": [
-          "Transactions"
+          "Catalog"
         ],
-        "summary": "Charge",
-        "operationId": "Charge",
-        "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nIn order for an e-commerce payment to potentially qualify for\n[Square chargeback protection](https://squareup.com/help/article/5394), you\n_must_ provide values for the following parameters in your request:\n\n- `buyer_email_address`\n- At least one of `billing_address` or `shipping_address`\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
+        "summary": "BatchUpsertCatalogObjects",
+        "operationId": "BatchUpsertCatalogObjects",
+        "description": "Creates or updates up to 10,000 target objects based on the provided\nlist of objects. The target objects are grouped into batches and each batch is\ninserted/updated in an all-or-nothing manner. If an object within a batch is\nmalformed in some way, or violates a database constraint, the entire batch\ncontaining that item will be disregarded. However, other batches in the same\nrequest may still succeed. Each batch may contain up to 1,000 objects, and\nbatches will be processed in order as long as the total object count for the\nrequest (items, variations, modifier lists, discounts, and taxes) is no more\nthan 10,000.",
         "x-oauthpermissions": [
-          "PAYMENTS_WRITE"
+          "ITEMS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "PAYMENTS_WRITE"
+              "ITEMS_WRITE"
             ]
           }
         ],
         "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to associate the created transaction with.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
           {
             "name": "body",
             "in": "body",
             "required": true,
             "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
             "schema": {
-              "$ref": "#/definitions/ChargeRequest"
+              "$ref": "#/definitions/BatchUpsertCatalogObjectsRequest"
             }
           }
         ],
@@ -366,216 +207,27 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ChargeResponse"
+              "$ref": "#/definitions/BatchUpsertCatalogObjectsResponse"
             }
           }
         }
-      },
+      }
+    },
+    "/v2/catalog/info": {
       "get": {
         "tags": [
-          "Transactions"
+          "Catalog"
         ],
-        "summary": "ListTransactions",
-        "operationId": "ListTransactions",
-        "description": "Lists transactions for a particular location.\n\nMax results per [page](#paginatingresults): 50",
+        "summary": "CatalogInfo",
+        "operationId": "CatalogInfo",
+        "description": "Returns information about the Square Catalog API, such as batch size\nlimits for `BatchUpsertCatalogObjects`.",
         "x-oauthpermissions": [
-          "PAYMENTS_READ"
+          "ITEMS_READ"
         ],
         "security": [
           {
             "oauth2": [
-              "PAYMENTS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to list transactions for.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "begin_time",
-            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "end_time",
-            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "sort_order",
-            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/ListTransactionsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/transactions/{transaction_id}/refund": {
-      "post": {
-        "tags": [
-          "Transactions"
-        ],
-        "summary": "CreateRefund",
-        "operationId": "CreateRefund",
-        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.",
-        "x-oauthpermissions": [
-          "PAYMENTS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the original transaction\u0027s associated location.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "transaction_id",
-            "description": "The ID of the original transaction that includes the tender to refund.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/CreateRefundRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/CreateRefundResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/refunds": {
-      "get": {
-        "tags": [
-          "Transactions"
-        ],
-        "summary": "ListRefunds",
-        "operationId": "ListRefunds",
-        "description": "Lists refunds for one of a business\u0027s locations.\n\nRefunds with a `status` of `PENDING` are not currently included in this\nendpoint\u0027s response.\n\nMax results per [page](#paginatingresults): 50",
-        "x-oauthpermissions": [
-          "PAYMENTS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to list refunds for.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "begin_time",
-            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "end_time",
-            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "sort_order",
-            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
-            "type": "string",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/ListRefundsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations": {
-      "get": {
-        "tags": [
-          "Locations"
-        ],
-        "summary": "ListLocations",
-        "operationId": "ListLocations",
-        "description": "Provides the details for all of a business\u0027s locations.\n\nMost other Connect API endpoints have a required `location_id` path parameter.\nThe `id` field of the [`Location`](#type-location) objects returned by this\nendpoint correspond to that `location_id` parameter.",
-        "x-oauthpermissions": [
-          "MERCHANT_PROFILE_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "MERCHANT_PROFILE_READ"
+              "ITEMS_READ"
             ]
           }
         ],
@@ -584,13 +236,327 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ListLocationsResponse"
+              "$ref": "#/definitions/CatalogInfoResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/list": {
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "ListCatalog",
+        "operationId": "ListCatalog",
+        "description": "Returns a list of [CatalogObject](#type-catalogobject)s that includes\nall objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)\nand [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter\nis specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:\n`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`.",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "The pagination cursor returned in the previous response. Leave unset for an initial request.\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "types",
+            "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`,\n`\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListCatalogResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/object": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "UpsertCatalogObject",
+        "operationId": "UpsertCatalogObject",
+        "description": "Creates or updates the target [CatalogObject](#type-catalogobject).",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpsertCatalogObjectRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpsertCatalogObjectResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/object/{object_id}": {
+      "delete": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "DeleteCatalogObject",
+        "operationId": "DeleteCatalogObject",
+        "description": "Deletes a single [CatalogObject](#type-catalogobject) based on the\nprovided ID and returns the set of successfully deleted IDs in the response.\nDeletion is a cascading event such that all children of the targeted object\nare also deleted. For example, deleting a [CatalogItem](#type-catalogitem)\nwill also delete all of its\n[CatalogItemVariation](#type-catalogitemvariation) children.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "object_id",
+            "description": "The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other\nobjects in the graph that depend on that object will be deleted as well (for example, deleting a\n[CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeleteCatalogObjectResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "RetrieveCatalogObject",
+        "operationId": "RetrieveCatalogObject",
+        "description": "Returns a single [CatalogItem](#type-catalogitem) as a\n[CatalogObject](#type-catalogobject) based on the provided ID. The returned\nobject includes all of the relevant [CatalogItem](#type-catalogitem)\ninformation including: [CatalogItemVariation](#type-catalogitemvariation)\nchildren, references to its\n[CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "object_id",
+            "description": "The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "include_related_objects",
+            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.\n\nDefault value: `false`",
+            "type": "boolean",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveCatalogObjectResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/search": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "SearchCatalogObjects",
+        "operationId": "SearchCatalogObjects",
+        "description": "Queries the targeted catalog using a variety of query types:\n[CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n[CatalogQueryExact](#type-catalogqueryexact),\n[CatalogQueryRange](#type-catalogqueryrange),\n[CatalogQueryText](#type-catalogquerytext),\n[CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), and\n[CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist).",
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchCatalogObjectsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchCatalogObjectsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/update-item-modifier-lists": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "UpdateItemModifierLists",
+        "operationId": "UpdateItemModifierLists",
+        "description": "Updates the [CatalogModifierList](#type-catalogmodifierlist) objects\nthat apply to the targeted [CatalogItem](#type-catalogitem) without having\nto perform an upsert on the entire item.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemModifierListsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemModifierListsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/catalog/update-item-taxes": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "UpdateItemTaxes",
+        "operationId": "UpdateItemTaxes",
+        "description": "Updates the [CatalogTax](#type-catalogtax) objects that apply to the\ntargeted [CatalogItem](#type-catalogitem) without having to perform an\nupsert on the entire item.",
+        "x-oauthpermissions": [
+          "ITEMS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemTaxesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateItemTaxesResponse"
             }
           }
         }
       }
     },
     "/v2/customers": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "ListCustomers",
+        "operationId": "ListCustomers",
+        "description": "Lists a business\u0027s customers.",
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListCustomersResponse"
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Customers"
@@ -627,14 +593,51 @@
             }
           }
         }
+      }
+    },
+    "/v2/customers/{customer_id}": {
+      "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "DeleteCustomer",
+        "operationId": "DeleteCustomer",
+        "description": "Deletes a customer from a business, along with any linked cards on file.",
+        "x-oauthpermissions": [
+          "CUSTOMERS_WRITE"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "The ID of the customer to delete.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeleteCustomerResponse"
+            }
+          }
+        }
       },
       "get": {
         "tags": [
           "Customers"
         ],
-        "summary": "ListCustomers",
-        "operationId": "ListCustomers",
-        "description": "Lists a business\u0027s customers.",
+        "summary": "RetrieveCustomer",
+        "operationId": "RetrieveCustomer",
+        "description": "Returns details for a single customer.",
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
@@ -647,24 +650,22 @@
         ],
         "parameters": [
           {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "name": "customer_id",
+            "description": "The ID of the customer to retrieve.",
             "type": "string",
-            "in": "query",
-            "required": false
+            "in": "path",
+            "required": true
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ListCustomersResponse"
+              "$ref": "#/definitions/RetrieveCustomerResponse"
             }
           }
         }
-      }
-    },
-    "/v2/customers/{customer_id}": {
+      },
       "put": {
         "tags": [
           "Customers"
@@ -705,76 +706,6 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/UpdateCustomerResponse"
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Customers"
-        ],
-        "summary": "RetrieveCustomer",
-        "operationId": "RetrieveCustomer",
-        "description": "Returns details for a single customer.",
-        "x-oauthpermissions": [
-          "CUSTOMERS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "CUSTOMERS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "customer_id",
-            "description": "The ID of the customer to retrieve.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/RetrieveCustomerResponse"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Customers"
-        ],
-        "summary": "DeleteCustomer",
-        "operationId": "DeleteCustomer",
-        "description": "Deletes a customer from a business, along with any linked cards on file.",
-        "x-oauthpermissions": [
-          "CUSTOMERS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "CUSTOMERS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "customer_id",
-            "description": "The ID of the customer to delete.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/DeleteCustomerResponse"
             }
           }
         }
@@ -870,102 +801,43 @@
         }
       }
     },
-    "/v2/locations/{location_id}/transactions/{transaction_id}/capture": {
-      "post": {
-        "tags": [
-          "Transactions"
-        ],
-        "summary": "CaptureTransaction",
-        "operationId": "CaptureTransaction",
-        "description": "Captures a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/articles/delayed-capture-transactions/)\nfor more information.",
-        "x-oauthpermissions": [
-          "PAYMENTS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "transaction_id",
-            "description": "",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/CaptureTransactionResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/transactions/{transaction_id}/void": {
-      "post": {
-        "tags": [
-          "Transactions"
-        ],
-        "summary": "VoidTransaction",
-        "operationId": "VoidTransaction",
-        "description": "Cancels a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/articles/delayed-capture-transactions/)\nfor more information.",
-        "x-oauthpermissions": [
-          "PAYMENTS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "transaction_id",
-            "description": "",
-            "type": "string",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/VoidTransactionResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/transactions/{transaction_id}": {
+    "/v2/locations": {
       "get": {
         "tags": [
-          "Transactions"
+          "Locations"
         ],
-        "summary": "RetrieveTransaction",
-        "operationId": "RetrieveTransaction",
-        "description": "Retrieves details for a single transaction.",
+        "summary": "ListLocations",
+        "operationId": "ListLocations",
+        "description": "Provides the details for all of a business\u0027s locations.\n\nMost other Connect API endpoints have a required `location_id` path parameter.\nThe `id` field of the [`Location`](#type-location) objects returned by this\nendpoint correspond to that `location_id` parameter.",
+        "x-oauthpermissions": [
+          "MERCHANT_PROFILE_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "MERCHANT_PROFILE_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListLocationsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/additional-recipient-receivable-refunds": {
+      "get": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "ListAdditionalRecipientReceivableRefunds",
+        "operationId": "ListAdditionalRecipientReceivableRefunds",
+        "description": "Returns a list of refunded transactions (across all possible originating locations) relating to monies\ncredited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
@@ -979,24 +851,118 @@
         "parameters": [
           {
             "name": "location_id",
-            "description": "The ID of the transaction\u0027s associated location.",
+            "description": "The ID of the location to list AdditionalRecipientReceivableRefunds for.",
             "type": "string",
             "in": "path",
             "required": true
           },
           {
-            "name": "transaction_id",
-            "description": "The ID of the transaction to retrieve.",
+            "name": "begin_time",
+            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
             "type": "string",
-            "in": "path",
-            "required": true
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "end_time",
+            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RetrieveTransactionResponse"
+              "$ref": "#/definitions/ListAdditionalRecipientReceivableRefundsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/additional-recipient-receivables": {
+      "get": {
+        "tags": [
+          "Reporting"
+        ],
+        "summary": "ListAdditionalRecipientReceivables",
+        "operationId": "ListAdditionalRecipientReceivables",
+        "description": "Returns a list of receivables (across all possible sending locations) representing monies credited\nto the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the location to list AdditionalRecipientReceivables for.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "begin_time",
+            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "end_time",
+            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListAdditionalRecipientReceivablesResponse"
             }
           }
         }
@@ -1050,36 +1016,153 @@
         }
       }
     },
-    "/v2/catalog/object/{object_id}": {
-      "get": {
+    "/v2/locations/{location_id}/orders": {
+      "post": {
         "tags": [
-          "Catalog"
+          "Orders"
         ],
-        "summary": "RetrieveCatalogObject",
-        "operationId": "RetrieveCatalogObject",
-        "description": "Returns a single [CatalogItem](#type-catalogitem) as a\n[CatalogObject](#type-catalogobject) based on the provided ID. The returned\nobject includes all of the relevant [CatalogItem](#type-catalogitem)\ninformation including: [CatalogItemVariation](#type-catalogitemvariation)\nchildren, references to its\n[CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "summary": "CreateOrder",
+        "operationId": "CreateOrder",
+        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-api-overview).",
         "x-oauthpermissions": [
-          "ITEMS_READ"
+          "ORDERS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "ITEMS_READ"
+              "ORDERS_WRITE"
             ]
           }
         ],
         "parameters": [
           {
-            "name": "object_id",
-            "description": "The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.",
+            "name": "location_id",
+            "description": "The ID of the business location to associate the order with.",
             "type": "string",
             "in": "path",
             "required": true
           },
           {
-            "name": "include_related_objects",
-            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.\n\nDefault value: `false`",
-            "type": "boolean",
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/orders/batch-retrieve": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "BatchRetrieveOrders",
+        "operationId": "BatchRetrieveOrders",
+        "description": "Retrieves a set of [Order](#type-order)s by their IDs.\n\nIf a given Order ID does not exist, the ID is ignored instead of generating an error.",
+        "x-oauthpermissions": [
+          "ORDERS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the orders\u0027 associated location.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveOrdersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveOrdersResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/refunds": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "ListRefunds",
+        "operationId": "ListRefunds",
+        "description": "Lists refunds for one of a business\u0027s locations.\n\nRefunds with a `status` of `PENDING` are not currently included in this\nendpoint\u0027s response.\n\nMax results per [page](#paginatingresults): 50",
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the location to list refunds for.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "begin_time",
+            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "end_time",
+            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
             "in": "query",
             "required": false
           }
@@ -1088,32 +1171,154 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/RetrieveCatalogObjectResponse"
+              "$ref": "#/definitions/ListRefundsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/transactions": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "ListTransactions",
+        "operationId": "ListTransactions",
+        "description": "Lists transactions for a particular location.\n\nMax results per [page](#paginatingresults): 50",
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the location to list transactions for.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "begin_time",
+            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "end_time",
+            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListTransactionsResponse"
             }
           }
         }
       },
-      "delete": {
+      "post": {
         "tags": [
-          "Catalog"
+          "Transactions"
         ],
-        "summary": "DeleteCatalogObject",
-        "operationId": "DeleteCatalogObject",
-        "description": "Deletes a single [CatalogObject](#type-catalogobject) based on the\nprovided ID and returns the set of successfully deleted IDs in the response.\nDeletion is a cascading event such that all children of the targeted object\nare also deleted. For example, deleting a [CatalogItem](#type-catalogitem)\nwill also delete all of its\n[CatalogItemVariation](#type-catalogitemvariation) children.",
+        "summary": "Charge",
+        "operationId": "Charge",
+        "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nIn order for an eCommerce payment to potentially qualify for\n[Square chargeback protection](https://squareup.com/help/article/5394), you\n_must_ provide values for the following parameters in your request:\n\n- `buyer_email_address`\n- At least one of `billing_address` or `shipping_address`\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
         "x-oauthpermissions": [
-          "ITEMS_WRITE"
+          "PAYMENTS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "ITEMS_WRITE"
+              "PAYMENTS_WRITE"
             ]
           }
         ],
         "parameters": [
           {
-            "name": "object_id",
-            "description": "The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other\nobjects in the graph that depend on that object will be deleted as well (for example, deleting a\n[CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).",
+            "name": "location_id",
+            "description": "The ID of the location to associate the created transaction with.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/ChargeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ChargeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/locations/{location_id}/transactions/{transaction_id}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "RetrieveTransaction",
+        "operationId": "RetrieveTransaction",
+        "description": "Retrieves details for a single transaction.",
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the transaction\u0027s associated location.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "transaction_id",
+            "description": "The ID of the transaction to retrieve.",
             "type": "string",
             "in": "path",
             "required": true
@@ -1123,121 +1328,96 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/DeleteCatalogObjectResponse"
+              "$ref": "#/definitions/RetrieveTransactionResponse"
             }
           }
         }
       }
     },
-    "/v2/catalog/object": {
+    "/v2/locations/{location_id}/transactions/{transaction_id}/capture": {
       "post": {
         "tags": [
-          "Catalog"
+          "Transactions"
         ],
-        "summary": "UpsertCatalogObject",
-        "operationId": "UpsertCatalogObject",
-        "description": "Creates or updates the target [CatalogObject](#type-catalogobject).",
+        "summary": "CaptureTransaction",
+        "operationId": "CaptureTransaction",
+        "description": "Captures a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/articles/delayed-capture-transactions/)\nfor more information.",
         "x-oauthpermissions": [
-          "ITEMS_WRITE"
+          "PAYMENTS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "ITEMS_WRITE"
+              "PAYMENTS_WRITE"
             ]
           }
         ],
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/UpsertCatalogObjectRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/UpsertCatalogObjectResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/catalog/list": {
-      "get": {
-        "tags": [
-          "Catalog"
-        ],
-        "summary": "ListCatalog",
-        "operationId": "ListCatalog",
-        "description": "Returns a list of [CatalogObject](#type-catalogobject)s that includes\nall objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)\nand [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter\nis specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:\n`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`.",
-        "x-oauthpermissions": [
-          "ITEMS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "ITEMS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "cursor",
-            "description": "The pagination cursor returned in the previous response. Leave unset for an initial request.\nSee [Paginating results](#paginatingresults) for more information.",
+            "name": "location_id",
+            "description": "",
             "type": "string",
-            "in": "query",
-            "required": false
+            "in": "path",
+            "required": true
           },
           {
-            "name": "types",
-            "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`,\n`\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.",
+            "name": "transaction_id",
+            "description": "",
             "type": "string",
-            "in": "query",
-            "required": false
+            "in": "path",
+            "required": true
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ListCatalogResponse"
+              "$ref": "#/definitions/CaptureTransactionResponse"
             }
           }
         }
       }
     },
-    "/v2/catalog/batch-upsert": {
+    "/v2/locations/{location_id}/transactions/{transaction_id}/refund": {
       "post": {
         "tags": [
-          "Catalog"
+          "Transactions"
         ],
-        "summary": "BatchUpsertCatalogObjects",
-        "operationId": "BatchUpsertCatalogObjects",
-        "description": "Creates or updates up to 10,000 target objects based on the provided\nlist of objects. The target objects are grouped into batches and each batch is\ninserted/updated in an all-or-nothing manner. If an object within a batch is\nmalformed in some way, or violates a database constraint, the entire batch\ncontaining that item will be disregarded. However, other batches in the same\nrequest may still succeed. Each batch may contain up to 1,000 objects, and\nbatches will be processed in order as long as the total object count for the\nrequest (items, variations, modifier lists, discounts, and taxes) is no more\nthan 10,000.",
+        "summary": "CreateRefund",
+        "operationId": "CreateRefund",
+        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.",
         "x-oauthpermissions": [
-          "ITEMS_WRITE"
+          "PAYMENTS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "ITEMS_WRITE"
+              "PAYMENTS_WRITE"
             ]
           }
         ],
         "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the original transaction\u0027s associated location.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "transaction_id",
+            "description": "The ID of the original transaction that includes the tender to refund.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
           {
             "name": "body",
             "in": "body",
             "required": true,
             "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
             "schema": {
-              "$ref": "#/definitions/BatchUpsertCatalogObjectsRequest"
+              "$ref": "#/definitions/CreateRefundRequest"
             }
           }
         ],
@@ -1245,231 +1425,51 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/BatchUpsertCatalogObjectsResponse"
+              "$ref": "#/definitions/CreateRefundResponse"
             }
           }
         }
       }
     },
-    "/v2/catalog/batch-retrieve": {
+    "/v2/locations/{location_id}/transactions/{transaction_id}/void": {
       "post": {
         "tags": [
-          "Catalog"
+          "Transactions"
         ],
-        "summary": "BatchRetrieveCatalogObjects",
-        "operationId": "BatchRetrieveCatalogObjects",
-        "description": "Returns a set of objects based on the provided ID.\nEach [CatalogItem](#type-catalogitem) returned in the set includes all of its\nchild information including: all of its\n[CatalogItemVariation](#type-catalogitemvariation) objects, references to\nits [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "summary": "VoidTransaction",
+        "operationId": "VoidTransaction",
+        "description": "Cancels a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/articles/delayed-capture-transactions/)\nfor more information.",
         "x-oauthpermissions": [
-          "ITEMS_READ"
+          "PAYMENTS_WRITE"
         ],
         "security": [
           {
             "oauth2": [
-              "ITEMS_READ"
+              "PAYMENTS_WRITE"
             ]
           }
         ],
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/BatchRetrieveCatalogObjectsRequest"
-            }
+            "name": "location_id",
+            "description": "",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "transaction_id",
+            "description": "",
+            "type": "string",
+            "in": "path",
+            "required": true
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/BatchRetrieveCatalogObjectsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/catalog/search": {
-      "post": {
-        "tags": [
-          "Catalog"
-        ],
-        "summary": "SearchCatalogObjects",
-        "operationId": "SearchCatalogObjects",
-        "description": "Queries the targeted catalog using a variety of query types:\n[CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n[CatalogQueryExact](#type-catalogqueryexact),\n[CatalogQueryRange](#type-catalogqueryrange),\n[CatalogQueryText](#type-catalogquerytext),\n[CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), and\n[CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist).",
-        "x-oauthpermissions": [
-          "ITEMS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "ITEMS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/SearchCatalogObjectsRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/SearchCatalogObjectsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/catalog/batch-delete": {
-      "post": {
-        "tags": [
-          "Catalog"
-        ],
-        "summary": "BatchDeleteCatalogObjects",
-        "operationId": "BatchDeleteCatalogObjects",
-        "description": "Deletes a set of [CatalogItem](#type-catalogitem)s based on the\nprovided list of target IDs and returns a set of successfully deleted IDs in\nthe response. Deletion is a cascading event such that all children of the\ntargeted object are also deleted. For example, deleting a CatalogItem will\nalso delete all of its [CatalogItemVariation](#type-catalogitemvariation)\nchildren.\n\n`BatchDeleteCatalogObjects` succeeds even if only a portion of the targeted\nIDs can be deleted. The response will only include IDs that were\nactually deleted.",
-        "x-oauthpermissions": [
-          "ITEMS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "ITEMS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/BatchDeleteCatalogObjectsRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/BatchDeleteCatalogObjectsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/catalog/update-item-taxes": {
-      "post": {
-        "tags": [
-          "Catalog"
-        ],
-        "summary": "UpdateItemTaxes",
-        "operationId": "UpdateItemTaxes",
-        "description": "Updates the [CatalogTax](#type-catalogtax) objects that apply to the\ntargeted [CatalogItem](#type-catalogitem) without having to perform an\nupsert on the entire item.",
-        "x-oauthpermissions": [
-          "ITEMS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "ITEMS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/UpdateItemTaxesRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/UpdateItemTaxesResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/catalog/update-item-modifier-lists": {
-      "post": {
-        "tags": [
-          "Catalog"
-        ],
-        "summary": "UpdateItemModifierLists",
-        "operationId": "UpdateItemModifierLists",
-        "description": "Updates the [CatalogModifierList](#type-catalogmodifierlist) objects\nthat apply to the targeted [CatalogItem](#type-catalogitem) without having\nto perform an upsert on the entire item.",
-        "x-oauthpermissions": [
-          "ITEMS_WRITE"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "ITEMS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/UpdateItemModifierListsRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/UpdateItemModifierListsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/catalog/info": {
-      "get": {
-        "tags": [
-          "Catalog"
-        ],
-        "summary": "CatalogInfo",
-        "operationId": "CatalogInfo",
-        "description": "Returns information about the Square Catalog API, such as batch size\nlimits for `BatchUpsertCatalogObjects`.",
-        "x-oauthpermissions": [
-          "ITEMS_READ"
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "ITEMS_READ"
-            ]
-          }
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/CatalogInfoResponse"
+              "$ref": "#/definitions/VoidTransactionResponse"
             }
           }
         }
@@ -5737,6 +5737,7 @@
         "REFUND_ALREADY_PENDING",
         "PAYMENT_NOT_REFUNDABLE",
         "INVALID_CARD_DATA",
+        "LOCATION_MISMATCH",
         "IDEMPOTENCY_KEY_REUSED",
         "UNEXPECTED_VALUE",
         "SANDBOX_NOT_SUPPORTED",
@@ -5754,7 +5755,8 @@
         "UNSUPPORTED_MEDIA_TYPE",
         "RATE_LIMITED",
         "NOT_IMPLEMENTED",
-        "SERVICE_UNAVAILABLE"
+        "SERVICE_UNAVAILABLE",
+        "GATEWAY_TIMEOUT"
       ],
       "description": "Indicates specific errors that can occur during a request to the\nConnect API."
     },
@@ -6352,7 +6354,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/batch-delete",
         "request_body": {
           "object_ids": [
             "W62UWFY35CWMYGVWK6TWJDNI",
@@ -6364,6 +6365,7 @@
         "python": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.python",
         "csharp": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.csharp",
         "php": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.javascript",
         "ruby": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.ruby"
       }
     },
@@ -6401,6 +6403,7 @@
         "python": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.python",
         "csharp": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.csharp",
         "php": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.javascript",
         "ruby": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.ruby"
       }
     },
@@ -6424,7 +6427,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/batch-retrieve",
         "request_body": {
           "object_ids": [
             "W62UWFY35CWMYGVWK6TWJDNI",
@@ -6437,6 +6439,7 @@
         "python": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.python",
         "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.csharp",
         "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.javascript",
         "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.ruby"
       }
     },
@@ -6592,6 +6595,7 @@
         "python": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.python",
         "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.csharp",
         "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.javascript",
         "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.ruby"
       }
     },
@@ -6612,7 +6616,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "/v2/locations/LOCATION_ID/orders",
         "request_body": {
           "order_ids": [
             "CAISEM82RcpmcFBM0TfOyiHV3es",
@@ -6624,6 +6627,7 @@
         "python": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.python",
         "csharp": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.csharp",
         "php": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.php",
+        "javascript": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.javascript",
         "ruby": "/sdk_samples/Orders/BatchRetrieveOrders/BatchRetrieveOrdersRequest.ruby"
       }
     },
@@ -6709,7 +6713,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/batch-upsert",
         "request_body": {
           "idempotency_key": "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
           "batches": [
@@ -6817,6 +6820,7 @@
         "python": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.python",
         "csharp": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.csharp",
         "php": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.javascript",
         "ruby": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.ruby"
       }
     },
@@ -7005,6 +7009,7 @@
         "python": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.python",
         "csharp": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.csharp",
         "php": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.javascript",
         "ruby": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.ruby"
       }
     },
@@ -7012,13 +7017,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/transactions/TRANSACTION_ID/capture"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/CaptureTransaction/CaptureTransactionRequest.python",
         "csharp": "/sdk_samples/CaptureTransaction/CaptureTransactionRequest.csharp",
         "php": "/sdk_samples/CaptureTransaction/CaptureTransactionRequest.php",
+        "javascript": "/sdk_samples/CaptureTransaction/CaptureTransactionRequest.javascript",
         "ruby": "/sdk_samples/CaptureTransaction/CaptureTransactionRequest.ruby"
       }
     },
@@ -7039,6 +7043,7 @@
         "python": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.python",
         "csharp": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.csharp",
         "php": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.php",
+        "javascript": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.javascript",
         "ruby": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.ruby"
       }
     },
@@ -7095,12 +7100,8 @@
     },
     "CatalogCategory": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
         "name": {
-          "minLength": 1,
           "type": "string",
           "description": "The category\u0027s name. Searchable."
         }
@@ -7119,12 +7120,8 @@
     },
     "CatalogDiscount": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
         "name": {
-          "minLength": 1,
           "type": "string",
           "description": "The discount\u0027s name. Searchable."
         },
@@ -7189,13 +7186,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/info"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.python",
         "csharp": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.csharp",
         "php": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.php",
+        "javascript": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.javascript",
         "ruby": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.ruby"
       }
     },
@@ -7234,6 +7230,7 @@
         "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.python",
         "csharp": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.csharp",
         "php": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.php",
+        "javascript": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.javascript",
         "ruby": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.ruby"
       }
     },
@@ -7289,12 +7286,8 @@
     },
     "CatalogItem": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
         "name": {
-          "minLength": 1,
           "type": "string",
           "description": "The item\u0027s name. Searchable."
         },
@@ -7432,7 +7425,7 @@
         },
         "upc": {
           "type": "string",
-          "description": "The item variation\u0027s UPC, if any. Searchable."
+          "description": "The item variation\u0027s UPC, if any. Searchable in the Connect API.\nThis field is only exposed in the Connect API. It is not exposed in Square\u0027s Dashboard,\nSquare Point of Sale app or Retail Point of Sale app."
         },
         "ordinal": {
           "type": "integer",
@@ -7503,12 +7496,8 @@
     },
     "CatalogModifier": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
         "name": {
-          "minLength": 1,
           "type": "string",
           "description": "The modifier\u0027s name. Searchable."
         },
@@ -7534,12 +7523,8 @@
     },
     "CatalogModifierList": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
         "name": {
-          "minLength": 1,
           "type": "string",
           "description": "The [CatalogModifierList](#type-catalogmodifierlist)\u0027s name. Searchable."
         },
@@ -7933,12 +7918,8 @@
     },
     "CatalogTax": {
       "type": "object",
-      "required": [
-        "name"
-      ],
       "properties": {
         "name": {
-          "minLength": 1,
           "type": "string",
           "description": "The tax\u0027s name. Searchable."
         },
@@ -8075,7 +8056,6 @@
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [Charge](#endpoint-charge) endpoint.",
       "example": {
-        "request_url": "/v2/locations/LOCATION_ID/transactions",
         "request_body": {
           "idempotency_key": "74ae1696-b1e3-4328-af6d-f1e04d947a13",
           "shipping_address": {
@@ -8117,6 +8097,7 @@
         "python": "/sdk_samples/Charge/ChargeRequest.python",
         "csharp": "/sdk_samples/Charge/ChargeRequest.csharp",
         "php": "/sdk_samples/Charge/ChargeRequest.php",
+        "javascript": "/sdk_samples/Charge/ChargeRequest.javascript",
         "ruby": "/sdk_samples/Charge/ChargeRequest.ruby"
       }
     },
@@ -8209,6 +8190,7 @@
         "python": "/sdk_samples/Charge/ChargeResponse.python",
         "csharp": "/sdk_samples/Charge/ChargeResponse.csharp",
         "php": "/sdk_samples/Charge/ChargeResponse.php",
+        "javascript": "/sdk_samples/Charge/ChargeResponse.javascript",
         "ruby": "/sdk_samples/Charge/ChargeResponse.ruby"
       }
     },
@@ -8311,7 +8293,6 @@
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
       "example": {
-        "request_url": "/v2/locations/LOCATION_ID/checkouts",
         "request_body": {
           "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
           "order": {
@@ -8420,6 +8401,7 @@
         "python": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.python",
         "csharp": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.csharp",
         "php": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.php",
+        "javascript": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.javascript",
         "ruby": "/sdk_samples/CreateCheckout/CreateCheckoutRequest.ruby"
       }
     },
@@ -8723,7 +8705,6 @@
       },
       "description": "Defines the fields that are included in the request body of a request\nto the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
       "example": {
-        "request_url": "/v2/customers/CUSTOMER_ID/cards",
         "request_body": {
           "card_nonce": "YOUR_CARD_NONCE",
           "billing_address": {
@@ -8741,6 +8722,7 @@
         "python": "/sdk_samples/CreateCustomerCard/CreateCustomerCardRequest.python",
         "csharp": "/sdk_samples/CreateCustomerCard/CreateCustomerCardRequest.csharp",
         "php": "/sdk_samples/CreateCustomerCard/CreateCustomerCardRequest.php",
+        "javascript": "/sdk_samples/CreateCustomerCard/CreateCustomerCardRequest.javascript",
         "ruby": "/sdk_samples/CreateCustomerCard/CreateCustomerCardRequest.ruby"
       }
     },
@@ -8782,6 +8764,7 @@
         "python": "/sdk_samples/CreateCustomerCard/CreateCustomerCardResponse.python",
         "csharp": "/sdk_samples/CreateCustomerCard/CreateCustomerCardResponse.csharp",
         "php": "/sdk_samples/CreateCustomerCard/CreateCustomerCardResponse.php",
+        "javascript": "/sdk_samples/CreateCustomerCard/CreateCustomerCardResponse.javascript",
         "ruby": "/sdk_samples/CreateCustomerCard/CreateCustomerCardResponse.ruby"
       }
     },
@@ -8827,7 +8810,6 @@
       },
       "description": "Defines the body parameters that can be provided in a request to the\n[CreateCustomer](#endpoint-createcustomer) endpoint.",
       "example": {
-        "request_url": "/v2/customers",
         "request_body": {
           "given_name": "Amelia",
           "family_name": "Earhart",
@@ -8849,6 +8831,7 @@
         "python": "/sdk_samples/CreateCustomer/CreateCustomerRequest.python",
         "csharp": "/sdk_samples/CreateCustomer/CreateCustomerRequest.csharp",
         "php": "/sdk_samples/CreateCustomer/CreateCustomerRequest.php",
+        "javascript": "/sdk_samples/CreateCustomer/CreateCustomerRequest.javascript",
         "ruby": "/sdk_samples/CreateCustomer/CreateCustomerRequest.ruby"
       }
     },
@@ -8893,6 +8876,7 @@
         "python": "/sdk_samples/CreateCustomer/CreateCustomerResponse.python",
         "csharp": "/sdk_samples/CreateCustomer/CreateCustomerResponse.csharp",
         "php": "/sdk_samples/CreateCustomer/CreateCustomerResponse.php",
+        "javascript": "/sdk_samples/CreateCustomer/CreateCustomerResponse.javascript",
         "ruby": "/sdk_samples/CreateCustomer/CreateCustomerResponse.ruby"
       }
     },
@@ -8936,7 +8920,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "/v2/locations/LOCATION_ID/orders",
         "request_body": {
           "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
           "reference_id": "my-order-001",
@@ -8989,6 +8972,7 @@
         "python": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.python",
         "csharp": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.csharp",
         "php": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.php",
+        "javascript": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.javascript",
         "ruby": "/sdk_samples/Orders/CreateOrder/CreateOrderRequest.ruby"
       }
     },
@@ -8998,7 +8982,7 @@
         "catalog_object_id": {
           "maxLength": 192,
           "type": "string",
-          "description": "Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).\n\nDo not provide a value for this field if you provide values in other fields for an ad hoc discount."
+          "description": "Only used for catalog discounts.\nThe catalog object ID for an existing [CatalogDiscount](#type-catalogdiscount).\n\nDo not provide a value for this field if you provide values in other fields for an ad hoc discount."
         },
         "name": {
           "maxLength": 255,
@@ -9026,7 +9010,7 @@
         "name": {
           "maxLength": 500,
           "type": "string",
-          "description": "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.\n\nDo not provide a value for this field if you provide values in catalog_object_id."
+          "description": "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.\n\nDo not provide a value for this field if you provide a value for `catalog_object_id`."
         },
         "quantity": {
           "minLength": 1,
@@ -9036,7 +9020,7 @@
         },
         "base_price_money": {
           "$ref": "#/definitions/Money",
-          "description": "Only used for ad hoc line items. The base price for a single unit of the line item\u0027s associated variation.\n\nDo not provide a value for this field if you provide a value for the `catalog_object_id`."
+          "description": "The base price for a single unit of the line item.\n\n`base_price_money` is required for ad hoc line items and variable priced [CatalogItemVariation](#type-catalogitemvariation)s.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation\u0027s price."
         },
         "variation_name": {
           "maxLength": 255,
@@ -9051,7 +9035,7 @@
         "catalog_object_id": {
           "maxLength": 192,
           "type": "string",
-          "description": "Only used for Catalog line items.\nThe catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).\n\nDo not provide a value for this field if you provide a value for `name` and `base_price_money`."
+          "description": "Only used for Catalog line items.\nThe catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).\n\nDo not provide a value for this field if you provide a value for `name` and `base_price_money`."
         },
         "modifiers": {
           "type": "array",
@@ -9079,18 +9063,23 @@
     },
     "CreateOrderRequestModifier": {
       "type": "object",
-      "required": [
-        "catalog_object_id"
-      ],
       "properties": {
         "catalog_object_id": {
-          "minLength": 1,
           "maxLength": 192,
           "type": "string",
           "description": "The catalog object ID of a [CatalogModifier](#type-catalogmodifier)."
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "Only used for ad hoc modifiers. The name of the modifier. `name` cannot exceed 255 characters.\n\nDo not provide a value for `name` if you provide a value for `catalog_object_id`."
+        },
+        "base_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Only used for ad hoc modifiers. The base price for the modifier.\n\nDo not provide a value for `base_price_money` if you provide a value for `catalog_object_id`."
         }
       },
-      "description": "Represents a modifier applied to a single line item."
+      "description": "Represents a modifier applied to a single line item.\n\nModifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price."
     },
     "CreateOrderRequestTax": {
       "type": "object",
@@ -9103,7 +9092,7 @@
         "name": {
           "maxLength": 255,
           "type": "string",
-          "description": "Only used for ad hoc taxes. The tax\u0027s name.\n\nDo not provide a value for this field if you set catalog_object_id."
+          "description": "Only used for ad hoc taxes. The tax\u0027s name.\n\nDo not provide a value for this field if you set `catalog_object_id`."
         },
         "type": {
           "type": "string",
@@ -9336,7 +9325,6 @@
       },
       "description": "Defines the body parameters that can be included in\na request to the [CreateRefund](#endpoint-createrefund) endpoint.",
       "example": {
-        "request_url": "/v2/locations/LOCATION_ID/transactions/TRANSACTION_ID/refund",
         "request_body": {
           "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad2",
           "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
@@ -9351,6 +9339,7 @@
         "python": "/sdk_samples/CreateRefund/CreateRefundRequest.python",
         "csharp": "/sdk_samples/CreateRefund/CreateRefundRequest.csharp",
         "php": "/sdk_samples/CreateRefund/CreateRefundRequest.php",
+        "javascript": "/sdk_samples/CreateRefund/CreateRefundRequest.javascript",
         "ruby": "/sdk_samples/CreateRefund/CreateRefundRequest.ruby"
       }
     },
@@ -9400,6 +9389,7 @@
         "python": "/sdk_samples/CreateRefund/CreateRefundResponse.python",
         "csharp": "/sdk_samples/CreateRefund/CreateRefundResponse.csharp",
         "php": "/sdk_samples/CreateRefund/CreateRefundResponse.php",
+        "javascript": "/sdk_samples/CreateRefund/CreateRefundResponse.javascript",
         "ruby": "/sdk_samples/CreateRefund/CreateRefundResponse.ruby"
       }
     },
@@ -9512,13 +9502,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/object/7SB3ZQYJ5GDMVFL7JK46JCHT"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.python",
         "csharp": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.csharp",
         "php": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.php",
+        "javascript": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.javascript",
         "ruby": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.ruby"
       }
     },
@@ -9556,6 +9545,7 @@
         "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.python",
         "csharp": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.csharp",
         "php": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.php",
+        "javascript": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.javascript",
         "ruby": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.ruby"
       }
     },
@@ -9563,13 +9553,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/customers/CUSTOMER_ID"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardRequest.python",
         "csharp": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardRequest.csharp",
         "php": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardRequest.php",
+        "javascript": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardRequest.javascript",
         "ruby": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardRequest.ruby"
       }
     },
@@ -9590,6 +9579,7 @@
         "python": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.python",
         "csharp": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.csharp",
         "php": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.php",
+        "javascript": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.javascript",
         "ruby": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.ruby"
       }
     },
@@ -9597,13 +9587,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/customers/CUSTOMER_ID"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/DeleteCustomer/DeleteCustomerRequest.python",
         "csharp": "/sdk_samples/DeleteCustomer/DeleteCustomerRequest.csharp",
         "php": "/sdk_samples/DeleteCustomer/DeleteCustomerRequest.php",
+        "javascript": "/sdk_samples/DeleteCustomer/DeleteCustomerRequest.javascript",
         "ruby": "/sdk_samples/DeleteCustomer/DeleteCustomerRequest.ruby"
       }
     },
@@ -9624,6 +9613,7 @@
         "python": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.python",
         "csharp": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.csharp",
         "php": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.php",
+        "javascript": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.javascript",
         "ruby": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.ruby"
       }
     },
@@ -9711,6 +9701,7 @@
             "REFUND_ALREADY_PENDING",
             "PAYMENT_NOT_REFUNDABLE",
             "INVALID_CARD_DATA",
+            "LOCATION_MISMATCH",
             "IDEMPOTENCY_KEY_REUSED",
             "UNEXPECTED_VALUE",
             "SANDBOX_NOT_SUPPORTED",
@@ -9728,7 +9719,8 @@
             "UNSUPPORTED_MEDIA_TYPE",
             "RATE_LIMITED",
             "NOT_IMPLEMENTED",
-            "SERVICE_UNAVAILABLE"
+            "SERVICE_UNAVAILABLE",
+            "GATEWAY_TIMEOUT"
           ],
           "description": "The error\u0027s specific code. See [ErrorCode](#type-errorcode) for possible\nvalues"
         },
@@ -9808,12 +9800,13 @@
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/additional-recipient-receivable-refunds?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
+        "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.python",
         "csharp": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.csharp",
         "php": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.php",
+        "javascript": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.javascript",
         "ruby": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.ruby"
       }
     },
@@ -9859,6 +9852,7 @@
         "python": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.python",
         "csharp": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.csharp",
         "php": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.php",
+        "javascript": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.javascript",
         "ruby": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.ruby"
       }
     },
@@ -9888,12 +9882,13 @@
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/additional-recipient-receivables?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
+        "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.python",
         "csharp": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.csharp",
         "php": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.php",
+        "javascript": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.javascript",
         "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.ruby"
       }
     },
@@ -9951,6 +9946,7 @@
         "python": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.python",
         "csharp": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.csharp",
         "php": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.php",
+        "javascript": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.javascript",
         "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.ruby"
       }
     },
@@ -9968,12 +9964,13 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/list?types\u003dcategory,tax"
+        "request_params": "?types\u003dcategory,tax"
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.python",
         "csharp": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.csharp",
         "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.php",
+        "javascript": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.javascript",
         "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.ruby"
       }
     },
@@ -10034,6 +10031,7 @@
         "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.python",
         "csharp": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.csharp",
         "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.php",
+        "javascript": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.javascript",
         "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.ruby"
       }
     },
@@ -10046,13 +10044,12 @@
         }
       },
       "description": "Defines the query parameters that can be provided in a request to the\n[ListCustomers](#endpoint-listcustomers) endpoint.",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/customers"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListCustomers/ListCustomersRequest.python",
         "csharp": "/sdk_samples/ListCustomers/ListCustomersRequest.csharp",
         "php": "/sdk_samples/ListCustomers/ListCustomersRequest.php",
+        "javascript": "/sdk_samples/ListCustomers/ListCustomersRequest.javascript",
         "ruby": "/sdk_samples/ListCustomers/ListCustomersRequest.ruby"
       }
     },
@@ -10112,6 +10109,7 @@
         "python": "/sdk_samples/ListCustomers/ListCustomersResponse.python",
         "csharp": "/sdk_samples/ListCustomers/ListCustomersResponse.csharp",
         "php": "/sdk_samples/ListCustomers/ListCustomersResponse.php",
+        "javascript": "/sdk_samples/ListCustomers/ListCustomersResponse.javascript",
         "ruby": "/sdk_samples/ListCustomers/ListCustomersResponse.ruby"
       }
     },
@@ -10119,13 +10117,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/locations"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListLocations/ListLocationsRequest.python",
         "csharp": "/sdk_samples/ListLocations/ListLocationsRequest.csharp",
         "php": "/sdk_samples/ListLocations/ListLocationsRequest.php",
+        "javascript": "/sdk_samples/ListLocations/ListLocationsRequest.javascript",
         "ruby": "/sdk_samples/ListLocations/ListLocationsRequest.ruby"
       }
     },
@@ -10179,6 +10176,7 @@
         "python": "/sdk_samples/ListLocations/ListLocationsResponse.python",
         "csharp": "/sdk_samples/ListLocations/ListLocationsResponse.csharp",
         "php": "/sdk_samples/ListLocations/ListLocationsResponse.php",
+        "javascript": "/sdk_samples/ListLocations/ListLocationsResponse.javascript",
         "ruby": "/sdk_samples/ListLocations/ListLocationsResponse.ruby"
       }
     },
@@ -10208,12 +10206,13 @@
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListRefunds](#endpoint-listrefunds) endpoint.",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/refunds?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
+        "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListRefunds/ListRefundsRequest.python",
         "csharp": "/sdk_samples/ListRefunds/ListRefundsRequest.csharp",
         "php": "/sdk_samples/ListRefunds/ListRefundsRequest.php",
+        "javascript": "/sdk_samples/ListRefunds/ListRefundsRequest.javascript",
         "ruby": "/sdk_samples/ListRefunds/ListRefundsRequest.ruby"
       }
     },
@@ -10271,6 +10270,7 @@
         "python": "/sdk_samples/ListRefunds/ListRefundsResponse.python",
         "csharp": "/sdk_samples/ListRefunds/ListRefundsResponse.csharp",
         "php": "/sdk_samples/ListRefunds/ListRefundsResponse.php",
+        "javascript": "/sdk_samples/ListRefunds/ListRefundsResponse.javascript",
         "ruby": "/sdk_samples/ListRefunds/ListRefundsResponse.ruby"
       }
     },
@@ -10300,12 +10300,13 @@
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListTransactions](#endpoint-listtransactions) endpoint.",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/transactions?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
+        "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListTransactions/ListTransactionsRequest.python",
         "csharp": "/sdk_samples/ListTransactions/ListTransactionsRequest.csharp",
         "php": "/sdk_samples/ListTransactions/ListTransactionsRequest.php",
+        "javascript": "/sdk_samples/ListTransactions/ListTransactionsRequest.javascript",
         "ruby": "/sdk_samples/ListTransactions/ListTransactionsRequest.ruby"
       }
     },
@@ -10412,6 +10413,7 @@
         "python": "/sdk_samples/ListTransactions/ListTransactionsResponse.python",
         "csharp": "/sdk_samples/ListTransactions/ListTransactionsResponse.csharp",
         "php": "/sdk_samples/ListTransactions/ListTransactionsResponse.php",
+        "javascript": "/sdk_samples/ListTransactions/ListTransactionsResponse.javascript",
         "ruby": "/sdk_samples/ListTransactions/ListTransactionsResponse.ruby"
       }
     },
@@ -11132,16 +11134,22 @@
     },
     "Order": {
       "type": "object",
+      "required": [
+        "location_id",
+        "line_items"
+      ],
       "properties": {
         "id": {
           "type": "string",
           "description": "The order\u0027s unique ID.\n\nThis value is only present for Order objects created by the Orders API through the\n[CreateOrder](#endpoint-createorder) endpoint."
         },
         "location_id": {
+          "minLength": 1,
           "type": "string",
           "description": "The ID of the merchant location this order is associated with."
         },
         "reference_id": {
+          "maxLength": 40,
           "type": "string",
           "description": "A client specified identifier to associate an entity in another system\nwith this order."
         },
@@ -11150,7 +11158,7 @@
           "items": {
             "$ref": "#/definitions/OrderLineItem"
           },
-          "description": "The line items included in the order. Every order has at least one\nline item."
+          "description": "The line items included in the order. Every order has at least one line item."
         },
         "total_money": {
           "$ref": "#/definitions/Money",
@@ -11169,24 +11177,33 @@
     },
     "OrderLineItem": {
       "type": "object",
+      "required": [
+        "quantity"
+      ],
       "properties": {
         "name": {
+          "maxLength": 500,
           "type": "string",
           "description": "The name of the line item."
         },
         "quantity": {
+          "minLength": 1,
+          "maxLength": 5,
           "type": "string",
           "description": "The quantity purchased, as a string representation of a number."
         },
         "note": {
+          "maxLength": 50,
           "type": "string",
           "description": "The note of the line item."
         },
         "catalog_object_id": {
+          "maxLength": 192,
           "type": "string",
           "description": "The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item."
         },
         "variation_name": {
+          "maxLength": 255,
           "type": "string",
           "description": "The name of the variation applied to this line item."
         },
@@ -11238,10 +11255,12 @@
       "type": "object",
       "properties": {
         "catalog_object_id": {
+          "maxLength": 192,
           "type": "string",
           "description": "The catalog object id referencing [CatalogDiscount](#type-catalogdiscount)."
         },
         "name": {
+          "maxLength": 255,
           "type": "string",
           "description": "The discount\u0027s name."
         },
@@ -11257,6 +11276,7 @@
           "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\n\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values."
         },
         "percentage": {
+          "maxLength": 10,
           "type": "string",
           "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nThe percentage won\u0027t be set for an amount-based discount."
         },
@@ -11284,10 +11304,12 @@
       "type": "object",
       "properties": {
         "catalog_object_id": {
+          "maxLength": 192,
           "type": "string",
           "description": "The catalog object id referencing [CatalogModifier](#type-catalogmodifier)."
         },
         "name": {
+          "maxLength": 255,
           "type": "string",
           "description": "The name of the item modifier."
         },
@@ -11306,10 +11328,12 @@
       "type": "object",
       "properties": {
         "catalog_object_id": {
+          "maxLength": 192,
           "type": "string",
           "description": "The catalog object id referencing [CatalogTax](#type-catalogtax)."
         },
         "name": {
+          "maxLength": 255,
           "type": "string",
           "description": "The tax\u0027s name."
         },
@@ -11323,6 +11347,7 @@
           "description": "Indicates the calculation method used to apply the tax.\n\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
         },
         "percentage": {
+          "maxLength": 10,
           "type": "string",
           "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%."
         },
@@ -11412,7 +11437,6 @@
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.",
       "example": {
-        "request_url": "/v2/apple-pay/domains",
         "request_body": {
           "domain_name": "example.com"
         }
@@ -11421,6 +11445,7 @@
         "python": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.python",
         "csharp": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.csharp",
         "php": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.php",
+        "javascript": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.javascript",
         "ruby": "/sdk_samples/ApplePay/RegisterDomain/RegisterDomainRequest.ruby"
       }
     },
@@ -11458,12 +11483,13 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/object/W62UWFY35CWMYGVWK6TWJDNI?include_related_objects\u003dtrue"
+        "request_params": "?include_related_objects\u003dtrue"
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.python",
         "csharp": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.csharp",
         "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.php",
+        "javascript": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.javascript",
         "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.ruby"
       }
     },
@@ -11560,6 +11586,7 @@
         "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.python",
         "csharp": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.csharp",
         "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.php",
+        "javascript": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.javascript",
         "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.ruby"
       }
     },
@@ -11567,13 +11594,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/customers/CUSTOMER_ID"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/RetrieveCustomer/RetrieveCustomerRequest.python",
         "csharp": "/sdk_samples/RetrieveCustomer/RetrieveCustomerRequest.csharp",
         "php": "/sdk_samples/RetrieveCustomer/RetrieveCustomerRequest.php",
+        "javascript": "/sdk_samples/RetrieveCustomer/RetrieveCustomerRequest.javascript",
         "ruby": "/sdk_samples/RetrieveCustomer/RetrieveCustomerRequest.ruby"
       }
     },
@@ -11624,6 +11650,7 @@
         "python": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.python",
         "csharp": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.csharp",
         "php": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.php",
+        "javascript": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.javascript",
         "ruby": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.ruby"
       }
     },
@@ -11631,13 +11658,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/transactions/TRANSACTION_ID"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/RetrieveTransaction/RetrieveTransactionRequest.python",
         "csharp": "/sdk_samples/RetrieveTransaction/RetrieveTransactionRequest.csharp",
         "php": "/sdk_samples/RetrieveTransaction/RetrieveTransactionRequest.php",
+        "javascript": "/sdk_samples/RetrieveTransaction/RetrieveTransactionRequest.javascript",
         "ruby": "/sdk_samples/RetrieveTransaction/RetrieveTransactionRequest.ruby"
       }
     },
@@ -11706,6 +11732,7 @@
         "python": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.python",
         "csharp": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.csharp",
         "php": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.php",
+        "javascript": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.javascript",
         "ruby": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.ruby"
       }
     },
@@ -11755,17 +11782,24 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog/search",
         "request_body": {
           "object_types": [
             "ITEM"
-          ]
+          ],
+          "query": {
+            "prefix_query": {
+              "attribute_name": "name",
+              "attribute_prefix": "tea"
+            }
+          },
+          "limit": 100
         }
       },
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.python",
         "csharp": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.csharp",
         "php": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.javascript",
         "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.ruby"
       }
     },
@@ -11803,92 +11837,96 @@
         "objects": [
           {
             "type": "ITEM",
-            "id": "W62UWFY35CWMYGVWK6TWJDNI",
-            "updated_at": "2016-11-16T22:25:24.878Z",
-            "version": 1479335124878,
+            "id": "X5DZ5NWWAQ44CKBLKIFQGOWK",
+            "updated_at": "2017-10-26T15:41:32.337Z",
+            "version": 1509032492337,
             "is_deleted": false,
             "present_at_all_locations": true,
             "item_data": {
-              "name": "Tea",
-              "description": "Hot Leaf Juice",
-              "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+              "name": "Tea - Black",
+              "description": "A delicious blend of black tea.",
+              "category_id": "E7CLE5RZZ744BHWVQQEAHI2C",
+              "product_type": "REGULAR",
               "tax_ids": [
-                "HURXQOOAIC4IZSI2BEXQRYFY"
+                "ZXITPM6RWHZ7GZ7EIP3YKECM"
               ],
               "variations": [
                 {
                   "type": "ITEM_VARIATION",
-                  "id": "2TZFAOHWGG7PAK2QEXWYPZSP",
-                  "updated_at": "2016-11-16T22:25:24.878Z",
-                  "version": 1479335124878,
+                  "id": "5GSZPX6EU7MM75S57OONG3V5",
+                  "updated_at": "2017-10-26T15:27:31.626Z",
+                  "version": 1509031651626,
                   "is_deleted": false,
                   "present_at_all_locations": true,
                   "item_variation_data": {
-                    "item_id": "W62UWFY35CWMYGVWK6TWJDNI",
-                    "name": "Mug",
-                    "ordinal": 0,
-                    "pricing_type": "FIXED_PRICING",
+                    "item_id": "X5DZ5NWWAQ44CKBLKIFQGOWK",
+                    "name": "Regular",
+                    "ordinal": 1,
                     "price_money": {
                       "amount": 150,
                       "currency": "USD"
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          {
-            "type": "ITEM",
-            "id": "AA27W3M2GGTF3H6AVPNB77CK",
-            "updated_at": "2016-11-16T22:25:24.878Z",
-            "version": 1479335124878,
-            "is_deleted": false,
-            "present_at_all_locations": true,
-            "item_data": {
-              "name": "Coffee",
-              "description": "Hot Bean Juice",
-              "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
-              "tax_ids": [
-                "HURXQOOAIC4IZSI2BEXQRYFY"
-              ],
-              "variations": [
-                {
-                  "type": "ITEM_VARIATION",
-                  "id": "LBTYIHNHU52WOIHWT7SNRIYH",
-                  "updated_at": "2016-11-16T22:25:24.878Z",
-                  "version": 1479335124878,
-                  "is_deleted": false,
-                  "present_at_all_locations": true,
-                  "item_variation_data": {
-                    "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
-                    "name": "Regular",
-                    "ordinal": 0,
-                    "pricing_type": "FIXED_PRICING",
-                    "price_money": {
-                      "amount": 250,
-                      "currency": "USD"
-                    }
+                    },
+                    "pricing_type": "FIXED_PRICING"
                   }
                 },
                 {
                   "type": "ITEM_VARIATION",
-                  "id": "PKYIC7HGGKW5CYVSCVDEIMHY",
-                  "updated_at": "2016-11-16T22:25:24.878Z",
-                  "version": 1479335124878,
+                  "id": "XVLBN7DU6JTWHJTG5F265B43",
+                  "updated_at": "2017-10-26T15:27:31.626Z",
+                  "version": 1509031651626,
                   "is_deleted": false,
                   "present_at_all_locations": true,
                   "item_variation_data": {
-                    "item_id": "AA27W3M2GGTF3H6AVPNB77CK",
+                    "item_id": "X5DZ5NWWAQ44CKBLKIFQGOWK",
                     "name": "Large",
-                    "ordinal": 1,
-                    "pricing_type": "FIXED_PRICING",
+                    "ordinal": 2,
                     "price_money": {
-                      "amount": 350,
+                      "amount": 225,
                       "currency": "USD"
-                    }
+                    },
+                    "pricing_type": "FIXED_PRICING"
                   }
                 }
-              ]
+              ],
+              "visibility": "PRIVATE"
+            }
+          },
+          {
+            "type": "ITEM",
+            "id": "NNNEM3LA656Q46NXLWCNI7S5",
+            "updated_at": "2017-10-26T15:41:23.232Z",
+            "version": 1509032483232,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "item_data": {
+              "name": "Tea - Green",
+              "description": "Relaxing green herbal tea.",
+              "category_id": "E7CLE5RZZ744BHWVQQEAHI2C",
+              "product_type": "REGULAR",
+              "tax_ids": [
+                "ZXITPM6RWHZ7GZ7EIP3YKECM"
+              ],
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "FHYBVIA6NVBCSOVETA62WEA4",
+                  "updated_at": "2017-10-26T15:29:00.524Z",
+                  "version": 1509031740524,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "NNNEM3LA656Q46NXLWCNI7S5",
+                    "name": "Regular",
+                    "ordinal": 1,
+                    "price_money": {
+                      "amount": 150,
+                      "currency": "USD"
+                    },
+                    "pricing_type": "FIXED_PRICING"
+                  }
+                }
+              ],
+              "visibility": "PRIVATE"
             }
           }
         ]
@@ -11897,6 +11935,7 @@
         "python": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.python",
         "csharp": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.csharp",
         "php": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.javascript",
         "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.ruby"
       }
     },
@@ -12121,7 +12160,6 @@
       },
       "description": "Defines the body parameters that can be provided in a request to the\n[UpdateCustomer](#endpoint-updatecustomer) endpoint.",
       "example": {
-        "request_url": "/v2/customers/CUSTOMER_ID",
         "request_body": {
           "phone_number": "",
           "email_address": "New.Amelia.Earhart@example.com",
@@ -12132,6 +12170,7 @@
         "python": "/sdk_samples/UpdateCustomer/UpdateCustomerRequest.python",
         "csharp": "/sdk_samples/UpdateCustomer/UpdateCustomerRequest.csharp",
         "php": "/sdk_samples/UpdateCustomer/UpdateCustomerRequest.php",
+        "javascript": "/sdk_samples/UpdateCustomer/UpdateCustomerRequest.javascript",
         "ruby": "/sdk_samples/UpdateCustomer/UpdateCustomerRequest.ruby"
       }
     },
@@ -12181,6 +12220,7 @@
         "python": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.python",
         "csharp": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.csharp",
         "php": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.php",
+        "javascript": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.javascript",
         "ruby": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.ruby"
       }
     },
@@ -12214,7 +12254,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/update-item-taxes",
         "request_body": {
           "item_ids": [
             "H42BRLUJ5KTZTTMPVSLFAACQ",
@@ -12233,6 +12272,7 @@
         "python": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.python",
         "csharp": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.csharp",
         "php": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.javascript",
         "ruby": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.ruby"
       }
     },
@@ -12259,6 +12299,7 @@
         "python": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.python",
         "csharp": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.csharp",
         "php": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.javascript",
         "ruby": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.ruby"
       }
     },
@@ -12292,7 +12333,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/update-item-taxes",
         "request_body": {
           "item_ids": [
             "H42BRLUJ5KTZTTMPVSLFAACQ",
@@ -12310,6 +12350,7 @@
         "python": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.python",
         "csharp": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.csharp",
         "php": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.javascript",
         "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.ruby"
       }
     },
@@ -12336,6 +12377,7 @@
         "python": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.python",
         "csharp": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.csharp",
         "php": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.javascript",
         "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.ruby"
       }
     },
@@ -12358,7 +12400,6 @@
       },
       "description": "",
       "example": {
-        "request_url": "https://connect.squareup.com/v2/catalog",
         "request_body": {
           "idempotency_key": "af3d1afc-7212-4300-b463-0bfc5314a5ae",
           "object": {
@@ -12376,6 +12417,7 @@
         "python": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.python",
         "csharp": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.csharp",
         "php": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.php",
+        "javascript": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.javascript",
         "ruby": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.ruby"
       }
     },
@@ -12426,6 +12468,7 @@
         "python": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.python",
         "csharp": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.csharp",
         "php": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.php",
+        "javascript": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.javascript",
         "ruby": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.ruby"
       }
     },
@@ -12433,13 +12476,12 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "example": {
-        "request_url": "https://connect.squareup.com/v2/locations/LOCATION_ID/transactions/TRANSACTION_ID/void"
-      },
+      "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/VoidTransaction/VoidTransactionRequest.python",
         "csharp": "/sdk_samples/VoidTransaction/VoidTransactionRequest.csharp",
         "php": "/sdk_samples/VoidTransaction/VoidTransactionRequest.php",
+        "javascript": "/sdk_samples/VoidTransaction/VoidTransactionRequest.javascript",
         "ruby": "/sdk_samples/VoidTransaction/VoidTransactionRequest.ruby"
       }
     },
@@ -12460,6 +12502,7 @@
         "python": "/sdk_samples/VoidTransaction/VoidTransactionResponse.python",
         "csharp": "/sdk_samples/VoidTransaction/VoidTransactionResponse.csharp",
         "php": "/sdk_samples/VoidTransaction/VoidTransactionResponse.php",
+        "javascript": "/sdk_samples/VoidTransaction/VoidTransactionResponse.javascript",
         "ruby": "/sdk_samples/VoidTransaction/VoidTransactionResponse.ruby"
       }
     },
@@ -13513,6 +13556,7 @@
             "SQUARE_CAPITAL_REVERSED_PAYMENT",
             "SUBSCRIPTION_FEE",
             "SUBSCRIPTION_FEE_REFUND",
+            "OTHER",
             "INCENTED_PAYMENT",
             "RETURNED_ACH_ENTRY",
             "RETURNED_SQUARE_275",
