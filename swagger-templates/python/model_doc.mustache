@@ -14,9 +14,9 @@ Name | Type
 {{/allowableValues}}
 {{/isEnum}}
 {{^isEnum}}
-Name | Type | Notes
------------- | ------------- | -------------
-{{#vars}}**{{name}}** | {{#isPrimitiveType}}**{{datatype}}**{{/isPrimitiveType}}{{^isPrimitiveType}}[**{{datatype}}**]({{complexType}}.md){{/isPrimitiveType}} | {{^required}}[optional] {{/required}}{{#readOnly}}[readonly] {{/readOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+{{#vars}}**{{name}}** | {{#isPrimitiveType}}**{{datatype}}**{{/isPrimitiveType}}{{^isPrimitiveType}}[**{{datatype}}**]({{complexType}}.md){{/isPrimitiveType}} | {{description}} | {{^required}}[optional] {{/required}}{{#readOnly}}[readonly] {{/readOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
 {{/vars}}
 {{/isEnum}}
 
