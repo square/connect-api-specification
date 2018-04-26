@@ -8,6 +8,7 @@ This is the project that _generates_ API clients for connecting to the public Sq
 * [Ruby](https://github.com/square/connect-ruby-sdk)
 * [PHP](https://github.com/square/connect-php-sdk)
 * [Java](https://github.com/square/connect-java-sdk)
+* [Javascript](https://github.com/square/connect-javascript-sdk)
 
 The [Connect Examples](https://github.com/square/connect-api-examples/tree/master/connect-examples/) are working sample applications that you can copy from to build your own.
 
@@ -48,7 +49,7 @@ License
 -------
 
 ```
-Copyright 2016 - 2017 Square, Inc.
+Copyright 2016 - 2018 Square, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
