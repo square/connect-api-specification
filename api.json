@@ -546,6 +546,28 @@
             "type": "string",
             "in": "query",
             "required": false
+          },
+          {
+            "name": "sort_field",
+            "description": "Indicates how Customers should be sorted. Default: `DEFAULT`.",
+            "enum": [
+              "DEFAULT",
+              "CREATED_AT"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_order",
+            "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`.",
+            "enum": [
+              "DESC",
+              "ASC"
+            ],
+            "type": "string",
+            "in": "query",
+            "required": false
           }
         ],
         "responses": {
@@ -5660,6 +5682,14 @@
       ],
       "description": "Indicates the associated currency for an amount of money. Values correspond\nto [ISO 4217](https://wikipedia.org/wiki/ISO_4217)."
     },
+    "CustomerSortField": {
+      "type": "string",
+      "enum": [
+        "DEFAULT",
+        "CREATED_AT"
+      ],
+      "description": "Indicates the sort criteria for a list of Customers."
+    },
     "ErrorCategory": {
       "type": "string",
       "enum": [
@@ -8289,6 +8319,11 @@
             "$ref": "#/definitions/ChargeRequestAdditionalRecipient"
           },
           "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `total_money` calculated by Square for your order.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
+        },
+        "note": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "An optional note to associate with the checkout object.\n\nThis value cannot exceed 60 characters."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
@@ -9028,9 +9063,9 @@
           "description": "Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.\n\nIf this value is not set for an ad hoc line item, the default value of `Regular` is used.\n\nDo not provide a value for this field if you provide a value for the `catalog_object_id`."
         },
         "note": {
-          "maxLength": 50,
+          "maxLength": 500,
           "type": "string",
-          "description": "The note of the line item. This value cannot exceed 50 characters."
+          "description": "The note of the line item. This value cannot exceed 500 characters."
         },
         "catalog_object_id": {
           "maxLength": 192,
@@ -9076,7 +9111,7 @@
         },
         "base_price_money": {
           "$ref": "#/definitions/Money",
-          "description": "Only used for ad hoc modifiers. The base price for the modifier.\n\nDo not provide a value for `base_price_money` if you provide a value for `catalog_object_id`."
+          "description": "The base price for the modifier.\n\n`base_price_money` is required for ad hoc modifiers.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price."
         }
       },
       "description": "Represents a modifier applied to a single line item.\n\nModifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price."
@@ -10041,6 +10076,22 @@
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "sort_field": {
+          "type": "string",
+          "enum": [
+            "DEFAULT",
+            "CREATED_AT"
+          ],
+          "description": "Indicates how Customers should be sorted. Default: `DEFAULT`."
+        },
+        "sort_order": {
+          "type": "string",
+          "enum": [
+            "DESC",
+            "ASC"
+          ],
+          "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`."
         }
       },
       "description": "Defines the query parameters that can be provided in a request to the\n[ListCustomers](#endpoint-listcustomers) endpoint.",
@@ -11193,7 +11244,7 @@
           "description": "The quantity purchased, as a string representation of a number."
         },
         "note": {
-          "maxLength": 50,
+          "maxLength": 500,
           "type": "string",
           "description": "The note of the line item."
         },
@@ -11315,7 +11366,7 @@
         },
         "base_price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The base price of the item modifier."
+          "description": "The base price for the modifier.\n\n`base_price_money` is required for ad hoc modifiers.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price."
         },
         "total_price_money": {
           "$ref": "#/definitions/Money",
@@ -13322,6 +13373,17 @@
             "$ref": "#/definitions/v1PaymentItemization"
           },
           "description": "The items purchased in the payment."
+        },
+        "surcharge_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The total of all surcharges applied to the payment."
+        },
+        "surcharges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PaymentSurcharge"
+          },
+          "description": "A list of all surcharges associated with the payment."
         }
       }
     },
@@ -13455,6 +13517,51 @@
         "item_variation_id": {
           "type": "string",
           "description": "The unique ID of the item variation purchased, if any."
+        }
+      }
+    },
+    "v1PaymentSurcharge": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the surcharge."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of money applied to the order as a result of the surcharge."
+        },
+        "rate": {
+          "type": "string",
+          "description": "The amount of the surcharge as a percentage. The percentage is provided as a string representing the decimal equivalent of the percentage. For example, \"0.7\" corresponds to a 7% surcharge. Exactly one of rate or amount_money should be set."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/v1Money",
+          "description": "The amount of the surcharge as a Money object. Exactly one of rate or amount_money should be set."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "AUTO_GRATUITY",
+            "CUSTOM"
+          ],
+          "description": "Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group."
+        },
+        "taxable": {
+          "type": "boolean",
+          "description": "Indicates whether the surcharge is taxable."
+        },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PaymentTax"
+          },
+          "description": "The list of taxes that should be applied to the surcharge."
+        },
+        "surcharge_id": {
+          "type": "string",
+          "descrption": "A Square-issued unique identifier associated with the surcharge."
         }
       }
     },
@@ -14040,6 +14147,14 @@
         "taxable": {
           "type": "boolean",
           "description": "Deprecated. This field is not used."
+        },
+        "category_id": {
+          "type": "string",
+          "description": "The ID of the item\u0027s category, if any."
+        },
+        "available_for_pickup": {
+          "type": "boolean",
+          "description": "If true, the item can be added to pickup orders from the merchant\u0027s online store. Default value: false"
         }
       }
     },
@@ -14286,7 +14401,9 @@
         },
         "page_index": {
           "type": "integer",
-          "description": "The page\u0027s position in the merchant\u0027s list of pages. Always an integer between 0 and 4, inclusive."
+          "description": "The page\u0027s position in the merchant\u0027s list of pages. Always an integer between 0 and 6, inclusive.",
+          "maximum": 6,
+          "minimum": 0
         },
         "cells": {
           "type": "array",
