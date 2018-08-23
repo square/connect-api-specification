@@ -51,7 +51,8 @@
         "EMPLOYEES_WRITE": "POST, PUT, and DELETE endpoints related to employee management",
         "TIMECARDS_READ": "GET endpoints related to employee timecards",
         "TIMECARDS_WRITE": "POST, PUT, and DELETE endpoints related to employee timecards",
-        "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS": "Allow third party applications to deduct a portion of each transaction amount."
+        "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS": "Allow third party applications to deduct a portion of each transaction amount.",
+        "PAYMENTS_WRITE_IN_PERSON": "POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information."
       }
     },
     "oauth2ClientSecret": {
@@ -61,6 +62,158 @@
     }
   },
   "paths": {
+    "/mobile/authorization-code": {
+      "post": {
+        "tags": [
+          "MobileAuthorization"
+        ],
+        "summary": "CreateMobileAuthorizationCode",
+        "operationId": "CreateMobileAuthorizationCode",
+        "description": "Generates code to authorize a mobile application to connect to a Square card reader\n\nAuthorization codes are one-time-use and expire __60 minutes__ after being issued.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Bearer ACCESS_TOKEN\n```\n\nReplace `ACCESS_TOKEN` with a [valid production authorization credential](https://docs.connect.squareup.com/get-started#step-4-understand-the-different-application-credentials).",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE_IN_PERSON"
+        ],
+        "x-sq-version": "2018-07-12",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE_IN_PERSON"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateMobileAuthorizationCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateMobileAuthorizationCodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/oauth2/clients/{client_id}/access-token/renew": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "RenewToken",
+        "operationId": "RenewToken",
+        "description": "Renews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated merchant must complete the [OAuth flow](https://docs.connect.squareup.com/api/oauth#implementingoauth) from the beginning.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with your application\u0027s secret, available from the [application dashboard](https://connect.squareup.com/apps).",
+        "x-release-status": "PUBLIC",
+        "x-sq-version": "2018-07-12",
+        "security": [
+          {
+            "oauth2ClientSecret": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "description": "Your application\u0027s ID, available from the [application dashboard](https://connect.squareup.com/apps).",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/RenewTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RenewTokenResponse"
+            }
+          }
+        }
+      }
+    },
+    "/oauth2/revoke": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "RevokeToken",
+        "operationId": "RevokeToken",
+        "description": "Revokes an access token generated with the OAuth flow.\n\nIf a merchant has more than one access token for your application, this endpoint revokes all of them, regardless of which token you specify.\nIf you revoke a merchant\u0027s access token, all of the merchant\u0027s active subscriptions associated with your application are canceled immediately.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with your application\u0027s secret, available from the [application dashboard](https://connect.squareup.com/apps).",
+        "x-release-status": "PUBLIC",
+        "x-sq-version": "2018-07-12",
+        "security": [
+          {
+            "oauth2ClientSecret": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/RevokeTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RevokeTokenResponse"
+            }
+          }
+        }
+      }
+    },
+    "/oauth2/token": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "ObtainToken",
+        "operationId": "ObtainToken",
+        "description": "Exchanges the authorization code for an access token.\n\nAfter a merchant authorizes your application with the permissions form,\nan authorization code is sent to the application\u0027s redirect URL\n(See [Implementing OAuth](https://docs.connect.squareup.com/api/oauth#implementingoauth) for information about how to set up the redirect URL).",
+        "x-release-status": "PUBLIC",
+        "x-sq-version": "2018-07-12",
+        "security": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/ObtainTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ObtainTokenResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/apple-pay/domains": {
       "post": {
         "tags": [
@@ -68,8 +221,10 @@
         ],
         "summary": "RegisterDomain",
         "operationId": "RegisterDomain",
-        "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the [Embedding the Square Payment Form](https://docs.connect.squareup.com/articles/adding-payment-form) guide.",
+        "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": []
@@ -104,9 +259,11 @@
         "summary": "BatchDeleteCatalogObjects",
         "operationId": "BatchDeleteCatalogObjects",
         "description": "Deletes a set of [CatalogItem](#type-catalogitem)s based on the\nprovided list of target IDs and returns a set of successfully deleted IDs in\nthe response. Deletion is a cascading event such that all children of the\ntargeted object are also deleted. For example, deleting a CatalogItem will\nalso delete all of its [CatalogItemVariation](#type-catalogitemvariation)\nchildren.\n\n`BatchDeleteCatalogObjects` succeeds even if only a portion of the targeted\nIDs can be deleted. The response will only include IDs that were\nactually deleted.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -143,9 +300,11 @@
         "summary": "BatchRetrieveCatalogObjects",
         "operationId": "BatchRetrieveCatalogObjects",
         "description": "Returns a set of objects based on the provided ID.\nEach [CatalogItem](#type-catalogitem) returned in the set includes all of its\nchild information including: all of its\n[CatalogItemVariation](#type-catalogitemvariation) objects, references to\nits [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -182,9 +341,11 @@
         "summary": "BatchUpsertCatalogObjects",
         "operationId": "BatchUpsertCatalogObjects",
         "description": "Creates or updates up to 10,000 target objects based on the provided\nlist of objects. The target objects are grouped into batches and each batch is\ninserted/updated in an all-or-nothing manner. If an object within a batch is\nmalformed in some way, or violates a database constraint, the entire batch\ncontaining that item will be disregarded. However, other batches in the same\nrequest may still succeed. Each batch may contain up to 1,000 objects, and\nbatches will be processed in order as long as the total object count for the\nrequest (items, variations, modifier lists, discounts, and taxes) is no more\nthan 10,000.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -221,9 +382,11 @@
         "summary": "CatalogInfo",
         "operationId": "CatalogInfo",
         "description": "Returns information about the Square Catalog API, such as batch size\nlimits for `BatchUpsertCatalogObjects`.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -250,9 +413,11 @@
         "summary": "ListCatalog",
         "operationId": "ListCatalog",
         "description": "Returns a list of [CatalogObject](#type-catalogobject)s that includes\nall objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)\nand [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter\nis specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:\n`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -294,9 +459,11 @@
         "summary": "UpsertCatalogObject",
         "operationId": "UpsertCatalogObject",
         "description": "Creates or updates the target [CatalogObject](#type-catalogobject).",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -333,9 +500,11 @@
         "summary": "DeleteCatalogObject",
         "operationId": "DeleteCatalogObject",
         "description": "Deletes a single [CatalogObject](#type-catalogobject) based on the\nprovided ID and returns the set of successfully deleted IDs in the response.\nDeletion is a cascading event such that all children of the targeted object\nare also deleted. For example, deleting a [CatalogItem](#type-catalogitem)\nwill also delete all of its\n[CatalogItemVariation](#type-catalogitemvariation) children.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -368,9 +537,11 @@
         "summary": "RetrieveCatalogObject",
         "operationId": "RetrieveCatalogObject",
         "description": "Returns a single [CatalogItem](#type-catalogitem) as a\n[CatalogObject](#type-catalogobject) based on the provided ID. The returned\nobject includes all of the relevant [CatalogItem](#type-catalogitem)\ninformation including: [CatalogItemVariation](#type-catalogitemvariation)\nchildren, references to its\n[CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of\nany [CatalogTax](#type-catalogtax) objects that apply to it.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -412,9 +583,11 @@
         "summary": "SearchCatalogObjects",
         "operationId": "SearchCatalogObjects",
         "description": "Queries the targeted catalog using a variety of query types:\n[CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n[CatalogQueryExact](#type-catalogqueryexact),\n[CatalogQueryRange](#type-catalogqueryrange),\n[CatalogQueryText](#type-catalogquerytext),\n[CatalogQueryItemsForTax](#type-catalogqueryitemsfortax), and\n[CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist).",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -451,9 +624,11 @@
         "summary": "UpdateItemModifierLists",
         "operationId": "UpdateItemModifierLists",
         "description": "Updates the [CatalogModifierList](#type-catalogmodifierlist) objects\nthat apply to the targeted [CatalogItem](#type-catalogitem) without having\nto perform an upsert on the entire item.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -490,9 +665,11 @@
         "summary": "UpdateItemTaxes",
         "operationId": "UpdateItemTaxes",
         "description": "Updates the [CatalogTax](#type-catalogtax) objects that apply to the\ntargeted [CatalogItem](#type-catalogitem) without having to perform an\nupsert on the entire item.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -529,9 +706,11 @@
         "summary": "ListCustomers",
         "operationId": "ListCustomers",
         "description": "Lists a business\u0027s customers.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -549,7 +728,7 @@
           },
           {
             "name": "sort_field",
-            "description": "Indicates how Customers should be sorted. Default: `DEFAULT`.",
+            "description": "Indicates how Customers should be sorted. Default: `DEFAULT`. See\n[CustomerSortField](#type-customersortfield) for possible values.",
             "enum": [
               "DEFAULT",
               "CREATED_AT"
@@ -560,7 +739,7 @@
           },
           {
             "name": "sort_order",
-            "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`.",
+            "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder)\nfor possible values.",
             "enum": [
               "DESC",
               "ASC"
@@ -586,9 +765,11 @@
         "summary": "CreateCustomer",
         "operationId": "CreateCustomer",
         "description": "Creates a new customer for a business, which can have associated cards on file.\n\nYou must provide __at least one__ of the following values in your request to this\nendpoint:\n\n- `given_name`\n- `family_name`\n- `company_name`\n- `email_address`\n- `phone_number`\n\nThis endpoint does not accept an idempotency key. If you accidentally create\na duplicate customer, you can delete it with the\n[DeleteCustomer](#endpoint-deletecustomer) endpoint.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -617,6 +798,47 @@
         }
       }
     },
+    "/v2/customers/search": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "SearchCustomers",
+        "operationId": "SearchCustomers",
+        "description": "Searches the customer profiles associated with a Square account.\nCalling SearchCustomers without an explicit query parameter returns all\ncustomer profiles ordered alphabetically based on `given_name` and\n`family_name`.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ"
+        ],
+        "x-sq-version": "2018-07-12",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchCustomersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchCustomersResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/customers/{customer_id}": {
       "delete": {
         "tags": [
@@ -625,9 +847,11 @@
         "summary": "DeleteCustomer",
         "operationId": "DeleteCustomer",
         "description": "Deletes a customer from a business, along with any linked cards on file.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -660,9 +884,11 @@
         "summary": "RetrieveCustomer",
         "operationId": "RetrieveCustomer",
         "description": "Returns details for a single customer.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -695,9 +921,11 @@
         "summary": "UpdateCustomer",
         "operationId": "UpdateCustomer",
         "description": "Updates the details of an existing customer.\nThe ID of the customer may change if the customer has been merged into another customer.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the\n[CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -741,9 +969,11 @@
         "summary": "CreateCustomerCard",
         "operationId": "CreateCustomerCard",
         "description": "Adds a card on file to an existing customer. In the United States\nSquare takes care of automatically updating any cards on file that might\nhave expired since you first attached them to a customer.\n\nAs with charges, calls to `CreateCustomerCard` are idempotent. Multiple\ncalls with the same card nonce return the same card record that was created\nwith the provided nonce during the _first_ call.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -787,9 +1017,11 @@
         "summary": "DeleteCustomerCard",
         "operationId": "DeleteCustomerCard",
         "description": "Removes a card on file from a customer.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -831,9 +1063,11 @@
         "summary": "ListLocations",
         "operationId": "ListLocations",
         "description": "Provides the details for all of a business\u0027s locations.\n\nMost other Connect API endpoints have a required `location_id` path parameter.\nThe `id` field of the [`Location`](#type-location) objects returned by this\nendpoint correspond to that `location_id` parameter.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -860,9 +1094,11 @@
         "summary": "ListAdditionalRecipientReceivableRefunds",
         "operationId": "ListAdditionalRecipientReceivableRefunds",
         "description": "Returns a list of refunded transactions (across all possible originating locations) relating to monies\ncredited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -929,9 +1165,11 @@
         "summary": "ListAdditionalRecipientReceivables",
         "operationId": "ListAdditionalRecipientReceivables",
         "description": "Returns a list of receivables (across all possible sending locations) representing monies credited\nto the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -998,10 +1236,12 @@
         "summary": "CreateCheckout",
         "operationId": "CreateCheckout",
         "description": "Creates a [Checkout](#type-checkout) response that links a\n`checkoutId` and `checkout_page_url` that customers can be directed to in\norder to provide their payment information using a payment processing\nworkflow hosted on connect.squareup.com.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1045,10 +1285,12 @@
         ],
         "summary": "CreateOrder",
         "operationId": "CreateOrder",
-        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-api-overview).",
+        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/products/orders/overview).",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1092,9 +1334,11 @@
         "summary": "BatchRetrieveOrders",
         "operationId": "BatchRetrieveOrders",
         "description": "Retrieves a set of [Order](#type-order)s by their IDs.\n\nIf a given Order ID does not exist, the ID is ignored instead of generating an error.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1138,9 +1382,11 @@
         "summary": "ListRefunds",
         "operationId": "ListRefunds",
         "description": "Lists refunds for one of a business\u0027s locations.\n\nIn addition to full or partial tender refunds processed through Square APIs,\nrefunds may result from itemized returns or exchanges through Square\u0027s\nPoint of Sale applications.\n\nRefunds with a `status` of `PENDING` are not currently included in this\nendpoint\u0027s response.\n\nMax results per [page](#paginatingresults): 50",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1207,9 +1453,11 @@
         "summary": "ListTransactions",
         "operationId": "ListTransactions",
         "description": "Lists transactions for a particular location.\n\nTransactions include payment information from sales and exchanges and refund\ninformation from returns and exchanges.\n\nMax results per [page](#paginatingresults): 50",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1274,9 +1522,11 @@
         "summary": "Charge",
         "operationId": "Charge",
         "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nIn order for an eCommerce payment to potentially qualify for\n[Square chargeback protection](https://squareup.com/help/article/5394), you\n_must_ provide values for the following parameters in your request:\n\n- `buyer_email_address`\n- At least one of `billing_address` or `shipping_address`\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1320,9 +1570,11 @@
         "summary": "RetrieveTransaction",
         "operationId": "RetrieveTransaction",
         "description": "Retrieves details for a single transaction.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1363,10 +1615,12 @@
         ],
         "summary": "CaptureTransaction",
         "operationId": "CaptureTransaction",
-        "description": "Captures a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/articles/delayed-capture-transactions/)\nfor more information.",
+        "description": "Captures a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1407,10 +1661,12 @@
         ],
         "summary": "CreateRefund",
         "operationId": "CreateRefund",
-        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.",
+        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.\n\n*NOTE**: Card-present transactions with Interac credit cards **cannot be\nrefunded using the Connect API**. Interac transactions must refunded\nin-person (e.g., dipping the card using POS app).",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -1460,10 +1716,12 @@
         ],
         "summary": "VoidTransaction",
         "operationId": "VoidTransaction",
-        "description": "Cancels a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/articles/delayed-capture-transactions/)\nfor more information.",
+        "description": "Cancels a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
+        "x-sq-version": "2018-07-12",
         "security": [
           {
             "oauth2": [
@@ -5187,7 +5445,8 @@
         "CHINA_UNIONPAY",
         "SQUARE_GIFT_CARD"
       ],
-      "description": "Indicates a credit card\u0027s brand, such as `VISA`."
+      "description": "Indicates a credit card\u0027s brand, such as `VISA`.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogDiscountType": {
       "type": "string",
@@ -5197,7 +5456,8 @@
         "VARIABLE_PERCENTAGE",
         "VARIABLE_AMOUNT"
       ],
-      "description": "How to apply a [CatalogDiscount](#type-catalogdiscount) to a [CatalogItem](#type-catalogitem)."
+      "description": "How to apply a [CatalogDiscount](#type-catalogdiscount) to a [CatalogItem](#type-catalogitem).",
+      "x-release-status": "PUBLIC"
     },
     "CatalogItemProductType": {
       "type": "string",
@@ -5208,7 +5468,8 @@
         "RETAIL_ITEM",
         "RESTAURANT_ITEM"
       ],
-      "description": "The type of a [CatalogItem](#type-catalogitem). Connect V2 only allows the creation of `REGULAR` items."
+      "description": "The type of a [CatalogItem](#type-catalogitem). Connect V2 only allows the creation of `REGULAR` items.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogModifierListSelectionType": {
       "type": "string",
@@ -5216,7 +5477,8 @@
         "SINGLE",
         "MULTIPLE"
       ],
-      "description": "Indicates whether a [CatalogModifierList](#type-catalogmodifierlist) supports multiple selections."
+      "description": "Indicates whether a [CatalogModifierList](#type-catalogmodifierlist) supports multiple selections.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogObjectType": {
       "type": "string",
@@ -5229,7 +5491,8 @@
         "MODIFIER_LIST",
         "MODIFIER"
       ],
-      "description": "Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each\ncontaning type-specific properties in the `*_data` field corresponding to the object type."
+      "description": "Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each\ncontaning type-specific properties in the `*_data` field corresponding to the object type.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogPricingType": {
       "type": "string",
@@ -5237,7 +5500,8 @@
         "FIXED_PRICING",
         "VARIABLE_PRICING"
       ],
-      "description": "Indicates whether the price of a [CatalogItemVariation](#type-catalogitemvariation) should be entered manually at the time of sale."
+      "description": "Indicates whether the price of a [CatalogItemVariation](#type-catalogitemvariation) should be entered manually at the time of sale.",
+      "x-release-status": "PUBLIC"
     },
     "Country": {
       "type": "string",
@@ -5493,7 +5757,8 @@
         "ZM",
         "ZW"
       ],
-      "description": "Indicates the country associated with another entity, such as a business.\nValues are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm)."
+      "description": "Indicates the country associated with another entity, such as a business.\nValues are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).",
+      "x-release-status": "PUBLIC"
     },
     "Currency": {
       "type": "string",
@@ -5680,7 +5945,43 @@
         "ZMW",
         "BTC"
       ],
-      "description": "Indicates the associated currency for an amount of money. Values correspond\nto [ISO 4217](https://wikipedia.org/wiki/ISO_4217)."
+      "description": "Indicates the associated currency for an amount of money. Values correspond\nto [ISO 4217](https://wikipedia.org/wiki/ISO_4217).",
+      "x-release-status": "PUBLIC"
+    },
+    "CustomerCreationSource": {
+      "type": "string",
+      "enum": [
+        "OTHER",
+        "APPOINTMENTS",
+        "COUPON",
+        "DELETION_RECOVERY",
+        "DIRECTORY",
+        "EGIFTING",
+        "EMAIL_COLLECTION",
+        "FEEDBACK",
+        "IMPORT",
+        "INVOICES",
+        "LOYALTY",
+        "MARKETING",
+        "MERGE",
+        "ONLINE_STORE",
+        "INSTANT_PROFILE",
+        "TERMINAL",
+        "THIRD_PARTY",
+        "THIRD_PARTY_IMPORT",
+        "UNMERGE_RECOVERY"
+      ],
+      "description": "Indicates the method used to create the customer profile.",
+      "x-release-status": "PUBLIC"
+    },
+    "CustomerInclusionExclusion": {
+      "type": "string",
+      "enum": [
+        "INCLUDE",
+        "EXCLUDE"
+      ],
+      "description": "Indicates whether customers should be included in, or excluded from,\nthe result set when they match the filtering criteria.",
+      "x-release-status": "PUBLIC"
     },
     "CustomerSortField": {
       "type": "string",
@@ -5688,7 +5989,8 @@
         "DEFAULT",
         "CREATED_AT"
       ],
-      "description": "Indicates the sort criteria for a list of Customers."
+      "description": "Indicates the sort criteria for a list of Customers.",
+      "x-release-status": "PUBLIC"
     },
     "ErrorCategory": {
       "type": "string",
@@ -5700,7 +6002,8 @@
         "PAYMENT_METHOD_ERROR",
         "REFUND_ERROR"
       ],
-      "description": "Indicates which high-level category of error has occurred during a\nrequest to the Connect API."
+      "description": "Indicates which high-level category of error has occurred during a\nrequest to the Connect API.",
+      "x-release-status": "PUBLIC"
     },
     "ErrorCode": {
       "type": "string",
@@ -5748,6 +6051,7 @@
         "INVALID_FORM_VALUE",
         "ONE_INSTRUMENT_EXPECTED",
         "NO_FIELDS_SET",
+        "DEPRECATED_FIELD_SET",
         "CARD_EXPIRED",
         "INVALID_EXPIRATION",
         "INVALID_EXPIRATION_YEAR",
@@ -5779,6 +6083,7 @@
         "VERIFY_AVS_FAILURE",
         "CARD_DECLINED_CALL_ISSUER",
         "NOT_FOUND",
+        "METHOD_NOT_ALLOWED",
         "REQUEST_TIMEOUT",
         "CONFLICT",
         "REQUEST_ENTITY_TOO_LARGE",
@@ -5788,7 +6093,8 @@
         "SERVICE_UNAVAILABLE",
         "GATEWAY_TIMEOUT"
       ],
-      "description": "Indicates specific errors that can occur during a request to the\nConnect API."
+      "description": "Indicates specific errors that can occur during a request to the\nConnect API.",
+      "x-release-status": "PUBLIC"
     },
     "InventoryAlertType": {
       "type": "string",
@@ -5796,14 +6102,16 @@
         "NONE",
         "LOW_QUANTITY"
       ],
-      "description": "Indicates whether Square should alert the merchant when the inventory quantity of a [CatalogItemVariation](#type-catalogitemvariation) is low."
+      "description": "Indicates whether Square should alert the merchant when the inventory quantity of a [CatalogItemVariation](#type-catalogitemvariation) is low.",
+      "x-release-status": "PUBLIC"
     },
     "LocationCapability": {
       "type": "string",
       "enum": [
         "CREDIT_CARD_PROCESSING"
       ],
-      "description": "Indicates payment capabilities that a business\u0027s location might or\nmight not have enabled."
+      "description": "Indicates payment capabilities that a business\u0027s location might or\nmight not have enabled.",
+      "x-release-status": "PUBLIC"
     },
     "LocationStatus": {
       "type": "string",
@@ -5811,7 +6119,8 @@
         "ACTIVE",
         "INACTIVE"
       ],
-      "description": "Indicates the location\u0027s status."
+      "description": "Indicates the location\u0027s status.",
+      "x-release-status": "PUBLIC"
     },
     "LocationType": {
       "type": "string",
@@ -5819,7 +6128,8 @@
         "PHYSICAL",
         "MOBILE"
       ],
-      "description": "Indicates the location\u0027s type."
+      "description": "Indicates the location\u0027s type.",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItemDiscountScope": {
       "type": "string",
@@ -5828,7 +6138,8 @@
         "LINE_ITEM",
         "ORDER"
       ],
-      "description": "Indicates whether this is a line item or order-level discount."
+      "description": "Indicates whether this is a line item or order level discount.",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItemDiscountType": {
       "type": "string",
@@ -5839,7 +6150,8 @@
         "VARIABLE_PERCENTAGE",
         "VARIABLE_AMOUNT"
       ],
-      "description": "Indicates how the discount is applied to the associated line item or order."
+      "description": "Indicates how the discount is applied to the associated line item or order.",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItemTaxType": {
       "type": "string",
@@ -5848,7 +6160,8 @@
         "ADDITIVE",
         "INCLUSIVE"
       ],
-      "description": "Indicates how the tax is applied to the associated line item or order."
+      "description": "Indicates how the tax is applied to the associated line item or order.",
+      "x-release-status": "PUBLIC"
     },
     "RefundStatus": {
       "type": "string",
@@ -5858,7 +6171,8 @@
         "REJECTED",
         "FAILED"
       ],
-      "description": "Indicates a refund\u0027s current status."
+      "description": "Indicates a refund\u0027s current status.",
+      "x-release-status": "PUBLIC"
     },
     "RegisterDomainResponseStatus": {
       "type": "string",
@@ -5866,7 +6180,8 @@
         "PENDING",
         "VERIFIED"
       ],
-      "description": "The status of domain registration."
+      "description": "The status of domain registration.",
+      "x-release-status": "PUBLIC"
     },
     "SortOrder": {
       "type": "string",
@@ -5874,7 +6189,8 @@
         "DESC",
         "ASC"
       ],
-      "description": "The order (e.g., chronological or alphabetical) in which results from a request are returned."
+      "description": "The order (e.g., chronological or alphabetical) in which results from a request are returned.",
+      "x-release-status": "PUBLIC"
     },
     "TaxCalculationPhase": {
       "type": "string",
@@ -5882,7 +6198,8 @@
         "TAX_SUBTOTAL_PHASE",
         "TAX_TOTAL_PHASE"
       ],
-      "description": "When to calculate the taxes due on a cart."
+      "description": "When to calculate the taxes due on a cart.",
+      "x-release-status": "PUBLIC"
     },
     "TaxInclusionType": {
       "type": "string",
@@ -5890,7 +6207,8 @@
         "ADDITIVE",
         "INCLUSIVE"
       ],
-      "description": "Whether to the tax amount should be additional to or included in to the [CatalogItem](#type-catalogitem) price."
+      "description": "Whether to the tax amount should be additional to or included in to the [CatalogItem](#type-catalogitem) price.",
+      "x-release-status": "PUBLIC"
     },
     "TenderCardDetailsEntryMethod": {
       "type": "string",
@@ -5901,7 +6219,8 @@
         "ON_FILE",
         "CONTACTLESS"
       ],
-      "description": "Indicates the method used to enter the card\u0027s details."
+      "description": "Indicates the method used to enter the card\u0027s details.",
+      "x-release-status": "PUBLIC"
     },
     "TenderCardDetailsStatus": {
       "type": "string",
@@ -5911,7 +6230,8 @@
         "VOIDED",
         "FAILED"
       ],
-      "description": "Indicates the card transaction\u0027s current status."
+      "description": "Indicates the card transaction\u0027s current status.",
+      "x-release-status": "PUBLIC"
     },
     "TenderType": {
       "type": "string",
@@ -5923,7 +6243,8 @@
         "NO_SALE",
         "OTHER"
       ],
-      "description": "Indicates a tender\u0027s type."
+      "description": "Indicates a tender\u0027s type.",
+      "x-release-status": "PUBLIC"
     },
     "TransactionProduct": {
       "type": "string",
@@ -5937,7 +6258,8 @@
         "PAYROLL",
         "OTHER"
       ],
-      "description": "Indicates the Square product used to process a transaction."
+      "description": "Indicates the Square product used to process a transaction.",
+      "x-release-status": "PUBLIC"
     },
     "AdditionalRecipient": {
       "type": "object",
@@ -5968,7 +6290,8 @@
           "description": "The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server."
         }
       },
-      "description": "Represents an additional recipient (other than the merchant) receiving a portion of this tender."
+      "description": "Represents an additional recipient (other than the merchant) receiving a portion of this tender.",
+      "x-release-status": "PUBLIC"
     },
     "AdditionalRecipientReceivable": {
       "type": "object",
@@ -6010,7 +6333,8 @@
           "description": "Any refunds of the receivable that have been applied."
         }
       },
-      "description": "Represents a monetary distribution of part of a [Transaction](#type-transaction)\u0027s amount for Transactions which included additional recipients. The location of this receivable is that same as the one specified in the [AdditionalRecipient](#type-additionalrecipient)."
+      "description": "Represents a monetary distribution of part of a [Transaction](#type-transaction)\u0027s amount for Transactions which included additional recipients. The location of this receivable is that same as the one specified in the [AdditionalRecipient](#type-additionalrecipient).",
+      "x-release-status": "PUBLIC"
     },
     "AdditionalRecipientReceivableRefund": {
       "type": "object",
@@ -6051,7 +6375,8 @@
           "description": "The time when the refund was created, in RFC 3339 format."
         }
       },
-      "description": "A refund of an [AdditionalRecipientReceivable](#type-additionalrecipientreceivable). This includes the ID of the additional recipient receivable associated to this object, as well as a reference to the [Refund](#type-refund) that created this receivable refund."
+      "description": "A refund of an [AdditionalRecipientReceivable](#type-additionalrecipientreceivable). This includes the ID of the additional recipient receivable associated to this object, as well as a reference to the [Refund](#type-refund) that created this receivable refund.",
+      "x-release-status": "PUBLIC"
     },
     "Address": {
       "type": "object",
@@ -6369,7 +6694,8 @@
           "description": "Optional organization name when it\u0027s representing recipient."
         }
       },
-      "description": "Represents a physical address."
+      "description": "Represents a physical address.",
+      "x-release-status": "PUBLIC"
     },
     "BatchDeleteCatalogObjectsRequest": {
       "type": "object",
@@ -6383,6 +6709,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "object_ids": [
@@ -6422,6 +6749,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "deleted_object_ids": [
           "W62UWFY35CWMYGVWK6TWJDNI",
@@ -6456,6 +6784,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "object_ids": [
@@ -6499,6 +6828,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "objects": [
           {
@@ -6645,6 +6975,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "order_ids": [
@@ -6680,6 +7011,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [BatchRetrieveOrders](#endpoint-batchretrieveorders) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "orders": [
           {
@@ -6742,6 +7074,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
@@ -6884,6 +7217,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "objects": [
           {
@@ -7047,6 +7381,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/CaptureTransaction/CaptureTransactionRequest.python",
@@ -7068,6 +7403,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [CaptureTransaction](#endpoint-capturetransaction) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.python",
@@ -7126,7 +7462,8 @@
           "description": "The unique string fingerprint for the card. \nThe fingerprint is based on the credit card number and is unique to the merchant. \nIf a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case.\nNote: Fingerprint may not exist on old transactions."
         }
       },
-      "description": "Represents the non-confidential details of a credit card."
+      "description": "Represents the non-confidential details of a credit card.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogCategory": {
       "type": "object",
@@ -7137,6 +7474,7 @@
         }
       },
       "description": "A category to which an [CatalogItem](#type-catalogitem) belongs in the Catalog object model.",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "CATEGORY",
@@ -7183,6 +7521,7 @@
         }
       },
       "description": "A discount in the Catalog object model.",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "DISCOUNT",
@@ -7210,12 +7549,14 @@
           "description": "The permanent ID for the [CatalogObject](#type-catalogobject) created by the server."
         }
       },
-      "description": "A mapping between a client-supplied temporary ID and a permanent server ID."
+      "description": "A mapping between a client-supplied temporary ID and a permanent server ID.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogInfoRequest": {
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.python",
@@ -7241,6 +7582,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "limits": {
           "batch_upsert_max_objects_per_batch": 1000,
@@ -7312,7 +7654,8 @@
           "description": "The maximum number of modifier list IDs to be disabled that may be included in\na single `/v2/catalog/update-item-modifier-lists` request."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogItem": {
       "type": "object",
@@ -7391,6 +7734,7 @@
         }
       },
       "description": "An item (i.e., product family) in the Catalog object model.",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "ITEM",
@@ -7436,7 +7780,8 @@
           "description": "If `true`, enable this [CatalogModifierList](#type-catalogmodifierlist)."
         }
       },
-      "description": "Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem)."
+      "description": "Controls the properties of a [CatalogModifierList](#type-catalogmodifierlist) as it applies to this [CatalogItem](#type-catalogitem).",
+      "x-release-status": "PUBLIC"
     },
     "CatalogItemVariation": {
       "type": "object",
@@ -7508,6 +7853,7 @@
         }
       },
       "description": "An item variation (i.e., product) in the Catalog object model.",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "ITEM_VARIATION",
@@ -7537,6 +7883,7 @@
         }
       },
       "description": "A modifier in the Catalog object model.",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "MODIFIER",
@@ -7575,6 +7922,7 @@
         }
       },
       "description": "A modifier list in the Catalog object model. A [CatalogModifierList](#type-catalogmodifierlist)\ncontains [Modifier](#type-catalogmodifier)s that can be applied to a [CatalogItem](#type-catalogitem)\nat the time of sale.\n\nFor example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\" [CatalogItem](#type-catalogitem) might\ncontain [CatalogModifier](#type-catalogmodifier)s \"Ketchup\", \"Mustard\", and \"Relish\". The\n`selection_type` field specifies whether or not multiple selections from the modifier list are allowed.",
+      "x-release-status": "PUBLIC",
       "example": {
         "type": "MODIFIER_LIST",
         "id": "#MilkType",
@@ -7636,7 +7984,8 @@
           "description": "If `true`, this [CatalogModifier](#type-catalogmodifier) should be selected by default for this [CatalogItem](#type-catalogitem)."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogObject": {
       "type": "object",
@@ -7730,7 +8079,8 @@
           "description": "Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`."
         }
       },
-      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](https://docs.connect.squareup.com/articles/catalog-overview).",
+      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](/products/catalog/overview).",
+      "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
           "type": "{{ [ITEM | ITEM_VARIATION | MODIFIER | MODIFIER_LIST | CATEGORY | DISCOUNT | TAX] }}",
@@ -7773,7 +8123,8 @@
           "description": "A list of [CatalogObject](#type-catalogobject)s belonging to this batch."
         }
       },
-      "description": "A batch of [CatalogObject](#type-catalogobject)s."
+      "description": "A batch of [CatalogObject](#type-catalogobject)s.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQuery": {
       "type": "object",
@@ -7807,7 +8158,8 @@
           "description": "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled."
         }
       },
-      "description": "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest).\nOnly one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\n[CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`."
+      "description": "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest).\nOnly one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\n[CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQueryExact": {
       "type": "object",
@@ -7826,7 +8178,8 @@
           "description": "The desired value of the search attribute."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQueryItemsForModifierList": {
       "type": "object",
@@ -7842,7 +8195,8 @@
           "description": "A set of [CatalogModifierList](#type-catalogmodifierlist) IDs to be used to find associated [CatalogItem](#type-catalogitem)s."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQueryItemsForTax": {
       "type": "object",
@@ -7858,7 +8212,8 @@
           "description": "A set of [CatalogTax](#type-catalogtax) IDs to be used to find associated [CatalogItem](#type-catalogitem)s."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQueryPrefix": {
       "type": "object",
@@ -7878,7 +8233,8 @@
           "description": "The desired prefix of the search attribute value."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQueryRange": {
       "type": "object",
@@ -7902,7 +8258,8 @@
           "description": "The desired maximum value for the search attribute (inclusive)."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQuerySortedAttribute": {
       "type": "object",
@@ -7928,7 +8285,8 @@
           "description": "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending)."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogQueryText": {
       "type": "object",
@@ -7944,7 +8302,8 @@
           "description": "A list of one, two, or three search keywords. Keywords with fewer than three characters\nare ignored."
         }
       },
-      "description": ""
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CatalogTax": {
       "type": "object",
@@ -7983,6 +8342,7 @@
         }
       },
       "description": "A tax in the Catalog object model.",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "TAX",
@@ -8011,7 +8371,8 @@
           "description": "The ID of the [location](#type-location) this Connect V1 ID is associated with."
         }
       },
-      "description": "An Items Connect V1 object ID along with its associated [location](#type-location) ID."
+      "description": "An Items Connect V1 object ID along with its associated [location](#type-location) ID.",
+      "x-release-status": "PUBLIC"
     },
     "ChargeRequest": {
       "type": "object",
@@ -8052,7 +8413,7 @@
         "note": {
           "maxLength": 60,
           "type": "string",
-          "description": "An optional note to associate with the transaction.\n\nThis value cannot exceed 60 characters."
+          "description": ""
         },
         "customer_id": {
           "maxLength": 50,
@@ -8074,17 +8435,18 @@
         "order_id": {
           "maxLength": 192,
           "type": "string",
-          "description": "The ID of the order to associate with this transaction.\n\nIf you provide this value, the `amount_money` value of your request must\n__exactly match__ the `total_money` value of the order\u0027s `order_amounts` field."
+          "description": "The ID of the order to associate with this transaction.\n\nIf you provide this value, the `amount_money` value of your request must\n__exactly match__ the value of the order\u0027s `total_money` field."
         },
         "additional_recipients": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/AdditionalRecipient"
           },
-          "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in you charge\u0027s request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
+          "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in the charge request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires the `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [Charge](#endpoint-charge) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "74ae1696-b1e3-4328-af6d-f1e04d947a13",
@@ -8156,7 +8518,8 @@
           "description": "The amount of money distributed to the recipient."
         }
       },
-      "description": "Represents an additional recipient (other than the merchant) entitled to a portion of the tender.\nSupport is currently limited to USD, CAD and GBP currencies"
+      "description": "Represents an additional recipient (other than the merchant) entitled to a portion of the tender.\nSupport is currently limited to USD, CAD and GBP currencies",
+      "x-release-status": "PUBLIC"
     },
     "ChargeResponse": {
       "type": "object",
@@ -8174,6 +8537,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [Charge](#endpoint-charge) endpoint.\n\nOne of `errors` or `transaction` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "transaction": {
           "id": "KnL67ZIwXCPtzOrqj0HrkxMF",
@@ -8271,7 +8635,8 @@
           "description": "Additional recipients (other than the merchant) receiving a portion of this checkout.\nFor example, fees assessed on the purchase by a third party integration."
         }
       },
-      "description": "Square Checkout lets merchants accept online payments for supported\npayment types using a checkout workflow hosted on squareup.com."
+      "description": "Square Checkout lets merchants accept online payments for supported\npayment types using a checkout workflow hosted on squareup.com.",
+      "x-release-status": "PUBLIC"
     },
     "CreateCheckoutRequest": {
       "type": "object",
@@ -8327,6 +8692,7 @@
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
@@ -8456,6 +8822,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "checkout": {
           "id": "CAISEHGimXh-C3RIT4og1a6u1qw",
@@ -8727,7 +9094,7 @@
       "properties": {
         "card_nonce": {
           "type": "string",
-          "description": "A card nonce representing the credit card to link to the customer.\n\nCard nonces are generated by the `SqPaymentForm` that buyers enter\ntheir card information into. See\n[Embedding the payment form](/articles/adding-payment-form/) for\nmore information.\n\n__Note:__ Card nonces generated by digital wallets (e.g., Apple Pay)\ncannot be used to create a customer card."
+          "description": "A card nonce representing the credit card to link to the customer.\n\nCard nonces are generated by the `SqPaymentForm` that buyers enter\ntheir card information into. See\n[Embedding the payment form](/payments/sqpaymentform/overview) for\nmore information.\n\n__Note:__ Card nonces generated by digital wallets (e.g., Apple Pay)\ncannot be used to create a customer card."
         },
         "billing_address": {
           "$ref": "#/definitions/Address",
@@ -8739,6 +9106,7 @@
         }
       },
       "description": "Defines the fields that are included in the request body of a request\nto the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "card_nonce": "YOUR_CARD_NONCE",
@@ -8777,6 +9145,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.\n\nOne of `errors` or `card` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "card": {
           "id": "icard-card_id",
@@ -8844,6 +9213,7 @@
         }
       },
       "description": "Defines the body parameters that can be provided in a request to the\n[CreateCustomer](#endpoint-createcustomer) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "given_name": "Amelia",
@@ -8886,6 +9256,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [CreateCustomer](#endpoint-createcustomer) endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "customer": {
           "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
@@ -8914,6 +9285,36 @@
         "javascript": "/sdk_samples/CreateCustomer/CreateCustomerResponse.javascript",
         "ruby": "/sdk_samples/CreateCustomer/CreateCustomerResponse.ruby"
       }
+    },
+    "CreateMobileAuthorizationCodeRequest": {
+      "type": "object",
+      "properties": {
+        "location_id": {
+          "type": "string",
+          "description": "The Square location ID the authorization code should be tied to."
+        }
+      },
+      "description": "Defines the body parameters that can be provided in a request to the\n[CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.",
+      "x-release-status": "PUBLIC"
+    },
+    "CreateMobileAuthorizationCodeResponse": {
+      "type": "object",
+      "properties": {
+        "authorization_code": {
+          "type": "string",
+          "description": "Generated authorization code that connects a mobile application instance to a Square account."
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "The timestamp when `authorization_code` expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, e.g., \"2016-09-04T23:59:33.123Z\"."
+        },
+        "error": {
+          "$ref": "#/definitions/Error",
+          "description": "An error object that provides details about how creation of authorization code failed."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.",
+      "x-release-status": "PUBLIC"
     },
     "CreateOrderRequest": {
       "type": "object",
@@ -8954,6 +9355,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
@@ -9034,7 +9436,8 @@
           "description": "Only used for ad hoc discounts. The monetary amount of the discount."
         }
       },
-      "description": "Represents a discount that can apply to either a single line item or an entire order."
+      "description": "Represents a discount that can apply to either a single line item or an entire order.",
+      "x-release-status": "PUBLIC"
     },
     "CreateOrderRequestLineItem": {
       "type": "object",
@@ -9094,7 +9497,8 @@
           "description": "The discounts to include on the line item."
         }
       },
-      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details.\n\nLine items can either reference objects from the merchant\u0027s catalog, or can\nalternatively specify a name and price instead."
+      "description": "Represents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details.\n\nLine items can either reference objects from the merchant\u0027s catalog, or can\nalternatively specify a name and price instead.",
+      "x-release-status": "PUBLIC"
     },
     "CreateOrderRequestModifier": {
       "type": "object",
@@ -9114,7 +9518,8 @@
           "description": "The base price for the modifier.\n\n`base_price_money` is required for ad hoc modifiers.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price."
         }
       },
-      "description": "Represents a modifier applied to a single line item.\n\nModifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price."
+      "description": "Represents a modifier applied to a single line item.\n\nModifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price.",
+      "x-release-status": "PUBLIC"
     },
     "CreateOrderRequestTax": {
       "type": "object",
@@ -9144,7 +9549,8 @@
           "description": "Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
         }
       },
-      "description": "Represents a tax that can apply to either a single line item or an entire order."
+      "description": "Represents a tax that can apply to either a single line item or an entire order.",
+      "x-release-status": "PUBLIC"
     },
     "CreateOrderResponse": {
       "type": "object",
@@ -9162,6 +9568,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [CreateOrder](#endpoint-createorder) endpoint.\n\nOne of `errors` or `order` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "order": {
           "id": "CAISENgvlJ6jLWAzERDzjyHVybY",
@@ -9359,6 +9766,7 @@
         }
       },
       "description": "Defines the body parameters that can be included in\na request to the [CreateRefund](#endpoint-createrefund) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad2",
@@ -9394,6 +9802,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [CreateRefund](#endpoint-createrefund) endpoint.\n\nOne of `errors` or `refund` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "refund": {
           "id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
@@ -9501,9 +9910,97 @@
             "$ref": "#/definitions/CustomerGroupInfo"
           },
           "description": "The groups the customer belongs to."
+        },
+        "creation_source": {
+          "type": "string",
+          "enum": [
+            "OTHER",
+            "APPOINTMENTS",
+            "COUPON",
+            "DELETION_RECOVERY",
+            "DIRECTORY",
+            "EGIFTING",
+            "EMAIL_COLLECTION",
+            "FEEDBACK",
+            "IMPORT",
+            "INVOICES",
+            "LOYALTY",
+            "MARKETING",
+            "MERGE",
+            "ONLINE_STORE",
+            "INSTANT_PROFILE",
+            "TERMINAL",
+            "THIRD_PARTY",
+            "THIRD_PARTY_IMPORT",
+            "UNMERGE_RECOVERY"
+          ],
+          "description": "A creation source represents the method used to create the\ncustomer profile."
         }
       },
-      "description": "Represents one of a business\u0027s customers, which can have one or more\ncards on file associated with it."
+      "description": "Represents one of a business\u0027s customers, which can have one or more\ncards on file associated with it.",
+      "x-release-status": "PUBLIC"
+    },
+    "CustomerCreationSourceFilter": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OTHER",
+              "APPOINTMENTS",
+              "COUPON",
+              "DELETION_RECOVERY",
+              "DIRECTORY",
+              "EGIFTING",
+              "EMAIL_COLLECTION",
+              "FEEDBACK",
+              "IMPORT",
+              "INVOICES",
+              "LOYALTY",
+              "MARKETING",
+              "MERGE",
+              "ONLINE_STORE",
+              "INSTANT_PROFILE",
+              "TERMINAL",
+              "THIRD_PARTY",
+              "THIRD_PARTY_IMPORT",
+              "UNMERGE_RECOVERY"
+            ]
+          },
+          "description": "The list of creation sources used as filtering criteria. See\n[CustomerCreationSource](#type-customercreationsource) for possible values."
+        },
+        "rule": {
+          "type": "string",
+          "enum": [
+            "INCLUDE",
+            "EXCLUDE"
+          ],
+          "description": "Indicates whether a customer profile matching the filter criteria\nshould be included in the result or excluded from the result.\nDefault: `INCLUDE`. See\n[CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible\nvalues."
+        }
+      },
+      "description": "Creation source filter.\n\nIf one or more creation sources are set, customer profiles are included in,\nor excluded from, the result if they match at least one of the filter\ncriteria.",
+      "x-release-status": "PUBLIC"
+    },
+    "CustomerFilter": {
+      "type": "object",
+      "properties": {
+        "creation_source": {
+          "$ref": "#/definitions/CustomerCreationSourceFilter",
+          "description": "A filter to select customers based on their creation source."
+        },
+        "created_at": {
+          "$ref": "#/definitions/TimeRange",
+          "description": "A filter to select customers based on when they were created."
+        },
+        "updated_at": {
+          "$ref": "#/definitions/TimeRange",
+          "description": "A filter to select customers based on when they were updated."
+        }
+      },
+      "description": "Represents a set of [`CustomerQuery`](#type-customerquery) filters used\nto limit the set of Customers returned by [`SearchCustomers`](#endpoint-seachcustomers).",
+      "x-release-status": "PUBLIC"
     },
     "CustomerGroupInfo": {
       "type": "object",
@@ -9521,7 +10018,8 @@
           "description": "The name of the customer group."
         }
       },
-      "description": "Contains some brief information about a customer group with its identifier included."
+      "description": "Contains some brief information about a customer group with its identifier included.",
+      "x-release-status": "PUBLIC"
     },
     "CustomerPreferences": {
       "type": "object",
@@ -9531,12 +10029,52 @@
           "description": "The customer has unsubscribed from receiving marketing campaign emails."
         }
       },
-      "description": "Represents a particular customer\u0027s preferences."
+      "description": "Represents a particular customer\u0027s preferences.",
+      "x-release-status": "PUBLIC"
+    },
+    "CustomerQuery": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/CustomerFilter",
+          "description": "A list of filter criteria."
+        },
+        "sort": {
+          "$ref": "#/definitions/CustomerSort",
+          "description": "Sort criteria for query results. The default sort behavior is to order\ncustomers alphabetically by `given_name` and `last_name`."
+        }
+      },
+      "description": "Represents a query (filtering and sorting criteria) used to search\nfor customer profiles.",
+      "x-release-status": "PUBLIC"
+    },
+    "CustomerSort": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "enum": [
+            "DEFAULT",
+            "CREATED_AT"
+          ],
+          "description": "The field to sort the results on. It could be the total money spent at\nthe merchant, the date of the first visit (etc). See\n[CustomerSortField](#type-customersortfield) for possible values. Default\nvalue: `DEFAULT`."
+        },
+        "order": {
+          "type": "string",
+          "enum": [
+            "DESC",
+            "ASC"
+          ],
+          "description": "Indicates the order in which results should be displayed based on the\nvalue of the sort field. String comparisons use standard alphabetic comparison\nto determine order. Strings representing numbers are sorted as strings. See\n[SortOrder](#type-sortorder) for possible values. Default value: `ASC`."
+        }
+      },
+      "description": "Indicates the field to use for sorting customer profiles. For example,\nby total money spent with the merchant or the date of their first purchase.",
+      "x-release-status": "PUBLIC"
     },
     "DeleteCatalogObjectRequest": {
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.python",
@@ -9569,6 +10107,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "deleted_object_ids": [
           "7SB3ZQYJ5GDMVFL7JK46JCHT",
@@ -9588,6 +10127,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardRequest.python",
@@ -9609,6 +10149,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.python",
@@ -9622,6 +10163,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/DeleteCustomer/DeleteCustomerRequest.python",
@@ -9643,6 +10185,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [DeleteCustomer](#endpoint-deletecustomer) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.python",
@@ -9717,6 +10260,7 @@
             "INVALID_FORM_VALUE",
             "ONE_INSTRUMENT_EXPECTED",
             "NO_FIELDS_SET",
+            "DEPRECATED_FIELD_SET",
             "CARD_EXPIRED",
             "INVALID_EXPIRATION",
             "INVALID_EXPIRATION_YEAR",
@@ -9748,6 +10292,7 @@
             "VERIFY_AVS_FAILURE",
             "CARD_DECLINED_CALL_ISSUER",
             "NOT_FOUND",
+            "METHOD_NOT_ALLOWED",
             "REQUEST_TIMEOUT",
             "CONFLICT",
             "REQUEST_ENTITY_TOO_LARGE",
@@ -9768,7 +10313,8 @@
           "description": "The name of the field provided in the original request that the error\npertains to, if any."
         }
       },
-      "description": "Represents an error encountered during a request to the Connect API.\n\nSee [Handling errors](#handlingerrors) for more information."
+      "description": "Represents an error encountered during a request to the Connect API.\n\nSee [Handling errors](#handlingerrors) for more information.",
+      "x-release-status": "PUBLIC"
     },
     "ItemVariationLocationOverrides": {
       "type": "object",
@@ -9807,7 +10353,8 @@
           "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
         }
       },
-      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location)."
+      "description": "Price and inventory alerting overrides for a [CatalogItemVariation](#type-catalogitemvariation) at a specific [location](#type-location).",
+      "x-release-status": "PUBLIC"
     },
     "ListAdditionalRecipientReceivableRefundsRequest": {
       "type": "object",
@@ -9834,6 +10381,7 @@
         }
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
@@ -9868,6 +10416,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.\n\nOne of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "receivable_refunds": [
           {
@@ -9916,6 +10465,7 @@
         }
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
@@ -9950,6 +10500,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.\n\nOne of `errors` or `additional_recipient_receivables` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "receivables": [
           {
@@ -9998,6 +10549,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?types\u003dcategory,tax"
       },
@@ -10032,6 +10584,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "objects": [
           {
@@ -10083,7 +10636,7 @@
             "DEFAULT",
             "CREATED_AT"
           ],
-          "description": "Indicates how Customers should be sorted. Default: `DEFAULT`."
+          "description": "Indicates how Customers should be sorted. Default: `DEFAULT`. See\n[CustomerSortField](#type-customersortfield) for possible values."
         },
         "sort_order": {
           "type": "string",
@@ -10091,10 +10644,11 @@
             "DESC",
             "ASC"
           ],
-          "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`."
+          "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder)\nfor possible values."
         }
       },
       "description": "Defines the query parameters that can be provided in a request to the\n[ListCustomers](#endpoint-listcustomers) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListCustomers/ListCustomersRequest.python",
@@ -10127,6 +10681,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [ListCustomers](#endpoint-listcustomers) endpoint.\n\nOne of `errors` or `customers` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "customers": [
           {
@@ -10168,6 +10723,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/ListLocations/ListLocationsRequest.python",
@@ -10196,6 +10752,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [ListLocations](#endpoint-listlocations) endpoint.\n\nOne of `errors` or `locations` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "locations": [
           {
@@ -10256,6 +10813,7 @@
         }
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListRefunds](#endpoint-listrefunds) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
@@ -10290,6 +10848,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [ListRefunds](#endpoint-listrefunds) endpoint.\n\nOne of `errors` or `refunds` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "refunds": [
           {
@@ -10350,6 +10909,7 @@
         }
       },
       "description": "Defines the query parameters that can be included in\na request to the [ListTransactions](#endpoint-listtransactions) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
       },
@@ -10384,6 +10944,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [ListTransactions](#endpoint-listtransactions) endpoint.\n\nOne of `errors` or `transactions` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "transactions": [
           {
@@ -10981,7 +11542,8 @@
           "description": "The location\u0027s website, as set by the account owner in the Square dashboard.\n\nDefault: none; only exists if explicitly set."
         }
       },
-      "description": "Represents one of a business\u0027s locations."
+      "description": "Represents one of a business\u0027s locations.",
+      "x-release-status": "PUBLIC"
     },
     "Money": {
       "type": "object",
@@ -11181,7 +11743,94 @@
           "description": "The type of currency, in __ISO 4217 format__. For example, the currency\ncode for US dollars is `USD`.\n\nSee [Currency](#type-currency) for possible values."
         }
       },
-      "description": "Represents an amount of money.\n\n__Important:__ Unlike version 1 of the Connect API, __all monetary amounts\nreturned by v2 endpoints are positive.__ (In v1, monetary amounts are negative\nif they represent money being paid _by_ a merchant, instead of money being\npaid _to_ a merchant.)"
+      "description": "Represents an amount of money.\n\n__Important:__ Unlike version 1 of the Connect API, __all monetary amounts\nreturned by v2 endpoints are positive.__ (In v1, monetary amounts are negative\nif they represent money being paid _by_ a merchant, instead of money being\npaid _to_ a merchant.)",
+      "x-release-status": "PUBLIC"
+    },
+    "ObtainTokenRequest": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "description": "Your application\u0027s ID, available from the [application dashboard](https://connect.squareup.com/apps)."
+        },
+        "client_secret": {
+          "type": "string",
+          "description": "Your application\u0027s secret, available from the [application dashboard](https://connect.squareup.com/apps)."
+        },
+        "code": {
+          "type": "string",
+          "description": "The authorization code to exchange."
+        },
+        "redirect_uri": {
+          "type": "string",
+          "description": "The redirect URL assigned in the [application dashboard](https://connect.squareup.com/apps)."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_url": "https://connect.squareup.com/oauth2/token",
+        "request_body": {
+          "client_id": "APPLICATION_ID",
+          "client_secret": "APPLICATION_SECRET",
+          "code": "CODE_FROM_AUTHORIZE"
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ObtainToken/ObtainTokenRequest.python",
+        "csharp": "/sdk_samples/ObtainToken/ObtainTokenRequest.csharp",
+        "php": "/sdk_samples/ObtainToken/ObtainTokenRequest.php",
+        "javascript": "/sdk_samples/ObtainToken/ObtainTokenRequest.javascript",
+        "ruby": "/sdk_samples/ObtainToken/ObtainTokenRequest.ruby"
+      }
+    },
+    "ObtainTokenResponse": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string",
+          "description": "Your application\u0027s access token. You provide this token in a header with every request to Connect API endpoints.\nSee [Request and response headers](https://docs.connect.squareup.com/api/connect/v2/#requestandresponseheaders) for the format of this header."
+        },
+        "token_type": {
+          "type": "string",
+          "description": "This value is always _bearer_."
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "The date when access_token expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format."
+        },
+        "merchant_id": {
+          "type": "string",
+          "description": "The ID of the authorizing merchant\u0027s business."
+        },
+        "subscription_id": {
+          "type": "string",
+          "description": "The ID of the merchant [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) associated with the authorization.\nOnly present if the merchant signed up for a subscription during authorization."
+        },
+        "plan_id": {
+          "type": "string",
+          "description": "The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for.\nOnly present if the merchant signed up for a subscription during authorization."
+        },
+        "id_token": {
+          "type": "string",
+          "description": "Then OpenID token belonging to this this person. Only present if the OPENID scope is included in the authorize request."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "access_token": "ACCESS_TOKEN",
+        "token_type": "bearer",
+        "expires_at": "2006-01-02T15:04:05Z",
+        "merchant_id": "MERCHANT_ID"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/ObtainToken/ObtainTokenResponse.python",
+        "csharp": "/sdk_samples/ObtainToken/ObtainTokenResponse.csharp",
+        "php": "/sdk_samples/ObtainToken/ObtainTokenResponse.php",
+        "javascript": "/sdk_samples/ObtainToken/ObtainTokenResponse.javascript",
+        "ruby": "/sdk_samples/ObtainToken/ObtainTokenResponse.ruby"
+      }
     },
     "Order": {
       "type": "object",
@@ -11224,7 +11873,8 @@
           "description": "The total discount amount of money to collect for the order."
         }
       },
-      "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase"
+      "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItem": {
       "type": "object",
@@ -11241,7 +11891,7 @@
           "minLength": 1,
           "maxLength": 5,
           "type": "string",
-          "description": "The quantity purchased, as a string representation of a number."
+          "description": "The quantity purchased, as a string representation of a number.\n\nThis string must have a positive integer value."
         },
         "note": {
           "maxLength": 500,
@@ -11300,7 +11950,8 @@
           "description": "The total amount of money to collect for this line item."
         }
       },
-      "description": "Represents a line item in an order. Each line item describes a different\nproduct to purchase, with its own quantity and price details."
+      "description": "Represents a line item in an order. Each line item describes a different\nproduct to purchase, with its own quantity and price details.",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItemDiscount": {
       "type": "object",
@@ -11349,7 +12000,8 @@
           "description": "Indicates the level at which the discount applies.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values."
         }
       },
-      "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal."
+      "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal.",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItemModifier": {
       "type": "object",
@@ -11373,7 +12025,8 @@
           "description": "The total price of the item modifier for its line item.\nThis is the modifier\u0027s base_price_money multiplied by the line item\u0027s quantity."
         }
       },
-      "description": "A [CatalogModifier](#type-catalogmodifier)."
+      "description": "A [CatalogModifier](#type-catalogmodifier).",
+      "x-release-status": "PUBLIC"
     },
     "OrderLineItemTax": {
       "type": "object",
@@ -11407,7 +12060,8 @@
           "description": "The amount of the money applied by the tax in an order."
         }
       },
-      "description": "Represents a tax that applies to one or more line items in an order."
+      "description": "Represents a tax that applies to one or more line items in an order.",
+      "x-release-status": "PUBLIC"
     },
     "Refund": {
       "type": "object",
@@ -11471,7 +12125,8 @@
           "description": "Additional recipients (other than the merchant) receiving a portion of this refund.\nFor example, fees assessed on a refund of a purchase by a third party integration."
         }
       },
-      "description": "Represents a refund processed for a Square transaction."
+      "description": "Represents a refund processed for a Square transaction.",
+      "x-release-status": "PUBLIC"
     },
     "RegisterDomainRequest": {
       "type": "object",
@@ -11487,6 +12142,7 @@
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "domain_name": "example.com"
@@ -11520,8 +12176,77 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.\n\nEither `errors` or `status` will be present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "status": "VERIFIED"
+      }
+    },
+    "RenewTokenRequest": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string",
+          "description": "The token you want to renew."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_url": "https://connect.squareup.com/oauth2/clients/{CLIENT_ID}/access-token/renew",
+        "request_body": {
+          "access_token": "ACCESS_TOKEN"
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/RenewToken/RenewTokenRequest.python",
+        "csharp": "/sdk_samples/RenewToken/RenewTokenRequest.csharp",
+        "php": "/sdk_samples/RenewToken/RenewTokenRequest.php",
+        "javascript": "/sdk_samples/RenewToken/RenewTokenRequest.javascript",
+        "ruby": "/sdk_samples/RenewToken/RenewTokenRequest.ruby"
+      }
+    },
+    "RenewTokenResponse": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string",
+          "description": "The renewed access token.\nThis value might be different from the `access_token` you provided in your request.\nYou provide this token in a header with every request to Connect API endpoints.\nSee [Request and response headers](https://docs.connect.squareup.com/api/connect/v2/#requestandresponseheaders) for the format of this header."
+        },
+        "token_type": {
+          "type": "string",
+          "description": "This value is always _bearer_."
+        },
+        "expires_at": {
+          "type": "string",
+          "description": "The date when access_token expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format."
+        },
+        "merchant_id": {
+          "type": "string",
+          "description": "The ID of the authorizing merchant\u0027s business."
+        },
+        "subscription_id": {
+          "type": "string",
+          "description": "The ID of the merchant [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) associated with the authorization.\nOnly present if the merchant signed up for a subscription during authorization."
+        },
+        "plan_id": {
+          "type": "string",
+          "description": "The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for.\nOnly present if the merchant signed up for a subscription during authorization."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "access_token": "ACCESS_TOKEN",
+        "token_type": "bearer",
+        "expires_at": "2006-01-02T15:04:05Z",
+        "merchant_id": "MERCHANT_ID"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/RenewToken/RenewTokenResponse.python",
+        "csharp": "/sdk_samples/RenewToken/RenewTokenResponse.csharp",
+        "php": "/sdk_samples/RenewToken/RenewTokenResponse.php",
+        "javascript": "/sdk_samples/RenewToken/RenewTokenResponse.javascript",
+        "ruby": "/sdk_samples/RenewToken/RenewTokenResponse.ruby"
       }
     },
     "RetrieveCatalogObjectRequest": {
@@ -11533,6 +12258,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?include_related_objects\u003dtrue"
       },
@@ -11567,6 +12293,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "object": {
           "type": "ITEM",
@@ -11645,6 +12372,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/RetrieveCustomer/RetrieveCustomerRequest.python",
@@ -11670,6 +12398,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [RetrieveCustomer](#endpoint-retrievecustomer) endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "customer": {
           "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
@@ -11709,6 +12438,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/RetrieveTransaction/RetrieveTransactionRequest.python",
@@ -11734,6 +12464,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [RetrieveTransaction](#endpont-retrievetransaction) endpoint.\n\nOne of `errors` or `transaction` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "transaction": {
           "id": "KnL67ZIwXCPtzOrqj0HrkxMF",
@@ -11787,6 +12518,60 @@
         "ruby": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.ruby"
       }
     },
+    "RevokeTokenRequest": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "description": "Your application\u0027s ID, available from the [application dashboard](https://connect.squareup.com/apps)."
+        },
+        "access_token": {
+          "type": "string",
+          "description": "The access token of the merchant whose token you want to revoke.\nDo not provide a value for merchant_id if you provide this parameter."
+        },
+        "merchant_id": {
+          "type": "string",
+          "description": "The ID of the merchant whose token you want to revoke.\nDo not provide a value for access_token if you provide this parameter."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_url": "https://connect.squareup.com/oauth2/revoke",
+        "request_body": {
+          "access_token": "ACCESS_TOKEN",
+          "client_id": "CLIENT_ID"
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/RevokeToken/RevokeTokenRequest.python",
+        "csharp": "/sdk_samples/RevokeToken/RevokeTokenRequest.csharp",
+        "php": "/sdk_samples/RevokeToken/RevokeTokenRequest.php",
+        "javascript": "/sdk_samples/RevokeToken/RevokeTokenRequest.javascript",
+        "ruby": "/sdk_samples/RevokeToken/RevokeTokenRequest.ruby"
+      }
+    },
+    "RevokeTokenResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "If the request is successful, this is true."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "success": true
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/RevokeToken/RevokeTokenResponse.python",
+        "csharp": "/sdk_samples/RevokeToken/RevokeTokenResponse.csharp",
+        "php": "/sdk_samples/RevokeToken/RevokeTokenResponse.php",
+        "javascript": "/sdk_samples/RevokeToken/RevokeTokenResponse.javascript",
+        "ruby": "/sdk_samples/RevokeToken/RevokeTokenResponse.ruby"
+      }
+    },
     "SearchCatalogObjectsRequest": {
       "type": "object",
       "properties": {
@@ -11832,6 +12617,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "object_types": [
@@ -11884,6 +12670,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "objects": [
           {
@@ -11990,6 +12777,132 @@
         "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.ruby"
       }
     },
+    "SearchCustomersRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "Include the pagination cursor in subsequent calls to this endpoint to retrieve\nthe next set of results associated with the original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64",
+          "description": "A limit on the number of results to be returned in a single page.\nThe limit is advisory - the implementation may return more or fewer results.\nIf the supplied limit is negative, zero, or is higher than the maximum limit\nof 1,000, it will be ignored."
+        },
+        "query": {
+          "$ref": "#/definitions/CustomerQuery",
+          "description": "Query customers based on the given conditions and sort order.\nCalling SearchCustomers without an explicit query parameter will return\nall customers ordered alphabetically based on `given_name` and\n`family_name`."
+        }
+      },
+      "description": "Defines the fields included in the request body for the\n[SearchCustomers](#endpoint-searchcustomer) endpoint.",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_body": {
+          "query": {
+            "filter": {
+              "creation_source": {
+                "values": [
+                  "THIRD_PARTY"
+                ],
+                "rule": "INCLUDE"
+              },
+              "created_at": {
+                "start_at": "2018-01-01T00:00:00-00:00",
+                "end_at": "2018-02-01T00:00:00-00:00"
+              }
+            },
+            "sort": {
+              "field": "CREATED_AT",
+              "order": "ASC"
+            }
+          },
+          "limit": 2
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/SearchCustomers/SearchCustomersRequest.python",
+        "csharp": "/sdk_samples/SearchCustomers/SearchCustomersRequest.csharp",
+        "php": "/sdk_samples/SearchCustomers/SearchCustomersRequest.php",
+        "javascript": "/sdk_samples/SearchCustomers/SearchCustomersRequest.javascript",
+        "ruby": "/sdk_samples/SearchCustomers/SearchCustomersRequest.ruby"
+      }
+    },
+    "SearchCustomersResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "customers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Customer"
+          },
+          "description": "An array of `Customer` objects that match a query."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor that can be used during subsequent calls\nto SearchCustomers to retrieve the next set of results associated\nwith the original query. Pagination cursors are only present when\na request succeeds and additional results are available.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [SearchCustomers](#endpoint-searchcustomers) endpoint.\n\nOne of `errors` or `customers` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "customers": [
+          {
+            "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "created_at": "2018-01-23T20:21:54.859Z",
+            "updated_at": "2018-04-20T10:02:43.083Z",
+            "given_name": "James",
+            "family_name": "Bond",
+            "email_address": "james.bond@example.com",
+            "address": {
+              "address_line_1": "505 Electric Ave",
+              "address_line_2": "Suite 600",
+              "locality": "New York",
+              "administrative_district_level_1": "NY",
+              "postal_code": "10003",
+              "country": "US"
+            },
+            "phone_number": "1-212-555-4250",
+            "reference_id": "YOUR_REFERENCE_ID_2",
+            "creation_source": "THIRD_PARTY"
+          },
+          {
+            "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "created_at": "2018-01-30T14:10:54.859Z",
+            "updated_at": "2018-03-08T18:25:54.859Z",
+            "given_name": "Amelia",
+            "family_name": "Earhart",
+            "email_address": "amelia.earhart@example.com",
+            "address": {
+              "address_line_1": "500 Electric Ave",
+              "address_line_2": "Suite 600",
+              "locality": "New York",
+              "administrative_district_level_1": "NY",
+              "postal_code": "10003",
+              "country": "US"
+            },
+            "phone_number": "1-212-555-4240",
+            "reference_id": "YOUR_REFERENCE_ID_1",
+            "note": "a customer",
+            "creation_source": "THIRD_PARTY"
+          }
+        ],
+        "cursor": "9dpS093Uy12AzeE"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/SearchCustomers/SearchCustomersResponse.python",
+        "csharp": "/sdk_samples/SearchCustomers/SearchCustomersResponse.csharp",
+        "php": "/sdk_samples/SearchCustomers/SearchCustomersResponse.php",
+        "javascript": "/sdk_samples/SearchCustomers/SearchCustomersResponse.javascript",
+        "ruby": "/sdk_samples/SearchCustomers/SearchCustomersResponse.ruby"
+      }
+    },
     "Tender": {
       "type": "object",
       "required": [
@@ -12060,7 +12973,8 @@
           "description": "Additional recipients (other than the merchant) receiving a portion of this tender.\nFor example, fees assessed on the purchase by a third party integration."
         }
       },
-      "description": "Represents a tender (i.e., a method of payment) used in a Square transaction."
+      "description": "Represents a tender (i.e., a method of payment) used in a Square transaction.",
+      "x-release-status": "PUBLIC"
     },
     "TenderCardDetails": {
       "type": "object",
@@ -12091,7 +13005,8 @@
           "description": "The method used to enter the card\u0027s details for the transaction."
         }
       },
-      "description": "Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`"
+      "description": "Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`",
+      "x-release-status": "PUBLIC"
     },
     "TenderCashDetails": {
       "type": "object",
@@ -12105,7 +13020,23 @@
           "description": "The amount of change returned to the buyer."
         }
       },
-      "description": "Represents the details of a tender with `type` `CASH`."
+      "description": "Represents the details of a tender with `type` `CASH`.",
+      "x-release-status": "PUBLIC"
+    },
+    "TimeRange": {
+      "type": "object",
+      "properties": {
+        "start_at": {
+          "type": "string",
+          "description": "A datetime value in RFC-3339 format indicating when the time range\nstarts."
+        },
+        "end_at": {
+          "type": "string",
+          "description": "A datetime value in RFC-3339 format indicating when the time range\nends."
+        }
+      },
+      "description": "Represents a generic time range. The start and end values are\nrepresented in RFC-3339 format. Time ranges are customized to be\ninclusive or exclusive based on the needs of a particular endpoint.\nRefer to the relevent endpoint-specific documentation to determine\nhow time ranges are handled.",
+      "x-release-status": "PUBLIC"
     },
     "Transaction": {
       "type": "object",
@@ -12167,7 +13098,8 @@
           "description": "The order_id is an identifier for the order associated with this transaction, if any."
         }
       },
-      "description": "Represents a transaction processed with Square, either with the\nConnect API or with Square Point of Sale.\n\nThe `tenders` field of this object lists all methods of payment used to pay in\nthe transaction."
+      "description": "Represents a transaction processed with Square, either with the\nConnect API or with Square Point of Sale.\n\nThe `tenders` field of this object lists all methods of payment used to pay in\nthe transaction.",
+      "x-release-status": "PUBLIC"
     },
     "UpdateCustomerRequest": {
       "type": "object",
@@ -12210,6 +13142,7 @@
         }
       },
       "description": "Defines the body parameters that can be provided in a request to the\n[UpdateCustomer](#endpoint-updatecustomer) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "phone_number": "",
@@ -12241,6 +13174,7 @@
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the [UpdateCustomer](#endpoint-updatecustomer) endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
+      "x-release-status": "PUBLIC",
       "example": {
         "customer": {
           "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
@@ -12304,6 +13238,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "item_ids": [
@@ -12343,6 +13278,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "updated_at": "2016-11-16T22:25:24.878Z"
       },
@@ -12383,6 +13319,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "item_ids": [
@@ -12421,6 +13358,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "updated_at": "2016-11-16T22:25:24.878Z"
       },
@@ -12450,6 +13388,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "af3d1afc-7212-4300-b463-0bfc5314a5ae",
@@ -12495,6 +13434,7 @@
         }
       },
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
           "type": "ITEM",
@@ -12527,6 +13467,7 @@
       "type": "object",
       "properties": {},
       "description": "",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/VoidTransaction/VoidTransactionRequest.python",
@@ -12547,7 +13488,8 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CaptureTransaction](#endpoint-capturetransaction) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the [VoidTransaction](#endpoint-voidtransaction) endpoint.",
+      "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
         "python": "/sdk_samples/VoidTransaction/VoidTransactionResponse.python",
@@ -14325,7 +15267,7 @@
           "description": "The number to adjust the variation\u0027s quantity by."
         },
         "adjustment_type": {
-          "type": "number",
+          "type": "string",
           "enum": [
             "SALE",
             "RECEIVE_STOCK",

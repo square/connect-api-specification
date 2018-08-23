@@ -19,10 +19,8 @@ PM> Install-Package Square.Connect
 ### **Generating DLLs from source**
 
 #### Dependencies
-- [RestSharp] (https://www.nuget.org/packages/RestSharp) - 105.1.0 or later
+- [RestSharp] (https://www.nuget.org/packages/RestSharp) - 106.2.2 or later
 - [Json.NET] (https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
-
-NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploads to fail. See [RestSharp#742](https://github.com/restsharp/RestSharp/issues/742)
 
 The DLLs included in the package may not be the latest version. We recommned using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
 ```

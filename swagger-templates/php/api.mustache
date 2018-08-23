@@ -109,7 +109,10 @@ use \{{invokerPackage}}\ObjectSerializer;
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array({{#consumes}}'{{mediaType}}'{{#hasMore}},{{/hasMore}}{{/consumes}}));
-  
+        {{#vendorExtensions.x-sq-version}}
+        $headerParams['Square-Version'] = "{{vendorExtensions.x-sq-version}}";
+        {{/vendorExtensions.x-sq-version}}
+
         {{#queryParams}}// query params
         {{#collectionFormat}}
         if (is_array(${{paramName}})) {

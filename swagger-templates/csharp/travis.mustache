@@ -8,7 +8,7 @@ solution: {{{packageName}}}.sln
 
 install:
   - wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe;
-  - openssl aes-256-cbc -K $encrypted_71f1b33fe68c_key -iv $encrypted_71f1b33fe68c_iv -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
+  - openssl aes-256-cbc -K $encrypted_1ab91df4dffb_key -iv $encrypted_1ab91df4dffb_iv -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
 
 script:
   - export frameworkVersion={{targetFrameworkNuget}}
