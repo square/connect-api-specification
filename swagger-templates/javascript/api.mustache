@@ -58,6 +58,10 @@ var ApiClient = require('../ApiClient');
     var headerParams = {<#headerParams>
       '<baseName>': <#required><paramName></required><^required>opts['<paramName>']</required><#hasMore>,</hasMore></headerParams>
     };
+    <#vendorExtensions.x-sq-version>
+    headerParams['Square-Version'] = '<vendorExtensions.x-sq-version>';
+    </vendorExtensions.x-sq-version>
+
     var formParams = {<#formParams>
       '<baseName>': <#collectionFormat>this.apiClient.buildCollectionParam(<#required><paramName></required><^required>opts['<paramName>']</required>, '<collectionFormat>')</collectionFormat><^collectionFormat><#required><paramName></required><^required>opts['<paramName>']</required></collectionFormat><#hasMore>,</hasMore></formParams>
     };

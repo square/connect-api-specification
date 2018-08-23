@@ -125,7 +125,9 @@ class {{classname}}(object):
         if '{{paramName}}' in params:
             header_params['{{baseName}}'] = "Bearer {}".format(params['{{paramName}}'])
 {{/headerParams}}
-
+{{#vendorExtensions.x-sq-version}}
+        header_params['Square-Version'] = "{{vendorExtensions.x-sq-version}}"
+{{/vendorExtensions.x-sq-version}}
         form_params = []
         local_var_files = {}
 {{#formParams}}

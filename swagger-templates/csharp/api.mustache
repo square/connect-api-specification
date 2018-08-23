@@ -233,7 +233,9 @@ namespace {{packageName}}.{{apiPackage}}
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            {{#vendorExtensions.x-sq-version}}
+            localVarHeaderParams.Add("Square-Version", "{{vendorExtensions.x-sq-version}}");
+            {{/vendorExtensions.x-sq-version}}
             {{#pathParams}}
             if ({{paramName}} != null) localVarPathParams.Add("{{baseName}}", Configuration.ApiClient.ParameterToString({{paramName}})); // path parameter
             {{/pathParams}}

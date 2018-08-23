@@ -143,6 +143,10 @@ module {{moduleName}}
       header_params[:'{{{baseName}}}'] = {{#collectionFormat}}@api_client.build_collection_param(opts[:'{{{paramName}}}'], :{{{collectionFormat}}}){{/collectionFormat}}{{^collectionFormat}}opts[:'{{{paramName}}}']{{/collectionFormat}} if !opts[:'{{{paramName}}}'].nil?
       {{/required}}
       {{/headerParams}}
+      
+      {{#vendorExtensions.x-sq-version}}
+      header_params['Square-Version'] = "{{vendorExtensions.x-sq-version}}"
+      {{/vendorExtensions.x-sq-version}}
 
       # form parameters
       form_params = {}
