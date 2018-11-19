@@ -32,15 +32,17 @@
 
         <!-- Dependencies are automatically installed when the package is installed -->
         <dependencies>
-            <group targetFramework="{{targetFrameworkNuget}}">
-                <dependency id="NewtonSoft.Json" version="8.0.3" />
-                <dependency id="RestSharp" version="106.2.2" />
+            <group targetFramework="netstandard2.0">
+                <dependency id="Microsoft.CSharp" version="4.5.0" />
+                <dependency id="NewtonSoft.Json" version="11.0.2" />
+                <dependency id="RestSharp" version="106.3.1" />
+                <dependency id="System.ComponentModel.Annotations" version="4.5.0" />
             </group>
         </dependencies>
     </metadata>
     <files>
         <!-- A readme.txt will be displayed when the package is installed -->
-        <file src="bin/Square.Connect.dll" target="lib/{{targetFrameworkNuget}}"/>
-        <file src="bin/Square.Connect.xml" target="lib/{{targetFrameworkNuget}}"/>
+        <file src="../../bin/Square.Connect.dll" target="lib/netstandard2.0"/>
+        <file src="../../bin/Square.Connect.xml" target="lib/netstandard2.0"/>
     </files>
 </package>
