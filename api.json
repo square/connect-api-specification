@@ -52,7 +52,9 @@
         "TIMECARDS_READ": "GET endpoints related to employee timecards",
         "TIMECARDS_WRITE": "POST, PUT, and DELETE endpoints related to employee timecards",
         "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS": "Allow third party applications to deduct a portion of each transaction amount.",
-        "PAYMENTS_WRITE_IN_PERSON": "POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information."
+        "PAYMENTS_WRITE_IN_PERSON": "POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information.",
+        "INVENTORY_READ": "GET endpoints related to a merchant\u0027s inventory",
+        "INVENTORY_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s inventory"
       }
     },
     "oauth2ClientSecret": {
@@ -74,7 +76,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -112,7 +114,7 @@
         "operationId": "RenewToken",
         "description": "Renews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated merchant must complete the [OAuth flow](https://docs.connect.squareup.com/api/oauth#implementingoauth) from the beginning.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with your application\u0027s secret, available from the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -155,7 +157,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf a merchant has more than one access token for your application, this endpoint revokes all of them, regardless of which token you specify.\nIf you revoke a merchant\u0027s access token, all of the merchant\u0027s active subscriptions associated with your application are canceled immediately.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with your application\u0027s secret, available from the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -191,7 +193,7 @@
         "operationId": "ObtainToken",
         "description": "Exchanges the authorization code for an access token.\n\nAfter a merchant authorizes your application with the permissions form,\nan authorization code is sent to the application\u0027s redirect URL\n(See [Implementing OAuth](https://docs.connect.squareup.com/api/oauth#implementingoauth) for information about how to set up the redirect URL).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [],
         "parameters": [
           {
@@ -224,7 +226,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": []
@@ -263,7 +265,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -304,7 +306,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -345,7 +347,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -386,7 +388,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -417,7 +419,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -463,7 +465,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -504,7 +506,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -541,7 +543,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -587,7 +589,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -628,7 +630,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -669,7 +671,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -710,7 +712,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -769,7 +771,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -810,7 +812,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -846,12 +848,12 @@
         ],
         "summary": "DeleteCustomer",
         "operationId": "DeleteCustomer",
-        "description": "Deletes a customer from a business, along with any linked cards on file.",
+        "description": "Deletes a customer from a business, along with any linked cards on file. When two profiles\nare merged into a single profile, that profile is assigned a new `customer_id`. You must use the\nnew `customer_id` to delete merged profiles.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -888,7 +890,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -920,12 +922,12 @@
         ],
         "summary": "UpdateCustomer",
         "operationId": "UpdateCustomer",
-        "description": "Updates the details of an existing customer.\nThe ID of the customer may change if the customer has been merged into another customer.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the\n[CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
+        "description": "Updates the details of an existing customer. When two profiles are merged\ninto a single profile, that profile is assigned a new `customer_id`. You must use\nthe new `customer_id` to update merged profiles.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the\n[CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -973,7 +975,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1021,7 +1023,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1055,6 +1057,313 @@
         }
       }
     },
+    "/v2/inventory/adjustment/{adjustment_id}": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "RetrieveInventoryAdjustment",
+        "operationId": "RetrieveInventoryAdjustment",
+        "description": "Returns the [InventoryAdjustment](#type-inventoryadjustment) object\nwith the provided `adjustment_id`.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_READ"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "adjustment_id",
+            "description": "ID of the [InventoryAdjustment](#type-inventoryadjustment) to retrieve.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveInventoryAdjustmentResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/batch-change": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "BatchChangeInventory",
+        "operationId": "BatchChangeInventory",
+        "description": "Applies adjustments and counts to the provided item quantities.\n\nOn success: returns the current calculated counts for all objects\nreferenced in the request.\nOn failure: returns a list of related errors.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_WRITE"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchChangeInventoryRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchChangeInventoryResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/batch-retrieve-changes": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "BatchRetrieveInventoryChanges",
+        "operationId": "BatchRetrieveInventoryChanges",
+        "description": "Returns historical physical counts and adjustments based on the\nprovided filter criteria.\n\nResults are paginated and sorted in ascending order according their\n`occurred_at` timestamp (oldest first).\n\nBatchRetrieveInventoryChanges is a catch-all query endpoint for queries\nthat cannot be handled by other, simpler endpoints.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_READ"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveInventoryChangesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveInventoryChangesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/batch-retrieve-counts": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "BatchRetrieveInventoryCounts",
+        "operationId": "BatchRetrieveInventoryCounts",
+        "description": "Returns current counts for the provided\n[CatalogObject](#type-catalogobject)s at the requested\n[Location](#type-location)s.\n\nResults are paginated and sorted in descending order according to their\n`calculated_at` timestamp (newest first).\n\nWhen `updated_at` is specified, only counts that have changed since that\ntime (based on the server timestamp for the most recent change) are\nreturned. This allows clients to perform a \"sync\" operation, for example\nin response to receiving a Webhook notification.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_READ"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveInventoryCountsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveInventoryCountsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/physical-count/{physical_count_id}": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "RetrieveInventoryPhysicalCount",
+        "operationId": "RetrieveInventoryPhysicalCount",
+        "description": "Returns the [InventoryPhysicalCount](#type-inventoryphysicalcount)\nobject with the provided `physical_count_id`.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_READ"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "physical_count_id",
+            "description": "ID of the\n[InventoryPhysicalCount](#type-inventoryphysicalcount) to retrieve.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveInventoryPhysicalCountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/{catalog_object_id}": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "RetrieveInventoryCount",
+        "operationId": "RetrieveInventoryCount",
+        "description": "Retrieves the current calculated stock count for a given\n[CatalogObject](#type-catalogobject) at a given set of\n[Location](#type-location)s. Responses are paginated and unsorted.\nFor more sophisticated queries, use a batch endpoint.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_READ"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "catalog_object_id",
+            "description": "ID of the [CatalogObject](#type-catalogobject) to retrieve.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "location_ids",
+            "description": "The [Location](#type-location) IDs to look up as a comma-separated\nlist. An empty list queries all locations.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveInventoryCountResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/{catalog_object_id}/changes": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "RetrieveInventoryChanges",
+        "operationId": "RetrieveInventoryChanges",
+        "description": "Returns a set of physical counts and inventory adjustments for the\nprovided [CatalogObject](#type-catalogobject) at the requested\n[Location](#type-location)s.\n\nResults are paginated and sorted in descending order according to their\n`occurred_at` timestamp (newest first).\n\nThere are no limits on how far back the caller can page. This endpoint is\nuseful when displaying recent changes for a specific item. For more\nsophisticated queries, use a batch endpoint.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVENTORY_READ"
+        ],
+        "x-sq-version": "2018-09-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "catalog_object_id",
+            "description": "ID of the [CatalogObject](#type-catalogobject) to retrieve.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "location_ids",
+            "description": "The [Location](#type-location) IDs to look up as a comma-separated\nlist. An empty list queries all locations.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveInventoryChangesResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/locations": {
       "get": {
         "tags": [
@@ -1067,7 +1376,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1098,7 +1407,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1169,7 +1478,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1241,7 +1550,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1290,7 +1599,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1338,7 +1647,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1386,7 +1695,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1457,7 +1766,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1526,7 +1835,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1574,7 +1883,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1620,7 +1929,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1661,12 +1970,12 @@
         ],
         "summary": "CreateRefund",
         "operationId": "CreateRefund",
-        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.\n\n*NOTE**: Card-present transactions with Interac credit cards **cannot be\nrefunded using the Connect API**. Interac transactions must refunded\nin-person (e.g., dipping the card using POS app).",
+        "description": "Initiates a refund for a previously charged tender.\n\nYou must issue a refund within 120 days of the associated payment. See\n[this article](https://squareup.com/help/us/en/article/5060) for more information\non refund behavior.\n\nNOTE: Card-present transactions with Interac credit cards **cannot be\nrefunded using the Connect API**. Interac transactions must refunded\nin-person (e.g., dipping the card using POS app).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -1721,7 +2030,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2018-07-12",
+        "x-sq-version": "2018-09-18",
         "security": [
           {
             "oauth2": [
@@ -2756,6 +3065,13 @@
             "name": "batch_token",
             "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
             "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "include_partial",
+            "description": "Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.",
+            "type": "boolean",
             "in": "query",
             "required": false
           }
@@ -6078,11 +6394,13 @@
         "INVALID_EMAIL_ADDRESS",
         "INVALID_PHONE_NUMBER",
         "CHECKOUT_EXPIRED",
+        "BAD_CERTIFICATE",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
         "VERIFY_AVS_FAILURE",
         "CARD_DECLINED_CALL_ISSUER",
         "NOT_FOUND",
+        "APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND",
         "METHOD_NOT_ALLOWED",
         "REQUEST_TIMEOUT",
         "CONFLICT",
@@ -6103,6 +6421,35 @@
         "LOW_QUANTITY"
       ],
       "description": "Indicates whether Square should alert the merchant when the inventory quantity of a [CatalogItemVariation](#type-catalogitemvariation) is low.",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryChangeType": {
+      "type": "string",
+      "enum": [
+        "PHYSICAL_COUNT",
+        "ADJUSTMENT",
+        "TRANSFER"
+      ],
+      "description": "Indicates how the inventory change was applied to a tracked quantity of items.",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryState": {
+      "type": "string",
+      "enum": [
+        "CUSTOM",
+        "IN_STOCK",
+        "SOLD",
+        "RETURNED_BY_CUSTOMER",
+        "RESERVED_FOR_SALE",
+        "SOLD_ONLINE",
+        "ORDERED_FROM_VENDOR",
+        "RECEIVED_FROM_VENDOR",
+        "IN_TRANSIT_TO",
+        "NONE",
+        "WASTE",
+        "UNLINKED_RETURN"
+      ],
+      "description": "Indicates the state of a tracked item quantity in the lifecycle of goods.",
       "x-release-status": "PUBLIC"
     },
     "LocationCapability": {
@@ -6161,6 +6508,21 @@
         "INCLUSIVE"
       ],
       "description": "Indicates how the tax is applied to the associated line item or order.",
+      "x-release-status": "PUBLIC"
+    },
+    "Product": {
+      "type": "string",
+      "enum": [
+        "SQUARE_POS",
+        "EXTERNAL_API",
+        "BILLING",
+        "APPOINTMENTS",
+        "INVOICES",
+        "ONLINE_STORE",
+        "PAYROLL",
+        "OTHER"
+      ],
+      "description": "Indicates the Square product used to generate an inventory change.",
       "x-release-status": "PUBLIC"
     },
     "RefundStatus": {
@@ -6697,6 +7059,89 @@
       "description": "Represents a physical address.",
       "x-release-status": "PUBLIC"
     },
+    "BatchChangeInventoryRequest": {
+      "type": "object",
+      "properties": {
+        "idempotency_key": {
+          "type": "string",
+          "description": "A client-supplied, universally unique identifier (UUID) for the\nrequest.\n\nSee [Idempotency](/basics/api101/idempotency) in the\n[API Development 101](/basics/api101/overview) section for more\ninformation."
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryChange"
+          },
+          "description": "The set of physical counts and inventory adjustments to be made.\nChanges are applied based on the client-supplied timestamp and may be sent\nout of order. Max size is 100 changes."
+        },
+        "ignore_unchanged_counts": {
+          "type": "boolean",
+          "description": "Indicates whether the current physical count should be ignored if\nthe quantity is unchanged since the last physical count. Default: `true`."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_body": {
+          "idempotency_key": "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+          "changes": [
+            {
+              "type": "PHYSICAL_COUNT",
+              "physical_count": {
+                "reference_id": "1536bfbf-efed-48bf-b17d-a197141b2a92",
+                "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+                "state": "IN_STOCK",
+                "location_id": "C6W5YS5QM06F5",
+                "quantity": "53",
+                "employee_id": "LRK57NSQ5X7PUD05",
+                "occurred_at": "2016-11-16T22:25:24.878Z"
+              }
+            }
+          ],
+          "ignore_unchanged_counts": true
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/BatchChangeInventory/BatchChangeInventoryRequest.python",
+        "csharp": "/sdk_samples/Inventory/BatchChangeInventory/BatchChangeInventoryRequest.csharp",
+        "php": "/sdk_samples/Inventory/BatchChangeInventory/BatchChangeInventoryRequest.php",
+        "javascript": "/sdk_samples/Inventory/BatchChangeInventory/BatchChangeInventoryRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/BatchChangeInventory/BatchChangeInventoryRequest.ruby"
+      }
+    },
+    "BatchChangeInventoryResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "counts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryCount"
+          },
+          "description": "The current counts for all objects referenced in the request."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "counts": [
+          {
+            "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+            "catalog_object_type": "ITEM_VARIATION",
+            "state": "IN_STOCK",
+            "location_id": "C6W5YS5QM06F5",
+            "quantity": "53",
+            "calculated_at": "2016-11-16T22:28:01.223Z"
+          }
+        ]
+      }
+    },
     "BatchDeleteCatalogObjectsRequest": {
       "type": "object",
       "properties": {
@@ -6957,6 +7402,232 @@
         "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.php",
         "javascript": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.javascript",
         "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.ruby"
+      }
+    },
+    "BatchRetrieveInventoryChangesRequest": {
+      "type": "object",
+      "properties": {
+        "catalog_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filters results by [CatalogObject](#type-catalogobject) ID.\nOnly applied when set. Default: unset."
+        },
+        "location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filters results by [Location](#type-location) ID. Only\napplied when set. Default: unset."
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PHYSICAL_COUNT",
+              "ADJUSTMENT",
+              "TRANSFER"
+            ]
+          },
+          "description": "Filters results by [InventoryChangeType](#type-inventorychangetype).\nDefault: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as\na filter."
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "CUSTOM",
+              "IN_STOCK",
+              "SOLD",
+              "RETURNED_BY_CUSTOMER",
+              "RESERVED_FOR_SALE",
+              "SOLD_ONLINE",
+              "ORDERED_FROM_VENDOR",
+              "RECEIVED_FROM_VENDOR",
+              "IN_TRANSIT_TO",
+              "NONE",
+              "WASTE",
+              "UNLINKED_RETURN"
+            ]
+          },
+          "description": "Filters `ADJUSTMENT` query results by\n[InventoryState](#type-inventorystate). Only applied when set.\nDefault: unset."
+        },
+        "updated_after": {
+          "type": "string",
+          "description": "Provided as an RFC 3339 timestamp. Returns results whose\n`created_at` or `calculated_at` value is after the given time.\nDefault: UNIX epoch (`1970-01-01T00:00:00Z`)."
+        },
+        "updated_before": {
+          "type": "string",
+          "description": "Provided as an RFC 3339 timestamp. Returns results whose\n`created_at` or `calculated_at` value is strictly before the given time.\nDefault: UNIX epoch (`1970-01-01T00:00:00Z`)."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_body": {
+          "catalog_object_ids": [
+            "W62UWFY35CWMYGVWK6TWJDNI"
+          ],
+          "location_ids": [
+            "C6W5YS5QM06F5"
+          ],
+          "types": [
+            "PHYSICAL_COUNT"
+          ],
+          "states": [
+            "IN_STOCK"
+          ],
+          "updated_after": "2016-11-01T00:00:00.000Z",
+          "updated_before": "2016-12-01T00:00:00.000Z"
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/BatchRetrieveInventoryChanges/BatchRetrieveInventoryChangesRequest.python",
+        "csharp": "/sdk_samples/Inventory/BatchRetrieveInventoryChanges/BatchRetrieveInventoryChangesRequest.csharp",
+        "php": "/sdk_samples/Inventory/BatchRetrieveInventoryChanges/BatchRetrieveInventoryChangesRequest.php",
+        "javascript": "/sdk_samples/Inventory/BatchRetrieveInventoryChanges/BatchRetrieveInventoryChangesRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/BatchRetrieveInventoryChanges/BatchRetrieveInventoryChangesRequest.ruby"
+      }
+    },
+    "BatchRetrieveInventoryChangesResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryChange"
+          },
+          "description": "The current calculated inventory changes for the requested objects\nand locations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "changes": [
+          {
+            "type": "PHYSICAL_COUNT",
+            "physical_count": {
+              "id": "46YDTW253DWGGK9HMAE6XCAO",
+              "reference_id": "22c07cf4-5626-4224-89f9-691112019399",
+              "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+              "catalog_object_type": "ITEM_VARIATION",
+              "state": "IN_STOCK",
+              "location_id": "C6W5YS5QM06F5",
+              "quantity": "86",
+              "source": {
+                "product": "SQUARE_POS",
+                "application_id": "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+                "name": "Square Point of Sale 4.37"
+              },
+              "employee_id": "LRK57NSQ5X7PUD05",
+              "occurred_at": "2016-11-16T22:24:49.028Z",
+              "created_at": "2016-11-16T22:25:24.878Z"
+            }
+          }
+        ]
+      }
+    },
+    "BatchRetrieveInventoryCountsRequest": {
+      "type": "object",
+      "properties": {
+        "catalog_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filters results by [CatalogObject](#type-catalogobject) ID.\nOnly applied when set. Default: unset."
+        },
+        "location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filters results by [Location](#type-location) ID. Only\napplied when set. Default: unset."
+        },
+        "updated_after": {
+          "type": "string",
+          "description": "Provided as an RFC 3339 timestamp. Returns results whose\n`calculated_at` value is after the given time. Default: UNIX epoch\n(`1970-01-01T00:00:00Z`)."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_body": {
+          "catalog_object_ids": [
+            "W62UWFY35CWMYGVWK6TWJDNI"
+          ],
+          "location_ids": [
+            "59TNP9SA8VGDA"
+          ],
+          "updated_after": "2016-11-16T00:00:00.000Z"
+        }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/BatchRetrieveInventoryCounts/BatchRetrieveInventoryCountsRequest.python",
+        "csharp": "/sdk_samples/Inventory/BatchRetrieveInventoryCounts/BatchRetrieveInventoryCountsRequest.csharp",
+        "php": "/sdk_samples/Inventory/BatchRetrieveInventoryCounts/BatchRetrieveInventoryCountsRequest.php",
+        "javascript": "/sdk_samples/Inventory/BatchRetrieveInventoryCounts/BatchRetrieveInventoryCountsRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/BatchRetrieveInventoryCounts/BatchRetrieveInventoryCountsRequest.ruby"
+      }
+    },
+    "BatchRetrieveInventoryCountsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "counts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryCount"
+          },
+          "description": "The current calculated inventory counts for the requested objects\nand locations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "counts": [
+          {
+            "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+            "catalog_object_type": "ITEM_VARIATION",
+            "state": "IN_STOCK",
+            "location_id": "59TNP9SA8VGDA",
+            "quantity": "79",
+            "calculated_at": "2016-11-16T22:28:01.223Z"
+          }
+        ]
       }
     },
     "BatchRetrieveOrdersRequest": {
@@ -7459,7 +8130,7 @@
         },
         "fingerprint": {
           "type": "string",
-          "description": "The unique string fingerprint for the card. \nThe fingerprint is based on the credit card number and is unique to the merchant. \nIf a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case.\nNote: Fingerprint may not exist on old transactions."
+          "description": "The unique string fingerprint for the card.\nThe fingerprint is based on the credit card number and is unique to the merchant.\nIf a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case.\nNote: Fingerprint may not exist on old transactions."
         }
       },
       "description": "Represents the non-confidential details of a credit card.",
@@ -9210,6 +9881,10 @@
         "note": {
           "type": "string",
           "description": "An optional note to associate with the customer."
+        },
+        "birthday": {
+          "type": "string",
+          "description": "The customer birthday in RFC-3339 format. Year is optional,\ntimezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00`\nfor a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday\non September 1st 1998."
         }
       },
       "description": "Defines the body parameters that can be provided in a request to the\n[CreateCustomer](#endpoint-createcustomer) endpoint.",
@@ -9892,6 +10567,10 @@
           "type": "string",
           "description": "The customer\u0027s phone number."
         },
+        "birthday": {
+          "type": "string",
+          "description": "The customer\u0027s birthday in RFC-3339 format. Year is optional,\ntimezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00`\nfor a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday\non September 1st 1998."
+        },
         "reference_id": {
           "type": "string",
           "description": "A second ID you can set to associate the customer with an\nentity in another system."
@@ -10287,11 +10966,13 @@
             "INVALID_EMAIL_ADDRESS",
             "INVALID_PHONE_NUMBER",
             "CHECKOUT_EXPIRED",
+            "BAD_CERTIFICATE",
             "CARD_DECLINED",
             "VERIFY_CVV_FAILURE",
             "VERIFY_AVS_FAILURE",
             "CARD_DECLINED_CALL_ISSUER",
             "NOT_FOUND",
+            "APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND",
             "METHOD_NOT_ALLOWED",
             "REQUEST_TIMEOUT",
             "CONFLICT",
@@ -10314,6 +10995,316 @@
         }
       },
       "description": "Represents an error encountered during a request to the Connect API.\n\nSee [Handling errors](#handlingerrors) for more information.",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryAdjustment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique ID generated by Square for the\n[InventoryAdjustment](#type-inventoryadjustment)."
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "An optional ID provided by the application to tie the\n[InventoryAdjustment](#type-inventoryadjustment) to an external\nsystem."
+        },
+        "from_state": {
+          "type": "string",
+          "enum": [
+            "CUSTOM",
+            "IN_STOCK",
+            "SOLD",
+            "RETURNED_BY_CUSTOMER",
+            "RESERVED_FOR_SALE",
+            "SOLD_ONLINE",
+            "ORDERED_FROM_VENDOR",
+            "RECEIVED_FROM_VENDOR",
+            "IN_TRANSIT_TO",
+            "NONE",
+            "WASTE",
+            "UNLINKED_RETURN"
+          ],
+          "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items before the adjustment."
+        },
+        "to_state": {
+          "type": "string",
+          "enum": [
+            "CUSTOM",
+            "IN_STOCK",
+            "SOLD",
+            "RETURNED_BY_CUSTOMER",
+            "RESERVED_FOR_SALE",
+            "SOLD_ONLINE",
+            "ORDERED_FROM_VENDOR",
+            "RECEIVED_FROM_VENDOR",
+            "IN_TRANSIT_TO",
+            "NONE",
+            "WASTE",
+            "UNLINKED_RETURN"
+          ],
+          "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items after the adjustment."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The Square ID of the [Location](#type-location) where the related\nquantity of items are being tracked."
+        },
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The Square generated ID of the\n[CatalogObject](#type-catalogobject) being tracked."
+        },
+        "catalog_object_type": {
+          "type": "string",
+          "description": "The [CatalogObjectType](#type-catalogobjecttype) of the\n[CatalogObject](#type-catalogobject) being tracked. Tracking is only\nsupported for the `ITEM_VARIATION` type."
+        },
+        "quantity": {
+          "type": "string",
+          "description": "The number of items affected by the adjustment as a decimal string.\nFractional quantities are not supported."
+        },
+        "total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The read-only total price paid for goods associated with the\nadjustment. Present if and only if `to_state` is `SOLD`. Always\nnon-negative."
+        },
+        "occurred_at": {
+          "type": "string",
+          "description": "A client-generated timestamp in RFC 3339 format that indicates when\nthe adjustment took place. For write actions, the `occurred_at`\ntimestamp cannot be older than 24 hours or in the future relative to the\ntime of the request."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the adjustment."
+        },
+        "source": {
+          "$ref": "#/definitions/SourceApplication",
+          "description": "Read-only information about the application that caused the\ninventory adjustment."
+        },
+        "employee_id": {
+          "type": "string",
+          "description": "The Square ID of the [Employee](#type-employee) responsible for the\ninventory adjustment."
+        },
+        "transaction_id": {
+          "type": "string",
+          "description": "The read-only Square ID of the [Transaction][#type-transaction] that\ncaused the adjustment. Only relevant for payment-related state\ntransitions."
+        },
+        "refund_id": {
+          "type": "string",
+          "description": "The read-only Square ID of the [Refund][#type-refund] that\ncaused the adjustment. Only relevant for refund-related state\ntransitions."
+        },
+        "purchase_order_id": {
+          "type": "string",
+          "description": "The read-only Square ID of the purchase order that caused the\nadjustment. Only relevant for state transitions from the Square for Retail\napp."
+        },
+        "goods_receipt_id": {
+          "type": "string",
+          "description": "The read-only Square ID of the Square goods receipt that caused the\nadjustment. Only relevant for state transitions from the Square for Retail\napp."
+        }
+      },
+      "description": "Represents a change in state or quantity of product inventory at a\nparticular time and location.",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryChange": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "PHYSICAL_COUNT",
+            "ADJUSTMENT",
+            "TRANSFER"
+          ],
+          "description": "Indicates how the inventory change was applied. See\n[InventoryChangeType](#type-inventorychangetype) for all possible values."
+        },
+        "physical_count": {
+          "$ref": "#/definitions/InventoryPhysicalCount",
+          "description": "Contains details about the physical count when `type` is\n`PHYSICAL_COUNT` and unset for all other types."
+        },
+        "adjustment": {
+          "$ref": "#/definitions/InventoryAdjustment",
+          "description": "Contains details about the inventory adjustment when `type` is\n`ADJUSTMENT` and unset for all other types."
+        },
+        "transfer": {
+          "$ref": "#/definitions/InventoryTransfer",
+          "description": "Contains details about the inventory transfer when `type` is\n`TRANSFER` and unset for all other types."
+        }
+      },
+      "description": "Represents a single physical count, inventory, adjustment, or transfer\nthat is part of the history of inventory changes for a particular\n[CatalogObject](#type-catalogobject).",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryCount": {
+      "type": "object",
+      "properties": {
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The Square generated ID of the\n[CatalogObject](#type-catalogobject) being tracked."
+        },
+        "catalog_object_type": {
+          "type": "string",
+          "description": "The [CatalogObjectType](#type-catalogobjecttype) of the\n[CatalogObject](#type-catalogobject) being tracked. Tracking is only\nsupported for the `ITEM_VARIATION` type."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "CUSTOM",
+            "IN_STOCK",
+            "SOLD",
+            "RETURNED_BY_CUSTOMER",
+            "RESERVED_FOR_SALE",
+            "SOLD_ONLINE",
+            "ORDERED_FROM_VENDOR",
+            "RECEIVED_FROM_VENDOR",
+            "IN_TRANSIT_TO",
+            "NONE",
+            "WASTE",
+            "UNLINKED_RETURN"
+          ],
+          "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The Square ID of the [Location](#type-location) where the related\nquantity of items are being tracked."
+        },
+        "quantity": {
+          "type": "string",
+          "description": "The number of items in the count as a decimal string. Fractional\nquantities are not supported."
+        },
+        "calculated_at": {
+          "type": "string",
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the most recent physical count or adjustment that had an affect\non the estimated count."
+        }
+      },
+      "description": "Represents the estimated quantity of items in a particular state at a\nparticular location based on the known history of physical counts and\ninventory adjustments.",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryPhysicalCount": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique ID generated by Square for the\n[InventoryPhysicalCount](#type-inventoryphysicalcount)."
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "An optional ID provided by the application to tie the\n[InventoryPhysicalCount](#type-inventoryphysicalcount) to an external\nsystem."
+        },
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The Square generated ID of the\n[CatalogObject](#type-catalogobject) being tracked."
+        },
+        "catalog_object_type": {
+          "type": "string",
+          "description": "The [CatalogObjectType](#type-catalogobjecttype) of the\n[CatalogObject](#type-catalogobject) being tracked. Tracking is only\nsupported for the `ITEM_VARIATION` type."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "CUSTOM",
+            "IN_STOCK",
+            "SOLD",
+            "RETURNED_BY_CUSTOMER",
+            "RESERVED_FOR_SALE",
+            "SOLD_ONLINE",
+            "ORDERED_FROM_VENDOR",
+            "RECEIVED_FROM_VENDOR",
+            "IN_TRANSIT_TO",
+            "NONE",
+            "WASTE",
+            "UNLINKED_RETURN"
+          ],
+          "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The Square ID of the [Location](#type-location) where the related\nquantity of items are being tracked."
+        },
+        "quantity": {
+          "type": "string",
+          "description": "The number of items affected by the physical count as a decimal\nstring. Fractional quantities are not supported."
+        },
+        "source": {
+          "$ref": "#/definitions/SourceApplication",
+          "description": "Read-only information about the application that submitted the\nphysical count."
+        },
+        "employee_id": {
+          "type": "string",
+          "description": "The Square ID of the [Employee](#type-employee) responsible for the\nphysical count."
+        },
+        "occurred_at": {
+          "type": "string",
+          "description": "A client-generated timestamp in RFC 3339 format that indicates when\nthe physical count took place. For write actions, the `occurred_at`\ntimestamp cannot be older than 24 hours or in the future relative to the\ntime of the request."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the physical count."
+        }
+      },
+      "description": "Represents a verified (re)count of items in a given state at a specific\nlocation. For example, the quantity of items currently on hand at a physical\nstore).",
+      "x-release-status": "PUBLIC"
+    },
+    "InventoryTransfer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique ID generated by Square for the\n[InventoryTransfer](#type-inventorytransfer)."
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "An optional ID provided by the application to tie the\n[InventoryTransfer](#type-inventorytransfer) to an external system."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "CUSTOM",
+            "IN_STOCK",
+            "SOLD",
+            "RETURNED_BY_CUSTOMER",
+            "RESERVED_FOR_SALE",
+            "SOLD_ONLINE",
+            "ORDERED_FROM_VENDOR",
+            "RECEIVED_FROM_VENDOR",
+            "IN_TRANSIT_TO",
+            "NONE",
+            "WASTE",
+            "UNLINKED_RETURN"
+          ],
+          "description": "The [InventoryState](#type-inventorystate) for the quantity of\nitems being transfered."
+        },
+        "from_location_id": {
+          "type": "string",
+          "description": "The Square ID of the [Location](#type-location) where the related\nquantity of items were tracked before the transfer."
+        },
+        "to_location_id": {
+          "type": "string",
+          "description": "The Square ID of the [Location](#type-location) where the related\nquantity of items were tracked after the transfer."
+        },
+        "catalog_object_id": {
+          "type": "string",
+          "description": "The Square generated ID of the\n[CatalogObject](#type-catalogobject) being tracked."
+        },
+        "catalog_object_type": {
+          "type": "string",
+          "description": "The [CatalogObjectType](#type-catalogobjecttype) of the\n[CatalogObject](#type-catalogobject) being tracked.Tracking is only\nsupported for the `ITEM_VARIATION` type."
+        },
+        "quantity": {
+          "type": "string",
+          "description": "The number of items affected by the transfer as a decimal string.\nFractional quantities are not supported."
+        },
+        "occurred_at": {
+          "type": "string",
+          "description": "A client-generated timestamp in RFC 3339 format that indicates when\nthe transfer took place. For write actions, the `occurred_at` timestamp\ncannot be older than 24 hours or in the future relative to the time of the\nrequest."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the transfer request."
+        },
+        "source": {
+          "$ref": "#/definitions/SourceApplication",
+          "description": "Read-only information about the application that initiated the\ninventory transfer."
+        },
+        "employee_id": {
+          "type": "string",
+          "description": "The Square ID of the [Employee](#type-employee) responsible for the\ninventory transfer."
+        }
+      },
+      "description": "Represents the transfer of a quantity of product inventory at a\nparticular time from one location to another.",
       "x-release-status": "PUBLIC"
     },
     "ItemVariationLocationOverrides": {
@@ -11550,7 +12541,6 @@
       "properties": {
         "amount": {
           "minimum": 0,
-          "maximum": 99999999,
           "type": "integer",
           "format": "int64",
           "description": "The amount of money, in the smallest denomination of the\ncurrency indicated by `currency`. For example, when `currency` is `USD`,\n`amount` is in cents."
@@ -12434,6 +13424,267 @@
         "ruby": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.ruby"
       }
     },
+    "RetrieveInventoryAdjustmentRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {},
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/RetrieveInventoryAdjustment/RetrieveInventoryAdjustmentRequest.python",
+        "csharp": "/sdk_samples/Inventory/RetrieveInventoryAdjustment/RetrieveInventoryAdjustmentRequest.csharp",
+        "php": "/sdk_samples/Inventory/RetrieveInventoryAdjustment/RetrieveInventoryAdjustmentRequest.php",
+        "javascript": "/sdk_samples/Inventory/RetrieveInventoryAdjustment/RetrieveInventoryAdjustmentRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/RetrieveInventoryAdjustment/RetrieveInventoryAdjustmentRequest.ruby"
+      }
+    },
+    "RetrieveInventoryAdjustmentResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "adjustment": {
+          "$ref": "#/definitions/InventoryAdjustment",
+          "description": "The requested [InventoryAdjustment](#type-inventoryadjustment)."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "adjustment": {
+          "id": "UDMOEO78BG6GYWA2XDRYX3KB",
+          "reference_id": "4a366069-4096-47a2-99a5-0084ac879509",
+          "from_state": "IN_STOCK",
+          "to_state": "SOLD",
+          "location_id": "C6W5YS5QM06F5",
+          "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+          "catalog_object_type": "ITEM_VARIATION",
+          "quantity": "7",
+          "total_cost_money": {
+            "amount": 3500,
+            "currency": "USD"
+          },
+          "total_price_money": {
+            "amount": 4550,
+            "currency": "USD"
+          },
+          "occurred_at": "2016-11-16T25:44:22.837Z",
+          "created_at": "2016-11-17T13:02:15.142Z",
+          "source": {
+            "product": "SQUARE_POS",
+            "application_id": "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+            "name": "Square Point of Sale 4.37"
+          },
+          "employee_id": "LRK57NSQ5X7PUD05"
+        }
+      }
+    },
+    "RetrieveInventoryChangesRequest": {
+      "type": "object",
+      "properties": {
+        "location_ids": {
+          "type": "string",
+          "description": "The [Location](#type-location) IDs to look up as a comma-separated\nlist. An empty list queries all locations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_params": "?location_ids\u003d\u0026cursor\u003d"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/RetrieveInventoryChanges/RetrieveInventoryChangesRequest.python",
+        "csharp": "/sdk_samples/Inventory/RetrieveInventoryChanges/RetrieveInventoryChangesRequest.csharp",
+        "php": "/sdk_samples/Inventory/RetrieveInventoryChanges/RetrieveInventoryChangesRequest.php",
+        "javascript": "/sdk_samples/Inventory/RetrieveInventoryChanges/RetrieveInventoryChangesRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/RetrieveInventoryChanges/RetrieveInventoryChangesRequest.ruby"
+      }
+    },
+    "RetrieveInventoryChangesResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryChange"
+          },
+          "description": "The set of inventory changes for the requested object and locations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "changes": [
+          {
+            "type": "ADJUSTMENT",
+            "adjustment": {
+              "id": "OJKJIUANKLMLQANZADNPLKAD",
+              "reference_id": "d8207693-168f-4b44-a2fd-a7ff533ddd26",
+              "from_state": "IN_STOCK",
+              "to_state": "SOLD",
+              "location_id": "C6W5YS5QM06F5",
+              "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+              "catalog_object_type": "ITEM_VARIATION",
+              "quantity": "3",
+              "total_cost_money": {
+                "amount": 3000,
+                "currency": "USD"
+              },
+              "total_price_money": {
+                "amount": 5000,
+                "currency": "USD"
+              },
+              "occurred_at": "2016-11-16T22:25:24.878Z",
+              "created_at": "2016-11-16T22:25:24.878Z",
+              "source": {
+                "product": "SQUARE_POS",
+                "application_id": "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+                "name": "Square Point of Sale 4.37"
+              },
+              "employee_id": "AV7YRCGI2H1J5NQ8E1XIZCNA",
+              "transaction_id": "5APV6JYK1SNCZD11AND2RX1Z"
+            }
+          }
+        ]
+      }
+    },
+    "RetrieveInventoryCountRequest": {
+      "type": "object",
+      "properties": {
+        "location_ids": {
+          "type": "string",
+          "description": "The [Location](#type-location) IDs to look up as a comma-separated\nlist. An empty list queries all locations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_params": "?location_ids\u003dC6W5YS5QM06F5\u0026cursor\u003d"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/RetrieveInventoryCount/RetrieveInventoryCountRequest.python",
+        "csharp": "/sdk_samples/Inventory/RetrieveInventoryCount/RetrieveInventoryCountRequest.csharp",
+        "php": "/sdk_samples/Inventory/RetrieveInventoryCount/RetrieveInventoryCountRequest.php",
+        "javascript": "/sdk_samples/Inventory/RetrieveInventoryCount/RetrieveInventoryCountRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/RetrieveInventoryCount/RetrieveInventoryCountRequest.ruby"
+      }
+    },
+    "RetrieveInventoryCountResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "counts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryCount"
+          },
+          "description": "The current calculated inventory counts for the requested object and\nlocations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "counts": [
+          {
+            "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+            "catalog_object_type": "ITEM_VARIATION",
+            "state": "IN_STOCK",
+            "location_id": "C6W5YS5QM06F5",
+            "quantity": "22",
+            "calculated_at": "2016-11-16T22:28:01.223Z"
+          }
+        ]
+      }
+    },
+    "RetrieveInventoryPhysicalCountRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {},
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Inventory/RetrieveInventoryPhysicalCount/RetrieveInventoryPhysicalCountRequest.python",
+        "csharp": "/sdk_samples/Inventory/RetrieveInventoryPhysicalCount/RetrieveInventoryPhysicalCountRequest.csharp",
+        "php": "/sdk_samples/Inventory/RetrieveInventoryPhysicalCount/RetrieveInventoryPhysicalCountRequest.php",
+        "javascript": "/sdk_samples/Inventory/RetrieveInventoryPhysicalCount/RetrieveInventoryPhysicalCountRequest.javascript",
+        "ruby": "/sdk_samples/Inventory/RetrieveInventoryPhysicalCount/RetrieveInventoryPhysicalCountRequest.ruby"
+      }
+    },
+    "RetrieveInventoryPhysicalCountResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "count": {
+          "$ref": "#/definitions/InventoryPhysicalCount",
+          "description": "The requested [InventoryPhysicalCount](#type-inventoryphysicalcount)."
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "errors": [],
+        "count": {
+          "id": "ANZADNPLKADOJKJIUANKLMLQ",
+          "reference_id": "f857ec37-f9a0-4458-8e23-5b5e0bea4e53",
+          "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+          "catalog_object_type": "ITEM_VARIATION",
+          "state": "IN_STOCK",
+          "location_id": "C6W5YS5QM06F5",
+          "quantity": "15",
+          "source": {
+            "product": "SQUARE_POS",
+            "application_id": "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+            "name": "Square Point of Sale 4.37"
+          },
+          "employee_id": "LRK57NSQ5X7PUD05",
+          "occurred_at": "2016-11-16T22:25:24.878Z",
+          "created_at": "2016-11-16T22:25:24.878Z"
+        }
+      }
+    },
     "RetrieveTransactionRequest": {
       "type": "object",
       "properties": {},
@@ -12903,6 +14154,35 @@
         "ruby": "/sdk_samples/SearchCustomers/SearchCustomersResponse.ruby"
       }
     },
+    "SourceApplication": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "type": "string",
+          "enum": [
+            "SQUARE_POS",
+            "EXTERNAL_API",
+            "BILLING",
+            "APPOINTMENTS",
+            "INVOICES",
+            "ONLINE_STORE",
+            "PAYROLL",
+            "OTHER"
+          ],
+          "description": "Read-only [Product](#type-product) type for the application."
+        },
+        "application_id": {
+          "type": "string",
+          "description": "Read-only Square ID assigned to the application. Only used for\n[Product](#type-product) type `EXTERNAL_API`."
+        },
+        "name": {
+          "type": "string",
+          "description": "Read-only display name assigned to the application\n(e.g. `\"Custom Application\"`, `\"Square POS 4.74 for Android\"`)."
+        }
+      },
+      "description": "Provides information about the application used to generate an inventory\nchange.",
+      "x-release-status": "PUBLIC"
+    },
     "Tender": {
       "type": "object",
       "required": [
@@ -13139,6 +14419,10 @@
         "note": {
           "type": "string",
           "description": "An optional note to associate with the customer."
+        },
+        "birthday": {
+          "type": "string",
+          "description": "The customer birthday in RFC-3339 format. Year is optional,\ntimezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00`\nfor a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday\non September 1st 1998."
         }
       },
       "description": "Defines the body parameters that can be provided in a request to the\n[UpdateCustomer](#endpoint-updatecustomer) endpoint.",
@@ -13994,7 +15278,7 @@
         },
         "clockin_location_id": {
           "type": "string",
-          "description": "The ID of the location the employee clocked in from, if any."
+          "description": "The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules."
         },
         "clockout_location_id": {
           "type": "string",
@@ -14007,6 +15291,18 @@
         "updated_at": {
           "type": "string",
           "description": "The time when the timecard was most recently updated, in ISO 8601 format."
+        },
+        "regular_seconds_worked": {
+          "type": "number",
+          "description": "The total number of regular (non-overtime) seconds worked in the timecard."
+        },
+        "overtime_seconds_worked": {
+          "type": "number",
+          "description": "The total number of overtime seconds worked in the timecard."
+        },
+        "doubletime_seconds_worked": {
+          "type": "number",
+          "description": "The total number of doubletime seconds worked in the timecard."
         }
       }
     },
@@ -14326,6 +15622,10 @@
             "$ref": "#/definitions/v1PaymentSurcharge"
           },
           "description": "A list of all surcharges associated with the payment."
+        },
+        "is_partial": {
+          "type": "boolean",
+          "description": "Indicates whether or not the payment is only partially paid for. If true, this payment will have the tenders collected so far, but the itemizations will be empty until the payment is completed."
         }
       }
     },
@@ -14503,7 +15803,7 @@
         },
         "surcharge_id": {
           "type": "string",
-          "descrption": "A Square-issued unique identifier associated with the surcharge."
+          "description": "A Square-issued unique identifier associated with the surcharge."
         }
       }
     },
@@ -14703,6 +16003,14 @@
         "tendered_money": {
           "$ref": "#/definitions/v1Money",
           "description": "The amount of total_money applied to the payment."
+        },
+        "tendered_at": {
+          "type": "string",
+          "description": "The time when the tender was created, in ISO 8601 format."
+        },
+        "settled_at": {
+          "type": "string",
+          "description": "The time when the tender was settled, in ISO 8601 format."
         },
         "change_back_money": {
           "$ref": "#/definitions/v1Money",
@@ -14997,8 +16305,7 @@
         },
         "user_data": {
           "type": "string",
-          "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters.",
-          "required": false
+          "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
         }
       }
     },
