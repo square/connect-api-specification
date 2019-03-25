@@ -1,10 +1,23 @@
 {{#models}}{{#model}}# {{classname}}
 
+### Description{{#description}}
+
+{{{description}}}{{/description}}
+
 ## Properties
+{{#isEnum}}
+Name | Type
+------------ | -------------
+{{#allowableValues}}{{#values}}**{{{this}}}** | string
+{{/values}}
+{{/allowableValues}}
+{{/isEnum}}
+{{^isEnum}}
 Name | Getter | Setter | Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
 {{#vars}}**{{name}}** | {{getter}}() | {{^readOnly}}{{setter}}($value){{/readOnly}} | {{#isPrimitiveType}}**{{datatype}}**{{/isPrimitiveType}}{{^isPrimitiveType}}[**{{datatype}}**]({{complexType}}.md){{/isPrimitiveType}} | {{description}} | {{^required}}[optional] {{/required}}{{#readOnly}}[readonly] {{/readOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
 {{/vars}}
+{{/isEnum}}
 
 Note: All properties are protected and only accessed via getters and setters.
 

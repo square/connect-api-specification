@@ -11,12 +11,12 @@ for the specification and template files we used to generate this.
 - .NET Standard 2.0
 
 ## Usage
-### **Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommended)**
+### **Option 1: Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommended)**
 ```
 PM> Install-Package Square.Connect
 ```
 
-### **Generating DLLs from source**
+### **Option 2: Generating DLLs from source**
 
 #### Dependencies
 - [RestSharp] (https://www.nuget.org/packages/RestSharp) - 106.3.1 or later
