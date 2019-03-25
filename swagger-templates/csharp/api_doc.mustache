@@ -37,7 +37,7 @@ namespace Example
             Configuration.Default.Username = "YOUR_USERNAME";
             Configuration.Default.Password = "YOUR_PASSWORD";{{/isBasic}}{{#isApiKey}}
             // Configure API key authorization: {{{name}}}
-            Configuration.Default.ApiKey.Add("{{{keyParamName}}}", "YOUR_API_KEY");
+            Configuration.Default.ApiKey.Add("{{{keyParamName}}}", "YOUR_APPLICATION_SECRET");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("{{{keyParamName}}}", "Bearer");{{/isApiKey}}{{#isOAuth}}
             // Configure OAuth2 access token for authorization: {{{name}}}

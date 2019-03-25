@@ -12,7 +12,7 @@ for the specification and template files we used to generate this.
 Make sure you have Python 2 >=2.7.9 or Python 3 >= 3.4
 
 ## Installation & Usage
-### pip install
+### Option 1: pip install
 
 If the python package is hosted on Github, you can install directly from Github
 
@@ -21,7 +21,7 @@ pip install git+https://github.com/square/connect-python-sdk.git
 ```
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com/square/connect-python-sdk.git`)
 
-### Setuptools
+### Option 2: Setuptools
 
 Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 

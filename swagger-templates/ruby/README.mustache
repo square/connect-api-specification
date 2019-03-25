@@ -19,7 +19,7 @@ For more information, please visit [{{{infoUrl}}}]({{{infoUrl}}})
 
 ## Installation
 
-### RubyGems
+### Option1: RubyGems
 The Ruby SDK is published as a gem. Simply run:
 
 ```
@@ -32,13 +32,13 @@ Or add this line to your Gemfile:
 gem 'square_connect'
 ```
 
-### Install from Git
+### Option 2: Install from Git
 
 If the Ruby gem is hosted at a git repository: https://github.com/{{#gitUserId}}{{.}}{{/gitUserId}}{{^gitUserId}}YOUR_GIT_USERNAME{{/gitUserId}}/{{#gitRepoId}}{{.}}{{/gitRepoId}}{{^gitRepoId}}YOUR_GIT_REPO{{/gitRepoId}}, then add the following in the Gemfile:
 
     gem '{{{gemName}}}', :git => 'https://github.com/{{#gitUserId}}{{.}}{{/gitUserId}}{{^gitUserId}}YOUR_GIT_USERNAME{{/gitUserId}}/{{#gitRepoId}}{{.}}{{/gitRepoId}}{{^gitRepoId}}YOUR_GIT_REPO{{/gitRepoId}}.git'
 
-### Include the Ruby code directly
+### Option 3: Include the Ruby code directly
 
 Include the Ruby code directly using `-I` as follows:
 
