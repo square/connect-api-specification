@@ -36,25 +36,27 @@
       "flow": "accessCode",
       "tokenUrl": "https://connect.squareup.com/oauth2/token",
       "scopes": {
-        "MERCHANT_PROFILE_READ": "GET endpoints related to a merchant\u0027s business and location entities. Almost all Connect API applications need this permission in order to obtain a merchant\u0027s location IDs",
-        "PAYMENTS_READ": "GET endpoints related to transactions and refunds",
-        "PAYMENTS_WRITE": "POST, PUT, and DELETE endpoints related to transactions and refunds. E-commerce applications must request this permission",
-        "CUSTOMERS_READ": " GET endpoints related to customer management",
-        "CUSTOMERS_WRITE": "POST, PUT, and DELETE endpoints related to customer management",
-        "SETTLEMENTS_READ": "GET endpoints related to settlements (deposits)",
-        "BANK_ACCOUNTS_READ": "GET endpoints related to a merchant\u0027s bank accounts",
-        "ITEMS_READ": "GET endpoints related to a merchant\u0027s item library",
-        "ITEMS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s item library",
-        "ORDERS_READ": "GET endpoints related to a merchant\u0027s orders",
-        "ORDERS_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s orders",
-        "EMPLOYEES_READ": "GET endpoints related to employee management",
-        "EMPLOYEES_WRITE": "POST, PUT, and DELETE endpoints related to employee management",
-        "TIMECARDS_READ": "GET endpoints related to employee timecards",
-        "TIMECARDS_WRITE": "POST, PUT, and DELETE endpoints related to employee timecards",
-        "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS": "Allow third party applications to deduct a portion of each transaction amount.",
-        "PAYMENTS_WRITE_IN_PERSON": "POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information.",
-        "INVENTORY_READ": "GET endpoints related to a merchant\u0027s inventory",
-        "INVENTORY_WRITE": "POST, PUT, and DELETE endpoints related to a merchant\u0027s inventory"
+        "BANK_ACCOUNTS_READ": "__HTTP Method__: `GET`\n\nGrants read access to bank account information associated with the targeted\nSquare account. For example, to call the Connect v1 ListBankAccounts endpoint.",
+        "CUSTOMERS_READ": "__HTTP Method__: `GET`\n\nGrants read access to customer information. For example, to call the\nListCustomers endpoint.",
+        "CUSTOMERS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to customer information. For example, to create and update\ncustomer profiles.",
+        "EMPLOYEES_READ": "__HTTP Method__: `GET`\n\nGrants read access to employee profile information. For example, to call the\nConnect v1 Employees API.",
+        "EMPLOYEES_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to employee profile information. For example, to create\nand modify employee profiles.",
+        "INVENTORY_READ": "__HTTP Method__: `GET`\n\nGrants read access to inventory information. For example, to call the\nRetrieveInventoryCount endpoint.",
+        "INVENTORY_WRITE": "__HTTP Method__:  `POST`, `PUT`, `DELETE`\n\nGrants write access to inventory information. For example, to call the\nBatchChangeInventory endpoint.",
+        "ITEMS_READ": "__HTTP Method__: `GET`\n\nGrants read access to business and location information. For example, to\nobtain a location ID for subsequent activity.",
+        "ITEMS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to product catalog information. For example, to modify or\nadd to a product catalog.",
+        "MERCHANT_PROFILE_READ": "__HTTP Method__: `GET`\n\nGrants read access to business and location information. For example, to\nobtain a location ID for subsequent activity.",
+        "ORDERS_READ": "__HTTP Method__: `GET`\n\nGrants read access to order information. For example, to call the\nBatchRetrieveOrders endpoint.",
+        "ORDERS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to order information. For example, to call the\nCreateCheckout endpoint.",
+        "PAYMENTS_READ": "__HTTP Method__: `GET`\n\nGrants read access to transaction and refund information. For example, to call\nthe RetrieveTransaction endpoint.",
+        "PAYMENTS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to transaction and refunds information. For example, to\nprocess payments with the Transactions or Checkout API.",
+        "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nAllow third party applications to deduct a portion of each transaction amount.\n__Required__ to use multiparty transaction functionality with the Transactions\nAPI.",
+        "PAYMENTS_WRITE_IN_PERSON": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to transaction and refunds information. For example, to\nprocess in-person payments.",
+        "SETTLEMENTS_READ": "__HTTP Method__: `GET`\n\nGrants read access to settlement (deposit) information. For example, to call\nthe Connect v1 ListSettlements endpoint.",
+        "TIMECARDS_READ": "__HTTP Method__: `GET`\n\nGrants read access to employee timecard information. For example, to call the\nConnect v1 ListTimecards endpoint.",
+        "TIMECARDS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to employee timecard information. For example, to create\nand modify timecards.",
+        "TIMECARDS_SETTINGS_READ": "__HTTP Method__: `GET`\n\nGrants read access to employee timecard settings information. For example, to\ncall the GetBreakType endpoint.",
+        "TIMECARDS_SETTINGS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to employee timecard settings information. For example, to\ncall the UpdateBreakType endpoint."
       }
     },
     "oauth2ClientSecret": {
@@ -76,7 +78,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -114,7 +116,7 @@
         "operationId": "RenewToken",
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see \n[Renew OAuth Token](/authz/oauth/cookbook/oauth-renew).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -157,7 +159,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -193,7 +195,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token. \n\nThe endpoint supports distinct methods of obtaining OAuth access tokens. \nApplications specify a method by adding the `grant_type` parameter \nin the request and also provide relevant information. \nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management). \n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and \na refresh token in the response. \n\nBy default, the OAuth API lets up to 500 Square accounts authorize your\napplication. Please\n[contact support](https://squareup.com/help/us/en/contact?prefill\u003ddeveloper_api)\nif you are developing an application for a larger audience.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [],
         "parameters": [
           {
@@ -228,7 +230,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -259,7 +261,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -363,7 +365,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -404,7 +406,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -441,7 +443,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -489,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -523,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -581,7 +583,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -622,7 +624,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -659,7 +661,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -707,7 +709,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -821,7 +823,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -862,7 +864,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -899,7 +901,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -936,7 +938,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -984,7 +986,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1026,7 +1028,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1068,7 +1070,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1114,7 +1116,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1181,7 +1183,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1227,7 +1229,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1267,7 +1269,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1315,7 +1317,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1359,7 +1361,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1414,7 +1416,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1454,7 +1456,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1502,7 +1504,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1546,7 +1548,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1601,7 +1603,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1641,7 +1643,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1689,7 +1691,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1733,7 +1735,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1788,7 +1790,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1844,7 +1846,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1899,7 +1901,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1946,7 +1948,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -1994,7 +1996,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2038,7 +2040,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2082,7 +2084,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2137,7 +2139,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2188,7 +2190,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2241,7 +2243,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2292,7 +2294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2345,7 +2347,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2400,7 +2402,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2451,7 +2453,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2513,7 +2515,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2553,7 +2555,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2601,7 +2603,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2645,7 +2647,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2689,7 +2691,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2744,7 +2746,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2799,7 +2801,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2850,7 +2852,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2913,7 +2915,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -2981,7 +2983,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3026,7 +3028,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3081,7 +3083,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3121,7 +3123,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3169,7 +3171,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3213,7 +3215,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3268,7 +3270,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3326,7 +3328,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3381,7 +3383,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3469,7 +3471,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3515,7 +3517,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3594,7 +3596,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3642,7 +3644,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3734,7 +3736,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3778,7 +3780,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": []
@@ -3817,7 +3819,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3858,7 +3860,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3899,7 +3901,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3940,7 +3942,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -3971,7 +3973,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4017,7 +4019,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4058,7 +4060,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4095,7 +4097,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4141,7 +4143,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4182,7 +4184,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4223,7 +4225,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4264,7 +4266,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4282,7 +4284,7 @@
           },
           {
             "name": "sort_field",
-            "description": "Indicates how Customers should be sorted. Default: `DEFAULT`. See\n[CustomerSortField](#type-customersortfield) for possible values.",
+            "description": "Indicates how Customers should be sorted. Default: `DEFAULT`.",
             "enum": [
               "DEFAULT",
               "CREATED_AT"
@@ -4293,7 +4295,7 @@
           },
           {
             "name": "sort_order",
-            "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder)\nfor possible values.",
+            "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`.",
             "enum": [
               "DESC",
               "ASC"
@@ -4323,7 +4325,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4364,7 +4366,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4405,7 +4407,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4442,7 +4444,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4474,12 +4476,12 @@
         ],
         "summary": "UpdateCustomer",
         "operationId": "UpdateCustomer",
-        "description": "Updates the details of an existing customer. When two profiles are merged\ninto a single profile, that profile is assigned a new `customer_id`. You must use\nthe new `customer_id` to update merged profiles.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the\n[CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
+        "description": "Updates the details of an existing customer. When two profiles are merged\ninto a single profile, that profile is assigned a new `customer_id`. You must use\nthe new `customer_id` to update merged profiles.\n\nYou cannot edit a customer\u0027s cards on file with this endpoint. To make changes\nto a card on file, you must delete the existing card on file with the\n[DeleteCustomerCard](#endpoint-customers-deletecustomercard) endpoint, then\ncreate a new one with the\n[CreateCustomerCard](#endpoint-customers-createcustomercard) endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4522,12 +4524,12 @@
         ],
         "summary": "CreateCustomerCard",
         "operationId": "CreateCustomerCard",
-        "description": "Adds a card on file to an existing customer.\n\nAs with charges, calls to `CreateCustomerCard` are idempotent. Multiple\ncalls with the same card nonce return the same card record that was created\nwith the provided nonce during the _first_ call.",
+        "description": "Adds a card on file to an existing customer.\n\nAs with charges, calls to `CreateCustomerCard` are idempotent. Multiple\ncalls with the same card nonce return the same card record that was created\nwith the provided nonce during the _first_ call.\n\nCards on file are automatically updated on a monthly basis to confirm they\nare still valid and can be charged.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4575,7 +4577,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4621,7 +4623,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4685,7 +4687,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4724,7 +4726,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4763,7 +4765,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4804,7 +4806,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4845,7 +4847,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4886,7 +4888,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4925,7 +4927,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -4978,7 +4980,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5031,7 +5033,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5082,7 +5084,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5123,7 +5125,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5160,7 +5162,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5198,7 +5200,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5247,7 +5249,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5300,7 +5302,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5339,7 +5341,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5380,7 +5382,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5421,7 +5423,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5458,7 +5460,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5496,7 +5498,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5545,7 +5547,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5592,7 +5594,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5641,7 +5643,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5672,7 +5674,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5743,7 +5745,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5815,7 +5817,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5859,12 +5861,12 @@
         ],
         "summary": "CreateOrder",
         "operationId": "CreateOrder",
-        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/products/orders/overview).",
+        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-transactions-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/products/orders/overview).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5912,7 +5914,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -5960,7 +5962,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6031,7 +6033,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6095,12 +6097,12 @@
         ],
         "summary": "Charge",
         "operationId": "Charge",
-        "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nIn order for an eCommerce payment to potentially qualify for\n[Square chargeback protection](https://squareup.com/help/article/5394), you\n_must_ provide values for the following parameters in your request:\n\n- `buyer_email_address`\n- At least one of `billing_address` or `shipping_address`\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
+        "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nIn order for an eCommerce payment to potentially qualify for\n[Square chargeback protection](https://squareup.com/help/article/5394), you\n_must_ provide values for the following parameters in your request:\n\n- `buyer_email_address`\n- At least one of `billing_address` or `shipping_address`\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6148,7 +6150,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6189,12 +6191,12 @@
         ],
         "summary": "CaptureTransaction",
         "operationId": "CaptureTransaction",
-        "description": "Captures a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
+        "description": "Captures a transaction that was created with the [Charge](#endpoint-transactions-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6240,7 +6242,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6290,12 +6292,12 @@
         ],
         "summary": "VoidTransaction",
         "operationId": "VoidTransaction",
-        "description": "Cancels a transaction that was created with the [Charge](#endpoint-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
+        "description": "Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-03-13",
+        "x-sq-version": "2019-04-10",
         "security": [
           {
             "oauth2": [
@@ -6471,6 +6473,7 @@
       "type": "string",
       "enum": [
         "ITEM",
+        "IMAGE",
         "CATEGORY",
         "ITEM_VARIATION",
         "TAX",
@@ -6482,6 +6485,10 @@
         {
           "name": "ITEM",
           "description": "An item, corresponding to [CatalogItem](#type-catalogitem). The item-specific data\nwill be stored in the `item_data` field."
+        },
+        {
+          "name": "IMAGE",
+          "description": "An image, corresponding to [CatalogImage](#type-catalogimage). The image-specific data\nwill be stored in the `image_data` field."
         },
         {
           "name": "CATEGORY",
@@ -12022,7 +12029,7 @@
             "ZM",
             "ZW"
           ],
-          "description": "The address\u0027s country, in ISO 3166-1-alpha-2 format."
+          "description": "The address\u0027s country, in ISO 3166-1-alpha-2 format.\nSee [Country](#type-country) for possible values"
         },
         "first_name": {
           "type": "string",
@@ -12377,7 +12384,7 @@
               "TRANSFER"
             ]
           },
-          "description": "Filters results by [InventoryChangeType](#type-inventorychangetype).\nDefault: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as\na filter."
+          "description": "Filters results by [InventoryChangeType](#type-inventorychangetype).\nDefault: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as\na filter.\nSee [InventoryChangeType](#type-inventorychangetype) for possible values"
         },
         "states": {
           "type": "array",
@@ -12398,7 +12405,7 @@
               "UNLINKED_RETURN"
             ]
           },
-          "description": "Filters `ADJUSTMENT` query results by\n[InventoryState](#type-inventorystate). Only applied when set.\nDefault: unset."
+          "description": "Filters `ADJUSTMENT` query results by\n[InventoryState](#type-inventorystate). Only applied when set.\nDefault: unset.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "updated_after": {
           "type": "string",
@@ -12577,7 +12584,7 @@
           "description": "The IDs of the orders to retrieve. A maximum of 100 orders can be retrieved per request."
         }
       },
-      "description": "",
+      "description": "Defines the fields that are included in requests to the\nBatchRetrieveOrders endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -12606,7 +12613,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [BatchRetrieveOrders](#endpoint-batchretrieveorders) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the BatchRetrieveOrders endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "orders": [
@@ -13057,7 +13064,7 @@
     "CaptureTransactionRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the query parameters for calls to the CaptureTransaction\nendpoint.",
       "x-release-status": "PUBLIC",
       "example": {}
     },
@@ -13072,7 +13079,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CaptureTransaction](#endpoint-capturetransaction) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the CaptureTransaction endpoint.",
       "x-release-status": "PUBLIC",
       "example": {}
     },
@@ -13096,7 +13103,7 @@
             "CHINA_UNIONPAY",
             "SQUARE_GIFT_CARD"
           ],
-          "description": "The card\u0027s brand (such as `VISA`). See [CardBrand](#type-cardbrand)\nfor all possible values."
+          "description": "The card\u0027s brand (such as `VISA`).\nSee [CardBrand](#type-cardbrand) for possible values"
         },
         "last_4": {
           "type": "string",
@@ -13154,7 +13161,7 @@
             "VARIABLE_PERCENTAGE",
             "VARIABLE_AMOUNT"
           ],
-          "description": "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale.\nSee [CatalogDiscountType](#type-catalogdiscounttype) for all possible values."
+          "description": "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale.\nSee [CatalogDiscountType](#type-catalogdiscounttype) for possible values"
         },
         "percentage": {
           "type": "string",
@@ -13189,6 +13196,25 @@
         }
       },
       "description": "A mapping between a client-supplied temporary ID and a permanent server ID.",
+      "x-release-status": "PUBLIC"
+    },
+    "CatalogImage": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The internal name of this image. Identifies this image in calls to the\nConnect APIs."
+        },
+        "url": {
+          "type": "string",
+          "description": "The URL of this image. Generated by Square after an image is uploaded\nto the CreateCatalogImage endpoint."
+        },
+        "caption": {
+          "type": "string",
+          "description": "A caption that describes what is shown in the image. Displayed in the\nSquare Online Store."
+        }
+      },
+      "description": "An image file to use in Square catalogs. Can be associated with catalog\nitems, item variations, and categories.",
       "x-release-status": "PUBLIC"
     },
     "CatalogInfoRequest": {
@@ -13333,14 +13359,15 @@
         },
         "image_url": {
           "type": "string",
-          "description": "The URL of an image representing this item."
+          "description": "__Deprecated__. The URL of an image representing this item. Deprecated\nin favor of `image_id` in [`CatalogObject`](#type-catalogobject).",
+          "x-release-status": "DEPRECATED"
         },
         "variations": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CatalogObject"
           },
-          "description": "A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item."
+          "description": "A list of [CatalogObject](#type-catalogobject)s containing the\n[CatalogItemVariation](#type-catalogitemvariation)s for this item."
         },
         "product_type": {
           "type": "string",
@@ -13351,7 +13378,7 @@
             "RETAIL_ITEM",
             "RESTAURANT_ITEM"
           ],
-          "description": "The product type of the item. May not be changed once an item has been created.\n\nOnly items of product type `REGULAR` may be created by this API; items with other product\ntypes are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for all possible values."
+          "description": "The product type of the item. May not be changed once an item has been created.\n\nOnly items of product type `REGULAR` may be created by this API; items with other product\ntypes are read-only.\nSee [CatalogItemProductType](#type-catalogitemproducttype) for possible values"
         },
         "skip_modifier_screen": {
           "type": "boolean",
@@ -13424,7 +13451,7 @@
             "FIXED_PRICING",
             "VARIABLE_PRICING"
           ],
-          "description": "Indicates whether the item variation\u0027s price is fixed or determined at the time\nof sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+          "description": "Indicates whether the item variation\u0027s price is fixed or determined at the time\nof sale.\nSee [CatalogPricingType](#type-catalogpricingtype) for possible values"
         },
         "price_money": {
           "$ref": "#/definitions/Money",
@@ -13447,7 +13474,7 @@
             "NONE",
             "LOW_QUANTITY"
           ],
-          "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal\nto its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype) for all possible values."
+          "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal\nto its `inventory_alert_threshold`.\nSee [InventoryAlertType](#type-inventoryalerttype) for possible values"
         },
         "inventory_alert_threshold": {
           "type": "integer",
@@ -13495,7 +13522,7 @@
             "SINGLE",
             "MULTIPLE"
           ],
-          "description": "Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist)\ncan be applied to a single [CatalogItem](#type-catalogitem). See\n[CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for all possible values."
+          "description": "Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist)\ncan be applied to a single [CatalogItem](#type-catalogitem).\nSee [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values"
         },
         "modifiers": {
           "type": "array",
@@ -13538,6 +13565,7 @@
           "type": "string",
           "enum": [
             "ITEM",
+            "IMAGE",
             "CATEGORY",
             "ITEM_VARIATION",
             "TAX",
@@ -13545,7 +13573,7 @@
             "MODIFIER_LIST",
             "MODIFIER"
           ],
-          "description": "The type of this object. Each object type has expected\nproperties expressed in a structured format within its corresponding `*_data` field below.\n\nSee [CatalogObjectType](#type-catalogobjecttype) for all possible values."
+          "description": "The type of this object. Each object type has expected\nproperties expressed in a structured format within its corresponding `*_data` field below.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
         },
         "id": {
           "minLength": 1,
@@ -13590,6 +13618,10 @@
           },
           "description": "A list of locations where the object is not present, even if `present_at_all_locations` is `true`."
         },
+        "image_id": {
+          "type": "string",
+          "description": "Identifies the `CatalogImage` attached to this `CatalogObject`."
+        },
         "item_data": {
           "$ref": "#/definitions/CatalogItem",
           "description": "Structured data for a [CatalogItem](#type-catalogitem), set for CatalogObjects of type `ITEM`."
@@ -13617,6 +13649,10 @@
         "modifier_data": {
           "$ref": "#/definitions/CatalogModifier",
           "description": "Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`."
+        },
+        "image_data": {
+          "$ref": "#/definitions/CatalogImage",
+          "description": "Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`."
         }
       },
       "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](/products/catalog/overview).",
@@ -13792,7 +13828,7 @@
             "DESC",
             "ASC"
           ],
-          "description": "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending)."
+          "description": "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending).\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
       "description": "",
@@ -13828,7 +13864,7 @@
             "TAX_SUBTOTAL_PHASE",
             "TAX_TOTAL_PHASE"
           ],
-          "description": "Whether the tax is calculated based on a payment\u0027s subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values."
+          "description": "Whether the tax is calculated based on a payment\u0027s subtotal or total.\nSee [TaxCalculationPhase](#type-taxcalculationphase) for possible values"
         },
         "inclusion_type": {
           "type": "string",
@@ -13836,7 +13872,7 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values."
+          "description": "Whether the tax is `ADDITIVE` or `INCLUSIVE`.\nSee [TaxInclusionType](#type-taxinclusiontype) for possible values"
         },
         "percentage": {
           "type": "string",
@@ -13940,7 +13976,7 @@
           "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in the charge request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires the `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [Charge](#endpoint-charge) endpoint.",
+      "description": "Defines the parameters that can be included in the body of\na request to the Charge endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -14024,7 +14060,7 @@
           "description": "The created transaction."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [Charge](#endpoint-charge) endpoint.\n\nOne of `errors` or `transaction` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the Charge endpoint.\n\nOne of `errors` or `transaction` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "transaction": {
@@ -14232,7 +14268,7 @@
           "description": "An optional note to associate with the checkout object.\n\nThis value cannot exceed 60 characters."
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
+      "description": "Defines the parameters that can be included in the body of\na request to the CreateCheckout endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -14355,7 +14391,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the CreateCheckout endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "checkout": {
@@ -14639,7 +14675,7 @@
           "description": "The cardholder\u0027s name."
         }
       },
-      "description": "Defines the fields that are included in the request body of a request\nto the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.",
+      "description": "Defines the fields that are included in the request body of a request\nto the CreateCustomerCard endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -14679,7 +14715,7 @@
           "description": "The created card on file."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.\n\nOne of `errors` or `card` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the CreateCustomerCard endpoint.\n\nOne of `errors` or `card` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "card": {
@@ -14756,7 +14792,7 @@
           "description": "The customer birthday in RFC-3339 format. Year is optional,\ntimezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00`\nfor a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday\non September 1st 1998."
         }
       },
-      "description": "Defines the body parameters that can be provided in a request to the\n[CreateCustomer](#endpoint-createcustomer) endpoint.",
+      "description": "Defines the body parameters that can be provided in a request to the\nCreateCustomer endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -14800,7 +14836,7 @@
           "description": "The created customer."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateCustomer](#endpoint-createcustomer) endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the CreateCustomer endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "customer": {
@@ -14840,7 +14876,7 @@
           "description": "The Square location ID the authorization code should be tied to."
         }
       },
-      "description": "Defines the body parameters that can be provided in a request to the\n[CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.",
+      "description": "Defines the body parameters that can be provided in a request to the\nCreateMobileAuthorizationCode endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_url": "/mobile/authorization-code",
@@ -14865,7 +14901,7 @@
           "description": "An error object that provides details about how creation of authorization code failed."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateMobileAuthorizationCode](#endpoint-createmobileauthorizationcode) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the CreateMobileAuthorizationCode endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "authorization_code": "YOUR_MOBILE_AUTHZ_CODE",
@@ -15095,7 +15131,7 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
+          "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`;\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
         },
         "percentage": {
           "maxLength": 10,
@@ -15121,7 +15157,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateOrder](#endpoint-createorder) endpoint.\n\nOne of `errors` or `order` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the CreateOrder endpoint.\n\nOne of `errors` or `order` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "order": {
@@ -15319,7 +15355,7 @@
           "description": "The amount of money to refund.\n\nNote that you specify the amount in the\n__smallest denomination of the applicable currency__. For example, US dollar\namounts are specified in cents. See\n[Working with monetary amounts](#workingwithmonetaryamounts) for details.\n\nThis amount cannot exceed the amount that was originally charged to the\ntender that corresponds to `tender_id`."
         }
       },
-      "description": "Defines the body parameters that can be included in\na request to the [CreateRefund](#endpoint-createrefund) endpoint.",
+      "description": "Defines the body parameters that can be included in\na request to the CreateRefund endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -15348,7 +15384,7 @@
           "description": "The created refund."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateRefund](#endpoint-createrefund) endpoint.\n\nOne of `errors` or `refund` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the CreateRefund endpoint.\n\nOne of `errors` or `refund` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "refund": {
@@ -15575,7 +15611,7 @@
             "THIRD_PARTY_IMPORT",
             "UNMERGE_RECOVERY"
           ],
-          "description": "A creation source represents the method used to create the\ncustomer profile."
+          "description": "A creation source represents the method used to create the\ncustomer profile.\nSee [CustomerCreationSource](#type-customercreationsource) for possible values"
         }
       },
       "description": "Represents one of a business\u0027s customers, which can have one or more\ncards on file associated with it.",
@@ -15610,7 +15646,7 @@
               "UNMERGE_RECOVERY"
             ]
           },
-          "description": "The list of creation sources used as filtering criteria. See\n[CustomerCreationSource](#type-customercreationsource) for possible values."
+          "description": "The list of creation sources used as filtering criteria.\nSee [CustomerCreationSource](#type-customercreationsource) for possible values"
         },
         "rule": {
           "type": "string",
@@ -15618,7 +15654,7 @@
             "INCLUDE",
             "EXCLUDE"
           ],
-          "description": "Indicates whether a customer profile matching the filter criteria\nshould be included in the result or excluded from the result.\nDefault: `INCLUDE`. See\n[CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible\nvalues."
+          "description": "Indicates whether a customer profile matching the filter criteria\nshould be included in the result or excluded from the result.\nDefault: `INCLUDE`.\nSee [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values"
         }
       },
       "description": "Creation source filter.\n\nIf one or more creation sources are set, customer profiles are included in,\nor excluded from, the result if they match at least one of the filter\ncriteria.",
@@ -15640,7 +15676,7 @@
           "description": "A filter to select customers based on when they were updated."
         }
       },
-      "description": "Represents a set of [`CustomerQuery`](#type-customerquery) filters used\nto limit the set of Customers returned by [`SearchCustomers`](#endpoint-seachcustomers).",
+      "description": "Represents a set of [`CustomerQuery`](#type-customerquery) filters used\nto limit the set of Customers returned by [`SearchCustomers`](#endpoint-customers-seachcustomers).",
       "x-release-status": "PUBLIC"
     },
     "CustomerGroupInfo": {
@@ -15697,7 +15733,7 @@
             "DEFAULT",
             "CREATED_AT"
           ],
-          "description": "The field to sort the results on. It could be the total money spent at\nthe merchant, the date of the first visit (etc). See\n[CustomerSortField](#type-customersortfield) for possible values. Default\nvalue: `DEFAULT`."
+          "description": "The field to sort the results on. It could be the total money spent at\nthe merchant, the date of the first visit (etc).\nSee [CustomerSortField](#type-customersortfield) for possible values"
         },
         "order": {
           "type": "string",
@@ -15705,7 +15741,7 @@
             "DESC",
             "ASC"
           ],
-          "description": "Indicates the order in which results should be displayed based on the\nvalue of the sort field. String comparisons use standard alphabetic comparison\nto determine order. Strings representing numbers are sorted as strings. See\n[SortOrder](#type-sortorder) for possible values. Default value: `ASC`."
+          "description": "Indicates the order in which results should be displayed based on the\nvalue of the sort field. String comparisons use standard alphabetic comparison\nto determine order. Strings representing numbers are sorted as strings.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
       "description": "Indicates the field to use for sorting customer profiles. For example,\nby total money spent with the merchant or the date of their first purchase.",
@@ -15790,7 +15826,7 @@
     "DeleteCustomerCardRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the fields that are included in requests to the\nDeleteCustomerCard endpoint.",
       "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
@@ -15813,7 +15849,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the DeleteCustomerCard endpoint.",
       "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
@@ -15828,7 +15864,7 @@
     "DeleteCustomerRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the fields that are included in a request to the DeleteCustomer\nendpoint.",
       "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
@@ -15851,7 +15887,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [DeleteCustomer](#endpoint-deletecustomer) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the DeleteCustomer endpoint.",
       "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
@@ -15928,7 +15964,7 @@
             "ACTIVE",
             "INACTIVE"
           ],
-          "description": "Specifies the status of the employee being fetched."
+          "description": "Specifies the status of the employee being fetched.\nSee [EmployeeStatus](#type-employeestatus) for possible values"
         },
         "created_at": {
           "type": "string",
@@ -15986,7 +16022,7 @@
             "PAYMENT_METHOD_ERROR",
             "REFUND_ERROR"
           ],
-          "description": "The error\u0027s high-level category. See [ErrorCategory](#type-errorcategory)\nfor possible values."
+          "description": "The error\u0027s high-level category.\nSee [ErrorCategory](#type-errorcategory) for possible values"
         },
         "code": {
           "type": "string",
@@ -16081,7 +16117,7 @@
             "SERVICE_UNAVAILABLE",
             "GATEWAY_TIMEOUT"
           ],
-          "description": "The error\u0027s specific code. See [ErrorCode](#type-errorcode) for possible\nvalues"
+          "description": "The error\u0027s specific code.\nSee [ErrorCode](#type-errorcode) for possible values"
         },
         "detail": {
           "type": "string",
@@ -16252,7 +16288,7 @@
             "WASTE",
             "UNLINKED_RETURN"
           ],
-          "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items before the adjustment."
+          "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items before the adjustment.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "to_state": {
           "type": "string",
@@ -16270,7 +16306,7 @@
             "WASTE",
             "UNLINKED_RETURN"
           ],
-          "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items after the adjustment."
+          "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items after the adjustment.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
           "type": "string",
@@ -16338,7 +16374,7 @@
             "ADJUSTMENT",
             "TRANSFER"
           ],
-          "description": "Indicates how the inventory change was applied. See\n[InventoryChangeType](#type-inventorychangetype) for all possible values."
+          "description": "Indicates how the inventory change was applied.\nSee [InventoryChangeType](#type-inventorychangetype) for possible values"
         },
         "physical_count": {
           "$ref": "#/definitions/InventoryPhysicalCount",
@@ -16383,7 +16419,7 @@
             "WASTE",
             "UNLINKED_RETURN"
           ],
-          "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items."
+          "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
           "type": "string",
@@ -16436,7 +16472,7 @@
             "WASTE",
             "UNLINKED_RETURN"
           ],
-          "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items."
+          "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
           "type": "string",
@@ -16493,7 +16529,7 @@
             "WASTE",
             "UNLINKED_RETURN"
           ],
-          "description": "The [InventoryState](#type-inventorystate) for the quantity of\nitems being transfered."
+          "description": "The [InventoryState](#type-inventorystate) for the quantity of\nitems being transfered.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "from_location_id": {
           "type": "string",
@@ -16552,7 +16588,7 @@
             "FIXED_PRICING",
             "VARIABLE_PRICING"
           ],
-          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location).\nSee [CatalogPricingType](#type-catalogpricingtype) for all possible values."
+          "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location).\nSee [CatalogPricingType](#type-catalogpricingtype) for possible values"
         },
         "track_inventory": {
           "type": "boolean",
@@ -16564,7 +16600,7 @@
             "NONE",
             "LOW_QUANTITY"
           ],
-          "description": "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory\nquantity is less than or equal to its `inventory_alert_threshold`. See [InventoryAlertType](#type-inventoryalerttype)\nfor all possible values."
+          "description": "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory\nquantity is less than or equal to its `inventory_alert_threshold`.\nSee [InventoryAlertType](#type-inventoryalerttype) for possible values"
         },
         "inventory_alert_threshold": {
           "type": "integer",
@@ -16592,14 +16628,14 @@
             "DESC",
             "ASC"
           ],
-          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`"
+          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.",
+      "description": "Defines the query parameters that can be included in\na request to the ListAdditionalRecipientReceivableRefunds endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
@@ -16627,7 +16663,7 @@
           "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.\n\nOne of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListAdditionalRecipientReceivableRefunds endpoint.\n\nOne of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "receivable_refunds": [
@@ -16662,14 +16698,14 @@
             "DESC",
             "ASC"
           ],
-          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`"
+          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.",
+      "description": "Defines the query parameters that can be included in\na request to the ListAdditionalRecipientReceivables endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
@@ -16697,7 +16733,7 @@
           "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.\n\nOne of `errors` or `additional_recipient_receivables` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListAdditionalRecipientReceivables endpoint.\n\nOne of `errors` or `additional_recipient_receivables` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "receivables": [
@@ -16887,7 +16923,7 @@
             "DEFAULT",
             "CREATED_AT"
           ],
-          "description": "Indicates how Customers should be sorted. Default: `DEFAULT`. See\n[CustomerSortField](#type-customersortfield) for possible values."
+          "description": "Indicates how Customers should be sorted. Default: `DEFAULT`.\nSee [CustomerSortField](#type-customersortfield) for possible values"
         },
         "sort_order": {
           "type": "string",
@@ -16895,10 +16931,10 @@
             "DESC",
             "ASC"
           ],
-          "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder)\nfor possible values."
+          "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
-      "description": "Defines the query parameters that can be provided in a request to the\n[ListCustomers](#endpoint-listcustomers) endpoint.",
+      "description": "Defines the query parameters that can be provided in a request to the\nListCustomers endpoint.",
       "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
@@ -16932,7 +16968,7 @@
           "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint. This value is present only if the request\nsucceeded and additional results are available.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListCustomers](#endpoint-listcustomers) endpoint.\n\nOne of `errors` or `customers` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListCustomers endpoint.\n\nOne of `errors` or `customers` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "customers": [
@@ -17075,7 +17111,7 @@
             "ACTIVE",
             "INACTIVE"
           ],
-          "description": "Specifies the EmployeeStatus to filter the employee by."
+          "description": "Specifies the EmployeeStatus to filter the employee by.\nSee [EmployeeStatus](#type-employeestatus) for possible values"
         },
         "limit": {
           "type": "integer",
@@ -17111,13 +17147,13 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListEmployees](#endpoint-listemployees) endpoint.\n\nOne of `errors` or `employees` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListEmployees endpoint.\n\nOne of `errors` or `employees` is present in a given response (never both).",
       "x-release-status": "PUBLIC"
     },
     "ListLocationsRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the fields that are included in requests to the ListLocations\nendpoint.",
       "x-release-status": "PUBLIC",
       "example": {}
     },
@@ -17139,7 +17175,7 @@
           "description": "The business\u0027s locations."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListLocations](#endpoint-listlocations) endpoint.\n\nOne of `errors` or `locations` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListLocations endpoint.\n\nOne of `errors` or `locations` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "locations": [
@@ -17186,14 +17222,14 @@
             "DESC",
             "ASC"
           ],
-          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`"
+          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the query parameters that can be included in\na request to the [ListRefunds](#endpoint-listrefunds) endpoint.",
+      "description": "Defines the query parameters that can be included in\na request to the ListRefunds endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
@@ -17221,7 +17257,7 @@
           "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListRefunds](#endpoint-listrefunds) endpoint.\n\nOne of `errors` or `refunds` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListRefunds endpoint.\n\nOne of `errors` or `refunds` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "refunds": [
@@ -17268,14 +17304,14 @@
             "DESC",
             "ASC"
           ],
-          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`"
+          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the query parameters that can be included in\na request to the [ListTransactions](#endpoint-listtransactions) endpoint.",
+      "description": "Defines the query parameters that can be included in\na request to the ListTransactions endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
@@ -17303,7 +17339,7 @@
           "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListTransactions](#endpoint-listtransactions) endpoint.\n\nOne of `errors` or `transactions` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the ListTransactions endpoint.\n\nOne of `errors` or `transactions` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "transactions": [
@@ -17465,7 +17501,7 @@
               "CREDIT_CARD_PROCESSING"
             ]
           },
-          "description": "Indicates which Square features are enabled for the location.\n\nSee [LocationCapability](#type-locationcapability) for possible values."
+          "description": "Indicates which Square features are enabled for the location.\nSee [LocationCapability](#type-locationcapability) for possible values"
         },
         "status": {
           "type": "string",
@@ -17473,7 +17509,7 @@
             "ACTIVE",
             "INACTIVE"
           ],
-          "description": "The location\u0027s status\n\nSee [LocationStatus](#type-locationstatus) for possible values."
+          "description": "The location\u0027s status\nSee [LocationStatus](#type-locationstatus) for possible values"
         },
         "created_at": {
           "type": "string",
@@ -17737,7 +17773,7 @@
             "ZM",
             "ZW"
           ],
-          "description": "The location\u0027s country, in ISO 3166-1-alpha-2 format.\n\nSee [Country](#type-country) for possible values."
+          "description": "The location\u0027s country, in ISO 3166-1-alpha-2 format.\nSee [Country](#type-country) for possible values"
         },
         "language_code": {
           "type": "string",
@@ -17928,7 +17964,7 @@
             "ZMW",
             "BTC"
           ],
-          "description": "The currency used for all transactions at this location, specified in __ISO 4217 format__.\nFor example, the currency for a location processing transactions in the United States is \u0027USD\u0027.\n\nSee [Currency](#type-currency) for possible values."
+          "description": "The currency used for all transactions at this location, specified in __ISO 4217 format__.\nFor example, the currency for a location processing transactions in the United States is \u0027USD\u0027.\nSee [Currency](#type-currency) for possible values"
         },
         "phone_number": {
           "type": "string",
@@ -17944,7 +17980,7 @@
             "PHYSICAL",
             "MOBILE"
           ],
-          "description": "The location\u0027s type, as set by the account owner in the Square dashboard.\nTypically used to indicate whether or not the location object represents a physical space\nlike a building or mall space.\n\nSee [LocationType](#type-locationtype) for possible values."
+          "description": "The location\u0027s type, as set by the account owner in the Square dashboard.\nTypically used to indicate whether or not the location object represents a physical space\nlike a building or mall space.\nSee [LocationType](#type-locationtype) for possible values"
         },
         "website_url": {
           "type": "string",
@@ -18148,7 +18184,7 @@
             "ZMW",
             "BTC"
           ],
-          "description": "The type of currency, in __ISO 4217 format__. For example, the currency\ncode for US dollars is `USD`.\n\nSee [Currency](#type-currency) for possible values."
+          "description": "The type of currency, in __ISO 4217 format__. For example, the currency\ncode for US dollars is `USD`.\nSee [Currency](#type-currency) for possible values"
         }
       },
       "description": "Represents an amount of money.\n\n__Important:__ Unlike version 1 of the Connect API, __all monetary amounts\nreturned by v2 endpoints are positive.__ (In v1, monetary amounts are negative\nif they represent money being paid _by_ a merchant, instead of money being\npaid _to_ a merchant.)",
@@ -18156,6 +18192,11 @@
     },
     "ObtainTokenRequest": {
       "type": "object",
+      "required": [
+        "client_id",
+        "client_secret",
+        "grant_type"
+      ],
       "properties": {
         "client_id": {
           "type": "string",
@@ -18163,11 +18204,11 @@
         },
         "client_secret": {
           "type": "string",
-          "description": "The Square-issued application secret for your application, \navailable from the [application dashboard](https://connect.squareup.com/apps)."
+          "description": "The Square-issued application secret for your application,\navailable from the [application dashboard](https://connect.squareup.com/apps)."
         },
         "code": {
           "type": "string",
-          "description": "The authorization code to exchange. \nThis is required if `grant_type` is set to `authorization_code`, to indicate that \nthe application wants to exchange an authorization code for an OAuth access token."
+          "description": "The authorization code to exchange.\nThis is required if `grant_type` is set to `authorization_code`, to indicate that\nthe application wants to exchange an authorization code for an OAuth access token."
         },
         "redirect_uri": {
           "type": "string",
@@ -18175,15 +18216,15 @@
         },
         "grant_type": {
           "type": "string",
-          "description": "Specifies the method to request an OAuth access token. \nValid values are: `authorization_code`, `refresh_token`, and `migration_token`"
+          "description": "Specifies the method to request an OAuth access token.\nValid values are: `authorization_code`, `refresh_token`, and `migration_token`"
         },
         "refresh_token": {
           "type": "string",
-          "description": "A valid refresh token for generating a new OAuth access token. \nA valid refresh token is required if `grant_type` is set to `refresh_token` ,  \nto indicate the application wants a replacement for an expired OAuth access token."
+          "description": "A valid refresh token for generating a new OAuth access token.\nA valid refresh token is required if `grant_type` is set to `refresh_token` ,\nto indicate the application wants a replacement for an expired OAuth access token."
         },
         "migration_token": {
           "type": "string",
-          "description": "Legacy OAuth access token obtained using a Connect API version prior \nto 2019-03-13. This parameter is required if `grant_type` is set to \n`migration_token` to indicate that the application wants to get a replacement  \nOAuth access token. The response also returns a refresh token. \nFor more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration)."
+          "description": "Legacy OAuth access token obtained using a Connect API version prior\nto 2019-03-13. This parameter is required if `grant_type` is set to\n`migration_token` to indicate that the application wants to get a replacement\nOAuth access token. The response also returns a refresh token.\nFor more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration)."
         }
       },
       "description": "",
@@ -18218,7 +18259,7 @@
         },
         "subscription_id": {
           "type": "string",
-          "description": "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if \nthe merchant signed up for a subscription during authorization."
+          "description": "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if\nthe merchant signed up for a subscription during authorization."
         },
         "plan_id": {
           "type": "string",
@@ -18230,7 +18271,7 @@
         },
         "refresh_token": {
           "type": "string",
-          "description": "A refresh token. \nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management)."
+          "description": "A refresh token.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management)."
         }
       },
       "description": "",
@@ -18250,7 +18291,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "The order\u0027s unique ID.\n\nThis value is only present for Order objects created by the Orders API through the\n[CreateOrder](#endpoint-createorder) endpoint."
+          "description": "The order\u0027s unique ID.\n\nThis value is only present for Order objects created by the Orders API through the\n[CreateOrder](#endpoint-orders-createorder) endpoint."
         },
         "location_id": {
           "minLength": 1,
@@ -18261,6 +18302,11 @@
           "maxLength": 40,
           "type": "string",
           "description": "A client specified identifier to associate an entity in another system\nwith this order."
+        },
+        "source": {
+          "$ref": "#/definitions/OrderSource",
+          "description": "The origination details of the order.",
+          "x-release-status": "BETA"
         },
         "line_items": {
           "type": "array",
@@ -18315,7 +18361,7 @@
           "enum": [
             "PICKUP"
           ],
-          "description": "The type of the fulfillment."
+          "description": "The type of the fulfillment.\nSee [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values"
         },
         "state": {
           "type": "string",
@@ -18327,7 +18373,7 @@
             "CANCELED",
             "FAILED"
           ],
-          "description": "The state of the fulfillment."
+          "description": "The state of the fulfillment.\nSee [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values"
         },
         "pickup_details": {
           "$ref": "#/definitions/OrderFulfillmentPickupDetails",
@@ -18358,7 +18404,7 @@
             "SCHEDULED",
             "ASAP"
           ],
-          "description": "The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`."
+          "description": "The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`.\nSee [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values"
         },
         "pickup_at": {
           "type": "string",
@@ -18539,7 +18585,7 @@
             "VARIABLE_PERCENTAGE",
             "VARIABLE_AMOUNT"
           ],
-          "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\n\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values."
+          "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values"
         },
         "percentage": {
           "maxLength": 10,
@@ -18561,7 +18607,7 @@
             "LINE_ITEM",
             "ORDER"
           ],
-          "description": "Indicates the level at which the discount applies. This field is set by the server.\nIf set in a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values."
+          "description": "Indicates the level at which the discount applies. This field is set by the server.\nIf set in a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values"
         }
       },
       "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-level discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to that item’s contribution to the order subtotal.",
@@ -18612,7 +18658,7 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "Indicates the calculation method used to apply the tax.\n\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values."
+          "description": "Indicates the calculation method used to apply the tax.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
         },
         "percentage": {
           "maxLength": 10,
@@ -18630,11 +18676,22 @@
             "LINE_ITEM",
             "ORDER"
           ],
-          "description": "Indicates the level at which the tax applies. This field is set by the server. If set\nin a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values."
+          "description": "Indicates the level at which the tax applies. This field is set by the server. If set\nin a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values"
         }
       },
       "description": "Represents a tax that applies to one or more line items in an order.",
       "x-release-status": "PUBLIC"
+    },
+    "OrderSource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name used to identify the place (physical or digital) that an order originates.\n\nIf unset, the name defaults to the name of the application that created the order."
+        }
+      },
+      "description": "Represents the origination details of an order.",
+      "x-release-status": "BETA"
     },
     "Refund": {
       "type": "object",
@@ -18684,7 +18741,7 @@
             "REJECTED",
             "FAILED"
           ],
-          "description": "The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`,\nor `FAILED`)."
+          "description": "The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`,\nor `FAILED`).\nSee [RefundStatus](#type-refundstatus) for possible values"
         },
         "processing_fee_money": {
           "$ref": "#/definitions/Money",
@@ -18714,7 +18771,7 @@
           "description": "A domain name as described in RFC-1034 that will be registered with ApplePay"
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.",
+      "description": "Defines the parameters that can be included in the body of\na request to the RegisterDomain endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -18746,10 +18803,10 @@
             "PENDING",
             "VERIFIED"
           ],
-          "description": "Status of the domain registration.\n\nSee [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values."
+          "description": "Status of the domain registration.\nSee [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values"
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.\n\nEither `errors` or `status` will be present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the RegisterDomain endpoint.\n\nEither `errors` or `status` will be present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "status": "VERIFIED"
@@ -18917,7 +18974,7 @@
     "RetrieveCustomerRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the fields that are included in requests to the RetrieveCustomer\nendpoint.",
       "x-release-status": "PUBLIC",
       "example": {},
       "x-sq-sdk-sample-code": {
@@ -18944,7 +19001,7 @@
           "description": "The requested customer."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [RetrieveCustomer](#endpoint-retrievecustomer) endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the RetrieveCustomer endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "customer": {
@@ -19003,7 +19060,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [RetrieveEmployee](#endpoint-retrieveemployee) endpoint.\n\nOne of `errors` or `employee` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the RetrieveEmployee endpoint.\n\nOne of `errors` or `employee` is present in a given response (never both).",
       "x-release-status": "PUBLIC"
     },
     "RetrieveInventoryAdjustmentRequest": {
@@ -19234,7 +19291,7 @@
     "RetrieveTransactionRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the request body fields for calls to the RetrieveTransaction\nendpoint.",
       "x-release-status": "PUBLIC",
       "example": {}
     },
@@ -19253,7 +19310,7 @@
           "description": "The requested transaction."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [RetrieveTransaction](#endpont-retrievetransaction) endpoint.\n\nOne of `errors` or `transaction` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the RetrieveTransaction endpoint.\n\nOne of `errors` or `transaction` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "transaction": {
@@ -19354,6 +19411,7 @@
             "type": "string",
             "enum": [
               "ITEM",
+              "IMAGE",
               "CATEGORY",
               "ITEM_VARIATION",
               "TAX",
@@ -19362,7 +19420,7 @@
               "MODIFIER"
             ]
           },
-          "description": "The desired set of object types to appear in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`."
+          "description": "The desired set of object types to appear in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
         },
         "include_deleted_objects": {
           "type": "boolean",
@@ -19549,7 +19607,7 @@
           "description": "Query customers based on the given conditions and sort order.\nCalling SearchCustomers without an explicit query parameter will return\nall customers ordered alphabetically based on `given_name` and\n`family_name`."
         }
       },
-      "description": "Defines the fields included in the request body for the\n[SearchCustomers](#endpoint-searchcustomer) endpoint.",
+      "description": "Defines the fields included in the request body for the\nSearchCustomers endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -19605,7 +19663,7 @@
           "description": "A pagination cursor that can be used during subsequent calls\nto SearchCustomers to retrieve the next set of results associated\nwith the original query. Pagination cursors are only present when\na request succeeds and additional results are available.\n\nSee [Pagination](/basics/api101/pagination) for more information."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [SearchCustomers](#endpoint-searchcustomers) endpoint.\n\nOne of `errors` or `customers` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the SearchCustomers endpoint.\n\nOne of `errors` or `customers` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "customers": [
@@ -19847,7 +19905,7 @@
             "OPEN",
             "CLOSED"
           ],
-          "description": "Describes working state of the current `Shift`."
+          "description": "Describes working state of the current `Shift`.\nSee [ShiftStatus](#type-shiftstatus) for possible values"
         },
         "version": {
           "type": "integer",
@@ -19888,7 +19946,7 @@
             "OPEN",
             "CLOSED"
           ],
-          "description": "Fetch a `Shift` instance by `Shift.status`."
+          "description": "Fetch a `Shift` instance by `Shift.status`.\nSee [ShiftFilterStatus](#type-shiftfilterstatus) for possible values"
         },
         "start": {
           "$ref": "#/definitions/TimeRange",
@@ -19932,7 +19990,7 @@
             "CREATED_AT",
             "UPDATED_AT"
           ],
-          "description": "The field to sort on."
+          "description": "The field to sort on.\nSee [ShiftSortField](#type-shiftsortfield) for possible values"
         },
         "order": {
           "type": "string",
@@ -19940,7 +19998,7 @@
             "DESC",
             "ASC"
           ],
-          "description": "The order in which results are returned. Defaults to DESC."
+          "description": "The order in which results are returned. Defaults to DESC.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
       "description": "Sets the sort order of search results.",
@@ -19975,7 +20033,7 @@
             "END_AT",
             "INTERSECTION"
           ],
-          "description": "The strategy on which the dates are applied."
+          "description": "The strategy on which the dates are applied.\nSee [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values"
         },
         "default_timezone": {
           "type": "string",
@@ -20002,7 +20060,7 @@
             "ITEM_LIBRARY_IMPORT",
             "OTHER"
           ],
-          "description": "Read-only [Product](#type-product) type for the application."
+          "description": "Read-only [Product](#type-product) type for the application.\nSee [Product](#type-product) for possible values"
         },
         "application_id": {
           "type": "string",
@@ -20068,7 +20126,7 @@
             "NO_SALE",
             "OTHER"
           ],
-          "description": "The type of tender, such as `CARD` or `CASH`."
+          "description": "The type of tender, such as `CARD` or `CASH`.\nSee [TenderType](#type-tendertype) for possible values"
         },
         "card_details": {
           "$ref": "#/definitions/TenderCardDetails",
@@ -20100,7 +20158,7 @@
             "VOIDED",
             "FAILED"
           ],
-          "description": "The credit card payment\u0027s current state (such as `AUTHORIZED` or\n`CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus)\nfor possible values."
+          "description": "The credit card payment\u0027s current state (such as `AUTHORIZED` or\n`CAPTURED`).\nSee [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values"
         },
         "card": {
           "$ref": "#/definitions/Card",
@@ -20115,7 +20173,7 @@
             "ON_FILE",
             "CONTACTLESS"
           ],
-          "description": "The method used to enter the card\u0027s details for the transaction."
+          "description": "The method used to enter the card\u0027s details for the transaction.\nSee [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values"
         }
       },
       "description": "Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`",
@@ -20182,7 +20240,7 @@
         },
         "reference_id": {
           "type": "string",
-          "description": "If the transaction was created with the [Charge](#endpoint-charge)\nendpoint, this value is the same as the value provided for the `reference_id`\nparameter in the request to that endpoint. Otherwise, it is not set."
+          "description": "If the transaction was created with the [Charge](#endpoint-transactions-charge)\nendpoint, this value is the same as the value provided for the `reference_id`\nparameter in the request to that endpoint. Otherwise, it is not set."
         },
         "product": {
           "type": "string",
@@ -20196,7 +20254,7 @@
             "PAYROLL",
             "OTHER"
           ],
-          "description": "The Square product that processed the transaction."
+          "description": "The Square product that processed the transaction.\nSee [TransactionProduct](#type-transactionproduct) for possible values"
         },
         "client_id": {
           "type": "string",
@@ -20310,7 +20368,7 @@
           "description": "The customer birthday in RFC-3339 format. Year is optional,\ntimezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00`\nfor a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday\non September 1st 1998."
         }
       },
-      "description": "Defines the body parameters that can be provided in a request to the\n[UpdateCustomer](#endpoint-updatecustomer) endpoint.",
+      "description": "Defines the body parameters that can be provided in a request to the\nUpdateCustomer endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -20343,7 +20401,7 @@
           "description": "The updated customer."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [UpdateCustomer](#endpoint-updatecustomer) endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the UpdateCustomer endpoint.\n\nOne of `errors` or `customer` is present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "customer": {
@@ -20962,6 +21020,10 @@
         "name": {
           "type": "string",
           "description": "The category\u0027s name."
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1Category",
@@ -21223,6 +21285,10 @@
             "e5BF00"
           ],
           "description": "The color of the discount\u0027s display label in Square Register, if not the default color. The default color is 9da2a6.\nSee [V1DiscountColor](#type-v1discountcolor) for possible values"
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1Discount",
@@ -21396,6 +21462,10 @@
             "OTHER"
           ],
           "description": "In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.\nSee [V1FeeType](#type-v1feetype) for possible values"
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1Fee",
@@ -21511,6 +21581,10 @@
         "available_for_pickup": {
           "type": "boolean",
           "description": "If true, the item can be added to pickup orders from the merchant\u0027s online store. Default value: false"
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1Item",
@@ -22301,6 +22375,10 @@
             "$ref": "#/definitions/V1ModifierOption"
           },
           "description": "The options included in the modifier list."
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1ModifierList",
@@ -22332,6 +22410,10 @@
         "modifier_list_id": {
           "type": "string",
           "description": "The ID of the modifier list the option belongs to."
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1ModifierOption",
@@ -22850,7 +22932,7 @@
           "items": {
             "$ref": "#/definitions/V1Tender"
           },
-          "description": "All of the additive taxes associated with the payment."
+          "description": "All of the tenders associated with the payment."
         },
         "refunds": {
           "type": "array",
@@ -23848,6 +23930,10 @@
         "user_data": {
           "type": "string",
           "description": "Arbitrary metadata associated with the variation. Cannot exceed 255 characters."
+        },
+        "v2_id": {
+          "type": "string",
+          "description": "The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID."
         }
       },
       "description": "V1Variation",
@@ -23856,7 +23942,7 @@
     "VoidTransactionRequest": {
       "type": "object",
       "properties": {},
-      "description": "",
+      "description": "Defines the request body for calls to the VoidTransaction endpoint.",
       "x-release-status": "PUBLIC",
       "example": {}
     },
@@ -23871,7 +23957,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [VoidTransaction](#endpoint-voidtransaction) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the VoidTransaction endpoint.",
       "x-release-status": "PUBLIC",
       "example": {}
     },
@@ -23897,7 +23983,7 @@
             "SAT",
             "SUN"
           ],
-          "description": "The day of the week on which a business week cuts over for\ncompensation purposes."
+          "description": "The day of the week on which a business week cuts over for\ncompensation purposes.\nSee [Weekday](#type-weekday) for possible values"
         },
         "start_of_day_local_time": {
           "minLength": 1,

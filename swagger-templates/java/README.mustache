@@ -36,6 +36,29 @@ compile "com.squareup:connect:{{{artifactVersion}}}"
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
+mvn install -DskipTests
+```
+
+To run tests, you would need to create below **accounts.json** under **travis-ci** folder.
+
+```json
+{
+  "US-Prod": {
+    "email": "your_email",
+    "access_token": "your_access_token",
+    "location_id": "your_location_id",
+    "application_id": "your_application_id"
+  },
+  "US-Prod-Sandbox": {
+    "email": "your_email",
+    "access_token": "your_sandbox_access_token",
+    "location_id": "your_sandbox_location_id",
+    "application_id": "your_sandbox_application_id"
+  }
+}
+```
+
+```shell
 mvn install
 ```
 
