@@ -3991,7 +3991,7 @@
           },
           {
             "name": "types",
-            "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`,\n`\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.",
+            "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,\n`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.",
             "type": "string",
             "in": "query",
             "required": false
@@ -11323,6 +11323,60 @@
       "description": "",
       "x-release-status": "PUBLIC"
     },
+    "V1TenderCardBrand": {
+      "type": "string",
+      "enum": [
+        "OTHER_BRAND",
+        "VISA",
+        "MASTER_CARD",
+        "AMERICAN_EXPRESS",
+        "DISCOVER",
+        "DISCOVER_DINERS",
+        "JCB",
+        "CHINA_UNIONPAY",
+        "SQUARE_GIFT_CARD"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "OTHER_BRAND",
+          "description": ""
+        },
+        {
+          "name": "VISA",
+          "description": ""
+        },
+        {
+          "name": "MASTER_CARD",
+          "description": ""
+        },
+        {
+          "name": "AMERICAN_EXPRESS",
+          "description": ""
+        },
+        {
+          "name": "DISCOVER",
+          "description": ""
+        },
+        {
+          "name": "DISCOVER_DINERS",
+          "description": ""
+        },
+        {
+          "name": "JCB",
+          "description": ""
+        },
+        {
+          "name": "CHINA_UNIONPAY",
+          "description": ""
+        },
+        {
+          "name": "SQUARE_GIFT_CARD",
+          "description": ""
+        }
+      ],
+      "description": "The brand of a credit card.",
+      "x-release-status": "PUBLIC"
+    },
     "V1TenderEntryMethod": {
       "type": "string",
       "enum": [
@@ -12143,6 +12197,14 @@
             "AA27W3M2GGTF3H6AVPNB77CK"
           ]
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.csharp",
+        "java": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.java",
+        "php": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsRequest.ruby"
       }
     },
     "BatchDeleteCatalogObjectsResponse": {
@@ -12175,6 +12237,14 @@
           "AA27W3M2GGTF3H6AVPNB77CK"
         ],
         "deleted_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.csharp",
+        "java": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.java",
+        "php": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/BatchDeleteCatalogObjects/BatchDeleteCatalogObjectsResponse.ruby"
       }
     },
     "BatchRetrieveCatalogObjectsRequest": {
@@ -12205,6 +12275,14 @@
           ],
           "include_related_objects": true
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.csharp",
+        "java": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.java",
+        "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsRequest.ruby"
       }
     },
     "BatchRetrieveCatalogObjectsResponse": {
@@ -12355,6 +12433,14 @@
             }
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.csharp",
+        "java": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.java",
+        "php": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/BatchRetrieveCatalogObjects/BatchRetrieveCatalogObjectsResponse.ruby"
       }
     },
     "BatchRetrieveInventoryChangesRequest": {
@@ -12781,6 +12867,14 @@
             }
           ]
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.csharp",
+        "java": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.java",
+        "php": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsRequest.ruby"
       }
     },
     "BatchUpsertCatalogObjectsResponse": {
@@ -12964,6 +13058,14 @@
             "object_id": "GZDA3JB37FYVOPI4AOEBOITI"
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.csharp",
+        "java": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.java",
+        "php": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/BatchUpsertCatalogObjects/BatchUpsertCatalogObjectsResponse.ruby"
       }
     },
     "Break": {
@@ -13144,7 +13246,17 @@
         }
       },
       "description": "A category to which an [CatalogItem](#type-catalogitem) belongs in the Catalog object model.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "PUBLIC",
+      "example": {
+        "object": {
+          "type": "CATEGORY",
+          "id": "#Beverages",
+          "present_at_all_locations": true,
+          "category_data": {
+            "name": "Beverages"
+          }
+        }
+      }
     },
     "CatalogDiscount": {
       "type": "object",
@@ -13181,7 +13293,21 @@
         }
       },
       "description": "A discount in the Catalog object model.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "PUBLIC",
+      "example": {
+        "object": {
+          "type": "DISCOUNT",
+          "id": "#Maythe4th",
+          "present_at_all_locations": true,
+          "discount_data": {
+            "name": "Welcome to the Dark(Roast) Side!",
+            "discount_type": "FIXED_PERCENTAGE",
+            "percentage": "5.4",
+            "pin_required": false,
+            "label_color": "red"
+          }
+        }
+      }
     },
     "CatalogIdMapping": {
       "type": "object",
@@ -13222,7 +13348,15 @@
       "properties": {},
       "description": "",
       "x-release-status": "PUBLIC",
-      "example": {}
+      "example": {},
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.python",
+        "csharp": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.csharp",
+        "java": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.java",
+        "php": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.php",
+        "javascript": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoRequest.ruby"
+      }
     },
     "CatalogInfoResponse": {
       "type": "object",
@@ -13255,6 +13389,14 @@
           "update_item_modifier_lists_max_modifier_lists_to_enable": 1000,
           "update_item_modifier_lists_max_modifier_lists_to_disable": 1000
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.python",
+        "csharp": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.csharp",
+        "java": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.java",
+        "php": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.php",
+        "javascript": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/CatalogInfo/CatalogInfoResponse.ruby"
       }
     },
     "CatalogInfoResponseLimits": {
@@ -13321,7 +13463,7 @@
         },
         "abbreviation": {
           "type": "string",
-          "description": "The text of the item\u0027s display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable. This field has max length of 24 Unicode code points."
+          "description": "The text of the item\u0027s display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable.\nThis field has max length of 24 Unicode code points."
         },
         "label_color": {
           "type": "string",
@@ -13386,7 +13528,20 @@
         }
       },
       "description": "An item (i.e., product family) in the Catalog object model.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "PUBLIC",
+      "example": {
+        "object": {
+          "type": "ITEM",
+          "id": "#Cocoa",
+          "present_at_all_locations": true,
+          "item_data": {
+            "name": "Cocoa",
+            "description": "Hot chocolate",
+            "abbreviation": "Ch",
+            "visibility": "PRIVATE"
+          }
+        }
+      }
     },
     "CatalogItemModifierListInfo": {
       "type": "object",
@@ -13507,7 +13662,20 @@
         }
       },
       "description": "A modifier in the Catalog object model.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "PUBLIC",
+      "example": {
+        "object": {
+          "type": "MODIFIER",
+          "present_at_all_locations": true,
+          "modifier_data": {
+            "name": "Almond Milk",
+            "price_money": {
+              "amount": 250,
+              "currency": "USD"
+            }
+          }
+        }
+      }
     },
     "CatalogModifierList": {
       "type": "object",
@@ -13533,7 +13701,51 @@
         }
       },
       "description": "A modifier list in the Catalog object model. A [CatalogModifierList](#type-catalogmodifierlist)\ncontains [Modifier](#type-catalogmodifier)s that can be applied to a [CatalogItem](#type-catalogitem)\nat the time of sale.\n\nFor example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\" [CatalogItem](#type-catalogitem) might\ncontain [CatalogModifier](#type-catalogmodifier)s \"Ketchup\", \"Mustard\", and \"Relish\". The\n`selection_type` field specifies whether or not multiple selections from the modifier list are allowed.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "PUBLIC",
+      "example": {
+        "type": "MODIFIER_LIST",
+        "id": "#MilkType",
+        "present_at_all_locations": true,
+        "modifier_list_data": {
+          "name": "Milk Type",
+          "selection_type": "SINGLE",
+          "modifiers": [
+            {
+              "type": "MODIFIER",
+              "present_at_all_locations": true,
+              "modifier_data": {
+                "name": "Whole Milk",
+                "price_money": {
+                  "amount": 0,
+                  "currency": "USD"
+                }
+              }
+            },
+            {
+              "type": "MODIFIER",
+              "present_at_all_locations": true,
+              "modifier_data": {
+                "name": "Almond Milk",
+                "price_money": {
+                  "amount": 250,
+                  "currency": "USD"
+                }
+              }
+            },
+            {
+              "type": "MODIFIER",
+              "present_at_all_locations": true,
+              "modifier_data": {
+                "name": "Soy Milk",
+                "price_money": {
+                  "amount": 250,
+                  "currency": "USD"
+                }
+              }
+            }
+          ]
+        }
+      }
     },
     "CatalogModifierOverride": {
       "type": "object",
@@ -13587,7 +13799,7 @@
         "version": {
           "type": "integer",
           "format": "int64",
-          "description": "The version of the object. When updating an object, the version supplied by the\nmust match the version in the database, otherwise the write will be rejected as conflicting."
+          "description": "The version of the object. When updating an object, the version supplied\nmust match the version in the database, otherwise the write will be rejected as conflicting."
         },
         "is_deleted": {
           "type": "boolean",
@@ -13655,8 +13867,38 @@
           "description": "Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`."
         }
       },
-      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](/products/catalog/overview).",
-      "x-release-status": "PUBLIC"
+      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n- if type \u003d `IMAGE`, only `image_data` will be populated and it will contain a valid [CatalogImage](#type-catalogimage) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](/products/catalog/overview).",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "catalog_object": {
+          "type": "{{ [ITEM | ITEM_VARIATION | MODIFIER | MODIFIER_LIST | CATEGORY | DISCOUNT | TAX] }}",
+          "id": "{{ set by Catalog during object creation }}",
+          "updated_at": "{{ date \u0026 time of most recent update }}",
+          "version": "{{ version of the CatalogObject }}",
+          "is_deleted": "{{ [true | false] }}",
+          "connect_v1_ids": {
+            "catalog_v1_id": "{{ itemID from Catalog v1 }}",
+            "location_id": "{{ location where v1 ID is used }}"
+          },
+          "present_at_all_locations": "{{ [true | false] }}",
+          "present_at_location_ids": [
+            "{{ LOCATIONID-1 }}",
+            "{{ LOCATIONID-N }}"
+          ],
+          "absent_at_location_ids": [
+            "{{ LOCATIONID-1 }}",
+            "{{ LOCATIONID-N }}"
+          ],
+          "item_data": "{{ CatalogItem object only if type\u003dITEM }}",
+          "item_variation_data": "{{ CatalogItemVariation object only if type\u003dITEM_VARIATION }}",
+          "modifier_data": "{{ CatalogModifier object only if type\u003dMODIFIER }}",
+          "modifier_list_data": "{{ CatalogModifierList object only if type\u003dMODIFIER_LIST }}",
+          "category_data": "{{ CatalogCategory object only if type\u003dCATEGORY }}",
+          "discount_data": "{{ CatalogDiscount object only if type\u003dDISCOUNT }}",
+          "tax_data": "{{ CatalogTax object only if type\u003dTAX }}"
+        }
+      },
+      "example_type": "Schema"
     },
     "CatalogObjectBatch": {
       "type": "object",
@@ -13704,7 +13946,7 @@
           "description": "A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled."
         }
       },
-      "description": "A query to be applied to a SearchCatalogObjects request.\nOnly one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\n[CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`.",
+      "description": "A query to be applied to a [SearchCatalogObjectsRequest](#type-searchcatalogobjectsrequest).\nOnly one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n([CatalogItem](#type-catalogitem), [CatalogItemVariation](#type-catalogitemvariation),\n[CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax),\n[CatalogDiscount](#type-catalogdiscount), [CatalogModifierList](#type-catalogmodifierlist),\n[CatalogModifier](#type-catalogmodifier)).\n\nFor example, a query that should return Items may specify attribute names from\nany of the searchable fields of the [CatalogItem](#type-catalogitem) data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryExact": {
@@ -13888,7 +14130,22 @@
         }
       },
       "description": "A tax in the Catalog object model.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "PUBLIC",
+      "example": {
+        "object": {
+          "type": "TAX",
+          "id": "#SalesTax",
+          "present_at_all_locations": true,
+          "tax_data": {
+            "name": "Sales Tax",
+            "calculation_phase": "TAX_SUBTOTAL_PHASE",
+            "inclusion_type": "ADDITIVE",
+            "percentage": "5.0",
+            "fee_applies_to_custom_amounts": true,
+            "enabled": true
+          }
+        }
+      }
     },
     "CatalogV1Id": {
       "type": "object",
@@ -13944,7 +14201,7 @@
         "note": {
           "maxLength": 60,
           "type": "string",
-          "description": ""
+          "description": "An optional note to associate with the transaction.\n\nThis value cannot exceed 60 characters."
         },
         "customer_id": {
           "maxLength": 50,
@@ -15789,7 +16046,15 @@
       "properties": {},
       "description": "",
       "x-release-status": "PUBLIC",
-      "example": {}
+      "example": {},
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.python",
+        "csharp": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.csharp",
+        "java": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.java",
+        "php": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.php",
+        "javascript": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectRequest.ruby"
+      }
     },
     "DeleteCatalogObjectResponse": {
       "type": "object",
@@ -15821,6 +16086,14 @@
           "KQLFFHA6K6J3YQAQAWDQAL57"
         ],
         "deleted_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.python",
+        "csharp": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.csharp",
+        "java": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.java",
+        "php": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.php",
+        "javascript": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/DeleteCatalogObject/DeleteCatalogObjectResponse.ruby"
       }
     },
     "DeleteCustomerCardRequest": {
@@ -15950,6 +16223,14 @@
         "last_name": {
           "type": "string",
           "description": "Family (last) name of the employee"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email of the employee"
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "Phone number of the employee in E.164 format, i.e. \"+12125554250\""
         },
         "location_ids": {
           "type": "array",
@@ -16846,13 +17127,21 @@
         },
         "types": {
           "type": "string",
-          "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`, `\"DISCOUNT\"`, `\"TAX\"`,\n`\"MODIFIER\"`, or `\"MODIFIER_LIST\"`."
+          "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example\n`ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.\n\nThe legal values are taken from the [CatalogObjectType](#type-catalogobjecttype)\nenumeration, namely `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,\n`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`."
         }
       },
       "description": "",
       "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?types\u003dcategory,tax"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.python",
+        "csharp": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.csharp",
+        "java": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.java",
+        "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.php",
+        "javascript": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogRequest.ruby"
       }
     },
     "ListCatalogResponse": {
@@ -16908,6 +17197,14 @@
             }
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.python",
+        "csharp": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.csharp",
+        "java": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.java",
+        "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.php",
+        "javascript": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.ruby"
       }
     },
     "ListCustomersRequest": {
@@ -18243,7 +18540,7 @@
       "properties": {
         "access_token": {
           "type": "string",
-          "description": "A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints.\nSee the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information."
+          "description": "A valid OAuth access token. OAuth access tokens are 64 bytes long.\nProvide the access token in a header with every request to Connect API\nendpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide\nfor more information."
         },
         "token_type": {
           "type": "string",
@@ -18878,6 +19175,14 @@
       "x-release-status": "PUBLIC",
       "example": {
         "request_params": "?include_related_objects\u003dtrue"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.python",
+        "csharp": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.csharp",
+        "java": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.java",
+        "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.php",
+        "javascript": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectRequest.ruby"
       }
     },
     "RetrieveCatalogObjectResponse": {
@@ -18969,6 +19274,14 @@
             }
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.python",
+        "csharp": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.csharp",
+        "java": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.java",
+        "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.php",
+        "javascript": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.ruby"
       }
     },
     "RetrieveCustomerRequest": {
@@ -19458,6 +19771,14 @@
           },
           "limit": 100
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.python",
+        "csharp": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.csharp",
+        "java": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.java",
+        "php": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.php",
+        "javascript": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsRequest.ruby"
       }
     },
     "SearchCatalogObjectsResponse": {
@@ -19588,6 +19909,14 @@
             }
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.python",
+        "csharp": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.csharp",
+        "java": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.java",
+        "php": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.php",
+        "javascript": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/SearchCatalogObjects/SearchCatalogObjectsResponse.ruby"
       }
     },
     "SearchCustomersRequest": {
@@ -20482,6 +20811,14 @@
             "7WRC16CJZDVLSNDQ35PP6YAD"
           ]
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.csharp",
+        "java": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.java",
+        "php": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsRequest.ruby"
       }
     },
     "UpdateItemModifierListsResponse": {
@@ -20503,6 +20840,14 @@
       "x-release-status": "PUBLIC",
       "example": {
         "updated_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.csharp",
+        "java": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.java",
+        "php": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/UpdateItemModifierLists/UpdateItemModifierListsResponse.ruby"
       }
     },
     "UpdateItemTaxesRequest": {
@@ -20548,6 +20893,14 @@
             "AQCEGCEBBQONINDOHRGZISEX"
           ]
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.csharp",
+        "java": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.java",
+        "php": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesRequest.ruby"
       }
     },
     "UpdateItemTaxesResponse": {
@@ -20569,6 +20922,14 @@
       "x-release-status": "PUBLIC",
       "example": {
         "updated_at": "2016-11-16T22:25:24.878Z"
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.python",
+        "csharp": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.csharp",
+        "java": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.java",
+        "php": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.php",
+        "javascript": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.ruby"
       }
     },
     "UpdateShiftRequest": {
@@ -20726,7 +21087,7 @@
         },
         "object": {
           "$ref": "#/definitions/CatalogObject",
-          "description": "A [CatalogObject](#type-catalogobject) to be created or updated. The object\u0027s `is_deleted` field must not\nbe set to `true`. When creating a new object, the object\u0027s ID must either start with a `#` character or be left\nblank. In either case it will be replaced with a server-generated ID."
+          "description": "A [CatalogObject](#type-catalogobject) to be created or updated.\n- For updates, the object must be active (the `is_deleted` field is not `true`).\n- For creates, the object ID must start with `#`. The provided ID is replaced with a server-generated ID."
         }
       },
       "description": "",
@@ -20744,6 +21105,14 @@
             }
           }
         }
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.python",
+        "csharp": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.csharp",
+        "java": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.java",
+        "php": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.php",
+        "javascript": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.javascript",
+        "ruby": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectRequest.ruby"
       }
     },
     "UpsertCatalogObjectResponse": {
@@ -20789,6 +21158,14 @@
             "object_id": "7SB3ZQYJ5GDMVFL7JK46JCHT"
           }
         ]
+      },
+      "x-sq-sdk-sample-code": {
+        "python": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.python",
+        "csharp": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.csharp",
+        "java": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.java",
+        "php": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.php",
+        "javascript": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.javascript",
+        "ruby": "/sdk_samples/Catalog/UpsertCatalogObject/UpsertCatalogObjectResponse.ruby"
       }
     },
     "V1AdjustInventoryRequest": {
@@ -23505,7 +23882,7 @@
           "enum": [
             "OTHER_BRAND",
             "VISA",
-            "MASTERCARD",
+            "MASTER_CARD",
             "AMERICAN_EXPRESS",
             "DISCOVER",
             "DISCOVER_DINERS",
@@ -23513,7 +23890,7 @@
             "CHINA_UNIONPAY",
             "SQUARE_GIFT_CARD"
           ],
-          "description": "The brand of credit card provided.\nSee [CardBrand](#type-cardbrand) for possible values"
+          "description": "The brand of credit card provided.\nSee [V1TenderCardBrand](#type-v1tendercardbrand) for possible values"
         },
         "pan_suffix": {
           "type": "string",
