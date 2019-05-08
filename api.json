@@ -78,7 +78,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -116,7 +116,7 @@
         "operationId": "RenewToken",
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see \n[Renew OAuth Token](/authz/oauth/cookbook/oauth-renew).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -159,7 +159,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -195,7 +195,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token. \n\nThe endpoint supports distinct methods of obtaining OAuth access tokens. \nApplications specify a method by adding the `grant_type` parameter \nin the request and also provide relevant information. \nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management). \n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and \na refresh token in the response. \n\nBy default, the OAuth API lets up to 500 Square accounts authorize your\napplication. Please\n[contact support](https://squareup.com/help/us/en/contact?prefill\u003ddeveloper_api)\nif you are developing an application for a larger audience.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [],
         "parameters": [
           {
@@ -230,7 +230,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -261,7 +261,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -365,7 +365,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -406,7 +406,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -443,7 +443,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -491,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -525,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -583,7 +583,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -624,7 +624,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -661,7 +661,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -709,7 +709,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -823,7 +823,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -864,7 +864,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -901,7 +901,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -938,7 +938,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -986,7 +986,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1028,7 +1028,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1070,7 +1070,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1116,7 +1116,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1183,7 +1183,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1229,7 +1229,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1269,7 +1269,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1317,7 +1317,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1361,7 +1361,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1416,7 +1416,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1456,7 +1456,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1504,7 +1504,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1548,7 +1548,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1603,7 +1603,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1643,7 +1643,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1691,7 +1691,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1735,7 +1735,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1790,7 +1790,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1846,7 +1846,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1901,7 +1901,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1948,7 +1948,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -1996,7 +1996,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2040,7 +2040,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2084,7 +2084,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2139,7 +2139,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2190,7 +2190,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2243,7 +2243,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2294,7 +2294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2347,7 +2347,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2402,7 +2402,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2453,7 +2453,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2515,7 +2515,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2555,7 +2555,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2603,7 +2603,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2647,7 +2647,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2691,7 +2691,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2746,7 +2746,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2801,7 +2801,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2852,7 +2852,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2915,7 +2915,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -2983,7 +2983,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3028,7 +3028,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3083,7 +3083,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3123,7 +3123,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3171,7 +3171,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3215,7 +3215,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3270,7 +3270,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3328,7 +3328,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3383,7 +3383,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3471,7 +3471,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3517,7 +3517,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3596,7 +3596,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3644,7 +3644,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3736,7 +3736,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3780,7 +3780,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": []
@@ -3819,7 +3819,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3860,7 +3860,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3901,7 +3901,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3942,7 +3942,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -3973,7 +3973,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4019,7 +4019,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4060,7 +4060,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4097,7 +4097,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4143,7 +4143,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4184,7 +4184,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4225,7 +4225,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4266,7 +4266,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4325,7 +4325,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4366,7 +4366,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4407,7 +4407,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4444,7 +4444,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4481,7 +4481,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4529,7 +4529,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4577,7 +4577,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4623,7 +4623,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4687,7 +4687,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4726,7 +4726,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4765,7 +4765,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4806,7 +4806,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4847,7 +4847,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4888,7 +4888,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4927,7 +4927,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -4980,7 +4980,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5033,7 +5033,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5084,7 +5084,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5125,7 +5125,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5162,7 +5162,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5200,7 +5200,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5249,7 +5249,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5302,7 +5302,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5341,7 +5341,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5382,7 +5382,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5423,7 +5423,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5460,7 +5460,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5498,7 +5498,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5547,7 +5547,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5594,7 +5594,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5643,7 +5643,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5674,7 +5674,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5745,7 +5745,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5817,7 +5817,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5861,12 +5861,12 @@
         ],
         "summary": "CreateOrder",
         "operationId": "CreateOrder",
-        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-transactions-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/products/orders/overview).",
+        "description": "Creates an [Order](#type-order) that can then be referenced as `order_id` in a\nrequest to the [Charge](#endpoint-charge) endpoint. Orders specify products for\npurchase, along with discounts, taxes, and other settings to apply to the purchase.\n\nTo associate a created order with a request to the Charge endpoint, provide the\norder\u0027s `id` in the `order_id` field of your request.\n\nYou cannot modify an order after you create it. If you need to modify an order,\ninstead create a new order with modified details.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/products/orders/overview).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5914,7 +5914,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -5962,7 +5962,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6033,7 +6033,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6097,12 +6097,12 @@
         ],
         "summary": "Charge",
         "operationId": "Charge",
-        "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nIn order for an eCommerce payment to potentially qualify for\n[Square chargeback protection](https://squareup.com/help/article/5394), you\n_must_ provide values for the following parameters in your request:\n\n- `buyer_email_address`\n- At least one of `billing_address` or `shipping_address`\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
+        "description": "Charges a card represented by a card nonce or a customer\u0027s card on file.\n\nYour request to this endpoint must include _either_:\n\n- A value for the `card_nonce` parameter (to charge a card nonce generated\nwith the `SqPaymentForm`)\n- Values for the `customer_card_id` and `customer_id` parameters (to charge\na customer\u0027s card on file)\n\nWhen this response is returned, the amount of Square\u0027s processing fee might not yet be\ncalculated. To obtain the processing fee, wait about ten seconds and call\n[RetrieveTransaction](#endpoint-transactions-retrievetransaction). See the `processing_fee_money`\nfield of each [Tender included](#type-tender) in the transaction.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6150,7 +6150,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6196,7 +6196,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6242,7 +6242,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6297,7 +6297,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-04-10",
+        "x-sq-version": "2019-05-08",
         "security": [
           {
             "oauth2": [
@@ -6326,6 +6326,47 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/VoidTransactionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/orders/search": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "SearchOrders",
+        "operationId": "SearchOrders",
+        "description": "Search all Orders for a merchant and return either [Orders](#type-order) or\n[OrderEntries](#type-orderentry).\n\nNote that details for orders processed with Square Point of Sale while in offline mode may not be\ntransmitted to Square for up to 72 hours. Offline orders have a `created_at` value that reflects\nthe time the order was originally processed, not the time it was subsequently transmitted to\nSquare. Consequently, the SearchOrder endpoint might list an offline Order chronologically\nbetween online Orders that were seen in a previous request.\n\nBy default, SearchOrders will return all results for all of the merchant’s locations.\nWhen fetching additional pages using a `cursor`, the `query` must be equal\nto the `query` used to fetch the first page of results.",
+        "x-release-status": "BETA",
+        "x-oauthpermissions": [
+          "ORDERS_READ"
+        ],
+        "x-sq-version": "2019-05-08",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchOrdersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchOrdersResponse"
             }
           }
         }
@@ -8852,6 +8893,50 @@
       "description": "Indicates the sort criteria for a list of Customers.",
       "x-release-status": "PUBLIC"
     },
+    "DayOfWeek": {
+      "type": "string",
+      "enum": [
+        "SUN",
+        "MON",
+        "TUE",
+        "WED",
+        "THU",
+        "FRI",
+        "SAT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "SUN",
+          "description": "Sunday"
+        },
+        {
+          "name": "MON",
+          "description": "Monday"
+        },
+        {
+          "name": "TUE",
+          "description": "Tuesday"
+        },
+        {
+          "name": "WED",
+          "description": "Wednesday"
+        },
+        {
+          "name": "THU",
+          "description": "Thursday"
+        },
+        {
+          "name": "FRI",
+          "description": "Friday"
+        },
+        {
+          "name": "SAT",
+          "description": "Saturday"
+        }
+      ],
+      "description": "\nIndicates the specific day  of the week.",
+      "x-release-status": "PUBLIC"
+    },
     "EmployeeStatus": {
       "type": "string",
       "enum": [
@@ -8986,6 +9071,8 @@
         "INVALID_PHONE_NUMBER",
         "CHECKOUT_EXPIRED",
         "BAD_CERTIFICATE",
+        "INVALID_SQUARE_VERSION_FORMAT",
+        "API_VERSION_INCOMPATIBLE",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
         "VERIFY_AVS_FAILURE",
@@ -9297,6 +9384,14 @@
           "description": ""
         },
         {
+          "name": "INVALID_SQUARE_VERSION_FORMAT",
+          "description": ""
+        },
+        {
+          "name": "API_VERSION_INCOMPATIBLE",
+          "description": ""
+        },
+        {
           "name": "CARD_DECLINED",
           "description": ""
         },
@@ -9528,6 +9623,207 @@
       "description": "Indicates the location\u0027s type.",
       "x-release-status": "PUBLIC"
     },
+    "MeasurementUnitArea": {
+      "type": "string",
+      "enum": [
+        "IMPERIAL_ACRE",
+        "IMPERIAL_SQUARE_INCH",
+        "IMPERIAL_SQUARE_FOOT",
+        "IMPERIAL_SQUARE_YARD",
+        "IMPERIAL_SQUARE_MILE",
+        "METRIC_SQUARE_CENTIMETER",
+        "METRIC_SQUARE_METER",
+        "METRIC_SQUARE_KILOMETER"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "IMPERIAL_ACRE",
+          "description": "The area is measured in acres."
+        },
+        {
+          "name": "IMPERIAL_SQUARE_INCH",
+          "description": "The area is measured in square inches."
+        },
+        {
+          "name": "IMPERIAL_SQUARE_FOOT",
+          "description": "The area is measured in square feet."
+        },
+        {
+          "name": "IMPERIAL_SQUARE_YARD",
+          "description": "The area is measured in square yards."
+        },
+        {
+          "name": "IMPERIAL_SQUARE_MILE",
+          "description": "The area is measured in square miles."
+        },
+        {
+          "name": "METRIC_SQUARE_CENTIMETER",
+          "description": "The area is measured in square centimeters."
+        },
+        {
+          "name": "METRIC_SQUARE_METER",
+          "description": "The area is measured in square meters."
+        },
+        {
+          "name": "METRIC_SQUARE_KILOMETER",
+          "description": "The area is measured in square kilometers."
+        }
+      ],
+      "description": "Unit of area used to measure a quantity.",
+      "x-release-status": "BETA"
+    },
+    "MeasurementUnitLength": {
+      "type": "string",
+      "enum": [
+        "IMPERIAL_INCH",
+        "IMPERIAL_FOOT",
+        "IMPERIAL_YARD",
+        "IMPERIAL_MILE",
+        "METRIC_MILLIMETER",
+        "METRIC_CENTIMETER",
+        "METRIC_METER",
+        "METRIC_KILOMETER"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "IMPERIAL_INCH",
+          "description": "The length is measured in inches."
+        },
+        {
+          "name": "IMPERIAL_FOOT",
+          "description": "The length is measured in feet."
+        },
+        {
+          "name": "IMPERIAL_YARD",
+          "description": "The length is measured in yards."
+        },
+        {
+          "name": "IMPERIAL_MILE",
+          "description": "The length is measured in miles."
+        },
+        {
+          "name": "METRIC_MILLIMETER",
+          "description": "The length is measured in millimeters."
+        },
+        {
+          "name": "METRIC_CENTIMETER",
+          "description": "The length is measured in centimeters."
+        },
+        {
+          "name": "METRIC_METER",
+          "description": "The length is measured in meters."
+        },
+        {
+          "name": "METRIC_KILOMETER",
+          "description": "The length is measured in kilometers."
+        }
+      ],
+      "description": "The unit of length used to measure a quantity.",
+      "x-release-status": "BETA"
+    },
+    "MeasurementUnitVolume": {
+      "type": "string",
+      "enum": [
+        "GENERIC_FLUID_OUNCE",
+        "GENERIC_SHOT",
+        "GENERIC_CUP",
+        "GENERIC_PINT",
+        "GENERIC_QUART",
+        "GENERIC_GALLON",
+        "IMPERIAL_CUBIC_INCH",
+        "IMPERIAL_CUBIC_FOOT",
+        "IMPERIAL_CUBIC_YARD",
+        "METRIC_MILLILITER",
+        "METRIC_LITER"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "GENERIC_FLUID_OUNCE",
+          "description": "The volume is measured in ounces."
+        },
+        {
+          "name": "GENERIC_SHOT",
+          "description": "The volume is measured in shots."
+        },
+        {
+          "name": "GENERIC_CUP",
+          "description": "The volume is measured in cups."
+        },
+        {
+          "name": "GENERIC_PINT",
+          "description": "The volume is measured in pints."
+        },
+        {
+          "name": "GENERIC_QUART",
+          "description": "The volume is measured in quarts."
+        },
+        {
+          "name": "GENERIC_GALLON",
+          "description": "The volume is measured in gallons."
+        },
+        {
+          "name": "IMPERIAL_CUBIC_INCH",
+          "description": "The volume is measured in cubic inches."
+        },
+        {
+          "name": "IMPERIAL_CUBIC_FOOT",
+          "description": "The volume is measured in cubic feet."
+        },
+        {
+          "name": "IMPERIAL_CUBIC_YARD",
+          "description": "The volume is measured in cubic yards."
+        },
+        {
+          "name": "METRIC_MILLILITER",
+          "description": "The volume is measured in metric milliliters."
+        },
+        {
+          "name": "METRIC_LITER",
+          "description": "The volume is measured in metric liters."
+        }
+      ],
+      "description": "The unit of volume used to measure a quantity.",
+      "x-release-status": "BETA"
+    },
+    "MeasurementUnitWeight": {
+      "type": "string",
+      "enum": [
+        "IMPERIAL_WEIGHT_OUNCE",
+        "IMPERIAL_POUND",
+        "IMPERIAL_STONE",
+        "METRIC_MILLIGRAM",
+        "METRIC_GRAM",
+        "METRIC_KILOGRAM"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "IMPERIAL_WEIGHT_OUNCE",
+          "description": "The weight is measured in ounces."
+        },
+        {
+          "name": "IMPERIAL_POUND",
+          "description": "The weight is measured in pounds."
+        },
+        {
+          "name": "IMPERIAL_STONE",
+          "description": "The weight is measured in stones."
+        },
+        {
+          "name": "METRIC_MILLIGRAM",
+          "description": "The weight is measured in milligrams."
+        },
+        {
+          "name": "METRIC_GRAM",
+          "description": "The weight is measured in grams."
+        },
+        {
+          "name": "METRIC_KILOGRAM",
+          "description": "The weight is measured in kilograms."
+        }
+      ],
+      "description": "Unit of weight used to measure a quantity.",
+      "x-release-status": "BETA"
+    },
     "OrderFulfillmentPickupDetailsScheduleType": {
       "type": "string",
       "enum": [
@@ -9706,6 +10002,30 @@
       "description": "Indicates how the tax is applied to the associated line item or order.",
       "x-release-status": "PUBLIC"
     },
+    "OrderState": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "COMPLETED",
+        "CANCELED"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "OPEN",
+          "description": "Indicates the order is open. Open orders may be updated."
+        },
+        {
+          "name": "COMPLETED",
+          "description": "Indicates the order is completed. Completed orders are fully paid. This is a terminal state."
+        },
+        {
+          "name": "CANCELED",
+          "description": "Indicates the order is canceled. Canceled orders are not paid. This is a terminal state."
+        }
+      ],
+      "description": "The state of the order.",
+      "x-release-status": "BETA"
+    },
     "Product": {
       "type": "string",
       "enum": [
@@ -9812,6 +10132,30 @@
       ],
       "description": "The status of domain registration.",
       "x-release-status": "PUBLIC"
+    },
+    "SearchOrdersSortField": {
+      "type": "string",
+      "enum": [
+        "CREATED_AT",
+        "UPDATED_AT",
+        "CLOSED_AT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "CREATED_AT",
+          "description": "Time when the order was created in RFC-3339 format."
+        },
+        {
+          "name": "UPDATED_AT",
+          "description": "Time when the order last updated in RFC-3339 format."
+        },
+        {
+          "name": "CLOSED_AT",
+          "description": "Time when the order was closed in RFC-3339 format."
+        }
+      ],
+      "description": "Specifies which timestamp to use to sort SearchOrder results.",
+      "x-release-status": "BETA"
     },
     "ShiftFilterStatus": {
       "type": "string",
@@ -12697,6 +13041,14 @@
             "$ref": "#/definitions/Error"
           },
           "description": "Any errors that occurred during the request."
+        },
+        "unconvertible_transaction_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of transaction ids within the requested set of ids that encountered\ntransformation issues when being converted to an Order.",
+          "x-release-status": "BETA"
         }
       },
       "description": "Defines the fields that are included in the response body of\na request to the BatchRetrieveOrders endpoint.",
@@ -13161,6 +13513,48 @@
         }
       },
       "description": "A defined break template that sets an expectation for possible `Break` \ninstances on a `Shift`.",
+      "x-release-status": "PUBLIC"
+    },
+    "BusinessHours": {
+      "type": "object",
+      "properties": {
+        "periods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessHoursPeriod"
+          },
+          "description": "The list of time periods during which the business is open. There may be at most 10\nperiods per day."
+        }
+      },
+      "description": "\nRepresents the hours of operation for a business location.",
+      "x-release-status": "PUBLIC"
+    },
+    "BusinessHoursPeriod": {
+      "type": "object",
+      "properties": {
+        "day_of_week": {
+          "type": "string",
+          "enum": [
+            "SUN",
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT"
+          ],
+          "description": "The day of week for this time period.\nSee [DayOfWeek](#type-dayofweek) for possible values"
+        },
+        "start_local_time": {
+          "type": "string",
+          "description": "The start time of a business hours period, specified in local time using partial-time\nRFC3339 format."
+        },
+        "end_local_time": {
+          "type": "string",
+          "description": "The end time of a business hours period, specified in local time using partial-time\nRFC3339 format."
+        }
+      },
+      "description": "\nRepresents a period of time during which a business location is open.",
       "x-release-status": "PUBLIC"
     },
     "CaptureTransactionRequest": {
@@ -14210,15 +14604,15 @@
         },
         "billing_address": {
           "$ref": "#/definitions/Address",
-          "description": "The buyer\u0027s billing address. This value is optional, but this transaction\nis ineligible for chargeback protection if neither this parameter nor\n`shipping_address` is provided."
+          "description": "The buyer\u0027s billing address."
         },
         "shipping_address": {
           "$ref": "#/definitions/Address",
-          "description": "The buyer\u0027s shipping address, if available. This value is optional,\nbut this transaction is ineligible for chargeback protection if neither this\nparameter nor `billing_address` is provided."
+          "description": "The buyer\u0027s shipping address, if available."
         },
         "buyer_email_address": {
           "type": "string",
-          "description": "The buyer\u0027s email address, if available. This value is optional,\nbut this transaction is ineligible for chargeback protection if it is not\nprovided."
+          "description": "The buyer\u0027s email address, if available."
         },
         "order_id": {
           "maxLength": 192,
@@ -15180,7 +15574,7 @@
         "reference_id": {
           "maxLength": 40,
           "type": "string",
-          "description": "__Deprecated__: Please set the reference_id on the nested [order](#type-order) field\ninstead.\n\nAn optional ID you can associate with the order for your own\npurposes (such as to associate the order with an entity ID in your\nown database).\n\nThis value cannot exceed 40 characters.",
+          "description": "__Deprecated__: Please set the reference_id on the nested [order](#type-order) field\ninstead.\n\nAn optional ID you can associate with the order for your own\npurposes (such as to associate the order with an entity ID in your\nown database).\n\nThis value cannot exceed 40 characters.\n--\nTop-level fields necessary to support the connect v2 CreateOrderRequest shape.",
           "x-release-status": "DEPRECATED"
         },
         "line_items": {
@@ -15213,50 +15607,52 @@
       "example": {
         "request_body": {
           "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
-          "reference_id": "my-order-001",
-          "line_items": [
-            {
-              "name": "New York Strip Steak",
-              "quantity": "1",
-              "base_price_money": {
-                "amount": 1599,
-                "currency": "USD"
-              }
-            },
-            {
-              "quantity": "2",
-              "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
-              "modifiers": [
-                {
-                  "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ"
+          "order": {
+            "reference_id": "my-order-001",
+            "line_items": [
+              {
+                "name": "New York Strip Steak",
+                "quantity": "1",
+                "base_price_money": {
+                  "amount": 1599,
+                  "currency": "USD"
                 }
-              ],
-              "discounts": [
-                {
-                  "name": "Sale - $1.00 off",
-                  "amount_money": {
-                    "amount": 100,
-                    "currency": "USD"
+              },
+              {
+                "quantity": "2",
+                "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
+                "modifiers": [
+                  {
+                    "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ"
                   }
-                }
-              ]
-            }
-          ],
-          "taxes": [
-            {
-              "name": "State Sales Tax",
-              "percentage": "9"
-            }
-          ],
-          "discounts": [
-            {
-              "name": "Labor Day Sale",
-              "percentage": "5"
-            },
-            {
-              "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7"
-            }
-          ]
+                ],
+                "discounts": [
+                  {
+                    "name": "Sale - $1.00 off",
+                    "amount_money": {
+                      "amount": 100,
+                      "currency": "USD"
+                    }
+                  }
+                ]
+              }
+            ],
+            "taxes": [
+              {
+                "name": "State Sales Tax",
+                "percentage": "9"
+              }
+            ],
+            "discounts": [
+              {
+                "name": "Labor Day Sale",
+                "percentage": "5"
+              },
+              {
+                "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7"
+              }
+            ]
+          }
         }
       }
     },
@@ -15388,7 +15784,7 @@
             "ADDITIVE",
             "INCLUSIVE"
           ],
-          "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`;\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
+          "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
         },
         "percentage": {
           "maxLength": 10,
@@ -15565,6 +15961,54 @@
                 "amount": 4528,
                 "currency": "USD"
               }
+            }
+          ],
+          "taxes": [
+            {
+              "name": "State Sales Tax",
+              "type": "ADDITIVE",
+              "percentage": "9",
+              "applied_money": {
+                "amount": 510,
+                "currency": "USD"
+              },
+              "scope": "ORDER"
+            }
+          ],
+          "discounts": [
+            {
+              "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7",
+              "name": "Membership Discount",
+              "type": "FIXED_PERCENTAGE",
+              "percentage": "0.5",
+              "applied_money": {
+                "amount": 30,
+                "currency": "USD"
+              },
+              "scope": "ORDER"
+            },
+            {
+              "name": "Labor Day Sale",
+              "type": "FIXED_PERCENTAGE",
+              "percentage": "5",
+              "applied_money": {
+                "amount": 303,
+                "currency": "USD"
+              },
+              "scope": "ORDER"
+            },
+            {
+              "name": "Sale - $1.00 off",
+              "type": "FIXED_AMOUNT",
+              "amount_money": {
+                "amount": 100,
+                "currency": "USD"
+              },
+              "applied_money": {
+                "amount": 100,
+                "currency": "USD"
+              },
+              "scope": "LINE_ITEM"
             }
           ],
           "total_money": {
@@ -16381,6 +16825,8 @@
             "INVALID_PHONE_NUMBER",
             "CHECKOUT_EXPIRED",
             "BAD_CERTIFICATE",
+            "INVALID_SQUARE_VERSION_FORMAT",
+            "API_VERSION_INCOMPATIBLE",
             "CARD_DECLINED",
             "VERIFY_CVV_FAILURE",
             "VERIFY_AVS_FAILURE",
@@ -16603,7 +17049,8 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items affected by the adjustment as a decimal string.\nFractional quantities are not supported."
+          "description": "The number of items affected by the adjustment as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "x-release-status": "BETA"
         },
         "total_price_money": {
           "$ref": "#/definitions/Money",
@@ -16708,14 +17155,15 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items in the count as a decimal string. Fractional\nquantities are not supported."
+          "description": "The number of items in the count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "x-release-status": "BETA"
         },
         "calculated_at": {
           "type": "string",
           "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the most recent physical count or adjustment that had an affect\non the estimated count."
         }
       },
-      "description": "Represents the estimated quantity of items in a particular state at a\nparticular location based on the known history of physical counts and\ninventory adjustments.",
+      "description": "Represents Square\u0027s estimated quantity of items in a particular state at a\nparticular location based on the known history of physical counts and\ninventory adjustments",
       "x-release-status": "PUBLIC"
     },
     "InventoryPhysicalCount": {
@@ -16761,7 +17209,8 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items affected by the physical count as a decimal\nstring. Fractional quantities are not supported."
+          "description": "The number of items affected by the physical count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "x-release-status": "BETA"
         },
         "source": {
           "$ref": "#/definitions/SourceApplication",
@@ -16780,7 +17229,7 @@
           "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the physical count."
         }
       },
-      "description": "Represents a verified (re)count of items in a given state at a specific\nlocation. For example, the quantity of items currently on hand at a physical\nstore).",
+      "description": "Represents the quantity of an item variation that is physically present\nat a specific location, verified by a seller or a seller\u0027s employee. For example,\na physical count might come from an employee counting the item variations on\nhand or from syncing with an external system.",
       "x-release-status": "PUBLIC"
     },
     "InventoryTransfer": {
@@ -16830,7 +17279,8 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items affected by the transfer as a decimal string.\nFractional quantities are not supported."
+          "description": "The number of items affected by the transfer as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "x-release-status": "BETA"
         },
         "occurred_at": {
           "type": "string",
@@ -17497,7 +17947,26 @@
             "language_code": "en-US",
             "currency": "USD",
             "phone_number": "+1 650-354-7217",
-            "business_name": "Pumbaa\u0027s business name"
+            "business_name": "Pumbaa\u0027s business name",
+            "business_hours": {
+              "periods": [
+                {
+                  "day_of_week": "MON",
+                  "start_local_time": "08:00:00",
+                  "end_local_time": "17:00:00"
+                },
+                {
+                  "day_of_week": "TUE",
+                  "start_local_time": "08:00:00",
+                  "end_local_time": "17:00:00"
+                },
+                {
+                  "day_of_week": "WED",
+                  "start_local_time": "08:00:00",
+                  "end_local_time": "17:00:00"
+                }
+              ]
+            }
           }
         ]
       }
@@ -18282,10 +18751,101 @@
         "website_url": {
           "type": "string",
           "description": "The location\u0027s website, as set by the account owner in the Square dashboard.\n\nDefault: none; only exists if explicitly set."
+        },
+        "business_hours": {
+          "$ref": "#/definitions/BusinessHours",
+          "description": "\n\nThe hours of operation for a business location.\n\nDefault: none; only exists if explicitly set."
         }
       },
       "description": "Represents one of a business\u0027s locations.",
       "x-release-status": "PUBLIC"
+    },
+    "MeasurementUnit": {
+      "type": "object",
+      "properties": {
+        "custom_unit": {
+          "$ref": "#/definitions/MeasurementUnitCustom",
+          "description": "A custom unit of measurement defined by the seller using the Point of Sale\napp or ad-hoc as an order line item."
+        },
+        "area_unit": {
+          "type": "string",
+          "enum": [
+            "IMPERIAL_ACRE",
+            "IMPERIAL_SQUARE_INCH",
+            "IMPERIAL_SQUARE_FOOT",
+            "IMPERIAL_SQUARE_YARD",
+            "IMPERIAL_SQUARE_MILE",
+            "METRIC_SQUARE_CENTIMETER",
+            "METRIC_SQUARE_METER",
+            "METRIC_SQUARE_KILOMETER"
+          ],
+          "description": "Represents a standard area unit.\nSee [MeasurementUnitArea](#type-measurementunitarea) for possible values"
+        },
+        "length_unit": {
+          "type": "string",
+          "enum": [
+            "IMPERIAL_INCH",
+            "IMPERIAL_FOOT",
+            "IMPERIAL_YARD",
+            "IMPERIAL_MILE",
+            "METRIC_MILLIMETER",
+            "METRIC_CENTIMETER",
+            "METRIC_METER",
+            "METRIC_KILOMETER"
+          ],
+          "description": "Represents a standard length unit.\nSee [MeasurementUnitLength](#type-measurementunitlength) for possible values"
+        },
+        "volume_unit": {
+          "type": "string",
+          "enum": [
+            "GENERIC_FLUID_OUNCE",
+            "GENERIC_SHOT",
+            "GENERIC_CUP",
+            "GENERIC_PINT",
+            "GENERIC_QUART",
+            "GENERIC_GALLON",
+            "IMPERIAL_CUBIC_INCH",
+            "IMPERIAL_CUBIC_FOOT",
+            "IMPERIAL_CUBIC_YARD",
+            "METRIC_MILLILITER",
+            "METRIC_LITER"
+          ],
+          "description": "Represents a standard volume unit.\nSee [MeasurementUnitVolume](#type-measurementunitvolume) for possible values"
+        },
+        "weight_unit": {
+          "type": "string",
+          "enum": [
+            "IMPERIAL_WEIGHT_OUNCE",
+            "IMPERIAL_POUND",
+            "IMPERIAL_STONE",
+            "METRIC_MILLIGRAM",
+            "METRIC_GRAM",
+            "METRIC_KILOGRAM"
+          ],
+          "description": "Represents a standard unit of weight or mass.\nSee [MeasurementUnitWeight](#type-measurementunitweight) for possible values"
+        }
+      },
+      "description": "Represents a unit of measurement to use with a quantity, such as ounces\nor inches. Exactly one of the following fields are required: `custom_unit`,\n`area_unit`, `length_unit`, `volume_unit`, and `weight_unit`.\n\nThe `family` field describes the type of measurement. For example,\nounces are in the weight family.",
+      "x-release-status": "BETA"
+    },
+    "MeasurementUnitCustom": {
+      "type": "object",
+      "required": [
+        "name",
+        "abbreviation"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the custom unit, for example \"bushel\"."
+        },
+        "abbreviation": {
+          "type": "string",
+          "description": "The abbreviation of the custom unit, such as \"bsh\" (bushel). This appears\nin the cart for the Point of Sale app, and in reports."
+        }
+      },
+      "description": "The information needed to define a custom unit, provided by the seller.",
+      "x-release-status": "BETA"
     },
     "Money": {
       "type": "object",
@@ -18605,6 +19165,11 @@
           "description": "The origination details of the order.",
           "x-release-status": "BETA"
         },
+        "customer_id": {
+          "type": "string",
+          "description": "The [Customer](#type-customer) ID of the customer associated with the order.",
+          "x-release-status": "BETA"
+        },
         "line_items": {
           "type": "array",
           "items": {
@@ -18634,6 +19199,70 @@
           "description": "Details on order fulfillment.\n\nOrders can only be created with at most one fulfillment. However, orders returned\nby the API may contain multiple fulfillments.",
           "x-release-status": "BETA"
         },
+        "returns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturn"
+          },
+          "description": "Collection of items from sale Orders being returned in this one. Normally part of an\nItemized Return or Exchange.  There will be exactly one `Return` object per sale Order being\nreferenced.",
+          "x-release-status": "BETA"
+        },
+        "return_amounts": {
+          "$ref": "#/definitions/OrderMoneyAmounts",
+          "description": "Rollup of returned money amounts.",
+          "x-release-status": "BETA"
+        },
+        "net_amounts": {
+          "$ref": "#/definitions/OrderMoneyAmounts",
+          "description": "Net money amounts (sale money - return money).",
+          "x-release-status": "BETA"
+        },
+        "rounding_adjustment": {
+          "$ref": "#/definitions/OrderRoundingAdjustment",
+          "description": "A positive or negative rounding adjustment to the total of the order, commonly used to\napply Cash Rounding when the minimum unit of account is smaller than the lowest physical\ndenomination of currency.",
+          "x-release-status": "BETA"
+        },
+        "tenders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tender"
+          },
+          "description": "The Tenders which were used to pay for the Order. This field is read-only.",
+          "x-release-status": "BETA"
+        },
+        "refunds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Refund"
+          },
+          "description": "The Refunds that are part of this Order. This field is read-only.",
+          "x-release-status": "BETA"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "x-release-status": "BETA"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "x-release-status": "BETA"
+        },
+        "closed_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "x-release-status": "BETA"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "OPEN",
+            "COMPLETED",
+            "CANCELED"
+          ],
+          "description": "The current state of the order. `OPEN`,`COMPLETED`,`CANCELED`\nSee [OrderState](#type-orderstate) for possible values",
+          "x-release-status": "BETA"
+        },
         "total_money": {
           "$ref": "#/definitions/Money",
           "description": "The total amount of money to collect for the order."
@@ -18647,8 +19276,23 @@
           "description": "The total discount amount of money to collect for the order."
         }
       },
-      "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase",
+      "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase. Order objects also\ninclude information on any associated tenders, refunds, and returns.\n\nAll Connect V2 Transactions have all been converted to Orders including all associated\nitemization data.",
       "x-release-status": "PUBLIC"
+    },
+    "OrderEntry": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "The id of the Order"
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The location id the Order belongs to."
+        }
+      },
+      "description": "A lightweight description of an [Order](#type-order) that is returned when `returned_entries` is true on a\n[SearchOrderRequest](#type-searchorderrequest)",
+      "x-release-status": "BETA"
     },
     "OrderFulfillment": {
       "type": "object",
@@ -18789,6 +19433,12 @@
         "quantity"
       ],
       "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The line item\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "x-release-status": "BETA"
+        },
         "name": {
           "maxLength": 500,
           "type": "string",
@@ -18796,9 +19446,13 @@
         },
         "quantity": {
           "minLength": 1,
-          "maxLength": 5,
+          "maxLength": 12,
           "type": "string",
-          "description": "The quantity purchased, as a string representation of a number.\n\nThis string must have a positive integer value."
+          "description": "The quantity purchased, formatted as a decimal number.\nFor example: `\"3\"`.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example: `\"1.70000\"`.\n\nOrders Hub and older versions of Connect do not support non-integer quantities.\nSee [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities)."
+        },
+        "quantity_unit": {
+          "$ref": "#/definitions/OrderQuantityUnit",
+          "description": "The unit and precision that this line item\u0027s quantity is measured in."
         },
         "note": {
           "maxLength": 500,
@@ -18840,9 +19494,13 @@
           "$ref": "#/definitions/Money",
           "description": "The base price for a single unit of the line item."
         },
+        "variation_total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total price of all item variations sold in this line item.\nCalculated as `base_price_money` multiplied by `quantity`.\nDoes not include modifiers."
+        },
         "gross_sales_money": {
           "$ref": "#/definitions/Money",
-          "description": "The gross sales amount of money calculated as (item base price + modifiers price) * quantity."
+          "description": "The amount of money made in gross sales for this line item.\nCalculated as the sum of the variation\u0027s total price and each modifier\u0027s total price."
         },
         "total_tax_money": {
           "$ref": "#/definitions/Money",
@@ -18863,6 +19521,12 @@
     "OrderLineItemDiscount": {
       "type": "object",
       "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The discount\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "x-release-status": "BETA"
+        },
         "catalog_object_id": {
           "maxLength": 192,
           "type": "string",
@@ -18887,7 +19551,7 @@
         "percentage": {
           "maxLength": 10,
           "type": "string",
-          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nThe percentage won\u0027t be set for an amount-based discount."
+          "description": "The percentage of the discount, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nThe percentage won\u0027t be set for an amount-based discount."
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
@@ -18913,6 +19577,12 @@
     "OrderLineItemModifier": {
       "type": "object",
       "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The modifier\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "x-release-status": "BETA"
+        },
         "catalog_object_id": {
           "maxLength": 192,
           "type": "string",
@@ -18929,7 +19599,7 @@
         },
         "total_price_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total price of the item modifier for its line item.\nThis is the modifier\u0027s base_price_money multiplied by the line item\u0027s quantity."
+          "description": "The total price of the item modifier for its line item.\nThis is the modifier\u0027s `base_price_money` multiplied by the line item\u0027s quantity."
         }
       },
       "description": "A [CatalogModifier](#type-catalogmodifier).",
@@ -18938,6 +19608,12 @@
     "OrderLineItemTax": {
       "type": "object",
       "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The tax\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "x-release-status": "BETA"
+        },
         "catalog_object_id": {
           "maxLength": 192,
           "type": "string",
@@ -18979,12 +19655,363 @@
       "description": "Represents a tax that applies to one or more line items in an order.",
       "x-release-status": "PUBLIC"
     },
+    "OrderMoneyAmounts": {
+      "type": "object",
+      "properties": {
+        "total_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Total money."
+        },
+        "tax_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Money associated with taxes."
+        },
+        "discount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Money associated with discounts."
+        },
+        "tip_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Money associated with tips."
+        },
+        "service_charge_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Money associated with service charges."
+        }
+      },
+      "description": "A collection of various money amounts.",
+      "x-release-status": "BETA"
+    },
+    "OrderQuantityUnit": {
+      "type": "object",
+      "properties": {
+        "measurement_unit": {
+          "$ref": "#/definitions/MeasurementUnit",
+          "description": "A [MeasurementUnit](#type-measurementunit) that represents the\nunit of measure for the quantity."
+        },
+        "precision": {
+          "type": "integer",
+          "description": "For non-integer quantities, represents the number of digits after the decimal point that are\nrecorded for this quantity.\n\nFor example, a precision of 1 allows quantities like `\"1.0\"` and `\"1.1\"`, but not `\"1.01\"`.\n\nMin: 0. Max: 5.\n\nOrders Hub and older versions of Connect do not support non-integer quantities.\nSee [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities)."
+        }
+      },
+      "description": "Contains the measurement unit for a quantity and a precision which\nspecifies the number of digits after the decimal point for decimal quantities.",
+      "x-release-status": "PUBLIC"
+    },
+    "OrderReturn": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The return\u0027s Unique identifier, unique only within this order. This field is read-only."
+        },
+        "source_order_id": {
+          "type": "string",
+          "description": "Order which contains the original sale of these returned line items. This will be unset\nfor unlinked returns."
+        },
+        "return_line_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnLineItem"
+          },
+          "description": "Collection of line items which are being returned."
+        },
+        "return_taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnTax"
+          },
+          "description": "Collection of taxes which are being returned."
+        },
+        "return_discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnDiscount"
+          },
+          "description": "Collection of discounts which are being returned."
+        },
+        "rounding_adjustment": {
+          "$ref": "#/definitions/OrderRoundingAdjustment",
+          "description": "A positive or negative rounding adjustment to the total value being returned. Commonly\nused to apply Cash Rounding when the minimum unit of account is smaller than the lowest\nphysical denomination of currency."
+        },
+        "return_amounts": {
+          "$ref": "#/definitions/OrderMoneyAmounts",
+          "description": "Aggregate monetary value being returned by this Return entry."
+        }
+      },
+      "description": "The set of line items, service charges, taxes, discounts, tips, etc. being returned in an Order.",
+      "x-release-status": "BETA"
+    },
+    "OrderReturnDiscount": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The return discount\u0027s Unique identifier, unique only within this order."
+        },
+        "source_discount_uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "`uid` of the Discount from the Order which contains the original application of this discount."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogDiscount](#type-catalogdiscount)."
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The discount\u0027s name."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN_DISCOUNT",
+            "FIXED_PERCENTAGE",
+            "FIXED_AMOUNT",
+            "VARIABLE_PERCENTAGE",
+            "VARIABLE_AMOUNT"
+          ],
+          "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values"
+        },
+        "percentage": {
+          "maxLength": 10,
+          "type": "string",
+          "description": "The percentage of the tax, as a string representation of a decimal number.\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nThe percentage won\u0027t be set for an amount-based discount."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total monetary amount of the applicable discount.\nIf it is at order level, it is the value of the order level discount.\nIf it is at line item level, it is the value of the line item level discount.\n\nThe amount_money won\u0027t be set for a percentage-based discount."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of discount actually applied to this line item. When an amount-based\ndiscount is at order-level, this value is different from `amount_money` because the discount\nis distributed across the line items."
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "OTHER_DISCOUNT_SCOPE",
+            "LINE_ITEM",
+            "ORDER"
+          ],
+          "description": "Indicates the level at which the discount applies. This field is set by the server.\nIf set in a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values"
+        }
+      },
+      "description": "The line item discount being returned.",
+      "x-release-status": "BETA"
+    },
+    "OrderReturnLineItem": {
+      "type": "object",
+      "required": [
+        "quantity"
+      ],
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "Unique identifier for this return line item entry. This is a read-only field."
+        },
+        "source_line_item_uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "`uid` of the LineItem in the original sale Order."
+        },
+        "name": {
+          "maxLength": 500,
+          "type": "string",
+          "description": "The name of the line item."
+        },
+        "quantity": {
+          "minLength": 1,
+          "maxLength": 12,
+          "type": "string",
+          "description": "The quantity returned, formatted as a decimal number.\nFor example: `\"3\"`.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example: `\"1.70000\"`."
+        },
+        "quantity_unit": {
+          "$ref": "#/definitions/OrderQuantityUnit",
+          "description": "The unit and precision that this return line item\u0027s quantity is measured in."
+        },
+        "note": {
+          "maxLength": 500,
+          "type": "string",
+          "description": "The note of the returned line item."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The [CatalogItemVariation](#type-catalogitemvariation) id applied to this returned line item."
+        },
+        "variation_name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The name of the variation applied to this returned line item."
+        },
+        "return_modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnLineItemModifier"
+          },
+          "description": "The [CatalogModifier](#type-catalogmodifier)s applied to this line item."
+        },
+        "return_taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnTax"
+          },
+          "description": "A list of taxes applied to this line item. On read or retrieve, this list includes both\nitem-level taxes and any return-level taxes apportioned to this item."
+        },
+        "return_discounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnDiscount"
+          },
+          "description": "A list of discounts applied to this line item. On read or retrieve, this list includes\nboth item-level discounts and any return-level discounts apportioned to this item."
+        },
+        "base_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The base price for a single unit of the line item."
+        },
+        "variation_total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total price of all item variations returned in this line item.\nCalculated as `base_price_money` multiplied by `quantity`.\nDoes not include modifiers."
+        },
+        "gross_return_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The gross return amount of money calculated as (item base price + modifiers price) * quantity."
+        },
+        "total_tax_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total tax amount of money to return for the line item."
+        },
+        "total_discount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total discount amount of money to return for the line item."
+        },
+        "total_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of money to return for this line item."
+        }
+      },
+      "description": "The line item being returned in an Order.",
+      "x-release-status": "BETA"
+    },
+    "OrderReturnLineItemModifier": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The return modifier\u0027s Unique identifier, unique only within this order"
+        },
+        "source_modifier_uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "`uid` of the Modifier from the LineItem from the Order which contains the\noriginal sale of this line item modifier."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogModifier](#type-catalogmodifier)."
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The name of the item modifier."
+        },
+        "base_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The base price for the modifier.\n\n`base_price_money` is required for ad hoc modifiers.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price."
+        },
+        "total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total price of the item modifier for its line item.\nThis is the modifier\u0027s `base_price_money` multiplied by the line item\u0027s quantity."
+        }
+      },
+      "description": "A line item modifier being returned.",
+      "x-release-status": "BETA"
+    },
+    "OrderReturnTax": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The return tax\u0027s Unique identifier, unique only within this order."
+        },
+        "source_tax_uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "`uid` of the Tax from the Order which contains the original charge of this tax."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The catalog object id referencing [CatalogTax](#type-catalogtax)."
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The tax\u0027s name."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN_TAX",
+            "ADDITIVE",
+            "INCLUSIVE"
+          ],
+          "description": "Indicates the calculation method used to apply the tax.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
+        },
+        "percentage": {
+          "maxLength": 10,
+          "type": "string",
+          "description": "The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of the money applied by the tax in an order."
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "OTHER_TAX_SCOPE",
+            "LINE_ITEM",
+            "ORDER"
+          ],
+          "description": "Indicates the level at which the tax applies. This field is set by the server. If set\nin a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values"
+        }
+      },
+      "description": "The line item tax being returned.",
+      "x-release-status": "BETA"
+    },
+    "OrderRoundingAdjustment": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "The rounding adjustment\u0027s Unique identifier, unique only within this order. This field is read-only."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the rounding adjustment from the original sale Order."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "Actual rounding adjustment amount."
+        }
+      },
+      "description": "A rounding adjustment of the money being returned. Commonly used to apply Cash Rounding\nwhen the minimum unit of account is smaller than the lowest physical denomination of currency.",
+      "x-release-status": "BETA"
+    },
     "OrderSource": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "description": "The name used to identify the place (physical or digital) that an order originates.\n\nIf unset, the name defaults to the name of the application that created the order."
+          "description": "The name used to identify the place (physical or digital) that an order originates.\nIf unset, the name defaults to the name of the application that created the order."
         }
       },
       "description": "Represents the origination details of an order.",
@@ -20046,6 +21073,291 @@
         "javascript": "/sdk_samples/SearchCustomers/SearchCustomersResponse.javascript",
         "ruby": "/sdk_samples/SearchCustomers/SearchCustomersResponse.ruby"
       }
+    },
+    "SearchOrdersCustomerFilter": {
+      "type": "object",
+      "properties": {
+        "customer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by orders with any of the listed `customer_id`s.\n\nMax: 10 `customer_id`s."
+        }
+      },
+      "description": "Filter based on Order `customer_id` and any Tender `customer_id`\nassociated with the Order. Does not filter based on the\n[FulfillmentRecipient](#type-orderfulfillmentrecipient) `customer_id`.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersDateTimeFilter": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/TimeRange",
+          "description": "Time range for filtering on the `created_at` timestamp."
+        },
+        "updated_at": {
+          "$ref": "#/definitions/TimeRange",
+          "description": "Time range for filtering on the `updated_at` timestamp."
+        },
+        "closed_at": {
+          "$ref": "#/definitions/TimeRange",
+          "description": "Time range for filtering on the `closed_at` timestamp."
+        }
+      },
+      "description": "Filter for `Order` objects based on whether their `CREATED_AT`,\n`CLOSED_AT` or `UPDATED_AT` timestamps fall within a specified time range.\nYou can specify the time range and which timestamp to filter for. You can filter\nfor only one time range at a time.\n\nFor each time range, the start time and end time are inclusive. If the end time\nis absent, it defaults to the time of the first request for the cursor.\n\n__Important:__ If you use the DateTimeFilter to filter for `CLOSED_AT` or `UPDATED_AT`,\nyou must also set the [OrdersSort](#type-searchorderordersort).\nThe TimeRange used in DateTimeFilter must correspond to the `sort_field` in\nthe [OrdersSort](#type-searchorderordersort) object.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersFilter": {
+      "type": "object",
+      "properties": {
+        "state_filter": {
+          "$ref": "#/definitions/SearchOrdersStateFilter",
+          "description": "Filter by [`OrderState`](#type-orderstate)."
+        },
+        "date_time_filter": {
+          "$ref": "#/definitions/SearchOrdersDateTimeFilter",
+          "description": "Filter for results within a time range."
+        },
+        "fulfillment_filter": {
+          "$ref": "#/definitions/SearchOrdersFulfillmentFilter",
+          "description": "Filter by fulfillment type or state."
+        },
+        "source_filter": {
+          "$ref": "#/definitions/SearchOrdersSourceFilter",
+          "description": "Filter by source of order."
+        },
+        "customer_filter": {
+          "$ref": "#/definitions/SearchOrdersCustomerFilter",
+          "description": "Filter by customers associated with the order."
+        }
+      },
+      "description": "Filter options to use for a query. Multiple filters will be ANDed together.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersFulfillmentFilter": {
+      "type": "object",
+      "required": [
+        "fulfillment_types"
+      ],
+      "properties": {
+        "fulfillment_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PICKUP"
+            ]
+          },
+          "description": "List of [fulfillment types](#type-orderfulfillmenttype) to filter\nfor. Will return orders if any of its fulfillments match any of the fulfillment types\nlisted in this field.\nSee [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values"
+        },
+        "fulfillment_states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PROPOSED",
+              "RESERVED",
+              "PREPARED",
+              "COMPLETED",
+              "CANCELED",
+              "FAILED"
+            ]
+          },
+          "description": "List of [fulfillment states](#type-orderfulfillmentstate) to filter\nfor. Will return orders if any of its fulfillments match any of the\nfulfillment states listed in this field.\nSee [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values"
+        }
+      },
+      "description": "Filter based on [Order Fulfillment](#type-orderfulfillment) information.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersQuery": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/SearchOrdersFilter",
+          "description": "Criteria to filter results by."
+        },
+        "sort": {
+          "$ref": "#/definitions/SearchOrdersSort",
+          "description": "Criteria to sort results by."
+        }
+      },
+      "description": "Contains query criteria for the search.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersRequest": {
+      "type": "object",
+      "properties": {
+        "location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The location IDs for the orders to query. The caller must have access to\nall provided locations.\n\nMin: 1 `location_ids`.\nMax: 10 `location_ids`."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\nSee [Pagination](/basics/api101/pagination) for more information."
+        },
+        "query": {
+          "$ref": "#/definitions/SearchOrdersQuery",
+          "description": "Query conditions used to filter or sort the results. Note that when\nfetching additional pages using a `cursor`, the `query` must be equal to the\n`query` used to fetch the first page of results."
+        },
+        "limit": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "Number of results to be returned in a single page. SearchOrders may\nuse a smaller limit than specified depending on server load. If the response\nincludes a `cursor` field, you can use it to retrieve the next set of results.\nDefault: `500`"
+        },
+        "return_entries": {
+          "type": "boolean",
+          "description": " If set to `true`, SearchOrders will return [`OrderEntry`](#type-orderentry)\nobjects instead of `Order` objects. `OrderEntry` objects are lightweight\ndescriptions of orders that include `order_id`s.\n\nDefault: `false`."
+        }
+      },
+      "description": "The request does not have any required fields. When given no query criteria,\nSearchOrders will return all results for all of the merchant’s locations. When fetching additional\npages using a `cursor`, the `query` must be equal to the `query` used to fetch the first page of\nresults.",
+      "x-release-status": "BETA",
+      "example": {
+        "request_body": {
+          "return_entries": "true",
+          "limit": "3",
+          "query": {
+            "filter": {
+              "date_time_filter": {
+                "closed_at": {
+                  "start_at": "2018-03-03T20:00:00+00:00",
+                  "end_at": "2019-03-04T21:54:45+00:00"
+                }
+              },
+              "state_filter": {
+                "states": [
+                  "COMPLETED"
+                ]
+              }
+            },
+            "sort": {
+              "sort_field": "CLOSED_AT",
+              "sort_order": "DESC"
+            }
+          }
+        }
+      }
+    },
+    "SearchOrdersResponse": {
+      "type": "object",
+      "properties": {
+        "order_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderEntry"
+          },
+          "description": "List of [OrderEntries](#type-orderentry) that fit the query\nconditions.  Populated only if `order_entries` was set to `true` in the request."
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order"
+          },
+          "description": "List of\n[Orders](#type-order) that match query conditions. Populated only if\n`return_entries` in the request is set to `false`."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\nSee [Pagination](/basics/api101/pagination) for more information."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "[Errors](#type-error) encountered during the search."
+        },
+        "unconvertible_transaction_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of transaction IDs identifying transactions that could not be\nconverted to an `Order`. Empty if `return_entries` is true, however, attempts\nto retrieve those orders may encounter subsequent `unconvertible_transcation_ids`\nNote that this field will not be present after SearchOrders moves from BETA\nto GA."
+        }
+      },
+      "description": "Only one of `order_entries` or `orders` fields will be set, depending on whether\n`return_entries` was set on the [SearchOrdersRequest](#type-searchorderrequest).",
+      "x-release-status": "BETA",
+      "example": {
+        "order_entries": [
+          {
+            "id": "CAISEM82RcpmcFBM0TfOyiHV3es",
+            "location_id": "057P5VYJ4A5X1"
+          },
+          {
+            "id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+            "location_id": "18YC4JDH91E1H"
+          },
+          {
+            "id": "CAISEM52YcpmcWAzERDOyiWS3ty",
+            "location_id": "057P5VYJ4A5X1"
+          }
+        ],
+        "cursor": "123"
+      }
+    },
+    "SearchOrdersSort": {
+      "type": "object",
+      "required": [
+        "sort_field"
+      ],
+      "properties": {
+        "sort_field": {
+          "type": "string",
+          "enum": [
+            "CREATED_AT",
+            "UPDATED_AT",
+            "CLOSED_AT"
+          ],
+          "description": "The field to sort by.\n\n__Important:__ When using a [DateTimeFilter](#type-searchordersfilter),\n`sort_field` must match the set time range field. If this field does not\nmatch the time range field in `DateTimeFilter`, SearchOrder will return an\nerror.\n\nDefault: `CREATED_AT`.\nSee [SearchOrdersSortField](#type-searchorderssortfield) for possible values"
+        },
+        "sort_order": {
+          "type": "string",
+          "enum": [
+            "DESC",
+            "ASC"
+          ],
+          "description": "The order in which results are returned. Defaults to `DESC`.\nSee [SortOrder](#type-sortorder) for possible values"
+        }
+      },
+      "description": "Sorting options for a query. Returned Orders will always be sorted on a timestamp.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersSourceFilter": {
+      "type": "object",
+      "properties": {
+        "source_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filters by [Source](#type-ordersource) `name`. Will return any orders\nwith with `source.name`s that match any of the listed source names.\n\nMax: 10 `source_names`."
+        }
+      },
+      "description": "Filter based on Order `source` information.",
+      "x-release-status": "BETA"
+    },
+    "SearchOrdersStateFilter": {
+      "type": "object",
+      "required": [
+        "states"
+      ],
+      "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "COMPLETED",
+              "CANCELED"
+            ]
+          },
+          "description": "States to filter for.\nSee [OrderState](#type-orderstate) for possible values"
+        }
+      },
+      "description": "Filter by current Order `state`.",
+      "x-release-status": "BETA"
     },
     "SearchShiftsRequest": {
       "type": "object",
