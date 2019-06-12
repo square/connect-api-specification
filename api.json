@@ -78,7 +78,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -116,7 +116,7 @@
         "operationId": "RenewToken",
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see \n[Renew OAuth Token](/authz/oauth/cookbook/oauth-renew).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -159,7 +159,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -193,9 +193,9 @@
         ],
         "summary": "ObtainToken",
         "operationId": "ObtainToken",
-        "description": "Returns an OAuth access token. \n\nThe endpoint supports distinct methods of obtaining OAuth access tokens. \nApplications specify a method by adding the `grant_type` parameter \nin the request and also provide relevant information. \nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management). \n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and \na refresh token in the response. \n\nBy default, the OAuth API lets up to 500 Square accounts authorize your\napplication. Please\n[contact support](https://squareup.com/help/us/en/contact?prefill\u003ddeveloper_api)\nif you are developing an application for a larger audience.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
+        "description": "Returns an OAuth access token. \n\nThe endpoint supports distinct methods of obtaining OAuth access tokens. \nApplications specify a method by adding the `grant_type` parameter \nin the request and also provide relevant information. \nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management). \n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and \na refresh token in the response. \n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [],
         "parameters": [
           {
@@ -230,7 +230,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -261,7 +261,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -365,7 +365,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -406,7 +406,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -443,7 +443,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -491,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -525,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -583,7 +583,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -624,7 +624,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -661,7 +661,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -709,7 +709,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -823,7 +823,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -864,7 +864,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -901,7 +901,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -938,7 +938,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -986,7 +986,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1028,7 +1028,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1070,7 +1070,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1116,7 +1116,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1183,7 +1183,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1229,7 +1229,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1269,7 +1269,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1317,7 +1317,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1361,7 +1361,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1416,7 +1416,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1456,7 +1456,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1504,7 +1504,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1548,7 +1548,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1603,7 +1603,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1643,7 +1643,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1691,7 +1691,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1735,7 +1735,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1790,7 +1790,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1846,7 +1846,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1901,7 +1901,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1948,7 +1948,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -1996,7 +1996,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2040,7 +2040,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2084,7 +2084,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2139,7 +2139,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2190,7 +2190,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2243,7 +2243,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2294,7 +2294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2347,7 +2347,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2402,7 +2402,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2453,7 +2453,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2515,7 +2515,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2555,7 +2555,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2603,7 +2603,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2647,7 +2647,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2691,7 +2691,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2746,7 +2746,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2801,7 +2801,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2852,7 +2852,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2915,7 +2915,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -2983,7 +2983,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3028,7 +3028,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3083,7 +3083,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3123,7 +3123,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3171,7 +3171,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3215,7 +3215,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3270,7 +3270,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3328,7 +3328,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3383,7 +3383,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3471,7 +3471,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3517,7 +3517,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3596,7 +3596,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3644,7 +3644,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3736,7 +3736,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3777,10 +3777,10 @@
         ],
         "summary": "RegisterDomain",
         "operationId": "RegisterDomain",
-        "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.",
+        "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Embedding the Square Payment Form](/payment-form/add-digital-wallets/apple-pay) guide.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": []
@@ -3819,7 +3819,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3860,7 +3860,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3901,7 +3901,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3942,7 +3942,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -3968,12 +3968,12 @@
         ],
         "summary": "ListCatalog",
         "operationId": "ListCatalog",
-        "description": "Returns a list of [CatalogObject](#type-catalogobject)s that includes\nall objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)\nand [CatalogTax](#type-catalogtax) objects) in the catalog. The types parameter\nis specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:\n`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`.",
+        "description": "Returns a list of [CatalogObject](#type-catalogobject)s that includes\nall objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)\nand [CatalogTax](#type-catalogtax) objects) in the catalog. The `types` parameter\nis specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:\n`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`.\n\n__Important:__ ListCatalog does not return deleted catalog items. To retrieve\ndeleted catalog items, use SearchCatalogObjects and set `include_deleted_objects`\nto `true`.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4019,7 +4019,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4060,7 +4060,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4097,7 +4097,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4115,7 +4115,7 @@
           },
           {
             "name": "include_related_objects",
-            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.\n\nDefault value: `false`",
+            "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es,\n[CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s\nwill be returned in the `related_objects` field of the response. If the `object`\nfield of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of \nthe response.\n\nDefault value: `false`",
             "type": "boolean",
             "in": "query",
             "required": false
@@ -4143,7 +4143,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4184,7 +4184,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4225,7 +4225,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4266,7 +4266,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4325,7 +4325,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4366,7 +4366,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4407,7 +4407,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4444,7 +4444,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4481,7 +4481,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4529,7 +4529,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4577,7 +4577,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4623,7 +4623,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4687,7 +4687,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4726,7 +4726,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4765,7 +4765,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4806,7 +4806,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4847,7 +4847,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4888,7 +4888,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4927,7 +4927,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -4980,7 +4980,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5033,7 +5033,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5084,7 +5084,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5125,7 +5125,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5162,7 +5162,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5200,7 +5200,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5249,7 +5249,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5302,7 +5302,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5341,7 +5341,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5382,7 +5382,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5423,7 +5423,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5460,7 +5460,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5498,7 +5498,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5547,7 +5547,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5594,7 +5594,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5643,7 +5643,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5674,7 +5674,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5745,7 +5745,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5817,7 +5817,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5866,7 +5866,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5914,7 +5914,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -5962,7 +5962,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6033,7 +6033,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6102,7 +6102,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6150,7 +6150,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6196,7 +6196,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6242,7 +6242,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6297,7 +6297,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6338,12 +6338,12 @@
         ],
         "summary": "SearchOrders",
         "operationId": "SearchOrders",
-        "description": "Search all Orders for a merchant and return either [Orders](#type-order) or\n[OrderEntries](#type-orderentry).\n\nNote that details for orders processed with Square Point of Sale while in offline mode may not be\ntransmitted to Square for up to 72 hours. Offline orders have a `created_at` value that reflects\nthe time the order was originally processed, not the time it was subsequently transmitted to\nSquare. Consequently, the SearchOrder endpoint might list an offline Order chronologically\nbetween online Orders that were seen in a previous request.\n\nBy default, SearchOrders will return all results for all of the merchant’s locations.\nWhen fetching additional pages using a `cursor`, the `query` must be equal\nto the `query` used to fetch the first page of results.",
+        "description": "Search all Orders for a merchant and return either [Orders](#type-order) or\n[OrderEntries](#type-orderentry).\n\nNote that details for orders processed with Square Point of Sale while in offline mode may not be\ntransmitted to Square for up to 72 hours. Offline orders have a `created_at` value that reflects\nthe time the order was originally processed, not the time it was subsequently transmitted to\nSquare. Consequently, the SearchOrder endpoint might list an offline Order chronologically\nbetween online Orders that were seen in a previous request.\n\nWhen fetching additional pages using a `cursor`, the `query` must be equal\nto the `query` used to fetch the first page of results.",
         "x-release-status": "BETA",
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2019-05-08",
+        "x-sq-version": "2019-06-12",
         "security": [
           {
             "oauth2": [
@@ -6374,6 +6374,35 @@
     }
   },
   "definitions": {
+    "AggregationStrategy": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "BASE",
+        "STACKABLE",
+        "EXCLUSIVE"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNKNOWN",
+          "description": "The pricing rule has an aggregation strategy that can not be represented with the current version of the API."
+        },
+        {
+          "name": "BASE",
+          "description": "Can be stacked by any discount-based prices, including those with an\nAggregationStrategy of `EXCLUSIVE`. Only valid for pricing rules that set\n`total_price` or `item_price`."
+        },
+        {
+          "name": "STACKABLE",
+          "description": "Can be combined with other pricing rules. Allow multiple discounts on\nthe same product."
+        },
+        {
+          "name": "EXCLUSIVE",
+          "description": "Can only be combined with pricing rules with an AggregationStrategy of `BASE`."
+        }
+      ],
+      "description": "Indicates how a [CatalogPricingRule](#type-catalogpricingrule) can be\ncombined with other rules.",
+      "x-release-status": "BETA"
+    },
     "CardBrand": {
       "type": "string",
       "enum": [
@@ -6520,7 +6549,10 @@
         "TAX",
         "DISCOUNT",
         "MODIFIER_LIST",
-        "MODIFIER"
+        "MODIFIER",
+        "PRICING_RULE",
+        "PRODUCT_SET",
+        "TIME_PERIOD"
       ],
       "x-enum-elements": [
         {
@@ -6554,6 +6586,18 @@
         {
           "name": "MODIFIER",
           "description": "A modifier, corresponding to [CatalogModifier](#type-catalogmodifier). The modifier-specific data\nwill be stored in the `modifier_data` field."
+        },
+        {
+          "name": "PRICING_RULE",
+          "description": "A pricing rule, corresponding to [CatalogPricingRule](#type-catalogpricingrule). The pricing-rule-specific data\nwill be stored in the `pricing_rule_data` field."
+        },
+        {
+          "name": "PRODUCT_SET",
+          "description": "A product set, corresponding to [CatalogProductSet](#type-catalogproductset).\nThe product-set-specific data will be stored in the `product_set_data` field."
+        },
+        {
+          "name": "TIME_PERIOD",
+          "description": "A time period, corresponding to [CatalogTimePeriod](#type-catalogtimeperiod).\nThe time-period-specific data will be stored in the `time_period_data` field."
         }
       ],
       "description": "Possible kinds of [CatalogObject](#type-catalogobject)s returned from the Catalog, each\ncontaining type-specific properties in the `*_data` field corresponding to the object type.",
@@ -8934,7 +8978,7 @@
           "description": "Saturday"
         }
       ],
-      "description": "\nIndicates the specific day  of the week.",
+      "description": "Indicates the specific day  of the week.",
       "x-release-status": "PUBLIC"
     },
     "EmployeeStatus": {
@@ -9043,6 +9087,7 @@
         "ONE_INSTRUMENT_EXPECTED",
         "NO_FIELDS_SET",
         "DEPRECATED_FIELD_SET",
+        "RETIRED_FIELD_SET",
         "CARD_EXPIRED",
         "INVALID_EXPIRATION",
         "INVALID_EXPIRATION_YEAR",
@@ -9269,6 +9314,10 @@
         },
         {
           "name": "DEPRECATED_FIELD_SET",
+          "description": ""
+        },
+        {
+          "name": "RETIRED_FIELD_SET",
           "description": ""
         },
         {
@@ -9672,6 +9721,25 @@
       "description": "Unit of area used to measure a quantity.",
       "x-release-status": "BETA"
     },
+    "MeasurementUnitGeneric": {
+      "type": "string",
+      "enum": [
+        "INVALID_GENERIC_UNIT",
+        "UNIT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "INVALID_GENERIC_UNIT",
+          "description": ""
+        },
+        {
+          "name": "UNIT",
+          "description": ""
+        }
+      ],
+      "description": "A custom unit of measurement defined by the user.",
+      "x-release-status": "BETA"
+    },
     "MeasurementUnitLength": {
       "type": "string",
       "enum": [
@@ -10001,6 +10069,25 @@
       ],
       "description": "Indicates how the tax is applied to the associated line item or order.",
       "x-release-status": "PUBLIC"
+    },
+    "OrderServiceChargeCalculationPhase": {
+      "type": "string",
+      "enum": [
+        "SUBTOTAL_PHASE",
+        "TOTAL_PHASE"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "SUBTOTAL_PHASE",
+          "description": "The service charge will be applied after discounts but before taxes."
+        },
+        {
+          "name": "TOTAL_PHASE",
+          "description": "The service charge will be applied after both discounts and taxes are applied."
+        }
+      ],
+      "description": "Represents a phase in the process of calculating order totals. Service charges will\nbe applied after the phase indicated.\n\n[Read more about how order totals are calculated.](/orders-api/how-it-works#how-totals-are-calculated)",
+      "x-release-status": "BETA"
     },
     "OrderState": {
       "type": "string",
@@ -12606,7 +12693,7 @@
         },
         "include_related_objects": {
           "type": "boolean",
-          "description": "If `true`, the response will include additional objects that are related to the\nrequested objects, as follows:\n\nIf the `objects` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `objects` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response."
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested objects, as follows:\n\nIf the `objects` field of the response contains a [CatalogItem](#type-catalogitem), \nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es,\n[CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s\nwill be returned in the `related_objects` field of the response. If the `objects`\nfield of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response."
         }
       },
       "description": "",
@@ -13625,7 +13712,7 @@
         },
         "fingerprint": {
           "type": "string",
-          "description": "__Not currently set.__ Intended as a Square-assigned identifier, based\non the card number, to identify the card across multiple locations within a\nsingle application."
+          "description": "A unique, Square-assigned ID that identifies the card across multiple\nlocations and applications for a single Square account."
         }
       },
       "description": "Represents the payment details of a card to be used for payments. These\ndetails are determined by the `card_nonce` generated by `SqPaymentForm`.",
@@ -13765,6 +13852,10 @@
         "limits": {
           "$ref": "#/definitions/CatalogInfoResponseLimits",
           "description": ""
+        },
+        "standard_unit_description_group": {
+          "$ref": "#/definitions/StandardUnitDescriptionGroup",
+          "description": "Names and abbreviations for standard units."
         }
       },
       "description": "",
@@ -13903,7 +13994,7 @@
           "items": {
             "$ref": "#/definitions/CatalogObject"
           },
-          "description": "A list of [CatalogObject](#type-catalogobject)s containing the\n[CatalogItemVariation](#type-catalogitemvariation)s for this item."
+          "description": "A list of [CatalogObject](#type-catalogobject)s containing the\n[CatalogItemVariation](#type-catalogitemvariation)s for this item.\n\nMaximum: 250 item variations"
         },
         "product_type": {
           "type": "string",
@@ -14038,10 +14129,35 @@
           "type": "integer",
           "format": "int64",
           "description": "If the [CatalogItem](#type-catalogitem) that owns this item variation is of type\n`APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For\nexample, a 30 minute appointment would have the value `1800000`, which is equal to\n30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second)."
+        },
+        "catalog_measurement_unit_id": {
+          "type": "string",
+          "description": "Represents the unit used to measure a\n[CatalogItemVariation](#type-catalogitemvariation) and specifies the\nprecision for decimal quantities.",
+          "x-release-status": "BETA"
+        },
+        "measurement_unit_id": {
+          "type": "string",
+          "description": "ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity\nsold of this item variation. If left unset, the item will be sold in\nwhole quantities.",
+          "x-release-status": "BETA"
         }
       },
-      "description": "An item variation (i.e., product) in the Catalog object model.",
+      "description": "An item variation (i.e., product) in the Catalog object model. Each item\nmay have a maximum of 250 item variations.",
       "x-release-status": "PUBLIC"
+    },
+    "CatalogMeasurementUnit": {
+      "type": "object",
+      "properties": {
+        "measurement_unit": {
+          "$ref": "#/definitions/MeasurementUnit",
+          "description": "Indicates the unit used to measure the quantity of a catalog item variation."
+        },
+        "precision": {
+          "type": "integer",
+          "description": " Represents the maximum number of positions allowed after the decimal\nin quantities measured with this unit. For example, if the precision is 2,\nthen an itemization’s quantity can be 0.01, 0.12, etc.\n\nMin: 0\n\nMax: 5\n\nDefault: 3"
+        }
+      },
+      "description": "Represents the unit used to measure a\n[CatalogItemVariation](#type-catalogitemvariation) and specifies the precision\nfor decimal quantities.",
+      "x-release-status": "BETA"
     },
     "CatalogModifier": {
       "type": "object",
@@ -14177,7 +14293,10 @@
             "TAX",
             "DISCOUNT",
             "MODIFIER_LIST",
-            "MODIFIER"
+            "MODIFIER",
+            "PRICING_RULE",
+            "PRODUCT_SET",
+            "TIME_PERIOD"
           ],
           "description": "The type of this object. Each object type has expected\nproperties expressed in a structured format within its corresponding `*_data` field below.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
         },
@@ -14259,6 +14378,11 @@
         "image_data": {
           "$ref": "#/definitions/CatalogImage",
           "description": "Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`."
+        },
+        "measurement_unit_data": {
+          "$ref": "#/definitions/CatalogMeasurementUnit",
+          "description": "Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.",
+          "x-release-status": "BETA"
         }
       },
       "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n- if type \u003d `IMAGE`, only `image_data` will be populated and it will contain a valid [CatalogImage](#type-catalogimage) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](/products/catalog/overview).",
@@ -14307,6 +14431,118 @@
       },
       "description": "A batch of [CatalogObject](#type-catalogobject)s.",
       "x-release-status": "PUBLIC"
+    },
+    "CatalogPricingRule": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "User-defined name for the pricing rule. For example, \"Buy one get one\nfree\" or \"10% off\"."
+        },
+        "time_period_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Unique ID for the [CatalogTimePeriod](#type-catalogtimeperiod)s when\nthis pricing rule is in effect. If left unset, the pricing rule is always\nin effect."
+        },
+        "total_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of money to charge for all matched items.\n\nOnly one of `total_price_money`, `item_price`, or `discount` can be supplied."
+        },
+        "item_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money to charge for each matched item.\n\nOnly one of `total_price_money`, `item_price`, or `discount` can be supplied."
+        },
+        "discount_id": {
+          "type": "string",
+          "description": "Unique ID for the [CatalogDiscount](#type-catalogdiscount) to take off\nthe price of all matched items.\n\nOnly one of `total_price_money`, `item_price`, or `discount` can be supplied."
+        },
+        "match_products_id": {
+          "type": "string",
+          "description": "Unique ID for the [CatalogProductSet](#type-catalogproductset) that will\nbe matched by this rule. A match rule matches within the entire cart."
+        },
+        "apply_products_id": {
+          "type": "string",
+          "description": "The [CatalogProductSet](#type-catalogproductset) to apply the pricing rule to\nwithin the set of matched products specified by `match_products_id`.\nAn apply rule can only match once within the set of matched products.\nIf left unset, the pricing rule will be applied to all products within the\nset of matched products."
+        },
+        "stackable": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "BASE",
+            "STACKABLE",
+            "EXCLUSIVE"
+          ],
+          "description": "Describes how the pricing rule can be combined with other pricing rules.\nSee [Stackable](#type-stackable) for all possible values.\nSee [AggregationStrategy](#type-aggregationstrategy) for possible values"
+        },
+        "exclude_products_id": {
+          "type": "string",
+          "description": "Identifies the [CatalogProductSet](#type-catalogproductset) to exclude\nfrom this pricing rule.\nAn exclude rule matches within the subset of the cart that fits the match rules (the match set).\nAn exclude rule can only match once in the match set.\nIf not supplied, the pricing will be applied to all products in the match set.\nOther products retain their base price, or a price generated by other rules."
+        },
+        "valid_from_date": {
+          "type": "string",
+          "description": "Represents the date the Pricing Rule is valid from. Represented in\nRFC3339 full-date format (YYYY-MM-DD)."
+        },
+        "valid_from_local_time": {
+          "type": "string",
+          "description": "Represents the local time the pricing rule should be valid from. Time\nzone is determined by the device running the Point of Sale app.\n\nRepresented in RFC3339 partial-time format (HH:MM:SS). Partial seconds will be truncated."
+        },
+        "valid_until_date": {
+          "type": "string",
+          "description": "Represents the date the pricing rule will become inactive.\n\nRepresented in RFC3339 full-date format (YYYY-MM-DD)."
+        },
+        "valid_until_local_time": {
+          "type": "string",
+          "description": "Represents the local time at which the pricing rule will become inactive.\nTime zone is determined by the device running the Point of Sale app.\n\nRepresented in RFC3339 partial-time format\n(HH:MM:SS). Partial seconds will be truncated."
+        }
+      },
+      "description": "Defines how prices are modified or set for items that match the pricing rule\nduring the active time period.",
+      "x-release-status": "BETA"
+    },
+    "CatalogProductSet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": " User-defined name for the product set. For example, \"Clearance Items\"\nor \"Winter Sale Items\"."
+        },
+        "product_ids_any": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Unique IDs for any [CatalogObjects](#type-catalogobject)s to include in this\nproduct set. Any number of these catalog objects can be in an order for a\npricing rule to apply.\n\nThis can be used with `product_ids_all` in a parent [CatalogProductSet](#type-catalogproductset)\nto match groups of products for a bulk discount, such as a discount for an entree and side combo.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.\n\nMax: 500 catalog object IDs."
+        },
+        "product_ids_all": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Unique IDs for [CatalogObjects](#type-catalogobject) to include in this product set.\nAll objects in this set must be included in an order for a pricing rule to apply.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.\n\nMax: 500 catalog object IDs."
+        },
+        "quantity_exact": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If set, there must be exactly this many items from `products_any` or `products_all`\nin the cart for the discount to apply.\n\nCannot be combined with either `quantity_min` or `quantity_max`."
+        },
+        "quantity_min": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If set, there must be at least this many items from `products_any` or `products_all`\nin a cart for the discount to apply. See `quantity_exact`. Defaults to 0 if\n`quantity_exact`, `quantity_min` and\n`quantity_max` are all unspecified."
+        },
+        "quantity_max": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If set, the pricing rule will apply to a maximum of this many items from\n`products_any` or `products_all`."
+        },
+        "all_products": {
+          "type": "boolean",
+          "description": "If set to `true`, the product set will include every item in the catalog.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set."
+        }
+      },
+      "description": "Represents a collection of catalog objects for the purpose of applying a\n[PricingRule](#type-pricingrule). Including a catalog object will include all of\nits subtypes. For example, including a category in a product set will include\nall of its items and associated item variations in the product set. Including\nan item in a product set will also include its item variations.",
+      "x-release-status": "BETA"
     },
     "CatalogQuery": {
       "type": "object",
@@ -14540,6 +14776,17 @@
           }
         }
       }
+    },
+    "CatalogTimePeriod": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "type": "string",
+          "description": "An iCalendar (RFC5545) [event](https://tools.ietf.org/html/rfc5545#section-3.6.1), which\nspecifies the name, timing, duration and recurrence of this time period.\n\nExample:\n\n```\nDTSTART:20190707T180000\nDURATION:P2H\nRRULE:FREQ\u003dWEEKLY;BYDAY\u003dMO,WE,FR\n```\n\nOnly `SUMMARY`, `DTSTART`, `DURATION` and `RRULE` fields are supported.\n`DTSTART` must be in local (unzoned) time format. Note that while `BEGIN:VEVENT`\nand `END:VEVENT` is not required in the request. The response will always\ninclude them."
+        }
+      },
+      "description": "Represents a time period - either a single period or a repeating period.",
+      "x-release-status": "BETA"
     },
     "CatalogV1Id": {
       "type": "object",
@@ -14804,6 +15051,21 @@
         }
       },
       "description": "Square Checkout lets merchants accept online payments for supported\npayment types using a checkout workflow hosted on squareup.com.",
+      "x-release-status": "PUBLIC"
+    },
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "description": "The coordinate\u0027s latitude expressed in degrees."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "The coordinate\u0027s longitude expressed in degrees."
+        }
+      },
+      "description": "Latitude and longitude coordinates.",
       "x-release-status": "PUBLIC"
     },
     "CreateBreakTypeRequest": {
@@ -15574,7 +15836,7 @@
         "reference_id": {
           "maxLength": 40,
           "type": "string",
-          "description": "__Deprecated__: Please set the reference_id on the nested [order](#type-order) field\ninstead.\n\nAn optional ID you can associate with the order for your own\npurposes (such as to associate the order with an entity ID in your\nown database).\n\nThis value cannot exceed 40 characters.\n--\nTop-level fields necessary to support the connect v2 CreateOrderRequest shape.",
+          "description": "__Deprecated__: Please set the reference_id on the nested [order](#type-order) field\ninstead.\n\nAn optional ID you can associate with the order for your own\npurposes (such as to associate the order with an entity ID in your\nown database).\n\nThis value cannot exceed 40 characters.",
           "x-release-status": "DEPRECATED"
         },
         "line_items": {
@@ -16797,6 +17059,7 @@
             "ONE_INSTRUMENT_EXPECTED",
             "NO_FIELDS_SET",
             "DEPRECATED_FIELD_SET",
+            "RETIRED_FIELD_SET",
             "CARD_EXPIRED",
             "INVALID_EXPIRATION",
             "INVALID_EXPIRATION_YEAR",
@@ -18755,6 +19018,30 @@
         "business_hours": {
           "$ref": "#/definitions/BusinessHours",
           "description": "\n\nThe hours of operation for a business location.\n\nDefault: none; only exists if explicitly set."
+        },
+        "business_email": {
+          "type": "string",
+          "description": "The email of the location."
+        },
+        "description": {
+          "type": "string",
+          "description": "The business description of the location."
+        },
+        "twitter_username": {
+          "type": "string",
+          "description": "The Twitter username of the location without the \u0027"
+        },
+        "instagram_username": {
+          "type": "string",
+          "description": "The Instagram username of the location without the \u0027"
+        },
+        "facebook_url": {
+          "type": "string",
+          "description": "The Facebook profile URL of the location. The URL should begin with \u0027facebook.com/\u0027."
+        },
+        "coordinates": {
+          "$ref": "#/definitions/Coordinates",
+          "description": "The physical coordinates (latitude and longitude) of the location."
         }
       },
       "description": "Represents one of a business\u0027s locations.",
@@ -18823,6 +19110,14 @@
             "METRIC_KILOGRAM"
           ],
           "description": "Represents a standard unit of weight or mass.\nSee [MeasurementUnitWeight](#type-measurementunitweight) for possible values"
+        },
+        "generic_unit": {
+          "type": "string",
+          "enum": [
+            "INVALID_GENERIC_UNIT",
+            "UNIT"
+          ],
+          "description": "Reserved for API integrations that lack the ability to specify a real measurement unit\nSee [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values"
         }
       },
       "description": "Represents a unit of measurement to use with a quantity, such as ounces\nor inches. Exactly one of the following fields are required: `custom_unit`,\n`area_unit`, `length_unit`, `volume_unit`, and `weight_unit`.\n\nThe `family` field describes the type of measurement. For example,\nounces are in the weight family.",
@@ -18851,7 +19146,6 @@
       "type": "object",
       "properties": {
         "amount": {
-          "minimum": 0,
           "type": "integer",
           "format": "int64",
           "description": "The amount of money, in the smallest denomination of the\ncurrency indicated by `currency`. For example, when `currency` is `USD`,\n`amount` is in cents."
@@ -19116,11 +19410,11 @@
         },
         "subscription_id": {
           "type": "string",
-          "description": "__Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if\nthe merchant signed up for a subscription during authorization."
+          "description": "__LEGACY FIELD__. The ID of a subscription plan the merchant signed up\nfor. Only present if the merchant signed up for a subscription during authorization."
         },
         "plan_id": {
           "type": "string",
-          "description": "The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for.\nOnly present if the merchant signed up for a subscription during authorization."
+          "description": "__LEGACY FIELD__. The ID of the subscription plan the merchant signed\nup for. Only present if the merchant signed up for a subscription during\nauthorization."
         },
         "id_token": {
           "type": "string",
@@ -19148,7 +19442,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "The order\u0027s unique ID.\n\nThis value is only present for Order objects created by the Orders API through the\n[CreateOrder](#endpoint-orders-createorder) endpoint."
+          "description": "The order\u0027s unique ID.\n\nThis field is read-only."
         },
         "location_id": {
           "minLength": 1,
@@ -19162,8 +19456,7 @@
         },
         "source": {
           "$ref": "#/definitions/OrderSource",
-          "description": "The origination details of the order.",
-          "x-release-status": "BETA"
+          "description": "The origination details of the order."
         },
         "customer_id": {
           "type": "string",
@@ -19191,6 +19484,14 @@
           },
           "description": "A list of discounts applied to this order. On read or retrieve, this list includes both\norder-level and item-level discounts. When creating an Order, set your order-level discounts in\nthis list."
         },
+        "service_charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderServiceCharge"
+          },
+          "description": "A list of service charges applied to the order.",
+          "x-release-status": "BETA"
+        },
         "fulfillments": {
           "type": "array",
           "items": {
@@ -19204,22 +19505,22 @@
           "items": {
             "$ref": "#/definitions/OrderReturn"
           },
-          "description": "Collection of items from sale Orders being returned in this one. Normally part of an\nItemized Return or Exchange.  There will be exactly one `Return` object per sale Order being\nreferenced.",
+          "description": "Collection of items from sale Orders being returned in this one. Normally part of an\nItemized Return or Exchange.  There will be exactly one `Return` object per sale Order being\nreferenced.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "return_amounts": {
           "$ref": "#/definitions/OrderMoneyAmounts",
-          "description": "Rollup of returned money amounts.",
+          "description": "Rollup of returned money amounts.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "net_amounts": {
           "$ref": "#/definitions/OrderMoneyAmounts",
-          "description": "Net money amounts (sale money - return money).",
+          "description": "Net money amounts (sale money - return money).\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "rounding_adjustment": {
           "$ref": "#/definitions/OrderRoundingAdjustment",
-          "description": "A positive or negative rounding adjustment to the total of the order, commonly used to\napply Cash Rounding when the minimum unit of account is smaller than the lowest physical\ndenomination of currency.",
+          "description": "A positive or negative rounding adjustment to the total of the order, commonly used to\napply Cash Rounding when the minimum unit of account is smaller than the lowest physical\ndenomination of currency.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "tenders": {
@@ -19240,17 +19541,17 @@
         },
         "created_at": {
           "type": "string",
-          "description": "Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "updated_at": {
           "type": "string",
-          "description": "Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "closed_at": {
           "type": "string",
-          "description": "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "state": {
@@ -19265,15 +19566,20 @@
         },
         "total_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total amount of money to collect for the order."
+          "description": "The total amount of money to collect for the order.\n\nThis field is read-only."
         },
         "total_tax_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total tax amount of money to collect for the order."
+          "description": "The total tax amount of money to collect for the order.\n\nThis field is read-only."
         },
         "total_discount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total discount amount of money to collect for the order."
+          "description": "The total discount amount of money to collect for the order.\n\nThis field is read-only."
+        },
+        "total_service_charge_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of money collected in service charges for the order.\n\nNote: `total_service_charge_money` is the sum of `applied_money` fields for each individual\nservice charge. Therefore, `total_service_charge_money` will only include inclusive tax amounts,\nnot additive tax amounts.\n\nThis field is read-only.",
+          "x-release-status": "BETA"
         }
       },
       "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase. Order objects also\ninclude information on any associated tenders, refunds, and returns.\n\nAll Connect V2 Transactions have all been converted to Orders including all associated\nitemization data.",
@@ -19436,7 +19742,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The line item\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "description": "Unique ID that identifies the line item only within this order.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "name": {
@@ -19500,19 +19806,19 @@
         },
         "gross_sales_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of money made in gross sales for this line item.\nCalculated as the sum of the variation\u0027s total price and each modifier\u0027s total price."
+          "description": "The amount of money made in gross sales for this line item.\nCalculated as the sum of the variation\u0027s total price and each modifier\u0027s total price.\n\nThis field is read-only."
         },
         "total_tax_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total tax amount of money to collect for the line item."
+          "description": "The total tax amount of money to collect for the line item.\n\nThis field is read-only."
         },
         "total_discount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total discount amount of money to collect for the line item."
+          "description": "The total discount amount of money to collect for the line item.\n\nThis field is read-only."
         },
         "total_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total amount of money to collect for this line item."
+          "description": "The total amount of money to collect for this line item.\n\nThis field is read-only."
         }
       },
       "description": "Represents a line item in an order. Each line item describes a different\nproduct to purchase, with its own quantity and price details.",
@@ -19524,7 +19830,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The discount\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "description": "Unique ID that identifies the discount only within this order.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "catalog_object_id": {
@@ -19580,7 +19886,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The modifier\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "description": "Unique ID that identifies the modifier only within this order.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "catalog_object_id": {
@@ -19611,7 +19917,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The tax\u0027s Unique identifier, unique only within this order. This field is read-only.",
+          "description": "Unique ID that identifies the tax only within this order.\n\nThis field is read-only.",
           "x-release-status": "BETA"
         },
         "catalog_object_id": {
@@ -19703,7 +20009,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The return\u0027s Unique identifier, unique only within this order. This field is read-only."
+          "description": "Unique ID that identifies the return only within this order.\n\nThis field is read-only."
         },
         "source_order_id": {
           "type": "string",
@@ -19715,6 +20021,13 @@
             "$ref": "#/definitions/OrderReturnLineItem"
           },
           "description": "Collection of line items which are being returned."
+        },
+        "return_service_charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnServiceCharge"
+          },
+          "description": "Collection of service charges which are being returned.\n\nThis field is read-only."
         },
         "return_taxes": {
           "type": "array",
@@ -19748,7 +20061,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The return discount\u0027s Unique identifier, unique only within this order."
+          "description": "Unique ID that identifies the return discount only within this order.\n\nThis field is read-only."
         },
         "source_discount_uid": {
           "maxLength": 60,
@@ -19879,19 +20192,19 @@
         },
         "gross_return_money": {
           "$ref": "#/definitions/Money",
-          "description": "The gross return amount of money calculated as (item base price + modifiers price) * quantity."
+          "description": "The gross return amount of money calculated as (item base price + modifiers price) * quantity.\n\nThis field is read-only."
         },
         "total_tax_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total tax amount of money to return for the line item."
+          "description": "The total tax amount of money to return for the line item.\n\nThis field is read-only."
         },
         "total_discount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total discount amount of money to return for the line item."
+          "description": "The total discount amount of money to return for the line item.\n\nThis field is read-only."
         },
         "total_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total amount of money to return for this line item."
+          "description": "The total amount of money to return for this line item.\n\nThis field is read-only."
         }
       },
       "description": "The line item being returned in an Order.",
@@ -19903,7 +20216,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The return modifier\u0027s Unique identifier, unique only within this order"
+          "description": "Unique ID that identifies the return modifier only within this order.\n\nThis field is read-only."
         },
         "source_modifier_uid": {
           "maxLength": 60,
@@ -19932,13 +20245,80 @@
       "description": "A line item modifier being returned.",
       "x-release-status": "BETA"
     },
+    "OrderReturnServiceCharge": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "Unique ID that identifies the return service charge only within this order.\n\nThis field is read-only."
+        },
+        "source_service_charge_uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "`uid` of the Service Charge from the Order which contains the original charge of this service charge,\nnull for unlinked returns."
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The name of the service charge."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The ID referencing the service charge [CatalogObject](#type-catalogobject)"
+        },
+        "percentage": {
+          "maxLength": 10,
+          "type": "string",
+          "description": "The percentage of the service charge, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%.\n\nExactly one of percentage or amount_money should be set."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of a non-percentage based service charge.\n\nExactly one of percentage or amount_money should be set."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money applied to the order by the service charge, as calculated by the server.\n\nFor fixed-amount service charges, `applied_money` is equal to `amount_money`.\n\nFor percentage-based service charges, `applied_money` is the money calculated using the percentage.\nThe `applied_money` field will include any inclusive tax amounts as well.\n\nThis field is read-only."
+        },
+        "total_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of money to collect for the service charge.\n\nNote that `total_money` does not equal `applied_money` plus `total_tax_money` if an inclusive\ntax is applied to the service charge since the inclusive tax amount will be included in both\n`applied_money` and `total_tax_money`.\n\nThis field is read-only."
+        },
+        "total_tax_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of tax money to collect for the service charge.\n\nThis field is read-only."
+        },
+        "calculation_phase": {
+          "type": "string",
+          "enum": [
+            "SUBTOTAL_PHASE",
+            "TOTAL_PHASE"
+          ],
+          "description": "The calculation phase after which to apply the service charge.\n\nThis field is read-only.\nSee [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values"
+        },
+        "taxable": {
+          "type": "boolean",
+          "description": "Indicates whether the surcharge can be taxed. Service charges calculated in the\n`TOTAL_PHASE` cannot be marked as taxable."
+        },
+        "return_taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnTax"
+          },
+          "description": "The taxes which apply to the service charge. Return-level taxes apply by default to\nservice charge calculated in the `SUBTOTAL_PHASE` if the service charge is\nmarked as taxable."
+        }
+      },
+      "description": "The service charge applied to the original order.",
+      "x-release-status": "BETA"
+    },
     "OrderReturnTax": {
       "type": "object",
       "properties": {
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The return tax\u0027s Unique identifier, unique only within this order."
+          "description": "Unique ID that identifies the return tax only within this order.\n\nThis field is read-only."
         },
         "source_tax_uid": {
           "maxLength": 60,
@@ -19992,7 +20372,7 @@
         "uid": {
           "maxLength": 60,
           "type": "string",
-          "description": "The rounding adjustment\u0027s Unique identifier, unique only within this order. This field is read-only."
+          "description": "Unique ID that identifies the rounding adjustment only within this order.\n\nThis field is read-only."
         },
         "name": {
           "type": "string",
@@ -20006,6 +20386,68 @@
       "description": "A rounding adjustment of the money being returned. Commonly used to apply Cash Rounding\nwhen the minimum unit of account is smaller than the lowest physical denomination of currency.",
       "x-release-status": "BETA"
     },
+    "OrderServiceCharge": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "Unique ID that identifies the service charge only within this order.\n\nThis field is read-only."
+        },
+        "name": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The name of the service charge."
+        },
+        "catalog_object_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The catalog object ID referencing the service charge [CatalogObject](#type-catalogobject)."
+        },
+        "percentage": {
+          "maxLength": 10,
+          "type": "string",
+          "description": "The service charge percentage, as a string representation of a decimal number.\n\nFor example, `7.25` indicates 7.25%\n\nExactly one of `percentage` or `amount_money` should be set."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of a non-percentage based service charge.\n\nExactly one of `percentage` or `amount_money` should be set."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money applied to the order by the service charge, as calculated by the server.\n\nFor fixed-amount service charges, `applied_money` is equal to `amount_money`.\n\nFor percentage-based service charges, `applied_money` is the money calculated using the percentage.\nThe `applied_money` field will include any inclusive tax amounts as well.\n\nThis field is read-only."
+        },
+        "total_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of money to collect for the service charge.\n\nNote that `total_money` does not equal `applied_money` plus `total_tax_money` if an inclusive\ntax is applied to the service charge since the inclusive tax amount will be included in both\n`applied_money` and `total_tax_money`.\n\nThis field is read-only."
+        },
+        "total_tax_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total amount of tax money to collect for the service charge.\n\nThis field is read-only."
+        },
+        "calculation_phase": {
+          "type": "string",
+          "enum": [
+            "SUBTOTAL_PHASE",
+            "TOTAL_PHASE"
+          ],
+          "description": "The calculation phase at which to apply the service charge.\nSee [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values"
+        },
+        "taxable": {
+          "type": "boolean",
+          "description": "Indicates whether the service charge can be taxed. If set to `true`, any order-level\ntaxes will automatically apply to this service charge. Note that service charges calculated\nin the `TOTAL_PHASE` cannot be marked as taxable."
+        },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderLineItemTax"
+          },
+          "description": "Taxes applied to the service charge. By default, order-level taxes apply to service\ncharges calculated in the `SUBTOTAL_PHASE` if `taxable` is set to `true`."
+        }
+      },
+      "description": "Represents a service charge applied to an order.",
+      "x-release-status": "BETA"
+    },
     "OrderSource": {
       "type": "object",
       "properties": {
@@ -20015,7 +20457,7 @@
         }
       },
       "description": "Represents the origination details of an order.",
-      "x-release-status": "BETA"
+      "x-release-status": "PUBLIC"
     },
     "Refund": {
       "type": "object",
@@ -20174,11 +20616,11 @@
         },
         "subscription_id": {
           "type": "string",
-          "description": "The ID of the merchant [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) associated with the authorization.\nOnly present if the merchant signed up for a subscription during authorization."
+          "description": "__LEGACY FIELD__. The ID of the merchant subscription associated with\nthe authorization. Only present if the merchant signed up for a subscription\nduring authorization."
         },
         "plan_id": {
           "type": "string",
-          "description": "The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for.\nOnly present if the merchant signed up for a subscription during authorization."
+          "description": "__LEGACY FIELD__. The ID of the subscription plan the merchant signed\nup for. Only present if the merchant signed up for a subscription during\nauthorization."
         }
       },
       "description": "",
@@ -20195,7 +20637,7 @@
       "properties": {
         "include_related_objects": {
           "type": "boolean",
-          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the\nresponse. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of\nthe response.\n\nDefault value: `false`"
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf the `object` field of the response contains a [CatalogItem](#type-catalogitem),\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es,\n[CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s\nwill be returned in the `related_objects` field of the response. If the `object`\nfield of the response contains a [CatalogItemVariation](#type-catalogitemvariation),\nits parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of \nthe response.\n\nDefault value: `false`"
         }
       },
       "description": "",
@@ -20757,7 +21199,10 @@
               "TAX",
               "DISCOUNT",
               "MODIFIER_LIST",
-              "MODIFIER"
+              "MODIFIER",
+              "PRICING_RULE",
+              "PRODUCT_SET",
+              "TIME_PERIOD"
             ]
           },
           "description": "The desired set of object types to appear in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
@@ -20768,7 +21213,7 @@
         },
         "include_related_objects": {
           "type": "boolean",
-          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf a [CatalogItem](#type-catalogitem) is returned in the object field of the response,\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and\n[CatalogModifierList](#type-catalogmodifierlist)s will be included in the `related_objects` field of the\nresponse.\n\nIf a [CatalogItemVariation](#type-catalogitemvariation) is returned in the object field of the\nresponse, its parent [CatalogItem](#type-catalogitem) will be included in the `related_objects` field of\nthe response."
+          "description": "If `true`, the response will include additional objects that are related to the\nrequested object, as follows:\n\nIf a [CatalogItem](#type-catalogitem) is returned in the object field of the response,\nits associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es,\n[CatalogImage](#type-catalogimage)s and [CatalogModifierList](#type-catalogmodifierlist)s\nwill be included in the `related_objects` field of the response.\n\nIf a [CatalogItemVariation](#type-catalogitemvariation) is returned in the object field of the\nresponse, its parent [CatalogItem](#type-catalogitem) will be included in the `related_objects` field of\nthe response."
         },
         "begin_time": {
           "type": "string",
@@ -21216,8 +21661,12 @@
       "x-release-status": "BETA",
       "example": {
         "request_body": {
-          "return_entries": "true",
-          "limit": "3",
+          "return_entries": true,
+          "limit": 3,
+          "location_ids": [
+            "057P5VYJ4A5X1",
+            "18YC4JDH91E1H"
+          ],
           "query": {
             "filter": {
               "date_time_filter": {
@@ -21713,6 +22162,43 @@
         }
       },
       "description": "Provides information about the application used to generate an inventory\nchange.",
+      "x-release-status": "PUBLIC"
+    },
+    "StandardUnitDescription": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "$ref": "#/definitions/MeasurementUnit",
+          "description": "Identifies the measurement unit being described."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the measurement unit. For example, \u0027Pound\u0027."
+        },
+        "abbreviation": {
+          "type": "string",
+          "description": "Abbreviation for the measurement unit. For example, \u0027lb\u0027."
+        }
+      },
+      "description": "Contains the name and abbreviation for standard measurement unit.",
+      "x-release-status": "PUBLIC"
+    },
+    "StandardUnitDescriptionGroup": {
+      "type": "object",
+      "properties": {
+        "standard_unit_descriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StandardUnitDescription"
+          },
+          "description": "List of measurement units in this description group."
+        },
+        "language_code": {
+          "type": "string",
+          "description": "IETF language tag."
+        }
+      },
+      "description": "Group of standard measurement units.",
       "x-release-status": "PUBLIC"
     },
     "Tender": {
