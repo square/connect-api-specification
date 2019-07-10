@@ -32,7 +32,7 @@ oauth2.accessToken = "YOUR ACCESS TOKEN";
 var api = new {{{moduleName}}}.LocationsApi();
 
 api.listLocations().then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
+  console.log('API called successfully. Returned data: ' + JSON.stringify(data, 0, 1));
 }, function(error) {
   console.error(error);
 });

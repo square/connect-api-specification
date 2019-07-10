@@ -114,7 +114,7 @@
         ],
         "summary": "RenewToken",
         "operationId": "RenewToken",
-        "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see \n[Renew OAuth Token](/authz/oauth/cookbook/oauth-renew).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
+        "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see \n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-sq-version": "2019-06-12",
         "security": [
@@ -273,10 +273,6 @@
           {
             "name": "order",
             "description": "The order in which employees are listed in the response, based on their created_at field.      Default value: ASC",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -312,10 +308,6 @@
           {
             "name": "status",
             "description": "If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).",
-            "enum": [
-              "ACTIVE",
-              "INACTIVE"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -537,10 +529,6 @@
           {
             "name": "order",
             "description": "The order in which employees are listed in the response, based on their created_at field.Default value: ASC",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -721,10 +709,6 @@
           {
             "name": "order",
             "description": "The order in which timecards are listed in the response, based on their created_at field.",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -1135,10 +1119,6 @@
           {
             "name": "order",
             "description": "The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -2934,10 +2914,6 @@
           {
             "name": "order",
             "description": "TThe order in which payments are listed in the response.",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -3402,10 +3378,6 @@
           {
             "name": "order",
             "description": "The order in which payments are listed in the response.",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -3536,10 +3508,6 @@
           {
             "name": "order",
             "description": "TThe order in which payments are listed in the response.",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -3663,10 +3631,6 @@
           {
             "name": "order",
             "description": "TThe order in which payments are listed in the response.",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -3695,10 +3659,6 @@
           {
             "name": "status",
             "description": "Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).",
-            "enum": [
-              "SENT",
-              "FAILED"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -4285,10 +4245,6 @@
           {
             "name": "sort_field",
             "description": "Indicates how Customers should be sorted. Default: `DEFAULT`.",
-            "enum": [
-              "DEFAULT",
-              "CREATED_AT"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -4296,10 +4252,6 @@
           {
             "name": "sort_order",
             "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`.",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -4540,7 +4492,7 @@
         "parameters": [
           {
             "name": "customer_id",
-            "description": "The ID of the customer to link the card on file to.",
+            "description": "The Square ID of the customer profile the card is linked to.",
             "type": "string",
             "in": "path",
             "required": true
@@ -4642,10 +4594,6 @@
           {
             "name": "status",
             "description": "Specifies the EmployeeStatus to filter the employee by.",
-            "enum": [
-              "ACTIVE",
-              "INACTIVE"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -5707,10 +5655,6 @@
           {
             "name": "sort_order",
             "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -5778,10 +5722,6 @@
           {
             "name": "sort_order",
             "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -5995,10 +5935,6 @@
           {
             "name": "sort_order",
             "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -6066,10 +6002,6 @@
           {
             "name": "sort_order",
             "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "enum": [
-              "DESC",
-              "ASC"
-            ],
             "type": "string",
             "in": "query",
             "required": false
@@ -6191,7 +6123,7 @@
         ],
         "summary": "CaptureTransaction",
         "operationId": "CaptureTransaction",
-        "description": "Captures a transaction that was created with the [Charge](#endpoint-transactions-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
+        "description": "Captures a transaction that was created with the [Charge](#endpoint-transactions-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture)\nrecipe for more information.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
@@ -6292,7 +6224,7 @@
         ],
         "summary": "VoidTransaction",
         "operationId": "VoidTransaction",
-        "description": "Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee [Delayed capture transactions](/payments/transactions/overview#delayed-capture)\nfor more information.",
+        "description": "Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge)\nendpoint with a `delay_capture` value of `true`.\n\nSee the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture)\nrecipe for more information.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
@@ -6374,35 +6306,6 @@
     }
   },
   "definitions": {
-    "AggregationStrategy": {
-      "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "BASE",
-        "STACKABLE",
-        "EXCLUSIVE"
-      ],
-      "x-enum-elements": [
-        {
-          "name": "UNKNOWN",
-          "description": "The pricing rule has an aggregation strategy that can not be represented with the current version of the API."
-        },
-        {
-          "name": "BASE",
-          "description": "Can be stacked by any discount-based prices, including those with an\nAggregationStrategy of `EXCLUSIVE`. Only valid for pricing rules that set\n`total_price` or `item_price`."
-        },
-        {
-          "name": "STACKABLE",
-          "description": "Can be combined with other pricing rules. Allow multiple discounts on\nthe same product."
-        },
-        {
-          "name": "EXCLUSIVE",
-          "description": "Can only be combined with pricing rules with an AggregationStrategy of `BASE`."
-        }
-      ],
-      "description": "Indicates how a [CatalogPricingRule](#type-catalogpricingrule) can be\ncombined with other rules.",
-      "x-release-status": "BETA"
-    },
     "CardBrand": {
       "type": "string",
       "enum": [
@@ -12052,6 +11955,20 @@
       "description": "",
       "x-release-status": "PUBLIC"
     },
+    "WebhookEvents": {
+      "type": "string",
+      "enum": [
+        "inventory.count.updated"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "inventory.count.updated",
+          "description": "The quantity was updated for a catalog item variation.\nWebhook notification data is packaged as: [`InventoryCount[]`](#type-inventorychange)."
+        }
+      ],
+      "description": "The type of an event that triggers a webhook notification to an application.",
+      "x-release-status": "PUBLIC"
+    },
     "Weekday": {
       "type": "string",
       "enum": [
@@ -12262,258 +12179,6 @@
         },
         "country": {
           "type": "string",
-          "enum": [
-            "ZZ",
-            "AD",
-            "AE",
-            "AF",
-            "AG",
-            "AI",
-            "AL",
-            "AM",
-            "AO",
-            "AQ",
-            "AR",
-            "AS",
-            "AT",
-            "AU",
-            "AW",
-            "AX",
-            "AZ",
-            "BA",
-            "BB",
-            "BD",
-            "BE",
-            "BF",
-            "BG",
-            "BH",
-            "BI",
-            "BJ",
-            "BL",
-            "BM",
-            "BN",
-            "BO",
-            "BQ",
-            "BR",
-            "BS",
-            "BT",
-            "BV",
-            "BW",
-            "BY",
-            "BZ",
-            "CA",
-            "CC",
-            "CD",
-            "CF",
-            "CG",
-            "CH",
-            "CI",
-            "CK",
-            "CL",
-            "CM",
-            "CN",
-            "CO",
-            "CR",
-            "CU",
-            "CV",
-            "CW",
-            "CX",
-            "CY",
-            "CZ",
-            "DE",
-            "DJ",
-            "DK",
-            "DM",
-            "DO",
-            "DZ",
-            "EC",
-            "EE",
-            "EG",
-            "EH",
-            "ER",
-            "ES",
-            "ET",
-            "FI",
-            "FJ",
-            "FK",
-            "FM",
-            "FO",
-            "FR",
-            "GA",
-            "GB",
-            "GD",
-            "GE",
-            "GF",
-            "GG",
-            "GH",
-            "GI",
-            "GL",
-            "GM",
-            "GN",
-            "GP",
-            "GQ",
-            "GR",
-            "GS",
-            "GT",
-            "GU",
-            "GW",
-            "GY",
-            "HK",
-            "HM",
-            "HN",
-            "HR",
-            "HT",
-            "HU",
-            "ID",
-            "IE",
-            "IL",
-            "IM",
-            "IN",
-            "IO",
-            "IQ",
-            "IR",
-            "IS",
-            "IT",
-            "JE",
-            "JM",
-            "JO",
-            "JP",
-            "KE",
-            "KG",
-            "KH",
-            "KI",
-            "KM",
-            "KN",
-            "KP",
-            "KR",
-            "KW",
-            "KY",
-            "KZ",
-            "LA",
-            "LB",
-            "LC",
-            "LI",
-            "LK",
-            "LR",
-            "LS",
-            "LT",
-            "LU",
-            "LV",
-            "LY",
-            "MA",
-            "MC",
-            "MD",
-            "ME",
-            "MF",
-            "MG",
-            "MH",
-            "MK",
-            "ML",
-            "MM",
-            "MN",
-            "MO",
-            "MP",
-            "MQ",
-            "MR",
-            "MS",
-            "MT",
-            "MU",
-            "MV",
-            "MW",
-            "MX",
-            "MY",
-            "MZ",
-            "NA",
-            "NC",
-            "NE",
-            "NF",
-            "NG",
-            "NI",
-            "NL",
-            "NO",
-            "NP",
-            "NR",
-            "NU",
-            "NZ",
-            "OM",
-            "PA",
-            "PE",
-            "PF",
-            "PG",
-            "PH",
-            "PK",
-            "PL",
-            "PM",
-            "PN",
-            "PR",
-            "PS",
-            "PT",
-            "PW",
-            "PY",
-            "QA",
-            "RE",
-            "RO",
-            "RS",
-            "RU",
-            "RW",
-            "SA",
-            "SB",
-            "SC",
-            "SD",
-            "SE",
-            "SG",
-            "SH",
-            "SI",
-            "SJ",
-            "SK",
-            "SL",
-            "SM",
-            "SN",
-            "SO",
-            "SR",
-            "SS",
-            "ST",
-            "SV",
-            "SX",
-            "SY",
-            "SZ",
-            "TC",
-            "TD",
-            "TF",
-            "TG",
-            "TH",
-            "TJ",
-            "TK",
-            "TL",
-            "TM",
-            "TN",
-            "TO",
-            "TR",
-            "TT",
-            "TV",
-            "TW",
-            "TZ",
-            "UA",
-            "UG",
-            "UM",
-            "US",
-            "UY",
-            "UZ",
-            "VA",
-            "VC",
-            "VE",
-            "VG",
-            "VI",
-            "VN",
-            "VU",
-            "WF",
-            "WS",
-            "YE",
-            "YT",
-            "ZA",
-            "ZM",
-            "ZW"
-          ],
           "description": "The address\u0027s country, in ISO 3166-1-alpha-2 format.\nSee [Country](#type-country) for possible values"
         },
         "first_name": {
@@ -12894,33 +12559,14 @@
         "types": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "PHYSICAL_COUNT",
-              "ADJUSTMENT",
-              "TRANSFER"
-            ]
+            "type": "string"
           },
           "description": "Filters results by [InventoryChangeType](#type-inventorychangetype).\nDefault: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as\na filter.\nSee [InventoryChangeType](#type-inventorychangetype) for possible values"
         },
         "states": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "CUSTOM",
-              "IN_STOCK",
-              "SOLD",
-              "RETURNED_BY_CUSTOMER",
-              "RESERVED_FOR_SALE",
-              "SOLD_ONLINE",
-              "ORDERED_FROM_VENDOR",
-              "RECEIVED_FROM_VENDOR",
-              "IN_TRANSIT_TO",
-              "NONE",
-              "WASTE",
-              "UNLINKED_RETURN"
-            ]
+            "type": "string"
           },
           "description": "Filters `ADJUSTMENT` query results by\n[InventoryState](#type-inventorystate). Only applied when set.\nDefault: unset.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
@@ -13621,15 +13267,6 @@
       "properties": {
         "day_of_week": {
           "type": "string",
-          "enum": [
-            "SUN",
-            "MON",
-            "TUE",
-            "WED",
-            "THU",
-            "FRI",
-            "SAT"
-          ],
           "description": "The day of week for this time period.\nSee [DayOfWeek](#type-dayofweek) for possible values"
         },
         "start_local_time": {
@@ -13675,17 +13312,6 @@
         },
         "card_brand": {
           "type": "string",
-          "enum": [
-            "OTHER_BRAND",
-            "VISA",
-            "MASTERCARD",
-            "AMERICAN_EXPRESS",
-            "DISCOVER",
-            "DISCOVER_DINERS",
-            "JCB",
-            "CHINA_UNIONPAY",
-            "SQUARE_GIFT_CARD"
-          ],
           "description": "The card\u0027s brand (such as `VISA`).\nSee [CardBrand](#type-cardbrand) for possible values"
         },
         "last_4": {
@@ -13748,12 +13374,6 @@
         },
         "discount_type": {
           "type": "string",
-          "enum": [
-            "FIXED_PERCENTAGE",
-            "FIXED_AMOUNT",
-            "VARIABLE_PERCENTAGE",
-            "VARIABLE_AMOUNT"
-          ],
           "description": "Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale.\nSee [CatalogDiscountType](#type-catalogdiscounttype) for possible values"
         },
         "percentage": {
@@ -13984,11 +13604,6 @@
           },
           "description": "A set of [CatalogItemModifierListInfo](#type-catalogitemmodifierlistinfo) objects\nrepresenting the modifier lists that apply to this item, along with the overrides and min\nand max limits that are specific to this item. [CatalogModifierList](#type-catalogmodifierlist)s\nmay also be added to or deleted from an item using `UpdateItemModifierLists`."
         },
-        "image_url": {
-          "type": "string",
-          "description": "__Deprecated__. The URL of an image representing this item. Deprecated\nin favor of `image_id` in [`CatalogObject`](#type-catalogobject).",
-          "x-release-status": "DEPRECATED"
-        },
         "variations": {
           "type": "array",
           "items": {
@@ -13998,13 +13613,6 @@
         },
         "product_type": {
           "type": "string",
-          "enum": [
-            "REGULAR",
-            "GIFT_CARD",
-            "APPOINTMENTS_SERVICE",
-            "RETAIL_ITEM",
-            "RESTAURANT_ITEM"
-          ],
           "description": "The product type of the item. May not be changed once an item has been created.\n\nOnly items of product type `REGULAR` may be created by this API; items with other product\ntypes are read-only.\nSee [CatalogItemProductType](#type-catalogitemproducttype) for possible values"
         },
         "skip_modifier_screen": {
@@ -14087,10 +13695,6 @@
         },
         "pricing_type": {
           "type": "string",
-          "enum": [
-            "FIXED_PRICING",
-            "VARIABLE_PRICING"
-          ],
           "description": "Indicates whether the item variation\u0027s price is fixed or determined at the time\nof sale.\nSee [CatalogPricingType](#type-catalogpricingtype) for possible values"
         },
         "price_money": {
@@ -14110,10 +13714,6 @@
         },
         "inventory_alert_type": {
           "type": "string",
-          "enum": [
-            "NONE",
-            "LOW_QUANTITY"
-          ],
           "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal\nto its `inventory_alert_threshold`.\nSee [InventoryAlertType](#type-inventoryalerttype) for possible values"
         },
         "inventory_alert_threshold": {
@@ -14129,11 +13729,6 @@
           "type": "integer",
           "format": "int64",
           "description": "If the [CatalogItem](#type-catalogitem) that owns this item variation is of type\n`APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For\nexample, a 30 minute appointment would have the value `1800000`, which is equal to\n30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second)."
-        },
-        "catalog_measurement_unit_id": {
-          "type": "string",
-          "description": "Represents the unit used to measure a\n[CatalogItemVariation](#type-catalogitemvariation) and specifies the\nprecision for decimal quantities.",
-          "x-release-status": "BETA"
         },
         "measurement_unit_id": {
           "type": "string",
@@ -14196,10 +13791,6 @@
         },
         "selection_type": {
           "type": "string",
-          "enum": [
-            "SINGLE",
-            "MULTIPLE"
-          ],
           "description": "Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist)\ncan be applied to a single [CatalogItem](#type-catalogitem).\nSee [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values"
         },
         "modifiers": {
@@ -14285,19 +13876,6 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "ITEM",
-            "IMAGE",
-            "CATEGORY",
-            "ITEM_VARIATION",
-            "TAX",
-            "DISCOUNT",
-            "MODIFIER_LIST",
-            "MODIFIER",
-            "PRICING_RULE",
-            "PRODUCT_SET",
-            "TIME_PERIOD"
-          ],
           "description": "The type of this object. Each object type has expected\nproperties expressed in a structured format within its corresponding `*_data` field below.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
         },
         "id": {
@@ -14375,6 +13953,21 @@
           "$ref": "#/definitions/CatalogModifier",
           "description": "Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`."
         },
+        "time_period_data": {
+          "$ref": "#/definitions/CatalogTimePeriod",
+          "description": "Structured data for a [CatalogTimePeriod](#type-catalogtimeperiod), set for CatalogObjects of type `TIME_PERIOD`.",
+          "x-release-status": "BETA"
+        },
+        "product_set_data": {
+          "$ref": "#/definitions/CatalogProductSet",
+          "description": "Structured data for a [CatalogProductSet](#type-catalogproductset), set for CatalogObjects of type `PRODUCT_SET`.",
+          "x-release-status": "BETA"
+        },
+        "pricing_rule_data": {
+          "$ref": "#/definitions/CatalogPricingRule",
+          "description": "Structured data for a [CatalogPricingRule](#type-catalogpricingrule), set for CatalogObjects of type `PRICING_RULE`.",
+          "x-release-status": "BETA"
+        },
         "image_data": {
           "$ref": "#/definitions/CatalogImage",
           "description": "Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`."
@@ -14385,7 +13978,7 @@
           "x-release-status": "BETA"
         }
       },
-      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n- if type \u003d `IMAGE`, only `image_data` will be populated and it will contain a valid [CatalogImage](#type-catalogimage) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Catalog Overview](/products/catalog/overview).",
+      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.\n- if type \u003d `IMAGE`, only `image_data` will be populated and it will contain a valid [CatalogImage](#type-catalogimage) object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
       "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
@@ -14446,14 +14039,6 @@
           },
           "description": "Unique ID for the [CatalogTimePeriod](#type-catalogtimeperiod)s when\nthis pricing rule is in effect. If left unset, the pricing rule is always\nin effect."
         },
-        "total_price_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The total amount of money to charge for all matched items.\n\nOnly one of `total_price_money`, `item_price`, or `discount` can be supplied."
-        },
-        "item_price_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The amount of money to charge for each matched item.\n\nOnly one of `total_price_money`, `item_price`, or `discount` can be supplied."
-        },
         "discount_id": {
           "type": "string",
           "description": "Unique ID for the [CatalogDiscount](#type-catalogdiscount) to take off\nthe price of all matched items.\n\nOnly one of `total_price_money`, `item_price`, or `discount` can be supplied."
@@ -14465,16 +14050,6 @@
         "apply_products_id": {
           "type": "string",
           "description": "The [CatalogProductSet](#type-catalogproductset) to apply the pricing rule to\nwithin the set of matched products specified by `match_products_id`.\nAn apply rule can only match once within the set of matched products.\nIf left unset, the pricing rule will be applied to all products within the\nset of matched products."
-        },
-        "stackable": {
-          "type": "string",
-          "enum": [
-            "UNKNOWN",
-            "BASE",
-            "STACKABLE",
-            "EXCLUSIVE"
-          ],
-          "description": "Describes how the pricing rule can be combined with other pricing rules.\nSee [Stackable](#type-stackable) for all possible values.\nSee [AggregationStrategy](#type-aggregationstrategy) for possible values"
         },
         "exclude_products_id": {
           "type": "string",
@@ -14696,10 +14271,6 @@
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The desired [SortOrder](#type-sortorder), `\"ASC\"` (ascending) or `\"DESC\"` (descending).\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
@@ -14732,18 +14303,10 @@
         },
         "calculation_phase": {
           "type": "string",
-          "enum": [
-            "TAX_SUBTOTAL_PHASE",
-            "TAX_TOTAL_PHASE"
-          ],
           "description": "Whether the tax is calculated based on a payment\u0027s subtotal or total.\nSee [TaxCalculationPhase](#type-taxcalculationphase) for possible values"
         },
         "inclusion_type": {
           "type": "string",
-          "enum": [
-            "ADDITIVE",
-            "INCLUSIVE"
-          ],
           "description": "Whether the tax is `ADDITIVE` or `INCLUSIVE`.\nSee [TaxInclusionType](#type-taxinclusiontype) for possible values"
         },
         "percentage": {
@@ -14872,6 +14435,10 @@
             "$ref": "#/definitions/AdditionalRecipient"
           },
           "description": "The basic primitive of multi-party transaction. The value is optional.\nThe transaction facilitated by you can be split from here.\n\nIf you provide this value, the `amount_money` value in your additional_recipients\nmust not be more than 90% of the `amount_money` value in the charge request.\nThe `location_id` must be the valid location of the app owner merchant.\n\nThis field requires the `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.\n\nThis field is currently not supported in sandbox."
+        },
+        "verification_token": {
+          "type": "string",
+          "description": "An identifying token generated by `SqPaymentForm.verifyBuyer()`.\nVerification tokens encapsulate customer device information and 3-D Secure\nchallenge results to indicate that Square has verified the buyer identity."
         }
       },
       "description": "Defines the parameters that can be included in the body of\na request to the Charge endpoint.",
@@ -15577,7 +15144,7 @@
       "properties": {
         "card_nonce": {
           "type": "string",
-          "description": "A card nonce representing the credit card to link to the customer.\n\nCard nonces are generated by the `SqPaymentForm` that buyers enter\ntheir card information into. See\n[Embedding the payment form](/payments/sqpaymentform/overview) for\nmore information.\n\n__Note:__ Card nonces generated by digital wallets (e.g., Apple Pay)\ncannot be used to create a customer card."
+          "description": "A card nonce representing the credit card to link to the customer.\n\nCard nonces are generated by the `SqPaymentForm` that buyers enter\ntheir card information into. See\n[Embedding the payment form](/payment-form/payment-form-walkthrough) for\nmore information.\n\n__Note:__ Card nonces generated by digital wallets (e.g., Apple Pay)\ncannot be used to create a customer card."
         },
         "billing_address": {
           "$ref": "#/definitions/Address",
@@ -15585,7 +15152,11 @@
         },
         "cardholder_name": {
           "type": "string",
-          "description": "The cardholder\u0027s name."
+          "description": "The full name printed on the credit card."
+        },
+        "verification_token": {
+          "type": "string",
+          "description": "An identifying token generated by `SqPaymentForm.verifyBuyer()`.\nVerification tokens encapsulate customer device information and 3-D Secure\nchallenge results to indicate that Square has verified the buyer identity."
         }
       },
       "description": "Defines the fields that are included in the request body of a request\nto the CreateCustomerCard endpoint.",
@@ -16041,11 +15612,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_TAX",
-            "ADDITIVE",
-            "INCLUSIVE"
-          ],
           "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
         },
         "percentage": {
@@ -16553,27 +16119,6 @@
         },
         "creation_source": {
           "type": "string",
-          "enum": [
-            "OTHER",
-            "APPOINTMENTS",
-            "COUPON",
-            "DELETION_RECOVERY",
-            "DIRECTORY",
-            "EGIFTING",
-            "EMAIL_COLLECTION",
-            "FEEDBACK",
-            "IMPORT",
-            "INVOICES",
-            "LOYALTY",
-            "MARKETING",
-            "MERGE",
-            "ONLINE_STORE",
-            "INSTANT_PROFILE",
-            "TERMINAL",
-            "THIRD_PARTY",
-            "THIRD_PARTY_IMPORT",
-            "UNMERGE_RECOVERY"
-          ],
           "description": "A creation source represents the method used to create the\ncustomer profile.\nSee [CustomerCreationSource](#type-customercreationsource) for possible values"
         }
       },
@@ -16586,37 +16131,12 @@
         "values": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "OTHER",
-              "APPOINTMENTS",
-              "COUPON",
-              "DELETION_RECOVERY",
-              "DIRECTORY",
-              "EGIFTING",
-              "EMAIL_COLLECTION",
-              "FEEDBACK",
-              "IMPORT",
-              "INVOICES",
-              "LOYALTY",
-              "MARKETING",
-              "MERGE",
-              "ONLINE_STORE",
-              "INSTANT_PROFILE",
-              "TERMINAL",
-              "THIRD_PARTY",
-              "THIRD_PARTY_IMPORT",
-              "UNMERGE_RECOVERY"
-            ]
+            "type": "string"
           },
           "description": "The list of creation sources used as filtering criteria.\nSee [CustomerCreationSource](#type-customercreationsource) for possible values"
         },
         "rule": {
           "type": "string",
-          "enum": [
-            "INCLUDE",
-            "EXCLUDE"
-          ],
           "description": "Indicates whether a customer profile matching the filter criteria\nshould be included in the result or excluded from the result.\nDefault: `INCLUDE`.\nSee [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values"
         }
       },
@@ -16692,18 +16212,10 @@
       "properties": {
         "field": {
           "type": "string",
-          "enum": [
-            "DEFAULT",
-            "CREATED_AT"
-          ],
           "description": "The field to sort the results on. It could be the total money spent at\nthe merchant, the date of the first visit (etc).\nSee [CustomerSortField](#type-customersortfield) for possible values"
         },
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "Indicates the order in which results should be displayed based on the\nvalue of the sort field. String comparisons use standard alphabetic comparison\nto determine order. Strings representing numbers are sorted as strings.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
@@ -16947,10 +16459,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "ACTIVE",
-            "INACTIVE"
-          ],
           "description": "Specifies the status of the employee being fetched.\nSee [EmployeeStatus](#type-employeestatus) for possible values"
         },
         "created_at": {
@@ -17001,112 +16509,10 @@
       "properties": {
         "category": {
           "type": "string",
-          "enum": [
-            "API_ERROR",
-            "AUTHENTICATION_ERROR",
-            "INVALID_REQUEST_ERROR",
-            "RATE_LIMIT_ERROR",
-            "PAYMENT_METHOD_ERROR",
-            "REFUND_ERROR"
-          ],
           "description": "The error\u0027s high-level category.\nSee [ErrorCategory](#type-errorcategory) for possible values"
         },
         "code": {
           "type": "string",
-          "enum": [
-            "INTERNAL_SERVER_ERROR",
-            "UNAUTHORIZED",
-            "ACCESS_TOKEN_EXPIRED",
-            "ACCESS_TOKEN_REVOKED",
-            "FORBIDDEN",
-            "INSUFFICIENT_SCOPES",
-            "APPLICATION_DISABLED",
-            "V1_APPLICATION",
-            "V1_ACCESS_TOKEN",
-            "CARD_PROCESSING_NOT_ENABLED",
-            "BAD_REQUEST",
-            "MISSING_REQUIRED_PARAMETER",
-            "INCORRECT_TYPE",
-            "INVALID_TIME",
-            "INVALID_TIME_RANGE",
-            "INVALID_VALUE",
-            "INVALID_CURSOR",
-            "UNKNOWN_QUERY_PARAMETER",
-            "CONFLICTING_PARAMETERS",
-            "EXPECTED_JSON_BODY",
-            "INVALID_SORT_ORDER",
-            "VALUE_REGEX_MISMATCH",
-            "VALUE_TOO_SHORT",
-            "VALUE_TOO_LONG",
-            "VALUE_TOO_LOW",
-            "VALUE_TOO_HIGH",
-            "VALUE_EMPTY",
-            "ARRAY_LENGTH_TOO_LONG",
-            "ARRAY_LENGTH_TOO_SHORT",
-            "ARRAY_EMPTY",
-            "EXPECTED_BOOLEAN",
-            "EXPECTED_INTEGER",
-            "EXPECTED_FLOAT",
-            "EXPECTED_STRING",
-            "EXPECTED_OBJECT",
-            "EXPECTED_ARRAY",
-            "EXPECTED_MAP",
-            "EXPECTED_BASE64_ENCODED_BYTE_ARRAY",
-            "INVALID_ARRAY_VALUE",
-            "INVALID_ENUM_VALUE",
-            "INVALID_CONTENT_TYPE",
-            "INVALID_FORM_VALUE",
-            "ONE_INSTRUMENT_EXPECTED",
-            "NO_FIELDS_SET",
-            "DEPRECATED_FIELD_SET",
-            "RETIRED_FIELD_SET",
-            "CARD_EXPIRED",
-            "INVALID_EXPIRATION",
-            "INVALID_EXPIRATION_YEAR",
-            "INVALID_EXPIRATION_DATE",
-            "UNSUPPORTED_CARD_BRAND",
-            "UNSUPPORTED_ENTRY_METHOD",
-            "INVALID_ENCRYPTED_CARD",
-            "INVALID_CARD",
-            "DELAYED_TRANSACTION_EXPIRED",
-            "DELAYED_TRANSACTION_CANCELED",
-            "DELAYED_TRANSACTION_CAPTURED",
-            "DELAYED_TRANSACTION_FAILED",
-            "CARD_TOKEN_EXPIRED",
-            "CARD_TOKEN_USED",
-            "AMOUNT_TOO_HIGH",
-            "UNSUPPORTED_INSTRUMENT_TYPE",
-            "REFUND_AMOUNT_INVALID",
-            "REFUND_ALREADY_PENDING",
-            "PAYMENT_NOT_REFUNDABLE",
-            "INVALID_CARD_DATA",
-            "LOCATION_MISMATCH",
-            "IDEMPOTENCY_KEY_REUSED",
-            "UNEXPECTED_VALUE",
-            "SANDBOX_NOT_SUPPORTED",
-            "INVALID_EMAIL_ADDRESS",
-            "INVALID_PHONE_NUMBER",
-            "CHECKOUT_EXPIRED",
-            "BAD_CERTIFICATE",
-            "INVALID_SQUARE_VERSION_FORMAT",
-            "API_VERSION_INCOMPATIBLE",
-            "CARD_DECLINED",
-            "VERIFY_CVV_FAILURE",
-            "VERIFY_AVS_FAILURE",
-            "CARD_DECLINED_CALL_ISSUER",
-            "NOT_FOUND",
-            "APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND",
-            "METHOD_NOT_ALLOWED",
-            "NOT_ACCEPTABLE",
-            "REQUEST_TIMEOUT",
-            "CONFLICT",
-            "REQUEST_ENTITY_TOO_LARGE",
-            "UNSUPPORTED_MEDIA_TYPE",
-            "RATE_LIMITED",
-            "NOT_IMPLEMENTED",
-            "SERVICE_UNAVAILABLE",
-            "GATEWAY_TIMEOUT"
-          ],
           "description": "The error\u0027s specific code.\nSee [ErrorCode](#type-errorcode) for possible values"
         },
         "detail": {
@@ -17264,38 +16670,10 @@
         },
         "from_state": {
           "type": "string",
-          "enum": [
-            "CUSTOM",
-            "IN_STOCK",
-            "SOLD",
-            "RETURNED_BY_CUSTOMER",
-            "RESERVED_FOR_SALE",
-            "SOLD_ONLINE",
-            "ORDERED_FROM_VENDOR",
-            "RECEIVED_FROM_VENDOR",
-            "IN_TRANSIT_TO",
-            "NONE",
-            "WASTE",
-            "UNLINKED_RETURN"
-          ],
           "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items before the adjustment.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "to_state": {
           "type": "string",
-          "enum": [
-            "CUSTOM",
-            "IN_STOCK",
-            "SOLD",
-            "RETURNED_BY_CUSTOMER",
-            "RESERVED_FOR_SALE",
-            "SOLD_ONLINE",
-            "ORDERED_FROM_VENDOR",
-            "RECEIVED_FROM_VENDOR",
-            "IN_TRANSIT_TO",
-            "NONE",
-            "WASTE",
-            "UNLINKED_RETURN"
-          ],
           "description": "The [InventoryState](#type-inventorystate) of the related quantity\nof items after the adjustment.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
@@ -17312,7 +16690,7 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items affected by the adjustment as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "description": "The number of items affected by the adjustment as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\n\nRead [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities)\nfor more information.",
           "x-release-status": "BETA"
         },
         "total_price_money": {
@@ -17360,11 +16738,6 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "PHYSICAL_COUNT",
-            "ADJUSTMENT",
-            "TRANSFER"
-          ],
           "description": "Indicates how the inventory change was applied.\nSee [InventoryChangeType](#type-inventorychangetype) for possible values"
         },
         "physical_count": {
@@ -17396,20 +16769,6 @@
         },
         "state": {
           "type": "string",
-          "enum": [
-            "CUSTOM",
-            "IN_STOCK",
-            "SOLD",
-            "RETURNED_BY_CUSTOMER",
-            "RESERVED_FOR_SALE",
-            "SOLD_ONLINE",
-            "ORDERED_FROM_VENDOR",
-            "RECEIVED_FROM_VENDOR",
-            "IN_TRANSIT_TO",
-            "NONE",
-            "WASTE",
-            "UNLINKED_RETURN"
-          ],
           "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
@@ -17418,7 +16777,7 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items in the count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "description": "The number of items in the count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\n\nRead [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities)\nfor more information.",
           "x-release-status": "BETA"
         },
         "calculated_at": {
@@ -17450,20 +16809,6 @@
         },
         "state": {
           "type": "string",
-          "enum": [
-            "CUSTOM",
-            "IN_STOCK",
-            "SOLD",
-            "RETURNED_BY_CUSTOMER",
-            "RESERVED_FOR_SALE",
-            "SOLD_ONLINE",
-            "ORDERED_FROM_VENDOR",
-            "RECEIVED_FROM_VENDOR",
-            "IN_TRANSIT_TO",
-            "NONE",
-            "WASTE",
-            "UNLINKED_RETURN"
-          ],
           "description": "The current [InventoryState](#type-inventorystate) for the related\nquantity of items.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
@@ -17472,7 +16817,7 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items affected by the physical count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "description": "The number of items affected by the physical count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\n\nRead [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities)\nfor more information.",
           "x-release-status": "BETA"
         },
         "source": {
@@ -17508,20 +16853,6 @@
         },
         "state": {
           "type": "string",
-          "enum": [
-            "CUSTOM",
-            "IN_STOCK",
-            "SOLD",
-            "RETURNED_BY_CUSTOMER",
-            "RESERVED_FOR_SALE",
-            "SOLD_ONLINE",
-            "ORDERED_FROM_VENDOR",
-            "RECEIVED_FROM_VENDOR",
-            "IN_TRANSIT_TO",
-            "NONE",
-            "WASTE",
-            "UNLINKED_RETURN"
-          ],
           "description": "The [InventoryState](#type-inventorystate) for the quantity of\nitems being transfered.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "from_location_id": {
@@ -17542,7 +16873,7 @@
         },
         "quantity": {
           "type": "string",
-          "description": "The number of items affected by the transfer as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.",
+          "description": "The number of items affected by the transfer as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\n\nRead [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities)\nfor more information.",
           "x-release-status": "BETA"
         },
         "occurred_at": {
@@ -17578,10 +16909,6 @@
         },
         "pricing_type": {
           "type": "string",
-          "enum": [
-            "FIXED_PRICING",
-            "VARIABLE_PRICING"
-          ],
           "description": "The pricing type (fixed or variable) for the [CatalogItemVariation](#type-catalogitemvariation) at the given [location](#type-location).\nSee [CatalogPricingType](#type-catalogpricingtype) for possible values"
         },
         "track_inventory": {
@@ -17590,10 +16917,6 @@
         },
         "inventory_alert_type": {
           "type": "string",
-          "enum": [
-            "NONE",
-            "LOW_QUANTITY"
-          ],
           "description": "Indicates whether the [CatalogItemVariation](#type-catalogitemvariation) displays an alert when its inventory\nquantity is less than or equal to its `inventory_alert_threshold`.\nSee [InventoryAlertType](#type-inventoryalerttype) for possible values"
         },
         "inventory_alert_threshold": {
@@ -17618,10 +16941,6 @@
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
@@ -17688,10 +17007,6 @@
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
@@ -17929,18 +17244,10 @@
         },
         "sort_field": {
           "type": "string",
-          "enum": [
-            "DEFAULT",
-            "CREATED_AT"
-          ],
           "description": "Indicates how Customers should be sorted. Default: `DEFAULT`.\nSee [CustomerSortField](#type-customersortfield) for possible values"
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "Indicates whether Customers should be sorted in ascending (`ASC`) or\ndescending (`DESC`) order. Default: `ASC`.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
@@ -18117,10 +17424,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "ACTIVE",
-            "INACTIVE"
-          ],
           "description": "Specifies the EmployeeStatus to filter the employee by.\nSee [EmployeeStatus](#type-employeestatus) for possible values"
         },
         "limit": {
@@ -18247,10 +17550,6 @@
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
@@ -18329,10 +17628,6 @@
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "cursor": {
@@ -18525,19 +17820,12 @@
         "capabilities": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "CREDIT_CARD_PROCESSING"
-            ]
+            "type": "string"
           },
           "description": "Indicates which Square features are enabled for the location.\nSee [LocationCapability](#type-locationcapability) for possible values"
         },
         "status": {
           "type": "string",
-          "enum": [
-            "ACTIVE",
-            "INACTIVE"
-          ],
           "description": "The location\u0027s status\nSee [LocationStatus](#type-locationstatus) for possible values"
         },
         "created_at": {
@@ -18550,258 +17838,6 @@
         },
         "country": {
           "type": "string",
-          "enum": [
-            "ZZ",
-            "AD",
-            "AE",
-            "AF",
-            "AG",
-            "AI",
-            "AL",
-            "AM",
-            "AO",
-            "AQ",
-            "AR",
-            "AS",
-            "AT",
-            "AU",
-            "AW",
-            "AX",
-            "AZ",
-            "BA",
-            "BB",
-            "BD",
-            "BE",
-            "BF",
-            "BG",
-            "BH",
-            "BI",
-            "BJ",
-            "BL",
-            "BM",
-            "BN",
-            "BO",
-            "BQ",
-            "BR",
-            "BS",
-            "BT",
-            "BV",
-            "BW",
-            "BY",
-            "BZ",
-            "CA",
-            "CC",
-            "CD",
-            "CF",
-            "CG",
-            "CH",
-            "CI",
-            "CK",
-            "CL",
-            "CM",
-            "CN",
-            "CO",
-            "CR",
-            "CU",
-            "CV",
-            "CW",
-            "CX",
-            "CY",
-            "CZ",
-            "DE",
-            "DJ",
-            "DK",
-            "DM",
-            "DO",
-            "DZ",
-            "EC",
-            "EE",
-            "EG",
-            "EH",
-            "ER",
-            "ES",
-            "ET",
-            "FI",
-            "FJ",
-            "FK",
-            "FM",
-            "FO",
-            "FR",
-            "GA",
-            "GB",
-            "GD",
-            "GE",
-            "GF",
-            "GG",
-            "GH",
-            "GI",
-            "GL",
-            "GM",
-            "GN",
-            "GP",
-            "GQ",
-            "GR",
-            "GS",
-            "GT",
-            "GU",
-            "GW",
-            "GY",
-            "HK",
-            "HM",
-            "HN",
-            "HR",
-            "HT",
-            "HU",
-            "ID",
-            "IE",
-            "IL",
-            "IM",
-            "IN",
-            "IO",
-            "IQ",
-            "IR",
-            "IS",
-            "IT",
-            "JE",
-            "JM",
-            "JO",
-            "JP",
-            "KE",
-            "KG",
-            "KH",
-            "KI",
-            "KM",
-            "KN",
-            "KP",
-            "KR",
-            "KW",
-            "KY",
-            "KZ",
-            "LA",
-            "LB",
-            "LC",
-            "LI",
-            "LK",
-            "LR",
-            "LS",
-            "LT",
-            "LU",
-            "LV",
-            "LY",
-            "MA",
-            "MC",
-            "MD",
-            "ME",
-            "MF",
-            "MG",
-            "MH",
-            "MK",
-            "ML",
-            "MM",
-            "MN",
-            "MO",
-            "MP",
-            "MQ",
-            "MR",
-            "MS",
-            "MT",
-            "MU",
-            "MV",
-            "MW",
-            "MX",
-            "MY",
-            "MZ",
-            "NA",
-            "NC",
-            "NE",
-            "NF",
-            "NG",
-            "NI",
-            "NL",
-            "NO",
-            "NP",
-            "NR",
-            "NU",
-            "NZ",
-            "OM",
-            "PA",
-            "PE",
-            "PF",
-            "PG",
-            "PH",
-            "PK",
-            "PL",
-            "PM",
-            "PN",
-            "PR",
-            "PS",
-            "PT",
-            "PW",
-            "PY",
-            "QA",
-            "RE",
-            "RO",
-            "RS",
-            "RU",
-            "RW",
-            "SA",
-            "SB",
-            "SC",
-            "SD",
-            "SE",
-            "SG",
-            "SH",
-            "SI",
-            "SJ",
-            "SK",
-            "SL",
-            "SM",
-            "SN",
-            "SO",
-            "SR",
-            "SS",
-            "ST",
-            "SV",
-            "SX",
-            "SY",
-            "SZ",
-            "TC",
-            "TD",
-            "TF",
-            "TG",
-            "TH",
-            "TJ",
-            "TK",
-            "TL",
-            "TM",
-            "TN",
-            "TO",
-            "TR",
-            "TT",
-            "TV",
-            "TW",
-            "TZ",
-            "UA",
-            "UG",
-            "UM",
-            "US",
-            "UY",
-            "UZ",
-            "VA",
-            "VC",
-            "VE",
-            "VG",
-            "VI",
-            "VN",
-            "VU",
-            "WF",
-            "WS",
-            "YE",
-            "YT",
-            "ZA",
-            "ZM",
-            "ZW"
-          ],
           "description": "The location\u0027s country, in ISO 3166-1-alpha-2 format.\nSee [Country](#type-country) for possible values"
         },
         "language_code": {
@@ -18810,189 +17846,6 @@
         },
         "currency": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_CURRENCY",
-            "AED",
-            "AFN",
-            "ALL",
-            "AMD",
-            "ANG",
-            "AOA",
-            "ARS",
-            "AUD",
-            "AWG",
-            "AZN",
-            "BAM",
-            "BBD",
-            "BDT",
-            "BGN",
-            "BHD",
-            "BIF",
-            "BMD",
-            "BND",
-            "BOB",
-            "BOV",
-            "BRL",
-            "BSD",
-            "BTN",
-            "BWP",
-            "BYR",
-            "BZD",
-            "CAD",
-            "CDF",
-            "CHE",
-            "CHF",
-            "CHW",
-            "CLF",
-            "CLP",
-            "CNY",
-            "COP",
-            "COU",
-            "CRC",
-            "CUC",
-            "CUP",
-            "CVE",
-            "CZK",
-            "DJF",
-            "DKK",
-            "DOP",
-            "DZD",
-            "EGP",
-            "ERN",
-            "ETB",
-            "EUR",
-            "FJD",
-            "FKP",
-            "GBP",
-            "GEL",
-            "GHS",
-            "GIP",
-            "GMD",
-            "GNF",
-            "GTQ",
-            "GYD",
-            "HKD",
-            "HNL",
-            "HRK",
-            "HTG",
-            "HUF",
-            "IDR",
-            "ILS",
-            "INR",
-            "IQD",
-            "IRR",
-            "ISK",
-            "JMD",
-            "JOD",
-            "JPY",
-            "KES",
-            "KGS",
-            "KHR",
-            "KMF",
-            "KPW",
-            "KRW",
-            "KWD",
-            "KYD",
-            "KZT",
-            "LAK",
-            "LBP",
-            "LKR",
-            "LRD",
-            "LSL",
-            "LTL",
-            "LVL",
-            "LYD",
-            "MAD",
-            "MDL",
-            "MGA",
-            "MKD",
-            "MMK",
-            "MNT",
-            "MOP",
-            "MRO",
-            "MUR",
-            "MVR",
-            "MWK",
-            "MXN",
-            "MXV",
-            "MYR",
-            "MZN",
-            "NAD",
-            "NGN",
-            "NIO",
-            "NOK",
-            "NPR",
-            "NZD",
-            "OMR",
-            "PAB",
-            "PEN",
-            "PGK",
-            "PHP",
-            "PKR",
-            "PLN",
-            "PYG",
-            "QAR",
-            "RON",
-            "RSD",
-            "RUB",
-            "RWF",
-            "SAR",
-            "SBD",
-            "SCR",
-            "SDG",
-            "SEK",
-            "SGD",
-            "SHP",
-            "SLL",
-            "SOS",
-            "SRD",
-            "SSP",
-            "STD",
-            "SVC",
-            "SYP",
-            "SZL",
-            "THB",
-            "TJS",
-            "TMT",
-            "TND",
-            "TOP",
-            "TRY",
-            "TTD",
-            "TWD",
-            "TZS",
-            "UAH",
-            "UGX",
-            "USD",
-            "USN",
-            "USS",
-            "UYI",
-            "UYU",
-            "UZS",
-            "VEF",
-            "VND",
-            "VUV",
-            "WST",
-            "XAF",
-            "XAG",
-            "XAU",
-            "XBA",
-            "XBB",
-            "XBC",
-            "XBD",
-            "XCD",
-            "XDR",
-            "XOF",
-            "XPD",
-            "XPF",
-            "XPT",
-            "XTS",
-            "XXX",
-            "YER",
-            "ZAR",
-            "ZMK",
-            "ZMW",
-            "BTC"
-          ],
           "description": "The currency used for all transactions at this location, specified in __ISO 4217 format__.\nFor example, the currency for a location processing transactions in the United States is \u0027USD\u0027.\nSee [Currency](#type-currency) for possible values"
         },
         "phone_number": {
@@ -19005,10 +17858,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "PHYSICAL",
-            "MOBILE"
-          ],
           "description": "The location\u0027s type, as set by the account owner in the Square dashboard.\nTypically used to indicate whether or not the location object represents a physical space\nlike a building or mall space.\nSee [LocationType](#type-locationtype) for possible values"
         },
         "website_url": {
@@ -19056,67 +17905,22 @@
         },
         "area_unit": {
           "type": "string",
-          "enum": [
-            "IMPERIAL_ACRE",
-            "IMPERIAL_SQUARE_INCH",
-            "IMPERIAL_SQUARE_FOOT",
-            "IMPERIAL_SQUARE_YARD",
-            "IMPERIAL_SQUARE_MILE",
-            "METRIC_SQUARE_CENTIMETER",
-            "METRIC_SQUARE_METER",
-            "METRIC_SQUARE_KILOMETER"
-          ],
           "description": "Represents a standard area unit.\nSee [MeasurementUnitArea](#type-measurementunitarea) for possible values"
         },
         "length_unit": {
           "type": "string",
-          "enum": [
-            "IMPERIAL_INCH",
-            "IMPERIAL_FOOT",
-            "IMPERIAL_YARD",
-            "IMPERIAL_MILE",
-            "METRIC_MILLIMETER",
-            "METRIC_CENTIMETER",
-            "METRIC_METER",
-            "METRIC_KILOMETER"
-          ],
           "description": "Represents a standard length unit.\nSee [MeasurementUnitLength](#type-measurementunitlength) for possible values"
         },
         "volume_unit": {
           "type": "string",
-          "enum": [
-            "GENERIC_FLUID_OUNCE",
-            "GENERIC_SHOT",
-            "GENERIC_CUP",
-            "GENERIC_PINT",
-            "GENERIC_QUART",
-            "GENERIC_GALLON",
-            "IMPERIAL_CUBIC_INCH",
-            "IMPERIAL_CUBIC_FOOT",
-            "IMPERIAL_CUBIC_YARD",
-            "METRIC_MILLILITER",
-            "METRIC_LITER"
-          ],
           "description": "Represents a standard volume unit.\nSee [MeasurementUnitVolume](#type-measurementunitvolume) for possible values"
         },
         "weight_unit": {
           "type": "string",
-          "enum": [
-            "IMPERIAL_WEIGHT_OUNCE",
-            "IMPERIAL_POUND",
-            "IMPERIAL_STONE",
-            "METRIC_MILLIGRAM",
-            "METRIC_GRAM",
-            "METRIC_KILOGRAM"
-          ],
           "description": "Represents a standard unit of weight or mass.\nSee [MeasurementUnitWeight](#type-measurementunitweight) for possible values"
         },
         "generic_unit": {
           "type": "string",
-          "enum": [
-            "INVALID_GENERIC_UNIT",
-            "UNIT"
-          ],
           "description": "Reserved for API integrations that lack the ability to specify a real measurement unit\nSee [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values"
         }
       },
@@ -19152,189 +17956,6 @@
         },
         "currency": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_CURRENCY",
-            "AED",
-            "AFN",
-            "ALL",
-            "AMD",
-            "ANG",
-            "AOA",
-            "ARS",
-            "AUD",
-            "AWG",
-            "AZN",
-            "BAM",
-            "BBD",
-            "BDT",
-            "BGN",
-            "BHD",
-            "BIF",
-            "BMD",
-            "BND",
-            "BOB",
-            "BOV",
-            "BRL",
-            "BSD",
-            "BTN",
-            "BWP",
-            "BYR",
-            "BZD",
-            "CAD",
-            "CDF",
-            "CHE",
-            "CHF",
-            "CHW",
-            "CLF",
-            "CLP",
-            "CNY",
-            "COP",
-            "COU",
-            "CRC",
-            "CUC",
-            "CUP",
-            "CVE",
-            "CZK",
-            "DJF",
-            "DKK",
-            "DOP",
-            "DZD",
-            "EGP",
-            "ERN",
-            "ETB",
-            "EUR",
-            "FJD",
-            "FKP",
-            "GBP",
-            "GEL",
-            "GHS",
-            "GIP",
-            "GMD",
-            "GNF",
-            "GTQ",
-            "GYD",
-            "HKD",
-            "HNL",
-            "HRK",
-            "HTG",
-            "HUF",
-            "IDR",
-            "ILS",
-            "INR",
-            "IQD",
-            "IRR",
-            "ISK",
-            "JMD",
-            "JOD",
-            "JPY",
-            "KES",
-            "KGS",
-            "KHR",
-            "KMF",
-            "KPW",
-            "KRW",
-            "KWD",
-            "KYD",
-            "KZT",
-            "LAK",
-            "LBP",
-            "LKR",
-            "LRD",
-            "LSL",
-            "LTL",
-            "LVL",
-            "LYD",
-            "MAD",
-            "MDL",
-            "MGA",
-            "MKD",
-            "MMK",
-            "MNT",
-            "MOP",
-            "MRO",
-            "MUR",
-            "MVR",
-            "MWK",
-            "MXN",
-            "MXV",
-            "MYR",
-            "MZN",
-            "NAD",
-            "NGN",
-            "NIO",
-            "NOK",
-            "NPR",
-            "NZD",
-            "OMR",
-            "PAB",
-            "PEN",
-            "PGK",
-            "PHP",
-            "PKR",
-            "PLN",
-            "PYG",
-            "QAR",
-            "RON",
-            "RSD",
-            "RUB",
-            "RWF",
-            "SAR",
-            "SBD",
-            "SCR",
-            "SDG",
-            "SEK",
-            "SGD",
-            "SHP",
-            "SLL",
-            "SOS",
-            "SRD",
-            "SSP",
-            "STD",
-            "SVC",
-            "SYP",
-            "SZL",
-            "THB",
-            "TJS",
-            "TMT",
-            "TND",
-            "TOP",
-            "TRY",
-            "TTD",
-            "TWD",
-            "TZS",
-            "UAH",
-            "UGX",
-            "USD",
-            "USN",
-            "USS",
-            "UYI",
-            "UYU",
-            "UZS",
-            "VEF",
-            "VND",
-            "VUV",
-            "WST",
-            "XAF",
-            "XAG",
-            "XAU",
-            "XBA",
-            "XBB",
-            "XBC",
-            "XBD",
-            "XCD",
-            "XDR",
-            "XOF",
-            "XPD",
-            "XPF",
-            "XPT",
-            "XTS",
-            "XXX",
-            "YER",
-            "ZAR",
-            "ZMK",
-            "ZMW",
-            "BTC"
-          ],
           "description": "The type of currency, in __ISO 4217 format__. For example, the currency\ncode for US dollars is `USD`.\nSee [Currency](#type-currency) for possible values"
         }
       },
@@ -19556,11 +18177,6 @@
         },
         "state": {
           "type": "string",
-          "enum": [
-            "OPEN",
-            "COMPLETED",
-            "CANCELED"
-          ],
           "description": "The current state of the order. `OPEN`,`COMPLETED`,`CANCELED`\nSee [OrderState](#type-orderstate) for possible values",
           "x-release-status": "BETA"
         },
@@ -19605,21 +18221,10 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "PICKUP"
-          ],
           "description": "The type of the fulfillment.\nSee [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values"
         },
         "state": {
           "type": "string",
-          "enum": [
-            "PROPOSED",
-            "RESERVED",
-            "PREPARED",
-            "COMPLETED",
-            "CANCELED",
-            "FAILED"
-          ],
           "description": "The state of the fulfillment.\nSee [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values"
         },
         "pickup_details": {
@@ -19647,10 +18252,6 @@
         },
         "schedule_type": {
           "type": "string",
-          "enum": [
-            "SCHEDULED",
-            "ASAP"
-          ],
           "description": "The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`.\nSee [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values"
         },
         "pickup_at": {
@@ -19754,7 +18355,7 @@
           "minLength": 1,
           "maxLength": 12,
           "type": "string",
-          "description": "The quantity purchased, formatted as a decimal number.\nFor example: `\"3\"`.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example: `\"1.70000\"`.\n\nOrders Hub and older versions of Connect do not support non-integer quantities.\nSee [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities)."
+          "description": "The quantity purchased, formatted as a decimal number.\nFor example: `\"3\"`.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example: `\"1.70000\"`."
         },
         "quantity_unit": {
           "$ref": "#/definitions/OrderQuantityUnit",
@@ -19845,13 +18446,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_DISCOUNT",
-            "FIXED_PERCENTAGE",
-            "FIXED_AMOUNT",
-            "VARIABLE_PERCENTAGE",
-            "VARIABLE_AMOUNT"
-          ],
           "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values"
         },
         "percentage": {
@@ -19869,11 +18463,6 @@
         },
         "scope": {
           "type": "string",
-          "enum": [
-            "OTHER_DISCOUNT_SCOPE",
-            "LINE_ITEM",
-            "ORDER"
-          ],
           "description": "Indicates the level at which the discount applies. This field is set by the server.\nIf set in a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values"
         }
       },
@@ -19932,11 +18521,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_TAX",
-            "ADDITIVE",
-            "INCLUSIVE"
-          ],
           "description": "Indicates the calculation method used to apply the tax.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
         },
         "percentage": {
@@ -19950,11 +18534,6 @@
         },
         "scope": {
           "type": "string",
-          "enum": [
-            "OTHER_TAX_SCOPE",
-            "LINE_ITEM",
-            "ORDER"
-          ],
           "description": "Indicates the level at which the tax applies. This field is set by the server. If set\nin a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values"
         }
       },
@@ -19997,7 +18576,7 @@
         },
         "precision": {
           "type": "integer",
-          "description": "For non-integer quantities, represents the number of digits after the decimal point that are\nrecorded for this quantity.\n\nFor example, a precision of 1 allows quantities like `\"1.0\"` and `\"1.1\"`, but not `\"1.01\"`.\n\nMin: 0. Max: 5.\n\nOrders Hub and older versions of Connect do not support non-integer quantities.\nSee [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities)."
+          "description": "For non-integer quantities, represents the number of digits after the decimal point that are\nrecorded for this quantity.\n\nFor example, a precision of 1 allows quantities like `\"1.0\"` and `\"1.1\"`, but not `\"1.01\"`.\n\nMin: 0. Max: 5."
         }
       },
       "description": "Contains the measurement unit for a quantity and a precision which\nspecifies the number of digits after the decimal point for decimal quantities.",
@@ -20080,13 +18659,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_DISCOUNT",
-            "FIXED_PERCENTAGE",
-            "FIXED_AMOUNT",
-            "VARIABLE_PERCENTAGE",
-            "VARIABLE_AMOUNT"
-          ],
           "description": "The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.\n\nVARIABLE_* is not supported in API because the order is created at the time of sale and either\npercentage or amount has to be specified.\nSee [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values"
         },
         "percentage": {
@@ -20104,11 +18676,6 @@
         },
         "scope": {
           "type": "string",
-          "enum": [
-            "OTHER_DISCOUNT_SCOPE",
-            "LINE_ITEM",
-            "ORDER"
-          ],
           "description": "Indicates the level at which the discount applies. This field is set by the server.\nIf set in a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values"
         }
       },
@@ -20291,10 +18858,6 @@
         },
         "calculation_phase": {
           "type": "string",
-          "enum": [
-            "SUBTOTAL_PHASE",
-            "TOTAL_PHASE"
-          ],
           "description": "The calculation phase after which to apply the service charge.\n\nThis field is read-only.\nSee [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values"
         },
         "taxable": {
@@ -20337,11 +18900,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_TAX",
-            "ADDITIVE",
-            "INCLUSIVE"
-          ],
           "description": "Indicates the calculation method used to apply the tax.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
         },
         "percentage": {
@@ -20355,11 +18913,6 @@
         },
         "scope": {
           "type": "string",
-          "enum": [
-            "OTHER_TAX_SCOPE",
-            "LINE_ITEM",
-            "ORDER"
-          ],
           "description": "Indicates the level at which the tax applies. This field is set by the server. If set\nin a CreateOrder request, it will be ignored on write.\nSee [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values"
         }
       },
@@ -20427,10 +18980,6 @@
         },
         "calculation_phase": {
           "type": "string",
-          "enum": [
-            "SUBTOTAL_PHASE",
-            "TOTAL_PHASE"
-          ],
           "description": "The calculation phase at which to apply the service charge.\nSee [OrderServiceChargeCalculationPhase](#type-orderservicechargecalculationphase) for possible values"
         },
         "taxable": {
@@ -20501,12 +19050,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "PENDING",
-            "APPROVED",
-            "REJECTED",
-            "FAILED"
-          ],
           "description": "The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`,\nor `FAILED`).\nSee [RefundStatus](#type-refundstatus) for possible values"
         },
         "processing_fee_money": {
@@ -20565,10 +19108,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "PENDING",
-            "VERIFIED"
-          ],
           "description": "Status of the domain registration.\nSee [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values"
         }
       },
@@ -21190,20 +19729,7 @@
         "object_types": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "ITEM",
-              "IMAGE",
-              "CATEGORY",
-              "ITEM_VARIATION",
-              "TAX",
-              "DISCOUNT",
-              "MODIFIER_LIST",
-              "MODIFIER",
-              "PRICING_RULE",
-              "PRODUCT_SET",
-              "TIME_PERIOD"
-            ]
+            "type": "string"
           },
           "description": "The desired set of object types to appear in the search results. The legal values are taken from the\n[CatalogObjectType](#type-catalogobjecttype) enumeration, namely `\"ITEM\"`, `\"ITEM_VARIATION\"`, `\"CATEGORY\"`,\n`\"DISCOUNT\"`, `\"TAX\"`, `\"MODIFIER\"`, or `\"MODIFIER_LIST\"`.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
         },
@@ -21588,25 +20114,14 @@
         "fulfillment_types": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "PICKUP"
-            ]
+            "type": "string"
           },
           "description": "List of [fulfillment types](#type-orderfulfillmenttype) to filter\nfor. Will return orders if any of its fulfillments match any of the fulfillment types\nlisted in this field.\nSee [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values"
         },
         "fulfillment_states": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "PROPOSED",
-              "RESERVED",
-              "PREPARED",
-              "COMPLETED",
-              "CANCELED",
-              "FAILED"
-            ]
+            "type": "string"
           },
           "description": "List of [fulfillment states](#type-orderfulfillmentstate) to filter\nfor. Will return orders if any of its fulfillments match any of the\nfulfillment states listed in this field.\nSee [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values"
         }
@@ -21753,19 +20268,10 @@
       "properties": {
         "sort_field": {
           "type": "string",
-          "enum": [
-            "CREATED_AT",
-            "UPDATED_AT",
-            "CLOSED_AT"
-          ],
           "description": "The field to sort by.\n\n__Important:__ When using a [DateTimeFilter](#type-searchordersfilter),\n`sort_field` must match the set time range field. If this field does not\nmatch the time range field in `DateTimeFilter`, SearchOrder will return an\nerror.\n\nDefault: `CREATED_AT`.\nSee [SearchOrdersSortField](#type-searchorderssortfield) for possible values"
         },
         "sort_order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which results are returned. Defaults to `DESC`.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
@@ -21795,12 +20301,7 @@
         "states": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "OPEN",
-              "COMPLETED",
-              "CANCELED"
-            ]
+            "type": "string"
           },
           "description": "States to filter for.\nSee [OrderState](#type-orderstate) for possible values"
         }
@@ -21991,10 +20492,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "OPEN",
-            "CLOSED"
-          ],
           "description": "Describes working state of the current `Shift`.\nSee [ShiftStatus](#type-shiftstatus) for possible values"
         },
         "version": {
@@ -22032,10 +20529,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "OPEN",
-            "CLOSED"
-          ],
           "description": "Fetch a `Shift` instance by `Shift.status`.\nSee [ShiftFilterStatus](#type-shiftfilterstatus) for possible values"
         },
         "start": {
@@ -22074,20 +20567,10 @@
       "properties": {
         "field": {
           "type": "string",
-          "enum": [
-            "START_AT",
-            "END_AT",
-            "CREATED_AT",
-            "UPDATED_AT"
-          ],
           "description": "The field to sort on.\nSee [ShiftSortField](#type-shiftsortfield) for possible values"
         },
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which results are returned. Defaults to DESC.\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
@@ -22118,11 +20601,6 @@
         },
         "match_shifts_by": {
           "type": "string",
-          "enum": [
-            "START_AT",
-            "END_AT",
-            "INTERSECTION"
-          ],
           "description": "The strategy on which the dates are applied.\nSee [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values"
         },
         "default_timezone": {
@@ -22138,18 +20616,6 @@
       "properties": {
         "product": {
           "type": "string",
-          "enum": [
-            "SQUARE_POS",
-            "EXTERNAL_API",
-            "BILLING",
-            "APPOINTMENTS",
-            "INVOICES",
-            "ONLINE_STORE",
-            "PAYROLL",
-            "DASHBOARD",
-            "ITEM_LIBRARY_IMPORT",
-            "OTHER"
-          ],
           "description": "Read-only [Product](#type-product) type for the application.\nSee [Product](#type-product) for possible values"
         },
         "application_id": {
@@ -22245,14 +20711,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "CARD",
-            "CASH",
-            "THIRD_PARTY_CARD",
-            "SQUARE_GIFT_CARD",
-            "NO_SALE",
-            "OTHER"
-          ],
           "description": "The type of tender, such as `CARD` or `CASH`.\nSee [TenderType](#type-tendertype) for possible values"
         },
         "card_details": {
@@ -22279,12 +20737,6 @@
       "properties": {
         "status": {
           "type": "string",
-          "enum": [
-            "AUTHORIZED",
-            "CAPTURED",
-            "VOIDED",
-            "FAILED"
-          ],
           "description": "The credit card payment\u0027s current state (such as `AUTHORIZED` or\n`CAPTURED`).\nSee [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values"
         },
         "card": {
@@ -22293,13 +20745,6 @@
         },
         "entry_method": {
           "type": "string",
-          "enum": [
-            "SWIPED",
-            "KEYED",
-            "EMV",
-            "ON_FILE",
-            "CONTACTLESS"
-          ],
           "description": "The method used to enter the card\u0027s details for the transaction.\nSee [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values"
         }
       },
@@ -22371,16 +20816,6 @@
         },
         "product": {
           "type": "string",
-          "enum": [
-            "REGISTER",
-            "EXTERNAL_API",
-            "BILLING",
-            "APPOINTMENTS",
-            "INVOICES",
-            "ONLINE_STORE",
-            "PAYROLL",
-            "OTHER"
-          ],
           "description": "The Square product that processed the transaction.\nSee [TransactionProduct](#type-transactionproduct) for possible values"
         },
         "client_id": {
@@ -22975,11 +21410,6 @@
         },
         "adjustment_type": {
           "type": "string",
-          "enum": [
-            "SALE",
-            "RECEIVE_STOCK",
-            "MANUAL_ADJUST"
-          ],
           "description": "The reason for the inventory adjustment.\nSee [V1AdjustInventoryRequestAdjustmentType](#type-v1adjustinventoryrequestadjustmenttype) for possible values"
         },
         "memo": {
@@ -23035,14 +21465,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "BUSINESS_CHECKING",
-            "CHECKING",
-            "INVESTMENT",
-            "LOAN",
-            "SAVINGS",
-            "OTHER"
-          ],
           "description": "The bank account\u0027s type (for example, savings or checking).\nSee [V1BankAccountType](#type-v1bankaccounttype) for possible values"
         }
       },
@@ -23062,17 +21484,6 @@
         },
         "event_type": {
           "type": "string",
-          "enum": [
-            "NO_SALE",
-            "CASH_TENDER_PAYMENT",
-            "OTHER_TENDER_PAYMENT",
-            "CASH_TENDER_CANCELED_PAYMENT",
-            "OTHER_TENDER_CANCELED_PAYMENT",
-            "CASH_TENDER_REFUND",
-            "OTHER_TENDER_REFUND",
-            "PAID_IN",
-            "PAID_OUT"
-          ],
           "description": "The type of event that occurred.\nSee [V1CashDrawerEventEventType](#type-v1cashdrawereventeventtype) for possible values"
         },
         "event_money": {
@@ -23100,11 +21511,6 @@
         },
         "event_type": {
           "type": "string",
-          "enum": [
-            "OPEN",
-            "ENDED",
-            "CLOSED"
-          ],
           "description": "The shift\u0027s current state.\nSee [V1CashDrawerShiftEventType](#type-v1cashdrawershifteventtype) for possible values"
         },
         "opened_at": {
@@ -23140,7 +21546,7 @@
         },
         "description": {
           "type": "string",
-          "description": "The time when the timecard was created, in ISO 8601 format."
+          "description": "A description of the cash drawer shift."
         },
         "starting_cash_money": {
           "$ref": "#/definitions/V1Money",
@@ -23182,7 +21588,7 @@
           "description": "All of the events (payments, refunds, and so on) that involved the cash drawer during the shift."
         }
       },
-      "description": "V1CashDrawerShift",
+      "description": "Contains details for a single cash drawer shift.",
       "x-release-status": "PUBLIC"
     },
     "V1Category": {
@@ -23306,10 +21712,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "FULL",
-            "PARTIAL"
-          ],
           "description": "TThe type of refund (FULL or PARTIAL).\nSee [V1CreateRefundRequestType](#type-v1createrefundrequesttype) for possible values"
         },
         "reason": {
@@ -23435,11 +21837,6 @@
         },
         "discount_type": {
           "type": "string",
-          "enum": [
-            "FIXED",
-            "VARIABLE_PERCENTAGE",
-            "VARIABLE_AMOUNT"
-          ],
           "description": "Indicates whether the discount is a FIXED value or entered at the time of sale.\nSee [V1DiscountDiscountType](#type-v1discountdiscounttype) for possible values"
         },
         "pin_required": {
@@ -23448,17 +21845,6 @@
         },
         "color": {
           "type": "string",
-          "enum": [
-            "9da2a6",
-            "4ab200",
-            "0b8000",
-            "2952cc",
-            "a82ee5",
-            "e5457a",
-            "b21212",
-            "593c00",
-            "e5BF00"
-          ],
           "description": "The color of the discount\u0027s display label in Square Register, if not the default color. The default color is 9da2a6.\nSee [V1DiscountColor](#type-v1discountcolor) for possible values"
         },
         "v2_id": {
@@ -23508,10 +21894,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "ACTIVE",
-            "INACTIVE"
-          ],
           "description": "CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard.\nSee [V1EmployeeStatus](#type-v1employeestatus) for possible values"
         },
         "external_id": {
@@ -23548,16 +21930,7 @@
         "permissions": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "REGISTER_ACCESS_SALES_HISTORY",
-              "REGISTER_APPLY_RESTRICTED_DISCOUNTS",
-              "REGISTER_CHANGE_SETTINGS",
-              "REGISTER_EDIT_ITEM",
-              "REGISTER_ISSUE_REFUNDS",
-              "REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
-              "REGISTER_VIEW_SUMMARY_REPORTS"
-            ]
+            "type": "string"
           },
           "description": "The role\u0027s permissions.\nSee [V1EmployeeRolePermissions](#type-v1employeerolepermissions) for possible values"
         },
@@ -23594,18 +21967,10 @@
         },
         "calculation_phase": {
           "type": "string",
-          "enum": [
-            "FEE_SUBTOTAL_PHASE",
-            "OTHER",
-            "FEE_TOTAL_PHASE"
-          ],
           "description": "Forthcoming\nSee [V1FeeCalculationPhase](#type-v1feecalculationphase) for possible values"
         },
         "adjustment_type": {
           "type": "string",
-          "enum": [
-            "TAX"
-          ],
           "description": "The type of adjustment the fee applies to a payment. Currently, this value is TAX for all fees.\nSee [V1FeeAdjustmentType](#type-v1feeadjustmenttype) for possible values"
         },
         "applies_to_custom_amounts": {
@@ -23618,24 +21983,10 @@
         },
         "inclusion_type": {
           "type": "string",
-          "enum": [
-            "ADDITIVE",
-            "INCLUSIVE"
-          ],
           "description": "Whether the fee is ADDITIVE or INCLUSIVE.\nSee [V1FeeInclusionType](#type-v1feeinclusiontype) for possible values"
         },
         "type": {
           "type": "string",
-          "enum": [
-            "CA_GST",
-            "CA_HST",
-            "CA_PST",
-            "CA_QST",
-            "JP_CONSUMPTION_TAX",
-            "CA_PEI_PST",
-            "US_SALES_TAX",
-            "OTHER"
-          ],
           "description": "In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.\nSee [V1FeeType](#type-v1feetype) for possible values"
         },
         "v2_id": {
@@ -23678,26 +22029,10 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "NORMAL",
-            "GIFT_CARD",
-            "OTHER"
-          ],
           "description": "The item\u0027s type. This value is NORMAL for almost all items.\nSee [V1ItemType](#type-v1itemtype) for possible values"
         },
         "color": {
           "type": "string",
-          "enum": [
-            "9da2a6",
-            "4ab200",
-            "0b8000",
-            "2952cc",
-            "a82ee5",
-            "e5457a",
-            "b21212",
-            "593c00",
-            "e5BF00"
-          ],
           "description": "The color of the discount\u0027s display label in Square Register, if not the default color. The default color is 9da2a6.\nSee [V1ItemColor](#type-v1itemcolor) for possible values"
         },
         "abbreviation": {
@@ -23706,10 +22041,6 @@
         },
         "visibility": {
           "type": "string",
-          "enum": [
-            "PUBLIC",
-            "PRIVATE"
-          ],
           "description": "Indicates whether the item is viewable from the merchant\u0027s online store (PUBLIC) or PRIVATE.\nSee [V1ItemVisibility](#type-v1itemvisibility) for possible values"
         },
         "available_online": {
@@ -23734,7 +22065,7 @@
         "modifier_lists": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/V1Variation"
+            "$ref": "#/definitions/V1ModifierList"
           },
           "description": "The modifier lists that apply to the item, if any."
         },
@@ -23805,10 +22136,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "begin_time": {
@@ -23882,10 +22209,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which employees are listed in the response, based on their created_at field.Default value: ASC\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "limit": {
@@ -23919,10 +22242,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which employees are listed in the response, based on their created_at field.      Default value: ASC\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "begin_updated_at": {
@@ -23943,10 +22262,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "ACTIVE",
-            "INACTIVE"
-          ],
           "description": "If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).\nSee [V1ListEmployeesRequestStatus](#type-v1listemployeesrequeststatus) for possible values"
         },
         "external_id": {
@@ -24098,10 +22413,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "TThe order in which payments are listed in the response.\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "limit": {
@@ -24157,10 +22468,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which payments are listed in the response.\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "begin_time": {
@@ -24206,10 +22513,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "TThe order in which payments are listed in the response.\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "begin_time": {
@@ -24251,10 +22554,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "TThe order in which payments are listed in the response.\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "begin_time": {
@@ -24271,10 +22570,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "SENT",
-            "FAILED"
-          ],
           "description": "Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).\nSee [V1ListSettlementsRequestStatus](#type-v1listsettlementsrequeststatus) for possible values"
         },
         "batch_token": {
@@ -24324,10 +22619,6 @@
       "properties": {
         "order": {
           "type": "string",
-          "enum": [
-            "DESC",
-            "ASC"
-          ],
           "description": "The order in which timecards are listed in the response, based on their created_at field.\nSee [SortOrder](#type-sortorder) for possible values"
         },
         "employee_id": {
@@ -24405,10 +22696,6 @@
         },
         "account_type": {
           "type": "string",
-          "enum": [
-            "LOCATION",
-            "BUSINESS"
-          ],
           "description": "Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION.\nSee [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values"
         },
         "account_capabilities": {
@@ -24444,58 +22731,6 @@
         },
         "business_type": {
           "type": "string",
-          "enum": [
-            "ACCOUNTING",
-            "APPAREL_AND_ACCESSORY_SHOPS",
-            "ART_DEALERS_GALLERIES",
-            "ART_DESIGN_AND_PHOTOGRAPHY",
-            "BAR_CLUB_LOUNGE",
-            "BEAUTY_AND_BARBER_SHOPS",
-            "BOOK_STORES",
-            "BUSINESS_SERVICES",
-            "CATERING",
-            "CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS",
-            "CHARITIBLE_ORGS",
-            "CLEANING_SERVICES",
-            "COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES",
-            "CONSULTANT",
-            "CONTRACTORS",
-            "DELIVERY_SERVICES",
-            "DENTISTRY",
-            "EDUCATION",
-            "FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS",
-            "FOOD_TRUCK_CART",
-            "FURNITURE_HOME_AND_OFFICE_EQUIPMENT",
-            "FURNITURE_HOME_GOODS",
-            "HOTELS_AND_LODGING",
-            "INDIVIDUAL_USE",
-            "JEWELRY_AND_WATCHES",
-            "LANDSCAPING_AND_HORTICULTURAL_SERVICES",
-            "LANGUAGE_SCHOOLS",
-            "LEGAL_SERVICES",
-            "MEDICAL_PRACTITIONERS",
-            "MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS",
-            "MEMBERSHIP_ORGANIZATIONS",
-            "MUSIC_AND_ENTERTAINMENT",
-            "OTHER",
-            "OUTDOOR_MARKETS",
-            "PERSONAL_SERVICES",
-            "POLITICAL_ORGANIZATIONS",
-            "PROFESSIONAL_SERVICES",
-            "REAL_ESTATE",
-            "RECREATION_SERVICES",
-            "REPAIR_SHOPS_AND_RELATED_SERVICES",
-            "RESTAURANTS",
-            "RETAIL_SHOPS",
-            "SCHOOLS_AND_EDUCATIONAL_SERVICES",
-            "SPORTING_GOODS",
-            "TAXICABS_AND_LIMOUSINES",
-            "TICKET_SALES",
-            "TOURISM",
-            "TRAVEL_TOURISM",
-            "VETERINARY_SERVICES",
-            "WEB_DEV_DESIGN"
-          ],
           "description": "The type of business operated by the merchant.\nSee [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values"
         },
         "shipping_address": {
@@ -24538,10 +22773,6 @@
         },
         "selection_type": {
           "type": "string",
-          "enum": [
-            "SINGLE",
-            "MULTIPLE"
-          ],
           "description": "Indicates whether MULTIPLE options or a SINGLE option from the modifier list can be applied to a single item.\nSee [V1ModifierListSelectionType](#type-v1modifierlistselectiontype) for possible values"
         },
         "modifier_options": {
@@ -24603,189 +22834,6 @@
         },
         "currency_code": {
           "type": "string",
-          "enum": [
-            "UNKNOWN_CURRENCY",
-            "AED",
-            "AFN",
-            "ALL",
-            "AMD",
-            "ANG",
-            "AOA",
-            "ARS",
-            "AUD",
-            "AWG",
-            "AZN",
-            "BAM",
-            "BBD",
-            "BDT",
-            "BGN",
-            "BHD",
-            "BIF",
-            "BMD",
-            "BND",
-            "BOB",
-            "BOV",
-            "BRL",
-            "BSD",
-            "BTN",
-            "BWP",
-            "BYR",
-            "BZD",
-            "CAD",
-            "CDF",
-            "CHE",
-            "CHF",
-            "CHW",
-            "CLF",
-            "CLP",
-            "CNY",
-            "COP",
-            "COU",
-            "CRC",
-            "CUC",
-            "CUP",
-            "CVE",
-            "CZK",
-            "DJF",
-            "DKK",
-            "DOP",
-            "DZD",
-            "EGP",
-            "ERN",
-            "ETB",
-            "EUR",
-            "FJD",
-            "FKP",
-            "GBP",
-            "GEL",
-            "GHS",
-            "GIP",
-            "GMD",
-            "GNF",
-            "GTQ",
-            "GYD",
-            "HKD",
-            "HNL",
-            "HRK",
-            "HTG",
-            "HUF",
-            "IDR",
-            "ILS",
-            "INR",
-            "IQD",
-            "IRR",
-            "ISK",
-            "JMD",
-            "JOD",
-            "JPY",
-            "KES",
-            "KGS",
-            "KHR",
-            "KMF",
-            "KPW",
-            "KRW",
-            "KWD",
-            "KYD",
-            "KZT",
-            "LAK",
-            "LBP",
-            "LKR",
-            "LRD",
-            "LSL",
-            "LTL",
-            "LVL",
-            "LYD",
-            "MAD",
-            "MDL",
-            "MGA",
-            "MKD",
-            "MMK",
-            "MNT",
-            "MOP",
-            "MRO",
-            "MUR",
-            "MVR",
-            "MWK",
-            "MXN",
-            "MXV",
-            "MYR",
-            "MZN",
-            "NAD",
-            "NGN",
-            "NIO",
-            "NOK",
-            "NPR",
-            "NZD",
-            "OMR",
-            "PAB",
-            "PEN",
-            "PGK",
-            "PHP",
-            "PKR",
-            "PLN",
-            "PYG",
-            "QAR",
-            "RON",
-            "RSD",
-            "RUB",
-            "RWF",
-            "SAR",
-            "SBD",
-            "SCR",
-            "SDG",
-            "SEK",
-            "SGD",
-            "SHP",
-            "SLL",
-            "SOS",
-            "SRD",
-            "SSP",
-            "STD",
-            "SVC",
-            "SYP",
-            "SZL",
-            "THB",
-            "TJS",
-            "TMT",
-            "TND",
-            "TOP",
-            "TRY",
-            "TTD",
-            "TWD",
-            "TZS",
-            "UAH",
-            "UGX",
-            "USD",
-            "USN",
-            "USS",
-            "UYI",
-            "UYU",
-            "UZS",
-            "VEF",
-            "VND",
-            "VUV",
-            "WST",
-            "XAF",
-            "XAG",
-            "XAU",
-            "XBA",
-            "XBB",
-            "XBC",
-            "XBD",
-            "XCD",
-            "XDR",
-            "XOF",
-            "XPD",
-            "XPF",
-            "XPT",
-            "XTS",
-            "XXX",
-            "YER",
-            "ZAR",
-            "ZMK",
-            "ZMW",
-            "BTC"
-          ],
           "description": "\nSee [Currency](#type-currency) for possible values"
         }
       },
@@ -24820,14 +22868,6 @@
         },
         "state": {
           "type": "string",
-          "enum": [
-            "PENDING",
-            "OPEN",
-            "COMPLETED",
-            "CANCELED",
-            "REFUNDED",
-            "REJECTED"
-          ],
           "description": "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.\nSee [V1OrderState](#type-v1orderstate) for possible values"
         },
         "shipping_address": {
@@ -24919,15 +22959,6 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "ORDER_PLACED",
-            "DECLINED",
-            "PAYMENT_RECEIVED",
-            "CANCELED",
-            "COMPLETED",
-            "REFUNDED",
-            "EXPIRED"
-          ],
           "description": "The type of action performed on the order.\nSee [V1OrderHistoryEntryAction](#type-v1orderhistoryentryaction) for possible values"
         },
         "created_at": {
@@ -24984,12 +23015,6 @@
         },
         "object_type": {
           "type": "string",
-          "enum": [
-            "ITEM",
-            "DISCOUNT",
-            "CATEGORY",
-            "PLACEHOLDER"
-          ],
           "description": "The type of entity represented in the cell (ITEM, DISCOUNT, CATEGORY, or PLACEHOLDER).\nSee [V1PageCellObjectType](#type-v1pagecellobjecttype) for possible values"
         },
         "object_id": {
@@ -24998,11 +23023,6 @@
         },
         "placeholder_type": {
           "type": "string",
-          "enum": [
-            "ALL_ITEMS",
-            "DISCOUNTS_CATEGORY",
-            "REWARDS_FINDER"
-          ],
           "description": "For a cell with an object_type of PLACEHOLDER, this value indicates the cell\u0027s special behavior.\nSee [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values"
         }
       },
@@ -25197,14 +23217,6 @@
         },
         "itemization_type": {
           "type": "string",
-          "enum": [
-            "ITEM",
-            "CUSTOM_AMOUNT",
-            "GIFT_CARD_ACTIVATION",
-            "GIFT_CARD_RELOAD",
-            "GIFT_CARD_UNKNOWN",
-            "OTHER"
-          ],
           "description": "The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT\nSee [V1PaymentItemizationItemizationType](#type-v1paymentitemizationitemizationtype) for possible values"
         },
         "item_detail": {
@@ -25304,11 +23316,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "UNKNOWN",
-            "AUTO_GRATUITY",
-            "CUSTOM"
-          ],
           "description": "Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group.\nSee [V1PaymentSurchargeType](#type-v1paymentsurchargetype) for possible values"
         },
         "taxable": {
@@ -25354,10 +23361,6 @@
         },
         "inclusion_type": {
           "type": "string",
-          "enum": [
-            "ADDITIVE",
-            "INCLUSIVE"
-          ],
           "description": "Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.\nSee [V1PaymentTaxInclusionType](#type-v1paymenttaxinclusiontype) for possible values"
         },
         "fee_id": {
@@ -25392,10 +23395,6 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "FULL",
-            "PARTIAL"
-          ],
           "description": "The type of refund\nSee [V1RefundType](#type-v1refundtype) for possible values"
         },
         "reason": {
@@ -25567,10 +23566,6 @@
         },
         "status": {
           "type": "string",
-          "enum": [
-            "FAILED",
-            "SENT"
-          ],
           "description": "The settlement\u0027s current status.\nSee [V1SettlementStatus](#type-v1settlementstatus) for possible values"
         },
         "total_money": {
@@ -25605,29 +23600,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "ADJUSTMENT",
-            "BALANCE_CHARGE",
-            "CHARGE",
-            "FREE_PROCESSING",
-            "HOLD_ADJUSTMENT",
-            "PAID_SERVICE_FEE",
-            "PAID_SERVICE_FEE_REFUND",
-            "REDEMPTION_CODE",
-            "REFUND",
-            "RETURNED_PAYOUT",
-            "SQUARE_CAPITAL_ADVANCE",
-            "SQUARE_CAPITAL_PAYMENT",
-            "SQUARE_CAPITAL_REVERSED_PAYMENT",
-            "SUBSCRIPTION_FEE",
-            "SUBSCRIPTION_FEE_REFUND",
-            "OTHER",
-            "INCENTED_PAYMENT",
-            "RETURNED_ACH_ENTRY",
-            "RETURNED_SQUARE_275",
-            "SQUARE_275",
-            "SQUARE_CARD"
-          ],
           "description": "The settlement\u0027s current status.\nSee [V1SettlementEntryType](#type-v1settlemententrytype) for possible values"
         },
         "amount_money": {
@@ -25651,16 +23623,6 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "CREDIT_CARD",
-            "CASH",
-            "THIRD_PARTY_CARD",
-            "NO_SALE",
-            "SQUARE_WALLET",
-            "SQUARE_GIFT_CARD",
-            "UNKNOWN",
-            "OTHER"
-          ],
           "description": "The type of tender.\nSee [V1TenderType](#type-v1tendertype) for possible values"
         },
         "name": {
@@ -25677,17 +23639,6 @@
         },
         "card_brand": {
           "type": "string",
-          "enum": [
-            "OTHER_BRAND",
-            "VISA",
-            "MASTER_CARD",
-            "AMERICAN_EXPRESS",
-            "DISCOVER",
-            "DISCOVER_DINERS",
-            "JCB",
-            "CHINA_UNIONPAY",
-            "SQUARE_GIFT_CARD"
-          ],
           "description": "The brand of credit card provided.\nSee [V1TenderCardBrand](#type-v1tendercardbrand) for possible values"
         },
         "pan_suffix": {
@@ -25696,15 +23647,6 @@
         },
         "entry_method": {
           "type": "string",
-          "enum": [
-            "MANUAL",
-            "SCANNED",
-            "SQUARE_CASH",
-            "SQUARE_WALLET",
-            "SWIPED",
-            "WEB_FORM",
-            "OTHER"
-          ],
           "description": "The tender\u0027s unique ID.\nSee [V1TenderEntryMethod](#type-v1tenderentrymethod) for possible values"
         },
         "payment_note": {
@@ -25810,16 +23752,6 @@
         },
         "event_type": {
           "type": "string",
-          "enum": [
-            "API_CREATE",
-            "API_EDIT",
-            "API_DELETE",
-            "REGISTER_CLOCKIN",
-            "REGISTER_CLOCKOUT",
-            "DASHBOARD_SUPERVISOR_CLOSE",
-            "DASHBOARD_EDIT",
-            "DASHBOARD_DELETE"
-          ],
           "description": "The ID of the timecard to list events for.\nSee [V1TimecardEventEventType](#type-v1timecardeventeventtype) for possible values"
         },
         "clockin_time": {
@@ -25931,10 +23863,6 @@
         },
         "selection_type": {
           "type": "string",
-          "enum": [
-            "SINGLE",
-            "MULTIPLE"
-          ],
           "description": "Indicates whether multiple options from the modifier list can be applied to a single item.\nSee [V1UpdateModifierListRequestSelectionType](#type-v1updatemodifierlistrequestselectiontype) for possible values"
         }
       },
@@ -25963,11 +23891,6 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "COMPLETE",
-            "CANCEL",
-            "REFUND"
-          ],
           "description": "The action to perform on the order (COMPLETE, CANCEL, or REFUND).\nSee [V1UpdateOrderRequestAction](#type-v1updateorderrequestaction) for possible values"
         },
         "shipped_tracking_number": {
@@ -26068,10 +23991,6 @@
         },
         "pricing_type": {
           "type": "string",
-          "enum": [
-            "FIXED_PRICING",
-            "VARIABLE_PRICING"
-          ],
           "description": "Indicates whether the item variation\u0027s price is fixed or determined at the time of sale.\nSee [V1VariationPricingType](#type-v1variationpricingtype) for possible values"
         },
         "price_money": {
@@ -26088,14 +24007,6 @@
         },
         "inventory_alert_type": {
           "type": "string",
-          "enum": [
-            "LOW_QUANTITY",
-            "NONE",
-            "INVESTMENT",
-            "LOAN",
-            "SAVINGS",
-            "OTHER"
-          ],
           "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its inventory_alert_threshold.\nSee [V1VariationInventoryAlertType](#type-v1variationinventoryalerttype) for possible values"
         },
         "inventory_alert_threshold": {
@@ -26149,15 +24060,6 @@
         },
         "start_of_week": {
           "type": "string",
-          "enum": [
-            "MON",
-            "TUE",
-            "WED",
-            "THU",
-            "FRI",
-            "SAT",
-            "SUN"
-          ],
           "description": "The day of the week on which a business week cuts over for\ncompensation purposes.\nSee [Weekday](#type-weekday) for possible values"
         },
         "start_of_day_local_time": {
