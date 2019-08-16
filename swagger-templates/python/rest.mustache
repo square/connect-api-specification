@@ -83,7 +83,7 @@ class RESTResponse(io.IOBase):
                 next_url = match.group(1)
                 parsed_url = urlparse(next_url)
                 parameters = parse_qs(parsed_url.query)
-                if parameters.has_key('batch_token'):
+                if 'batch_token' in parameters:
                     return parameters['batch_token'][0]
         return None
 

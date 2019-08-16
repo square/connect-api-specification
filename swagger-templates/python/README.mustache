@@ -1,4 +1,12 @@
-Square Connect Python SDK [![Build Status](https://travis-ci.org/square/connect-python-sdk.svg?branch=master)](https://travis-ci.org/square/connect-python-sdk)[![PyPI version](https://badge.fury.io/py/squareconnect.svg)](https://badge.fury.io/py/squareconnect)
+![Square logo]
+
+# Square Connect Python SDK
+
+---
+
+[![Build Status](https://travis-ci.org/square/connect-python-sdk.svg?branch=master)](https://travis-ci.org/square/connect-python-sdk)
+[![PyPI version](https://badge.fury.io/py/squareconnect.svg)](https://badge.fury.io/py/squareconnect)
+[![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ==================
 
 **If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2q56529)**
@@ -39,6 +47,24 @@ Then import the package:
 ```python
 import squareconnect
 ```
+### How to configure sandbox environment
+```python
+from __future__ import print_function
+
+import squareconnect
+from squareconnect.apis.locations_api import LocationsApi
+from squareconnect.api_client import ApiClient
+from squareconnect.configuration import Configuration
+
+# create an instance of the Location API class
+api_config = Configuration()
+api_config.host = "https://connect.squareupsandbox.com"
+api_client = ApiClient(api_config)
+
+api_instance = LocationsApi(api_client=api_client)
+api_instance.api_client.configuration.access_token = 'YOUR_SANDBOX_ACCESS_TOKEN'
+
+```
 
 ### Retrieve your location IDs
 ```python
@@ -62,16 +88,19 @@ except ApiException as e:
 
 ```
 ### Charge the card nonce
+
+<br>
+
 ```python
 from __future__ import print_function
 import uuid
 
 import squareconnect
 from squareconnect.rest import ApiException
-from squareconnect.apis.transactions_api import TransactionsApi
+from squareconnect.apis.payments_api import PaymentsApi
 
-# create an instance of the Transaction API class
-api_instance = TransactionApi()
+# create an instance of the Payments API class
+api_instance = PaymentsApi()
 # setup authorization
 api_instance.api_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
@@ -82,11 +111,11 @@ try:
     # Charge
     idempotency_key = str(uuid.uuid1())
     amount = {'amount': 100, 'currency': 'USD'}
-    body = {'idempotency_key': idempotency_key, 'card_nonce': nonce, 'amount_money': amount}
-    api_response = api_instance.charge(location_id, body)
-    print (api_response.transaction)
+    body = {'idempotency_key': idempotency_key, 'card_nonce': nonce, 'amount_money': amount, 'location_id': location_id}
+    api_response = api_instance.createPayment(body)
+    print (api_response.payment)
 except ApiException as e:
-    print ('Exception when calling TransactionApi->charge: %s\n' % e)
+    print ('Exception when calling PaymentsApi->createPayment: %s\n' % e)
 
 ```
 
@@ -188,3 +217,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+[//]: # "Link anchor definitions"
+[Square Logo]: https://docs.connect.squareup.com/images/github/github-square-logo.svg

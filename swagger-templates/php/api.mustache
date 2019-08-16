@@ -65,7 +65,8 @@ use \{{invokerPackage}}\ObjectSerializer;
     }
   
     {{#operation}}
-    /**
+    /**{{#vendorExtensions.x-is-deprecated}}
+     * @deprecated{{/vendorExtensions.x-is-deprecated}}
      * {{{operationId}}}
      *
      * {{{summary}}}
@@ -76,6 +77,9 @@ use \{{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}({{#allParams}}${{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
+        {{#vendorExtensions.x-is-deprecated}}
+        trigger_error('Calling deprecated API: {{classname}}.{{operationId}}', E_USER_DEPRECATED);
+        {{/vendorExtensions.x-is-deprecated}}
         list($response, $statusCode, $httpHeader) = $this->{{operationId}}WithHttpInfo ({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
         return $response; 
     }

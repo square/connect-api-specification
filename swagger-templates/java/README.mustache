@@ -1,27 +1,14 @@
-# Square Connect Java SDK [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect)
+![Square logo]
+
+# Square Connect Java SDK
+
+---
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.squareup/connect)
+[![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+==================
 
 **If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2GB8GHk)**
-
-## ENUM to String Migration
-The Java SDK no longer treats enums as explicit types. Instead, all enums are handled as static strings. 
-Previously, you would use an enum constant to represent the related string value. For example:
-```java
-Money money = new Money();
-money.setCurrency(Money.CurrencyEnum.USD);
-```
-
-As of version 2.20190710.0, you would work with the static string value directly. For example:
-```java
-Money money = new Money();
-money.setCurrency("USD");
-```
-
-But, as a best practice, we recommend representing enum strings as constants for easier reuse. For example:
-```java
-String MONEY_USD = "USD";
-Money money = new Money();
-money.setCurrency(MONEY_USD);
-```
 
 ## Requirements
 
@@ -133,6 +120,36 @@ public class Example {
 }
 ```
 
+### How to configure sandbox environment
+```java
+
+import com.squareup.connect.ApiClient;
+import com.squareup.connect.ApiException;
+import com.squareup.connect.Configuration;
+import com.squareup.connect.api.LocationsApi;
+import com.squareup.connect.auth.OAuth;
+import com.squareup.connect.models.Location;
+
+import java.io.File;
+import java.util.*;
+
+public class Example {
+
+    public static void main(String[] args) {
+        ApiClient apiClient = Configuration.getDefaultApiClient();
+        // Set sandbox url
+        apiClient.setBasePath('https://connect.squareupsandbox.com');
+
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) apiClient.getAuthentication("oauth2");
+        // Set your sandbox token
+        oauth2.setAccessToken("YOUR_SANDBOX_ACCESS_TOKEN");
+
+        LocationsApi locationsApi = new LocationsApi();
+    }
+}
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *{{basePath}}*
@@ -226,3 +243,8 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 {{#apiInfo}}{{#apis}}{{^hasMore}}{{infoEmail}}
 {{/hasMore}}{{/apis}}{{/apiInfo}}
+
+
+
+[//]: # "Link anchor definitions"
+[Square Logo]: https://docs.connect.squareup.com/images/github/github-square-logo.svg
