@@ -7,6 +7,7 @@ from __future__ import absolute_import
 import sys
 import os
 import re
+from deprecated import deprecated
 
 # python 2 and python 3 compatibility library
 from six import iteritems
@@ -26,8 +27,9 @@ class {{classname}}(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-{{#operation}}
-
+{{#operation}}{{#vendorExtensions.x-is-deprecated}}
+    @deprecated
+    {{/vendorExtensions.x-is-deprecated}}
     def {{operationId}}(self, {{#sortParamsByRequiredFlag}}{{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}{{/sortParamsByRequiredFlag}}**kwargs):
         """
         {{{summary}}}

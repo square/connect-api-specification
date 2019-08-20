@@ -12,6 +12,9 @@ Method | HTTP request | Description
 {{#operation}}
 <a name="{{operationId}}"></a>
 # **{{operationId}}**
+{{#vendorExtensions.x-is-deprecated}}
+**Note: This endpoint is deprecated.**
+{{/vendorExtensions.x-is-deprecated}}
 > {{#returnType}}{{returnType}} {{/returnType}}{{operationId}}({{#allParams}}{{{paramName}}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
 
 {{summary}}{{#notes}}

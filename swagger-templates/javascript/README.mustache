@@ -1,4 +1,13 @@
-# Square Connect Node SDK [![Build Status](https://travis-ci.org/square/connect-javascript-sdk.svg?branch=master)](https://travis-ci.org/square/connect-javascript-sdk)[![npm version](https://badge.fury.io/js/square-connect.svg)](https://badge.fury.io/js/square-connect)
+![Square logo]
+
+# Square Connect Node SDK
+
+---
+
+[![Build Status](https://travis-ci.org/square/connect-nodejs-sdk.svg?branch=master)](https://travis-ci.org/square/connect-nodejs-sdk)
+[![npm version](https://badge.fury.io/js/square-connect.svg)](https://badge.fury.io/js/square-connect)
+[![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+==================
 
 **If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2uLSRw5)**
 
@@ -36,6 +45,20 @@ api.listLocations().then(function(data) {
 }, function(error) {
   console.error(error);
 });
+```
+
+### How to configure sandbox environment
+```javascript
+var SquareConnect = require('square-connect');
+var client = SquareConnect.ApiClient.instance;
+// Set sandbox url
+client.basePath = 'https://connect.squareupsandbox.com';
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+// Set sandbox access token
+oauth2.accessToken = "YOUR SANDBOX ACCESS TOKEN";
+// Pass client to API
+var api = new SquareConnect.LocationsApi();
 ```
 
 ## Documentation for API Endpoints
@@ -146,3 +169,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+
+[//]: # "Link anchor definitions"
+[Square Logo]: https://docs.connect.squareup.com/images/github/github-square-logo.svg

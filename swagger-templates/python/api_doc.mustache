@@ -13,6 +13,9 @@ Method | HTTP request
 {{#operations}}
 {{#operation}}
 # **{{{operationId}}}**
+{{#vendorExtensions.x-is-deprecated}}
+**Note: This endpoint is deprecated.**
+{{/vendorExtensions.x-is-deprecated}}
 > {{#returnType}}{{{returnType}}} {{/returnType}}{{{operationId}}}({{#allParams}}{{#required}}{{{paramName}}}{{/required}}{{^required}}{{{paramName}}}={{{paramName}}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
 
 ### Description{{#notes}}

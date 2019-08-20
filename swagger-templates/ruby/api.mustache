@@ -13,7 +13,8 @@ module {{moduleName}}
       @api_client = api_client
     end
 {{#operation}}
-{{newline}}
+{{newline}}{{#vendorExtensions.x-is-deprecated}}
+    # @deprecated{{/vendorExtensions.x-is-deprecated}}
     # {{{summary}}}
     # {{{notes}}}
 {{#allParams}}{{#required}}    # @param {{paramName}} {{description}}
@@ -32,7 +33,8 @@ module {{moduleName}}
 {{#allParams}}{{^required}}    # @option opts [{{{dataType}}}] :{{paramName}} {{description}}
 {{/required}}{{/allParams}}    # @return [Array<({{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, Fixnum, Hash)>] {{#returnType}}{{{returnType}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
     def {{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}opts = {})
-      if @api_client.config.debugging
+      if @api_client.config.debugging{{#vendorExtensions.x-is-deprecated}}
+        warn "Calling deprecated API: {{classname}}.{{operationId}}"{{/vendorExtensions.x-is-deprecated}}
         @api_client.config.logger.debug "Calling API: {{classname}}.{{operationId}} ..."
       end
       {{#allParams}}
