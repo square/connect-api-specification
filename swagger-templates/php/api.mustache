@@ -69,7 +69,11 @@ use \{{invokerPackage}}\ObjectSerializer;
      * @deprecated{{/vendorExtensions.x-is-deprecated}}
      * {{{operationId}}}
      *
-     * {{{summary}}}
+     * {{{summary}}}{{#vendorExtensions.x-is-beta}}
+     * Note: This endpoint is in beta.{{/vendorExtensions.x-is-beta}}
+     {{#vendorExtensions.x-is-restricted}}
+     * Note: Scheduled for retirement. Not available for new applications.
+     {{/vendorExtensions.x-is-restricted}}
      *
   {{#allParams}}   * @param {{dataType}} ${{paramName}} {{description}} {{#required}}(required){{/required}}{{^required}}(optional){{/required}}
   {{/allParams}}   * @return {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}}
@@ -78,7 +82,7 @@ use \{{invokerPackage}}\ObjectSerializer;
     public function {{operationId}}({{#allParams}}${{paramName}}{{^required}} = null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
         {{#vendorExtensions.x-is-deprecated}}
-        trigger_error('Calling deprecated API: {{classname}}.{{operationId}}', E_USER_DEPRECATED);
+        trigger_error("\x1B[33mCalling deprecated API: {{classname}}.{{operationId}}{{#vendorExtensions.x-is-restricted}} Scheduled for retirement. Not available for new applications.{{/vendorExtensions.x-is-restricted}}\x1B[0m", E_USER_DEPRECATED);
         {{/vendorExtensions.x-is-deprecated}}
         list($response, $statusCode, $httpHeader) = $this->{{operationId}}WithHttpInfo ({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
         return $response; 

@@ -10,14 +10,19 @@
 namespace {{modelPackage}};
 
 use \ArrayAccess;
-/**
+/**{{#vendorExtensions.x-is-deprecated}}
+ * @deprecated{{/vendorExtensions.x-is-deprecated}}
  * {{classname}} Class Doc Comment
  *
  * @category Class
  * @package  {{invokerPackage}}
  * @author   Square Inc.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
- * @link     https://squareup.com/developers
+ * @link     https://squareup.com/developers{{#vendorExtensions.x-is-beta}}
+ * Note: This endpoint is in beta.{{/vendorExtensions.x-is-beta}}
+ {{#vendorExtensions.x-is-restricted}}
+ * Note: Scheduled for retirement. Not available for new applications.
+ {{/vendorExtensions.x-is-restricted}}
  */
 class {{classname}} implements ArrayAccess
 {

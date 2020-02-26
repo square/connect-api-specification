@@ -56,6 +56,12 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#parcela
   {{#description}}
    * {{{description}}}
   {{/description}}
+  {{#vendorExtensions.x-is-beta}}
+   * Note: This model is in beta.
+  {{/vendorExtensions.x-is-beta}}
+  {{#vendorExtensions.x-is-restricted}}
+  * Note: Scheduled for retirement. Not available for new applications.
+  {{/vendorExtensions.x-is-restricted}}
   {{^description}}
    * Get {{name}}
   {{/description}}
@@ -70,8 +76,13 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#parcela
 {{#useBeanValidation}}{{>beanValidation}}{{/useBeanValidation}}  @ApiModelProperty({{#example}}example = "{{example}}", {{/example}}{{#required}}required = {{required}}, {{/required}}value = "{{{description}}}")
 {{#vendorExtensions.extraAnnotation}}
   {{{vendorExtensions.extraAnnotation}}}
-{{/vendorExtensions.extraAnnotation}}
+{{/vendorExtensions.extraAnnotation}}{{#vendorExtensions.x-is-deprecated}}
+  @Deprecated
+  {{/vendorExtensions.x-is-deprecated}}
   public {{{datatypeWithEnum}}} {{getter}}() {
+    {{#vendorExtensions.x-is-restricted}}
+    System.out.println("\u001B[33m"+ "Scheduled for retirement. Not available for new applications"+"\u001B[0m");
+    {{/vendorExtensions.x-is-restricted}}
     return {{name}};
   }
   {{^isReadOnly}}

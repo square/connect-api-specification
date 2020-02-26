@@ -1,10 +1,14 @@
     /// <summary>
-    /// {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}
+    /// {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}{{#vendorExtensions.x-is-beta}}
+    /// Note: This endpoint is in beta.{{/vendorExtensions.x-is-beta}}
     /// </summary>
     [DataContract]
     {{#generatePropertyChanged}}
     [ImplementPropertyChanged]
     {{/generatePropertyChanged}}
+    {{#vendorExtensions.x-is-deprecated}}
+    [Obsolete{{#vendorExtensions.x-is-restricted}}("Scheduled for retirement. Not available for new applications."){{/vendorExtensions.x-is-restricted}}]
+    {{/vendorExtensions.x-is-deprecated}}
     {{>visibility}} partial class {{classname}} : {{#parent}}{{{parent}}}, {{/parent}} IEquatable<{{classname}}>, IValidatableObject
     {
         {{#vars}}
@@ -41,7 +45,7 @@
         /// </summary>
         {{#vars}}
         {{^isReadOnly}}
-        /// <param name="{{name}}">{{#description}}{{description}}{{/description}}{{^description}}{{name}}{{/description}}{{#required}} (required){{/required}}{{#defaultValue}} (default to {{defaultValue}}){{/defaultValue}}.</param>
+        /// <param name="{{name}}">{{#vendorExtensions.x-is-deprecated}}[deprecated] {{/vendorExtensions.x-is-deprecated}}{{#vendorExtensions.x-is-restricted}}[restricted] {{/vendorExtensions.x-is-restricted}}{{#vendorExtensions.x-is-beta}}[beta] {{/vendorExtensions.x-is-beta}}{{#description}}{{description}}{{/description}}{{^description}}{{name}}{{/description}}{{#required}} (required){{/required}}{{#defaultValue}} (default to {{defaultValue}}){{/defaultValue}}.</param>
         {{/isReadOnly}}
         {{/vars}}
     {{#hasOnlyReadOnly}}
