@@ -78,7 +78,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -117,7 +117,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -161,7 +161,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -197,7 +197,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [],
         "parameters": [
           {
@@ -233,7 +233,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -264,7 +264,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -360,7 +360,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -401,7 +401,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -438,7 +438,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -487,7 +487,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -521,7 +521,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -575,7 +575,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -616,7 +616,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -653,7 +653,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -696,12 +696,13 @@
         ],
         "summary": "ListTimecards",
         "operationId": "ListTimecards",
-        "description": "Provides summary information for all of a business\u0027s employee timecards.",
-        "x-release-status": "PUBLIC",
+        "description": "Provides summary information for all of a business\u0027s employee timecards.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-timecards)\n\n---",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -713,6 +714,7 @@
           {
             "name": "order",
             "description": "The order in which timecards are listed in the response, based on their created_at field.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -720,6 +722,7 @@
           {
             "name": "employee_id",
             "description": "If provided, the endpoint returns only timecards for the employee with the specified ID.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -727,6 +730,7 @@
           {
             "name": "begin_clockin_time",
             "description": "If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -734,6 +738,7 @@
           {
             "name": "end_clockin_time",
             "description": "If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -741,6 +746,7 @@
           {
             "name": "begin_clockout_time",
             "description": "If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -748,6 +754,7 @@
           {
             "name": "end_clockout_time",
             "description": "If filtering results by their clockout_time field, the end of the requested reporting period, in ISO 8601 format.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -755,6 +762,7 @@
           {
             "name": "begin_updated_at",
             "description": "If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -762,6 +770,7 @@
           {
             "name": "end_updated_at",
             "description": "If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -769,6 +778,7 @@
           {
             "name": "deleted",
             "description": "If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don\u0027t provide this parameter, both valid and deleted timecards are returned.",
+            "x-is-deprecated": true,
             "type": "boolean",
             "in": "query",
             "required": false
@@ -776,6 +786,7 @@
           {
             "name": "limit",
             "description": "The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.",
+            "x-is-deprecated": true,
             "type": "integer",
             "in": "query",
             "required": false
@@ -783,6 +794,7 @@
           {
             "name": "batch_token",
             "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -806,12 +818,13 @@
         ],
         "summary": "CreateTimecard",
         "operationId": "CreateTimecard",
-        "description": "Creates a timecard for an employee and clocks them in with an\n`API_CREATE` event and a `clockin_time` set to the current time unless\nthe request provides a different value. To import timecards from another\nsystem (rather than clocking someone in). Specify the `clockin_time`\nand* `clockout_time` in the request.\n\nTimecards correspond to exactly one shift for a given employee, bounded\nby the `clockin_time` and `clockout_time` fields. An employee is\nconsidered clocked in if they have a timecard that doesn\u0027t have a\n`clockout_time` set. An employee that is currently clocked in cannot\nbe clocked in a second time.",
-        "x-release-status": "PUBLIC",
+        "description": "Creates a timecard for an employee and clocks them in with an\n`API_CREATE` event and a `clockin_time` set to the current time unless\nthe request provides a different value.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-timecards)\n\n---\n\n\nTo import timecards from another\nsystem (rather than clocking someone in). Specify the `clockin_time`\nand* `clockout_time` in the request.\n\nTimecards correspond to exactly one shift for a given employee, bounded\nby the `clockin_time` and `clockout_time` fields. An employee is\nconsidered clocked in if they have a timecard that doesn\u0027t have a\n`clockout_time` set. An employee that is currently clocked in cannot\nbe clocked in a second time.",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -847,12 +860,13 @@
         ],
         "summary": "DeleteTimecard",
         "operationId": "DeleteTimecard",
-        "description": "Deletes a timecard. Timecards can also be deleted through the\nSquare Dashboard. Deleted timecards are still accessible through\nConnect API endpoints, but cannot be modified. The `deleted` field of\nthe `Timecard` object indicates whether the timecard has been deleted.\n\n*Note**: By default, deleted timecards appear alongside valid timecards in\nresults returned by the [ListTimecards](#endpoint-v1employees-listtimecards)\nendpoint. To filter deleted timecards, include the `deleted` query\nparameter in the list request.\n\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
-        "x-release-status": "PUBLIC",
+        "description": "Deletes a timecard. Timecards can also be deleted through the\nSquare Dashboard. Deleted timecards are still accessible through\nConnect API endpoints, but cannot be modified. The `deleted` field of\nthe `Timecard` object indicates whether the timecard has been deleted.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-timecards)\n\n---\n\n*Note**: By default, deleted timecards appear alongside valid timecards in\nresults returned by the [ListTimecards](#endpoint-v1employees-listtimecards)\nendpoint. To filter deleted timecards, include the `deleted` query\nparameter in the list request.\n\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -864,6 +878,7 @@
           {
             "name": "timecard_id",
             "description": "The ID of the timecard to delete.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -884,12 +899,13 @@
         ],
         "summary": "RetrieveTimecard",
         "operationId": "RetrieveTimecard",
-        "description": "Provides the details for a single timecard.\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
-        "x-release-status": "PUBLIC",
+        "description": "Provides the details for a single timecard.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-timecards)\n\n---\n\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -901,6 +917,7 @@
           {
             "name": "timecard_id",
             "description": "The timecard\u0027s ID.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -921,12 +938,13 @@
         ],
         "summary": "UpdateTimecard",
         "operationId": "UpdateTimecard",
-        "description": "Modifies the details of a timecard with an `API_EDIT` event for\nthe timecard. Updating an active timecard with a `clockout_time`\nclocks the employee out.",
-        "x-release-status": "PUBLIC",
+        "description": "Modifies the details of a timecard with an `API_EDIT` event for\nthe timecard. Updating an active timecard with a `clockout_time`\nclocks the employee out.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-timecards)\n\n---",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -938,6 +956,7 @@
           {
             "name": "timecard_id",
             "description": "TThe ID of the timecard to modify.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -969,12 +988,13 @@
         ],
         "summary": "ListTimecardEvents",
         "operationId": "ListTimecardEvents",
-        "description": "Provides summary information for all events associated with a\nparticular timecard.\n\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
-        "x-release-status": "PUBLIC",
+        "description": "Provides summary information for all events associated with a\nparticular timecard.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-timecards)\n\n---\n\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -986,6 +1006,7 @@
           {
             "name": "timecard_id",
             "description": "The ID of the timecard to list events for.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1011,12 +1032,13 @@
         ],
         "summary": "ListBankAccounts",
         "operationId": "ListBankAccounts",
-        "description": "Provides non-confidential details for all of a location\u0027s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
-        "x-release-status": "PUBLIC",
+        "description": "Provides non-confidential details for all of a location\u0027s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-bankaccounts)\n\n---",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1028,6 +1050,7 @@
           {
             "name": "location_id",
             "description": "The ID of the location to list bank accounts for.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1053,12 +1076,13 @@
         ],
         "summary": "RetrieveBankAccount",
         "operationId": "RetrieveBankAccount",
-        "description": "Provides non-confidential details for a merchant\u0027s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.",
-        "x-release-status": "PUBLIC",
+        "description": "Provides non-confidential details for a merchant\u0027s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-bankaccounts)\n\n---",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1070,6 +1094,7 @@
           {
             "name": "location_id",
             "description": "The ID of the bank account\u0027s associated location.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1077,6 +1102,7 @@
           {
             "name": "bank_account_id",
             "description": "The bank account\u0027s Square-issued ID. You obtain this value from Settlement objects returned.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1099,12 +1125,13 @@
         ],
         "summary": "ListCashDrawerShifts",
         "operationId": "ListCashDrawerShifts",
-        "description": "Provides the details for all of a location\u0027s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.",
-        "x-release-status": "PUBLIC",
+        "description": "Provides the details for all of a location\u0027s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-cashdrawershifts)\n\n---",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1116,6 +1143,7 @@
           {
             "name": "location_id",
             "description": "The ID of the location to list cash drawer shifts for.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1123,6 +1151,7 @@
           {
             "name": "order",
             "description": "The order in which cash drawer shifts are listed in the response, based on their created_at field. Default value: ASC",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -1130,6 +1159,7 @@
           {
             "name": "begin_time",
             "description": "The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time minus 90 days.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -1137,6 +1167,7 @@
           {
             "name": "end_time",
             "description": "The beginning of the requested reporting period, in ISO 8601 format. Default value: The current time.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -1162,12 +1193,13 @@
         ],
         "summary": "RetrieveCashDrawerShift",
         "operationId": "RetrieveCashDrawerShift",
-        "description": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.",
-        "x-release-status": "PUBLIC",
+        "description": "Provides the details for a single cash drawer shift, including all events that occurred during the shift.\n\n---\n\n- __Deprecation date__: 2020-02-26\n- [__Retirement date__](/docs/build-basics/api-lifecycle#deprecated): 2021-02-26\n- [Migration guide](/docs/migrate-from-v1/guides/v1-cashdrawershifts)\n\n---",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1179,6 +1211,7 @@
           {
             "name": "location_id",
             "description": "The ID of the location to list cash drawer shifts for.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1186,6 +1219,7 @@
           {
             "name": "shift_id",
             "description": "The shift\u0027s ID.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -1214,7 +1248,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1256,7 +1290,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1306,7 +1340,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1353,7 +1387,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1411,7 +1445,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1453,7 +1487,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1503,7 +1537,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1550,7 +1584,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1608,7 +1642,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1650,7 +1684,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1700,7 +1734,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1747,7 +1781,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1805,7 +1839,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1865,7 +1899,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1923,7 +1957,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -1973,7 +2007,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2023,7 +2057,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2070,7 +2104,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2117,7 +2151,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2175,7 +2209,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2230,7 +2264,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2287,7 +2321,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2342,7 +2376,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2399,7 +2433,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2457,7 +2491,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2512,7 +2546,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2578,7 +2612,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2620,7 +2654,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2670,7 +2704,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2717,7 +2751,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2764,7 +2798,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2822,7 +2856,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2880,7 +2914,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -2935,7 +2969,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3001,7 +3035,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3065,7 +3099,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3110,7 +3144,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3166,7 +3200,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3208,7 +3242,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3258,7 +3292,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3305,7 +3339,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3363,7 +3397,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3426,7 +3460,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3483,7 +3517,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3567,7 +3601,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3613,7 +3647,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3688,7 +3722,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3736,7 +3770,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3820,7 +3854,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3864,7 +3898,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": []
@@ -3891,6 +3925,137 @@
         }
       }
     },
+    "/v2/bank-accounts": {
+      "get": {
+        "tags": [
+          "BankAccounts"
+        ],
+        "summary": "ListBankAccounts",
+        "operationId": "ListBankAccounts",
+        "description": "Returns a list of [BankAccount](#type-bankaccount) objects linked to a Square account. \nFor more information, see \n[Bank Accounts API](/docs/bank-accounts-api).",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "BANK_ACCOUNTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "BANK_ACCOUNTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "The pagination cursor returned by a previous call to this endpoint.\nUse it in the next `ListBankAccounts` request to retrieve the next set \nof results.\n\nSee the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "description": "Upper limit on the number of bank accounts to return in the response. \nCurrently, 1000 is the largest supported limit. You can specify a limit \nof up to 1000 bank accounts. This is also the default limit.",
+            "type": "integer",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "location_id",
+            "description": "Location ID. You can specify this optional filter \nto retrieve only the linked bank accounts belonging to a specific location.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListBankAccountsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/bank-accounts/by-v1-id/{v1_bank_account_id}": {
+      "get": {
+        "tags": [
+          "BankAccounts"
+        ],
+        "summary": "GetBankAccountByV1Id",
+        "operationId": "GetBankAccountByV1Id",
+        "description": "Returns details of a [BankAccount](#type-bankaccount) identified by V1 bank account ID. \nFor more information, see \n[Retrieve a bank account by using an ID issued by V1 Bank Accounts API](/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-the-v1-bank-accounts-api).",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "BANK_ACCOUNTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "BANK_ACCOUNTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "v1_bank_account_id",
+            "description": "Connect V1 ID of the desired `BankAccount`. For more information, see \n[Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https://developer.squareup.com/docs/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api).",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetBankAccountByV1IdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/bank-accounts/{bank_account_id}": {
+      "get": {
+        "tags": [
+          "BankAccounts"
+        ],
+        "summary": "GetBankAccount",
+        "operationId": "GetBankAccount",
+        "description": "Returns details of a [BankAccount](#type-bankaccount) \nlinked to a Square account. For more information, see \n[Bank Accounts API](/docs/bank-accounts-api).",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "BANK_ACCOUNTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "BANK_ACCOUNTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bank_account_id",
+            "description": "Square-issued ID of the desired `BankAccount`.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetBankAccountResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/cash-drawers/shifts": {
       "get": {
         "tags": [
@@ -3904,7 +4069,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -3985,7 +4150,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4034,7 +4199,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4098,7 +4263,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4139,7 +4304,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4180,7 +4345,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4221,7 +4386,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4252,7 +4417,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4298,7 +4463,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4339,7 +4504,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4376,7 +4541,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4422,7 +4587,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4463,7 +4628,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4504,7 +4669,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4545,7 +4710,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4596,7 +4761,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4637,7 +4802,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4678,7 +4843,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4715,7 +4880,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4752,7 +4917,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4800,7 +4965,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4848,7 +5013,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4882,6 +5047,373 @@
         }
       }
     },
+    "/v2/disputes": {
+      "get": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "ListDisputes",
+        "operationId": "ListDisputes",
+        "description": "Returns a list of disputes associated\nwith a particular account.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\nFor more information, see [Paginating](https://developer.squareup.com/docs/basics/api101/pagination).",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "states",
+            "description": "The dispute states to filter the result.\nIf not specified, the endpoint\nreturns all open disputes (dispute status is not\n`INQUIRY_CLOSED`, `WON`, or `LOST`).",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "location_id",
+            "description": "The ID of the location for which to return \na list of disputes. If not specified,\nthe endpoint returns all open disputes\n(dispute status is not `INQUIRY_CLOSED`, `WON`, or \n`LOST`) associated with all locations.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListDisputesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/disputes/{dispute_id}": {
+      "get": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "RetrieveDispute",
+        "operationId": "RetrieveDispute",
+        "description": "Returns details of a specific dispute.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "The ID of the dispute you want more details about.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveDisputeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/disputes/{dispute_id}/accept": {
+      "post": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "AcceptDispute",
+        "operationId": "AcceptDispute",
+        "description": "Accepts loss on a dispute. Square returns\nthe disputed amount to the cardholder and updates the\ndispute state to ACCEPTED.\n\nSquare debits the disputed amount from the seller’s Square\naccount. If the Square account balance does not have\nsufficient funds, Square debits the associated bank account.\nFor an overview of the Disputes API, see [Overview](/docs/disputes-api/overview).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "ID of the dispute you want to accept.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AcceptDisputeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/disputes/{dispute_id}/evidence": {
+      "get": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "ListDisputeEvidence",
+        "operationId": "ListDisputeEvidence",
+        "description": "Returns a list of evidence associated with a dispute.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "The ID of the dispute.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListDisputeEvidenceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/disputes/{dispute_id}/evidence/{evidence_id}": {
+      "delete": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "RemoveDisputeEvidence",
+        "operationId": "RemoveDisputeEvidence",
+        "description": "Removes specified evidence from a dispute.\n\nSquare does not send the bank any evidence that\nis removed. Also, you cannot remove evidence after\nsubmitting it to the bank using [SubmitEvidence](/reference/square/disputes-api/submit-evidence).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "The ID of the dispute you want to remove evidence from.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "evidence_id",
+            "description": "The ID of the evidence you want to remove.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RemoveDisputeEvidenceResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "RetrieveDisputeEvidence",
+        "operationId": "RetrieveDisputeEvidence",
+        "description": "Returns the specific evidence metadata associated with a specific dispute.\n\nYou must maintain a copy of the evidence you upload if you want to\nreference it later. You cannot download the evidence\nafter you upload it.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "The ID of the dispute that you want to retrieve evidence from.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "evidence_id",
+            "description": "The ID of the evidence to retrieve.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveDisputeEvidenceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/disputes/{dispute_id}/evidence_text": {
+      "post": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "CreateDisputeEvidenceText",
+        "operationId": "CreateDisputeEvidenceText",
+        "description": "Uploads text to use as evidence for a dispute challenge. For more information, see\n[Challenge a Dispute](/docs/disputes-api/process-disputes#challenge-a-dispute).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "The ID of the dispute you want to upload evidence for.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateDisputeEvidenceTextRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateDisputeEvidenceTextResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/disputes/{dispute_id}/submit-evidence": {
+      "post": {
+        "tags": [
+          "Disputes"
+        ],
+        "summary": "SubmitEvidence",
+        "operationId": "SubmitEvidence",
+        "description": "Submits evidence to the cardholder\u0027s bank.\n\nBefore submitting evidence, Square compiles all available evidence. This includes\nevidence uploaded using the\n[CreateDisputeEvidenceFile](/reference/square/disputes-api/create-dispute-evidence-file) and\n[CreateDisputeEvidenceText](/reference/square/disputes-api/create-dispute-evidence-text) endpoints,\nand evidence automatically provided by Square, when\navailable. For more information, see\n[Challenge a Dispute](/docs/disputes-api/process-disputes#challenge-a-dispute).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE"
+        ],
+        "x-sq-version": "2020-02-26",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dispute_id",
+            "description": "The ID of the dispute you want to submit evidence for.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SubmitEvidenceResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/employees": {
       "get": {
         "tags": [
@@ -4894,7 +5426,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4954,7 +5486,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -4993,7 +5525,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5032,7 +5564,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5073,7 +5605,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5114,7 +5646,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5155,7 +5687,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5194,7 +5726,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5247,7 +5779,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5300,7 +5832,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5351,7 +5883,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5392,7 +5924,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5429,7 +5961,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5467,7 +5999,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5516,7 +6048,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5569,7 +6101,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5608,7 +6140,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5649,7 +6181,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5690,7 +6222,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5727,7 +6259,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5765,7 +6297,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5814,7 +6346,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5861,7 +6393,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5910,7 +6442,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5940,7 +6472,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -5981,7 +6513,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6019,7 +6551,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6069,7 +6601,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6142,7 +6674,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6215,7 +6747,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6264,7 +6796,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6312,7 +6844,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6361,7 +6893,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6419,7 +6951,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6492,7 +7024,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6563,7 +7095,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6613,7 +7145,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6662,7 +7194,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6711,7 +7243,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6769,7 +7301,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6817,7 +7349,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6856,7 +7388,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6895,7 +7427,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6938,7 +7470,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -6988,7 +7520,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7075,7 +7607,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7116,7 +7648,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7157,7 +7689,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7196,7 +7728,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7235,7 +7767,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7274,7 +7806,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7353,7 +7885,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7394,7 +7926,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-01-22",
+        "x-sq-version": "2020-02-26",
         "security": [
           {
             "oauth2": [
@@ -7423,6 +7955,64 @@
     }
   },
   "definitions": {
+    "BankAccountStatus": {
+      "type": "string",
+      "enum": [
+        "VERIFICATION_IN_PROGRESS",
+        "VERIFIED",
+        "DISABLED"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "VERIFICATION_IN_PROGRESS",
+          "description": "Indicates that the verification process has started. Some features\n(for example, creditable or debitable) may be provisionally enabled on the bank\naccount."
+        },
+        {
+          "name": "VERIFIED",
+          "description": "Indicates that the bank account was successfully verified."
+        },
+        {
+          "name": "DISABLED",
+          "description": "Indicates that the bank account is disabled and is permanently unusable\nfor funds transfer. A bank account can be disabled because of a failed verification\nattempt or a failed deposit attempt."
+        }
+      ],
+      "description": "Indicates the current verification status of a `BankAccount` object.",
+      "x-release-status": "PUBLIC"
+    },
+    "BankAccountType": {
+      "type": "string",
+      "enum": [
+        "CHECKING",
+        "SAVINGS",
+        "INVESTMENT",
+        "OTHER",
+        "BUSINESS_CHECKING"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "CHECKING",
+          "description": "An account at a financial institution against which checks can be\ndrawn by the account depositor."
+        },
+        {
+          "name": "SAVINGS",
+          "description": "An account at a financial institution that pays interest but cannot be\nused directly as money in the narrow sense of a medium of exchange."
+        },
+        {
+          "name": "INVESTMENT",
+          "description": "An account at a financial institution that contains a deposit of funds\nand/or securities."
+        },
+        {
+          "name": "OTHER",
+          "description": "An account at a financial institution which cannot be described by the\nother types."
+        },
+        {
+          "name": "BUSINESS_CHECKING",
+          "description": "An account at a financial institution against which checks can be\ndrawn specifically for business purposes (non-personal use)."
+        }
+      ],
+      "description": "Indicates the financial purpose of the bank account.",
+      "x-release-status": "PUBLIC"
+    },
     "CardBrand": {
       "type": "string",
       "enum": [
@@ -7481,6 +8071,56 @@
       ],
       "description": "Indicates a card\u0027s brand, such as `VISA` or `MASTERCARD`.",
       "x-release-status": "PUBLIC"
+    },
+    "CardPrepaidType": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_PREPAID_TYPE",
+        "NOT_PREPAID",
+        "PREPAID"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNKNOWN_PREPAID_TYPE",
+          "description": ""
+        },
+        {
+          "name": "NOT_PREPAID",
+          "description": ""
+        },
+        {
+          "name": "PREPAID",
+          "description": ""
+        }
+      ],
+      "description": "Indicates a card\u0027s prepaid type, such as `NOT_PREPAID` or `PREPAID`.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CardType": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_CARD_TYPE",
+        "CREDIT",
+        "DEBIT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNKNOWN_CARD_TYPE",
+          "description": ""
+        },
+        {
+          "name": "CREDIT",
+          "description": ""
+        },
+        {
+          "name": "DEBIT",
+          "description": ""
+        }
+      ],
+      "description": "Indicates a card\u0027s type, such as `CREDIT` or `DEBIT`.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "CashDrawerEventType": {
       "type": "string",
@@ -7615,9 +8255,7 @@
       "enum": [
         "REGULAR",
         "GIFT_CARD",
-        "APPOINTMENTS_SERVICE",
-        "RETAIL_ITEM",
-        "RESTAURANT_ITEM"
+        "APPOINTMENTS_SERVICE"
       ],
       "x-enum-elements": [
         {
@@ -7631,14 +8269,6 @@
         {
           "name": "APPOINTMENTS_SERVICE",
           "description": "A service that can be booked using the Square Appointments app."
-        },
-        {
-          "name": "RETAIL_ITEM",
-          "description": "An item associated with the Retail vertical."
-        },
-        {
-          "name": "RESTAURANT_ITEM",
-          "description": "An item associated with the Restaurants vertical."
         }
       ],
       "description": "The type of a CatalogItem. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items.",
@@ -7684,51 +8314,51 @@
       "x-enum-elements": [
         {
           "name": "ITEM",
-          "description": "An item, corresponding to CatalogItem. The item-specific data\nwill be stored in the `item_data` field."
+          "description": "An item, corresponding to `CatalogItem`. The item-specific data\nwill be stored in the `item_data` field."
         },
         {
           "name": "IMAGE",
-          "description": "An image, corresponding to CatalogImage. The image-specific data\nwill be stored in the `image_data` field."
+          "description": "An image, corresponding to `CatalogImage`. The image-specific data\nwill be stored in the `image_data` field."
         },
         {
           "name": "CATEGORY",
-          "description": "A category, corresponding to CatalogCategory. The category-specific data\nwill be stored in the `category_data` field."
+          "description": "A category, corresponding to `CatalogCategory`. The category-specific data\nwill be stored in the `category_data` field."
         },
         {
           "name": "ITEM_VARIATION",
-          "description": "An item variation, corresponding to CatalogItemVariation. The\nitem variation-specific data will be stored in the `item_variation_data` field."
+          "description": "An item variation, corresponding to `CatalogItemVariation`. The\nitem variation-specific data will be stored in the `item_variation_data` field."
         },
         {
           "name": "TAX",
-          "description": "A tax, corresponding to CatalogTax. The tax-specific data\nwill be stored in the `tax_data` field."
+          "description": "A tax, corresponding to `CatalogTax`. The tax-specific data\nwill be stored in the `tax_data` field."
         },
         {
           "name": "DISCOUNT",
-          "description": "A discount, corresponding to [atalogDiscount. The discount-specific data\nwill be stored in the `discount_data` field."
+          "description": "A discount, corresponding to `CatalogDiscount`. The discount-specific data\nwill be stored in the `discount_data` field."
         },
         {
           "name": "MODIFIER_LIST",
-          "description": "A modifier list, corresponding to CatalogModifierList.\nThe modifier list-specific data will be stored in the `modifier_list_data` field."
+          "description": "A modifier list, corresponding to `CatalogModifierList`.\nThe modifier list-specific data will be stored in the `modifier_list_data` field."
         },
         {
           "name": "MODIFIER",
-          "description": "A modifier, corresponding to CatalogModifier. The modifier-specific data\nwill be stored in the `modifier_data` field."
+          "description": "A modifier, corresponding to `CatalogModifier`. The modifier-specific data\nwill be stored in the `modifier_data` field."
         },
         {
           "name": "PRICING_RULE",
-          "description": "A pricing rule, corresponding to CatalogPricingRule. The pricing-rule-specific data\nwill be stored in the `pricing_rule_data` field."
+          "description": "A pricing rule, corresponding to `CatalogPricingRule`. The pricing-rule-specific data\nwill be stored in the `pricing_rule_data` field."
         },
         {
           "name": "PRODUCT_SET",
-          "description": "A product set, corresponding to CatalogProductSet.\nThe product-set-specific data will be stored in the `product_set_data` field."
+          "description": "A product set, corresponding to `CatalogProductSet`.\nThe product-set-specific data will be stored in the `product_set_data` field."
         },
         {
           "name": "TIME_PERIOD",
-          "description": "A time period, corresponding to CatalogTimePeriod.\nThe time-period-specific data will be stored in the `time_period_data` field."
+          "description": "A time period, corresponding to `CatalogTimePeriod`.\nThe time-period-specific data will be stored in the `time_period_data` field."
         },
         {
           "name": "MEASUREMENT_UNIT",
-          "description": "A measurement unit, corresponding to CatalogMeasurementUnit. The unit of\nmeasure and precision in which an item variation should be sold."
+          "description": "A measurement unit, corresponding to `CatalogMeasurementUnit`. The unit of\nmeasure and precision in which an item variation should be sold."
         },
         {
           "name": "ITEM_OPTION",
@@ -10182,6 +10812,235 @@
       "description": "Indicates the specific day  of the week.",
       "x-release-status": "PUBLIC"
     },
+    "DisputeEvidenceType": {
+      "type": "string",
+      "enum": [
+        "GENERIC_EVIDENCE",
+        "ONLINE_OR_APP_ACCESS_LOG",
+        "AUTHORIZATION_DOCUMENTATION",
+        "CANCELLATION_OR_REFUND_DOCUMENTATION",
+        "CARDHOLDER_COMMUNICATION",
+        "CARDHOLDER_INFORMATION",
+        "PURCHASE_ACKNOWLEDGEMENT",
+        "DUPLICATE_CHARGE_DOCUMENTATION",
+        "PRODUCT_OR_SERVICE_DESCRIPTION",
+        "RECEIPT",
+        "SERVICE_RECEIVED_DOCUMENTATION",
+        "PROOF_OF_DELIVERY_DOCUMENTATION",
+        "RELATED_TRANSACTION_DOCUMENTATION",
+        "REBUTTAL_EXPLANATION",
+        "TRACKING_NUMBER"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "GENERIC_EVIDENCE",
+          "description": "Square assumes this evidence type if you don\u0027t provide a type when uploading evidence.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "ONLINE_OR_APP_ACCESS_LOG",
+          "description": "Server or activity logs that show proof of the cardholder’s identity and that the cardholder successfully ordered and received the goods (digitally or otherwise).\nExample evidence: IP addresses, corresponding timestamps/dates, cardholder’s name/email address linked to a cardholder profile held by Merchant, proof the same device and card (used in dispute) were previously used in prior undisputed transaction, any related detailed activity.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "AUTHORIZATION_DOCUMENTATION",
+          "description": "Evidence that the cardholder did provide authorization of the charge.\nExample evidence: a signed credit card authorization.\n\nUse when uploading evidence as: file"
+        },
+        {
+          "name": "CANCELLATION_OR_REFUND_DOCUMENTATION",
+          "description": "Evidence that the cardholder acknowledged your refund or cancellation policy.\nExample evidence: a signature or checkbox showing the cardholder’s acknowledgement of your refund or cancellation policy.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "CARDHOLDER_COMMUNICATION",
+          "description": "Evidence that shows relevant communication with the cardholder.\nExample evidence: emails or texts that show the cardholder received goods/services or demonstrate cardholder satisfaction.\n\nUse when uploading evidence as: file"
+        },
+        {
+          "name": "CARDHOLDER_INFORMATION",
+          "description": "Evidence that validates customer identity.\nExample evidence: personally identifiable details such as name, email address, purchaser IP address, copy of cardholder ID.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "PURCHASE_ACKNOWLEDGEMENT",
+          "description": "Evidence that shows proof of the sale/transaction.\nExample evidence: an invoice, contract, etc. showing the customer’s acknowledgement of the purchase and your terms.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "DUPLICATE_CHARGE_DOCUMENTATION",
+          "description": "Evidence that shows the charge(s) in question are valid and distinct from one another.\nExample evidence: receipts, shipping labels, and invoices along with their distinct payment IDs.\n\nUse when uploading evidence as: file"
+        },
+        {
+          "name": "PRODUCT_OR_SERVICE_DESCRIPTION",
+          "description": "A description of the product or service sold.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "RECEIPT",
+          "description": "A receipt or message sent to the cardholder detailing the charge.\nNote: You don’t need to upload the Square receipt; Square submits the receipt on your behalf.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "SERVICE_RECEIVED_DOCUMENTATION",
+          "description": "Evidence that the service was provided to the cardholder or the expected date that services will be rendered.\nExample evidence: signed delivery form, work order, expected delivery date, or other written agreement.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "PROOF_OF_DELIVERY_DOCUMENTATION",
+          "description": "Evidence that shows the product was provided to the cardholder or the expected date of delivery.\nExample evidence: signed delivery form, or written agreement acknowledging receipt of goods or services.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "RELATED_TRANSACTION_DOCUMENTATION",
+          "description": "Evidence that shows the cardholder previously processed transactions on the same card and did not dispute them.\nNote: Square will automatically provide up to 5 distinct Square receipts for related transactions, when available.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "REBUTTAL_EXPLANATION",
+          "description": "An explanation of why the cardholder’s claim is invalid.\nExample evidence: explanation of why each distinct charge is a legitimate purchase why the cardholder’s claim for credit owed due to their attempt to cancel, return,\nor refund is invalid per your stated policy and cardholder agreement,\nor an explanation of how the cardholder did not attempt to remedy the issue with you first in order to receive credit.\n\nUse when uploading evidence as: file or string"
+        },
+        {
+          "name": "TRACKING_NUMBER",
+          "description": "The tracking number for the order provided by the shipping carrier. If you have multiple numbers, they will need to be submitted individually as separate pieces of evidence.\n\nUse when uploading evidence as: string"
+        }
+      ],
+      "description": "Type of the dispute evidence.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DisputeReason": {
+      "type": "string",
+      "enum": [
+        "AMOUNT_DIFFERS",
+        "CANCELLED",
+        "DUPLICATE",
+        "NO_KNOWLEDGE",
+        "NOT_AS_DESCRIBED",
+        "NOT_RECEIVED",
+        "PAID_BY_OTHER_MEANS",
+        "CUSTOMER_REQUESTS_CREDIT",
+        "EMV_LIABILITY_SHIFT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "AMOUNT_DIFFERS",
+          "description": "The cardholder claims that they were charged the wrong amount for the purchase.\nTo challenge this dispute, provide specific and concrete evidence that the cardholder agreed to the amount charged."
+        },
+        {
+          "name": "CANCELLED",
+          "description": "The cardholder claims that they attempted to return the goods or cancel the service.\nTo challenge this dispute, provide specific and concrete evidence to prove that the cardholder is not due a refund, and that the cardholder acknowledged your cancellation policy."
+        },
+        {
+          "name": "DUPLICATE",
+          "description": "The cardholder claims that they were charged twice for the same purchase.\nTo challenge this dispute, provide specific and concrete evidence that shows both charges are legitimate and independent of one another."
+        },
+        {
+          "name": "NO_KNOWLEDGE",
+          "description": "The cardholder claims that they did not make this purchase nor authorized the charge.\nTo challenge this dispute, provide specific and concrete evidence that proves that the cardholder identity was verified at the time of purchase and that the purchase was authorized."
+        },
+        {
+          "name": "NOT_AS_DESCRIBED",
+          "description": "The cardholder claims the product or service was provided but the quality of the deliverable did not align with the expectations of the cardholder based on the description.\nTo challenge this dispute, provide specific and concrete evidence that shows the cardholder is in possession of the product as described, or received the service as described (agreed) upon."
+        },
+        {
+          "name": "NOT_RECEIVED",
+          "description": "The cardholder claims the product or service was not received by the cardholder within the stated time frame.\nTo challenge this dispute, provide specific and concrete evidence to prove that the cardholder is in possession of or received the product or service sold."
+        },
+        {
+          "name": "PAID_BY_OTHER_MEANS",
+          "description": "The cardholder claims that they previously paid for this purchase.\nTo challenge this dispute, provide specific and concrete evidence that shows both charges are legitimate and independent of one another or proof that you already provided a credit for the charge."
+        },
+        {
+          "name": "CUSTOMER_REQUESTS_CREDIT",
+          "description": "The cardholder claims that the purchase was either cancelled or returned but they have not yet received the credit.\nTo challenge this dispute, provide specific and concrete evidence to prove that the cardholder is not due a refund, and that they acknowledged your cancellation and/or refund policy."
+        },
+        {
+          "name": "EMV_LIABILITY_SHIFT",
+          "description": "A chip-enabled card was not processed through a compliant chip-card reader (e.g. it was swiped instead of dipped into a chip-card reader).\nYou cannot challenge this dispute because the payment didn’t comply with EMV security requirements. For more information, see [What Is EMV.](https://squareup.com/emv)"
+        }
+      ],
+      "description": "List of possible reasons why a cardholder might initiate a\ndispute with their bank.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DisputeState": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_STATE",
+        "INQUIRY_EVIDENCE_REQUIRED",
+        "INQUIRY_PROCESSING",
+        "INQUIRY_CLOSED",
+        "EVIDENCE_REQUIRED",
+        "PROCESSING",
+        "WON",
+        "LOST",
+        "ACCEPTED",
+        "WAITING_THIRD_PARTY"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNKNOWN_STATE",
+          "description": ""
+        },
+        {
+          "name": "INQUIRY_EVIDENCE_REQUIRED",
+          "description": ""
+        },
+        {
+          "name": "INQUIRY_PROCESSING",
+          "description": ""
+        },
+        {
+          "name": "INQUIRY_CLOSED",
+          "description": ""
+        },
+        {
+          "name": "EVIDENCE_REQUIRED",
+          "description": ""
+        },
+        {
+          "name": "PROCESSING",
+          "description": ""
+        },
+        {
+          "name": "WON",
+          "description": ""
+        },
+        {
+          "name": "LOST",
+          "description": ""
+        },
+        {
+          "name": "ACCEPTED",
+          "description": ""
+        },
+        {
+          "name": "WAITING_THIRD_PARTY",
+          "description": ""
+        }
+      ],
+      "description": "List of possible dispute states.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "EcomVisibility": {
+      "type": "string",
+      "enum": [
+        "UNINDEXED",
+        "UNAVAILABLE",
+        "HIDDEN",
+        "VISIBLE"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNINDEXED",
+          "description": "Item is not synced with Ecom (Weebly). This is the default state"
+        },
+        {
+          "name": "UNAVAILABLE",
+          "description": "Item is synced but is unavailable within Ecom (Weebly) and Online Checkout"
+        },
+        {
+          "name": "HIDDEN",
+          "description": "Option for seller to choose manually created Quick Amounts."
+        },
+        {
+          "name": "VISIBLE",
+          "description": "Item is synced but available within Ecom (Weebly) and Online Checkout but is hidden from Ecom Store."
+        }
+      ],
+      "description": "Determines item visibility in Ecom (Online Store) and Online Checkout.",
+      "x-release-status": "PUBLIC"
+    },
     "EmployeeStatus": {
       "type": "string",
       "enum": [
@@ -11999,6 +12858,26 @@
       "x-release-status": "DEPRECATED",
       "x-is-deprecated": true
     },
+    "TransactionType": {
+      "type": "string",
+      "enum": [
+        "DEBIT",
+        "CREDIT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "DEBIT",
+          "description": ""
+        },
+        {
+          "name": "CREDIT",
+          "description": ""
+        }
+      ],
+      "description": "Transaction type used in the disputed payment.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "V1AdjustInventoryRequestAdjustmentType": {
       "type": "string",
       "enum": [
@@ -12061,7 +12940,8 @@
         }
       ],
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1CashDrawerEventEventType": {
       "type": "string",
@@ -12115,7 +12995,8 @@
         }
       ],
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1CashDrawerShiftEventType": {
       "type": "string",
@@ -12139,7 +13020,8 @@
         }
       ],
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1CreateRefundRequestType": {
       "type": "string",
@@ -13422,7 +14304,8 @@
         }
       ],
       "description": "Actions that resulted in a change to a timecard. All timecard\nevents created with the Connect API have an event type that begins with\n`API`.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1UpdateModifierListRequestSelectionType": {
       "type": "string",
@@ -13572,6 +14455,56 @@
       ],
       "description": "The days of the week.",
       "x-release-status": "PUBLIC"
+    },
+    "AcceptDisputeRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines request parameters for the AcceptDispute endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "AcceptDisputeResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "dispute": {
+          "$ref": "#/definitions/Dispute",
+          "description": "Details about the accepted dispute."
+        }
+      },
+      "description": "Defines fields in a AcceptDispute response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "dispute": {
+          "dispute_id": "XDgyFu7yo1E2S5lQGGpYn",
+          "amount_money": {
+            "amount": 2000,
+            "currency": "USD"
+          },
+          "reason": "NO_KNOWLEDGE",
+          "state": "LOST",
+          "due_at": "2018-11-01T00:00:00.000Z",
+          "disputed_payments": [
+            {
+              "payment_id": "6Ee10wvqhfipStz297mtUhBXvaB"
+            }
+          ],
+          "card_brand": "visa",
+          "created_at": "2018-10-18T15:59:13.613Z",
+          "updated_at": "2018-10-18T15:59:13.613Z",
+          "brand_dispute_id": "100000282394"
+        }
+      }
     },
     "AdditionalRecipient": {
       "type": "object",
@@ -13772,6 +14705,100 @@
         }
       },
       "description": "Reflects the current status of a balance payment.",
+      "x-release-status": "PUBLIC"
+    },
+    "BankAccount": {
+      "type": "object",
+      "required": [
+        "id",
+        "account_number_suffix",
+        "country",
+        "currency",
+        "account_type",
+        "holder_name",
+        "primary_bank_identification_number",
+        "status",
+        "creditable",
+        "debitable"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 30,
+          "type": "string",
+          "description": "The unique, Square-issued identifier for the bank account."
+        },
+        "account_number_suffix": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The last few digits of the account number."
+        },
+        "country": {
+          "type": "string",
+          "description": "The ISO 3166 Alpha-2 country code where the bank account is based.\nSee [Country](#type-country) for possible values"
+        },
+        "currency": {
+          "type": "string",
+          "description": "The 3-character ISO 4217 currency code indicating the operating\ncurrency of the bank account. For example, the currency code for US dollars\nis `USD`.\nSee [Currency](#type-currency) for possible values"
+        },
+        "account_type": {
+          "type": "string",
+          "description": "The financial purpose of the associated bank account.\nSee [BankAccountType](#type-bankaccounttype) for possible values"
+        },
+        "holder_name": {
+          "minLength": 1,
+          "type": "string",
+          "description": "Name of the account holder. This name must match the name \non the targeted bank account record."
+        },
+        "primary_bank_identification_number": {
+          "maxLength": 40,
+          "type": "string",
+          "description": "Primary identifier for the bank. For more information, see \n[Bank Accounts API](https://developer.squareup.com/docs/docs/bank-accounts-api)."
+        },
+        "secondary_bank_identification_number": {
+          "maxLength": 40,
+          "type": "string",
+          "description": "Secondary identifier for the bank. For more information, see \n[Bank Accounts API](https://developer.squareup.com/docs/docs/bank-accounts-api)."
+        },
+        "debit_mandate_reference_id": {
+          "type": "string",
+          "description": "Reference identifier that will be displayed to UK bank account owners\nwhen collecting direct debit authorization. Only required for UK bank accounts."
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "Client-provided identifier for linking the banking account to an entity\nin a third-party system (for example, a bank account number or a user identifier)."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The location to which the bank account belongs."
+        },
+        "status": {
+          "type": "string",
+          "description": "Read-only. The current verification status of this BankAccount object.\nSee [BankAccountStatus](#type-bankaccountstatus) for possible values"
+        },
+        "creditable": {
+          "type": "boolean",
+          "description": "Indicates whether it is possible for Square to send money to this bank account."
+        },
+        "debitable": {
+          "type": "boolean",
+          "description": "Indicates whether it is possible for Square to take money from this \nbank account."
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "A Square-assigned, unique identifier for the bank account based on the\naccount information. The account fingerprint can be used to compare account\nentries and determine if the they represent the same real-world bank account."
+        },
+        "version": {
+          "type": "integer",
+          "description": "The current version of the `BankAccount`."
+        },
+        "bank_name": {
+          "maxLength": 100,
+          "type": "string",
+          "description": "Read only. Name of actual financial institution. \nFor example \"Bank of America\"."
+        }
+      },
+      "description": "Represents a bank account. For more information about \nlinking a bank account to a Square account, see \n[Bank Accounts API](/docs/bank-accounts-api).",
       "x-release-status": "PUBLIC"
     },
     "BatchChangeInventoryRequest": {
@@ -14424,7 +15451,8 @@
     "BatchUpsertCatalogObjectsRequest": {
       "type": "object",
       "required": [
-        "idempotency_key"
+        "idempotency_key",
+        "batches"
       ],
       "properties": {
         "idempotency_key": {
@@ -15022,7 +16050,7 @@
         },
         "card_brand": {
           "type": "string",
-          "description": "The card\u0027s brand (such as `VISA`). See `CardBrand`\nfor all possible values.\nSee [CardBrand](#type-cardbrand) for possible values"
+          "description": "The card\u0027s brand.\nSee [CardBrand](#type-cardbrand) for possible values"
         },
         "last_4": {
           "type": "string",
@@ -15049,6 +16077,18 @@
         "fingerprint": {
           "type": "string",
           "description": "__Not currently set.__ Intended as a Square-assigned identifier, based \non the card number, to identify the card across multiple locations within a\nsingle application."
+        },
+        "card_type": {
+          "type": "string",
+          "description": "The type of the card.\nThe Card object includes this field only in response to Payments API calls.\nSee [CardType](#type-cardtype) for possible values",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
+        "prepaid_type": {
+          "type": "string",
+          "description": "Indicates whether the Card is prepaid or not.\nThe Card object includes this field only in response to Payments API calls.\nSee [CardPrepaidType](#type-cardprepaidtype) for possible values",
+          "x-release-status": "BETA",
+          "x-is-beta": true
         },
         "bin": {
           "type": "string",
@@ -15650,7 +16690,7 @@
         },
         "enabled": {
           "type": "boolean",
-          "description": "If `true`, enable this `CatalogModifierList`."
+          "description": "If `true`, enable this `CatalogModifierList`. The default value is `true`."
         }
       },
       "description": "Controls the properties of a `CatalogModifierList` as it applies to\nthis `CatalogItem`.",
@@ -15859,6 +16899,14 @@
         "price_money": {
           "$ref": "#/definitions/Money",
           "description": "The modifier price."
+        },
+        "ordinal": {
+          "type": "integer",
+          "description": "Determines where this `CatalogModifier` appears in the `CatalogModifierList`."
+        },
+        "modifier_list_id": {
+          "type": "string",
+          "description": "The ID of the `CatalogModifierList` associated with this modifier. Searchable."
         }
       },
       "description": "A modifier in the Catalog object model.",
@@ -15883,6 +16931,10 @@
         "name": {
           "type": "string",
           "description": "A searchable name for the `CatalogModifierList`. This field has max length of 255 Unicode code points."
+        },
+        "ordinal": {
+          "type": "integer",
+          "description": "Determines where this `CatalogModifierList` appears in a list of `CatalogModifierList` values."
         },
         "selection_type": {
           "type": "string",
@@ -16124,6 +17176,9 @@
     },
     "CatalogObjectBatch": {
       "type": "object",
+      "required": [
+        "objects"
+      ],
       "properties": {
         "objects": {
           "type": "array",
@@ -17129,7 +18184,7 @@
           "minLength": 1,
           "maxLength": 192,
           "type": "string",
-          "description": "A unique string that identifies this checkout among others\nyou\u0027ve created. It can be any valid string but must be unique for every\norder sent to Square Checkout for a given location ID.\n\nThe idempotency key is used to avoid processing the same order more than\nonce. If you\u0027re unsure whether a particular checkout was created\nsuccessfully, you can reattempt it with the same idempotency key and all the\nsame other parameters without worrying about creating duplicates.\n\nWe recommend using a random number/string generator native to the language\nyou are working in to generate strings for your idempotency keys.\n\nSee [Idempotency keys](#idempotencykeys) for more information."
+          "description": "A unique string that identifies this checkout among others\nyou\u0027ve created. It can be any valid string but must be unique for every\norder sent to Square Checkout for a given location ID.\n\nThe idempotency key is used to avoid processing the same order more than\nonce. If you\u0027re unsure whether a particular checkout was created\nsuccessfully, you can reattempt it with the same idempotency key and all the\nsame other parameters without worrying about creating duplicates.\n\nWe recommend using a random number/string generator native to the language\nyou are working in to generate strings for your idempotency keys.\n\nSee the [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency) guide for more information."
         },
         "order": {
           "$ref": "#/definitions/CreateOrderRequest",
@@ -17171,86 +18226,74 @@
           "description": "An optional note to associate with the checkout object.\n\nThis value cannot exceed 60 characters."
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
+      "description": "Defines the parameters that can be included in the body of\na request to the __CreateCheckout__ endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
+          "redirect_url": "https://merchant.website.com/order-confirm",
           "order": {
-            "reference_id": "reference_id",
-            "line_items": [
-              {
-                "name": "Printed T Shirt",
-                "quantity": "2",
-                "base_price_money": {
-                  "amount": 1500,
-                  "currency": "USD"
-                },
-                "discounts": [
-                  {
-                    "name": "7% off previous season item",
-                    "percentage": "7"
+            "idempotency_key": "12ae1696-z1e3-4328-af6d-f1e04d947gd4",
+            "order": {
+              "location_id": "location_id",
+              "customer_id": "customer_id",
+              "reference_id": "reference_id",
+              "line_items": [
+                {
+                  "name": "Printed T Shirt",
+                  "quantity": "2",
+                  "base_price_money": {
+                    "amount": 1500,
+                    "currency": "USD"
                   },
-                  {
-                    "name": "$3 off Customer Discount",
-                    "amount_money": {
-                      "amount": 300,
-                      "currency": "USD"
+                  "applied_discounts": [
+                    {
+                      "discount_uid": "56ae1696-z1e3-9328-af6d-f1e04d947gd4"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Slim Jeans",
-                "quantity": "1",
-                "base_price_money": {
-                  "amount": 2500,
-                  "currency": "USD"
-                }
-              },
-              {
-                "name": "Woven Sweater",
-                "quantity": "3",
-                "base_price_money": {
-                  "amount": 3500,
-                  "currency": "USD"
+                  ],
+                  "applied_taxes": [
+                    {
+                      "tax_uid": "38ze1696-z1e3-5628-af6d-f1e04d947fg3"
+                    }
+                  ]
                 },
-                "discounts": [
-                  {
-                    "name": "$11 off Customer Discount",
-                    "amount_money": {
-                      "amount": 1100,
-                      "currency": "USD"
-                    }
+                {
+                  "name": "Slim Jeans",
+                  "quantity": "1",
+                  "base_price_money": {
+                    "amount": 2500,
+                    "currency": "USD"
                   }
-                ],
-                "taxes": [
-                  {
-                    "name": "Fair Trade Tax",
-                    "percentage": "5"
+                },
+                {
+                  "name": "Woven Sweater",
+                  "quantity": "3",
+                  "base_price_money": {
+                    "amount": 3500,
+                    "currency": "USD"
                   }
-                ]
-              }
-            ],
-            "discounts": [
-              {
-                "name": "Father\u0027s day 12% OFF",
-                "percentage": "12"
-              },
-              {
-                "name": "Global Sales $55 OFF",
-                "amount_money": {
-                  "amount": 5500,
-                  "currency": "USD"
                 }
-              }
-            ],
-            "taxes": [
-              {
-                "name": "Sales Tax",
-                "percentage": "8.5"
-              }
-            ]
+              ],
+              "taxes": [
+                {
+                  "uid": "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
+                  "type": "INCLUSIVE",
+                  "percentage": "7.75",
+                  "scope": "LINE_ITEM"
+                }
+              ],
+              "discounts": [
+                {
+                  "uid": "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
+                  "type": "FIXED_AMOUNT",
+                  "scope": "LINE_ITEM",
+                  "amount_money": {
+                    "amount": 100,
+                    "currency": "USD"
+                  }
+                }
+              ]
+            }
           },
           "additional_recipients": [
             {
@@ -17274,8 +18317,7 @@
             "country": "US",
             "first_name": "Jane",
             "last_name": "Doe"
-          },
-          "redirect_url": "https://merchant.website.com/order-confirm"
+          }
         }
       },
       "x-sq-sdk-sample-code": {
@@ -17302,7 +18344,7 @@
           "description": "Any errors that occurred during the request."
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the [CreateCheckout](#endpoint-createcheckout) endpoint.",
+      "description": "Defines the fields that are included in the response body of\na request to the __CreateCheckout__ endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "checkout": {
@@ -17323,69 +18365,29 @@
           },
           "redirect_url": "https://merchant.website.com/order-confirm",
           "order": {
-            "location_id": "CYTKRM7R7JMV8",
+            "location_id": "location_id",
+            "customer_id": "customer_id",
             "reference_id": "reference_id",
             "line_items": [
               {
                 "name": "Printed T Shirt",
                 "quantity": "2",
-                "taxes": [
+                "applied_taxes": [
                   {
-                    "name": "Sales Tax",
-                    "type": "ADDITIVE",
-                    "percentage": "8.5",
+                    "tax_uid": "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
                     "applied_money": {
                       "amount": 103,
                       "currency": "USD"
                     }
                   }
                 ],
-                "discounts": [
+                "applied_discounts": [
                   {
-                    "name": "7% off previous season item",
-                    "type": "FIXED_PERCENTAGE",
-                    "percentage": "7",
+                    "discount_uid": "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
                     "applied_money": {
-                      "amount": 210,
+                      "amount": 100,
                       "currency": "USD"
-                    },
-                    "scope": "LINE_ITEM"
-                  },
-                  {
-                    "name": "Father\u0027s day 12% OFF",
-                    "type": "FIXED_PERCENTAGE",
-                    "percentage": "12",
-                    "applied_money": {
-                      "amount": 335,
-                      "currency": "USD"
-                    },
-                    "scope": "ORDER"
-                  },
-                  {
-                    "name": "$3 off Customer Discount",
-                    "type": "FIXED_AMOUNT",
-                    "amount_money": {
-                      "amount": 300,
-                      "currency": "USD"
-                    },
-                    "applied_money": {
-                      "amount": 300,
-                      "currency": "USD"
-                    },
-                    "scope": "LINE_ITEM"
-                  },
-                  {
-                    "name": "Global Sales $55 OFF",
-                    "type": "FIXED_AMOUNT",
-                    "amount_money": {
-                      "amount": 5500,
-                      "currency": "USD"
-                    },
-                    "applied_money": {
-                      "amount": 949,
-                      "currency": "USD"
-                    },
-                    "scope": "ORDER"
+                    }
                   }
                 ],
                 "base_price_money": {
@@ -17397,163 +18399,77 @@
                   "currency": "USD"
                 },
                 "total_discount_money": {
-                  "amount": 1794,
+                  "amount": 100,
                   "currency": "USD"
                 },
                 "total_money": {
-                  "amount": 1309,
+                  "amount": 1503,
                   "currency": "USD"
                 }
               },
               {
                 "name": "Slim Jeans",
                 "quantity": "1",
-                "taxes": [
-                  {
-                    "name": "Sales Tax",
-                    "type": "ADDITIVE",
-                    "percentage": "8.5",
-                    "applied_money": {
-                      "amount": 105,
-                      "currency": "USD"
-                    }
-                  }
-                ],
-                "discounts": [
-                  {
-                    "name": "Father\u0027s day 12% OFF",
-                    "type": "FIXED_PERCENTAGE",
-                    "percentage": "12",
-                    "applied_money": {
-                      "amount": 300,
-                      "currency": "USD"
-                    },
-                    "scope": "ORDER"
-                  },
-                  {
-                    "name": "Global Sales $55 OFF",
-                    "type": "FIXED_AMOUNT",
-                    "amount_money": {
-                      "amount": 5500,
-                      "currency": "USD"
-                    },
-                    "applied_money": {
-                      "amount": 968,
-                      "currency": "USD"
-                    },
-                    "scope": "ORDER"
-                  }
-                ],
                 "base_price_money": {
                   "amount": 2500,
                   "currency": "USD"
                 },
-                "total_tax_money": {
-                  "amount": 105,
-                  "currency": "USD"
-                },
-                "total_discount_money": {
-                  "amount": 1268,
-                  "currency": "USD"
-                },
                 "total_money": {
-                  "amount": 1337,
+                  "amount": 2500,
                   "currency": "USD"
                 }
               },
               {
                 "name": "Wooven Sweater",
                 "quantity": "3",
-                "taxes": [
-                  {
-                    "name": "Fair Trade Tax",
-                    "type": "ADDITIVE",
-                    "percentage": "5",
-                    "applied_money": {
-                      "amount": 228,
-                      "currency": "USD"
-                    }
-                  },
-                  {
-                    "name": "Sales Tax",
-                    "type": "ADDITIVE",
-                    "percentage": "8.5",
-                    "applied_money": {
-                      "amount": 387,
-                      "currency": "USD"
-                    }
-                  }
-                ],
-                "discounts": [
-                  {
-                    "name": "Father\u0027s day 12% OFF",
-                    "type": "FIXED_PERCENTAGE",
-                    "percentage": "12",
-                    "applied_money": {
-                      "amount": 1260,
-                      "currency": "USD"
-                    },
-                    "scope": "ORDER"
-                  },
-                  {
-                    "name": "$11 off Customer Discount",
-                    "type": "FIXED_AMOUNT",
-                    "amount_money": {
-                      "amount": 1100,
-                      "currency": "USD"
-                    },
-                    "applied_money": {
-                      "amount": 1100,
-                      "currency": "USD"
-                    },
-                    "scope": "LINE_ITEM"
-                  },
-                  {
-                    "name": "Global Sales $55 OFF",
-                    "type": "FIXED_AMOUNT",
-                    "amount_money": {
-                      "amount": 5500,
-                      "currency": "USD"
-                    },
-                    "applied_money": {
-                      "amount": 3583,
-                      "currency": "USD"
-                    },
-                    "scope": "ORDER"
-                  }
-                ],
                 "base_price_money": {
                   "amount": 3500,
                   "currency": "USD"
                 },
-                "total_tax_money": {
-                  "amount": 615,
-                  "currency": "USD"
-                },
-                "total_discount_money": {
-                  "amount": 5943,
-                  "currency": "USD"
-                },
                 "total_money": {
-                  "amount": 5172,
+                  "amount": 10500,
+                  "currency": "USD"
+                }
+              }
+            ],
+            "taxes": [
+              {
+                "uid": "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
+                "type": "INCLUSIVE",
+                "percentage": "7.75",
+                "scope": "LINE_ITEM"
+              }
+            ],
+            "discounts": [
+              {
+                "uid": "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
+                "type": "FIXED_AMOUNT",
+                "scope": "LINE_ITEM",
+                "amount_money": {
+                  "amount": 100,
+                  "currency": "USD"
+                },
+                "applied_money": {
+                  "amount": 100,
                   "currency": "USD"
                 }
               }
             ],
             "total_money": {
-              "amount": 7818,
+              "amount": 14503,
               "currency": "USD"
             },
             "total_tax_money": {
-              "amount": 823,
+              "amount": 103,
               "currency": "USD"
             },
             "total_discount_money": {
-              "amount": 9005,
+              "amount": 100,
               "currency": "USD"
             }
           },
           "created_at": "2017-06-16T22:25:35Z",
+          "version": 1,
           "additional_recipients": [
             {
               "location_id": "057P5VYJ4A5X1",
@@ -17783,6 +18699,124 @@
         "ruby": "/sdk_samples/CreateCustomer/CreateCustomerResponse.ruby"
       }
     },
+    "CreateDisputeEvidenceFileRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "maxLength": 45,
+          "type": "string",
+          "description": "Unique ID. For more information,\nsee [Idempotency](https://developer.squareup.com/docs/docs/working-with-apis/idempotency)."
+        },
+        "evidence_type": {
+          "type": "string",
+          "description": "The type of evidence you are uploading.\nSee [DisputeEvidenceType](#type-disputeevidencetype) for possible values"
+        },
+        "content_type": {
+          "type": "string",
+          "description": "The MIME type of the uploaded file.\nOne of image/heic, image/heif, image/jpeg, application/pdf,  image/png, image/tiff."
+        }
+      },
+      "description": "Defines parameters for a CreateDisputeEvidenceFile request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {}
+    },
+    "CreateDisputeEvidenceFileResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "evidence": {
+          "$ref": "#/definitions/DisputeEvidence",
+          "description": "The metadata of the newly uploaded dispute evidence."
+        }
+      },
+      "description": "Defines fields in a CreateDisputeEvidenceFile response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "evidence": {
+          "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
+          "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
+          "evidence_file": {
+            "filename": "evidence.tiff",
+            "filetype": "image/tiff"
+          },
+          "uploaded_at": "2018-10-18T16:01:10.000Z"
+        }
+      }
+    },
+    "CreateDisputeEvidenceTextRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key",
+        "evidence_text"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "maxLength": 45,
+          "type": "string",
+          "description": "Unique ID. For more information,\nsee [Idempotency](https://developer.squareup.com/docs/docs/working-with-apis/idempotency)."
+        },
+        "evidence_type": {
+          "type": "string",
+          "description": "The type of evidence you are uploading.\nSee [DisputeEvidenceType](#type-disputeevidencetype) for possible values"
+        },
+        "evidence_text": {
+          "minLength": 1,
+          "maxLength": 500,
+          "type": "string",
+          "description": "The evidence string."
+        }
+      },
+      "description": "Defines parameters for a CreateDisputeEvidenceText request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "evidence_type": "TRACKING_NUMBER",
+          "evidence_text": "1Z8888888888888888",
+          "idempotency_key": "ed3ee3933d946f1514d505d173c82648"
+        }
+      }
+    },
+    "CreateDisputeEvidenceTextResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "evidence": {
+          "$ref": "#/definitions/DisputeEvidence",
+          "description": "The newly uploaded dispute evidence metadata."
+        }
+      },
+      "description": "Defines fields in a CreateDisputeEvidenceText response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "evidence": {
+          "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
+          "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
+          "evidence_text": "1Z8888888888888888",
+          "uploaded_at": "2018-10-18T16:01:10.000Z"
+        }
+      }
+    },
     "CreateLocationRequest": {
       "type": "object",
       "properties": {
@@ -17911,40 +18945,6 @@
           "maxLength": 192,
           "type": "string",
           "description": "A value you specify that uniquely identifies this\norder among orders you\u0027ve created.\n\nIf you\u0027re unsure whether a particular order was created successfully,\nyou can reattempt it with the same idempotency key without\nworrying about creating duplicate orders.\n\nSee [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
-        },
-        "reference_id": {
-          "maxLength": 40,
-          "type": "string",
-          "description": "__Deprecated__: Please set the reference_id on the nested `order` field\ninstead.\n\nAn optional ID you can associate with the order for your own\npurposes (such as to associate the order with an entity ID in your\nown database).\n\nThis value cannot exceed 40 characters.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
-        "line_items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateOrderRequestLineItem"
-          },
-          "description": "__Deprecated__: Please set the line_items on the nested `order` field\ninstead.\n\nThe line items to associate with this order.\n\nEach line item represents a different product to include in a purchase.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
-        "taxes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateOrderRequestTax"
-          },
-          "description": "__Deprecated__: Please set the taxes on the nested `order` field instead.\n\nThe taxes to include on the order.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
-        "discounts": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateOrderRequestDiscount"
-          },
-          "description": "__Deprecated__: Please set the discounts on the nested `order` field instead.\n\nThe discounts to include on the order.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
         }
       },
       "description": "",
@@ -18011,144 +19011,6 @@
           }
         }
       }
-    },
-    "CreateOrderRequestDiscount": {
-      "type": "object",
-      "properties": {
-        "catalog_object_id": {
-          "maxLength": 192,
-          "type": "string",
-          "description": "Only used for catalog discounts.\nThe catalog object ID for an existing `CatalogDiscount`.\n\nDo not provide a value for this field if you provide values in other fields for an ad hoc discount."
-        },
-        "name": {
-          "maxLength": 255,
-          "type": "string",
-          "description": "Only used for ad hoc discounts. The discount\u0027s name."
-        },
-        "percentage": {
-          "maxLength": 10,
-          "type": "string",
-          "description": "Only used for ad hoc discounts. The percentage of the discount, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
-        },
-        "amount_money": {
-          "$ref": "#/definitions/Money",
-          "description": "Only used for ad hoc discounts. The monetary amount of the discount."
-        }
-      },
-      "description": "__Deprecated__: Please use the [OrderLineItemDiscount](#type-orderlineitemdiscount) type\nin the order field of [CreateOrderRequest](#type-createorderrequest) instead.\n\nRepresents a discount that can apply to either a single line item or an entire order.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true
-    },
-    "CreateOrderRequestLineItem": {
-      "type": "object",
-      "required": [
-        "quantity"
-      ],
-      "properties": {
-        "name": {
-          "maxLength": 500,
-          "type": "string",
-          "description": "Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.\n\nDo not provide a value for this field if you provide a value for `catalog_object_id`."
-        },
-        "quantity": {
-          "minLength": 1,
-          "maxLength": 5,
-          "type": "string",
-          "description": "The quantity to purchase, as a string representation of a number.\n\nThis string must have a positive integer value."
-        },
-        "base_price_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The base price for a single unit of the line item.\n\n`base_price_money` is required for ad hoc line items and variable priced `CatalogItemVariation`s.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation\u0027s price."
-        },
-        "variation_name": {
-          "maxLength": 255,
-          "type": "string",
-          "description": "Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.\n\nIf this value is not set for an ad hoc line item, the default value of `Regular` is used.\n\nDo not provide a value for this field if you provide a value for the `catalog_object_id`."
-        },
-        "note": {
-          "maxLength": 500,
-          "type": "string",
-          "description": "The note of the line item. This value cannot exceed 500 characters."
-        },
-        "catalog_object_id": {
-          "maxLength": 192,
-          "type": "string",
-          "description": "Only used for Catalog line items.\nThe catalog object ID for an existing `CatalogItemVariation`.\n\nDo not provide a value for this field if you provide a value for `name` and `base_price_money`."
-        },
-        "modifiers": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateOrderRequestModifier"
-          },
-          "description": "Only used for Catalog line items. The modifiers to include on the line item."
-        },
-        "taxes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateOrderRequestTax"
-          },
-          "description": "The taxes to include on the line item."
-        },
-        "discounts": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateOrderRequestDiscount"
-          },
-          "description": "The discounts to include on the line item."
-        }
-      },
-      "description": "__Deprecated__: Please use the [OrderLineItem](#type-orderlineitem) type in the order\nfield of [CreateOrderRequest](#type-createorderrequest) instead.\n\nRepresents a line item to include in an order. Each line item describes\na different product to purchase, with its own quantity and price details.\n\nLine items can either reference objects from the merchant\u0027s catalog, or can\nalternatively specify a name and price instead.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true
-    },
-    "CreateOrderRequestModifier": {
-      "type": "object",
-      "properties": {
-        "catalog_object_id": {
-          "maxLength": 192,
-          "type": "string",
-          "description": "The catalog object ID of a `CatalogModifier`."
-        },
-        "name": {
-          "maxLength": 255,
-          "type": "string",
-          "description": "Only used for ad hoc modifiers. The name of the modifier. `name` cannot exceed 255 characters.\n\nDo not provide a value for `name` if you provide a value for `catalog_object_id`."
-        },
-        "base_price_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The base price for the modifier.\n\n`base_price_money` is required for ad hoc modifiers.\nIf both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined `CatalogModifier` price."
-        }
-      },
-      "description": "__Deprecated__: Please use the [OrderLineItemModifier](#type-orderlineitemmodifier) type\ninstead.\n\nRepresents a modifier applied to a single line item.\n\nModifiers can reference existing objects in a merchant catalog or be constructed ad hoc at the time of purchase by providing a name and price.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true
-    },
-    "CreateOrderRequestTax": {
-      "type": "object",
-      "properties": {
-        "catalog_object_id": {
-          "maxLength": 192,
-          "type": "string",
-          "description": "Only used for catalog taxes. The catalog object ID of an existing `CatalogTax`.\n\nDo not provide a value for this field if you provide values in other fields for an ad hoc tax."
-        },
-        "name": {
-          "maxLength": 255,
-          "type": "string",
-          "description": "Only used for ad hoc taxes. The tax\u0027s name.\n\nDo not provide a value for this field if you set `catalog_object_id`."
-        },
-        "type": {
-          "type": "string",
-          "description": "Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.\n\nDefault: `ADDITIVE`; See `OrderLineItemTaxType` for possible values.\nSee [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values"
-        },
-        "percentage": {
-          "maxLength": 10,
-          "type": "string",
-          "description": "Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.\n\nA value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0"
-        }
-      },
-      "description": "__Deprecated__: Please use the [OrderLineItemTax](#type-orderlineitemtax) type in the\norder field of [CreateOrderRequest](#type-createorderrequest) instead.\n\nRepresents a tax that can apply to either a single line item or an entire order.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true
     },
     "CreateOrderResponse": {
       "type": "object",
@@ -19194,6 +20056,130 @@
       "description": "Details about the device that took the payment.",
       "x-release-status": "PUBLIC"
     },
+    "Dispute": {
+      "type": "object",
+      "properties": {
+        "dispute_id": {
+          "maxLength": 40,
+          "type": "string",
+          "description": "Unique ID for this `Dispute`, generated by Square."
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The disputed amount. The amount can be less than the entire transaction amount.\nFor example, a cardholder\npurchased multiple items, however initiated dispute only for some of the items."
+        },
+        "reason": {
+          "type": "string",
+          "description": "The dispute reason why cardholder initiated dispute with their bank.\nSee [DisputeReason](#type-disputereason) for possible values"
+        },
+        "state": {
+          "type": "string",
+          "description": "The current state of this dispute.\nSee [DisputeState](#type-disputestate) for possible values"
+        },
+        "due_at": {
+          "type": "string",
+          "description": "The time when the next action is due, in RFC 3339 format."
+        },
+        "disputed_payment": {
+          "$ref": "#/definitions/DisputedPayment",
+          "description": "The payment challenged in this dispute."
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "maxLength": 40,
+            "type": "string"
+          },
+          "description": "The IDs of the evidence associated with the dispute."
+        },
+        "card_brand": {
+          "type": "string",
+          "description": "The card brand used in the disputed payment.\nSee [CardBrand](#type-cardbrand) for possible values"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Timestamp when the dispute was created, in RFC 3339 format."
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "Timestamp when dispute was last updated, in RFC 3339 format."
+        },
+        "brand_dispute_id": {
+          "type": "string",
+          "description": "ID of the dispute in the card brand system, generated by the card brand."
+        },
+        "reported_date": {
+          "type": "string",
+          "description": "Timestamp when the dispute was reported, in RFC 3339 format."
+        },
+        "version": {
+          "type": "integer",
+          "description": "The current version of the `Dispute`."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of location where dispute originated."
+        }
+      },
+      "description": "Represents a dispute a cardholder initiated with their bank.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DisputeEvidence": {
+      "type": "object",
+      "properties": {
+        "evidence_id": {
+          "maxLength": 40,
+          "type": "string",
+          "description": "The Square-generated ID of the evidence."
+        },
+        "dispute_id": {
+          "maxLength": 40,
+          "type": "string",
+          "description": "The ID of the dispute the evidence is associated with."
+        },
+        "uploaded_at": {
+          "type": "string",
+          "description": "The time when the next action is due, in RFC 3339 format."
+        },
+        "evidence_type": {
+          "type": "string",
+          "description": "The type of the evidence.\nSee [DisputeEvidenceType](#type-disputeevidencetype) for possible values"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DisputeEvidenceFile": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "description": "The file name including the file extension. For example: \"receipt.tiff\"."
+        },
+        "filetype": {
+          "type": "string",
+          "description": "Dispute evidence files must one of application/pdf, image/heic, image/heif, image/jpeg, image/png, image/tiff formats."
+        }
+      },
+      "description": "A file to be uploaded as dispute evidence.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DisputedPayment": {
+      "type": "object",
+      "properties": {
+        "payment_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "Square-generated unique ID of the payment being disputed."
+        }
+      },
+      "description": "The payment the cardholder disputed.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "Employee": {
       "type": "object",
       "properties": {
@@ -19324,6 +20310,88 @@
       },
       "description": "Additional details about EXTERNAL type payments.",
       "x-release-status": "PUBLIC"
+    },
+    "GetBankAccountByV1IdRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Request object for fetching a specific `BankAccount`\nby the object ID.",
+      "x-release-status": "PUBLIC"
+    },
+    "GetBankAccountByV1IdResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "bank_account": {
+          "$ref": "#/definitions/BankAccount",
+          "description": "The requested `BankAccount` object."
+        }
+      },
+      "description": "Response object returned by GetBankAccountByV1Id.",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "bank_account": {
+          "id": "w3yRgCGYQnwmdl0R3GB",
+          "account_number_suffix": "971",
+          "country": "US",
+          "currency": "USD",
+          "account_type": "CHECKING",
+          "holder_name": "Jane Doe",
+          "primary_bank_identification_number": "112200303",
+          "location_id": "S8GWD5example",
+          "status": "VERIFICATION_IN_PROGRESS",
+          "creditable": false,
+          "debitable": false,
+          "version": 5,
+          "bank_name": "Bank Name"
+        }
+      }
+    },
+    "GetBankAccountRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Request object to fetch a specific `BankAccount`\nby the object ID.",
+      "x-release-status": "PUBLIC"
+    },
+    "GetBankAccountResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "bank_account": {
+          "$ref": "#/definitions/BankAccount",
+          "description": "The requested `BankAccount` object."
+        }
+      },
+      "description": "Response object returned by `GetBankAccount`.",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "bank_account": {
+          "id": "w3yRgCGYQnwmdl0R3GB",
+          "account_number_suffix": "971",
+          "country": "US",
+          "currency": "USD",
+          "account_type": "CHECKING",
+          "holder_name": "Jane Doe",
+          "primary_bank_identification_number": "112200303",
+          "location_id": "S8GWD5example",
+          "status": "VERIFICATION_IN_PROGRESS",
+          "creditable": false,
+          "debitable": false,
+          "version": 5,
+          "bank_name": "Bank Name"
+        }
+      }
     },
     "GetBreakTypeRequest": {
       "type": "object",
@@ -20039,6 +21107,84 @@
         "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.ruby"
       }
     },
+    "ListBankAccountsRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor returned by a previous call to this endpoint.\nUse it in the next `ListBankAccounts` request to retrieve the next set \nof results.\n\nSee the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Upper limit on the number of bank accounts to return in the response. \nCurrently, 1000 is the largest supported limit. You can specify a limit \nof up to 1000 bank accounts. This is also the default limit."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "Location ID. You can specify this optional filter \nto retrieve only the linked bank accounts belonging to a specific location."
+        }
+      },
+      "description": "Request object for fetching all `BankAccount`\nobjects linked to a account.",
+      "x-release-status": "PUBLIC"
+    },
+    "ListBankAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "bank_accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankAccount"
+          },
+          "description": "List of BankAccounts associated with this account."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "When a response is truncated, it includes a cursor that you can \nuse in a subsequent request to fetch next set of bank accounts.\nIf empty, this is the final response.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        }
+      },
+      "description": "Response object returned by ListBankAccounts.",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "bank_accounts": [
+          {
+            "id": "ao6iaQ9vhDiaQD7n3GB",
+            "account_number_suffix": "971",
+            "country": "US",
+            "currency": "USD",
+            "account_type": "CHECKING",
+            "holder_name": "Jane Doe",
+            "primary_bank_identification_number": "112200303",
+            "location_id": "S8GWD5example",
+            "status": "VERIFICATION_IN_PROGRESS",
+            "creditable": false,
+            "debitable": false,
+            "version": 5,
+            "bank_name": "Bank Name"
+          },
+          {
+            "id": "4x7WXuaxrkQkVlka3GB",
+            "account_number_suffix": "972",
+            "country": "US",
+            "currency": "USD",
+            "account_type": "CHECKING",
+            "holder_name": "Jane Doe",
+            "primary_bank_identification_number": "112200303",
+            "location_id": "S8GWD5example",
+            "status": "VERIFICATION_IN_PROGRESS",
+            "creditable": false,
+            "debitable": false,
+            "version": 5,
+            "bank_name": "Bank Name"
+          }
+        ]
+      }
+    },
     "ListBreakTypesRequest": {
       "type": "object",
       "properties": {
@@ -20404,6 +21550,114 @@
         "php": "/sdk_samples/ListCustomers/ListCustomersResponse.php",
         "javascript": "/sdk_samples/ListCustomers/ListCustomersResponse.javascript",
         "ruby": "/sdk_samples/ListCustomers/ListCustomersResponse.ruby"
+      }
+    },
+    "ListDisputeEvidenceRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines parameters for a ListDisputeEvidence request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "ListDisputeEvidenceResponse": {
+      "type": "object",
+      "properties": {
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DisputeEvidence"
+          },
+          "description": "The list of evidence previously uploaded to the specified dispute."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        }
+      },
+      "description": "Defines fields in a ListDisputeEvidence response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "ListDisputesRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\nFor more information, see [Paginating](https://developer.squareup.com/docs/basics/api101/pagination)."
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The dispute states to filter the result.\nIf not specified, the endpoint\nreturns all open disputes (dispute status is not\n`INQUIRY_CLOSED`, `WON`, or `LOST`).\nSee [DisputeState](#type-disputestate) for possible values"
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the location for which to return \na list of disputes. If not specified,\nthe endpoint returns all open disputes\n(dispute status is not `INQUIRY_CLOSED`, `WON`, or \n`LOST`) associated with all locations."
+        }
+      },
+      "description": "Defines request parameters for the ListDisputes endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "ListDisputesResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "disputes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Dispute"
+          },
+          "description": "The list of Disputes."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request.\nIf unset, this is the final response.\nFor more information, see [Paginating](https://developer.squareup.com/docs/basics/api101/pagination)."
+        }
+      },
+      "description": "Defines fields in a ListDisputes response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "disputes": [
+          {
+            "dispute_id": "OnY1AZwhSi775rbNIK4gv",
+            "amount_money": {
+              "amount": 1000,
+              "currency": "USD"
+            },
+            "reason": "NO_KNOWLEDGE",
+            "state": "EVIDENCE_REQUIRED",
+            "due_at": "2018-10-11T00:00:00.000Z",
+            "disputed_payments": [
+              {
+                "payment_id": "APgIq6RX2jM6DKDhMHiC6QEkuaB"
+              }
+            ],
+            "card_brand": "visa",
+            "created_at": "2018-10-12T02:20:25.577Z",
+            "updated_at": "2018-10-12T02:20:25.577Z",
+            "brand_dispute_id": "100000809947"
+          }
+        ],
+        "cursor": "G1aSTRm48CLjJsg6Sg3hQN1b1OMaoVuG"
       }
     },
     "ListEmployeeWagesRequest": {
@@ -21436,6 +22690,20 @@
       "description": "Represents a Square seller.",
       "x-release-status": "PUBLIC"
     },
+    "MethodErrorCodes": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "\nSee [ErrorCode](#type-errorcode) for possible values"
+        }
+      },
+      "description": "",
+      "x-release-status": "PUBLIC"
+    },
     "Money": {
       "type": "object",
       "properties": {
@@ -21897,7 +23165,7 @@
           "description": "The email address of the fulfillment recipient.\n\nIf provided, overrides the value pulled from the customer profile indicated by `customer_id`."
         },
         "phone_number": {
-          "maxLength": 16,
+          "maxLength": 17,
           "type": "string",
           "description": "The phone number of the fulfillment recipient.\n\nIf provided, overrides the value pulled from the customer profile indicated by `customer_id`."
         },
@@ -22049,24 +23317,6 @@
             "$ref": "#/definitions/OrderLineItemModifier"
           },
           "description": "The `CatalogModifier`s applied to this line item."
-        },
-        "taxes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderLineItemTax"
-          },
-          "description": "A list of taxes applied to this line item. On read or retrieve, this list includes both\nitem-level taxes and any order-level taxes apportioned to this item. When creating an Order,\nset your item-level taxes in this list.\n\nThis field has been deprecated in favour of `applied_taxes`. Usage of both this field and\n`applied_taxes` when creating an order will result in an error. Usage of this field when\nsending requests to the UpdateOrder endpoint will result in an error.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
-        "discounts": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderLineItemDiscount"
-          },
-          "description": "A list of discounts applied to this line item. On read or retrieve, this list includes\nboth item-level discounts and any order-level discounts apportioned to this item. When\ncreating an Order, set your item-level discounts in this list.\n\nThis field has been deprecated in favour of `applied_discounts`. Usage of both this field and\n`applied_discounts` when creating an order will result in an error. Usage of this field when\nsending requests to the UpdateOrder endpoint will result in an error.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
         },
         "applied_taxes": {
           "type": "array",
@@ -22509,24 +23759,6 @@
           },
           "description": "The `CatalogModifier`s applied to this line item."
         },
-        "return_taxes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderReturnTax"
-          },
-          "description": "A list of taxes applied to this line item. On read or retrieve, this list includes both\nitem-level taxes and any return-level taxes apportioned to this item.\n\nThis field has been deprecated in favour of `applied_taxes`.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
-        "return_discounts": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderReturnDiscount"
-          },
-          "description": "A list of discounts applied to this line item. On read or retrieve, this list includes\nboth item-level discounts and any return-level discounts apportioned to this item.\n\nThis field has been deprecated in favour of `applied_discounts`.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
         "applied_taxes": {
           "type": "array",
           "items": {
@@ -22670,15 +23902,6 @@
           "type": "boolean",
           "description": "Indicates whether the surcharge can be taxed. Service charges\ncalculated in the `TOTAL_PHASE` cannot be marked as taxable."
         },
-        "return_taxes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderReturnTax"
-          },
-          "description": "Taxes applied to the `OrderReturnServiceCharge`. By default, return-level taxes apply to\n`OrderReturnServiceCharge`s calculated in the `SUBTOTAL_PHASE` if `taxable` is set to `true`.  On\nread or retrieve, this list includes both item-level taxes and any return-level taxes\napportioned to this item.\n\nThis field has been deprecated in favour of `applied_taxes`.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
-        },
         "applied_taxes": {
           "type": "array",
           "items": {
@@ -22809,15 +24032,6 @@
         "taxable": {
           "type": "boolean",
           "description": "Indicates whether the service charge can be taxed. If set to `true`,\norder-level taxes automatically apply to the service charge. Note that\nservice charges calculated in the `TOTAL_PHASE` cannot be marked as taxable."
-        },
-        "taxes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderLineItemTax"
-          },
-          "description": "A list of taxes applied to this service charge. On read or retrieve, this list includes\nboth item-level taxes and any order-level taxes apportioned to this service charge.\nWhen creating an Order, set your service charge-level taxes in this list. By default,\norder-level taxes apply to service charges calculated in the `SUBTOTAL_PHASE` if `taxable` is\nset to `true`.\n\nThis field has been deprecated in favour of `applied_taxes`. Usage of both this field and\n`applied_taxes` when creating an order will result in an error. Usage of this field when\nsending requests to the UpdateOrder endpoint will result in an error.",
-          "x-release-status": "DEPRECATED",
-          "x-is-deprecated": true
         },
         "applied_taxes": {
           "type": "array",
@@ -23442,6 +24656,32 @@
         "status": "VERIFIED"
       }
     },
+    "RemoveDisputeEvidenceRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines parameters for a RemoveDisputeEvidence request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "RemoveDisputeEvidenceResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        }
+      },
+      "description": "Defines fields in a RemoveDisputeEvidence response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {}
+    },
     "RenewTokenRequest": {
       "type": "object",
       "properties": {
@@ -23735,6 +24975,96 @@
         "php": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.php",
         "javascript": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.javascript",
         "ruby": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.ruby"
+      }
+    },
+    "RetrieveDisputeEvidenceRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines parameters for a RetrieveDisputeEvidence request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "RetrieveDisputeEvidenceResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "evidence": {
+          "$ref": "#/definitions/DisputeEvidence",
+          "description": "Metadata about the dispute evidence file."
+        }
+      },
+      "description": "Defines fields in a RetrieveDisputeEvidence response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "evidence": {
+          "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
+          "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
+          "evidence_file": {
+            "filename": "evidence.tiff",
+            "filetype": "image/tiff"
+          },
+          "uploaded_at": "2018-10-18T16:01:10.000Z"
+        }
+      }
+    },
+    "RetrieveDisputeRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines request parameters for the RetrieveDispute endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "RetrieveDisputeResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "dispute": {
+          "$ref": "#/definitions/Dispute",
+          "description": "Details about the requested `Dispute`."
+        }
+      },
+      "description": "Defines fields in a RetrieveDispute response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "dispute": {
+          "dispute_id": "XDgyFu7yo1E2S5lQGGpYn",
+          "amount_money": {
+            "amount": 2000,
+            "currency": "USD"
+          },
+          "reason": "NO_KNOWLEDGE",
+          "state": "LOST",
+          "due_at": "2018-11-01T00:00:00.000Z",
+          "disputed_payments": [
+            {
+              "payment_id": "6Ee10wvqhfipStz297mtUhBXvaB"
+            }
+          ],
+          "card_brand": "visa",
+          "created_at": "2018-10-18T15:59:13.613Z",
+          "updated_at": "2018-10-18T15:59:13.613Z",
+          "brand_dispute_id": "100000282394"
+        }
       }
     },
     "RetrieveEmployeeRequest": {
@@ -24475,7 +25805,7 @@
         "limit": {
           "type": "integer",
           "format": "int64",
-          "description": "A limit on the number of results to be returned in a single page.\nThe limit is advisory - the implementation may return more or fewer results.\nIf the supplied limit is negative, zero, or is higher than the maximum limit\nof 1,000, it will be ignored."
+          "description": "A limit on the number of results to be returned in a single page.\nThe limit is advisory - the implementation may return more or fewer results.\nIf the supplied limit is negative, zero, or is higher than the maximum limit\nof 100, it will be ignored."
         },
         "query": {
           "$ref": "#/definitions/CustomerQuery",
@@ -25211,6 +26541,59 @@
       },
       "description": "Group of standard measurement units.",
       "x-release-status": "PUBLIC"
+    },
+    "SubmitEvidenceRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines parameters for a SubmitEvidence request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "SubmitEvidenceResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "dispute": {
+          "$ref": "#/definitions/Dispute",
+          "description": "The `Dispute` for which evidence was submitted."
+        }
+      },
+      "description": "Defines fields in a SubmitEvidence response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "dispute": {
+          "dispute_id": "EAZoK70gX3fyvibecLwIGB",
+          "amount_money": {
+            "amount": 2000,
+            "currency": "USD"
+          },
+          "reason": "NO_KNOWLEDGE",
+          "state": "PROCESSING",
+          "due_at": "2018-11-01T00:00:00.000Z",
+          "disputed_payments": [
+            {
+              "payment_id": "2yeBUWJzllJTpmnSqtMRAL19taB"
+            }
+          ],
+          "evidence_ids": [
+            "CKWRhnZN0eMSUbh38BKmD"
+          ],
+          "card_brand": "visa",
+          "created_at": "2018-10-18T16:02:15.313Z",
+          "updated_at": "2018-10-18T16:02:15.313Z",
+          "brand_dispute_id": "100000399240"
+        }
+      }
     },
     "Tender": {
       "type": "object",
@@ -26300,7 +27683,8 @@
         }
       },
       "description": "V1BankAccount",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1CashDrawerEvent": {
       "type": "object",
@@ -26331,7 +27715,8 @@
         }
       },
       "description": "V1CashDrawerEvent",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1CashDrawerShift": {
       "type": "object",
@@ -26420,7 +27805,8 @@
         }
       },
       "description": "Contains details for a single cash drawer shift.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1Category": {
       "type": "object",
@@ -26650,13 +28036,15 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1DeleteTimecardResponse": {
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1DeleteVariationRequest": {
       "type": "object",
@@ -26969,7 +28357,8 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListBankAccountsResponse": {
       "type": "object",
@@ -26983,7 +28372,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListCashDrawerShiftsRequest": {
       "type": "object",
@@ -27002,7 +28392,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListCashDrawerShiftsResponse": {
       "type": "object",
@@ -27016,7 +28407,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListCategoriesRequest": {
       "type": "object",
@@ -27468,7 +28860,8 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListTimecardEventsResponse": {
       "type": "object",
@@ -27482,7 +28875,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListTimecardsRequest": {
       "type": "object",
@@ -27533,7 +28927,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1ListTimecardsResponse": {
       "type": "object",
@@ -27547,7 +28942,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1Merchant": {
       "type": "object",
@@ -28374,7 +29770,8 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1RetrieveBusinessRequest": {
       "type": "object",
@@ -28387,7 +29784,8 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1RetrieveEmployeeRequest": {
       "type": "object",
@@ -28438,7 +29836,8 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1Settlement": {
       "type": "object",
@@ -28625,7 +30024,8 @@
         }
       },
       "description": "Represents a timecard for an employee.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1TimecardEvent": {
       "type": "object",
@@ -28652,7 +30052,8 @@
         }
       },
       "description": "V1TimecardEvent",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1UpdateCategoryRequest": {
       "type": "object",
@@ -28846,7 +30247,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "V1UpdateVariationRequest": {
       "type": "object",

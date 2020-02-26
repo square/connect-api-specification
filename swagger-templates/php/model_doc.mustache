@@ -3,6 +3,12 @@
 ### Description{{#description}}
 
 {{{description}}}{{/description}}
+{{#vendorExtensions.x-is-deprecated}}
+**Note: This model is deprecated.**
+{{/vendorExtensions.x-is-deprecated}}
+{{#vendorExtensions.x-is-restricted}}
+**Scheduled for retirement. Not available for new applications.**
+{{/vendorExtensions.x-is-restricted}}
 
 ## Properties
 {{#isEnum}}
@@ -15,7 +21,7 @@ Name | Type
 {{^isEnum}}
 Name | Getter | Setter | Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
-{{#vars}}**{{name}}** | {{getter}}() | {{^readOnly}}{{setter}}($value){{/readOnly}} | {{#isPrimitiveType}}**{{datatype}}**{{/isPrimitiveType}}{{^isPrimitiveType}}[**{{datatype}}**]({{complexType}}.md){{/isPrimitiveType}} | {{description}} | {{^required}}[optional] {{/required}}{{#readOnly}}[readonly] {{/readOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}
+{{#vars}}**{{name}}** | {{getter}}() | {{^readOnly}}{{setter}}($value){{/readOnly}} | {{#isPrimitiveType}}**{{datatype}}**{{/isPrimitiveType}}{{^isPrimitiveType}}[**{{datatype}}**]({{complexType}}.md){{/isPrimitiveType}} | {{description}} | {{^required}}[optional] {{/required}}{{#readOnly}}[readonly] {{/readOnly}}{{#defaultValue}}[default to {{{.}}}]{{/defaultValue}}{{#vendorExtensions.x-is-deprecated}}[deprecated]{{/vendorExtensions.x-is-deprecated}}{{#vendorExtensions.x-is-restricted}}[restricted]{{/vendorExtensions.x-is-restricted}}{{#vendorExtensions.x-is-beta}}[beta]{{/vendorExtensions.x-is-beta}}
 {{/vars}}
 {{/isEnum}}
 

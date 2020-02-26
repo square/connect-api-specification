@@ -1,6 +1,7 @@
 {{>licenseInfo}}
 var superagent = require('superagent');
 var querystring = require('querystring');
+var HeaderUtils = require('./lib/HeaderUtils');
 
 {{#emitJSDoc}}  /**
  * @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient
@@ -384,7 +385,7 @@ exports.CollectionFormatEnum = {
     if(contentType != 'multipart/form-data') {
       request.type(contentType);
     }
-  } else if (!request.header['Content-Type']) {
+  } else if (!HeaderUtils.caseInsensitiveGet(request.header, 'content-type')) {
     request.type('application/json');
   }
 

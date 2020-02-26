@@ -31,7 +31,11 @@ var ApiClient = require('../ApiClient');
 
   /**<#summary><#vendorExtensions.x-is-deprecated>
    * @deprecated</vendorExtensions.x-is-deprecated>
-   * <summary></summary><#notes>
+   * <summary></summary><#notes><#vendorExtensions.x-is-beta>
+   * Note: This endpoint is in beta.</vendorExtensions.x-is-beta>
+   <#vendorExtensions.x-is-restricted>
+   * Scheduled for retirement. Not available for new applications.
+   </vendorExtensions.x-is-restricted>
    * <notes></notes><#allParams><#required>
    * @param {<&vendorExtensions.x-jsdoc-type>} <paramName> <description></required></allParams><#hasOptionalParams>
    * @param {Object} opts Optional parameters<#allParams><^required>
@@ -41,7 +45,7 @@ var ApiClient = require('../ApiClient');
    * @return {Promise} a {@link https://www.promisejs.org/|Promise}<#returnType>, with an object containing data of type {@link <&vendorExtensions.x-jsdoc-type>} and HTTP response</returnType><^returnType>, with an object containing HTTP response</returnType></usePromises>
    */
 </emitJSDoc>  this.<operationId><#usePromises>WithHttpInfo</usePromises> = function(<vendorExtensions.x-codegen-argList>) {<#vendorExtensions.x-is-deprecated>
-    console.warn("Calling deprecated API: <classname>.<operationId>");</vendorExtensions.x-is-deprecated><#hasOptionalParams>
+    console.warn("\x1b[33m%s\x1b[0m","Calling deprecated API: <classname>.<operationId><#vendorExtensions.x-is-restricted>. Scheduled for retirement. Not available for new applications.</vendorExtensions.x-is-restricted>");</vendorExtensions.x-is-deprecated><#hasOptionalParams>
     opts = opts || {};</hasOptionalParams>
     var postBody = <#bodyParam><#required><paramName></required><^required>opts['<paramName>']</required></bodyParam><^bodyParam>null</bodyParam>;
 <#allParams><#required>

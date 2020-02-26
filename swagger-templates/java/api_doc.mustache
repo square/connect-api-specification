@@ -15,6 +15,12 @@ Method | HTTP request | Description
 {{#vendorExtensions.x-is-deprecated}}
 **Note: This endpoint is deprecated.**
 {{/vendorExtensions.x-is-deprecated}}
+{{#vendorExtensions.x-is-restricted}}
+**Scheduled for retirement. Not available for new applications.**
+{{/vendorExtensions.x-is-restricted}}
+{{#vendorExtensions.x-is-beta}}
+**Note: This endpoint is in beta.**
+{{/vendorExtensions.x-is-beta}}
 > {{#returnType}}{{returnType}} {{/returnType}}{{operationId}}({{#allParams}}{{{paramName}}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
 
 {{summary}}{{#notes}}

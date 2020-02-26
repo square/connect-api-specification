@@ -1,8 +1,13 @@
 
 {{#models}}{{#model}}
 {{#emitJSDoc}}
-/**
- * The {{classname}} model module.
+/**{{#vendorExtensions.x-is-deprecated}}
+ * @deprecated{{/vendorExtensions.x-is-deprecated}}
+ * The {{classname}} model module.{{#vendorExtensions.x-is-beta}}
+ * Note: This model is in beta.{{/vendorExtensions.x-is-beta}}
+ {{#vendorExtensions.x-is-restricted}}
+ * Note: Scheduled for retirement. Not available for new applications.
+ {{/vendorExtensions.x-is-restricted}}
  * @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}{{#modelPackage}}{{modelPackage}}/{{/modelPackage}}{{classname}}
  */
 

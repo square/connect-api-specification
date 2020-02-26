@@ -22,12 +22,13 @@ namespace {{packageName}}.{{apiPackage}}
         /// {{summary}}
         /// </summary>
         /// <remarks>
-        /// {{notes}}
+        /// {{notes}}{{#vendorExtensions.x-is-beta}}
+        /// Note: This endpoint is in beta.{{/vendorExtensions.x-is-beta}}
         /// </remarks>
         /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
         {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
         {{/allParams}}/// <returns>{{#returnType}}{{returnType}}{{/returnType}}</returns>{{#vendorExtensions.x-is-deprecated}}
-        [Obsolete]
+        [Obsolete{{#vendorExtensions.x-is-restricted}}("Scheduled for retirement. Not available for new applications."){{/vendorExtensions.x-is-restricted}}]
         {{/vendorExtensions.x-is-deprecated}}
         {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}} ({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = null{{/optionalMethodArgument}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
 
@@ -306,10 +307,10 @@ namespace {{packageName}}.{{apiPackage}}
             }
 
             {{#returnType}}return new ApiResponse<{{{returnType}}}>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString(), StringComparer.OrdinalIgnoreCase),
                 ({{{returnType}}}) Configuration.ApiClient.Deserialize(localVarResponse, typeof({{#returnContainer}}{{{returnContainer}}}{{/returnContainer}}{{^returnContainer}}{{{returnType}}}{{/returnContainer}})));{{/returnType}}
             {{^returnType}}return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString(), StringComparer.OrdinalIgnoreCase),
                 null);{{/returnType}}
         }
 
@@ -368,7 +369,9 @@ namespace {{packageName}}.{{apiPackage}}
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            {{#vendorExtensions.x-sq-version}}
+            localVarHeaderParams.Add("Square-Version", "{{vendorExtensions.x-sq-version}}");
+            {{/vendorExtensions.x-sq-version}}
             {{#pathParams}}
             if ({{paramName}} != null) localVarPathParams.Add("{{baseName}}", Configuration.ApiClient.ParameterToString({{paramName}})); // path parameter
             {{/pathParams}}
@@ -438,10 +441,10 @@ namespace {{packageName}}.{{apiPackage}}
             }
 
             {{#returnType}}return new ApiResponse<{{{returnType}}}>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString(), StringComparer.OrdinalIgnoreCase),
                 ({{{returnType}}}) Configuration.ApiClient.Deserialize(localVarResponse, typeof({{#returnContainer}}{{{returnContainer}}}{{/returnContainer}}{{^returnContainer}}{{{returnType}}}{{/returnContainer}})));{{/returnType}}
             {{^returnType}}return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString(), StringComparer.OrdinalIgnoreCase),
                 null);{{/returnType}}
         }
 
