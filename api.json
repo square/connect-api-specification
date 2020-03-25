@@ -78,7 +78,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -117,7 +117,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -161,7 +161,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -197,7 +197,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [],
         "parameters": [
           {
@@ -233,7 +233,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -264,7 +264,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -360,7 +360,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -401,7 +401,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -438,7 +438,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -487,7 +487,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -521,7 +521,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -575,7 +575,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -616,7 +616,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -653,7 +653,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -702,7 +702,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -824,7 +824,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -866,7 +866,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -905,7 +905,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -944,7 +944,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -994,7 +994,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1038,7 +1038,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1082,7 +1082,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1131,7 +1131,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1199,7 +1199,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1248,7 +1248,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1290,7 +1290,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1340,7 +1340,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1387,7 +1387,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1445,7 +1445,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1487,7 +1487,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1537,7 +1537,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1584,7 +1584,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1642,7 +1642,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1684,7 +1684,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1734,7 +1734,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1781,7 +1781,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1839,7 +1839,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1899,7 +1899,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -1957,7 +1957,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2007,7 +2007,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2057,7 +2057,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2104,7 +2104,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2151,7 +2151,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2209,7 +2209,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2264,7 +2264,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2321,7 +2321,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2376,7 +2376,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2433,7 +2433,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2491,7 +2491,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2546,7 +2546,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2612,7 +2612,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2654,7 +2654,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2704,7 +2704,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2751,7 +2751,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2798,7 +2798,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2856,7 +2856,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2914,7 +2914,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -2969,7 +2969,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3035,7 +3035,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3099,7 +3099,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3144,7 +3144,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3200,7 +3200,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3242,7 +3242,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3292,7 +3292,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3339,7 +3339,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3397,7 +3397,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3460,7 +3460,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3517,7 +3517,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3601,7 +3601,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3647,7 +3647,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3722,7 +3722,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3770,7 +3770,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3854,7 +3854,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3898,7 +3898,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": []
@@ -3937,7 +3937,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -3990,7 +3990,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4029,7 +4029,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4064,12 +4064,11 @@
         "summary": "ListCashDrawerShifts",
         "operationId": "ListCashDrawerShifts",
         "description": "Provides the details for all of the cash drawer shifts for a location\nin a date range.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4081,7 +4080,6 @@
           {
             "name": "location_id",
             "description": "The ID of the location to query for a list of cash drawer shifts.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": true
@@ -4089,7 +4087,6 @@
           {
             "name": "sort_order",
             "description": "The order in which cash drawer shifts are listed in the response,\nbased on their opened_at field. Default value: ASC",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -4097,7 +4094,6 @@
           {
             "name": "begin_time",
             "description": "The inclusive start time of the query on opened_at, in ISO 8601 format.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -4105,7 +4101,6 @@
           {
             "name": "end_time",
             "description": "The exclusive end date of the query on opened_at, in ISO 8601 format.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -4113,7 +4108,6 @@
           {
             "name": "limit",
             "description": "Number of cash drawer shift events in a page of results (200 by\ndefault, 1000 max).",
-            "x-is-beta": true,
             "type": "integer",
             "in": "query",
             "required": false
@@ -4121,7 +4115,6 @@
           {
             "name": "cursor",
             "description": "Opaque cursor for fetching the next page of results.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -4145,12 +4138,11 @@
         "summary": "RetrieveCashDrawerShift",
         "operationId": "RetrieveCashDrawerShift",
         "description": "Provides the summary details for a single cash drawer shift. See\nRetrieveCashDrawerShiftEvents for a list of cash drawer shift events.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4162,7 +4154,6 @@
           {
             "name": "location_id",
             "description": "The ID of the location to retrieve cash drawer shifts from.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": true
@@ -4170,7 +4161,6 @@
           {
             "name": "shift_id",
             "description": "The shift ID.",
-            "x-is-beta": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -4194,12 +4184,11 @@
         "summary": "ListCashDrawerShiftEvents",
         "operationId": "ListCashDrawerShiftEvents",
         "description": "Provides a paginated list of events for a single cash drawer shift.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4211,7 +4200,6 @@
           {
             "name": "location_id",
             "description": "The ID of the location to list cash drawer shifts for.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": true
@@ -4219,7 +4207,6 @@
           {
             "name": "shift_id",
             "description": "The shift ID.",
-            "x-is-beta": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -4227,7 +4214,6 @@
           {
             "name": "limit",
             "description": "Number of resources to be returned in a page of results (200 by\ndefault, 1000 max).",
-            "x-is-beta": true,
             "type": "integer",
             "in": "query",
             "required": false
@@ -4235,7 +4221,6 @@
           {
             "name": "cursor",
             "description": "Opaque cursor for fetching the next page of results.",
-            "x-is-beta": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -4263,7 +4248,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4304,7 +4289,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4345,7 +4330,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4386,7 +4371,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4417,7 +4402,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4463,7 +4448,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4504,7 +4489,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4541,7 +4526,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4587,7 +4572,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4628,7 +4613,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4669,7 +4654,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4710,7 +4695,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4761,7 +4746,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4802,7 +4787,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4843,7 +4828,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4880,7 +4865,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4917,7 +4902,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -4965,7 +4950,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5013,7 +4998,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5060,7 +5045,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5117,7 +5102,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5158,7 +5143,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5199,7 +5184,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5240,7 +5225,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5287,7 +5272,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5336,7 +5321,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5386,7 +5371,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5426,7 +5411,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5486,7 +5471,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5525,7 +5510,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5564,7 +5549,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5605,7 +5590,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5646,7 +5631,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5687,7 +5672,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5726,7 +5711,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5779,7 +5764,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5832,7 +5817,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5883,7 +5868,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5924,7 +5909,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5961,7 +5946,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -5999,7 +5984,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6048,7 +6033,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6101,7 +6086,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6140,7 +6125,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6181,7 +6166,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6222,7 +6207,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6259,7 +6244,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6297,7 +6282,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6346,7 +6331,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6393,7 +6378,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6442,7 +6427,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6472,7 +6457,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6513,7 +6498,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6551,7 +6536,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6601,7 +6586,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6674,7 +6659,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6747,7 +6732,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6796,7 +6781,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6844,7 +6829,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6893,7 +6878,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -6951,7 +6936,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7024,7 +7009,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7095,7 +7080,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7145,7 +7130,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7194,7 +7179,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7243,7 +7228,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7301,7 +7286,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7349,7 +7334,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7388,7 +7373,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7427,7 +7412,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7470,7 +7455,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7520,7 +7505,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7607,7 +7592,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7648,7 +7633,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7689,7 +7674,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7728,7 +7713,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7767,7 +7752,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7782,6 +7767,15 @@
             "type": "string",
             "in": "path",
             "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CompletePaymentRequest"
+            }
           }
         ],
         "responses": {
@@ -7806,7 +7800,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7885,7 +7879,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -7926,7 +7920,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-02-26",
+        "x-sq-version": "2020-03-25",
         "security": [
           {
             "oauth2": [
@@ -8174,8 +8168,7 @@
         }
       ],
       "description": "The types of events on a CashDrawerShift.\nEach event type represents an employee action on the actual cash drawer\nrepresented by a CashDrawerShift.",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "CashDrawerShiftState": {
       "type": "string",
@@ -8199,6 +8192,80 @@
         }
       ],
       "description": "The current state of a cash drawer shift.",
+      "x-release-status": "PUBLIC"
+    },
+    "CatalogCustomAttributeDefinitionAppVisibility": {
+      "type": "string",
+      "enum": [
+        "APP_VISIBILITY_HIDDEN",
+        "APP_VISIBILITY_READ_ONLY",
+        "APP_VISIBILITY_READ_WRITE_VALUES"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "APP_VISIBILITY_HIDDEN",
+          "description": "Other applications cannot read this custom attribute."
+        },
+        {
+          "name": "APP_VISIBILITY_READ_ONLY",
+          "description": "Other applications can read this custom attribute definition and\nvalues."
+        },
+        {
+          "name": "APP_VISIBILITY_READ_WRITE_VALUES",
+          "description": "Other applications can read and write custom attribute values on objects.\nThey can read but cannot edit the custom attribute definition."
+        }
+      ],
+      "description": "Defines the visibility of a custom attribute to applications other than their\ncreating application.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogCustomAttributeDefinitionSellerVisibility": {
+      "type": "string",
+      "enum": [
+        "SELLER_VISIBILITY_HIDDEN",
+        "SELLER_VISIBILITY_READ_WRITE_VALUES"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "SELLER_VISIBILITY_HIDDEN",
+          "description": "Sellers cannot read this custom attribute in Square client\napplications or Square APIs."
+        },
+        {
+          "name": "SELLER_VISIBILITY_READ_WRITE_VALUES",
+          "description": "Sellers can read and write this custom attribute value in catalog objects,\nbut cannot edit the custom attribute definition."
+        }
+      ],
+      "description": "Defines the visibility of a custom attribute to sellers in Square\nclient applications, Square APIs or in Square UIs (including Square Point\nof Sale applications and Square Dashboard).",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogCustomAttributeDefinitionType": {
+      "type": "string",
+      "enum": [
+        "STRING",
+        "BOOLEAN",
+        "NUMBER",
+        "SELECTION"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "STRING",
+          "description": "A free-form string containing up to 255 characters."
+        },
+        {
+          "name": "BOOLEAN",
+          "description": "A `true` or `false` value."
+        },
+        {
+          "name": "NUMBER",
+          "description": "Integer divided by 100,000."
+        },
+        {
+          "name": "SELECTION",
+          "description": "One or more choices from `allowed_selections`."
+        }
+      ],
+      "description": "Defines the possible types for a custom attribute.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -12195,7 +12262,7 @@
         },
         {
           "name": "INACTIVE",
-          "description": "A functionally limited merchant account. The merchant can only have limited interaction \nvia Square APIs. The merchant cannot access the seller dashboard."
+          "description": "A functionally limited merchant account. The merchant can only have limited interaction\nvia Square APIs. The merchant cannot access the seller dashboard."
         }
       ],
       "description": "",
@@ -15966,7 +16033,7 @@
       "x-release-status": "PUBLIC",
       "example": {
         "payment": {
-          "id": "YNR82sYrdgYlEEvJHnkJ7jrRuaB",
+          "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
           "created_at": "2018-10-17T20:38:46.743Z",
           "updated_at": "2018-10-17T20:38:57.693Z",
           "amount_money": {
@@ -15990,14 +16057,22 @@
               "last_4": "1234",
               "exp_month": 2,
               "exp_year": 2024,
-              "fingerprint": "sq-1-9PP0tWfcM6vIsYmfsesdjfhduHSDFNdJFNDfDNFjdfjpseirDErsaP"
+              "fingerprint": "sq-1-9PP0tWfcM6vIsYmfsesdjfhduHSDFNdJFNDfDNFjdfjpseirDErsaP",
+              "card_type": "DEBIT",
+              "prepaid_type": "PREPAID",
+              "bin": "411111"
             },
             "entry_method": "KEYED",
             "cvv_status": "CVV_ACCEPTED",
             "avs_status": "AVS_ACCEPTED",
-            "auth_result_code": "eWZBDh"
+            "auth_result_code": "eWZBDh",
+            "statement_description": "SQ *MY MERCHANT"
           },
-          "reference_id": "12323232323"
+          "location_id": "XTI0H92143A39",
+          "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
+          "reference_id": "123456",
+          "note": "Brief description",
+          "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I"
         }
       }
     },
@@ -16177,8 +16252,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "CashDrawerShift": {
       "type": "object",
@@ -16260,8 +16334,7 @@
         }
       },
       "description": "This model gives the details of a cash drawer shift.\nThe cash_payment_money, cash_refund_money, cash_paid_in_money,\nand cash_paid_out_money fields are all computed by summing their respective\nevent types.",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "CashDrawerShiftEvent": {
       "type": "object",
@@ -16292,8 +16365,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "CashDrawerShiftSummary": {
       "type": "object",
@@ -16336,25 +16408,6 @@
         }
       },
       "description": "The summary of a closed cash drawer shift.\nThis model contains only the money counted to start a cash drawer shift, counted\nat the end of the shift, and the amount that should be in the drawer at shift\nend based on summing all cash drawer shift events.",
-      "x-release-status": "BETA",
-      "x-is-beta": true
-    },
-    "CashPaymentDetails": {
-      "type": "object",
-      "required": [
-        "buyer_supplied_money"
-      ],
-      "properties": {
-        "buyer_supplied_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The amount and currency of the money supplied by the buyer."
-        },
-        "change_back_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The amount of change due back to the buyer. Read Only field calculated from the\namount_money and buyer_supplied_money fields."
-        }
-      },
-      "description": "Additional details about CASH type payments.",
       "x-release-status": "PUBLIC"
     },
     "CatalogCategory": {
@@ -16377,6 +16430,165 @@
           }
         }
       }
+    },
+    "CatalogCustomAttributeDefinition": {
+      "type": "object",
+      "required": [
+        "type",
+        "name"
+      ],
+      "properties": {
+        "type": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The type of this custom attribute. Cannot be modified after creation.\nRequired.\nSee [CatalogCustomAttributeDefinitionType](#type-catalogcustomattributedefinitiontype) for possible values"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": " The name of this definition for API and seller-facing UI purposes.\nThe name must be unique within the (merchant, application_id) pair. Required.\nMay not be empty and may not exceed 255 characters. Can be modified after creation."
+        },
+        "description": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "Seller-oriented description of the meaning of this Custom Attribute,\nany constraints that the seller should observe, etc. May be displayed as a tooltip in Square UIs."
+        },
+        "source_application": {
+          "$ref": "#/definitions/SourceApplication",
+          "description": "__Read only.__ Contains information about the application that\ncreated this custom attribute definition."
+        },
+        "allowed_object_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The set of Catalog Object Types that this Custom Attribute may be applied to.\nCurrently, only `ITEM` and `ITEM_VARIATION` are allowed.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
+        },
+        "seller_visibility": {
+          "type": "string",
+          "description": "The visibility of a custom attribute in seller-facing UIs (including Square Point\nof Sale applications and Square Dashboard). May be modified.\nSee [CatalogCustomAttributeDefinitionSellerVisibility](#type-catalogcustomattributedefinitionsellervisibility) for possible values"
+        },
+        "app_visibility": {
+          "type": "string",
+          "description": "The visibility of a custom attribute to applications other than the application\nthat created the attribute.\nSee [CatalogCustomAttributeDefinitionAppVisibility](#type-catalogcustomattributedefinitionappvisibility) for possible values"
+        },
+        "string_config": {
+          "$ref": "#/definitions/CatalogCustomAttributeDefinitionStringConfig",
+          "description": "Optionally, populated when `type` \u003d `STRING`, unset otherwise."
+        },
+        "selection_config": {
+          "$ref": "#/definitions/CatalogCustomAttributeDefinitionSelectionConfig",
+          "description": "Populated when `type` is set to `SELECTION`, unset otherwise."
+        },
+        "custom_attribute_usage_count": {
+          "type": "integer",
+          "description": "__Read-only.__ The number of custom attributes that reference this\ncustom attribute definition. Set by the server in response to a ListCatalog\nrequest with `include_counts` set to `true`.  If the actual count is greater\nthan 100, `custom_attribute_usage_count` will be set to `100`."
+        },
+        "key": {
+          "type": "string",
+          "description": "The name of the desired custom attribute key that can be used to access\nthe custom attribute value on catalog objects. Cannot be modified after the\ncustom attribute definition has been created."
+        }
+      },
+      "description": "Contains information defining a custom attribute. Custom attributes are\nintended to store additional information about a catalog object or to associate a\ncatalog object with an entity in another system. Do not use custom attributes\nto store any sensitive information (personally identifiable information, card details, etc.).\n[Read more about custom attributes](/catalog-api/add-custom-attributes)",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogCustomAttributeDefinitionSelectionConfig": {
+      "type": "object",
+      "properties": {
+        "max_allowed_selections": {
+          "maxLength": 100,
+          "type": "integer",
+          "description": "The maximum number of selections that can be set. The maximum value for this\nattribute is 100. May be modified, but changing the value will not\naffect existing custom attribute values on objects. Clients need to\nhandle Custom Attributes with more selected values than allowed by this limit."
+        },
+        "allowed_selections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection"
+          },
+          "description": "The set of valid `CatalogCustomAttributeSelections`. Up to a maximum of 100\nselections can be defined. Can be modified."
+        }
+      },
+      "description": "Configuration associated with `SELECTION`-type custom attribute definitions.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique ID set by Square."
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "Selection name, unique within `allowed_selections`.\nRequired. Min length of 1, max length of 255."
+        }
+      },
+      "description": "A named selection for this `SELECTION`-type custom attribute definition.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogCustomAttributeDefinitionStringConfig": {
+      "type": "object",
+      "properties": {
+        "enforce_uniqueness": {
+          "type": "boolean",
+          "description": "If true, each Custom Attribute instance associated with this Custom Attribute\nDefinition must have a unique value within the seller\u0027s catalog. For\nexample, this may be used for a value like a SKU that should not be\nduplicated within a seller\u0027s catalog. May not be modified after the\ndefinition has been created."
+        }
+      },
+      "description": "Configuration associated with Custom Attribute Definitions of type `STRING`.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogCustomAttributeValue": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the custom attribute."
+        },
+        "string_value": {
+          "type": "string",
+          "description": "The string value of the custom attribute.  Populated if `type` \u003d `STRING`."
+        },
+        "custom_attribute_definition_id": {
+          "type": "string",
+          "description": "__Read-only.__ The custom attribute definition this value belongs to."
+        },
+        "type": {
+          "type": "string",
+          "description": "__Read-only.__ A copy of type from the associated custom attribute definition.\nSee [CatalogCustomAttributeDefinitionType](#type-catalogcustomattributedefinitiontype) for possible values"
+        },
+        "number_value": {
+          "type": "string",
+          "description": "Populated if `type` \u003d `NUMBER`. Contains a string\nrepresentation of a decimal number, using a `.` as the decimal separator."
+        },
+        "boolean_value": {
+          "type": "boolean",
+          "description": "A `true` or `false` value. Populated if `type` \u003d `BOOLEAN`."
+        },
+        "selection_uid_values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "One or more choices from `allowed_selections`. Populated if `type` \u003d `SELECTION`."
+        },
+        "key": {
+          "type": "string",
+          "description": "__Read-only.__ A copy of key from the associated custom attribute definition."
+        }
+      },
+      "description": "An instance of a custom attribute. Custom attributes can be defined and\nadded to `ITEM` and `ITEM_VARIATION` type catalog objects.\n[Read more about custom attributes](/catalog-api/add-custom-attributes).",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "CatalogDiscount": {
       "type": "object",
@@ -17043,6 +17255,15 @@
           "type": "boolean",
           "description": "If `true`, the object has been deleted from the database. Must be `false` for new objects\nbeing inserted. When deleted, the `updated_at` field will equal the deletion time."
         },
+        "custom_attribute_values": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CatalogCustomAttributeValue"
+          },
+          "description": "Application-defined key/value attributes that are set at a global (location-independent) level.\nValues from the `*_data` fields may not be duplicated. Custom Attribute fields are intended to store additional\ninformation about a Catalog Object or associations with an entity in another system. Do not use custom attributes\nto store any sensitive information (personally identifiable information, card details, etc.).\n\nFor CustomAttributesDefinitions defined by the app making the request, the map key is the key defined in\nCustomAttributeDefinition (eg. “reference_id”). For CustomAttributesDefinitions by other apps, the map key is\nthe key defined in CustomAttributeDefinition prefixed with the application ID and a colon\n(eg. “abcd1234:reference_id”).",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
         "catalog_v1_ids": {
           "type": "array",
           "items": {
@@ -17137,6 +17358,12 @@
         "item_option_value_data": {
           "$ref": "#/definitions/CatalogItemOptionValue",
           "description": "Structured data for a `CatalogItemOptionValue`, set for CatalogObjects of type `ITEM_OPTION_VAL`.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
+        "custom_attribute_definition_data": {
+          "$ref": "#/definitions/CatalogCustomAttributeDefinition",
+          "description": "Structured data for a `CatalogCustomAttributeDefinition`, set for CatalogObjects of type `CUSTOM_ATTRIBUTE_DEFINITION`.",
           "x-release-status": "BETA",
           "x-is-beta": true
         }
@@ -18004,7 +18231,7 @@
       "x-release-status": "PUBLIC",
       "example": {
         "payment": {
-          "id": "EdMl5lwmBxd3ZvsvinkAT5LtvaB",
+          "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
           "created_at": "2019-07-10T13:39:55.317Z",
           "updated_at": "2019-07-10T13:40:05.982Z",
           "amount_money": {
@@ -18028,18 +18255,24 @@
               "last_4": "2796",
               "exp_month": 7,
               "exp_year": 2026,
-              "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw"
+              "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw",
+              "card_type": "DEBIT",
+              "prepaid_type": "PREPAID",
+              "bin": "411111"
             },
             "entry_method": "ON_FILE",
             "cvv_status": "CVV_ACCEPTED",
             "avs_status": "AVS_ACCEPTED",
-            "auth_result_code": "MhIjEN"
+            "auth_result_code": "MhIjEN",
+            "statement_description": "SQ *MY MERCHANT"
           },
-          "location_id": "XK3DBG77NJBFX",
-          "order_id": "iJbzEHMhcwydeLbN3Apg5ZAjGi4F",
+          "location_id": "XTI0H92143A39",
+          "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
           "reference_id": "123456",
           "note": "Brief description",
-          "customer_id": "VDKXEEKPJN48QDG3BGGFAK05P8"
+          "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I",
+          "receipt_number": "GQTF",
+          "receipt_url": "https://squareup.com/receipt/preview/GQTFp1ZlXdpoW4o6eGiZhbjosiDFf"
         }
       }
     },
@@ -19312,6 +19545,12 @@
           "$ref": "#/definitions/Money",
           "description": "The amount of money the developer is taking as a fee\nfor facilitating the payment on behalf of the seller.\n\nCannot be more than 90% of the total amount of the Payment.\n\nMust be specified in the smallest denomination of the applicable currency.\nFor example, US dollar amounts are specified in cents. See\n[Working with monetary amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts) for details.\n\nThe fee currency code must match the currency associated with the merchant\nthat is accepting the payment. The application must be from a developer\naccount in the same country, and using the same currency code, as the merchant.\n\nFor more information about the application fee scenario, see\n[Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees)."
         },
+        "delay_duration": {
+          "type": "string",
+          "description": "The duration of time after the payment\u0027s creation when Square automatically cancels the\npayment. This automatic cancellation applies only to payments that don\u0027t reach a terminal state\n(COMPLETED, CANCELED, or FAILED) before the `delay_duration` time period.\n\nThis parameter should be specified as a time duration, in RFC 3339 format, with a minimum value\nof 1 minute.\n\nNotes:\nThis feature is only supported for card payments. This parameter can only be set for a delayed\ncapture payment (`autocomplete\u003dfalse`).\n\nDefault:\n\n- Card Present payments: \"PT36H\" (36 hours) from the creation time.\n- Card Not Present payments: \"P7D\" (7 days) from the creation time.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
         "autocomplete": {
           "type": "boolean",
           "description": "If set to `true`, this payment will be completed when possible. If\nset to `false`, this payment will be held in an approved state until either\nexplicitly completed (captured) or canceled (voided). For more information, see\n[Delayed Payments](https://developer.squareup.com/docs/payments-api/take-payments#delayed-payments).\n\nDefault: true"
@@ -19410,7 +19649,7 @@
       "x-release-status": "PUBLIC",
       "example": {
         "payment": {
-          "id": "iqrBxAil6rmDtr7cak9g9WO8uaB",
+          "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
           "created_at": "2019-07-10T13:23:49.154Z",
           "updated_at": "2019-07-10T13:23:49.446Z",
           "amount_money": {
@@ -19431,21 +19670,27 @@
             "status": "CAPTURED",
             "card": {
               "card_brand": "VISA",
-              "last_4": "2796",
+              "last_4": "1111",
               "exp_month": 7,
               "exp_year": 2026,
-              "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw"
+              "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw",
+              "card_type": "DEBIT",
+              "prepaid_type": "PREPAID",
+              "bin": "411111"
             },
             "entry_method": "ON_FILE",
             "cvv_status": "CVV_ACCEPTED",
             "avs_status": "AVS_ACCEPTED",
-            "auth_result_code": "nsAyY2"
+            "auth_result_code": "nsAyY2",
+            "statement_description": "SQ *MY MERCHANT"
           },
-          "location_id": "XK3DBG77NJBFX",
-          "order_id": "qHkNOb03hMgEgoP3gyzFBDY3cg4F",
+          "location_id": "XTI0H92143A39",
+          "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
           "reference_id": "123456",
           "note": "Brief description",
-          "customer_id": "VDKXEEKPJN48QDG3BGGFAK05P8"
+          "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I",
+          "receipt_number": "GQTF",
+          "receipt_url": "https://squareup.com/receipt/preview/GQTFp1ZlXdpoW4o6eGiZhbjosiDFf"
         }
       }
     },
@@ -20284,33 +20529,6 @@
       "description": "Represents an error encountered during a request to the Connect API.\n\nSee [Handling errors](#handlingerrors) for more information.",
       "x-release-status": "PUBLIC"
     },
-    "ExternalPaymentDetails": {
-      "type": "object",
-      "required": [
-        "type",
-        "source"
-      ],
-      "properties": {
-        "type": {
-          "type": "string",
-          "description": "The type of External payment which can be one of:\nCHECK - Paid by a physical check\nBANK_TRANSFER - Paid by ACH or other bank transfer\nOTHER_GIFT_CARD - Paid by a non-square gift card\nCRYPTO - Paid via a crypto currency\nSQUARE_CASH - Paid via Square Cash app\nSOCIAL - Venmo, WeChatPay, AliPay, etc.\nEXTERNAL - A 3rd party application gathered this payment outside of Square\nEMONEY - A Japanese e-money brand Square doesn’t support\nCREDIT/DEBIT - A credit/debit card Square doesn’t support\nOTHER - A type not listed here"
-        },
-        "source": {
-          "type": "string",
-          "description": "A description of the source of the external payment, e.g. “Uber Eats”, “Stripe”, “Shopify”.\n\nLimit 255 characters"
-        },
-        "source_id": {
-          "type": "string",
-          "description": "An ID to associate this payment to its originating source\n\nLimit 255 characters."
-        },
-        "source_fee_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The total of fees paid to the source. (amount_money - source_fee_money) \u003d net money to the\nmerchant"
-        }
-      },
-      "description": "Additional details about EXTERNAL type payments.",
-      "x-release-status": "PUBLIC"
-    },
     "GetBankAccountByV1IdRequest": {
       "type": "object",
       "properties": {},
@@ -20546,7 +20764,7 @@
       "x-release-status": "PUBLIC",
       "example": {
         "payment": {
-          "id": "iqrBxAil6rmDtr7cak9g9WO8uaB",
+          "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
           "created_at": "2019-07-10T13:23:49.154Z",
           "updated_at": "2019-07-10T13:23:49.446Z",
           "amount_money": {
@@ -20567,21 +20785,25 @@
             "status": "CAPTURED",
             "card": {
               "card_brand": "VISA",
-              "last_4": "2796",
+              "last_4": "1111",
               "exp_month": 7,
               "exp_year": 2026,
-              "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw"
+              "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw",
+              "card_type": "DEBIT",
+              "prepaid_type": "PREPAID",
+              "bin": "411111"
             },
             "entry_method": "ON_FILE",
             "cvv_status": "CVV_ACCEPTED",
             "avs_status": "AVS_ACCEPTED",
-            "auth_result_code": "nsAyY2"
+            "auth_result_code": "nsAyY2",
+            "statement_description": "SQ *MY MERCHANT"
           },
-          "location_id": "XK3DBG77NJBFX",
-          "order_id": "qHkNOb03hMgEgoP3gyzFBDY3cg4F",
+          "location_id": "XTI0H92143A39",
+          "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
           "reference_id": "123456",
           "note": "Brief description",
-          "customer_id": "VDKXEEKPJN48QDG3BGGFAK05P8",
+          "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I",
           "processing_fee": [
             {
               "effective_at": "2019-07-10T15:23:49.000Z",
@@ -20591,7 +20813,9 @@
                 "currency": "USD"
               }
             }
-          ]
+          ],
+          "receipt_number": "GQTF",
+          "receipt_url": "https://squareup.com/receipt/preview/GQTFp1ZlXdpoW4o6eGiZhbjosiDFf"
         }
       }
     },
@@ -21281,8 +21505,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "ListCashDrawerShiftEventsResponse": {
       "type": "object",
@@ -21307,8 +21530,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "ListCashDrawerShiftsRequest": {
       "type": "object",
@@ -21344,8 +21566,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "ListCashDrawerShiftsResponse": {
       "type": "object",
@@ -21370,8 +21591,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "ListCatalogRequest": {
       "type": "object",
@@ -21905,7 +22125,7 @@
       "description": "The response object returned by the [ListMerchant](#endpoint-listmerchant) endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
-        "merchants": [
+        "merchant": [
           {
             "id": "DM7VKY8Q63GNP",
             "business_name": "Apple A Day",
@@ -22102,7 +22322,7 @@
       "example": {
         "payments": [
           {
-            "id": "6SRrImjQGn8FuzIsURiN677CwaB",
+            "id": "ifrBnAil7rRfDtd27cdf9g9WO8paB",
             "created_at": "2019-07-09T14:36:13.745Z",
             "updated_at": "2019-07-09T14:36:13.883Z",
             "amount_money": {
@@ -22129,11 +22349,11 @@
               "avs_status": "AVS_ACCEPTED",
               "auth_result_code": "NQbV3A"
             },
-            "location_id": "XK3DBG77NJBFX",
-            "order_id": "EM6qWxDd7RSy5udzjXktPw3PJa4F"
+            "location_id": "QLIJX16Q3UZ0A",
+            "order_id": "MvfIilKnIYKBium4rauH67wFzRxv"
           },
           {
-            "id": "MRWmTKxBDNRgwfNSZptAO76xuaB",
+            "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
             "created_at": "2019-07-08T01:00:51.607Z",
             "updated_at": "2019-07-08T01:13:58.508Z",
             "amount_money": {
@@ -22160,9 +22380,9 @@
               "avs_status": "AVS_ACCEPTED",
               "auth_result_code": "vPIr0K"
             },
-            "location_id": "XK3DBG77NJBFX",
-            "order_id": "OVE4bJyb4B6bGFwMYEtVdfE4ge4F",
-            "customer_id": "VDKXEEKPJN48QDG3BGGFAK05P8",
+            "location_id": "XTI0H92143A39",
+            "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
+            "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I",
             "processing_fee": [
               {
                 "effective_at": "2019-07-08T03:00:53.000Z",
@@ -22175,7 +22395,7 @@
             ]
           }
         ],
-        "cursor": "Q2g4SUF4SWJUVkpYYlZSTGVFSkVUbEpuZDJaT1UxcHdkRUZQTnpaNGRXRkNFSmVJNVBpOExRPT0"
+        "cursor": "2TTnuq0yRYDdBRSFF2XuFkgO1Bclt4ZHNI7YrFNeyZ6rL1WZXkdnLn10H8fBIwFKdKW1Af6ifRa"
       }
     },
     "ListRefundsRequest": {
@@ -24321,6 +24541,24 @@
           "type": "string",
           "description": "Indicates whether the payment is `APPROVED`, `COMPLETED`, `CANCELED`, or `FAILED`."
         },
+        "delay_duration": {
+          "type": "string",
+          "description": "The duration of time after the payment\u0027s creation when Square automatically applies the\n`delay_action` to the payment. This automatic `delay_action` applies only to payments that\ndon\u0027t reach a terminal state (COMPLETED, CANCELED, or FAILED) before the `delay_duration`\ntime period.\n\nThis field is specified as a time duration, in RFC 3339 format.\n\nNotes:\nThis feature is only supported for card payments.\n\nDefault:\n\n- Card Present payments: \"PT36H\" (36 hours) from the creation time.\n- Card Not Present payments: \"P7D\" (7 days) from the creation time.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
+        "delay_action": {
+          "type": "string",
+          "description": "The action to be applied to the payment when the `delay_duration` has elapsed. This field\nis read only.\n\nCurrent values include:\n`CANCEL`",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
+        "delayed_until": {
+          "type": "string",
+          "description": "Read only timestamp of when the `delay_action` will automatically be applied,\nin RFC 3339 format.\n\nNote that this field is calculated by summing the payment\u0027s `delay_duration` and `created_at`\nfields. The `created_at` field is generated by Square and may not exactly match the\ntime on your local machine.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
         "source_type": {
           "type": "string",
           "description": "The source type for this payment\n\nCurrent values include:\n`CARD`"
@@ -24766,8 +25004,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "RetrieveCashDrawerShiftResponse": {
       "type": "object",
@@ -24785,8 +25022,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "RetrieveCatalogObjectRequest": {
       "type": "object",
