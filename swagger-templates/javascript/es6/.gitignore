@@ -1,5 +1,0 @@
-# swagger-codegen ships with ES6 templates. Because we do not use them, we do
-# not include them here to avoid confusion.
-
-*
-!.gitignore
