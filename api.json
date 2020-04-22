@@ -4822,7 +4822,7 @@
         ],
         "summary": "CreateCustomerGroup",
         "operationId": "CreateCustomerGroup",
-        "description": "Creates a new customer group for a business. \n\nThe request must include at least the `name` value of the group.",
+        "description": "Creates a new customer group for a business. \n\nThe request must include the `name` value of the group.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
@@ -5055,15 +5055,6 @@
             "description": "A pagination cursor returned by previous calls to __ListCustomerSegments__.\nUsed to retrieve the next set of query results.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/docs/working-with-apis/pagination) for more information.",
             "x-is-beta": true,
             "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "limit",
-            "description": "Sets the maximum number of results to be returned in a single page.\nLimit values outside the supported range are ignored.\n\nMinimum value: `1`\nMaximum value: `1,000`",
-            "x-is-beta": true,
-            "type": "integer",
-            "format": "int64",
             "in": "query",
             "required": false
           }
@@ -5342,7 +5333,7 @@
         ],
         "summary": "RemoveGroupFromCustomer",
         "operationId": "RemoveGroupFromCustomer",
-        "description": "Removes a customer membership from a customer group. \n\nThe customer is identified by the `customer_id` value \nand the customer group is identified by the `group_id` value.",
+        "description": "Removes a group membership from a customer. \n\nThe customer is identified by the `customer_id` value \nand the customer group is identified by the `group_id` value.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
@@ -5389,7 +5380,7 @@
         ],
         "summary": "AddGroupToCustomer",
         "operationId": "AddGroupToCustomer",
-        "description": "Adds a customer membership to a customer group. \n\nThe customer is identified by the `customer_id` value \nand the customer group is identified by the `group_id` value.",
+        "description": "Adds a group membership to a customer. \n\nThe customer is identified by the `customer_id` value \nand the customer group is identified by the `group_id` value.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
@@ -23231,11 +23222,6 @@
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by previous calls to __ListCustomerSegments__.\nUsed to retrieve the next set of query results.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/docs/working-with-apis/pagination) for more information."
-        },
-        "limit": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Sets the maximum number of results to be returned in a single page.\nLimit values outside the supported range are ignored.\n\nMinimum value: `1`\nMaximum value: `1,000`"
         }
       },
       "description": "Defines the valid parameters for requests to __ListCustomerSegments__.",
@@ -23373,9 +23359,19 @@
             "note": "a customer",
             "groups": [
               {
-                "id": "16894e93-96eb-4ced-b24b-f71d42bf084c",
+                "id": "545AXB44B4XXWMVQ4W8SBT3HHF",
                 "name": "Aviation Enthusiasts"
+              },
+              {
+                "id": "1KB9JE5EGJXCW.REACHABLE",
+                "name": "Reachable"
               }
+            ],
+            "group_ids": [
+              "545AXB44B4XXWMVQ4W8SBT3HHF"
+            ],
+            "segment_ids": [
+              "1KB9JE5EGJXCW.REACHABLE"
             ]
           }
         ]
@@ -27159,9 +27155,19 @@
           "note": "a customer",
           "groups": [
             {
-              "id": "16894e93-96eb-4ced-b24b-f71d42bf084c",
+              "id": "545AXB44B4XXWMVQ4W8SBT3HHF",
               "name": "Aviation Enthusiasts"
+            },
+            {
+              "id": "1KB9JE5EGJXCW.REACHABLE",
+              "name": "Reachable"
             }
+          ],
+          "group_ids": [
+            "545AXB44B4XXWMVQ4W8SBT3HHF"
+          ],
+          "segment_ids": [
+            "1KB9JE5EGJXCW.REACHABLE"
           ]
         }
       },
@@ -28065,6 +28071,11 @@
               "created_at": {
                 "start_at": "2018-01-01T00:00:00-00:00",
                 "end_at": "2018-02-01T00:00:00-00:00"
+              },
+              "group_ids": {
+                "all": [
+                  "545AXB44B4XXWMVQ4W8SBT3HHF"
+                ]
               }
             },
             "sort": {
@@ -28127,7 +28138,23 @@
             },
             "phone_number": "1-212-555-4250",
             "reference_id": "YOUR_REFERENCE_ID_2",
-            "creation_source": "THIRD_PARTY"
+            "creation_source": "THIRD_PARTY",
+            "groups": [
+              {
+                "id": "545AXB44B4XXWMVQ4W8SBT3HHF",
+                "name": "Aviation Enthusiasts"
+              },
+              {
+                "id": "1KB9JE5EGJXCW.REACHABLE",
+                "name": "Reachable"
+              }
+            ],
+            "group_ids": [
+              "545AXB44B4XXWMVQ4W8SBT3HHF"
+            ],
+            "segment_ids": [
+              "1KB9JE5EGJXCW.REACHABLE"
+            ]
           },
           {
             "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
@@ -28147,7 +28174,23 @@
             "phone_number": "1-212-555-4240",
             "reference_id": "YOUR_REFERENCE_ID_1",
             "note": "a customer",
-            "creation_source": "THIRD_PARTY"
+            "creation_source": "THIRD_PARTY",
+            "groups": [
+              {
+                "id": "545AXB44B4XXWMVQ4W8SBT3HHF",
+                "name": "Aviation Enthusiasts"
+              },
+              {
+                "id": "1KB9JE5EGJXCW.REACHABLE",
+                "name": "Reachable"
+              }
+            ],
+            "group_ids": [
+              "545AXB44B4XXWMVQ4W8SBT3HHF"
+            ],
+            "segment_ids": [
+              "1KB9JE5EGJXCW.REACHABLE"
+            ]
           }
         ],
         "cursor": "9dpS093Uy12AzeE"
