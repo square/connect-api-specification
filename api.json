@@ -39,6 +39,7 @@
         "BANK_ACCOUNTS_READ": "__HTTP Method__: `GET`\n\nGrants read access to bank account information associated with the targeted\nSquare account. For example, to call the Connect v1 ListBankAccounts endpoint.",
         "CUSTOMERS_READ": "__HTTP Method__: `GET`\n\nGrants read access to customer information. For example, to call the\nListCustomers endpoint.",
         "CUSTOMERS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to customer information. For example, to create and update\ncustomer profiles.",
+        "DEVICE_CREDENTIAL_MANAGEMENT": "__HTTP Method__: `POST`, `GET`\n\nGrants read/write access to device credentials information. For example, to\ncall the CreateDeviceCode endpoint.",
         "EMPLOYEES_READ": "__HTTP Method__: `GET`\n\nGrants read access to employee profile information. For example, to call the\nConnect v1 Employees API.",
         "EMPLOYEES_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to employee profile information. For example, to create\nand modify employee profiles.",
         "INVENTORY_READ": "__HTTP Method__: `GET`\n\nGrants read access to inventory information. For example, to call the\nRetrieveInventoryCount endpoint.",
@@ -78,7 +79,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -117,7 +118,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -161,7 +162,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -197,7 +198,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [],
         "parameters": [
           {
@@ -233,7 +234,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -264,7 +265,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -360,7 +361,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -401,7 +402,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -438,7 +439,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -487,7 +488,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -521,7 +522,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -575,7 +576,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -616,7 +617,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -653,7 +654,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -702,7 +703,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -824,7 +825,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -866,7 +867,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -905,7 +906,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -944,7 +945,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -994,7 +995,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1038,7 +1039,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1082,7 +1083,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1131,7 +1132,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1199,7 +1200,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1248,7 +1249,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1290,7 +1291,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1340,7 +1341,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1387,7 +1388,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1445,7 +1446,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1487,7 +1488,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1537,7 +1538,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1584,7 +1585,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1642,7 +1643,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1684,7 +1685,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1734,7 +1735,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1781,7 +1782,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1839,7 +1840,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1899,7 +1900,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -1957,7 +1958,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2007,7 +2008,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2057,7 +2058,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2104,7 +2105,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2151,7 +2152,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2209,7 +2210,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2264,7 +2265,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2321,7 +2322,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2376,7 +2377,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2433,7 +2434,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2491,7 +2492,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2546,7 +2547,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2612,7 +2613,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2654,7 +2655,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2704,7 +2705,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2751,7 +2752,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2798,7 +2799,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2856,7 +2857,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2914,7 +2915,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -2969,7 +2970,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3035,7 +3036,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3099,7 +3100,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3144,7 +3145,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3200,7 +3201,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3242,7 +3243,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3292,7 +3293,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3339,7 +3340,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3397,7 +3398,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3460,7 +3461,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3517,7 +3518,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3601,7 +3602,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3647,7 +3648,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3722,7 +3723,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3770,7 +3771,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3854,7 +3855,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3898,7 +3899,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": []
@@ -3937,7 +3938,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -3990,7 +3991,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4029,7 +4030,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4068,7 +4069,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4142,7 +4143,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4188,7 +4189,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4248,7 +4249,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4289,7 +4290,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4330,7 +4331,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4371,7 +4372,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4402,7 +4403,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4448,7 +4449,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4489,7 +4490,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4526,7 +4527,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4572,7 +4573,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4613,7 +4614,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4654,7 +4655,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4695,7 +4696,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4746,7 +4747,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4775,6 +4776,217 @@
         }
       }
     },
+    "/v2/customers/groups": {
+      "get": {
+        "tags": [
+          "CustomerGroups"
+        ],
+        "summary": "ListCustomerGroups",
+        "operationId": "ListCustomerGroups",
+        "description": "Retrieves the list of customer groups of a business.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListCustomerGroupsResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CustomerGroups"
+        ],
+        "summary": "CreateCustomerGroup",
+        "operationId": "CreateCustomerGroup",
+        "description": "Creates a new customer group for a business. \n\nThe request must include at least the `name` value of the group.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_WRITE"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateCustomerGroupRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateCustomerGroupResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/customers/groups/{group_id}": {
+      "delete": {
+        "tags": [
+          "CustomerGroups"
+        ],
+        "summary": "DeleteCustomerGroup",
+        "operationId": "DeleteCustomerGroup",
+        "description": "Deletes a customer group as identified by the `group_id` value.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_WRITE"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "description": "The ID of the customer group to delete.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeleteCustomerGroupResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "CustomerGroups"
+        ],
+        "summary": "RetrieveCustomerGroup",
+        "operationId": "RetrieveCustomerGroup",
+        "description": "Retrieves a specific customer group as identified by the `group_id` value.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "description": "The ID of the customer group to retrieve.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveCustomerGroupResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CustomerGroups"
+        ],
+        "summary": "UpdateCustomerGroup",
+        "operationId": "UpdateCustomerGroup",
+        "description": "Updates a customer group as identified by the `group_id` value.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_WRITE",
+          "CUSTOMERS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_WRITE",
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "description": "The ID of the customer group to update.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateCustomerGroupRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateCustomerGroupResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/customers/search": {
       "post": {
         "tags": [
@@ -4787,7 +4999,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4816,6 +5028,97 @@
         }
       }
     },
+    "/v2/customers/segments": {
+      "get": {
+        "tags": [
+          "CustomerSegments"
+        ],
+        "summary": "ListCustomerSegments",
+        "operationId": "ListCustomerSegments",
+        "description": "Retrieves the list of customer segments of a business.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by previous calls to __ListCustomerSegments__.\nUsed to retrieve the next set of query results.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/docs/working-with-apis/pagination) for more information.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "description": "Sets the maximum number of results to be returned in a single page.\nLimit values outside the supported range are ignored.\n\nMinimum value: `1`\nMaximum value: `1,000`",
+            "x-is-beta": true,
+            "type": "integer",
+            "format": "int64",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListCustomerSegmentsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/customers/segments/{segment_id}": {
+      "get": {
+        "tags": [
+          "CustomerSegments"
+        ],
+        "summary": "RetrieveCustomerSegment",
+        "operationId": "RetrieveCustomerSegment",
+        "description": "Retrieves a specific customer segment as identified by the `segment_id` value.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "segment_id",
+            "description": "The Square-issued ID of the customer segment.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveCustomerSegmentResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/customers/{customer_id}": {
       "delete": {
         "tags": [
@@ -4828,7 +5131,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4865,7 +5168,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4902,7 +5205,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4950,7 +5253,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -4998,7 +5301,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5032,6 +5335,240 @@
         }
       }
     },
+    "/v2/customers/{customer_id}/groups/{group_id}": {
+      "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "RemoveGroupFromCustomer",
+        "operationId": "RemoveGroupFromCustomer",
+        "description": "Removes a customer membership from a customer group. \n\nThe customer is identified by the `customer_id` value \nand the customer group is identified by the `group_id` value.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_WRITE"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "The ID of the customer to remove from the group.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "group_id",
+            "description": "The ID of the customer group to remove the customer from.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RemoveGroupFromCustomerResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "AddGroupToCustomer",
+        "operationId": "AddGroupToCustomer",
+        "description": "Adds a customer membership to a customer group. \n\nThe customer is identified by the `customer_id` value \nand the customer group is identified by the `group_id` value.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_WRITE"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "The ID of the customer to add to a group.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "group_id",
+            "description": "The ID of the customer group to add the customer to.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/AddGroupToCustomerResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/devices/codes": {
+      "get": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "ListDeviceCodes",
+        "operationId": "ListDeviceCodes",
+        "description": "Lists all DeviceCodes associated with the merchant.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "DEVICE_CREDENTIAL_MANAGEMENT"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "DEVICE_CREDENTIAL_MANAGEMENT"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "location_id",
+            "description": "If specified, only returns DeviceCodes of the specified location.\nReturns DeviceCodes of all locations if empty.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "product_type",
+            "description": "If specified, only returns DeviceCodes targeting the specified product type.\nReturns DeviceCodes of all product types if empty.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListDeviceCodesResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "CreateDeviceCode",
+        "operationId": "CreateDeviceCode",
+        "description": "Creates a DeviceCode that can be used to login to a Square Terminal device to enter the connected\nterminal mode.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "DEVICE_CREDENTIAL_MANAGEMENT"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "DEVICE_CREDENTIAL_MANAGEMENT"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateDeviceCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateDeviceCodeResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/devices/codes/{id}": {
+      "get": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "GetDeviceCode",
+        "operationId": "GetDeviceCode",
+        "description": "Retrieves DeviceCode with the associated ID.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "DEVICE_CREDENTIAL_MANAGEMENT"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "DEVICE_CREDENTIAL_MANAGEMENT"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The unique identifier for the device code.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetDeviceCodeResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/disputes": {
       "get": {
         "tags": [
@@ -5045,7 +5582,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5102,7 +5639,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5143,7 +5680,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5184,7 +5721,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5225,7 +5762,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5272,7 +5809,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5321,7 +5858,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5371,7 +5908,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5411,7 +5948,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5471,7 +6008,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5510,7 +6047,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5549,7 +6086,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5590,7 +6127,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5631,7 +6168,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5672,7 +6209,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5711,7 +6248,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5764,7 +6301,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5817,7 +6354,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5868,7 +6405,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5909,7 +6446,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5946,7 +6483,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -5984,7 +6521,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6033,7 +6570,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6086,7 +6623,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6125,7 +6662,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6166,7 +6703,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6207,7 +6744,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6244,7 +6781,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6282,7 +6819,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6331,7 +6868,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6378,7 +6915,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6427,7 +6964,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6457,7 +6994,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6498,7 +7035,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6536,7 +7073,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6586,7 +7123,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6659,7 +7196,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6732,7 +7269,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6781,7 +7318,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6829,7 +7366,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6878,7 +7415,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -6936,7 +7473,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7009,7 +7546,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7080,7 +7617,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7130,7 +7667,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7179,7 +7716,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7228,7 +7765,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7286,7 +7823,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7334,7 +7871,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7373,7 +7910,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7412,7 +7949,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7455,7 +7992,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7505,7 +8042,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7592,7 +8129,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7633,7 +8170,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7674,7 +8211,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7713,7 +8250,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7752,7 +8289,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7800,7 +8337,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7879,7 +8416,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7920,7 +8457,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-03-25",
+        "x-sq-version": "2020-04-22",
         "security": [
           {
             "oauth2": [
@@ -7942,6 +8479,172 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/GetPaymentRefundResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/terminals/checkouts": {
+      "post": {
+        "tags": [
+          "Terminal"
+        ],
+        "summary": "CreateTerminalCheckout",
+        "operationId": "CreateTerminalCheckout",
+        "description": "Creates a new Terminal checkout request and sends it to the specified device to take a payment for the requested amount.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateTerminalCheckoutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateTerminalCheckoutResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/terminals/checkouts/search": {
+      "post": {
+        "tags": [
+          "Terminal"
+        ],
+        "summary": "SearchTerminalCheckouts",
+        "operationId": "SearchTerminalCheckouts",
+        "description": "Retrieves a filtered list of Terminal checkout requests created by the account making the request.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchTerminalCheckoutsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchTerminalCheckoutsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/terminals/checkouts/{checkout_id}": {
+      "get": {
+        "tags": [
+          "Terminal"
+        ],
+        "summary": "GetTerminalCheckout",
+        "operationId": "GetTerminalCheckout",
+        "description": "Retrieves a Terminal checkout request by checkout_id.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_READ"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "checkout_id",
+            "description": "Unique ID for the desired `TerminalCheckout`",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetTerminalCheckoutResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/terminals/checkouts/{checkout_id}/cancel": {
+      "post": {
+        "tags": [
+          "Terminal"
+        ],
+        "summary": "CancelTerminalCheckout",
+        "operationId": "CancelTerminalCheckout",
+        "description": "Cancels a Terminal checkout request, if the status of the request permits it.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "PAYMENTS_WRITE"
+        ],
+        "x-sq-version": "2020-04-22",
+        "security": [
+          {
+            "oauth2": [
+              "PAYMENTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "checkout_id",
+            "description": "Unique ID for the desired `TerminalCheckout`",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CancelTerminalCheckoutResponse"
             }
           }
         }
@@ -8376,7 +9079,8 @@
         "TIME_PERIOD",
         "MEASUREMENT_UNIT",
         "ITEM_OPTION",
-        "ITEM_OPTION_VAL"
+        "ITEM_OPTION_VAL",
+        "QUICK_AMOUNTS_SETTINGS"
       ],
       "x-enum-elements": [
         {
@@ -8434,6 +9138,10 @@
         {
           "name": "ITEM_OPTION_VAL",
           "description": "Represents an option value associated with one or more item options.\nFor example, an item option of \"Size\" may have item option values such as\n“Small\" or \"Medium\"."
+        },
+        {
+          "name": "QUICK_AMOUNTS_SETTINGS",
+          "description": "Represents a set of Quick Amounts and their settings at each location.\nFor example, a location may have a list of both AUTO and MANUAL quick amounts that are set to DISABLED."
         }
       ],
       "description": "Possible types of CatalogObjects returned from the Catalog, each\ncontaining type-specific properties in the `*_data` field corresponding to the object type.",
@@ -8519,6 +9227,51 @@
       ],
       "description": "",
       "x-release-status": "PUBLIC"
+    },
+    "CatalogQuickAmountType": {
+      "type": "string",
+      "enum": [
+        "QUICK_AMOUNT_TYPE_MANUAL",
+        "QUICK_AMOUNT_TYPE_AUTO"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "QUICK_AMOUNT_TYPE_MANUAL",
+          "description": "Quick Amount is created manually by the seller."
+        },
+        {
+          "name": "QUICK_AMOUNT_TYPE_AUTO",
+          "description": "Quick Amount is generated automatically by machine learning algorithms."
+        }
+      ],
+      "description": "Determines the type of a specific Quick Amount.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogQuickAmountsSettingsOption": {
+      "type": "string",
+      "enum": [
+        "DISABLED",
+        "MANUAL",
+        "AUTO"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "DISABLED",
+          "description": "Option for seller to disable Quick Amounts."
+        },
+        {
+          "name": "MANUAL",
+          "description": "Option for seller to choose manually created Quick Amounts."
+        },
+        {
+          "name": "AUTO",
+          "description": "Option for seller to choose automatically created Quick Amounts."
+        }
+      ],
+      "description": "Determines a seller\u0027s option on Quick Amounts feature.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "Country": {
       "type": "string",
@@ -10825,7 +11578,7 @@
       "x-enum-elements": [
         {
           "name": "DEFAULT",
-          "description": "Use the default sort. By default, Customers are sorted\nalphanumerically by concatenating `given_name` and `family_name`. If\nneither name field is set, string comparison is performed using one of the\nremaining fields in the following order: `company_name`, `email`,\n`phone_number`."
+          "description": "Use the default sort. By default, customers are sorted\nalphanumerically by concatenating `given_name` and `family_name`. If\nneither name field is set, string comparison is performed using one of the\nremaining fields in the following order: `company_name`, `email`,\n`phone_number`."
         },
         {
           "name": "CREATED_AT",
@@ -10878,6 +11631,26 @@
       ],
       "description": "Indicates the specific day  of the week.",
       "x-release-status": "PUBLIC"
+    },
+    "DeviceCodeStatus": {
+      "type": "string",
+      "enum": [
+        "UNPAIRED",
+        "PAIRED"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNPAIRED",
+          "description": "The device code is just created and unpaired."
+        },
+        {
+          "name": "PAIRED",
+          "description": "The device code has been signed in and paired to a device."
+        }
+      ],
+      "description": "DeviceCode.Status enum.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "DisputeEvidenceType": {
       "type": "string",
@@ -11173,6 +11946,7 @@
         "UNAUTHORIZED",
         "ACCESS_TOKEN_EXPIRED",
         "ACCESS_TOKEN_REVOKED",
+        "CLIENT_DISABLED",
         "FORBIDDEN",
         "INSUFFICIENT_SCOPES",
         "APPLICATION_DISABLED",
@@ -11305,6 +12079,10 @@
         {
           "name": "ACCESS_TOKEN_REVOKED",
           "description": "401 Unauthorized - the provided access token has been revoked."
+        },
+        {
+          "name": "CLIENT_DISABLED",
+          "description": "401 Unauthorized - the provided client has been disabled."
         },
         {
           "name": "FORBIDDEN",
@@ -12553,6 +13331,21 @@
       "description": "Indicates the Square product used to generate an inventory change.",
       "x-release-status": "PUBLIC"
     },
+    "ProductType": {
+      "type": "string",
+      "enum": [
+        "TERMINAL_API"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "TERMINAL_API",
+          "description": ""
+        }
+      ],
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "RefundStatus": {
       "type": "string",
       "enum": [
@@ -12874,6 +13667,31 @@
       ],
       "description": "Indicates a tender\u0027s type.",
       "x-release-status": "PUBLIC"
+    },
+    "TerminalCheckoutCancelReason": {
+      "type": "string",
+      "enum": [
+        "BUYER_CANCELED",
+        "SELLER_CANCELED",
+        "TIMED_OUT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "BUYER_CANCELED",
+          "description": "A person canceled the `TerminalCheckout` from a Square device."
+        },
+        {
+          "name": "SELLER_CANCELED",
+          "description": "A client canceled the `TerminalCheckout` using the API."
+        },
+        {
+          "name": "TIMED_OUT",
+          "description": "The `TerminalCheckout` timed out (see `deadline_duration` on the `TerminalCheckout`)."
+        }
+      ],
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "TransactionProduct": {
       "type": "string",
@@ -14573,6 +15391,32 @@
         }
       }
     },
+    "AddGroupToCustomerRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines the fields that are included in the request body of\na request to the [AddGroupToCustomer](#endpoint-addgrouptocustomer) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "AddGroupToCustomerResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [AddGroupToCustomer](#endpoint-addgrouptocustomer) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {}
+    },
     "AdditionalRecipient": {
       "type": "object",
       "required": [
@@ -16076,6 +16920,58 @@
         }
       }
     },
+    "CancelTerminalCheckoutRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "CancelTerminalCheckoutResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "checkout": {
+          "$ref": "#/definitions/TerminalCheckout",
+          "description": "The updated `TerminalCheckout`"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "checkout": {
+          "id": "S1yDlPQx7slqO",
+          "amount_money": {
+            "amount": 123,
+            "currency": "USD"
+          },
+          "reference_id": "id36815",
+          "device_options": {
+            "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
+            "tip_settings": {
+              "allow_tipping": true
+            },
+            "skip_receipt_screen": true
+          },
+          "status": "CANCELED",
+          "cancel_reason": "SELLER_CANCELED",
+          "created_at": "2020-03-16T15:31:19.934Z",
+          "updated_at": "2020-03-16T15:31:45.787Z",
+          "app_id": "APP_ID",
+          "deadline_duration": "PT10M"
+        }
+      }
+    },
     "CaptureTransactionRequest": {
       "type": "object",
       "properties": {},
@@ -16439,7 +17335,6 @@
       ],
       "properties": {
         "type": {
-          "minLength": 1,
           "type": "string",
           "description": "The type of this custom attribute. Cannot be modified after creation.\nRequired.\nSee [CatalogCustomAttributeDefinitionType](#type-catalogcustomattributedefinitiontype) for possible values"
         },
@@ -16463,7 +17358,7 @@
           "items": {
             "type": "string"
           },
-          "description": "The set of Catalog Object Types that this Custom Attribute may be applied to.\nCurrently, only `ITEM` and `ITEM_VARIATION` are allowed.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
+          "description": "The set of Catalog Object Types that this Custom Attribute may be applied to.\nCurrently, only `ITEM` and `ITEM_VARIATION` are allowed. At least one type must be included.\nSee [CatalogObjectType](#type-catalogobjecttype) for possible values"
         },
         "seller_visibility": {
           "type": "string",
@@ -16486,8 +17381,11 @@
           "description": "__Read-only.__ The number of custom attributes that reference this\ncustom attribute definition. Set by the server in response to a ListCatalog\nrequest with `include_counts` set to `true`.  If the actual count is greater\nthan 100, `custom_attribute_usage_count` will be set to `100`."
         },
         "key": {
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]*$",
+          "maxLength": 60,
           "type": "string",
-          "description": "The name of the desired custom attribute key that can be used to access\nthe custom attribute value on catalog objects. Cannot be modified after the\ncustom attribute definition has been created."
+          "description": "The name of the desired custom attribute key that can be used to access\nthe custom attribute value on catalog objects. Cannot be modified after the\ncustom attribute definition has been created.\nMust be between 1 and 60 characters, and may only contain the characters [a-zA-Z0-9_-]."
         }
       },
       "description": "Contains information defining a custom attribute. Custom attributes are\nintended to store additional information about a catalog object or to associate a\ncatalog object with an entity in another system. Do not use custom attributes\nto store any sensitive information (personally identifiable information, card details, etc.).\n[Read more about custom attributes](/catalog-api/add-custom-attributes)",
@@ -16498,7 +17396,7 @@
       "type": "object",
       "properties": {
         "max_allowed_selections": {
-          "maxLength": 100,
+          "maximum": 100,
           "type": "integer",
           "description": "The maximum number of selections that can be set. The maximum value for this\nattribute is 100. May be modified, but changing the value will not\naffect existing custom attribute values on objects. Clients need to\nhandle Custom Attributes with more selected values than allowed by this limit."
         },
@@ -16560,11 +17458,11 @@
         },
         "custom_attribute_definition_id": {
           "type": "string",
-          "description": "__Read-only.__ The custom attribute definition this value belongs to."
+          "description": "__Read-only.__ The id of the `CatalogCustomAttributeDefinition` this value belongs to."
         },
         "type": {
           "type": "string",
-          "description": "__Read-only.__ A copy of type from the associated custom attribute definition.\nSee [CatalogCustomAttributeDefinitionType](#type-catalogcustomattributedefinitiontype) for possible values"
+          "description": "__Read-only.__ A copy of type from the associated `CatalogCustomAttributeDefinition`.\nSee [CatalogCustomAttributeDefinitionType](#type-catalogcustomattributedefinitiontype) for possible values"
         },
         "number_value": {
           "type": "string",
@@ -16583,7 +17481,7 @@
         },
         "key": {
           "type": "string",
-          "description": "__Read-only.__ A copy of key from the associated custom attribute definition."
+          "description": "__Read-only.__ A copy of key from the associated `CatalogCustomAttributeDefinition`."
         }
       },
       "description": "An instance of a custom attribute. Custom attributes can be defined and\nadded to `ITEM` and `ITEM_VARIATION` type catalog objects.\n[Read more about custom attributes](/catalog-api/add-custom-attributes).",
@@ -17260,7 +18158,7 @@
           "additionalProperties": {
             "$ref": "#/definitions/CatalogCustomAttributeValue"
           },
-          "description": "Application-defined key/value attributes that are set at a global (location-independent) level.\nValues from the `*_data` fields may not be duplicated. Custom Attribute fields are intended to store additional\ninformation about a Catalog Object or associations with an entity in another system. Do not use custom attributes\nto store any sensitive information (personally identifiable information, card details, etc.).\n\nFor CustomAttributesDefinitions defined by the app making the request, the map key is the key defined in\nCustomAttributeDefinition (eg. “reference_id”). For CustomAttributesDefinitions by other apps, the map key is\nthe key defined in CustomAttributeDefinition prefixed with the application ID and a colon\n(eg. “abcd1234:reference_id”).",
+          "description": "Application-defined key/value attributes that are set at a global (location-independent) level.\nCustom Attribute Values are intended to store additional information about a Catalog Object\nor associations with an entity in another system. Do not use custom attributes\nto store any sensitive information (personally identifiable information, card details, etc.).\n\nFor CustomAttributesDefinitions defined by the app making the request, the map key is the key defined in the\n`CatalogCustomAttributeDefinition` (e.g. “reference_id”). For custom attributes created by other apps, the map key is\nthe key defined in `CatalogCustomAttributeDefinition` prefixed with the application ID and a colon\n(eg. “abcd1234:reference_id”).",
           "x-release-status": "BETA",
           "x-is-beta": true
         },
@@ -17366,9 +18264,15 @@
           "description": "Structured data for a `CatalogCustomAttributeDefinition`, set for CatalogObjects of type `CUSTOM_ATTRIBUTE_DEFINITION`.",
           "x-release-status": "BETA",
           "x-is-beta": true
+        },
+        "quick_amounts_settings_data": {
+          "$ref": "#/definitions/CatalogQuickAmountsSettings",
+          "description": "Structured data for a `CatalogQuickAmountsSettings`, set for CatalogObjects of type `QUICK_AMOUNTS_SETTINGS`.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
         }
       },
-      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid `CatalogItem` object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid `CatalogItemVariation` object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid `CatalogModifier` object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid `CatalogModifierList` object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid `CatalogCategory` object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid `CatalogDiscount` object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid `CatalogTax` object.\n- if type \u003d `IMAGE`, only `image_data` will be populated and it will contain a valid `CatalogImage` object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
+      "description": "The wrapper object for object types in the Catalog data model. The type\nof a particular `CatalogObject` is determined by the value of\n`type` and only the corresponding data field may be set.\n\n- if type \u003d `ITEM`, only `item_data` will be populated and it will contain a valid `CatalogItem` object.\n- if type \u003d `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid `CatalogItemVariation` object.\n- if type \u003d `MODIFIER`, only `modifier_data` will be populated and it will contain a valid `CatalogModifier` object.\n- if type \u003d `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid `CatalogModifierList` object.\n- if type \u003d `CATEGORY`, only `category_data` will be populated and it will contain a valid `CatalogCategory` object.\n- if type \u003d `DISCOUNT`, only `discount_data` will be populated and it will contain a valid `CatalogDiscount` object.\n- if type \u003d `TAX`, only `tax_data` will be populated and it will contain a valid `CatalogTax` object.\n- if type \u003d `IMAGE`, only `image_data` will be populated and it will contain a valid `CatalogImage` object.\n- if type \u003d `QUICK_AMOUNTS_SETTINGS`, only `quick_amounts_settings_data` will be populated and will contain a valid `CatalogQuickAmountsSettings` object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
       "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
@@ -17856,6 +18760,62 @@
       },
       "description": "",
       "x-release-status": "PUBLIC"
+    },
+    "CatalogQuickAmount": {
+      "type": "object",
+      "required": [
+        "type",
+        "amount"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Represents the type of the Quick Amount.\nSee [CatalogQuickAmountType](#type-catalogquickamounttype) for possible values"
+        },
+        "amount": {
+          "$ref": "#/definitions/Money",
+          "description": "Represents the actual amount of the Quick Amount with Money type."
+        },
+        "score": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Describes the ranking of the Quick Amount provided by machine learning model, in the range [0, 100].\nMANUAL type amount will always have score \u003d 100."
+        },
+        "ordinal": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The order in which this Quick Amount should be displayed."
+        }
+      },
+      "description": "Represents a Quick Amount in the Catalog.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogQuickAmountsSettings": {
+      "type": "object",
+      "required": [
+        "option"
+      ],
+      "properties": {
+        "option": {
+          "type": "string",
+          "description": "Represents the option seller currently uses on Quick Amounts.\nSee [CatalogQuickAmountsSettingsOption](#type-catalogquickamountssettingsoption) for possible values"
+        },
+        "eligible_for_auto_amounts": {
+          "type": "boolean",
+          "description": "Represents location\u0027s eligibility for auto amounts\nThe boolean should be consistent with whether there are AUTO amounts in the `amounts`."
+        },
+        "amounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogQuickAmount"
+          },
+          "description": "Represents a set of Quick Amounts at this location."
+        }
+      },
+      "description": "A parent Catalog Object model represents a set of Quick Amounts and the settings control the amounts.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "CatalogTax": {
       "type": "object",
@@ -18808,6 +19768,59 @@
         "ruby": "/sdk_samples/CreateCustomerCard/CreateCustomerCardResponse.ruby"
       }
     },
+    "CreateCustomerGroupRequest": {
+      "type": "object",
+      "required": [
+        "group"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "type": "string",
+          "description": "The idempotency key for the request. See the [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency)\nguide for more information."
+        },
+        "group": {
+          "$ref": "#/definitions/CustomerGroup",
+          "description": "The customer group to create."
+        }
+      },
+      "description": "Defines the body parameters that can be provided in a request to the\n[CreateCustomerGroup](#endpoint-createcustomegroup) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "group": {
+            "name": "Loyal Customers"
+          }
+        }
+      }
+    },
+    "CreateCustomerGroupResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "group": {
+          "$ref": "#/definitions/CustomerGroup",
+          "description": "The successfully created customer group."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [CreateCustomerGroup](#endpoint-createcustomergroup) endpoint.\n\nOne of `errors` or `group` is present in a given response (never both).",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "group": {
+          "id": "2TAT3CMH4Q0A9M87XJZED0WMR3",
+          "name": "Loyal Customers",
+          "created_at": "2020-04-13T21:54:57.863Z",
+          "updated_at": "2020-04-13T21:54:58Z"
+        }
+      }
+    },
     "CreateCustomerRequest": {
       "type": "object",
       "properties": {
@@ -18930,6 +19943,70 @@
         "php": "/sdk_samples/CreateCustomer/CreateCustomerResponse.php",
         "javascript": "/sdk_samples/CreateCustomer/CreateCustomerResponse.javascript",
         "ruby": "/sdk_samples/CreateCustomer/CreateCustomerResponse.ruby"
+      }
+    },
+    "CreateDeviceCodeRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key",
+        "device_code"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "maxLength": 128,
+          "type": "string",
+          "description": "A unique string that identifies this CreateCheckout request. Keys can be any valid string but\nmust be unique for every CreateCheckout request.\n\nSee [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
+        },
+        "device_code": {
+          "$ref": "#/definitions/DeviceCode",
+          "description": "The device code to create."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "idempotency_key": "01bb00a6-0c86-4770-94ed-f5fca973cd56",
+          "device_code": {
+            "name": "Counter 1",
+            "location_id": "B5E4484SHHNYH",
+            "product_type": "TERMINAL_API"
+          }
+        }
+      }
+    },
+    "CreateDeviceCodeResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "device_code": {
+          "$ref": "#/definitions/DeviceCode",
+          "description": "The created DeviceCode object containing the device code string."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "device_code": {
+          "id": "B3Z6NAMYQSMTM",
+          "name": "Counter 1",
+          "code": "EBCARJ",
+          "product_type": "TERMINAL_API",
+          "location_id": "B5E4484SHHNYH",
+          "created_at": "2020-02-06T18:44:33.000Z",
+          "pair_by": "2020-02-06T18:49:33.000Z",
+          "status": "UNPAIRED",
+          "status_changed_at": "2020-02-06T18:44:33.000Z"
+        }
       }
     },
     "CreateDisputeEvidenceFileRequest": {
@@ -19897,6 +20974,87 @@
         }
       }
     },
+    "CreateTerminalCheckoutRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key",
+        "checkout"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "maxLength": 64,
+          "type": "string",
+          "description": "A unique string that identifies this CreateCheckout request. Keys can be any valid string but\nmust be unique for every CreateCheckout request.\n\nSee [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
+        },
+        "checkout": {
+          "$ref": "#/definitions/TerminalCheckout",
+          "description": "The checkout to create."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "idempotency_key": "28a0c3bc-7839-11ea-bc55-0242ac130003",
+          "checkout": {
+            "amount_money": {
+              "amount": 2610,
+              "currency": "USD"
+            },
+            "reference_id": "id11572",
+            "device_options": {
+              "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003"
+            },
+            "note": "A brief note"
+          }
+        }
+      }
+    },
+    "CreateTerminalCheckoutResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "checkout": {
+          "$ref": "#/definitions/TerminalCheckout",
+          "description": "The created `TerminalCheckout`"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "checkout": {
+          "id": "08YceKh7B3ZqO",
+          "amount_money": {
+            "amount": 2610,
+            "currency": "USD"
+          },
+          "reference_id": "id11572",
+          "note": "A brief note",
+          "device_options": {
+            "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
+            "print_receipt": false,
+            "tip_settings": {
+              "allow_tipping": false
+            },
+            "skip_receipt_screen": false
+          },
+          "status": "PENDING",
+          "created_at": "2020-04-06T16:39:32.545Z",
+          "updated_at": "2020-04-06T16:39:32.545Z",
+          "app_id": "APP_ID",
+          "deadline_duration": "PT10M"
+        }
+      }
+    },
     "Customer": {
       "type": "object",
       "required": [
@@ -19907,15 +21065,15 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "A unique, Square-assigned object ID."
+          "description": "A unique Square-assigned ID for the customer profile."
         },
         "created_at": {
           "type": "string",
-          "description": "The time when the customer profile was created, in RFC 3339 format."
+          "description": "The timestamp when the customer profile was created, in RFC 3339 format."
         },
         "updated_at": {
           "type": "string",
-          "description": "The time when the customer profile was last updated, in RFC 3339 format."
+          "description": "The timestamp when the customer profile was last updated, in RFC 3339 format."
         },
         "cards": {
           "type": "array",
@@ -19973,11 +21131,31 @@
           "items": {
             "$ref": "#/definitions/CustomerGroupInfo"
           },
-          "description": "The groups the customer belongs to."
+          "description": "The customer groups and segments the customer belongs to. This deprecated field is replaced with dedicated `group_ids` for customer groups and `segment_ids` for customer segments.",
+          "x-release-status": "DEPRECATED",
+          "x-is-deprecated": true
         },
         "creation_source": {
           "type": "string",
           "description": "A creation source represents the method used to create the\ncustomer profile.\nSee [CustomerCreationSource](#type-customercreationsource) for possible values"
+        },
+        "group_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of customer groups the customer belongs to.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
+        "segment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of segments the customer belongs to.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
         }
       },
       "description": "Represents a Square customer profile, which can have one or more\ncards on file associated with it.",
@@ -20015,10 +21193,47 @@
         "updated_at": {
           "$ref": "#/definitions/TimeRange",
           "description": "A filter to select customers based on when they were updated."
+        },
+        "group_ids": {
+          "$ref": "#/definitions/FilterValue",
+          "description": "A filter to select customers based on their group membership.\n\nThe `group_ids` is a JSON object of the following general format:\n```\n\"group_ids\": {\n\"any\":  [\"{group_a_id}\", \"{group_b_id}\", ...],\n\"all\":  [\"{group_1_id}\", \"{group_2_id}\", ...],\n\u0027none\": [\"{group_i_id}\", \"{group_ii_id}\", ...]\n}\n```\n\nYou can use any combination of the above `group_ids` fields (also known as `FilterValue` properties) \nto specify how customers are selected based on their group membership.  \nWith the `any` option, the search returns customers in Groups `A` or `B` or ... of the list.\nWith the `all` option, the search returns customers in Groups `1` and `2` and ... of the list\nWith the `none` option, the search returns customers not in Groups `i` and not in `ii` and not in ... of the list.\n\nIf any of the search conditions is not met, including when an invalid or non-existent group ID is provided, the result is an empty list. \n\nYou can use the `group_ids` search filter with other available filters. \n\nYou cannot use the `group_ids` filter to select customers based on segment membership.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
         }
       },
-      "description": "Represents a set of `CustomerQuery` filters used to limit the set of\n`Customers` returned by SearchCustomers.",
+      "description": "Represents a set of `CustomerQuery` filters used to limit the set of\n`Customers` returned by `SearchCustomers`.",
       "x-release-status": "PUBLIC"
+    },
+    "CustomerGroup": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "Unique Square-generated ID for the customer group.",
+          "x-read-only": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the customer group."
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The timestamp when the customer group was created, in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The timesamp when the customer group was last updated, in RFC 3339 format.",
+          "x-read-only": true
+        }
+      },
+      "description": "Represents a group of customer profiles. \n\nCustomer groups can be created, modified, and have their membership defined either via \nthe Customers API or within Customer Directory in the Square Dashboard or Point of Sale.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "CustomerGroupInfo": {
       "type": "object",
@@ -20029,14 +21244,14 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "The ID of the customer group."
+          "description": "The ID of the Customer Group."
         },
         "name": {
           "type": "string",
-          "description": "The name of the customer group."
+          "description": "The name of the Customer Group."
         }
       },
-      "description": "Contains some brief information about a customer group with its identifier included.",
+      "description": "Contains some brief information about a Customer Group with its identifier included.",
       "x-release-status": "PUBLIC"
     },
     "CustomerPreferences": {
@@ -20064,6 +21279,38 @@
       },
       "description": "Represents a query (filtering and sorting criteria) used to search\nfor customer profiles.",
       "x-release-status": "PUBLIC"
+    },
+    "CustomerSegment": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "Unique Square-generated ID for the segment.",
+          "x-read-only": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the segment.",
+          "x-read-only": true
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The timestamp when the segment was created, in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The timestamp when the segment was last updated, in RFC 3339 format.",
+          "x-read-only": true
+        }
+      },
+      "description": "Represents a group of customer profiles that match one or more predefined filter criteria. \n\nSegments (also known as Smart Groups) are defined and created within Customer Directory in the Square Dashboard or Point of Sale.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "CustomerSort": {
       "type": "object",
@@ -20210,6 +21457,32 @@
         "ruby": "/sdk_samples/DeleteCustomerCard/DeleteCustomerCardResponse.ruby"
       }
     },
+    "DeleteCustomerGroupRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines the fields that can be provided in a request to the\n[DeleteCustomerGroup](#endpoint-deletecustomergroup) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "DeleteCustomerGroupResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [DeleteCustomerGroup](#endpoint-deletecustomergroup) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {}
+    },
     "DeleteCustomerRequest": {
       "type": "object",
       "properties": {},
@@ -20285,6 +21558,94 @@
       "description": "",
       "x-release-status": "DEPRECATED",
       "x-is-deprecated": true
+    },
+    "DeviceCheckoutOptions": {
+      "type": "object",
+      "required": [
+        "device_id"
+      ],
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "description": "The unique Id of the device intended for this `TerminalCheckout`.\nThe Id can be retrieved from /v2/devices api."
+        },
+        "skip_receipt_screen": {
+          "type": "boolean",
+          "description": "Instruct the device to skip the receipt screen. Defaults to false."
+        },
+        "tip_settings": {
+          "$ref": "#/definitions/TipSettings",
+          "description": "Tip specific settings"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DeviceCode": {
+      "type": "object",
+      "required": [
+        "product_type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique id for this device code.",
+          "x-read-only": true
+        },
+        "name": {
+          "maxLength": 128,
+          "type": "string",
+          "description": "An optional user-defined name for the device code."
+        },
+        "code": {
+          "type": "string",
+          "description": "The unique code that can be used to login.",
+          "x-read-only": true
+        },
+        "device_id": {
+          "type": "string",
+          "description": "The unique id of the device that used this code. Populated when the device is paired up.",
+          "x-read-only": true
+        },
+        "product_type": {
+          "type": "string",
+          "description": "The targeting product type of the device code.\nSee [ProductType](#type-producttype) for possible values"
+        },
+        "location_id": {
+          "maxLength": 50,
+          "type": "string",
+          "description": "The location assigned to this code."
+        },
+        "status": {
+          "type": "string",
+          "description": "The pairing status of the device code.\nSee [DeviceCodeStatus](#type-devicecodestatus) for possible values",
+          "x-read-only": true
+        },
+        "pair_by": {
+          "type": "string",
+          "description": "When this DeviceCode will expire and no longer login. Timestamp in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "created_at": {
+          "type": "string",
+          "description": "When this DeviceCode was created. Timestamp in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "status_changed_at": {
+          "type": "string",
+          "description": "When this DeviceCode\u0027s status was last changed. Timestamp in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "paired_at": {
+          "type": "string",
+          "description": "When this DeviceCode was paired. Timestamp in RFC 3339 format.",
+          "x-read-only": true
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "DeviceDetails": {
       "type": "object",
@@ -20529,6 +21890,35 @@
       "description": "Represents an error encountered during a request to the Connect API.\n\nSee [Handling errors](#handlingerrors) for more information.",
       "x-release-status": "PUBLIC"
     },
+    "FilterValue": {
+      "type": "object",
+      "properties": {
+        "all": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of terms that must be present on the field of the resource."
+        },
+        "any": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of terms where at least one of them must be present on the\nfield of the resource."
+        },
+        "none": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of terms that must not be present on the field the resource"
+        }
+      },
+      "description": "A filter to select resources based on an exact field value. For any given\nvalue, the value can only be in one property. Depending on the field, either\nall properties can be set or only a subset will be available.\n\nRefer to the documentation of the field.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "GetBankAccountByV1IdRequest": {
       "type": "object",
       "properties": {},
@@ -20645,6 +22035,49 @@
           "version": 1,
           "created_at": "2019-02-21T17:50:00Z",
           "updated_at": "2019-02-21T17:50:00Z"
+        }
+      }
+    },
+    "GetDeviceCodeRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "GetDeviceCodeResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "device_code": {
+          "$ref": "#/definitions/DeviceCode",
+          "description": "The queried DeviceCode."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "device_code": {
+          "id": "B3Z6NAMYQSMTM",
+          "name": "Counter 1",
+          "code": "EBCARJ",
+          "product_type": "TERMINAL_API",
+          "location_id": "B5E4484SHHNYH",
+          "created_at": "2020-02-06T18:44:33.000Z",
+          "pair_by": "2020-02-06T18:49:33.000Z",
+          "status": "PAIRED",
+          "device_id": "907CS13101300122",
+          "status_changed_at": "2020-02-06T18:47:28.000Z"
         }
       }
     },
@@ -20873,6 +22306,59 @@
           "version": 1,
           "created_at": "2019-02-27T00:12:12Z",
           "updated_at": "2019-02-27T00:12:12Z"
+        }
+      }
+    },
+    "GetTerminalCheckoutRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "GetTerminalCheckoutResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "checkout": {
+          "$ref": "#/definitions/TerminalCheckout",
+          "description": "The requested `Checkout`"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "checkout": {
+          "id": "08YceKh7B3ZqO",
+          "amount_money": {
+            "amount": 2610,
+            "currency": "USD"
+          },
+          "reference_id": "id11572",
+          "note": "A brief note",
+          "device_options": {
+            "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
+            "print_receipt": false,
+            "tip_settings": {
+              "allow_tipping": false
+            },
+            "skip_receipt_screen": false
+          },
+          "status": "IN_PROGRESS",
+          "created_at": "2020-04-06T16:39:32.545Z",
+          "updated_at": "2020-04-06T16:39:323.001Z",
+          "app_id": "APP_ID",
+          "deadline_duration": "PT10M"
         }
       }
     },
@@ -21682,6 +23168,137 @@
         "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.ruby"
       }
     },
+    "ListCustomerGroupsRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information."
+        }
+      },
+      "description": "Defines the query parameters that can be provided in a request to the\n[ListCustomerGroups](#endpoint-listcustomergroups) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "ListCustomerGroupsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerGroup"
+          },
+          "description": "A list of customer groups belonging to the current merchant."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint. This value is present only if the request\nsucceeded and additional results are available.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/working-with-apis/pagination) for more information."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [ListCustomerGroups](#endpoint-listcustomergroups) endpoint.\n\nOne of `errors` or `groups` is present in a given response (never both).",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "groups": [
+          {
+            "id": "2TAT3CMH4Q0A9M87XJZED0WMR3",
+            "name": "Loyal Customers",
+            "created_at": "2020-04-13T21:54:57.863Z",
+            "updated_at": "2020-04-13T21:54:58Z"
+          },
+          {
+            "id": "4XMEHESXJBNE9S9JAKZD2FGB14",
+            "name": "Super Loyal Customers",
+            "created_at": "2020-04-13T21:55:18.795Z",
+            "updated_at": "2020-04-13T21:55:19Z"
+          }
+        ]
+      }
+    },
+    "ListCustomerSegmentsRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by previous calls to __ListCustomerSegments__.\nUsed to retrieve the next set of query results.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/docs/working-with-apis/pagination) for more information."
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Sets the maximum number of results to be returned in a single page.\nLimit values outside the supported range are ignored.\n\nMinimum value: `1`\nMaximum value: `1,000`"
+        }
+      },
+      "description": "Defines the valid parameters for requests to __ListCustomerSegments__.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "ListCustomerSegmentsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerSegment"
+          },
+          "description": "The list of customer segments belonging to the associated Square account."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor to be used in subsequent calls to __ListCustomerSegments__\nto retrieve the next set of query results. Only present only if the request succeeded and\nadditional results are available.\n\nSee the [Pagination guide](https://developer.squareup.com/docs/docs/working-with-apis/pagination) for more information."
+        }
+      },
+      "description": "Defines the fields included in the response body for requests to __ListCustomerSegments__.\n\nOne of `errors` or `segments` is present in a given response (never both).",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "segments": [
+          {
+            "id": "GMNXRZVEXNQDF.CHURN_RISK",
+            "name": "Lapsed",
+            "created_at": "2020-01-09T19:33:24.469Z",
+            "updated_at": "2020-04-13T21:47:04Z"
+          },
+          {
+            "id": "GMNXRZVEXNQDF.LOYAL",
+            "name": "Regulars",
+            "created_at": "2020-01-09T19:33:24.486Z",
+            "updated_at": "2020-04-13T21:47:04Z"
+          },
+          {
+            "id": "GMNXRZVEXNQDF.REACHABLE",
+            "name": "Reachable",
+            "created_at": "2020-01-09T19:33:21.813Z",
+            "updated_at": "2020-04-13T21:47:04Z"
+          },
+          {
+            "id": "gv2:KF92J19VXN5FK30GX2E8HSGQ20",
+            "name": "Instant Profile",
+            "created_at": "2020-01-09T19:33:25Z",
+            "updated_at": "2020-04-13T23:01:03Z"
+          }
+        ]
+      }
+    },
     "ListCustomersRequest": {
       "type": "object",
       "properties": {
@@ -21770,6 +23387,82 @@
         "php": "/sdk_samples/ListCustomers/ListCustomersResponse.php",
         "javascript": "/sdk_samples/ListCustomers/ListCustomersResponse.javascript",
         "ruby": "/sdk_samples/ListCustomers/ListCustomersResponse.ruby"
+      }
+    },
+    "ListDeviceCodesRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information."
+        },
+        "location_id": {
+          "type": "string",
+          "description": "If specified, only returns DeviceCodes of the specified location.\nReturns DeviceCodes of all locations if empty."
+        },
+        "product_type": {
+          "type": "string",
+          "description": "If specified, only returns DeviceCodes targeting the specified product type.\nReturns DeviceCodes of all product types if empty.\nSee [ProductType](#type-producttype) for possible values"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "ListDeviceCodesResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "device_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeviceCode"
+          },
+          "description": "The queried DeviceCode."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor to retrieve the next set of results for your\noriginal query to the endpoint. This value is present only if the request\nsucceeded and additional results are available.\n\nSee [Paginating results](#paginatingresults) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "device_codes": [
+          {
+            "id": "B3Z6NAMYQSMTM",
+            "name": "Counter 1",
+            "code": "EBCARJ",
+            "product_type": "TERMINAL_API",
+            "location_id": "B5E4484SHHNYH",
+            "created_at": "2020-02-06T18:44:33.000Z",
+            "pair_by": "2020-02-06T18:49:33.000Z",
+            "status": "PAIRED",
+            "device_id": "907CS13101300122",
+            "status_changed_at": "2020-02-06T18:47:28.000Z"
+          },
+          {
+            "id": "YKGMJMYK8H4PQ",
+            "name": "Unused device code",
+            "code": "GVXNYN",
+            "product_type": "TERMINAL_API",
+            "location_id": "A6SYFRSV4WAFW",
+            "pair_by": "2020-02-07T20:00:04.000Z",
+            "created_at": "2020-02-07T19:55:04.000Z",
+            "status": "UNPAIRED",
+            "status_changed_at": "2020-02-07T19:55:04.000Z"
+          }
+        ]
       }
     },
     "ListDisputeEvidenceRequest": {
@@ -22975,6 +24668,13 @@
         "migration_token": {
           "type": "string",
           "description": "Legacy OAuth access token obtained using a Connect API version prior\nto 2019-03-13. This parameter is required if `grant_type` is set to\n`migration_token` to indicate that the application wants to get a replacement\nOAuth access token. The response also returns a refresh token.\nFor more information, see [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/authz/oauth/migration)."
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "__OPTIONAL__\n\nA JSON list of strings that are the permissions the application is requesting.\nFor example: \"`[\"MERCHANT_PROFILE_READ\",\"PAYMENTS_READ\",\"BANK_ACCOUNTS_READ\"]`\"\nThe access token returned in the response will be granted the permissions\nthat comprise the intersection between the given list of permissions, and those\nthat belong to the provided refresh token."
         }
       },
       "description": "",
@@ -23029,7 +24729,7 @@
         },
         "refresh_token": {
           "type": "string",
-          "description": "A refresh token.\nFor more information, see [OAuth access token management](https://developer.squareup.com/docs/authz/oauth/how-it-works#oauth-access-token-management)."
+          "description": "A refresh token. OAuth refresh tokens are 64 bytes long.\nFor more information, see [OAuth access token management](https://developer.squareup.com/docs/authz/oauth/how-it-works#oauth-access-token-management)."
         }
       },
       "description": "",
@@ -23076,6 +24776,7 @@
           "description": "The origination details of the order."
         },
         "customer_id": {
+          "maxLength": 191,
           "type": "string",
           "description": "The `Customer` ID of the customer associated with the order.",
           "x-release-status": "BETA",
@@ -23188,7 +24889,7 @@
         },
         "closed_at": {
           "type": "string",
-          "description": "Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "Timestamp for when the order reached a terminal [state](#property-state). In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
           "x-read-only": true
         },
         "state": {
@@ -23224,6 +24925,46 @@
       },
       "description": "Contains all information related to a single order to process with Square,\nincluding line items that specify the products to purchase. Order objects also\ninclude information on any associated tenders, refunds, and returns.\n\nAll Connect V2 Transactions have all been converted to Orders including all associated\nitemization data.",
       "x-release-status": "PUBLIC"
+    },
+    "OrderCreated": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "The order\u0027s unique ID."
+        },
+        "version": {
+          "type": "integer",
+          "description": "Version number which is incremented each time an update is committed to the order.\nOrders that were not created through the API will not include a version and\nthus cannot be updated.\n\n[Read more about working with versions](https://developer.squareup.com/docs/docs/orders-api/manage-orders#update-orders)"
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the merchant location this order is associated with."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state of the order.\nSee [OrderState](#type-orderstate) for possible values"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was created in RFC 3339 format."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "OrderCreatedObject": {
+      "type": "object",
+      "properties": {
+        "order_created": {
+          "$ref": "#/definitions/OrderCreated",
+          "description": "Information about the created order."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "OrderEntry": {
       "type": "object",
@@ -23362,15 +25103,45 @@
           "maxLength": 100,
           "type": "string",
           "description": "A description of why the pickup was canceled. Max length: 100 characters."
+        },
+        "is_curbside_pickup": {
+          "type": "boolean",
+          "description": "If true, indicates this pickup order is for curbside pickup, not in-store pickup.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
+        "curbside_pickup_details": {
+          "$ref": "#/definitions/OrderFulfillmentPickupDetailsCurbsidePickupDetails",
+          "description": "Specific details for curbside pickup. Can only be populated if `is_curbside_pickup` is true.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
         }
       },
       "description": "Contains details necessary to fulfill a pickup order.",
       "x-release-status": "PUBLIC"
     },
+    "OrderFulfillmentPickupDetailsCurbsidePickupDetails": {
+      "type": "object",
+      "properties": {
+        "curbside_details": {
+          "maxLength": 250,
+          "type": "string",
+          "description": "Specific details for curbside pickup, such as parking number, vehicle model, etc."
+        },
+        "buyer_arrived_at": {
+          "type": "string",
+          "description": "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\",\nindicating when the buyer arrived and is waiting for pickup."
+        }
+      },
+      "description": "Specific details for curbside pickup.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "OrderFulfillmentRecipient": {
       "type": "object",
       "properties": {
         "customer_id": {
+          "maxLength": 191,
           "type": "string",
           "description": "The Customer ID of the customer associated with the fulfillment.\n\nIf `customer_id` is provided, the fulfillment recipient\u0027s `display_name`,\n`email_address`, and `phone_number` are automatically populated from the\ntargeted customer profile. If these fields are set in the request, the request\nvalues will override the information from the customer profile. If the\ntargeted customer profile does not contain the necessary information and\nthese fields are left unset, the request will result in an error."
         },
@@ -23476,6 +25247,77 @@
         }
       },
       "description": "Contains details necessary to fulfill a shipment order.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "OrderFulfillmentUpdated": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "The order\u0027s unique ID."
+        },
+        "version": {
+          "type": "integer",
+          "description": "Version number which is incremented each time an update is committed to the order.\nOrders that were not created through the API will not include a version and\nthus cannot be updated.\n\n[Read more about working with versions](https://developer.squareup.com/docs/docs/orders-api/manage-orders#update-orders)"
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the merchant location this order is associated with."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state of the order.\nSee [OrderState](#type-orderstate) for possible values"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was created in RFC 3339 format."
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was last updated in RFC 3339 format."
+        },
+        "fulfillment_update": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderFulfillmentUpdatedUpdate"
+          },
+          "description": "The fulfillments that were updated with this version change."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "OrderFulfillmentUpdatedObject": {
+      "type": "object",
+      "properties": {
+        "order_fulfillment_updated": {
+          "$ref": "#/definitions/OrderFulfillmentUpdated",
+          "description": "Information about the updated order fulfillment."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "OrderFulfillmentUpdatedUpdate": {
+      "type": "object",
+      "properties": {
+        "fulfillment_uid": {
+          "type": "string",
+          "description": "Unique ID that identifies the fulfillment only within this order."
+        },
+        "old_state": {
+          "type": "string",
+          "description": "The state of the fulfillment before the change.\nWill not be populated if the fulfillment is created with this new Order version.\nSee [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values"
+        },
+        "new_state": {
+          "type": "string",
+          "description": "The state of the fulfillment after the change. May be equal to old_state if a non-state\nfield was changed on the fulfillment (e.g. tracking number).\nSee [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values"
+        }
+      },
+      "description": "Information about fulfillment updates.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -24286,6 +26128,50 @@
       "description": "Represents the origination details of an order.",
       "x-release-status": "PUBLIC"
     },
+    "OrderUpdated": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "The order\u0027s unique ID."
+        },
+        "version": {
+          "type": "integer",
+          "description": "Version number which is incremented each time an update is committed to the order.\nOrders that were not created through the API will not include a version and\nthus cannot be updated.\n\n[Read more about working with versions](https://developer.squareup.com/docs/docs/orders-api/manage-orders#update-orders)"
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the merchant location this order is associated with."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state of the order.\nSee [OrderState](#type-orderstate) for possible values"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was created in RFC 3339 format."
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "Timestamp for when the order was last updated in RFC 3339 format."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "OrderUpdatedObject": {
+      "type": "object",
+      "properties": {
+        "order_updated": {
+          "$ref": "#/definitions/OrderUpdated",
+          "description": "Information about the updated order."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "PayOrderRequest": {
       "type": "object",
       "required": [
@@ -24307,7 +26193,7 @@
           "items": {
             "type": "string"
           },
-          "description": ""
+          "description": "The IDs of the `payments` to collect.\nThe payment total must match the order total."
         }
       },
       "description": "Defines the fields that are included in requests to the\n[PayOrder](#endpoint-payorder) endpoint.",
@@ -24628,6 +26514,18 @@
       "description": "Represents a payment processed by the Square API.",
       "x-release-status": "PUBLIC"
     },
+    "PaymentOptions": {
+      "type": "object",
+      "properties": {
+        "autocomplete": {
+          "type": "boolean",
+          "description": "Indicates whether the Payment objects created from this `TerminalCheckout` will automatically be\nCOMPLETED or left in an APPROVED state for later modification."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "PaymentRefund": {
       "type": "object",
       "required": [
@@ -24920,6 +26818,32 @@
       "x-is-beta": true,
       "example": {}
     },
+    "RemoveGroupFromCustomerRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines the fields that are included in the request body of\na request to the [RemoveGroupFromCustomer](#endpoint-removegroupfromcustomer) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "RemoveGroupFromCustomerResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [RemoveGroupFromCustomer](#endpoint-removegroupfromcustomer)\nendpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {}
+    },
     "RenewTokenRequest": {
       "type": "object",
       "properties": {
@@ -25145,6 +27069,43 @@
         "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.ruby"
       }
     },
+    "RetrieveCustomerGroupRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines the fields that can be provided in a request to the\n[RetrieveCustomerGroup](#endpoint-retrievecustomergroup) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "RetrieveCustomerGroupResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "group": {
+          "$ref": "#/definitions/CustomerGroup",
+          "description": "The retrieved customer group."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [RetrieveCustomerGroup](#endpoint-retrievecustomergroup) endpoint.\n\nOne of `errors` or `group` is present in a given response (never both).",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "group": {
+          "id": "2TAT3CMH4Q0A9M87XJZED0WMR3",
+          "name": "Loyal Customers",
+          "created_at": "2020-04-13T21:54:57.863Z",
+          "updated_at": "2020-04-13T21:54:58Z"
+        }
+      }
+    },
     "RetrieveCustomerRequest": {
       "type": "object",
       "properties": {},
@@ -25211,6 +27172,43 @@
         "php": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.php",
         "javascript": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.javascript",
         "ruby": "/sdk_samples/RetrieveCustomer/RetrieveCustomerResponse.ruby"
+      }
+    },
+    "RetrieveCustomerSegmentRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines the valid parameters for requests to __RetrieveCustomerSegmentRequest__.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {}
+      }
+    },
+    "RetrieveCustomerSegmentResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "segment": {
+          "$ref": "#/definitions/CustomerSegment",
+          "description": "The retrieved customer segment."
+        }
+      },
+      "description": "Defines the fields included in the response body for requests to __RetrieveCustomerSegment__.\n\nOne of `errors` or `segment` is present in a given response (never both).",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "segment": {
+          "id": "GMNXRZVEXNQDF.CHURN_RISK",
+          "name": "Lapsed",
+          "created_at": "2020-01-09T19:33:24.469Z",
+          "updated_at": "2020-04-13T23:01:13Z"
+        }
       }
     },
     "RetrieveDisputeEvidenceRequest": {
@@ -25786,6 +27784,10 @@
         "merchant_id": {
           "type": "string",
           "description": "The ID of the merchant whose token you want to revoke.\nDo not provide a value for access_token if you provide this parameter."
+        },
+        "revoke_only_access_token": {
+          "type": "boolean",
+          "description": "If `true`, terminate the given single access token, but do not\nterminate the entire authorization.\nDefault: `false`"
         }
       },
       "description": "",
@@ -26556,6 +28558,117 @@
         ]
       }
     },
+    "SearchTerminalCheckoutsRequest": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "$ref": "#/definitions/TerminalCheckoutQuery",
+          "description": "Query the terminal checkouts based on given conditions and sort order. Calling\nSearchTerminalCheckouts without an explicitly query parameter will return all available\ncheckouts with the default sort order."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Limit the number of results returned for a single request."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "limit": 2,
+          "query": {
+            "filter": {
+              "status": "COMPLETED"
+            }
+          }
+        }
+      }
+    },
+    "SearchTerminalCheckoutsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information on errors encountered during the request."
+        },
+        "checkouts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TerminalCheckout"
+          },
+          "description": "The requested search result of `TerminalCheckout`s."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination cursor to be used in a subsequent request. If empty,\nthis is the final response.\n\nSee [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "checkouts": [
+          {
+            "id": "tsQPvzwBpMqqO",
+            "amount_money": {
+              "amount": 2610,
+              "currency": "USD"
+            },
+            "reference_id": "id14467",
+            "note": "A brief note",
+            "device_options": {
+              "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
+              "print_receipt": false,
+              "tip_settings": {
+                "allow_tipping": false
+              },
+              "skip_receipt_screen": false
+            },
+            "status": "COMPLETED",
+            "payment_ids": [
+              "rXnhZzywrEk4vR6pw76fPZfgvaB"
+            ],
+            "created_at": "2020-03-31T18:13:15.921Z",
+            "updated_at": "2020-03-31T18:13:52.725Z",
+            "app_id": "APP_ID",
+            "deadline_duration": "PT10M"
+          },
+          {
+            "id": "XlOPTgcEhrbqO",
+            "amount_money": {
+              "amount": 2610,
+              "currency": "USD"
+            },
+            "reference_id": "id41623",
+            "note": "A brief note",
+            "device_options": {
+              "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
+              "print_receipt": false,
+              "tip_settings": {
+                "allow_tipping": false
+              },
+              "skip_receipt_screen": true
+            },
+            "status": "COMPLETED",
+            "payment_ids": [
+              "VYBF861PaoKPP7Pih0TlbZiNvaB"
+            ],
+            "created_at": "2020-03-31T18:08:31.882Z",
+            "updated_at": "2020-03-31T18:08:41.635Z",
+            "app_id": "APP_ID",
+            "deadline_duration": "PT10M"
+          }
+        ],
+        "cursor": "RiTJqBoTuXlbLmmrPvEkX9iG7XnQ4W4RjGnH"
+      }
+    },
     "Shift": {
       "type": "object",
       "required": [
@@ -26934,6 +29047,121 @@
       "description": "Represents the details of a tender with `type` `CASH`.",
       "x-release-status": "PUBLIC"
     },
+    "TerminalCheckout": {
+      "type": "object",
+      "required": [
+        "amount_money",
+        "device_options"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique ID for this `TerminalCheckout`",
+          "x-read-only": true
+        },
+        "amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money (including tax amount) that the Square Terminal device should try to collect."
+        },
+        "reference_id": {
+          "maxLength": 40,
+          "type": "string",
+          "description": "An optional user-defined reference ID which can be used to associate\nthis TerminalCheckout to another entity in an external system. For example, an order\nID generated by a third-party shopping cart. Will also be associated with any payments\nused to complete the checkout."
+        },
+        "note": {
+          "maxLength": 250,
+          "type": "string",
+          "description": "An optional note to associate with the checkout, as well any payments used to complete the checkout."
+        },
+        "device_options": {
+          "$ref": "#/definitions/DeviceCheckoutOptions",
+          "description": "Options to control the display and behavior of the Square Terminal device."
+        },
+        "deadline_duration": {
+          "type": "string",
+          "description": "The duration as an RFC 3339 duration, after which the checkout will be automatically canceled.\nTerminalCheckouts that are PENDING will be automatically CANCELED and have a cancellation reason\nof “TIMED\\_OUT”.\n\nDefault: 5 minutes from creation\n\nMaximum: 5 minutes"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the `TerminalCheckout`.\nOptions: PENDING, IN\\_PROGRESS, CANCELED, COMPLETED",
+          "x-read-only": true
+        },
+        "cancel_reason": {
+          "type": "string",
+          "description": "Present if the status is CANCELED.\nSee [TerminalCheckoutCancelReason](#type-terminalcheckoutcancelreason) for possible values",
+          "x-read-only": true
+        },
+        "payment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of payments created by this `TerminalCheckout`.",
+          "x-read-only": true
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The time when the `TerminalCheckout` was created as an RFC 3339 timestamp.",
+          "x-read-only": true
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The time when the `TerminalCheckout` was last updated as an RFC 3339 timestamp.",
+          "x-read-only": true
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "TerminalCheckoutQuery": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/TerminalCheckoutQueryFilter",
+          "description": "Options for filtering returned `TerminalCheckout`s"
+        },
+        "sort": {
+          "$ref": "#/definitions/TerminalCheckoutQuerySort",
+          "description": "Option for sorting returned `TerminalCheckout`s"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "TerminalCheckoutQueryFilter": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "description": "`TerminalCheckout`s associated with a specific device. If no device is specified then all\n`TerminalCheckout`s for the merchant will be displayed."
+        },
+        "created_at": {
+          "$ref": "#/definitions/TimeRange",
+          "description": "Time range for the beginning of the reporting period. Inclusive.\nDefault: The current time minus one day."
+        },
+        "status": {
+          "type": "string",
+          "description": "Filtered results with the desired status of the `TerminalCheckout`\nOptions: PENDING, IN\\_PROGRESS, CANCELED, COMPLETED"
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "TerminalCheckoutQuerySort": {
+      "type": "object",
+      "properties": {
+        "sort_order": {
+          "type": "string",
+          "description": "The order in which results are listed.\n- `ASC` - oldest to newest\n- `DESC` - newest to oldest (default)."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "TimeRange": {
       "type": "object",
       "properties": {
@@ -26948,6 +29176,26 @@
       },
       "description": "Represents a generic time range. The start and end values are\nrepresented in RFC-3339 format. Time ranges are customized to be\ninclusive or exclusive based on the needs of a particular endpoint.\nRefer to the relevent endpoint-specific documentation to determine\nhow time ranges are handled.",
       "x-release-status": "PUBLIC"
+    },
+    "TipSettings": {
+      "type": "object",
+      "properties": {
+        "allow_tipping": {
+          "type": "boolean",
+          "description": "Indicates whether tipping is enabled for this checkout. Defaults to false."
+        },
+        "separate_tip_screen": {
+          "type": "boolean",
+          "description": "Indicates whether tip options should be presented on their own screen before presenting\nthe signature screen during card payment. Defaults to false."
+        },
+        "custom_tip_field": {
+          "type": "boolean",
+          "description": "Indicates whether custom tip amounts are allowed during the checkout flow. Defaults to false."
+        }
+      },
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "Transaction": {
       "type": "object",
@@ -27055,6 +29303,55 @@
           "version": 2,
           "created_at": "2018-06-12T20:19:12Z",
           "updated_at": "2019-02-26T23:12:59Z"
+        }
+      }
+    },
+    "UpdateCustomerGroupRequest": {
+      "type": "object",
+      "required": [
+        "group"
+      ],
+      "properties": {
+        "group": {
+          "$ref": "#/definitions/CustomerGroup",
+          "description": "The `CustomerGroup` object including all the updates you want to make."
+        }
+      },
+      "description": "Defines the body parameters that can be provided in a request to the\n[UpdateCustomerGroup](#endpoint-updatecustomergroup) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "group": {
+            "name": "Loyal Customers"
+          }
+        }
+      }
+    },
+    "UpdateCustomerGroupResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        },
+        "group": {
+          "$ref": "#/definitions/CustomerGroup",
+          "description": "The successfully updated customer group."
+        }
+      },
+      "description": "Defines the fields that are included in the response body of\na request to the [UpdateCustomerGroup](#endpoint-updatecustomergroup) endpoint.\n\nOne of `errors` or `group` is present in a given response (never both).",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "group": {
+          "id": "2TAT3CMH4Q0A9M87XJZED0WMR3",
+          "name": "Loyal Customers",
+          "created_at": "2020-04-13T21:54:57.863Z",
+          "updated_at": "2020-04-13T21:54:58Z"
         }
       }
     },
