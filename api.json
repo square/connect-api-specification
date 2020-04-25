@@ -24664,13 +24664,6 @@
         "migration_token": {
           "type": "string",
           "description": "Legacy OAuth access token obtained using a Connect API version prior\nto 2019-03-13. This parameter is required if `grant_type` is set to\n`migration_token` to indicate that the application wants to get a replacement\nOAuth access token. The response also returns a refresh token.\nFor more information, see [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/authz/oauth/migration)."
-        },
-        "scopes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "__OPTIONAL__\n\nA JSON list of strings that are the permissions the application is requesting.\nFor example: \"`[\"MERCHANT_PROFILE_READ\",\"PAYMENTS_READ\",\"BANK_ACCOUNTS_READ\"]`\"\nThe access token returned in the response will be granted the permissions\nthat comprise the intersection between the given list of permissions, and those\nthat belong to the provided refresh token."
         }
       },
       "description": "",
