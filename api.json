@@ -82,7 +82,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -121,7 +121,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -165,7 +165,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -201,7 +201,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [],
         "parameters": [
           {
@@ -237,7 +237,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -268,7 +268,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -364,7 +364,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -405,7 +405,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -442,7 +442,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -491,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -525,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -579,7 +579,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -620,7 +620,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -657,7 +657,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -706,7 +706,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -828,7 +828,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -870,7 +870,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -909,7 +909,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -948,7 +948,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -998,7 +998,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1042,7 +1042,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1086,7 +1086,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1135,7 +1135,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1203,7 +1203,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1252,7 +1252,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1294,7 +1294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1344,7 +1344,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1391,7 +1391,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1449,7 +1449,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1491,7 +1491,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1541,7 +1541,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1588,7 +1588,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1646,7 +1646,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1688,7 +1688,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1738,7 +1738,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1785,7 +1785,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1843,7 +1843,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1903,7 +1903,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -1961,7 +1961,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2011,7 +2011,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2061,7 +2061,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2108,7 +2108,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2155,7 +2155,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2213,7 +2213,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2268,7 +2268,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2325,7 +2325,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2380,7 +2380,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2437,7 +2437,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2495,7 +2495,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2550,7 +2550,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2616,7 +2616,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2658,7 +2658,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2708,7 +2708,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2755,7 +2755,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2802,7 +2802,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2860,7 +2860,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2918,7 +2918,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -2973,7 +2973,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3039,7 +3039,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3103,7 +3103,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3148,7 +3148,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3204,7 +3204,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3246,7 +3246,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3296,7 +3296,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3343,7 +3343,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3401,7 +3401,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3464,7 +3464,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3521,7 +3521,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3605,7 +3605,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3651,7 +3651,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3726,7 +3726,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3774,7 +3774,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3858,7 +3858,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3902,7 +3902,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": []
@@ -3941,7 +3941,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -3994,7 +3994,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4033,7 +4033,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4072,7 +4072,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4146,7 +4146,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4192,7 +4192,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4252,7 +4252,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4293,7 +4293,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4334,7 +4334,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4370,12 +4370,12 @@
         ],
         "summary": "CatalogInfo",
         "operationId": "CatalogInfo",
-        "description": "Returns information about the Square Catalog API, such as batch size\nlimits for `BatchUpsertCatalogObjects`.",
+        "description": "Retrieves information about the Square Catalog API, such as batch size\nlimits that can be used by the `BatchUpsertCatalogObjects` endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4406,7 +4406,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4452,7 +4452,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4493,7 +4493,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4530,7 +4530,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4571,12 +4571,12 @@
         ],
         "summary": "SearchCatalogObjects",
         "operationId": "SearchCatalogObjects",
-        "description": "Queries the targeted catalog using a variety of query expressions.\n\nSupported query expressions are of the following types:\n- [CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),\n- [CatalogQueryExact](#type-catalogqueryexact),\n- [CatalogQueryRange](#type-catalogqueryrange),\n- [CatalogQueryText](#type-catalogquerytext),\n- [CatalogQueryItemsForTax](#type-catalogqueryitemsfortax),\n- [CatalogQueryItemsForModifierList](#type-catalogqueryitemsformodifierlist),\n- [CatalogQueryItemsForItemOptions](#type-catalogqueryitemsforitemoptions), and\n- [CatalogQueryItemVariationsForItemOptionValues](#type-catalogqueryitemvariationsforitemoptionvalues).",
+        "description": "Searches for [CatalogObject](#type-CatalogObject) of any types against supported search attribute values, \nexcluding custom attribute values on items or item variations, against one or more of the specified query expressions, \n\nThis (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints have different call conventions, including the query filter formats.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4605,6 +4605,48 @@
         }
       }
     },
+    "/v2/catalog/search-catalog-items": {
+      "post": {
+        "tags": [
+          "Catalog"
+        ],
+        "summary": "SearchCatalogItems",
+        "operationId": "SearchCatalogItems",
+        "description": "Searches for catalog items or item variations by matching supported search attribute values, including\ncustom attribute values, against one or more of the specified query expressions, \n\nThis (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints use different call conventions, including the query filter formats.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ITEMS_READ"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "ITEMS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchCatalogItemsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchCatalogItemsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/catalog/update-item-modifier-lists": {
       "post": {
         "tags": [
@@ -4617,7 +4659,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4658,7 +4700,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4699,7 +4741,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4750,7 +4792,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4792,7 +4834,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4831,7 +4873,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4873,7 +4915,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4912,7 +4954,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -4952,7 +4994,7 @@
           "CUSTOMERS_WRITE",
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5002,7 +5044,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5044,7 +5086,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5085,7 +5127,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5125,7 +5167,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5162,7 +5204,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5199,7 +5241,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5247,7 +5289,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5295,7 +5337,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5342,7 +5384,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5389,7 +5431,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5438,7 +5480,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5493,7 +5535,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5535,7 +5577,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5576,7 +5618,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5633,7 +5675,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5674,7 +5716,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5715,7 +5757,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5756,7 +5798,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5803,7 +5845,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5852,7 +5894,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5902,7 +5944,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -5942,7 +5984,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6002,7 +6044,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6041,7 +6083,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6080,7 +6122,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6121,7 +6163,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6162,7 +6204,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6203,7 +6245,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6242,7 +6284,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6295,7 +6337,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6320,7 +6362,7 @@
           },
           {
             "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information.",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.",
             "type": "string",
             "in": "query",
             "required": false
@@ -6331,6 +6373,391 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/RetrieveInventoryChangesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/invoices": {
+      "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "ListInvoices",
+        "operationId": "ListInvoices",
+        "description": "Returns a list of invoices for a given location. The response \nis paginated. If truncated, the response includes a `cursor` that you    \nuse in a subsequent request to fetch the next set of invoices.\nFor more information about retrieving invoices, see [Retrieve invoices](/docs/invoices-api/overview#retrieve-invoices).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "INVOICES_READ"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "INVOICES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "location_id",
+            "description": "The ID of the location for which to list invoices.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint. \nProvide this cursor to retrieve the next set of results for your original query.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination).",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "description": "The maximum number of invoices to return (200 is the maximum `limit`). \nIf not provided, the server \nuses a default limit of 100 invoices.",
+            "x-is-beta": true,
+            "type": "integer",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListInvoicesResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "CreateInvoice",
+        "operationId": "CreateInvoice",
+        "description": "Creates a draft [invoice](#type-invoice) \nfor an order created using the Orders API.\n\nA draft invoice remains in your account and no action is taken. \nYou must publish the invoice before Square can process it (send it to the customer\u0027s email address or charge the customer’s card on file). \nFor more information, see [Manage Invoices Using the Invoices API](/docs/invoices-api/overview).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateInvoiceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/invoices/search": {
+      "post": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "SearchInvoices",
+        "operationId": "SearchInvoices",
+        "description": "Searches for invoices from a location specified in \nthe filter. You can optionally specify customers in the filter for whom to \nretrieve invoices. In the current implementation, you can only specify one location and \noptionally one customer.\n\nThe response is paginated. If truncated, the response includes a `cursor` \nthat you use in a subsequent request to fetch the next set of invoices. \nFor more information about retrieving invoices, see [Retrieve invoices](/docs/invoices-api/overview#retrieve-invoices).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "INVOICES_READ"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "INVOICES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchInvoicesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchInvoicesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/invoices/{invoice_id}": {
+      "delete": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "DeleteInvoice",
+        "operationId": "DeleteInvoice",
+        "description": "Deletes the specified invoice. When an invoice is deleted, the \nassociated Order status changes to CANCELED. You can only delete a draft \ninvoice (you cannot delete an invoice scheduled for publication, or a \npublished invoice).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "description": "The ID of the invoice to delete.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "version",
+            "description": "The version of the `invoice` to delete.\nIf you do not know the version, you can call `GetInvoice` or \n`ListInvoices`.",
+            "x-is-beta": true,
+            "type": "integer",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeleteInvoiceResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "GetInvoice",
+        "operationId": "GetInvoice",
+        "description": "Retrieves an invoice by invoice ID.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "INVOICES_READ"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "INVOICES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "description": "The id of the invoice to retrieve.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetInvoiceResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "UpdateInvoice",
+        "operationId": "UpdateInvoice",
+        "description": "Updates an invoice by modifying field values, clearing field values, or both \nas specified in the request. \nThere are no restrictions to updating an invoice in a draft state. \nHowever, there are guidelines for updating a published invoice. \nFor more information, see [Update an invoice](/docs/invoices-api/overview#update-an-invoice).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "description": "The id of the invoice to update.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateInvoiceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/invoices/{invoice_id}/cancel": {
+      "post": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "CancelInvoice",
+        "operationId": "CancelInvoice",
+        "description": "Cancels an invoice. The seller cannot collect payments for \nthe canceled invoice.\n\nYou cannot cancel an invoice in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "description": "The ID of the `invoice` to cancel.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CancelInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CancelInvoiceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/invoices/{invoice_id}/publish": {
+      "post": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "PublishInvoice",
+        "operationId": "PublishInvoice",
+        "description": "Publishes the specified draft invoice. \n\nAfter an invoice is published, Square \nfollows up based on the invoice configuration. For example, Square \nsends the invoice to the customer\u0027s email address, charges the customer\u0027s card on file, or does \nnothing. Square also makes the invoice available on a Square-hosted invoice page. \n\nThe invoice `status` also changes from `DRAFT` to a status \nbased on the invoice configuration. For example, the status changes to `UNPAID` if \nSquare emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the \ninvoice amount).\n\nFor more information, see \n[Create and publish an invoice](/docs/invoices-api/overview#create-and-publish-an-invoice).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-07-22",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "description": "The id of the invoice to publish.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/PublishInvoiceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/PublishInvoiceResponse"
             }
           }
         }
@@ -6348,7 +6775,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6399,7 +6826,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6440,7 +6867,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6477,7 +6904,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6515,7 +6942,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6564,7 +6991,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6617,7 +7044,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6656,7 +7083,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6697,7 +7124,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6738,7 +7165,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6775,7 +7202,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6813,7 +7240,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6862,7 +7289,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6909,7 +7336,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6958,7 +7385,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -6988,7 +7415,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7024,12 +7451,12 @@
         ],
         "summary": "RetrieveLocation",
         "operationId": "RetrieveLocation",
-        "description": "Retrieves details of a location.",
+        "description": "Retrieves details of a location. You can specify \"main\" \nas the location ID to retrieve details of the \nmain location. For more information, \nsee [Locations API Overview](/docs/locations-api).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7040,7 +7467,7 @@
         "parameters": [
           {
             "name": "location_id",
-            "description": "The ID of the location to retrieve.",
+            "description": "The ID of the location to retrieve. If you specify the string \"main\",\nthen the endpoint returns the main location.",
             "type": "string",
             "in": "path",
             "required": true
@@ -7067,7 +7494,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7117,7 +7544,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7190,7 +7617,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7263,7 +7690,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7312,7 +7739,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7360,7 +7787,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7409,7 +7836,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7467,7 +7894,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7540,7 +7967,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7611,7 +8038,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7661,7 +8088,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7710,7 +8137,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7759,7 +8186,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7817,7 +8244,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7866,7 +8293,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7908,7 +8335,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7950,7 +8377,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -7991,7 +8418,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8041,7 +8468,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8091,7 +8518,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8133,7 +8560,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8165,7 +8592,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8215,7 +8642,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8257,7 +8684,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8299,7 +8726,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8338,7 +8765,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8379,7 +8806,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8428,7 +8855,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8467,7 +8894,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8478,7 +8905,7 @@
         "parameters": [
           {
             "name": "merchant_id",
-            "description": "The ID of the merchant to retrieve.",
+            "description": "The ID of the merchant to retrieve. If the string \"me\" is supplied as the ID,\nthen retrieve the merchant that is currently accessible to this call.",
             "type": "string",
             "in": "path",
             "required": true
@@ -8505,7 +8932,7 @@
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": []
@@ -8544,7 +8971,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8587,7 +9014,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8637,7 +9064,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8724,7 +9151,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8765,7 +9192,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8806,7 +9233,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8845,7 +9272,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8884,7 +9311,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -8932,7 +9359,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9011,7 +9438,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9052,7 +9479,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9091,7 +9518,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9132,7 +9559,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9173,7 +9600,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9214,7 +9641,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9255,7 +9682,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9292,7 +9719,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9340,7 +9767,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9377,7 +9804,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9426,7 +9853,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9468,7 +9895,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9510,7 +9937,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9551,7 +9978,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-06-25",
+        "x-sq-version": "2020-07-22",
         "security": [
           {
             "oauth2": [
@@ -9581,6 +10008,31 @@
     }
   },
   "definitions": {
+    "ActionCancelReason": {
+      "type": "string",
+      "enum": [
+        "BUYER_CANCELED",
+        "SELLER_CANCELED",
+        "TIMED_OUT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "BUYER_CANCELED",
+          "description": "A person canceled the `TerminalCheckout` from a Square device."
+        },
+        {
+          "name": "SELLER_CANCELED",
+          "description": "A client canceled the `TerminalCheckout` using the API."
+        },
+        {
+          "name": "TIMED_OUT",
+          "description": "The `TerminalCheckout` timed out (see `deadline_duration` on the `TerminalCheckout`)."
+        }
+      ],
+      "description": "",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "BankAccountStatus": {
       "type": "string",
       "enum": [
@@ -12875,6 +13327,9 @@
         "CUSTOMER_NOT_FOUND",
         "ONE_INSTRUMENT_EXPECTED",
         "NO_FIELDS_SET",
+        "TOO_MANY_MAP_ENTRIES",
+        "MAP_KEY_LENGTH_TOO_SHORT",
+        "MAP_KEY_LENGTH_TOO_LONG",
         "CARD_EXPIRED",
         "INVALID_EXPIRATION",
         "INVALID_EXPIRATION_YEAR",
@@ -13135,6 +13590,18 @@
         {
           "name": "NO_FIELDS_SET",
           "description": "400 Bad Request - a general error occurred."
+        },
+        {
+          "name": "TOO_MANY_MAP_ENTRIES",
+          "description": "400 Bad Request - too many entries in the map field."
+        },
+        {
+          "name": "MAP_KEY_LENGTH_TOO_SHORT",
+          "description": "400 Bad Request - the length of one of the provided keys in the map is too short."
+        },
+        {
+          "name": "MAP_KEY_LENGTH_TOO_LONG",
+          "description": "400 Bad Request - the length of one of the provided keys in the map is too long."
         },
         {
           "name": "CARD_EXPIRED",
@@ -13571,6 +14038,151 @@
       ],
       "description": "Indicates the state of a tracked item quantity in the lifecycle of goods.",
       "x-release-status": "PUBLIC"
+    },
+    "InvoicePaymentReminderStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "NOT_APPLICABLE",
+        "SENT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "PENDING",
+          "description": "The reminder is to be sent on the `relative_scheduled_date` (if the invoice is published)."
+        },
+        {
+          "name": "NOT_APPLICABLE",
+          "description": "The reminder is not applicable and is not sent. The following are examples\nof when reminders are not applicable and are not sent:\n- You schedule a reminder to be sent before the invoice is published.\n- The invoice is configured with multiple payment requests and a payment request reminder\nis configured to be sent after the next payment request `due_date`.\n- Two reminders (for different payment requests) are configured to be sent on the\nsame date. Therefore, only one reminder is sent.\n- You configure a reminder to be sent on the date that the invoice is scheduled to be sent.\n- The payment request is already paid.\n- The invoice status is `CANCELED` or `FAILED`."
+        },
+        {
+          "name": "SENT",
+          "description": "The reminder is sent."
+        }
+      ],
+      "description": "The status of a payment request reminder.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceRequestMethod": {
+      "type": "string",
+      "enum": [
+        "EMAIL",
+        "CHARGE_CARD_ON_FILE",
+        "SHARE_MANUALLY"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "EMAIL",
+          "description": "Directs Square to email the invoice to the customer after the invoice is published \n(either immediately or at the `scheduled_at` time, if specified in the `invoice`."
+        },
+        {
+          "name": "CHARGE_CARD_ON_FILE",
+          "description": "Directs Square to charge the card on file, on the `due_date`, specified in the payment request \nafter the invoice is published."
+        },
+        {
+          "name": "SHARE_MANUALLY",
+          "description": "Directs Square to take no specific action on the invoice. In this case, the seller \n(or the application developer) follows up with the customer for payment. For example, \na seller might collect a payment in the Seller Dashboard or use the Point of Sale (POS) application. \nThe seller might also share the URL of the Square-hosted invoice page (`public_url`) with the customer requesting payment."
+        }
+      ],
+      "description": "Specifies the action for Square to take for processing the invoice. For example, \nemail the invoice, charge a customer\u0027s card on file, or do nothing.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceRequestType": {
+      "type": "string",
+      "enum": [
+        "BALANCE",
+        "DEPOSIT",
+        "INSTALLMENT"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "BALANCE",
+          "description": "Identifies that the payment request is for the balance amount, after accounting for any \nother payment requests in the invoice: \n\n- If the invoice specifies only a balance payment request, it refers to the \ntotal amount identified by the associated order. \n- If the invoice also specifies a deposit request, the balance payment request refers to \nthe remaining amount.\n- `INSTALLMENT` and `BALANCE` are not allowed together."
+        },
+        {
+          "name": "DEPOSIT",
+          "description": "Identifies that the payment request is for a deposit. You have the option of specifying \nan exact amount or a percentage of the total order amount. If you request a deposit, \nit must be due before any other payment requests."
+        },
+        {
+          "name": "INSTALLMENT",
+          "description": "Identifies that the payment request is for an installment. An invoice can request payments in installments. \nAlong with installments, you can request an optional deposit. All these payment requests must add to the total order amount."
+        }
+      ],
+      "description": "Identifies the type of the payment request. For more information, \nsee [Payment request](TBD).",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceSortField": {
+      "type": "string",
+      "enum": [
+        "INVOICE_SORT_DATE"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "INVOICE_SORT_DATE",
+          "description": "The field works as follows:\n\n- If the invoice is a draft, it uses the invoice `created_at` date.\n- If the invoice is scheduled for publication, it uses the `scheduled_at` date.\n- If the invoice is published, it uses the invoice publication date."
+        }
+      ],
+      "description": "Field to use for sorting.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceStatus": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "UNPAID",
+        "SCHEDULED",
+        "PARTIALLY_PAID",
+        "PAID",
+        "PARTIALLY_REFUNDED",
+        "REFUNDED",
+        "CANCELED",
+        "FAILED"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "DRAFT",
+          "description": "The invoice is a draft. You must publish a draft invoice before Square can process it.\nA draft invoice has no public_url, so it is not available to customers."
+        },
+        {
+          "name": "UNPAID",
+          "description": "The invoice is published but not yet paid."
+        },
+        {
+          "name": "SCHEDULED",
+          "description": "The invoice is scheduled to be processed. On scheduled date,\nSquare emails the invoice (if the `request_method` is EMAIL),\ncharge the customer\u0027s card (if `request_method` is CHARGE_CARD_ON_FILE),\nor take no action (if the `request_method` is SHARE_MANUALLY).\nThe invoice status then changes accordingly (`UNPAID`, `PAID`, or `PARTIALLY_PAID`)."
+        },
+        {
+          "name": "PARTIALLY_PAID",
+          "description": "A partial payment is received for the invoice."
+        },
+        {
+          "name": "PAID",
+          "description": "The customer paid the invoice in full."
+        },
+        {
+          "name": "PARTIALLY_REFUNDED",
+          "description": "The invoice is paid (or partially paid) and some but not all the amount paid is\nrefunded."
+        },
+        {
+          "name": "REFUNDED",
+          "description": "The full amount that the customer paid for the invoice is refunded."
+        },
+        {
+          "name": "CANCELED",
+          "description": "The invoice is canceled. Square no longer requests payments from the customer.\nThe `public_url` page remains and is accessible, but it displays the invoice\nas cancelled and does not accept payment."
+        },
+        {
+          "name": "FAILED",
+          "description": "Square canceled the invoice due to suspicious activity."
+        }
+      ],
+      "description": "Indicates the status of an invoice.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "JobAssignmentPayType": {
       "type": "string",
@@ -14510,6 +15122,26 @@
       "description": "The status of domain registration.",
       "x-release-status": "PUBLIC"
     },
+    "SearchCatalogItemsRequestStockLevel": {
+      "type": "string",
+      "enum": [
+        "OUT",
+        "LOW"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "OUT",
+          "description": "The item inventory is empty."
+        },
+        {
+          "name": "LOW",
+          "description": "The item inventory is low."
+        }
+      ],
+      "description": "Defines supported stock levels of the item inventory.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "SearchOrdersSortField": {
       "type": "string",
       "enum": [
@@ -14821,31 +15453,6 @@
       ],
       "description": "Indicates a tender\u0027s type.",
       "x-release-status": "PUBLIC"
-    },
-    "TerminalCheckoutCancelReason": {
-      "type": "string",
-      "enum": [
-        "BUYER_CANCELED",
-        "SELLER_CANCELED",
-        "TIMED_OUT"
-      ],
-      "x-enum-elements": [
-        {
-          "name": "BUYER_CANCELED",
-          "description": "A person canceled the `TerminalCheckout` from a Square device."
-        },
-        {
-          "name": "SELLER_CANCELED",
-          "description": "A client canceled the `TerminalCheckout` using the API."
-        },
-        {
-          "name": "TIMED_OUT",
-          "description": "The `TerminalCheckout` timed out (see `deadline_duration` on the `TerminalCheckout`)."
-        }
-      ],
-      "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
     },
     "TransactionProduct": {
       "type": "string",
@@ -17370,7 +17977,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `CatalogObject` ID.\nOnly applied when set. Default: unset."
+          "description": "Filters results by `CatalogObject` ID.\nOnly applied when set. Max size is 500 IDs. Default: unset."
         },
         "location_ids": {
           "type": "array",
@@ -17493,7 +18100,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `CatalogObject` ID.\nOnly applied when set. Default: unset."
+          "description": "Filters results by `CatalogObject` ID.\nOnly applied when set. Max size is 1000 IDs. Default: unset."
         },
         "location_ids": {
           "type": "array",
@@ -18066,7 +18673,7 @@
         },
         "version": {
           "type": "integer",
-          "description": "Used for resolving concurrency issues; request will fail if version\nprovided does not match server version at time of request. If a value is not\nprovided, Square\u0027s servers execute a \"blind\" write; potentially \noverwriting another writer\u0027s data."
+          "description": "Used for resolving concurrency issues; request will fail if version\nprovided does not match server version at time of request. If a value is not\nprovided, Square\u0027s servers execute a \"blind\" write; potentially\noverwriting another writer\u0027s data."
         },
         "created_at": {
           "type": "string",
@@ -18077,7 +18684,7 @@
           "description": "A read-only timestamp in RFC 3339 format."
         }
       },
-      "description": "A defined break template that sets an expectation for possible `Break` \ninstances on a `Shift`.",
+      "description": "A defined break template that sets an expectation for possible `Break`\ninstances on a `Shift`.",
       "x-release-status": "PUBLIC"
     },
     "BulkCreateTeamMembersRequest": {
@@ -18598,6 +19205,93 @@
               "amount": 0,
               "currency": "USD"
             }
+          }
+        }
+      }
+    },
+    "CancelInvoiceRequest": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "The version of the `invoice` to cancel.\nIf you do not know the version, you can call \n`GetInvoice](#endpoint-Invoices-GetInvoice) or [ListInvoices`."
+        }
+      },
+      "description": "Describes a `CancelInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "version": 0
+        }
+      }
+    },
+    "CancelInvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The canceled invoice."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "The response returned by the `CancelInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoice": {
+          "id": "gt2zv1z6mnUm1V7KMxxf3w",
+          "version": 1,
+          "location_id": "ES0RJRZYEC39A",
+          "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "payment_requests": [
+            {
+              "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+              "request_method": "EMAIL",
+              "request_type": "BALANCE",
+              "due_date": "2030-01-24",
+              "tipping_enabled": true,
+              "reminders": [
+                {
+                  "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                  "relative_scheduled_days": -1,
+                  "message": "Your invoice is due tomorrow",
+                  "status": "PENDING"
+                }
+              ],
+              "computed_amount_money": {
+                "amount": 10000,
+                "currency": "USD"
+              },
+              "total_completed_amount_money": {
+                "amount": 0,
+                "currency": "USD"
+              }
+            }
+          ],
+          "invoice_number": "inv-100",
+          "title": "Event Planning Services",
+          "description": "We appreciate your business!",
+          "scheduled_at": "2030-01-13T10:00:00Z",
+          "status": "CANCELED",
+          "timezone": "America/Los_Angeles",
+          "created_at": "2020-06-18T17:45:13Z",
+          "updated_at": "2020-06-18T18:23:11Z",
+          "primary_recipient": {
+            "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "given_name": "Amelia",
+            "family_name": "Earhart",
+            "email_address": "Amelia.Earhart@example.com",
+            "phone_number": "1-212-555-4240"
           }
         }
       }
@@ -19128,11 +19822,12 @@
       "type": "object",
       "properties": {
         "name": {
+          "maxLength": 255,
           "type": "string",
-          "description": "The category name. Searchable. This field has max length of 255 Unicode code points."
+          "description": "The category name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         }
       },
-      "description": "A category to which a `CatalogItem` belongs in the `Catalog` object model.",
+      "description": "A category to which a `CatalogItem` instance belongs.",
       "x-release-status": "PUBLIC",
       "example": {
         "object": {
@@ -19263,7 +19958,7 @@
           "minLength": 1,
           "maxLength": 255,
           "type": "string",
-          "description": "Selection name, unique within `allowed_selections`.\nRequired. Min length of 1, max length of 255."
+          "description": "Selection name, unique within `allowed_selections`."
         }
       },
       "description": "A named selection for this `SELECTION`-type custom attribute definition.",
@@ -19329,8 +20024,9 @@
       "type": "object",
       "properties": {
         "name": {
+          "maxLength": 255,
           "type": "string",
-          "description": "The discount name. Searchable. This field has max length of 255 Unicode code points."
+          "description": "The discount name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         },
         "discount_type": {
           "type": "string",
@@ -19338,11 +20034,11 @@
         },
         "percentage": {
           "type": "string",
-          "description": "The percentage of the discount as a string representation of a decimal number, using a `.` as the decimal\nseparator and without a `%` sign. A value of `7.5` corresponds to `7.5%`. Specify a percentage of `0` if `discount_type`\nis `VARIABLE_PERCENTAGE`.\n\nDo not include this field for amount-based or variable discounts."
+          "description": "The percentage of the discount as a string representation of a decimal number, using a `.` as the decimal\nseparator and without a `%` sign. A value of `7.5` corresponds to `7.5%`. Specify a percentage of `0` if `discount_type`\nis `VARIABLE_PERCENTAGE`.\n\nDo not use this field for amount-based or variable discounts."
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of the discount. Specify an amount of `0` if `discount_type` is `VARIABLE_AMOUNT`.\n\nDo not include this field for percentage-based or variable discounts."
+          "description": "The amount of the discount. Specify an amount of `0` if `discount_type` is `VARIABLE_AMOUNT`.\n\nDo not use this field for percentage-based or variable discounts."
         },
         "pin_required": {
           "type": "boolean",
@@ -19357,7 +20053,7 @@
           "description": "Indicates whether this discount should reduce the price used to calculate tax.\n\nMost discounts should use `MODIFY_TAX_BASIS`. However, in some circumstances taxes must\nbe calculated based on an item\u0027s price, ignoring a particular discount. For example,\nin many US jurisdictions, a manufacturer coupon or instant rebate reduces the price a\ncustomer pays but does not reduce the sale price used to calculate how much sales tax is\ndue. In this case, the discount representing that manufacturer coupon should have\n`DO_NOT_MODIFY_TAX_BASIS` for this field.\n\nIf you are unsure whether you need to use this field, consult your tax professional.\nSee [CatalogDiscountModifyTaxBasis](#type-catalogdiscountmodifytaxbasis) for possible values"
         }
       },
-      "description": "A discount in the Catalog object model.",
+      "description": "A discount applicable to items.",
       "x-release-status": "PUBLIC",
       "example": {
         "object": {
@@ -19379,14 +20075,14 @@
       "properties": {
         "client_object_id": {
           "type": "string",
-          "description": "The client-supplied, temporary `#`-prefixed ID for a new `CatalogObject`."
+          "description": "The client-supplied temporary `#`-prefixed ID for a new `CatalogObject`."
         },
         "object_id": {
           "type": "string",
           "description": "The permanent ID for the CatalogObject created by the server."
         }
       },
-      "description": "A mapping between a client-supplied temporary ID and a permanent server ID.",
+      "description": "A mapping between a temporary client-supplied ID and a permanent server-generated ID. \n\nWhen calling [UpsertCatalogObject](#endpoint-Catalog-UpsertCatalogObject) or \n[BatchUpsertCatalogObjects](#endpoint-Catalog-BatchUpsertCatalogObjects) to  \ncreate a [CatalogObject](#type-CatalogObject) instance, you can supply \na temporary ID for the to-be-created object, especially when the object is to be referenced \nelsewhere in the same request body. This temporary ID can be any string unique within \nthe call, but must be prefixed by \"#\". \n\nAfter the request is sumbitted and the object created, a permanent server-generated ID is assigned \nto the new object. The permanent ID is unique across the Square catalog.",
       "x-release-status": "PUBLIC"
     },
     "CatalogImage": {
@@ -19394,18 +20090,18 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "The internal name of this image. Identifies this image in calls to the\nConnect APIs."
+          "description": "The internal name to identify this image in calls to the Square API."
         },
         "url": {
           "type": "string",
-          "description": "The URL of this image. Generated by Square after an image is uploaded\nto the CreateCatalogImage endpoint."
+          "description": "The URL of this image, generated by Square after an image is uploaded\nusing the `CreateCatalogImage` endpoint."
         },
         "caption": {
           "type": "string",
-          "description": "A caption that describes what is shown in the image. Displayed in the\nSquare Online Store."
+          "description": "A caption that describes what is shown in the image. Displayed in the\nSquare Online Store. This is a searchable attribute for use in applicable query filters."
         }
       },
-      "description": "An image file to use in Square catalogs. Can be associated with catalog\nitems, item variations, and categories.",
+      "description": "An image file to use in Square catalogs. It can be associated with catalog\nitems, item variations, and categories.",
       "x-release-status": "PUBLIC"
     },
     "CatalogInfoRequest": {
@@ -19523,16 +20219,19 @@
       "type": "object",
       "properties": {
         "name": {
+          "maxLength": 512,
           "type": "string",
-          "description": "The item\u0027s name. Searchable. This field must not be empty. This field has max length of 512 Unicode code points."
+          "description": "The item\u0027s name. This is a searchable attribute for use in applicable query filters, its value must not be empty, and the length is of Unicode code points."
         },
         "description": {
+          "maxLength": 4096,
           "type": "string",
-          "description": "The item\u0027s description. Searchable. This field has max length of 4096 Unicode code points."
+          "description": "The item\u0027s description. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         },
         "abbreviation": {
+          "maxLength": 24,
           "type": "string",
-          "description": "The text of the item\u0027s display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable.\nThis field has max length of 24 Unicode code points."
+          "description": "The text of the item\u0027s display label in the Square Point of Sale app. Only up to the first five characters of the string are used.\nThis attribute is searchable, and its value length is of Unicode code points."
         },
         "label_color": {
           "type": "string",
@@ -19593,7 +20292,7 @@
           "x-is-beta": true
         }
       },
-      "description": "An item (i.e., product family) in the Catalog object model.",
+      "description": "An [CatalogObject](#type-CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog.",
       "x-release-status": "PUBLIC",
       "example": {
         "object": {
@@ -19640,7 +20339,7 @@
           "description": "If `true`, enable this `CatalogModifierList`. The default value is `true`."
         }
       },
-      "description": "Controls the properties of a `CatalogModifierList` as it applies to\nthis `CatalogItem`.",
+      "description": "Options to control the properties of a `CatalogModifierList` applied to a `CatalogItem` instance.",
       "x-release-status": "PUBLIC"
     },
     "CatalogItemOption": {
@@ -19648,15 +20347,15 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "The item option\u0027s display name for the seller. Must be unique across\nall item options. Searchable."
+          "description": "The item option\u0027s display name for the seller. Must be unique across\nall item options. This is a searchable attribute for use in applicable query filters."
         },
         "display_name": {
           "type": "string",
-          "description": "The item option\u0027s display name for the customer. Searchable."
+          "description": "The item option\u0027s display name for the customer. This is a searchable attribute for use in applicable query filters."
         },
         "description": {
           "type": "string",
-          "description": "The item option\u0027s human-readable description. Displayed in the Square\nPoint of Sale app for the seller and in the Online Store or on receipts for\nthe buyer."
+          "description": "The item option\u0027s human-readable description. Displayed in the Square\nPoint of Sale app for the seller and in the Online Store or on receipts for\nthe buyer. This is a searchable attribute for use in applicable query filters."
         },
         "show_colors": {
           "type": "boolean",
@@ -19687,7 +20386,7 @@
           "description": "The unique id of the item option, used to form the dimensions of the item option matrix in a specified order."
         }
       },
-      "description": " A list of item option values that can be assigned to item variations.\nFor example, a t-shirt item may offer a color option or a size option.",
+      "description": " An option that can be assigned to an item.\nFor example, a t-shirt item may offer a color option or a size option.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -19700,11 +20399,11 @@
         },
         "name": {
           "type": "string",
-          "description": "Name of this item option value. Searchable."
+          "description": "Name of this item option value. This is a searchable attribute for use in applicable query filters."
         },
         "description": {
           "type": "string",
-          "description": "A human-readable description for the option value."
+          "description": "A human-readable description for the option value. This is a searchable attribute for use in applicable query filters."
         },
         "color": {
           "type": "string",
@@ -19715,9 +20414,10 @@
           "description": "Determines where this option value appears in a list of option values."
         },
         "item_variation_count": {
+          "maximum": 100,
           "type": "integer",
           "format": "int64",
-          "description": "The number of `CatalogItemVariation`s that\ncurrently make use of this Item Option value. Present only if `retrieve_counts`\nwas specified on the request used to retrieve the parent Item Option of this\nvalue.\n\nMaximum: 100 counts."
+          "description": "The number of `CatalogItemVariation`s that\ncurrently use this item option value. Present only if `retrieve_counts`\nwas specified on the request used to retrieve the parent item option of this\nvalue."
         }
       },
       "description": "An enumerated value that can link a\n`CatalogItemVariation` to an item option as one of\nits item option values.",
@@ -19745,19 +20445,20 @@
       "properties": {
         "item_id": {
           "type": "string",
-          "description": "The ID of the `CatalogItem` associated with this item variation. Searchable."
+          "description": "The ID of the `CatalogItem` associated with this item variation."
         },
         "name": {
+          "maxLength": 255,
           "type": "string",
-          "description": "The item variation\u0027s name. Searchable. This field has max length of 255 Unicode code points."
+          "description": "The item variation\u0027s name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         },
         "sku": {
           "type": "string",
-          "description": "The item variation\u0027s SKU, if any. Searchable."
+          "description": "The item variation\u0027s SKU, if any. This is a searchable attribute for use in applicable query filters."
         },
         "upc": {
           "type": "string",
-          "description": "The item variation\u0027s UPC, if any. Searchable in the Connect API.\nThis field is only exposed in the Connect API. It is not exposed in Square\u0027s Dashboard,\nSquare Point of Sale app or Retail Point of Sale app."
+          "description": "The item variation\u0027s UPC, if any. This is a searchable attribute for use in applicable query filters.\nIt is only accessible through the Square API, and not exposed in the Square Seller Dashboard,\nSquare Point of Sale or Retail Point of Sale apps."
         },
         "ordinal": {
           "type": "integer",
@@ -19793,8 +20494,9 @@
           "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer."
         },
         "user_data": {
+          "maxLength": 255,
           "type": "string",
-          "description": "Arbitrary user metadata to associate with the item variation. Searchable. This field has max length of 255 Unicode code points."
+          "description": "Arbitrary user metadata to associate with the item variation. This attribute value length is of Unicode code points."
         },
         "service_duration": {
           "type": "integer",
@@ -19840,8 +20542,9 @@
       "type": "object",
       "properties": {
         "name": {
+          "maxLength": 255,
           "type": "string",
-          "description": "The modifier name. Searchable. This field has max length of 255 Unicode code points."
+          "description": "The modifier name.  This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         },
         "price_money": {
           "$ref": "#/definitions/Money",
@@ -19853,10 +20556,10 @@
         },
         "modifier_list_id": {
           "type": "string",
-          "description": "The ID of the `CatalogModifierList` associated with this modifier. Searchable."
+          "description": "The ID of the `CatalogModifierList` associated with this modifier."
         }
       },
-      "description": "A modifier in the Catalog object model.",
+      "description": "A modifier applicable to items at the time of sale.",
       "x-release-status": "PUBLIC",
       "example": {
         "object": {
@@ -19876,16 +20579,17 @@
       "type": "object",
       "properties": {
         "name": {
+          "maxLength": 255,
           "type": "string",
-          "description": "A searchable name for the `CatalogModifierList`. This field has max length of 255 Unicode code points."
+          "description": "The name for the `CatalogModifierList` instance. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         },
         "ordinal": {
           "type": "integer",
-          "description": "Determines where this `CatalogModifierList` appears in a list of `CatalogModifierList` values."
+          "description": "Determines where this modifier list appears in a list of `CatalogModifierList` values."
         },
         "selection_type": {
           "type": "string",
-          "description": "Indicates whether multiple options from the `CatalogModifierList`\ncan be applied to a single `CatalogItem`.\nSee [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values"
+          "description": "Indicates whether multiple options from the modifier list\ncan be applied to a single `CatalogItem`.\nSee [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values"
         },
         "modifiers": {
           "type": "array",
@@ -19895,7 +20599,7 @@
           "description": "The options included in the `CatalogModifierList`.\nYou must include at least one `CatalogModifier`.\nEach CatalogObject must have type `MODIFIER` and contain\n`CatalogModifier` data."
         }
       },
-      "description": "A modifier list in the Catalog object model. A `CatalogModifierList`\ncontains `CatalogModifier` objects that can be applied to a `CatalogItem` at\nthe time of sale.\n\nFor example, a modifier list \"Condiments\" that would apply to a \"Hot Dog\"\n`CatalogItem` might contain `CatalogModifier`s \"Ketchup\", \"Mustard\", and \"Relish\".\nThe `selection_type` field specifies whether or not multiple selections from\nthe modifier list are allowed.",
+      "description": "A list of modifiers applicable to items at the time of sale.\n\nFor example, a \"Condiments\" modifier list applicable to a \"Hot Dog\" item\nmay contain \"Ketchup\", \"Mustard\", and \"Relish\" modifiers.\nUse the `selection_type` field to specify whether or not multiple selections from\nthe modifier list are allowed.",
       "x-release-status": "PUBLIC",
       "example": {
         "type": "MODIFIER_LIST",
@@ -19958,7 +20662,7 @@
           "description": "If `true`, this `CatalogModifier` should be selected by default for this `CatalogItem`."
         }
       },
-      "description": "",
+      "description": "Options to control how to override the default behavior of the specified modifier.",
       "x-release-status": "PUBLIC"
     },
     "CatalogObject": {
@@ -20103,7 +20807,7 @@
           "x-is-beta": true
         }
       },
-      "description": "The wrapper object for the Catalog entries of a given object type. \n\nThe type of a particular `CatalogObject` is determined by the value of the\n`type` attribute and only the corresponding data attribute can be set on the `CatalogObject` instance.\nFor example, the following list shows some instances of `CatalogObject` of a given `type` and\ntheir corresponding data atrribute that can be set:\n- For a `CatalogObject` of the `ITEM` type, set the `item_data` attribute to yield the `CatalogItem` object. \n- For a `CatalogObject` of the `ITEM_VARIATION` type, set the `item_variation_data` attribute to yield the `CatalogItemVariation` object.\n- For a \u0027CatalogObject\u0027 of the `MODIFIER` type, set the `modifier_data` attribute to yield the `CatalogModifier` object.\n- For a \u0027CatalogObject\u0027 of the `MODIFIER_LIST` type, set the `modifier_list_data` attribute to yield the `CatalogModifierList` object.\n- For a \u0027CatalogObject\u0027 of the `CATEGORY` type, set the `category_data` attribute to yield the `CatalogCategory` object.\n- For a \u0027CatalogObject\u0027 of the `DISCOUNT` type, set the `discount_data` attribute to yield the `CatalogDiscount` object.\n- For a \u0027CatalogObject\u0027 of the `TAX` type, set the `tax_data` attribute to yield the `CatalogTax` object.\n- For a \u0027CatalogObject\u0027 of the `IMAGE` type, set the `image_data` attribute to yield the `CatalogImageData`  object.\n- For a \u0027CatalogObject\u0027 of the `QUICK_AMOUNTS_SETTINGS` type, set the `quick_amounts_settings_data` attribute to yield the `CatalogQuickAmountsSettings` object.\n- For a \u0027CatalogObject\u0027 of the `PRICING_RULE` type, set the `pricing_rule_data` attribute to yield the `CatalogPricingRule` object.\n- For a \u0027CatalogObject\u0027 of the `TIME_PERIOD` type, set the `time_period_data` attribute to yield the `CatalogTimePeriod` object.\n- For a \u0027CatalogObject\u0027 of the `PRODUCT_SET` type, set the `product_set_data` attribute to yield the `CatalogProductSet`  object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
+      "description": "The wrapper object for the Catalog entries of a given object type. \n\nThe type of a particular `CatalogObject` is determined by the value of the\n`type` attribute and only the corresponding data attribute can be set on the `CatalogObject` instance.\nFor example, the following list shows some instances of `CatalogObject` of a given `type` and\ntheir corresponding data atrribute that can be set:\n- For a `CatalogObject` of the `ITEM` type, set the `item_data` attribute to yield the `CatalogItem` object. \n- For a `CatalogObject` of the `ITEM_VARIATION` type, set the `item_variation_data` attribute to yield the `CatalogItemVariation` object.\n- For a `CatalogObject` of the `MODIFIER` type, set the `modifier_data` attribute to yield the `CatalogModifier` object.\n- For a `CatalogObject` of the `MODIFIER_LIST` type, set the `modifier_list_data` attribute to yield the `CatalogModifierList` object.\n- For a `CatalogObject` of the `CATEGORY` type, set the `category_data` attribute to yield the `CatalogCategory` object.\n- For a `CatalogObject` of the `DISCOUNT` type, set the `discount_data` attribute to yield the `CatalogDiscount` object.\n- For a `CatalogObject` of the `TAX` type, set the `tax_data` attribute to yield the `CatalogTax` object.\n- For a `CatalogObject` of the `IMAGE` type, set the `image_data` attribute to yield the `CatalogImageData`  object.\n- For a `CatalogObject` of the `QUICK_AMOUNTS_SETTINGS` type, set the `quick_amounts_settings_data` attribute to yield the `CatalogQuickAmountsSettings` object.\n- For a `CatalogObject` of the `PRICING_RULE` type, set the `pricing_rule_data` attribute to yield the `CatalogPricingRule` object.\n- For a `CatalogObject` of the `TIME_PERIOD` type, set the `time_period_data` attribute to yield the `CatalogTimePeriod` object.\n- For a `CatalogObject` of the `PRODUCT_SET` type, set the `product_set_data` attribute to yield the `CatalogProductSet`  object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
       "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
@@ -20258,46 +20962,46 @@
       "properties": {
         "sorted_attribute_query": {
           "$ref": "#/definitions/CatalogQuerySortedAttribute",
-          "description": "A query that returns all objects, sorted by the given attribute."
+          "description": "A query expression to sort returned query result by the given attribute."
         },
         "exact_query": {
           "$ref": "#/definitions/CatalogQueryExact",
-          "description": "A query that returns only objects for which the given (string-valued) attribute has the\ngiven case-insensitive value."
+          "description": "An exact query expression to return objects with attribute name and value  \nmatching the specified attribute name and value exactly. Value matching is case insensitive."
         },
         "prefix_query": {
           "$ref": "#/definitions/CatalogQueryPrefix",
-          "description": "A query that returns only objects for which the given (string-valued) attribute has the\ngiven case-insensitive prefix."
+          "description": "A prefix query expression to return objects with attribute values \nthat have a prefix matching the specified string value. Value maching is case insensitive."
         },
         "range_query": {
           "$ref": "#/definitions/CatalogQueryRange",
-          "description": "A query that returns only objects for which the given (integer-valued) attribute lies in the given range."
+          "description": "A range query expression to return objects with numberic values \nthat lie in the specified range."
         },
         "text_query": {
           "$ref": "#/definitions/CatalogQueryText",
-          "description": "A query that returns only objects whose searchable attributes contain all of the given\nkeywords as prefixes. For example, if a `CatalogItem` contains attributes `{\"name\": \"t-shirt\"}` and\n`{\"description\": \"Small, Purple\"}`, it will be matched by the query `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`."
+          "description": "A text query expression to return objectd whose searchable attributes contain all of the given\nkeywords, irrespective of their order. For example, if a `CatalogItem` contains custom attribute values of \n`{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, the query filter of `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`\nreturns this item."
         },
         "items_for_tax_query": {
           "$ref": "#/definitions/CatalogQueryItemsForTax",
-          "description": "A query that returns all `CatalogItem`s that have any of the given `CatalogTax`es enabled."
+          "description": "A query expression to return items that have any of the specified taxes (as identified by the corresponding `CatalogTax` object IDs) enabled."
         },
         "items_for_modifier_list_query": {
           "$ref": "#/definitions/CatalogQueryItemsForModifierList",
-          "description": "A query that returns all `CatalogItem`s that have any of the given `CatalogModifierList`s enabled."
+          "description": "A query expression to return items that have any of the given modifier list (as identifieid by the coresponding `CatalogModifierList`s IDs) enabled."
         },
         "items_for_item_options_query": {
           "$ref": "#/definitions/CatalogQueryItemsForItemOptions",
-          "description": "A query that returns all `CatalogItem`s that have all of the given `CatalogItemOption`s.",
+          "description": "A query expression to return items that contains the specified item options (as identified the corresponding `CatalogItemOption` IDs).",
           "x-release-status": "BETA",
           "x-is-beta": true
         },
         "item_variations_for_item_option_values_query": {
           "$ref": "#/definitions/CatalogQueryItemVariationsForItemOptionValues",
-          "description": "A query that returns all `CatalogItemVariation`s that have all of the given `CatalogItemOption` values.",
+          "description": "A query expression to return item variations (of the `CatalogItemVariation` that \ncontain all of the specified `CatalogItemOption` IDs.",
           "x-release-status": "BETA",
           "x-is-beta": true
         }
       },
-      "description": "A query to be applied to a `SearchCatalogObjectsRequest`.\nOnly one query field may be present.\n\nWhere an attribute name is required, it should be specified as the name of any field\nmarked \"searchable\" from the structured data types for the desired result object type(s)\n(`CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`,\n`CatalogDiscount`, `CatalogModifierList`, `CatalogModifier`).\n\nFor example, a query that should return Items may specify attribute names from\nany of the searchable fields of the `CatalogItem` data type, namely\n`\"name\"`, `\"description\"`, and `\"abbreviation\"`.",
+      "description": "A query composed of one or more different types of filters to narrow the scope of targeted objects when calling the `SearchCatalogObjects` endpoint.\n\nAlthough a query can have multiple filters, only one query is allowed per call to [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects).\n\nWhen a query filter is based on an attribute, the attribute must be searchable. \nSearchable attributes are listed as follows, along their parent types that can be searched for with applicable query filters. \n\nSearchable attribute and objects queryable by searchable attributes ** \n- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatelogCatogry`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, \u0027CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue` \n- `description`: `CatalogItem`, `CatalogItemOptionValue` \n- `abbreviation`: `CatalogItem` \n- `upc`: `CatalogItemVariation` \n- `sku`: `CatalogItemVariation` \n- `caption`: `CatalogImage` \n- `display_name`: `CatalogItemOption` \n\nFor example, to search for [CatalogItem](#type-CatalogItem) objects by searchable attributes, you can use \nthe `\"name\"`, `\"description\"`, or `\"abbreviation\"` attribute in an applicable query filter.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryExact": {
@@ -20310,14 +21014,14 @@
         "attribute_name": {
           "minLength": 1,
           "type": "string",
-          "description": "The name of the attribute to be searched."
+          "description": "The name of the attribute to be searched. Matching of the attribute name is exact."
         },
         "attribute_value": {
           "type": "string",
-          "description": "The desired value of the search attribute."
+          "description": "The desired value of the search attribute. Matching of the attribute value is case insensitive and can be partial. \nFor example, if a specified value of \"sma\", objects with the named attribute value of \"Small\", \"small\" are both matched."
         }
       },
-      "description": "",
+      "description": "The query filter to return the serch result by exact match of the specified attribute name and value.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryItemVariationsForItemOptionValues": {
@@ -20331,7 +21035,7 @@
           "description": "A set of `CatalogItemOptionValue` IDs to be used to find associated\n`CatalogItemVariation`s. All ItemVariations that contain all of the given\nItem Option Values (in any order) will be returned."
         }
       },
-      "description": "",
+      "description": "The query filter to return the item variations containing the specified item option value IDs.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -20346,7 +21050,7 @@
           "description": "A set of `CatalogItemOption` IDs to be used to find associated\n`CatalogItem`s. All Items that contain all of the given Item Options (in any order)\nwill be returned."
         }
       },
-      "description": "",
+      "description": "The query filter to return the items containing the specified item option IDs.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -20364,7 +21068,7 @@
           "description": "A set of `CatalogModifierList` IDs to be used to find associated `CatalogItem`s."
         }
       },
-      "description": "",
+      "description": "The query filter to return the items containing the specified modifier list IDs.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryItemsForTax": {
@@ -20381,7 +21085,7 @@
           "description": "A set of `CatalogTax` IDs to be used to find associated `CatalogItem`s."
         }
       },
-      "description": "",
+      "description": "The query filter to return the items containing the specified tax IDs.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryPrefix": {
@@ -20402,7 +21106,7 @@
           "description": "The desired prefix of the search attribute value."
         }
       },
-      "description": "",
+      "description": "The query filter to return the search result whose named attribute values are prefixed by the specified attribute value.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryRange": {
@@ -20427,7 +21131,7 @@
           "description": "The desired maximum value for the search attribute (inclusive)."
         }
       },
-      "description": "",
+      "description": "The query filter to return the search result whose named attribute values fall between the specified range.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQuerySortedAttribute": {
@@ -20439,7 +21143,7 @@
         "attribute_name": {
           "minLength": 1,
           "type": "string",
-          "description": "The attribute whose value should be used as the sort key."
+          "description": "The attribute whose value is used as the sort key."
         },
         "initial_attribute_value": {
           "type": "string",
@@ -20450,7 +21154,7 @@
           "description": "The desired sort order, `\"ASC\"` (ascending) or `\"DESC\"` (descending).\nSee [SortOrder](#type-sortorder) for possible values"
         }
       },
-      "description": "",
+      "description": "The query expression to specify the key to sort search results.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryText": {
@@ -20464,10 +21168,10 @@
           "items": {
             "type": "string"
           },
-          "description": "A list of 1, 2, or 3 search keywords. Keywords with fewer than 3 characters\nare ignored."
+          "description": "A list of 1, 2, or 3 search keywords. Keywords with fewer than 3 characters are ignored."
         }
       },
-      "description": "",
+      "description": "The query filter to return the search result whose searchable attribute values contain all of the specified keywords or tokens, independent of the token order or case.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQuickAmount": {
@@ -20530,8 +21234,9 @@
       "type": "object",
       "properties": {
         "name": {
+          "maxLength": 255,
           "type": "string",
-          "description": "The tax\u0027s name. Searchable. This field has max length of 255 Unicode code points."
+          "description": "The tax\u0027s name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points."
         },
         "calculation_phase": {
           "type": "string",
@@ -20554,7 +21259,7 @@
           "description": "If `true`, the tax will be shown as enabled in the Square Point of Sale app."
         }
       },
-      "description": "A tax in the Catalog object model.",
+      "description": "A tax applicable to an item.",
       "x-release-status": "PUBLIC",
       "example": {
         "object": {
@@ -20588,14 +21293,14 @@
       "properties": {
         "catalog_v1_id": {
           "type": "string",
-          "description": "The ID for an object in Connect V1, if different from its Connect V2 ID."
+          "description": "The ID for an object used in the Square API V1, if the object ID differs from the Square API V2 object ID."
         },
         "location_id": {
           "type": "string",
           "description": "The ID of the `Location` this Connect V1 ID is associated with."
         }
       },
-      "description": "An Items Connect V1 object ID along with its associated location ID.",
+      "description": "A Square API V1 identifier of an item, including the object ID and its associated location ID.",
       "x-release-status": "PUBLIC"
     },
     "ChargeRequest": {
@@ -21837,6 +22542,123 @@
         }
       }
     },
+    "CreateInvoiceRequest": {
+      "type": "object",
+      "required": [
+        "invoice"
+      ],
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The invoice to create."
+        },
+        "idempotency_key": {
+          "maxLength": 128,
+          "type": "string",
+          "description": "A unique string that identifies the `CreateInvoice` request. If you do not \nprovide `idempotency_key` (or provide an empty string as the value), the endpoint \ntreats each request as independent.\n\nFor more information, see [Idempotency](https://developer.squareup.com/docs/docs/working-with-apis/idempotency)."
+        }
+      },
+      "description": "Describes a `CreateInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "idempotency_key": "ce3748f9-5fc1-4762-aa12-aae5e843f1f4",
+          "invoice": {
+            "location_id": "ES0RJRZYEC39A",
+            "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+            "scheduled_at": "2030-01-13T10:00:00Z",
+            "primary_recipient": {
+              "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4"
+            },
+            "payment_requests": [
+              {
+                "request_method": "EMAIL",
+                "request_type": "BALANCE",
+                "due_date": "2030-01-24",
+                "tipping_enabled": true,
+                "reminders": [
+                  {
+                    "message": "Your invoice is due tomorrow",
+                    "relative_scheduled_days": -1
+                  }
+                ]
+              }
+            ],
+            "invoice_number": "inv-100",
+            "title": "Event Planning Services",
+            "description": "We appreciate your business!"
+          }
+        }
+      }
+    },
+    "CreateInvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The newly created invoice."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "The response returned by the `CreateInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoice": {
+          "id": "gt2zv1z6mnUm1V7KMxxf3w",
+          "version": 0,
+          "location_id": "ES0RJRZYEC39A",
+          "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "payment_requests": [
+            {
+              "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+              "request_method": "EMAIL",
+              "request_type": "BALANCE",
+              "due_date": "2030-01-24",
+              "tipping_enabled": true,
+              "reminders": [
+                {
+                  "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                  "relative_scheduled_days": -1,
+                  "message": "Your invoice is due tomorrow",
+                  "status": "PENDING"
+                }
+              ],
+              "computed_amount_money": {
+                "amount": 10000,
+                "currency": "USD"
+              },
+              "total_completed_amount_money": {
+                "amount": 0,
+                "currency": "USD"
+              }
+            }
+          ],
+          "invoice_number": "inv-100",
+          "title": "Event Planning Services",
+          "description": "We appreciate your business!",
+          "scheduled_at": "2030-01-13T10:00:00Z",
+          "status": "DRAFT",
+          "timezone": "America/Los_Angeles",
+          "created_at": "2020-06-18T17:45:13Z",
+          "updated_at": "2020-06-18T17:45:13Z",
+          "primary_recipient": {
+            "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "given_name": "Amelia",
+            "family_name": "Earhart",
+            "email_address": "Amelia.Earhart@example.com",
+            "phone_number": "1-212-555-4240"
+          }
+        }
+      }
+    },
     "CreateLocationRequest": {
       "type": "object",
       "properties": {
@@ -21891,13 +22713,12 @@
             "administrative_district_level_1": "GA",
             "postal_code": "30309"
           },
-          "timezone": "America/New_York",
           "capabilities": [
             "CREDIT_CARD_PROCESSING"
           ],
           "status": "ACTIVE",
           "created_at": "2019-07-19T17:58:25Z",
-          "merchant_id": "Q3X50GJ7A21EW",
+          "merchant_id": "MERCHANT_ID",
           "country": "US",
           "language_code": "en-US",
           "currency": "USD",
@@ -22959,7 +23780,6 @@
           "note": "A brief note",
           "device_options": {
             "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
-            "print_receipt": false,
             "tip_settings": {
               "allow_tipping": false
             },
@@ -22972,6 +23792,41 @@
           "deadline_duration": "PT10M"
         }
       }
+    },
+    "CustomAttributeFilter": {
+      "type": "object",
+      "properties": {
+        "custom_attribute_definition_id": {
+          "type": "string",
+          "description": "A query expression to filter items or item variations by matching their custom attributes\u0027 \n`custom_attribute_definition_id`  \nproperty value against the the specified id."
+        },
+        "key": {
+          "type": "string",
+          "description": "A query expression to filter items or item variations by matching their custom attributes\u0027\n`key` property value against \nthe specified key."
+        },
+        "string_filter": {
+          "type": "string",
+          "description": "A query expression to filter items or item variations by matching their custom attributes\u0027 \n`string_value`  property value \nagainst the specified text."
+        },
+        "number_filter": {
+          "$ref": "#/definitions/Range",
+          "description": "A query expression to filter items or item variations with their custom attributes\ncontaining a number value within the specified range."
+        },
+        "selection_uids_filter": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A query expression to filter items or item variations by matching  their custom attributes\u0027 \n`selection_uid_values` \nvalues against the specified selection uids."
+        },
+        "bool_filter": {
+          "type": "boolean",
+          "description": "A query expression to filter items or item variations by matching their custom attributes\u0027\n`boolean_value` property values \nagainst the specified Boolean expression."
+        }
+      },
+      "description": "Supported custom attribute query expressions for calling the \n[SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) \nendpoint to search for items or item variations.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "Customer": {
       "type": "object",
@@ -23467,6 +24322,33 @@
         "javascript": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.javascript",
         "ruby": "/sdk_samples/DeleteCustomer/DeleteCustomerResponse.ruby"
       }
+    },
+    "DeleteInvoiceRequest": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "The version of the `invoice` to delete.\nIf you do not know the version, you can call `GetInvoice` or \n`ListInvoices`."
+        }
+      },
+      "description": "Describes a `DeleteInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "DeleteInvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Describes a `DeleteInvoice` response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "DeleteLoyaltyRewardRequest": {
       "type": "object",
@@ -24115,6 +24997,80 @@
         }
       }
     },
+    "GetInvoiceRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Describes a `GetInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "GetInvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The invoice requested."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Describes a `GetInvoice` response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoice": {
+          "id": "gt2zv1z6mnUm1V7KMxxf3w",
+          "version": 0,
+          "location_id": "ES0RJRZYEC39A",
+          "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "payment_requests": [
+            {
+              "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+              "request_method": "EMAIL",
+              "request_type": "BALANCE",
+              "due_date": "2030-01-24",
+              "tipping_enabled": true,
+              "reminders": [
+                {
+                  "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                  "relative_scheduled_days": -1,
+                  "message": "Your invoice is due tomorrow",
+                  "status": "PENDING"
+                }
+              ],
+              "computed_amount_money": {
+                "amount": 10000,
+                "currency": "USD"
+              },
+              "total_completed_amount_money": {
+                "amount": 0,
+                "currency": "USD"
+              }
+            }
+          ],
+          "invoice_number": "inv-100",
+          "title": "Event Planning Services",
+          "description": "We appreciate your business!",
+          "scheduled_at": "2030-01-13T10:00:00Z",
+          "status": "DRAFT",
+          "timezone": "America/Los_Angeles",
+          "created_at": "2020-06-18T17:45:13Z",
+          "updated_at": "2020-06-18T17:45:13Z",
+          "primary_recipient": {
+            "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "given_name": "Amelia",
+            "family_name": "Earhart",
+            "email_address": "Amelia.Earhart@example.com",
+            "phone_number": "1-212-555-4240"
+          }
+        }
+      }
+    },
     "GetPaymentRefundRequest": {
       "type": "object",
       "properties": {},
@@ -24346,7 +25302,6 @@
           "note": "A brief note",
           "device_options": {
             "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
-            "print_receipt": false,
             "tip_settings": {
               "allow_tipping": false
             },
@@ -24364,10 +25319,12 @@
       "type": "object",
       "properties": {
         "id": {
+          "maxLength": 100,
           "type": "string",
           "description": "A unique ID generated by Square for the\n`InventoryAdjustment`."
         },
         "reference_id": {
+          "maxLength": 255,
           "type": "string",
           "description": "An optional ID provided by the application to tie the\n`InventoryAdjustment` to an external\nsystem."
         },
@@ -24380,32 +25337,36 @@
           "description": "The `InventoryState` of the related quantity\nof items after the adjustment.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Location` where the related\nquantity of items are being tracked."
         },
         "catalog_object_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square generated ID of the\n`CatalogObject` being tracked."
         },
         "catalog_object_type": {
+          "maxLength": 14,
           "type": "string",
           "description": "The `CatalogObjectType` of the\n`CatalogObject` being tracked. Tracking is only\nsupported for the `ITEM_VARIATION` type."
         },
         "quantity": {
+          "maxLength": 26,
           "type": "string",
-          "description": "The number of items affected by the adjustment as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](https://developer.squareup.com/docs/inventory-api/what-it-does#decimal-quantities-beta) for more information.",
-          "x-release-status": "BETA",
-          "x-is-beta": true
+          "description": "The number of items affected by the adjustment as a decimal string.\nCan support up to 5 digits after the decimal point."
         },
         "total_price_money": {
           "$ref": "#/definitions/Money",
           "description": "The read-only total price paid for goods associated with the\nadjustment. Present if and only if `to_state` is `SOLD`. Always\nnon-negative."
         },
         "occurred_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A client-generated timestamp in RFC 3339 format that indicates when\nthe adjustment took place. For write actions, the `occurred_at`\ntimestamp cannot be older than 24 hours or in the future relative to the\ntime of the request."
         },
         "created_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the adjustment."
         },
@@ -24414,22 +25375,27 @@
           "description": "Read-only information about the application that caused the\ninventory adjustment."
         },
         "employee_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Employee` responsible for the\ninventory adjustment."
         },
         "transaction_id": {
+          "maxLength": 255,
           "type": "string",
           "description": "The read-only Square ID of the [Transaction][#type-transaction] that\ncaused the adjustment. Only relevant for payment-related state\ntransitions."
         },
         "refund_id": {
+          "maxLength": 255,
           "type": "string",
           "description": "The read-only Square ID of the [Refund][#type-refund] that\ncaused the adjustment. Only relevant for refund-related state\ntransitions."
         },
         "purchase_order_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The read-only Square ID of the purchase order that caused the\nadjustment. Only relevant for state transitions from the Square for Retail\napp."
         },
         "goods_receipt_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The read-only Square ID of the Square goods receipt that caused the\nadjustment. Only relevant for state transitions from the Square for Retail\napp."
         }
@@ -24454,7 +25420,7 @@
         },
         "transfer": {
           "$ref": "#/definitions/InventoryTransfer",
-          "description": "Contains details about the inventory transfer when `type` is\n`TRANSFER` and unset for all other types."
+          "description": "Contains details about the inventory transfer when `type` is\n`TRANSFER` and unset for all other types.\n\n_Note:_ An `InventoryTransfer` object is read-only and can only be present in a\n`RetrieveInventoryChangesResponse` and `BatchRetrieveInventoryChangesResponse` object."
         }
       },
       "description": "Represents a single physical count, inventory, adjustment, or transfer\nthat is part of the history of inventory changes for a particular\n`CatalogObject`.",
@@ -24464,10 +25430,12 @@
       "type": "object",
       "properties": {
         "catalog_object_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square generated ID of the\n`CatalogObject` being tracked."
         },
         "catalog_object_type": {
+          "maxLength": 14,
           "type": "string",
           "description": "The `CatalogObjectType` of the\n`CatalogObject` being tracked. Tracking is only\nsupported for the `ITEM_VARIATION` type."
         },
@@ -24476,16 +25444,17 @@
           "description": "The current `InventoryState` for the related\nquantity of items.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Location` where the related\nquantity of items are being tracked."
         },
         "quantity": {
+          "maxLength": 26,
           "type": "string",
-          "description": "The number of items affected by the estimated count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](https://developer.squareup.com/docs/docs/inventory-api/what-it-does#decimal-quantities-beta) for more information.",
-          "x-release-status": "BETA",
-          "x-is-beta": true
+          "description": "The number of items affected by the estimated count as a decimal string.\nCan support up to 5 digits after the decimal point."
         },
         "calculated_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the most recent physical count or adjustment that had an affect\non the estimated count."
         }
@@ -24497,18 +25466,22 @@
       "type": "object",
       "properties": {
         "id": {
+          "maxLength": 100,
           "type": "string",
           "description": "A unique ID generated by Square for the\n`InventoryPhysicalCount`."
         },
         "reference_id": {
+          "maxLength": 255,
           "type": "string",
           "description": "An optional ID provided by the application to tie the\n`InventoryPhysicalCount` to an external\nsystem."
         },
         "catalog_object_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square generated ID of the\n`CatalogObject` being tracked."
         },
         "catalog_object_type": {
+          "maxLength": 14,
           "type": "string",
           "description": "The `CatalogObjectType` of the\n`CatalogObject` being tracked. Tracking is only\nsupported for the `ITEM_VARIATION` type."
         },
@@ -24517,28 +25490,31 @@
           "description": "The current `InventoryState` for the related\nquantity of items.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "location_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Location` where the related\nquantity of items are being tracked."
         },
         "quantity": {
+          "maxLength": 26,
           "type": "string",
-          "description": "The number of items affected by the physical count as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](https://developer.squareup.com/docs/inventory-api/what-it-does#decimal-quantities-beta) for more information.",
-          "x-release-status": "BETA",
-          "x-is-beta": true
+          "description": "The number of items affected by the physical count as a decimal string.\nCan support up to 5 digits after the decimal point."
         },
         "source": {
           "$ref": "#/definitions/SourceApplication",
           "description": "Read-only information about the application that submitted the\nphysical count."
         },
         "employee_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Employee` responsible for the\nphysical count."
         },
         "occurred_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A client-generated timestamp in RFC 3339 format that indicates when\nthe physical count took place. For write actions, the `occurred_at`\ntimestamp cannot be older than 24 hours or in the future relative to the\ntime of the request."
         },
         "created_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the physical count."
         }
@@ -24550,44 +25526,51 @@
       "type": "object",
       "properties": {
         "id": {
+          "maxLength": 100,
           "type": "string",
           "description": "A unique ID generated by Square for the\n`InventoryTransfer`."
         },
         "reference_id": {
+          "maxLength": 255,
           "type": "string",
           "description": "An optional ID provided by the application to tie the\n`InventoryTransfer` to an external system."
         },
         "state": {
           "type": "string",
-          "description": "The `InventoryState` for the quantity of\nitems being transfered.\nSee [InventoryState](#type-inventorystate) for possible values"
+          "description": "The `InventoryState` for the quantity of\nitems being transferred.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "from_location_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Location` where the related\nquantity of items were tracked before the transfer."
         },
         "to_location_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Location` where the related\nquantity of items were tracked after the transfer."
         },
         "catalog_object_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square generated ID of the\n`CatalogObject` being tracked."
         },
         "catalog_object_type": {
+          "maxLength": 14,
           "type": "string",
           "description": "The `CatalogObjectType` of the\n`CatalogObject` being tracked.Tracking is only\nsupported for the `ITEM_VARIATION` type."
         },
         "quantity": {
+          "maxLength": 26,
           "type": "string",
-          "description": "The number of items affected by the transfer as a decimal string.\nCan support up to 5 digits after the decimal point.\n\n_Important_: The Point of Sale app and Dashboard do not currently support\ndecimal quantities. If a Point of Sale app or Dashboard attempts to read a\ndecimal quantity on inventory counts or adjustments, the quantity will be rounded\ndown to the nearest integer. For example, `2.5` will become `2`, and `-2.5`\nwill become `-3`.\nRead [Decimal Quantities (BETA)](https://developer.squareup.com/docs/docs/inventory-api/what-it-does#decimal-quantities-beta) for more information.",
-          "x-release-status": "BETA",
-          "x-is-beta": true
+          "description": "The number of items affected by the transfer as a decimal string.\nCan support up to 5 digits after the decimal point."
         },
         "occurred_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A client-generated timestamp in RFC 3339 format that indicates when\nthe transfer took place. For write actions, the `occurred_at` timestamp\ncannot be older than 24 hours or in the future relative to the time of the\nrequest."
         },
         "created_at": {
+          "maxLength": 34,
           "type": "string",
           "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the transfer request."
         },
@@ -24596,12 +25579,315 @@
           "description": "Read-only information about the application that initiated the\ninventory transfer."
         },
         "employee_id": {
+          "maxLength": 100,
           "type": "string",
           "description": "The Square ID of the `Employee` responsible for the\ninventory transfer."
         }
       },
       "description": "Represents the transfer of a quantity of product inventory at a\nparticular time from one location to another.",
       "x-release-status": "PUBLIC"
+    },
+    "Invoice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Square-assigned ID of the invoice.",
+          "x-read-only": true
+        },
+        "version": {
+          "type": "integer",
+          "description": "The version number, which is incremented each time an update is committed to the invoice.",
+          "x-read-only": true
+        },
+        "location_id": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "The ID of the location that this invoice is associated with.\nThis field is required when creating an invoice."
+        },
+        "order_id": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "The ID of the `order` for which the invoice is created.\n\nThis order must be in the `OPEN` state and must belong to the `location_id`\nspecified for this invoice. This field is required when creating an invoice."
+        },
+        "primary_recipient": {
+          "$ref": "#/definitions/InvoiceRecipient",
+          "description": "The customer who gets the invoice. Square uses the contact information\nto deliver the invoice. This field is required when creating an invoice."
+        },
+        "payment_requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoicePaymentRequest"
+          },
+          "description": "An array of `InvoicePaymentRequest` objects. Each object defines\na payment request in an invoice payment schedule. It provides information\nsuch as when and how Square processes payments. You can specify maximum of\nnine payment requests. All all the payment requests must specify the\nsame `request_method`.\n\nThis field is required when creating an invoice."
+        },
+        "invoice_number": {
+          "minLength": 1,
+          "maxLength": 191,
+          "type": "string",
+          "description": "A user-friendly invoice number. The value is unique within a location.\nIf not provided when creating an invoice, Square assigns a value.\nIt increments from 1 and padded with zeros making it 7 characters long\nfor example, 0000001, 0000002."
+        },
+        "title": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "The title of the invoice."
+        },
+        "description": {
+          "minLength": 1,
+          "maxLength": 65536,
+          "type": "string",
+          "description": "The description of the invoice. This is visible the customer receiving the invoice."
+        },
+        "scheduled_at": {
+          "type": "string",
+          "description": "The timestamp when the invoice is scheduled for processing, in RFC 3339 format.\nAt the specified time, depending on the `request_method`, Square sends the\ninvoice to the customer\u0027s email address or charge the customer\u0027s card on file.\n\nIf the field is not set, Square processes the invoice immediately after publication."
+        },
+        "public_url": {
+          "type": "string",
+          "description": "The URL of the Square-hosted invoice page.\nAfter you publish the invoice using the `PublishInvoice` endpoint, Square hosts the invoice\npage and returns the page URL in the response.",
+          "x-read-only": true
+        },
+        "next_payment_amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The current amount due for the invoice. In addition to the\namount due on the next payment request, this also includes any overdue payment amounts.",
+          "x-read-only": true
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the invoice.\nSee [InvoiceStatus](#type-invoicestatus) for possible values",
+          "x-read-only": true
+        },
+        "timezone": {
+          "type": "string",
+          "description": "The time zone of the date values (for example, `due_date`) specified in the invoice.",
+          "x-read-only": true
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The timestamp when the invoice was created, in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "The timestamp when the invoice was last updated, in RFC 3339 format.",
+          "x-read-only": true
+        }
+      },
+      "description": "Stores information about an invoice. You use the Invoices API to create and process\ninvoices. For more information, see [Manage Invoices Using the Invoices API](/docs/invoices-api/overview).",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceFilter": {
+      "type": "object",
+      "required": [
+        "location_ids"
+      ],
+      "properties": {
+        "location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Limits the search to the specified locations. A location is required. \nIn the current implementation, only one location can be specified."
+        },
+        "customer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Limits the search to the specified customers, within the specified locations. \nSpecifying a customer is optional. In the current implementation, \na maximum of one customer can be specified."
+        }
+      },
+      "description": "Describes query filters to apply.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoicePaymentReminder": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "A Square-assigned ID that uniquely identifies the reminder within the\n`InvoicePaymentRequest`.",
+          "x-read-only": true
+        },
+        "relative_scheduled_days": {
+          "maximum": 32767,
+          "minimum": -32767,
+          "type": "integer",
+          "description": "The number of days before (a negative number) or after (a positive number)\nthe payment request `due_date` when the reminder is sent. For example, -3 indicates that\nthe reminder should be sent 3 days before the payment request `due_date`."
+        },
+        "message": {
+          "minLength": 1,
+          "maxLength": 1000,
+          "type": "string",
+          "description": "The reminder message."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the reminder.\nSee [InvoicePaymentReminderStatus](#type-invoicepaymentreminderstatus) for possible values",
+          "x-read-only": true
+        },
+        "sent_at": {
+          "type": "string",
+          "description": "If sent, the timestamp when the reminder was sent, in RFC 3339 format.",
+          "x-read-only": true
+        }
+      },
+      "description": "Describes a payment request reminder (automatic notification) that Square sends\nto the customer. You configure a reminder relative to the payment request\n`due_date`.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoicePaymentRequest": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "The Square-generated ID of the payment request in an `invoice`.",
+          "x-read-only": true
+        },
+        "request_method": {
+          "type": "string",
+          "description": "Indicates how Square processes the payment request.\nSee [InvoiceRequestMethod](#type-invoicerequestmethod) for possible values"
+        },
+        "request_type": {
+          "type": "string",
+          "description": "Identifies the payment request type. This type defines how the payment request amount is determined.\nSee [InvoiceRequestType](#type-invoicerequesttype) for possible values"
+        },
+        "due_date": {
+          "type": "string",
+          "description": "The due date (in the invoice location\u0027s time zone) for the payment request. \nAfter this date, the invoice becomes overdue."
+        },
+        "fixed_amount_requested_money": {
+          "$ref": "#/definitions/Money",
+          "description": "If the payment request specifies `DEPOSIT` or `INSTALLMENT` as the \n`request_type`, \nthis indicates the request amount.\nYou cannot specify this when `request_type` is `BALANCE` or when the \npayment request includes the `percentage_requested` field."
+        },
+        "percentage_requested": {
+          "type": "string",
+          "description": "Specifies the amount for the payment request in percentage:\n\n- When the payment `request_type` is `DEPOSIT`, it is the percentage of the order total amount.\n- When the payment `request_type` is `INSTALLMENT`, it is the percentage of the order total less \nthe deposit, if requested. The sum of the `percentage_requested` in all installment \npayment requests must be equal to 100.\n\nYou cannot specify this when the payment `request_type` is `BALANCE` or when the \npayment request specifies the `fixed_amount_requested_money` field."
+        },
+        "tipping_enabled": {
+          "type": "boolean",
+          "description": "If set to true, the Square-hosted invoice page (the `public_url` field of the invoice) \nprovides a place for the customer to pay a tip. \n\nThis field is allowed only on the final payment request  \nand the payment `request_type` must be `BALANCE` or `INSTALLMENT`."
+        },
+        "card_id": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "If the request method is `CHARGE_CARD_ON_FILE`, this field provides the \ncard to charge."
+        },
+        "reminders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoicePaymentReminder"
+          },
+          "description": "A list of one or more reminders to send for the payment request."
+        },
+        "computed_amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The payment request amount, computed using the order amount and information from the various payment request fields (`invoice_request_type`, \n`fixed_amount_requested_money`, and `percentage_requested`).",
+          "x-read-only": true
+        },
+        "total_completed_amount_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of money already paid for the specific payment request. \nThis amount might include a rounding adjustment if the most recent invoice payment \nwas in cash in a currency that rounds cash payments (such as, `CAD` or `AUD`).",
+          "x-read-only": true
+        },
+        "rounding_adjustment_included_money": {
+          "$ref": "#/definitions/Money",
+          "description": "If the most recent payment was a cash payment \nin a currency that rounds cash payments (such as, `CAD` or `AUD`) and the payment \nis rounded from `computed_amount_money` in the payment request, then this \nfield specifies the rounding adjustment applied. This amount \nmight be negative.",
+          "x-read-only": true
+        }
+      },
+      "description": "Describes a specific payment request in an invoice. You can have \nup to nine payment requests for an invoice.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceQuery": {
+      "type": "object",
+      "required": [
+        "filter"
+      ],
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/InvoiceFilter",
+          "description": "Query filters to apply in  searching invoices. \nFor more information, see [Retrieve invoices](https://developer.squareup.com/docs/docs/invoices-api/overview#retrieve-invoices)."
+        },
+        "sort": {
+          "$ref": "#/definitions/InvoiceSort",
+          "description": "Describes the sort order for the search result."
+        }
+      },
+      "description": "Describes query criteria for searching invoices.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceRecipient": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "The ID of the customer. This is the customer profile ID that \nyou provide when creating a draft invoice."
+        },
+        "given_name": {
+          "type": "string",
+          "description": "The recipient\u0027s given (that is, first) name.",
+          "x-read-only": true
+        },
+        "family_name": {
+          "type": "string",
+          "description": "The recipient\u0027s family (that is, last) name.",
+          "x-read-only": true
+        },
+        "email_address": {
+          "type": "string",
+          "description": "The recipient\u0027s email address.",
+          "x-read-only": true
+        },
+        "address": {
+          "$ref": "#/definitions/Address",
+          "description": "The recipient\u0027s physical address.",
+          "x-read-only": true
+        },
+        "phone_number": {
+          "type": "string",
+          "description": "The recipient\u0027s phone number.",
+          "x-read-only": true
+        },
+        "company_name": {
+          "type": "string",
+          "description": "The name of the recipient\u0027s company.",
+          "x-read-only": true
+        }
+      },
+      "description": "Provides customer data that Square uses to deliver an invoice.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceSort": {
+      "type": "object",
+      "required": [
+        "field"
+      ],
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "The field to sort on.\nSee [InvoiceSortField](#type-invoicesortfield) for possible values"
+        },
+        "order": {
+          "type": "string",
+          "description": "The order to use for sorting the results.\nSee [SortOrder](#type-sortorder) for possible values"
+        }
+      },
+      "description": "Identifies the  sort field and sort order.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "ItemVariationLocationOverrides": {
       "type": "object",
@@ -25748,6 +27034,110 @@
       "description": "",
       "x-release-status": "PUBLIC"
     },
+    "ListInvoicesRequest": {
+      "type": "object",
+      "required": [
+        "location_id"
+      ],
+      "properties": {
+        "location_id": {
+          "minLength": 1,
+          "maxLength": 255,
+          "type": "string",
+          "description": "The ID of the location for which to list invoices."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint. \nProvide this cursor to retrieve the next set of results for your original query.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "The maximum number of invoices to return (200 is the maximum `limit`). \nIf not provided, the server \nuses a default limit of 100 invoices."
+        }
+      },
+      "description": "Describes a `ListInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "ListInvoicesResponse": {
+      "type": "object",
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Invoice"
+          },
+          "description": "The invoices retrieved."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "When a response is truncated, it includes a cursor that you can use in a \nsubsequent request to fetch the next set of invoices. If empty, this is the final \nresponse. \nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Describes a `ListInvoice` response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoices": [
+          {
+            "invoice": {
+              "id": "gt2zv1z6mnUm1V7KMxxf3w",
+              "version": 0,
+              "location_id": "ES0RJRZYEC39A",
+              "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+              "payment_requests": [
+                {
+                  "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+                  "request_method": "EMAIL",
+                  "request_type": "BALANCE",
+                  "due_date": "2030-01-24",
+                  "tipping_enabled": true,
+                  "reminders": [
+                    {
+                      "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                      "relative_scheduled_days": -1,
+                      "message": "Your invoice is due tomorrow",
+                      "status": "PENDING"
+                    }
+                  ],
+                  "computed_amount_money": {
+                    "amount": 10000,
+                    "currency": "USD"
+                  },
+                  "total_completed_amount_money": {
+                    "amount": 0,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "invoice_number": "inv-100",
+              "title": "Event Planning Services",
+              "description": "We appreciate your business!",
+              "scheduled_at": "2030-01-13T10:00:00Z",
+              "status": "DRAFT",
+              "timezone": "America/Los_Angeles",
+              "created_at": "2020-06-18T17:45:13Z",
+              "updated_at": "2020-06-18T17:45:13Z",
+              "primary_recipient": {
+                "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+                "given_name": "Amelia",
+                "family_name": "Earhart",
+                "email_address": "Amelia.Earhart@example.com",
+                "phone_number": "1-212-555-4240"
+              }
+            }
+          }
+        ],
+        "cursor": "CURSOR"
+      }
+    },
     "ListLocationsRequest": {
       "type": "object",
       "properties": {},
@@ -25933,7 +27323,8 @@
             "country": "US",
             "language_code": "en-US",
             "currency": "USD",
-            "status": "ACTIVE"
+            "status": "ACTIVE",
+            "main_location_id": "9A65CGC72ZQG1"
           }
         ]
       }
@@ -27484,7 +28875,7 @@
         },
         "country": {
           "type": "string",
-          "description": "The country code associated with the merchant account, in ISO 3166-1-alpha-2 format.\nSee [Country](#type-country) for possible values"
+          "description": "The country code associated with the merchant account, in ISO 3166 format.\nSee [Country](#type-country) for possible values"
         },
         "language_code": {
           "type": "string",
@@ -27497,6 +28888,10 @@
         "status": {
           "type": "string",
           "description": "The merchant status, active or inactive.\nSee [MerchantStatus](#type-merchantstatus) for possible values"
+        },
+        "main_location_id": {
+          "type": "string",
+          "description": "The ID of the main `Location` for this merchant."
         }
       },
       "description": "Represents a Square seller.",
@@ -27813,6 +29208,10 @@
           "$ref": "#/definitions/Money",
           "description": "The total amount of money collected in service charges for the order.\n\nNote: `total_service_charge_money` is the sum of `applied_money` fields for each individual\nservice charge. Therefore, `total_service_charge_money` will only include inclusive tax amounts,\nnot additive tax amounts.",
           "x-read-only": true
+        },
+        "pricing_options": {
+          "$ref": "#/definitions/OrderPricingOptions",
+          "description": "Pricing options for an order. The options affect how the order\u0027s price is calculated.\nThey can be used, for example, to apply automatic price adjustments that are based on pre-configured\n[pricing rules](https://developer.squareup.com/docs/reference/square/objects/CatalogPricingRule)."
         },
         "rewards": {
           "type": "array",
@@ -28446,6 +29845,11 @@
           "x-release-status": "BETA",
           "x-is-beta": true,
           "x-read-only": true
+        },
+        "pricing_rule_id": {
+          "type": "string",
+          "description": "The object identifier of a `pricing rule` to be applied automatically\nto this discount. The specification and application of the discounts, to which a `pricing_rule_id` is\nassigned, are completely controlled by the corresponding pricing rule.",
+          "x-read-only": true
         }
       },
       "description": "Represents a discount that applies to one or more line items in an\norder.\n\nFixed-amount, order-scoped discounts are distributed across all non-zero line item totals.\nThe amount distributed to each line item is relative to the\namount contributed by the item to the order subtotal.",
@@ -28561,6 +29965,17 @@
       "description": "A collection of various money amounts.",
       "x-release-status": "BETA",
       "x-is-beta": true
+    },
+    "OrderPricingOptions": {
+      "type": "object",
+      "properties": {
+        "auto_apply_discounts": {
+          "type": "boolean",
+          "description": "The option to determine whether or not pricing rule-based discounts are automatically applied to an order."
+        }
+      },
+      "description": "Pricing options for an order. The options affect how the order\u0027s price is calculated.\nThey can be used, for example, to apply automatic price adjustments that are based on pre-configured\n[pricing rules](/reference/square/objects/CatalogPricingRule).",
+      "x-release-status": "PUBLIC"
     },
     "OrderQuantityUnit": {
       "type": "object",
@@ -29559,6 +30974,115 @@
       "description": "Represents Square processing fee.",
       "x-release-status": "PUBLIC"
     },
+    "PublishInvoiceRequest": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "The version of the `Invoice` to publish.\nThis must match the current version of the invoice,\notherwise the request is rejected."
+        },
+        "idempotency_key": {
+          "maxLength": 128,
+          "type": "string",
+          "description": "A unique string that identifies the `PublishInvoice` request. If you do not \nprovide `idempotency_key` (or provide an empty string as the value), the endpoint \ntreats each request as independent.\n\nFor more information, see [Idempotency](https://developer.squareup.com/docs/docs/working-with-apis/idempotency)."
+        }
+      },
+      "description": "Describes a `PublishInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "version": 1,
+          "idempotency_key": "32da42d0-1997-41b0-826b-f09464fc2c2e"
+        }
+      }
+    },
+    "PublishInvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The published invoice."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Describes a `PublishInvoice` response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoice": {
+          "id": "gt2zv1z6mnUm1V7KMxxf3w",
+          "version": 1,
+          "location_id": "ES0RJRZYEC39A",
+          "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "payment_requests": [
+            {
+              "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+              "request_method": "EMAIL",
+              "request_type": "BALANCE",
+              "due_date": "2030-01-24",
+              "tipping_enabled": true,
+              "reminders": [
+                {
+                  "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                  "relative_scheduled_days": -1,
+                  "message": "Your invoice is due tomorrow",
+                  "status": "PENDING"
+                }
+              ],
+              "computed_amount_money": {
+                "amount": 10000,
+                "currency": "USD"
+              },
+              "total_completed_amount_money": {
+                "amount": 0,
+                "currency": "USD"
+              }
+            }
+          ],
+          "invoice_number": "inv-100",
+          "title": "Event Planning Services",
+          "description": "We appreciate your business!",
+          "scheduled_at": "2030-01-13T10:00:00Z",
+          "status": "SCHEDULED",
+          "timezone": "America/Los_Angeles",
+          "created_at": "2020-06-18T17:45:13Z",
+          "updated_at": "2020-06-18T18:23:11Z",
+          "primary_recipient": {
+            "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "given_name": "Amelia",
+            "family_name": "Earhart",
+            "email_address": "Amelia.Earhart@example.com",
+            "phone_number": "1-212-555-4240"
+          }
+        }
+      }
+    },
+    "Range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "string",
+          "description": "The lower bound of the number range."
+        },
+        "max": {
+          "type": "string",
+          "description": "The upper bound of the number range."
+        }
+      },
+      "description": "The range of a number value between the specified lower and upper bounds.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "RedeemLoyaltyRewardRequest": {
       "type": "object",
       "required": [
@@ -29778,7 +31302,7 @@
           "description": "A domain name as described in RFC-1034 that will be registered with ApplePay"
         }
       },
-      "description": "Defines the parameters that can be included in the body of\na request to the __RegisterDomain__ endpoint.",
+      "description": "Defines the parameters that can be included in the body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -29809,7 +31333,7 @@
           "description": "Status of the domain registration.\n\nSee `RegisterDomainResponseStatus` for possible values.\nSee [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values"
         }
       },
-      "description": "Defines the fields that are included in the response body of\na request to the __RegisterDomain__ endpoint.\n\nEither `errors` or `status` will be present in a given response (never both).",
+      "description": "Defines the fields that are included in the response body of\na request to the [RegisterDomain](#endpoint-registerdomain) endpoint.\n\nEither `errors` or `status` will be present in a given response (never both).",
       "x-release-status": "PUBLIC",
       "example": {
         "status": "VERIFIED"
@@ -30425,7 +31949,7 @@
         },
         "cursor": {
           "type": "string",
-          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information."
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information."
         }
       },
       "description": "",
@@ -30461,7 +31985,7 @@
         },
         "cursor": {
           "type": "string",
-          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\n\nSee the [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination) guide for more information."
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\n\nSee the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information."
         }
       },
       "description": "",
@@ -30800,7 +32324,8 @@
           "country": "US",
           "language_code": "en-US",
           "currency": "USD",
-          "status": "ACTIVE"
+          "status": "ACTIVE",
+          "main_location_id": "9A65CGC72ZQG1"
         }
       }
     },
@@ -31048,6 +32573,206 @@
         "php": "/sdk_samples/RevokeToken/RevokeTokenResponse.php",
         "javascript": "/sdk_samples/RevokeToken/RevokeTokenResponse.javascript",
         "ruby": "/sdk_samples/RevokeToken/RevokeTokenResponse.ruby"
+      }
+    },
+    "SearchCatalogItemsRequest": {
+      "type": "object",
+      "properties": {
+        "text_filter": {
+          "type": "string",
+          "description": "The text filter expression to return items or item variations containing specified text in\nthe `name`, `description`, or `abbreviation` attribute value of an item, or in\nthe `name`, `sku`, or `upc` attribute value of an item variation."
+        },
+        "category_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The category id query expression to return items containing the specified category IDs."
+        },
+        "stock_levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The stock-level query expression to return item variations with the specified stock levels.\nSee [SearchCatalogItemsRequestStockLevel](#type-searchcatalogitemsrequeststocklevel) for possible values"
+        },
+        "enabled_location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The enabled-location query expression to return items and item variations having specified enabled locations."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "The pagination token, returned in the previous response, used to fetch the next batch of pending results."
+        },
+        "limit": {
+          "maximum": 100,
+          "type": "integer",
+          "description": "The maximum number of results to return per page. The default value is 100."
+        },
+        "sort_order": {
+          "type": "string",
+          "description": "The order to sort the resutls. The default sort order is ascending (`ASC`).\nSee [SortOrder](#type-sortorder) for possible values"
+        },
+        "product_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The product types query expression to return items or item variations having the specified product types.\nSee [CatalogItemProductType](#type-catalogitemproducttype) for possible values"
+        },
+        "custom_attribute_filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomAttributeFilter"
+          },
+          "description": "The customer-attribute filter to return items or item variations matching the specified\ncustom attribute expressions. A maximum number of 10 custom attribute expressions are supported in\na single call to the `SearchCatalogItems` endpoint."
+        }
+      },
+      "description": "Defines the request body for the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "sort_order": "ASC",
+          "product_types": [
+            "REGULAR"
+          ],
+          "category_ids": [
+            "WINE_CATEGORY_ID"
+          ],
+          "enabled_location_ids": [
+            "ATL_LOCATION_ID"
+          ],
+          "text_filter": "red",
+          "custom_attribute_filters": [
+            {
+              "custom_attribute_definition_id": "VEGAN_DEFINITION_ID",
+              "bool_filter": true
+            },
+            {
+              "custom_attribute_definition_id": "BRAND_DEFINITION_ID",
+              "string_filter": "Dark Horse"
+            },
+            {
+              "key": "VINTAGE",
+              "number_filter": {
+                "min": 2017,
+                "max": 2018
+              }
+            },
+            {
+              "custom_attribute_definition_id": "VARIETAL_DEFINITION_ID",
+              "selection_ids_filter": "MERLOT_SELECTION_ID"
+            }
+          ],
+          "stock_levels": [
+            "OUT",
+            "LOW"
+          ],
+          "limit": 100
+        }
+      }
+    },
+    "SearchCatalogItemsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Errors detected when the call to `SearchCatalogItems` endpoint fails."
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogObject"
+          },
+          "description": "Returned items matching the specified query expressions."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "Pagination token used in the next request to return more of the search result."
+        },
+        "matched_variation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ids of returned item variations matching the specified query expression."
+        }
+      },
+      "description": "Defines the response body returned from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "items": [
+          {
+            "type": "ITEM",
+            "id": "GPOKJPTV2KDLVKCADJ7I77EZ",
+            "updated_at": "2020-06-18T17:55:56.646Z",
+            "version": 1592502956646,
+            "is_deleted": false,
+            "present_at_all_locations": true,
+            "custom_attribute_values": {
+              "VINTAGE": {
+                "name": "Vintage",
+                "custom_attribute_definition_id": "EI7IJQDUKYSHULREPIPH6HNU",
+                "type": "NUMBER",
+                "number_value": 2018,
+                "key": "VINTAGE"
+              },
+              "VARIETAL": {
+                "name": "Varietal",
+                "custom_attribute_definition_id": "VARIETAL_DEFINITION_ID",
+                "type": "SELECTION",
+                "selection_uid_values": [
+                  "MERLOT_SELECTION_ID",
+                  null
+                ],
+                "key": "VARIETAL"
+              },
+              "BRAND": {
+                "name": "Brand",
+                "custom_attribute_definition_id": "BRAND_DEFINITION_ID",
+                "type": "STRING",
+                "string_value": "Dark Horse",
+                "key": "BRAND"
+              }
+            },
+            "item_data": {
+              "name": "Dark Horse Merlot 2018",
+              "product_type": "REGULAR",
+              "description": "A nice red wine",
+              "variations": [
+                {
+                  "type": "ITEM_VARIATION",
+                  "id": "VBJNPHCOKDFECR6VU25WRJUD",
+                  "updated_at": "2020-06-18T17:55:56.646Z",
+                  "version": 1592502956646,
+                  "is_deleted": false,
+                  "present_at_all_locations": true,
+                  "item_variation_data": {
+                    "item_id": "GPOKJPTV2KDLVKCADJ7I77EZ",
+                    "name": "750 mL",
+                    "ordinal": 0,
+                    "pricing_type": "FIXED_PRICING",
+                    "price_money": {
+                      "amount": 1000,
+                      "currency": "USD"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "matched_variation_ids": [
+          "VBJNPHCOKDFECR6VU25WRJUD"
+        ]
       }
     },
     "SearchCatalogObjectsRequest": {
@@ -31420,6 +33145,127 @@
         "php": "/sdk_samples/SearchCustomers/SearchCustomersResponse.php",
         "javascript": "/sdk_samples/SearchCustomers/SearchCustomersResponse.javascript",
         "ruby": "/sdk_samples/SearchCustomers/SearchCustomersResponse.ruby"
+      }
+    },
+    "SearchInvoicesRequest": {
+      "type": "object",
+      "required": [
+        "query"
+      ],
+      "properties": {
+        "query": {
+          "$ref": "#/definitions/InvoiceQuery",
+          "description": "Describes the query criteria for searching invoices."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "The maximum number of invoices to return (200 is the maximum `limit`). \nIf not provided, the server \nuses a default limit of 100 invoices."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint. \nProvide this cursor to retrieve the next set of results for your original query.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        }
+      },
+      "description": "Describes a `SearchInvoices` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "query": {
+            "filter": {
+              "location_ids": [
+                "ES0RJRZYEC39A"
+              ],
+              "customer_ids": [
+                "JDKYHBWT1D4F8MFH63DBMEN8Y4"
+              ]
+            },
+            "sort": {
+              "field": "INVOICE_SORT_DATE",
+              "order": "DESC"
+            },
+            "limit": 100
+          }
+        }
+      }
+    },
+    "SearchInvoicesResponse": {
+      "type": "object",
+      "properties": {
+        "invoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Invoice"
+          },
+          "description": "The list of invoices returned by the search."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "When a response is truncated, it includes a cursor that you can use in a \nsubsequent request to fetch the next set of invoices. If empty, this is the final \nresponse. \nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Describes a `SearchInvoices` response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoices": [
+          {
+            "invoice": {
+              "id": "gt2zv1z6mnUm1V7KMxxf3w",
+              "version": 0,
+              "location_id": "ES0RJRZYEC39A",
+              "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+              "payment_requests": [
+                {
+                  "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+                  "request_method": "EMAIL",
+                  "request_type": "BALANCE",
+                  "due_date": "2030-01-24",
+                  "tipping_enabled": true,
+                  "reminders": [
+                    {
+                      "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                      "relative_scheduled_days": -1,
+                      "message": "Your invoice is due tomorrow",
+                      "status": "PENDING"
+                    }
+                  ],
+                  "computed_amount_money": {
+                    "amount": 10000,
+                    "currency": "USD"
+                  },
+                  "total_completed_amount_money": {
+                    "amount": 0,
+                    "currency": "USD"
+                  }
+                }
+              ],
+              "invoice_number": "inv-100",
+              "title": "Event Planning Services",
+              "description": "We appreciate your business!",
+              "scheduled_at": "2030-01-13T10:00:00Z",
+              "status": "DRAFT",
+              "timezone": "America/Los_Angeles",
+              "created_at": "2020-06-18T17:45:13Z",
+              "updated_at": "2020-06-18T17:45:13Z",
+              "primary_recipient": {
+                "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+                "given_name": "Amelia",
+                "family_name": "Earhart",
+                "email_address": "Amelia.Earhart@example.com",
+                "phone_number": "1-212-555-4240"
+              }
+            }
+          }
+        ],
+        "cursor": "CURSOR"
       }
     },
     "SearchLoyaltyAccountsRequest": {
@@ -32427,7 +34273,6 @@
             "note": "A brief note",
             "device_options": {
               "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
-              "print_receipt": false,
               "tip_settings": {
                 "allow_tipping": false
               },
@@ -32452,7 +34297,6 @@
             "note": "A brief note",
             "device_options": {
               "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
-              "print_receipt": false,
               "tip_settings": {
                 "allow_tipping": false
               },
@@ -32533,7 +34377,7 @@
           "description": "A read-only timestamp in RFC 3339 format; presented in UTC."
         }
       },
-      "description": "A record of the hourly rate, start, and end times for a single work shift \nfor an employee. May include a record of the start and end times for breaks \ntaken during the shift.",
+      "description": "A record of the hourly rate, start, and end times for a single work shift\nfor an employee. May include a record of the start and end times for breaks\ntaken during the shift.",
       "x-release-status": "PUBLIC"
     },
     "ShiftFilter": {
@@ -32653,7 +34497,7 @@
           "description": "Read-only display name assigned to the application\n(e.g. `\"Custom Application\"`, `\"Square POS 4.74 for Android\"`)."
         }
       },
-      "description": "Provides information about the application used to generate an inventory\nchange.",
+      "description": "Provides information about the application used to generate a change.",
       "x-release-status": "PUBLIC"
     },
     "StandardUnitDescription": {
@@ -32970,7 +34814,7 @@
         },
         "cancel_reason": {
           "type": "string",
-          "description": "Present if the status is CANCELED.\nSee [TerminalCheckoutCancelReason](#type-terminalcheckoutcancelreason) for possible values",
+          "description": "Present if the status is CANCELED.\nSee [ActionCancelReason](#type-actioncancelreason) for possible values",
           "x-read-only": true
         },
         "payment_ids": {
@@ -33357,6 +35201,120 @@
         "ruby": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.ruby"
       }
     },
+    "UpdateInvoiceRequest": {
+      "type": "object",
+      "required": [
+        "invoice"
+      ],
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The invoice fields to update. You need to only specify the fields you want to change.\nThe current invoice version must be specified in the version field. For more information,\nsee [Update an invoice](invoices-api/overview#update-an-invoice)."
+        },
+        "idempotency_key": {
+          "maxLength": 128,
+          "type": "string",
+          "description": "A unique string that identifies the `UpdateInvoice` request. If you do not\nprovide `idempotency_key` (or provide an empty string as the value), the endpoint\ntreats each request as independent.\n\nFor more information, see [Idempotency](https://developer.squareup.com/docs/docs/working-with-apis/idempotency)."
+        },
+        "fields_to_clear": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of fields to clear.\nFor examples, see [Update an invoice](https://developer.squareup.com/docs/docs/invoices-api/overview#update-an-invoice)."
+        }
+      },
+      "description": "Describes a `UpdateInvoice` request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "idempotency_key": "4ee82288-0910-499e-ab4c-5d0071dad1be",
+          "invoice": {
+            "payment_requests": [
+              {
+                "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+                "tipping_enabled": false
+              }
+            ]
+          },
+          "fields_to_clear": [
+            "payments_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders"
+          ]
+        }
+      }
+    },
+    "UpdateInvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoice": {
+          "$ref": "#/definitions/Invoice",
+          "description": "The updated invoice."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Describes a `UpdateInvoice` response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "invoice": {
+          "id": "gt2zv1z6mnUm1V7KMxxf3w",
+          "version": 2,
+          "location_id": "ES0RJRZYEC39A",
+          "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
+          "payment_requests": [
+            {
+              "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
+              "request_method": "EMAIL",
+              "request_type": "BALANCE",
+              "due_date": "2030-01-24",
+              "tipping_enabled": false,
+              "reminders": [
+                {
+                  "uid": "beebd363-e47f-4075-8785-c235aaa7df11",
+                  "relative_scheduled_days": -1,
+                  "message": "Your invoice is due tomorrow",
+                  "status": "PENDING"
+                }
+              ],
+              "computed_amount_money": {
+                "amount": 10000,
+                "currency": "USD"
+              },
+              "total_completed_amount_money": {
+                "amount": 0,
+                "currency": "USD"
+              }
+            }
+          ],
+          "invoice_number": "inv-100",
+          "title": "Event Planning Services",
+          "description": "We appreciate your business!",
+          "scheduled_at": "2030-01-13T10:00:00Z",
+          "status": "UNPAID",
+          "timezone": "America/Los_Angeles",
+          "created_at": "2020-06-18T17:45:13Z",
+          "updated_at": "2020-06-18T18:23:11Z",
+          "primary_recipient": {
+            "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            "given_name": "Amelia",
+            "family_name": "Earhart",
+            "email_address": "Amelia.Earhart@example.com",
+            "phone_number": "1-212-555-4240"
+          },
+          "next_payment_amount_money": {
+            "amount": 10000,
+            "currency": "USD"
+          }
+        }
+      }
+    },
     "UpdateItemModifierListsRequest": {
       "type": "object",
       "required": [
@@ -33593,7 +35551,7 @@
           ],
           "status": "ACTIVE",
           "created_at": "2019-07-19T17:58:25Z",
-          "merchant_id": "Q3X50GJ7A21EW",
+          "merchant_id": "MERCHANT_ID",
           "country": "US",
           "language_code": "en-US",
           "currency": "USD",
@@ -37009,7 +38967,7 @@
           "description": "A read-only timestamp in RFC 3339 format; presented in UTC"
         }
       },
-      "description": "Sets the Day of the week and hour of the day that a business starts a \nwork week. Used for the calculation of overtime pay.",
+      "description": "Sets the Day of the week and hour of the day that a business starts a\nwork week. Used for the calculation of overtime pay.",
       "x-release-status": "PUBLIC"
     }
   }
