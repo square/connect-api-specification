@@ -82,7 +82,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -121,7 +121,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -165,7 +165,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -201,7 +201,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [],
         "parameters": [
           {
@@ -237,7 +237,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -268,7 +268,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -364,7 +364,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -405,7 +405,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -442,7 +442,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -491,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -525,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -579,7 +579,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -620,7 +620,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -657,7 +657,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -706,7 +706,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -828,7 +828,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -870,7 +870,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -909,7 +909,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -948,7 +948,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -998,7 +998,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1042,7 +1042,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1086,7 +1086,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1135,7 +1135,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1203,7 +1203,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1252,7 +1252,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1294,7 +1294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1344,7 +1344,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1391,7 +1391,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1449,7 +1449,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1491,7 +1491,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1541,7 +1541,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1588,7 +1588,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1646,7 +1646,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1688,7 +1688,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1738,7 +1738,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1785,7 +1785,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1843,7 +1843,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1903,7 +1903,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -1961,7 +1961,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2011,7 +2011,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2061,7 +2061,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2108,7 +2108,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2155,7 +2155,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2213,7 +2213,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2268,7 +2268,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2325,7 +2325,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2380,7 +2380,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2437,7 +2437,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2495,7 +2495,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2550,7 +2550,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2616,7 +2616,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2658,7 +2658,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2708,7 +2708,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2755,7 +2755,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2802,7 +2802,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2860,7 +2860,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2918,7 +2918,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -2973,7 +2973,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3039,7 +3039,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3103,7 +3103,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3148,7 +3148,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3204,7 +3204,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3246,7 +3246,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3296,7 +3296,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3343,7 +3343,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3401,7 +3401,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3464,7 +3464,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3521,7 +3521,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3605,7 +3605,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3651,7 +3651,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3726,7 +3726,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3774,7 +3774,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3858,7 +3858,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3902,7 +3902,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": []
@@ -3941,7 +3941,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -3994,7 +3994,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4033,7 +4033,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4072,7 +4072,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4146,7 +4146,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4192,7 +4192,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4252,7 +4252,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4293,7 +4293,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4334,7 +4334,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4375,7 +4375,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4406,7 +4406,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4452,7 +4452,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4493,7 +4493,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4530,7 +4530,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4576,7 +4576,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4618,7 +4618,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4659,7 +4659,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4700,7 +4700,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4741,7 +4741,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4792,7 +4792,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4834,7 +4834,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4873,7 +4873,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4915,7 +4915,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4954,7 +4954,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -4994,7 +4994,7 @@
           "CUSTOMERS_WRITE",
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5044,7 +5044,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5086,7 +5086,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5127,7 +5127,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5167,7 +5167,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5204,7 +5204,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5241,7 +5241,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5289,7 +5289,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5337,7 +5337,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5384,7 +5384,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5431,7 +5431,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5480,7 +5480,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5535,7 +5535,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5577,7 +5577,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5618,7 +5618,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5675,7 +5675,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5716,7 +5716,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5757,7 +5757,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5798,7 +5798,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5845,7 +5845,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5894,7 +5894,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5944,7 +5944,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -5984,7 +5984,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6044,7 +6044,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6083,7 +6083,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6122,7 +6122,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6163,7 +6163,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6204,7 +6204,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6245,7 +6245,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6284,7 +6284,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6337,7 +6337,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6391,7 +6391,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6447,7 +6447,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6490,7 +6490,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6533,7 +6533,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6581,7 +6581,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6621,7 +6621,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6673,7 +6673,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6725,7 +6725,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6775,7 +6775,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6826,7 +6826,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6867,7 +6867,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6904,7 +6904,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6942,7 +6942,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -6991,7 +6991,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7044,7 +7044,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7083,7 +7083,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7124,7 +7124,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7165,7 +7165,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7202,7 +7202,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7240,7 +7240,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7289,7 +7289,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7336,7 +7336,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7385,7 +7385,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7415,7 +7415,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7456,7 +7456,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7494,7 +7494,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7544,7 +7544,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7617,7 +7617,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7690,7 +7690,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7739,7 +7739,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7787,7 +7787,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7836,7 +7836,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7894,7 +7894,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -7967,7 +7967,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8038,7 +8038,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8088,7 +8088,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8137,7 +8137,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8186,7 +8186,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8244,7 +8244,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8293,7 +8293,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8335,7 +8335,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8377,7 +8377,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8418,7 +8418,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8468,7 +8468,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8518,7 +8518,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8560,7 +8560,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8592,7 +8592,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8642,7 +8642,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8684,7 +8684,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8726,7 +8726,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8765,7 +8765,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8806,7 +8806,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8855,7 +8855,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8894,7 +8894,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -8932,7 +8932,7 @@
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": []
@@ -8971,7 +8971,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9014,7 +9014,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9064,7 +9064,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9151,7 +9151,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9192,7 +9192,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9233,7 +9233,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9272,7 +9272,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9311,7 +9311,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9326,15 +9326,6 @@
             "type": "string",
             "in": "path",
             "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/CompletePaymentRequest"
-            }
           }
         ],
         "responses": {
@@ -9359,7 +9350,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9438,7 +9429,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9479,7 +9470,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9506,6 +9497,297 @@
         }
       }
     },
+    "/v2/subscriptions": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "CreateSubscription",
+        "operationId": "CreateSubscription",
+        "description": "Creates a subscription for a customer to a subscription plan.\n\nIf you provide a card on file in the request, Square charges the card for \nthe subscription. Otherwise, Square bills an invoice to the customer\u0027s email \naddress. The subscription starts immediately, unless the request includes \nthe optional `start_date`. Each individual subscription is associated with a particular location. \n\nFor more information, \nsee [Subscription API Overview](/docs/subscriptions-api/overview).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ",
+          "PAYMENTS_WRITE",
+          "SUBSCRIPTIONS_WRITE",
+          "ITEMS_READ",
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-08-12",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ",
+              "PAYMENTS_WRITE",
+              "SUBSCRIPTIONS_WRITE",
+              "ITEMS_READ",
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateSubscriptionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateSubscriptionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/subscriptions/search": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "SearchSubscriptions",
+        "operationId": "SearchSubscriptions",
+        "description": "Searches for subscriptions. \nResults are ordered chronologically by subscription creation date. If\nthe request specifies more than one location ID, \nthe endpoint orders the result \nby location ID, and then by creation date within each location. If no locations are given\nin the query, all locations are searched.\n\nYou can also optionally specify `customer_ids` to search by customer. \nIf left unset, all customers \nassociated with the specified locations are returned. \nIf the request specifies customer IDs, the endpoint orders results \nfirst by location, within location by customer ID, and within \ncustomer by subscription creation date.\n\nFor more information, see \n[Retrieve subscriptions](/docs/subscriptions-api/overview#retrieve-subscriptions).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "SUBSCRIPTIONS_READ"
+        ],
+        "x-sq-version": "2020-08-12",
+        "security": [
+          {
+            "oauth2": [
+              "SUBSCRIPTIONS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/SearchSubscriptionsRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchSubscriptionsResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/subscriptions/{subscription_id}": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "RetrieveSubscription",
+        "operationId": "RetrieveSubscription",
+        "description": "Retrieves a subscription.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "SUBSCRIPTIONS_READ"
+        ],
+        "x-sq-version": "2020-08-12",
+        "security": [
+          {
+            "oauth2": [
+              "SUBSCRIPTIONS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "description": "The ID of the subscription to retrieve.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/RetrieveSubscriptionResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "UpdateSubscription",
+        "operationId": "UpdateSubscription",
+        "description": "Updates a subscription. You can set, modify, and clear the \n`subscription` field values. For more information and examples, see \n[Update subscriptions](/docs/subscriptions-api/overview#update-subscriptions).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "CUSTOMERS_READ",
+          "PAYMENTS_WRITE",
+          "SUBSCRIPTIONS_WRITE",
+          "ITEMS_READ",
+          "ORDERS_WRITE",
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2020-08-12",
+        "security": [
+          {
+            "oauth2": [
+              "CUSTOMERS_READ",
+              "PAYMENTS_WRITE",
+              "SUBSCRIPTIONS_WRITE",
+              "ITEMS_READ",
+              "ORDERS_WRITE",
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "description": "The ID for the subscription to update.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateSubscriptionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateSubscriptionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/subscriptions/{subscription_id}/cancel": {
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "CancelSubscription",
+        "operationId": "CancelSubscription",
+        "description": "Cancels a subscription immediately and sets the subscription\n`status` to `CANCELED`. You can also use the `UpdateSubscription`\nendpoint to cancel a subscription at a future date. For more\ninformation, see\n[CancelSubscriptions](/docs/subscriptions-api/overview#cancel-subscriptions).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "SUBSCRIPTIONS_WRITE"
+        ],
+        "x-sq-version": "2020-08-12",
+        "security": [
+          {
+            "oauth2": [
+              "SUBSCRIPTIONS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "description": "The ID of the subscription to cancel.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CancelSubscriptionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/subscriptions/{subscription_id}/events": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "ListSubscriptionEvents",
+        "operationId": "ListSubscriptionEvents",
+        "description": "Lists all events for a specific subscription.\nIn the current implementation, only `START_SUBSCRIPTION` and `STOP_SUBSCRIPTION` (when the subscription was canceled) events are returned.",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "SUBSCRIPTIONS_READ"
+        ],
+        "x-sq-version": "2020-08-12",
+        "security": [
+          {
+            "oauth2": [
+              "SUBSCRIPTIONS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "subscription_id",
+            "description": "The ID of the subscription to retrieve the events for.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "cursor",
+            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination).",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "description": "The upper limit on the number of subscription events to return \nin the response. \n\nDefault: `200`",
+            "x-is-beta": true,
+            "type": "integer",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListSubscriptionEventsResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/team-members": {
       "post": {
         "tags": [
@@ -9518,7 +9800,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9559,7 +9841,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9600,7 +9882,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9641,7 +9923,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9682,7 +9964,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9719,7 +10001,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9767,7 +10049,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9804,7 +10086,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9853,7 +10135,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9895,7 +10177,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9937,7 +10219,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -9978,7 +10260,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-07-22",
+        "x-sq-version": "2020-08-12",
         "security": [
           {
             "oauth2": [
@@ -10474,6 +10756,7 @@
         "PRODUCT_SET",
         "TIME_PERIOD",
         "MEASUREMENT_UNIT",
+        "SUBSCRIPTION_PLAN",
         "ITEM_OPTION",
         "ITEM_OPTION_VAL",
         "CUSTOM_ATTRIBUTE_DEFINITION",
@@ -10527,6 +10810,10 @@
         {
           "name": "MEASUREMENT_UNIT",
           "description": "A measurement unit, corresponding to `CatalogMeasurementUnit`. The unit of\nmeasure and precision in which an item variation should be sold."
+        },
+        {
+          "name": "SUBSCRIPTION_PLAN",
+          "description": "A subscription plan, corresponding to \n`CatalogSubscriptionPlan`.\n\nThe subscription plan data is stored in the `subscription_plan_data` field of the \n`CatalogObject`."
         },
         {
           "name": "ITEM_OPTION",
@@ -15276,6 +15563,136 @@
       "description": "The order (e.g., chronological or alphabetical) in which results from a request are returned.",
       "x-release-status": "PUBLIC"
     },
+    "SubscriptionCadence": {
+      "type": "string",
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "EVERY_TWO_WEEKS",
+        "THIRTY_DAYS",
+        "SIXTY_DAYS",
+        "NINETY_DAYS",
+        "MONTHLY",
+        "EVERY_TWO_MONTHS",
+        "QUARTERLY",
+        "EVERY_FOUR_MONTHS",
+        "EVERY_SIX_MONTHS",
+        "ANNUAL",
+        "EVERY_TWO_YEARS"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "DAILY",
+          "description": "Once per day"
+        },
+        {
+          "name": "WEEKLY",
+          "description": "Once per week"
+        },
+        {
+          "name": "EVERY_TWO_WEEKS",
+          "description": "Every two weeks"
+        },
+        {
+          "name": "THIRTY_DAYS",
+          "description": "Once every 30 days"
+        },
+        {
+          "name": "SIXTY_DAYS",
+          "description": "Once every 60 days"
+        },
+        {
+          "name": "NINETY_DAYS",
+          "description": "Once every 90 days"
+        },
+        {
+          "name": "MONTHLY",
+          "description": "Once per month"
+        },
+        {
+          "name": "EVERY_TWO_MONTHS",
+          "description": "Once every two months"
+        },
+        {
+          "name": "QUARTERLY",
+          "description": "Once every three months"
+        },
+        {
+          "name": "EVERY_FOUR_MONTHS",
+          "description": "Once every four months"
+        },
+        {
+          "name": "EVERY_SIX_MONTHS",
+          "description": "Once every six months"
+        },
+        {
+          "name": "ANNUAL",
+          "description": "Once per year"
+        },
+        {
+          "name": "EVERY_TWO_YEARS",
+          "description": "Once every two years"
+        }
+      ],
+      "description": "Determines the billing cadence of a `Subscription`",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "SubscriptionEventSubscriptionEventType": {
+      "type": "string",
+      "enum": [
+        "START_SUBSCRIPTION",
+        "PLAN_CHANGE",
+        "STOP_SUBSCRIPTION"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "START_SUBSCRIPTION",
+          "description": "The subscription started."
+        },
+        {
+          "name": "PLAN_CHANGE",
+          "description": "The subscription plan changed."
+        },
+        {
+          "name": "STOP_SUBSCRIPTION",
+          "description": "The subscription stopped."
+        }
+      ],
+      "description": "The possible subscription event types.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "SubscriptionStatus": {
+      "type": "string",
+      "enum": [
+        "DEFAULT_SUBSCRIPTION_STATUS_DO_NOT_USE",
+        "PENDING",
+        "ACTIVE",
+        "CANCELED"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "DEFAULT_SUBSCRIPTION_STATUS_DO_NOT_USE",
+          "description": ""
+        },
+        {
+          "name": "PENDING",
+          "description": "The subscription starts in the future."
+        },
+        {
+          "name": "ACTIVE",
+          "description": "The subscription is active."
+        },
+        {
+          "name": "CANCELED",
+          "description": "The subscription is canceled."
+        }
+      ],
+      "description": "Possible subscription status values.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "TaxCalculationPhase": {
       "type": "string",
       "enum": [
@@ -19403,6 +19820,48 @@
         }
       }
     },
+    "CancelSubscriptionRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines parameters in a \n[CancelSubscription](#endpoint-subscriptions-cancelsubscription) endpoint request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CancelSubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        },
+        "subscription": {
+          "$ref": "#/definitions/Subscription",
+          "description": "The canceled subscription."
+        }
+      },
+      "description": "Defines fields that are included in a \n[CancelSubscription](#endpoint-subscriptions-cancelsubscription) response.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "subscription": {
+          "id": "910afd30-464a-4e00-a8d8-2296eEXAMPLE",
+          "location_id": "S8GWD5R9QB376",
+          "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+          "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+          "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
+          "start_date": "2020-04-24",
+          "canceled_date": "2020-05-01",
+          "paid_until_date": "2020-05-01",
+          "status": "ACTIVE",
+          "created_at": "2020-08-03T21:53:10Z",
+          "version": 1594311617331,
+          "timezone": "America/Los_Angeles"
+        }
+      }
+    },
     "CancelTerminalCheckoutRequest": {
       "type": "object",
       "properties": {},
@@ -20782,6 +21241,12 @@
           "x-release-status": "BETA",
           "x-is-beta": true
         },
+        "subscription_plan_data": {
+          "$ref": "#/definitions/CatalogSubscriptionPlan",
+          "description": "Structured data for a `CatalogSubscriptionPlan`, set for CatalogObjects of type `SUBSCRIPTION_PLAN`.",
+          "x-release-status": "BETA",
+          "x-is-beta": true
+        },
         "item_option_data": {
           "$ref": "#/definitions/CatalogItemOption",
           "description": "Structured data for a `CatalogItemOption`, set for CatalogObjects of type `ITEM_OPTION`.",
@@ -20807,7 +21272,7 @@
           "x-is-beta": true
         }
       },
-      "description": "The wrapper object for the Catalog entries of a given object type. \n\nThe type of a particular `CatalogObject` is determined by the value of the\n`type` attribute and only the corresponding data attribute can be set on the `CatalogObject` instance.\nFor example, the following list shows some instances of `CatalogObject` of a given `type` and\ntheir corresponding data atrribute that can be set:\n- For a `CatalogObject` of the `ITEM` type, set the `item_data` attribute to yield the `CatalogItem` object. \n- For a `CatalogObject` of the `ITEM_VARIATION` type, set the `item_variation_data` attribute to yield the `CatalogItemVariation` object.\n- For a `CatalogObject` of the `MODIFIER` type, set the `modifier_data` attribute to yield the `CatalogModifier` object.\n- For a `CatalogObject` of the `MODIFIER_LIST` type, set the `modifier_list_data` attribute to yield the `CatalogModifierList` object.\n- For a `CatalogObject` of the `CATEGORY` type, set the `category_data` attribute to yield the `CatalogCategory` object.\n- For a `CatalogObject` of the `DISCOUNT` type, set the `discount_data` attribute to yield the `CatalogDiscount` object.\n- For a `CatalogObject` of the `TAX` type, set the `tax_data` attribute to yield the `CatalogTax` object.\n- For a `CatalogObject` of the `IMAGE` type, set the `image_data` attribute to yield the `CatalogImageData`  object.\n- For a `CatalogObject` of the `QUICK_AMOUNTS_SETTINGS` type, set the `quick_amounts_settings_data` attribute to yield the `CatalogQuickAmountsSettings` object.\n- For a `CatalogObject` of the `PRICING_RULE` type, set the `pricing_rule_data` attribute to yield the `CatalogPricingRule` object.\n- For a `CatalogObject` of the `TIME_PERIOD` type, set the `time_period_data` attribute to yield the `CatalogTimePeriod` object.\n- For a `CatalogObject` of the `PRODUCT_SET` type, set the `product_set_data` attribute to yield the `CatalogProductSet`  object.\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
+      "description": "The wrapper object for the Catalog entries of a given object type. \n\nThe type of a particular `CatalogObject` is determined by the value of the\n`type` attribute and only the corresponding data attribute can be set on the `CatalogObject` instance.\nFor example, the following list shows some instances of `CatalogObject` of a given `type` and\ntheir corresponding data atrribute that can be set:\n- For a `CatalogObject` of the `ITEM` type, set the `item_data` attribute to yield the `CatalogItem` object. \n- For a `CatalogObject` of the `ITEM_VARIATION` type, set the `item_variation_data` attribute to yield the `CatalogItemVariation` object.\n- For a `CatalogObject` of the `MODIFIER` type, set the `modifier_data` attribute to yield the `CatalogModifier` object.\n- For a `CatalogObject` of the `MODIFIER_LIST` type, set the `modifier_list_data` attribute to yield the `CatalogModifierList` object.\n- For a `CatalogObject` of the `CATEGORY` type, set the `category_data` attribute to yield the `CatalogCategory` object.\n- For a `CatalogObject` of the `DISCOUNT` type, set the `discount_data` attribute to yield the `CatalogDiscount` object.\n- For a `CatalogObject` of the `TAX` type, set the `tax_data` attribute to yield the `CatalogTax` object.\n- For a `CatalogObject` of the `IMAGE` type, set the `image_data` attribute to yield the `CatalogImageData`  object.\n- For a `CatalogObject` of the `QUICK_AMOUNTS_SETTINGS` type, set the `quick_amounts_settings_data` attribute to yield the `CatalogQuickAmountsSettings` object.\n- For a `CatalogObject` of the `PRICING_RULE` type, set the `pricing_rule_data` attribute to yield the `CatalogPricingRule` object.\n- For a `CatalogObject` of the `TIME_PERIOD` type, set the `time_period_data` attribute to yield the `CatalogTimePeriod` object.\n- For a `CatalogObject` of the `PRODUCT_SET` type, set the `product_set_data` attribute to yield the `CatalogProductSet`  object.\n- For a `CatalogObject` of the `SUBSCRIPTION_PLAN` type, set the `subscription_plan_data` attribute to yield the `CatalogSubscriptionPlan` object.\n\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
       "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
@@ -21227,6 +21692,25 @@
         }
       },
       "description": "A parent Catalog Object model represents a set of Quick Amounts and the settings control the amounts.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "CatalogSubscriptionPlan": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the plan."
+        },
+        "phases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubscriptionPhase"
+          },
+          "description": "A list of SubscriptionPhase containing the `SubscriptionPhase` for this plan."
+        }
+      },
+      "description": "Describes a subscription plan. For more information, see\n[Set Up and Manage a Subscription Plan](/docs/subscriptions-api/setup-plan).",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -22239,7 +22723,7 @@
       "properties": {
         "idempotency_key": {
           "type": "string",
-          "description": "The idempotency key for the request.\tSee the\n[Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency) guide for more information."
+          "description": "The idempotency key for the request. See the\n[Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency) guide for more information."
         },
         "given_name": {
           "type": "string",
@@ -23638,6 +24122,119 @@
           "version": 1,
           "created_at": "2019-02-28T00:39:02Z",
           "updated_at": "2019-02-28T00:39:02Z"
+        }
+      }
+    },
+    "CreateSubscriptionRequest": {
+      "type": "object",
+      "required": [
+        "idempotency_key",
+        "location_id",
+        "plan_id",
+        "customer_id"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "minLength": 1,
+          "type": "string",
+          "description": "A unique string that identifies this `CreateSubscription` request.\nIf you do not provide a unique string (or provide an empty string as the value),\nthe endpoint treats each request as independent.\n\nFor more information, see [Idempotency keys](https://developer.squareup.com/docs/docs/working-with-apis/idempotency)."
+        },
+        "location_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the location the subscription is associated with."
+        },
+        "plan_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the subscription plan. For more information, see \n[Subscription Plan Overview](https://developer.squareup.com/docs/docs/subscriptions/overview)."
+        },
+        "customer_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The ID of the `customer` profile."
+        },
+        "start_date": {
+          "type": "string",
+          "description": "The start date of the subscription, in YYYY-MM-DD format. For example,\n2013-01-15. If the start date is left empty, the subscription begins \nimmediately."
+        },
+        "canceled_date": {
+          "type": "string",
+          "description": "The date when the subscription should be canceled, in \nYYYY-MM-DD format (for example, 2025-02-29). This overrides the plan configuration \nif it comes before the date the subscription would otherwise end."
+        },
+        "tax_percentage": {
+          "maxLength": 10,
+          "type": "string",
+          "description": "The tax to add when billing the subscription.\nThe percentage is expressed in decimal form, using a `\u0027.\u0027` as the decimal\nseparator and without a `\u0027%\u0027` sign. For example, a value of 7.5\ncorresponds to 7.5%."
+        },
+        "price_override_money": {
+          "$ref": "#/definitions/Money",
+          "description": "A custom price to apply for the subscription. If specified, \nit overrides the price configured by the subscription plan."
+        },
+        "card_id": {
+          "type": "string",
+          "description": "The ID of the `customer](#type-customer) [card` to charge.\nIf not specified, Square sends an invoice via email. For an example to\ncreate a customer and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/docs/subscriptions-api/walkthrough)."
+        },
+        "timezone": {
+          "type": "string",
+          "description": "The timezone that is used in date calculations for the subscription. If unset, defaults to\nthe location timezone. If a timezone is not configured for the location, defaults to \"America/New_York\".\nFormat: the IANA Timezone Database identifier for the location timezone. For\na list of time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
+        }
+      },
+      "description": "Defines parameters in a \n[CreateSubscription](#endpoint-subscriptions-createsubscription) endpoint request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
+          "location_id": "S8GWD5R9QB376",
+          "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+          "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+          "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
+          "start_date": "2020-08-01",
+          "tax_percentage": "5",
+          "price_override_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "timezone": "America/Los_Angeles"
+        }
+      }
+    },
+    "CreateSubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        },
+        "subscription": {
+          "$ref": "#/definitions/Subscription",
+          "description": "The newly created subscription. \n\nFor more information, see \n[Subscription object](https://developer.squareup.com/docs/docs/subscriptions-api/overview#subscription-object)."
+        }
+      },
+      "description": "Defines the fields that are included in the response from the\n[CreateSubscription](#endpoint-subscriptions-createsubscription) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "subscription": {
+          "id": "56214fb2-cc85-47a1-93bc-44f3766bb56f",
+          "location_id": "S8GWD5R9QB376",
+          "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+          "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+          "start_date": "2020-08-01",
+          "status": "PENDING",
+          "tax_percentage": "5",
+          "price_override_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "version": 1594155459464,
+          "created_at": "2020-08-03T21:53:10Z",
+          "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
+          "timezone": "America/Los_Angeles"
         }
       }
     },
@@ -27684,6 +28281,65 @@
         "php": "/sdk_samples/ListRefunds/ListRefundsResponse.php",
         "javascript": "/sdk_samples/ListRefunds/ListRefundsResponse.javascript",
         "ruby": "/sdk_samples/ListRefunds/ListRefundsResponse.ruby"
+      }
+    },
+    "ListSubscriptionEventsRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        },
+        "limit": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "The upper limit on the number of subscription events to return \nin the response. \n\nDefault: `200`"
+        }
+      },
+      "description": "Defines parameters in a \n[ListSubscriptionEvents](#endpoint-subscriptions-listsubscriptionevents)\nendpoint request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "ListSubscriptionEventsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        },
+        "subscription_events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubscriptionEvent"
+          },
+          "description": "The `SubscriptionEvents` retrieved."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "When a response is truncated, it includes a cursor that you can \nuse in a subsequent request to fetch the next set of events. \nIf empty, this is the final response.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        }
+      },
+      "description": "Defines the fields that are included in the response from the\n[ListSubscriptionEvents](#endpoint-subscriptions-listsubscriptionevents)\nendpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "subscription_events": [
+          {
+            "id": "06809161-3867-4598-8269-8aea5be4f9de",
+            "subscription_event_type": "START_SUBSCRIPTION",
+            "effective_date": "2020-04-24",
+            "plan_id": "6JHXF3B2CW3YKHDV4XEM674H"
+          },
+          {
+            "id": "a0c08083-5db0-4800-85c7-d398de4fbb6e",
+            "subscription_event_type": "STOP_SUBSCRIPTION",
+            "effective_date": "2020-05-06",
+            "plan_id": "6JHXF3B2CW3YKHDV4XEM674H"
+          }
+        ]
       }
     },
     "ListTransactionsRequest": {
@@ -32329,6 +32985,54 @@
         }
       }
     },
+    "RetrieveSubscriptionRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Defines parameters in a \n[RetrieveSubscription](#endpoint-subscriptions-retrievesubscription) endpoint request.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "RetrieveSubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        },
+        "subscription": {
+          "$ref": "#/definitions/Subscription",
+          "description": "The subscription retrieved."
+        }
+      },
+      "description": "Defines the fields that are included in the response from the\n[RetrieveSubscription](#endpoint-subscriptions-retrievesubscription) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "subscription": {
+          "id": "8151fc89-da15-4eb9-a685-1a70883cebfc",
+          "location_id": "S8GWD5R9QB376",
+          "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+          "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+          "start_date": "2020-05-11",
+          "charged_through_date": "2020-06-11",
+          "status": "ACTIVE",
+          "invoice_ids": [
+            "grebK0Q_l8H4fqoMMVvt-Q",
+            "rcX_i3sNmHTGKhI4W2mceA"
+          ],
+          "price_override_money": {
+            "amount": 1000,
+            "currency": "USD"
+          },
+          "created_at": "2020-08-03T21:53:10Z",
+          "paid_until_date": "2020-06-11",
+          "timezone": "America/Los_Angeles"
+        }
+      }
+    },
     "RetrieveTeamMemberRequest": {
       "type": "object",
       "properties": {},
@@ -33981,6 +34685,155 @@
         ]
       }
     },
+    "SearchSubscriptionsFilter": {
+      "type": "object",
+      "properties": {
+        "customer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A filter to select subscriptions based on the customer."
+        },
+        "location_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A filter to select subscriptions based the location."
+        }
+      },
+      "description": "Represents a set of SearchSubscriptionsQuery filters used to limit the set of Subscriptions returned by SearchSubscriptions.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "SearchSubscriptionsQuery": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "$ref": "#/definitions/SearchSubscriptionsFilter",
+          "description": "A list of filtering criteria."
+        }
+      },
+      "description": "Represents a query (including filtering criteria) used to search for subscriptions.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "SearchSubscriptionsRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        },
+        "limit": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "The upper limit on the number of subscriptions to return \nin the response. \n\nDefault: `200`"
+        },
+        "query": {
+          "$ref": "#/definitions/SearchSubscriptionsQuery",
+          "description": "Query subscriptions based on the given conditions and sort order.\nCalling SearchSubscriptions without an explicit query parameter will return all subscriptions."
+        }
+      },
+      "description": "Defines parameters in a\n[SearchSubscriptions](#endpoint-subscriptions-searchsubscriptions) endpoint \nrequest.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "query": {
+            "filter": {
+              "location_ids": [
+                "S8GWD5R9QB376"
+              ],
+              "customer_ids": [
+                "CHFGVKYY8RSV93M5KCYTG4PN0G"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "SearchSubscriptionsResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Subscription"
+          },
+          "description": "The search result."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "When a response is truncated, it includes a cursor that you can \nuse in a subsequent request to fetch the next set of subscriptions. \nIf empty, this is the final response.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/docs/working-with-apis/pagination)."
+        }
+      },
+      "description": "Defines the fields that are included in the response from the\n[SearchSubscriptions](#endpoint-subscriptions-searchsubscriptions) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "subscriptions": [
+          {
+            "id": "de86fc96-8664-474b-af1a-abbe59cacf0e",
+            "location_id": "S8GWD5R9QB376",
+            "plan_id": "L3TJVDHVBEQEGQDEZL2JJM7R",
+            "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+            "start_date": "2020-04-14",
+            "canceled_date": "2020-04-14",
+            "charged_through_date": "2020-05-14",
+            "status": "CANCELED",
+            "created_at": "2020-08-03T21:53:10Z",
+            "card_id": "ccof:mueUsvgajChmjEbp4GB",
+            "paid_until_date": "2020-05-14",
+            "timezone": "UTC"
+          },
+          {
+            "id": "56214fb2-cc85-47a1-93bc-44f3766bb56f",
+            "location_id": "S8GWD5R9QB376",
+            "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+            "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+            "start_date": "2020-08-01",
+            "status": "PENDING",
+            "tax_percentage": "5",
+            "price_override_money": {
+              "amount": 100,
+              "currency": "USD"
+            },
+            "version": 1594155459464,
+            "created_at": "2020-08-03T21:53:10Z",
+            "timezone": "America/Los_Angeles"
+          },
+          {
+            "id": "8151fc89-da15-4eb9-a685-1a70883cebfc",
+            "location_id": "S8GWD5R9QB376",
+            "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+            "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+            "start_date": "2020-05-11",
+            "charged_through_date": "2020-06-11",
+            "status": "ACTIVE",
+            "invoice_ids": [
+              "grebK0Q_l8H4fqoMMVvt-Q",
+              "rcX_i3sNmHTGKhI4W2mceA"
+            ],
+            "price_override_money": {
+              "amount": 1000,
+              "currency": "USD"
+            },
+            "created_at": "2020-08-03T21:53:10Z",
+            "paid_until_date": "2020-06-11",
+            "timezone": "America/Los_Angeles"
+          }
+        ]
+      }
+    },
     "SearchTeamMembersFilter": {
       "type": "object",
       "properties": {
@@ -34589,6 +35442,157 @@
           "brand_dispute_id": "100000399240"
         }
       }
+    },
+    "Subscription": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "The Square-assigned ID of the subscription.",
+          "x-read-only": true
+        },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the location associated with the subscription.",
+          "x-read-only": true
+        },
+        "plan_id": {
+          "type": "string",
+          "description": "The ID of the associated `subscription plan`.",
+          "x-read-only": true
+        },
+        "customer_id": {
+          "type": "string",
+          "description": "The ID of the associated `customer` profile.",
+          "x-read-only": true
+        },
+        "start_date": {
+          "type": "string",
+          "description": "The start date of the subscription, in YYYY-MM-DD format (for example,\n2013-01-15).",
+          "x-read-only": true
+        },
+        "canceled_date": {
+          "type": "string",
+          "description": "The subscription cancellation date, in YYYY-MM-DD format (for\nexample, 2013-01-15). On this date, the subscription status changes \nto `CANCELED` and the subscription billing stops. \nIf you don\u0027t set this field, the subscription plan dictates if and \nwhen subscription ends. \n\nYou cannot update this field, you can only clear it."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the subscription.\nSee [SubscriptionStatus](#type-subscriptionstatus) for possible values",
+          "x-read-only": true
+        },
+        "tax_percentage": {
+          "type": "string",
+          "description": "The tax amount applied when billing the subscription. The\npercentage is expressed in decimal form, using a `\u0027.\u0027` as the decimal\nseparator and without a `\u0027%\u0027` sign. For example, a value of `7.5`\ncorresponds to 7.5%."
+        },
+        "invoice_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IDs of the `invoices` created for the \nsubscription, listed in order when the invoices were created \n(oldest invoices appear first).",
+          "x-read-only": true
+        },
+        "price_override_money": {
+          "$ref": "#/definitions/Money",
+          "description": "A custom price to apply for the subscription. If specified, \nit overrides the price configured by the subscription plan."
+        },
+        "version": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The version of the object. When updating an object, the version\nsupplied must match the version in the database, otherwise the write will\nbe rejected as conflicting.",
+          "x-read-only": true
+        },
+        "created_at": {
+          "type": "string",
+          "description": "The timestamp when the subscription was created, in RFC 3339 format.",
+          "x-read-only": true
+        },
+        "card_id": {
+          "type": "string",
+          "description": "The ID of the `customer](#type-customer) [card`\nthat is charged for the subscription."
+        },
+        "paid_until_date": {
+          "type": "string",
+          "description": "The date up to which the customer is invoiced for the\nsubscription, in YYYY-MM-DD format (for example, 2013-01-15).\n\nAfter the invoice is paid for a given billing period,\nthis date will be the last day of the billing period.\nFor example,\nsuppose for the month of May a customer gets an invoice\n(or charged the card) on May 1. For the monthly billing scenario,\nthis date is then set to May 31.",
+          "x-read-only": true
+        },
+        "timezone": {
+          "type": "string",
+          "description": "Timezone that will be used in date calculations for the subscription.\nDefaults to the timezone of the location based on `location_id`.\nFormat: the IANA Timezone Database identifier for the location timezone (for example, `America/Los_Angeles`).",
+          "x-read-only": true
+        }
+      },
+      "description": "Represents a customer subscription to a subscription plan.\nFor an overview of the `Subscription` type, see \n[Subscription object](/docs/subscriptions-api/overview#subscription-object-overview).",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "SubscriptionEvent": {
+      "type": "object",
+      "required": [
+        "id",
+        "subscription_event_type",
+        "effective_date",
+        "plan_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The ID of the subscription event."
+        },
+        "subscription_event_type": {
+          "type": "string",
+          "description": "Type of the subscription event.\nSee [SubscriptionEventSubscriptionEventType](#type-subscriptioneventsubscriptioneventtype) for possible values"
+        },
+        "effective_date": {
+          "type": "string",
+          "description": "The date, in YYYY-MM-DD format (for\nexample, 2013-01-15), when the subscription event went into effect."
+        },
+        "plan_id": {
+          "type": "string",
+          "description": "The ID of the subscription plan associated with the subscription."
+        }
+      },
+      "description": "Describes changes to subscription and billing states.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "SubscriptionPhase": {
+      "type": "object",
+      "required": [
+        "cadence",
+        "recurring_price_money"
+      ],
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The Square-assigned ID of the subscription phase.",
+          "x-read-only": true
+        },
+        "cadence": {
+          "type": "string",
+          "description": "The billing cadence of the phase. For example, weekly or monthly.\nSee [SubscriptionCadence](#type-subscriptioncadence) for possible values",
+          "x-read-only": true
+        },
+        "periods": {
+          "type": "integer",
+          "description": "The number of `cadence`s the phase lasts. If not set, the phase never ends. Only the last phase can be indefinite.",
+          "x-read-only": true
+        },
+        "recurring_price_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount to bill for each `cadence`."
+        },
+        "ordinal": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The position this phase appears in the sequence of phases defined for the plan, indexed from 0.",
+          "x-read-only": true
+        }
+      },
+      "description": "Describes a phase in a subscription plan. For more information, see\n[Set Up and Manage a Subscription Plan](/docs/subscriptions-api/setup-plan).",
+      "x-release-status": "BETA",
+      "x-is-beta": true
     },
     "TeamMember": {
       "type": "object",
@@ -35842,6 +36846,64 @@
           "version": 2,
           "created_at": "2019-02-28T00:39:02Z",
           "updated_at": "2019-02-28T00:42:41Z"
+        }
+      }
+    },
+    "UpdateSubscriptionRequest": {
+      "type": "object",
+      "properties": {
+        "subscription": {
+          "$ref": "#/definitions/Subscription",
+          "description": "The subscription object containing the current version, and fields to update.\nUnset fields will be left at their current server values, and JSON `null` values will\nbe treated as a request to clear the relevant data."
+        }
+      },
+      "description": "Defines parameters in a\n[UpdateSubscription](#endpoint-subscriptions-updatesubscription) endpoint \nrequest.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "request_body": {
+          "subscription": {
+            "version": 1594155459464,
+            "price_override_money": {
+              "amount": 2000,
+              "currency": "USD"
+            }
+          }
+        }
+      }
+    },
+    "UpdateSubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        },
+        "subscription": {
+          "$ref": "#/definitions/Subscription",
+          "description": "The modified `Subscription` object."
+        }
+      },
+      "description": "Defines the fields that are included in the response from the\n[UpdateSubscription](#endpoint-subscriptions-updatesubscription) endpoint.",
+      "x-release-status": "BETA",
+      "x-is-beta": true,
+      "example": {
+        "subscription": {
+          "id": "9ba40961-995a-4a3d-8c53-048c40cafc13",
+          "location_id": "S8GWD5R9QB376",
+          "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+          "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+          "status": "ACTIVE",
+          "price_override_money": {
+            "amount": 2000,
+            "currency": "USD"
+          },
+          "version": 1594311617331,
+          "created_at": "2020-08-03T21:53:10Z",
+          "timezone": "America/Los_Angeles"
         }
       }
     },
