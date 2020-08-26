@@ -82,7 +82,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -121,7 +121,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -165,7 +165,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -201,7 +201,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [],
         "parameters": [
           {
@@ -237,7 +237,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -268,7 +268,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -364,7 +364,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -405,7 +405,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -442,7 +442,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -491,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -525,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -579,7 +579,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -620,7 +620,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -657,7 +657,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -706,7 +706,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -828,7 +828,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -870,7 +870,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -909,7 +909,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -948,7 +948,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -998,7 +998,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1042,7 +1042,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1086,7 +1086,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1135,7 +1135,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1203,7 +1203,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1252,7 +1252,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1294,7 +1294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1344,7 +1344,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1391,7 +1391,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1449,7 +1449,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1491,7 +1491,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1541,7 +1541,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1588,7 +1588,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1646,7 +1646,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1688,7 +1688,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1738,7 +1738,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1785,7 +1785,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1843,7 +1843,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1903,7 +1903,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -1961,7 +1961,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2011,7 +2011,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2061,7 +2061,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2108,7 +2108,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2155,7 +2155,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2213,7 +2213,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2268,7 +2268,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2325,7 +2325,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2380,7 +2380,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2437,7 +2437,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2495,7 +2495,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2550,7 +2550,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2616,7 +2616,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2658,7 +2658,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2708,7 +2708,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2755,7 +2755,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2802,7 +2802,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2860,7 +2860,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2918,7 +2918,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -2973,7 +2973,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3039,7 +3039,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3103,7 +3103,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3148,7 +3148,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3204,7 +3204,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3246,7 +3246,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3296,7 +3296,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3343,7 +3343,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3401,7 +3401,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3464,7 +3464,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3521,7 +3521,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3605,7 +3605,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3651,7 +3651,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3726,7 +3726,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3774,7 +3774,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3858,7 +3858,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3902,7 +3902,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": []
@@ -3941,7 +3941,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -3994,7 +3994,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4033,7 +4033,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4072,7 +4072,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4146,7 +4146,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4192,7 +4192,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4252,7 +4252,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4293,7 +4293,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4334,7 +4334,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4375,7 +4375,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4406,7 +4406,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4452,7 +4452,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4493,7 +4493,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4530,7 +4530,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4576,7 +4576,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4618,7 +4618,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4659,7 +4659,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4700,7 +4700,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4741,7 +4741,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4792,7 +4792,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4834,7 +4834,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4873,7 +4873,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4915,7 +4915,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4954,7 +4954,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -4994,7 +4994,7 @@
           "CUSTOMERS_WRITE",
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5044,7 +5044,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5086,7 +5086,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5127,7 +5127,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5167,7 +5167,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5204,7 +5204,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5241,7 +5241,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5289,7 +5289,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5337,7 +5337,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5384,7 +5384,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5431,7 +5431,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5480,7 +5480,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5535,7 +5535,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5577,7 +5577,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5618,7 +5618,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5675,7 +5675,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5716,7 +5716,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5757,7 +5757,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5798,7 +5798,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5845,7 +5845,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5894,7 +5894,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5944,7 +5944,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5980,11 +5980,12 @@
         "summary": "ListEmployees",
         "operationId": "ListEmployees",
         "description": "",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -5995,7 +5996,8 @@
         "parameters": [
           {
             "name": "location_id",
-            "description": "Filter employees returned to only those that are associated with the specified location.",
+            "description": "",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -6003,6 +6005,7 @@
           {
             "name": "status",
             "description": "Specifies the EmployeeStatus to filter the employee by.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -6010,6 +6013,7 @@
           {
             "name": "limit",
             "description": "The number of employees to be returned on each page.",
+            "x-is-deprecated": true,
             "type": "integer",
             "in": "query",
             "required": false
@@ -6017,6 +6021,7 @@
           {
             "name": "cursor",
             "description": "The token required to retrieve the specified page of results.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -6040,11 +6045,12 @@
         "summary": "RetrieveEmployee",
         "operationId": "RetrieveEmployee",
         "description": "",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6056,6 +6062,7 @@
           {
             "name": "id",
             "description": "UUID for the employee that was requested.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -6083,7 +6090,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6122,7 +6129,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6163,7 +6170,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6204,7 +6211,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6245,7 +6252,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6284,7 +6291,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6332,12 +6339,12 @@
         ],
         "summary": "RetrieveInventoryChanges",
         "operationId": "RetrieveInventoryChanges",
-        "description": "Returns a set of physical counts and inventory adjustments for the\nprovided [CatalogObject](#type-catalogobject) at the requested\n[Location](#type-location)s.\n\nResults are paginated and sorted in descending order according to their\n`occurred_at` timestamp (newest first).\n\nThere are no limits on how far back the caller can page. This endpoint is\nuseful when displaying recent changes for a specific item. For more\nsophisticated queries, use a batch endpoint.",
+        "description": "Returns a set of physical counts and inventory adjustments for the\nprovided [CatalogObject](#type-catalogobject) at the requested\n[Location](#type-location)s.\n\nResults are paginated and sorted in descending order according to their\n`occurred_at` timestamp (newest first).\n\nThere are no limits on how far back the caller can page. This endpoint can be \nused to display recent changes for a specific item. For more\nsophisticated queries, use a batch endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6391,7 +6398,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6447,7 +6454,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6490,7 +6497,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6533,7 +6540,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6581,7 +6588,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6621,7 +6628,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6673,7 +6680,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6725,7 +6732,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6775,7 +6782,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6821,12 +6828,12 @@
         ],
         "summary": "CreateBreakType",
         "operationId": "CreateBreakType",
-        "description": "Creates a new `BreakType`. \n\nA `BreakType` is a template for creating `Break` objects. \nYou must provide the following values in your request to this\nendpoint:\n\n- `location_id`\n- `break_name`\n- `expected_duration`\n- `is_paid`\n\nYou can only have 3 `BreakType` instances per location. If you attempt to add a 4th\n`BreakType` for a location, an `INVALID_REQUEST_ERROR` \"Exceeded limit of 3 breaks per location.\"\nis returned.",
+        "description": "Creates a new `BreakType`.\n\nA `BreakType` is a template for creating `Break` objects.\nYou must provide the following values in your request to this\nendpoint:\n\n- `location_id`\n- `break_name`\n- `expected_duration`\n- `is_paid`\n\nYou can only have 3 `BreakType` instances per location. If you attempt to add a 4th\n`BreakType` for a location, an `INVALID_REQUEST_ERROR` \"Exceeded limit of 3 breaks per location.\"\nis returned.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6862,12 +6869,12 @@
         ],
         "summary": "DeleteBreakType",
         "operationId": "DeleteBreakType",
-        "description": "Deletes an existing `BreakType`. \n\nA `BreakType` can be deleted even if it is referenced from a `Shift`.",
+        "description": "Deletes an existing `BreakType`.\n\nA `BreakType` can be deleted even if it is referenced from a `Shift`.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6904,7 +6911,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6942,7 +6949,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -6987,11 +6994,12 @@
         "summary": "ListEmployeeWages",
         "operationId": "ListEmployeeWages",
         "description": "Returns a paginated list of `EmployeeWage` instances for a business.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7002,7 +7010,8 @@
         "parameters": [
           {
             "name": "employee_id",
-            "description": "Filter wages returned to only those that are associated with the\nspecified employee.",
+            "description": "Filter wages returned to only those that are associated with the specified employee.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -7010,6 +7019,7 @@
           {
             "name": "limit",
             "description": "Maximum number of Employee Wages to return per page. Can range between\n1 and 200. The default is the maximum at 200.",
+            "x-is-deprecated": true,
             "type": "integer",
             "in": "query",
             "required": false
@@ -7017,6 +7027,7 @@
           {
             "name": "cursor",
             "description": "Pointer to the next page of Employee Wage results to fetch.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "query",
             "required": false
@@ -7040,11 +7051,12 @@
         "summary": "GetEmployeeWage",
         "operationId": "GetEmployeeWage",
         "description": "Returns a single `EmployeeWage` specified by id.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "x-is-deprecated": true,
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7056,6 +7068,7 @@
           {
             "name": "id",
             "description": "UUID for the `EmployeeWage` being retrieved.",
+            "x-is-deprecated": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -7078,12 +7091,12 @@
         ],
         "summary": "CreateShift",
         "operationId": "CreateShift",
-        "description": "Creates a new `Shift`. \n\nA `Shift` represents a complete work day for a single employee. \nYou must provide the following values in your request to this\nendpoint:\n\n- `location_id`\n- `employee_id`\n- `start_at`\n\nAn attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:\n- The `status` of the new `Shift` is `OPEN` and the employee has another \nshift with an `OPEN` status. \n- The `start_at` date is in the future\n- the `start_at` or `end_at` overlaps another shift for the same employee\n- If `Break`s are set in the request, a break `start_at`\nmust not be before the `Shift.start_at`. A break `end_at` must not be after\nthe `Shift.end_at`",
+        "description": "Creates a new `Shift`.\n\nA `Shift` represents a complete work day for a single employee.\nYou must provide the following values in your request to this\nendpoint:\n\n- `location_id`\n- `employee_id`\n- `start_at`\n\nAn attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:\n- The `status` of the new `Shift` is `OPEN` and the employee has another\nshift with an `OPEN` status.\n- The `start_at` date is in the future\n- the `start_at` or `end_at` overlaps another shift for the same employee\n- If `Break`s are set in the request, a break `start_at`\nmust not be before the `Shift.start_at`. A break `end_at` must not be after\nthe `Shift.end_at`",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7119,12 +7132,12 @@
         ],
         "summary": "SearchShifts",
         "operationId": "SearchShifts",
-        "description": "Returns a paginated list of `Shift` records for a business. \nThe list to be returned can be filtered by:\n- Location IDs **and**\n- employee IDs **and**\n- shift status (`OPEN`, `CLOSED`) **and**\n- shift start **and**\n- shift end **and**\n- work day details\n\nThe list can be sorted by:\n- `start_at`\n- `end_at`\n- `created_at`\n- `updated_at`",
+        "description": "Returns a paginated list of `Shift` records for a business.\nThe list to be returned can be filtered by:\n- Location IDs **and**\n- employee IDs **and**\n- shift status (`OPEN`, `CLOSED`) **and**\n- shift start **and**\n- shift end **and**\n- work day details\n\nThe list can be sorted by:\n- `start_at`\n- `end_at`\n- `created_at`\n- `updated_at`",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7165,7 +7178,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7202,7 +7215,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7234,13 +7247,13 @@
         ],
         "summary": "UpdateShift",
         "operationId": "UpdateShift",
-        "description": "Updates an existing `Shift`. \n\nWhen adding a `Break` to a `Shift`, any earlier `Breaks` in the `Shift` have \nthe `end_at` property set to a valid RFC-3339 datetime string. \n\nWhen closing a `Shift`, all `Break` instances in the shift must be complete with `end_at`\nset on each `Break`.",
+        "description": "Updates an existing `Shift`.\n\nWhen adding a `Break` to a `Shift`, any earlier `Breaks` in the `Shift` have\nthe `end_at` property set to a valid RFC-3339 datetime string.\n\nWhen closing a `Shift`, all `Break` instances in the shift must be complete with `end_at`\nset on each `Break`.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7277,6 +7290,98 @@
         }
       }
     },
+    "/v2/labor/team-member-wages": {
+      "get": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "ListTeamMemberWages",
+        "operationId": "ListTeamMemberWages",
+        "description": "Returns a paginated list of `TeamMemberWage` instances for a business.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "EMPLOYEES_READ"
+        ],
+        "x-sq-version": "2020-08-26",
+        "security": [
+          {
+            "oauth2": [
+              "EMPLOYEES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "team_member_id",
+            "description": "Filter wages returned to only those that are associated with the\nspecified team member.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of Team Member Wages to return per page. Can range between\n1 and 200. The default is the maximum at 200.",
+            "type": "integer",
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "Pointer to the next page of Employee Wage results to fetch.",
+            "type": "string",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ListTeamMemberWagesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/labor/team-member-wages/{id}": {
+      "get": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "GetTeamMemberWage",
+        "operationId": "GetTeamMemberWage",
+        "description": "Returns a single `TeamMemberWage` specified by id.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "EMPLOYEES_READ"
+        ],
+        "x-sq-version": "2020-08-26",
+        "security": [
+          {
+            "oauth2": [
+              "EMPLOYEES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "UUID for the `TeamMemberWage` being retrieved.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetTeamMemberWageResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/labor/workweek-configs": {
       "get": {
         "tags": [
@@ -7289,7 +7394,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7336,7 +7441,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7385,7 +7490,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7415,7 +7520,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7456,7 +7561,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7494,7 +7599,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7531,152 +7636,6 @@
         }
       }
     },
-    "/v2/locations/{location_id}/additional-recipient-receivable-refunds": {
-      "get": {
-        "tags": [
-          "Reporting"
-        ],
-        "summary": "ListAdditionalRecipientReceivableRefunds",
-        "operationId": "ListAdditionalRecipientReceivableRefunds",
-        "description": "Returns a list of refunded transactions (across all possible originating locations) relating to monies\ncredited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
-        "x-release-status": "DEPRECATED",
-        "x-is-deprecated": true,
-        "x-oauthpermissions": [
-          "PAYMENTS_READ"
-        ],
-        "x-sq-version": "2020-08-12",
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to list AdditionalRecipientReceivableRefunds for.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "begin_time",
-            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "end_time",
-            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "sort_order",
-            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/ListAdditionalRecipientReceivableRefundsResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/additional-recipient-receivables": {
-      "get": {
-        "tags": [
-          "Reporting"
-        ],
-        "summary": "ListAdditionalRecipientReceivables",
-        "operationId": "ListAdditionalRecipientReceivables",
-        "description": "Returns a list of receivables (across all possible sending locations) representing monies credited\nto the provided location ID by another Square account using the `additional_recipients` field in a transaction.\n\nMax results per [page](#paginatingresults): 50",
-        "x-release-status": "DEPRECATED",
-        "x-is-deprecated": true,
-        "x-oauthpermissions": [
-          "PAYMENTS_READ"
-        ],
-        "x-sq-version": "2020-08-12",
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the location to list AdditionalRecipientReceivables for.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "begin_time",
-            "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "end_time",
-            "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "sort_order",
-            "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          },
-          {
-            "name": "cursor",
-            "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information.",
-            "x-is-deprecated": true,
-            "type": "string",
-            "in": "query",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/ListAdditionalRecipientReceivablesResponse"
-            }
-          }
-        }
-      }
-    },
     "/v2/locations/{location_id}/checkouts": {
       "post": {
         "tags": [
@@ -7690,7 +7649,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7727,160 +7686,6 @@
         }
       }
     },
-    "/v2/locations/{location_id}/orders": {
-      "post": {
-        "tags": [
-          "Orders"
-        ],
-        "summary": "CreateOrder",
-        "operationId": "CreateOrder",
-        "description": "Creates a new [Order](#type-order) which can include information on products for\npurchase and settings to apply to the purchase.\n\nTo pay for a created order, please refer to the [Pay for Orders](/orders-api/pay-for-orders)\nguide.\n\nYou can modify open orders using the [UpdateOrder](#endpoint-orders-updateorder) endpoint.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/orders-api/what-it-does).",
-        "x-release-status": "PUBLIC",
-        "x-oauthpermissions": [
-          "ORDERS_WRITE"
-        ],
-        "x-sq-version": "2020-08-12",
-        "security": [
-          {
-            "oauth2": [
-              "ORDERS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the business location to associate the order with.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/CreateOrderRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/CreateOrderResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/orders/batch-retrieve": {
-      "post": {
-        "tags": [
-          "Orders"
-        ],
-        "summary": "BatchRetrieveOrders",
-        "operationId": "BatchRetrieveOrders",
-        "description": "Retrieves a set of [Order](#type-order)s by their IDs.\n\nIf a given Order ID does not exist, the ID is ignored instead of generating an error.",
-        "x-release-status": "PUBLIC",
-        "x-oauthpermissions": [
-          "ORDERS_READ"
-        ],
-        "x-sq-version": "2020-08-12",
-        "security": [
-          {
-            "oauth2": [
-              "ORDERS_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the orders\u0027 associated location.",
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/BatchRetrieveOrdersRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/BatchRetrieveOrdersResponse"
-            }
-          }
-        }
-      }
-    },
-    "/v2/locations/{location_id}/orders/{order_id}": {
-      "put": {
-        "tags": [
-          "Orders"
-        ],
-        "summary": "UpdateOrder",
-        "operationId": "UpdateOrder",
-        "description": "Updates an open [Order](#type-order) by adding, replacing, or deleting\nfields. Orders with a `COMPLETED` or `CANCELED` state cannot be updated.\n\nAn UpdateOrder request requires the following:\n\n- The `order_id` in the endpoint path, identifying the order to update.\n- The latest `version` of the order to update.\n- The [sparse order](/orders-api/manage-orders#sparse-order-objects)\ncontaining only the fields to update and the version the update is\nbeing applied to.\n- If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation)\nidentifying fields to clear.\n\nTo pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/orders-api/what-it-does).",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
-        "x-oauthpermissions": [
-          "ORDERS_WRITE"
-        ],
-        "x-sq-version": "2020-08-12",
-        "security": [
-          {
-            "oauth2": [
-              "ORDERS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "The ID of the order\u0027s associated location.",
-            "x-is-beta": true,
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "order_id",
-            "description": "The ID of the order to update.",
-            "x-is-beta": true,
-            "type": "string",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-            "schema": {
-              "$ref": "#/definitions/UpdateOrderRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/UpdateOrderResponse"
-            }
-          }
-        }
-      }
-    },
     "/v2/locations/{location_id}/refunds": {
       "get": {
         "tags": [
@@ -7894,7 +7699,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -7967,7 +7772,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8038,7 +7843,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8088,7 +7893,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8137,7 +7942,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8186,7 +7991,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8244,7 +8049,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8293,7 +8098,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8335,7 +8140,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8377,7 +8182,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8418,7 +8223,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8468,7 +8273,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8518,7 +8323,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8560,7 +8365,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8592,7 +8397,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8642,7 +8447,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8684,7 +8489,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8726,7 +8531,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8765,7 +8570,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8806,7 +8611,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8855,7 +8660,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8894,7 +8699,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -8921,6 +8726,88 @@
         }
       }
     },
+    "/v2/orders": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "CreateOrder",
+        "operationId": "CreateOrder",
+        "description": "Creates a new [Order](#type-order) which can include information on products for\npurchase and settings to apply to the purchase.\n\nTo pay for a created order, please refer to the [Pay for Orders](/orders-api/pay-for-orders)\nguide.\n\nYou can modify open orders using the [UpdateOrder](#endpoint-orders-updateorder) endpoint.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/orders-api/what-it-does).",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "ORDERS_WRITE"
+        ],
+        "x-sq-version": "2020-08-26",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/orders/batch-retrieve": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "BatchRetrieveOrders",
+        "operationId": "BatchRetrieveOrders",
+        "description": "Retrieves a set of [Order](#type-order)s by their IDs.\n\nIf a given Order ID does not exist, the ID is ignored instead of generating an error.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "ORDERS_READ"
+        ],
+        "x-sq-version": "2020-08-26",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveOrdersRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BatchRetrieveOrdersResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/orders/calculate": {
       "post": {
         "tags": [
@@ -8932,7 +8819,7 @@
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": []
@@ -8971,7 +8858,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9000,6 +8887,56 @@
         }
       }
     },
+    "/v2/orders/{order_id}": {
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "UpdateOrder",
+        "operationId": "UpdateOrder",
+        "description": "Updates an open [Order](#type-order) by adding, replacing, or deleting\nfields. Orders with a `COMPLETED` or `CANCELED` state cannot be updated.\n\nAn UpdateOrder request requires the following:\n\n- The `order_id` in the endpoint path, identifying the order to update.\n- The latest `version` of the order to update.\n- The [sparse order](/orders-api/manage-orders#sparse-order-objects)\ncontaining only the fields to update and the version the update is\nbeing applied to.\n- If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation)\nidentifying fields to clear.\n\nTo pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/orders-api/what-it-does).",
+        "x-release-status": "BETA",
+        "x-is-beta": true,
+        "x-oauthpermissions": [
+          "ORDERS_WRITE"
+        ],
+        "x-sq-version": "2020-08-26",
+        "security": [
+          {
+            "oauth2": [
+              "ORDERS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "The ID of the order to update.",
+            "x-is-beta": true,
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+            "schema": {
+              "$ref": "#/definitions/UpdateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UpdateOrderResponse"
+            }
+          }
+        }
+      }
+    },
     "/v2/orders/{order_id}/pay": {
       "post": {
         "tags": [
@@ -9014,7 +8951,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9064,7 +9001,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9151,7 +9088,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9192,7 +9129,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9233,7 +9170,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9272,7 +9209,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9311,7 +9248,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9350,7 +9287,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9429,7 +9366,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9470,7 +9407,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9504,7 +9441,7 @@
         ],
         "summary": "CreateSubscription",
         "operationId": "CreateSubscription",
-        "description": "Creates a subscription for a customer to a subscription plan.\n\nIf you provide a card on file in the request, Square charges the card for \nthe subscription. Otherwise, Square bills an invoice to the customer\u0027s email \naddress. The subscription starts immediately, unless the request includes \nthe optional `start_date`. Each individual subscription is associated with a particular location. \n\nFor more information, \nsee [Subscription API Overview](/docs/subscriptions-api/overview).",
+        "description": "Creates a subscription for a customer to a subscription plan.\n\nIf you provide a card on file in the request, Square charges the card for \nthe subscription. Otherwise, Square bills an invoice to the customer\u0027s email \naddress. The subscription starts immediately, unless the request includes \nthe optional `start_date`. Each individual subscription is associated with a particular location.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
@@ -9515,7 +9452,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9562,7 +9499,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9604,7 +9541,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9637,7 +9574,7 @@
         ],
         "summary": "UpdateSubscription",
         "operationId": "UpdateSubscription",
-        "description": "Updates a subscription. You can set, modify, and clear the \n`subscription` field values. For more information and examples, see \n[Update subscriptions](/docs/subscriptions-api/overview#update-subscriptions).",
+        "description": "Updates a subscription. You can set, modify, and clear the \n`subscription` field values.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
@@ -9648,7 +9585,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9697,13 +9634,13 @@
         ],
         "summary": "CancelSubscription",
         "operationId": "CancelSubscription",
-        "description": "Cancels a subscription immediately and sets the subscription\n`status` to `CANCELED`. You can also use the `UpdateSubscription`\nendpoint to cancel a subscription at a future date. For more\ninformation, see\n[CancelSubscriptions](/docs/subscriptions-api/overview#cancel-subscriptions).",
+        "description": "Sets the `canceled_date` field to the end of the active billing period.\nAfter this date, the status changes from ACTIVE to CANCELED.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9744,7 +9681,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9800,7 +9737,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9841,7 +9778,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9882,7 +9819,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9923,7 +9860,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -9964,7 +9901,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10001,7 +9938,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10049,7 +9986,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10086,7 +10023,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10135,7 +10072,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10177,7 +10114,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10219,7 +10156,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10260,7 +10197,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-12",
+        "x-sq-version": "2020-08-26",
         "security": [
           {
             "oauth2": [
@@ -10471,6 +10408,65 @@
       "description": "Indicates a card\u0027s prepaid type, such as `NOT_PREPAID` or `PREPAID`.",
       "x-release-status": "BETA",
       "x-is-beta": true
+    },
+    "CardSquareProduct": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_SQUARE_PRODUCT",
+        "CONNECT_API",
+        "DASHBOARD",
+        "REGISTER_CLIENT",
+        "BUYER_DASHBOARD",
+        "WEB",
+        "INVOICES",
+        "GIFT_CARD",
+        "VIRTUAL_TERMINAL",
+        "READER_SDK"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "UNKNOWN_SQUARE_PRODUCT",
+          "description": ""
+        },
+        {
+          "name": "CONNECT_API",
+          "description": ""
+        },
+        {
+          "name": "DASHBOARD",
+          "description": ""
+        },
+        {
+          "name": "REGISTER_CLIENT",
+          "description": ""
+        },
+        {
+          "name": "BUYER_DASHBOARD",
+          "description": ""
+        },
+        {
+          "name": "WEB",
+          "description": ""
+        },
+        {
+          "name": "INVOICES",
+          "description": ""
+        },
+        {
+          "name": "GIFT_CARD",
+          "description": ""
+        },
+        {
+          "name": "VIRTUAL_TERMINAL",
+          "description": ""
+        },
+        {
+          "name": "READER_SDK",
+          "description": ""
+        }
+      ],
+      "description": "",
+      "x-release-status": "PUBLIC"
     },
     "CardType": {
       "type": "string",
@@ -13524,7 +13520,8 @@
         }
       ],
       "description": "The status of the Employee being retrieved.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "ErrorCategory": {
       "type": "string",
@@ -13656,6 +13653,7 @@
         "REFUND_AMOUNT_INVALID",
         "REFUND_ALREADY_PENDING",
         "PAYMENT_NOT_REFUNDABLE",
+        "REFUND_DECLINED",
         "INVALID_CARD_DATA",
         "LOCATION_MISMATCH",
         "IDEMPOTENCY_KEY_REUSED",
@@ -14045,6 +14043,10 @@
         {
           "name": "PAYMENT_NOT_REFUNDABLE",
           "description": "The payment is not refundable. For example, a previous refund has\nalready been rejected and no new refunds can be accepted."
+        },
+        {
+          "name": "REFUND_DECLINED",
+          "description": "Request failed - The card issuer declined the refund."
         },
         {
           "name": "INVALID_CARD_DATA",
@@ -15769,6 +15771,30 @@
       "description": "Enumerates the possible statuses the team member can have within a business.",
       "x-release-status": "PUBLIC"
     },
+    "TenderBankTransferDetailsStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "COMPLETED",
+        "FAILED"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "PENDING",
+          "description": "The bank transfer is in progress."
+        },
+        {
+          "name": "COMPLETED",
+          "description": "The bank transfer has been completed."
+        },
+        {
+          "name": "FAILED",
+          "description": "The bank transfer failed."
+        }
+      ],
+      "description": "Indicates the bank transfer\u0027s current status.",
+      "x-release-status": "PUBLIC"
+    },
     "TenderCardDetailsEntryMethod": {
       "type": "string",
       "enum": [
@@ -15840,6 +15866,7 @@
         "THIRD_PARTY_CARD",
         "SQUARE_GIFT_CARD",
         "NO_SALE",
+        "BANK_TRANSFER",
         "OTHER"
       ],
       "x-enum-elements": [
@@ -15862,6 +15889,10 @@
         {
           "name": "NO_SALE",
           "description": "This tender represents the register being opened for a \"no sale\" event."
+        },
+        {
+          "name": "BANK_TRANSFER",
+          "description": "An ACH payment."
         },
         {
           "name": "OTHER",
@@ -17699,102 +17730,6 @@
       "description": "Represents an additional recipient (other than the merchant) receiving a portion of this tender.",
       "x-release-status": "PUBLIC"
     },
-    "AdditionalRecipientReceivable": {
-      "type": "object",
-      "required": [
-        "id",
-        "transaction_id",
-        "transaction_location_id",
-        "amount_money"
-      ],
-      "properties": {
-        "id": {
-          "minLength": 1,
-          "maxLength": 192,
-          "type": "string",
-          "description": "The additional recipient receivable\u0027s unique ID, issued by Square payments servers."
-        },
-        "transaction_id": {
-          "minLength": 1,
-          "maxLength": 192,
-          "type": "string",
-          "description": "The ID of the transaction that the additional recipient receivable was applied to."
-        },
-        "transaction_location_id": {
-          "minLength": 1,
-          "maxLength": 50,
-          "type": "string",
-          "description": "The ID of the location that created the receivable. This is the location ID on the associated transaction."
-        },
-        "amount_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The amount of the receivable. This will always be non-negative."
-        },
-        "created_at": {
-          "maxLength": 32,
-          "type": "string",
-          "description": "The time when the additional recipient receivable was created, in RFC 3339 format."
-        },
-        "refunds": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdditionalRecipientReceivableRefund"
-          },
-          "description": "Any refunds of the receivable that have been applied."
-        }
-      },
-      "description": "Represents a monetary distribution of part of a [Transaction](#type-transaction)\u0027s amount for Transactions which included additional recipients. The location of this receivable is that same as the one specified in the [AdditionalRecipient](#type-additionalrecipient).",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true
-    },
-    "AdditionalRecipientReceivableRefund": {
-      "type": "object",
-      "required": [
-        "id",
-        "receivable_id",
-        "refund_id",
-        "transaction_location_id",
-        "amount_money"
-      ],
-      "properties": {
-        "id": {
-          "minLength": 1,
-          "maxLength": 192,
-          "type": "string",
-          "description": "The receivable refund\u0027s unique ID, issued by Square payments servers."
-        },
-        "receivable_id": {
-          "minLength": 1,
-          "maxLength": 192,
-          "type": "string",
-          "description": "The ID of the receivable that the refund was applied to."
-        },
-        "refund_id": {
-          "minLength": 1,
-          "maxLength": 255,
-          "type": "string",
-          "description": "The ID of the refund that is associated to this receivable refund."
-        },
-        "transaction_location_id": {
-          "minLength": 1,
-          "maxLength": 50,
-          "type": "string",
-          "description": "The ID of the location that created the receivable. This is the location ID on the associated transaction."
-        },
-        "amount_money": {
-          "$ref": "#/definitions/Money",
-          "description": "The amount of the refund. This will always be non-negative."
-        },
-        "created_at": {
-          "maxLength": 32,
-          "type": "string",
-          "description": "The time when the refund was created, in RFC 3339 format."
-        }
-      },
-      "description": "A refund of an [AdditionalRecipientReceivable](#type-additionalrecipientreceivable). This includes the ID of the additional recipient receivable associated to this object, as well as a reference to the [Refund](#type-refund) that created this receivable refund.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true
-    },
     "Address": {
       "type": "object",
       "properties": {
@@ -18048,7 +17983,7 @@
           "items": {
             "$ref": "#/definitions/InventoryChange"
           },
-          "description": "The set of physical counts and inventory adjustments to be made.\nChanges are applied based on the client-supplied timestamp and may be sent\nout of order. Max size is 100 changes."
+          "description": "The set of physical counts and inventory adjustments to be made.\nChanges are applied based on the client-supplied timestamp and may be sent\nout of order."
         },
         "ignore_unchanged_counts": {
           "type": "boolean",
@@ -18394,36 +18329,36 @@
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `CatalogObject` ID.\nOnly applied when set. Max size is 500 IDs. Default: unset."
+          "description": "The filter to return results by `CatalogObject` ID.\nThe filter is only applicable when set. The default value is null."
         },
         "location_ids": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `Location` ID. Only\napplied when set. Default: unset."
+          "description": "The filter to return results by `Location` ID. \nThe filter is only applicable when set. The default value is null."
         },
         "types": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `InventoryChangeType`.\nDefault: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as\na filter.\nSee [InventoryChangeType](#type-inventorychangetype) for possible values"
+          "description": "The filter to return results by `InventoryChangeType` values other than `TRANSFER`.\nThe default value is `[PHYSICAL_COUNT, ADJUSTMENT]`.\nSee [InventoryChangeType](#type-inventorychangetype) for possible values"
         },
         "states": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Filters `ADJUSTMENT` query results by\n`InventoryState`. Only applied when set.\nDefault: unset.\nSee [InventoryState](#type-inventorystate) for possible values"
+          "description": "The filter to return `ADJUSTMENT` query results by\n`InventoryState`. This filter is only applied when set.\nThe default value is null.\nSee [InventoryState](#type-inventorystate) for possible values"
         },
         "updated_after": {
           "type": "string",
-          "description": "Provided as an RFC 3339 timestamp. Returns results whose\n`created_at` or `calculated_at` value is after the given time.\nDefault: UNIX epoch (`1970-01-01T00:00:00Z`)."
+          "description": "The filter to return results with their `calculated_at` value  \nafter the given time as specified in an RFC 3339 timestamp. \nThe default value is the UNIX epoch of (`1970-01-01T00:00:00Z`)."
         },
         "updated_before": {
           "type": "string",
-          "description": "Provided as an RFC 3339 timestamp. Returns results whose\n`created_at` or `calculated_at` value is strictly before the given time.\nDefault: UNIX epoch (`1970-01-01T00:00:00Z`)."
+          "description": "The filter to return results with their `created_at` or `calculated_at` value  \nstrictly before the given time as specified in an RFC 3339 timestamp. \nThe default value is the UNIX epoch of (`1970-01-01T00:00:00Z`)."
         },
         "cursor": {
           "type": "string",
@@ -18517,22 +18452,29 @@
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `CatalogObject` ID.\nOnly applied when set. Max size is 1000 IDs. Default: unset."
+          "description": "The filter to return results by `CatalogObject` ID.\nThe filter is applicable only when set.  The default is null."
         },
         "location_ids": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Filters results by `Location` ID. Only\napplied when set. Default: unset."
+          "description": "The filter to return results by `Location` ID. \nThis filter is applicable only when set. The default is null."
         },
         "updated_after": {
           "type": "string",
-          "description": "Provided as an RFC 3339 timestamp. Returns results whose\n`calculated_at` value is after the given time. Default: UNIX epoch\n(`1970-01-01T00:00:00Z`)."
+          "description": "The filter to return results with their `calculated_at` value \nafter the given time as specified in an RFC 3339 timestamp. \nThe default value is the UNIX epoch of (`1970-01-01T00:00:00Z`)."
         },
         "cursor": {
           "type": "string",
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\n\nSee the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information."
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The filter to return results by `InventoryState`. The filter is only applicable when set.\nIgnored are untracked states of `NONE`, `SOLD`, and `UNLINKED_RETURN`.\nThe default is null.\nSee [InventoryState](#type-inventorystate) for possible values"
         }
       },
       "description": "",
@@ -18601,6 +18543,10 @@
         "order_ids"
       ],
       "properties": {
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the location for these orders. This field is optional: omit it to retrieve\norders within the scope of the current authorization\u0027s merchant ID."
+        },
         "order_ids": {
           "type": "array",
           "items": {
@@ -18614,6 +18560,7 @@
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
+          "location_id": "057P5VYJ4A5X1",
           "order_ids": [
             "CAISEM82RcpmcFBM0TfOyiHV3es",
             "CAISENgvlJ6jLWAzERDzjyHVybY"
@@ -19030,7 +18977,7 @@
         },
         "end_at": {
           "type": "string",
-          "description": "RFC 3339; follows same timezone info as `Shift`. Precision up to\nthe minute is respected; seconds are truncated. The `end_at` minute is not\ncounted when the break length is calculated. For example, a break from `00:00`\nto `00:11`  is considered a 10 minute break (midnight to 10 minutes after midnight)."
+          "description": "RFC 3339; follows same timezone info as `Shift`. Precision up to\nthe minute is respected; seconds are truncated."
         },
         "break_type_id": {
           "minLength": 1,
@@ -19094,11 +19041,13 @@
         },
         "created_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format."
+          "description": "A read-only timestamp in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format."
+          "description": "A read-only timestamp in RFC 3339 format.",
+          "x-read-only": true
         }
       },
       "description": "A defined break template that sets an expectation for possible `Break`\ninstances on a `Shift`.",
@@ -23159,6 +23108,7 @@
           "location": {
             "name": "New location name",
             "description": "My new location.",
+            "facebook_url": null,
             "address": {
               "address_line_1": "1234 Peachtree St. NE",
               "administrative_district_level_1": "GA",
@@ -23402,6 +23352,10 @@
           "$ref": "#/definitions/Order",
           "description": "The order to create. If this field is set, then the only other top-level field that can be\nset is the idempotency_key."
         },
+        "location_id": {
+          "type": "string",
+          "description": "The ID of the business location to associate the order with."
+        },
         "idempotency_key": {
           "maxLength": 192,
           "type": "string",
@@ -23415,6 +23369,7 @@
           "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
           "order": {
             "reference_id": "my-order-001",
+            "location_id": "057P5VYJ4A5X1",
             "line_items": [
               {
                 "name": "New York Strip Steak",
@@ -23493,7 +23448,7 @@
       "example": {
         "order": {
           "id": "CAISENgvlJ6jLWAzERDzjyHVybY",
-          "location_id": "LOCATION_ID",
+          "location_id": "057P5VYJ4A5X1",
           "line_items": [
             {
               "uid": "8uSwfzvUImn3IRrvciqlXC",
@@ -24050,7 +24005,7 @@
         "request_body": {
           "idempotency_key": "HIDSNG5KS478L",
           "shift": {
-            "employee_id": "ormj0jJJZ5OZIzxrZYJI",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
             "location_id": "PAA1RJZZKXBFG",
             "start_at": "2019-01-25T03:11:00-05:00",
             "end_at": "2019-01-25T13:11:00-05:00",
@@ -24095,6 +24050,7 @@
       "example": {
         "shift": {
           "id": "K0YH4CV5462JB",
+          "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
           "employee_id": "ormj0jJJZ5OZIzxrZYJI",
           "location_id": "PAA1RJZZKXBFG",
           "timezone": "America/New_York",
@@ -24738,7 +24694,7 @@
           "description": "String in `YYYY-MM-DD` format, e.g. `2017-10-31` per the ISO 8601\nextended format for calendar dates.\nThe end of a date range (inclusive)"
         }
       },
-      "description": "A range defined by two dates. Used for filtering a query for Connect v2 \nobjects that have date properties.",
+      "description": "A range defined by two dates. Used for filtering a query for Connect v2\nobjects that have date properties.",
       "x-release-status": "PUBLIC"
     },
     "DeleteBreakTypeRequest": {
@@ -25303,28 +25259,27 @@
         },
         "created_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format."
+          "description": "A read-only timestamp in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format."
+          "description": "A read-only timestamp in RFC 3339 format.",
+          "x-read-only": true
         }
       },
       "description": "An employee object that is used by the external API.",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "EmployeeWage": {
       "type": "object",
-      "required": [
-        "employee_id"
-      ],
       "properties": {
         "id": {
           "type": "string",
           "description": "UUID for this object."
         },
         "employee_id": {
-          "minLength": 1,
           "type": "string",
           "description": "The `Employee` that this wage is assigned to."
         },
@@ -25337,8 +25292,9 @@
           "description": "Can be a custom-set hourly wage or the calculated effective hourly\nwage based on annual wage and hours worked per week."
         }
       },
-      "description": "The hourly wage rate that an employee will earn on a `Shift` for doing the job\nspecified by the `title` property of this object.",
-      "x-release-status": "PUBLIC"
+      "description": "The hourly wage rate that an employee will earn on a `Shift` for doing the job\nspecified by the `title` property of this object. Deprecated at verison 2020-08-26. Use `TeamMemberWage` instead.",
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "Error": {
       "type": "object",
@@ -25562,7 +25518,8 @@
       "type": "object",
       "properties": {},
       "description": "A request to get an `EmployeeWage`",
-      "x-release-status": "PUBLIC",
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true,
       "example": {}
     },
     "GetEmployeeWageResponse": {
@@ -25581,7 +25538,8 @@
         }
       },
       "description": "A response to a request to get an `EmployeeWage`. Contains\nthe requested `EmployeeWage` objects. May contain a set of `Error` objects if\nthe request resulted in errors.",
-      "x-release-status": "PUBLIC",
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true,
       "example": {
         "employee_wage": {
           "id": "pXS3qCv7BERPnEGedM4S8mhm",
@@ -25830,6 +25788,7 @@
       "example": {
         "shift": {
           "id": "T35HMQSN89SV4",
+          "team_member_id": "D71KRMQof6cXGUW0aAv7",
           "employee_id": "D71KRMQof6cXGUW0aAv7",
           "location_id": "PAA1RJZZKXBFG",
           "timezone": "America/New_York",
@@ -25857,6 +25816,42 @@
           "version": 1,
           "created_at": "2019-02-27T00:12:12Z",
           "updated_at": "2019-02-27T00:12:12Z"
+        }
+      }
+    },
+    "GetTeamMemberWageRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "A request to get an `TeamMemberWage`",
+      "x-release-status": "PUBLIC",
+      "example": {}
+    },
+    "GetTeamMemberWageResponse": {
+      "type": "object",
+      "properties": {
+        "team_member_wage": {
+          "$ref": "#/definitions/TeamMemberWage",
+          "description": "The requested `TeamMemberWage` object."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "A response to a request to get a `TeamMemberWage`. Contains\nthe requested `TeamMemberWage` objects. May contain a set of `Error` objects if\nthe request resulted in errors.",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "team_member_wage": {
+          "id": "pXS3qCv7BERPnEGedM4S8mhm",
+          "team_member_id": "33fJchumvVdJwxV0H6L9",
+          "title": "Manager",
+          "hourly_rate": {
+            "amount": 2000,
+            "currency": "USD"
+          }
         }
       }
     },
@@ -25965,7 +25960,8 @@
         "created_at": {
           "maxLength": 34,
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the adjustment."
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the adjustment.",
+          "x-read-only": true
         },
         "source": {
           "$ref": "#/definitions/SourceApplication",
@@ -26113,7 +26109,8 @@
         "created_at": {
           "maxLength": 34,
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the physical count."
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the physical count.",
+          "x-read-only": true
         }
       },
       "description": "Represents the quantity of an item variation that is physically present\nat a specific location, verified by a seller or a seller\u0027s employee. For example,\na physical count might come from an employee counting the item variations on\nhand or from syncing with an external system.",
@@ -26169,7 +26166,8 @@
         "created_at": {
           "maxLength": 34,
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the transfer request."
+          "description": "A read-only timestamp in RFC 3339 format that indicates when Square\nreceived the transfer request.",
+          "x-read-only": true
         },
         "source": {
           "$ref": "#/definitions/SourceApplication",
@@ -26549,186 +26547,6 @@
       },
       "description": "An object describing a job that a team member is assigned to.",
       "x-release-status": "PUBLIC"
-    },
-    "ListAdditionalRecipientReceivableRefundsRequest": {
-      "type": "object",
-      "properties": {
-        "begin_time": {
-          "type": "string",
-          "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year."
-        },
-        "end_time": {
-          "type": "string",
-          "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time."
-        },
-        "sort_order": {
-          "type": "string",
-          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
-        },
-        "cursor": {
-          "type": "string",
-          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information."
-        }
-      },
-      "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true,
-      "example": {
-        "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
-      },
-      "x-sq-sdk-sample-code": {
-        "python": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.python",
-        "csharp": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.csharp",
-        "java": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.java",
-        "php": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.php",
-        "javascript": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.javascript",
-        "ruby": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsRequest.ruby"
-      }
-    },
-    "ListAdditionalRecipientReceivableRefundsResponse": {
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Error"
-          },
-          "description": "Any errors that occurred during the request."
-        },
-        "receivable_refunds": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdditionalRecipientReceivableRefund"
-          },
-          "description": "An array of AdditionalRecipientReceivableRefunds that match your query."
-        },
-        "cursor": {
-          "type": "string",
-          "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Paginating results](#paginatingresults) for more information."
-        }
-      },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivableRefunds](#endpoint-listadditionalrecipientreceivablerefunds) endpoint.\n\nOne of `errors` or `additional_recipient_receivable_refunds` is present in a given response (never both).",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true,
-      "example": {
-        "receivable_refunds": [
-          {
-            "id": "Ge2OT7KA6XAg1GC15qs5S",
-            "receivable_id": "ISu5xwxJ5v0CMJTQq7RvqyMF",
-            "refund_id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
-            "transaction_location_id": "18YC4JDH91E1H",
-            "amount_money": {
-              "amount": 10,
-              "currency": "USD"
-            },
-            "created_at": "2016-01-20T22:57:56Z"
-          }
-        ]
-      },
-      "x-sq-sdk-sample-code": {
-        "python": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.python",
-        "csharp": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.csharp",
-        "java": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.java",
-        "php": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.php",
-        "javascript": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.javascript",
-        "ruby": "/sdk_samples/ListAdditionalRecipientReceivableRefunds/ListAdditionalRecipientReceivableRefundsResponse.ruby"
-      }
-    },
-    "ListAdditionalRecipientReceivablesRequest": {
-      "type": "object",
-      "properties": {
-        "begin_time": {
-          "type": "string",
-          "description": "The beginning of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time minus one year."
-        },
-        "end_time": {
-          "type": "string",
-          "description": "The end of the requested reporting period, in RFC 3339 format.\n\nSee [Date ranges](#dateranges) for details on date inclusivity/exclusivity.\n\nDefault value: The current time."
-        },
-        "sort_order": {
-          "type": "string",
-          "description": "The order in which results are listed in the response (`ASC` for\noldest first, `DESC` for newest first).\n\nDefault value: `DESC`\nSee [SortOrder](#type-sortorder) for possible values"
-        },
-        "cursor": {
-          "type": "string",
-          "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for your original query.\n\nSee [Paginating results](#paginatingresults) for more information."
-        }
-      },
-      "description": "Defines the query parameters that can be included in\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true,
-      "example": {
-        "request_params": "?begin_time\u003d2016-01-15T00:00:00Z\u0026end_time\u003d2016-01-31T00:00:00Z"
-      },
-      "x-sq-sdk-sample-code": {
-        "python": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.python",
-        "csharp": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.csharp",
-        "java": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.java",
-        "php": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.php",
-        "javascript": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.javascript",
-        "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesRequest.ruby"
-      }
-    },
-    "ListAdditionalRecipientReceivablesResponse": {
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Error"
-          },
-          "description": "Any errors that occurred during the request."
-        },
-        "receivables": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdditionalRecipientReceivable"
-          },
-          "description": "An array of AdditionalRecipientReceivables that match your query."
-        },
-        "cursor": {
-          "type": "string",
-          "description": "A pagination cursor for retrieving the next set of results,\nif any remain. Provide this value as the `cursor` parameter in a subsequent\nrequest to this endpoint.\n\nSee [Paginating results](#paginatingresults) for more information."
-        }
-      },
-      "description": "Defines the fields that are included in the response body of\na request to the [ListAdditionalRecipientReceivables](#endpoint-listadditionalrecipientreceivables) endpoint.\n\nOne of `errors` or `additional_recipient_receivables` is present in a given response (never both).",
-      "x-release-status": "DEPRECATED",
-      "x-is-deprecated": true,
-      "example": {
-        "receivables": [
-          {
-            "id": "ISu5xwxJ5v0CMJTQq7RvqyMF",
-            "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
-            "transaction_location_id": "18YC4JDH91E1H",
-            "amount_money": {
-              "amount": 20,
-              "currency": "USD"
-            },
-            "created_at": "2016-01-19T15:12:41Z",
-            "refunds": [
-              {
-                "id": "Ge2OT7KA6XAg1GC15qs5S",
-                "receivable_id": "ISu5xwxJ5v0CMJTQq7RvqyMF",
-                "refund_id": "b27436d1-7f8e-5610-45c6-417ef71434b4-SW",
-                "transaction_location_id": "18YC4JDH91E1H",
-                "amount_money": {
-                  "amount": 10,
-                  "currency": "USD"
-                },
-                "created_at": "2016-01-20T22:57:56Z"
-              }
-            ]
-          }
-        ]
-      },
-      "x-sq-sdk-sample-code": {
-        "python": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.python",
-        "csharp": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.csharp",
-        "java": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.java",
-        "php": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.php",
-        "javascript": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.javascript",
-        "ruby": "/sdk_samples/ListAdditionalRecipientReceivables/ListAdditionalRecipientReceivablesResponse.ruby"
-      }
     },
     "ListBankAccountsRequest": {
       "type": "object",
@@ -27498,7 +27316,7 @@
       "properties": {
         "employee_id": {
           "type": "string",
-          "description": "Filter wages returned to only those that are associated with the\nspecified employee."
+          "description": "Filter wages returned to only those that are associated with the specified employee."
         },
         "limit": {
           "maximum": 200,
@@ -27512,7 +27330,8 @@
         }
       },
       "description": "A request for a set of `EmployeeWage` objects",
-      "x-release-status": "PUBLIC",
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true,
       "example": {
         "request_params": "?employee_id\u003d33fJchumvVdJwxV0H6L9\u0026limit\u003d4\u0026cursor\u003ds4R0Z6ecFTzTC4jz8sUDBQTudX3KE313OT9fCt3VUgsXM4sMgED"
       }
@@ -27540,7 +27359,8 @@
         }
       },
       "description": "The response to a request for a set of `EmployeeWage` objects. Contains \na set of `EmployeeWage`.",
-      "x-release-status": "PUBLIC",
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true,
       "example": {
         "employee_wages": [
           {
@@ -27588,7 +27408,7 @@
       "properties": {
         "location_id": {
           "type": "string",
-          "description": "Filter employees returned to only those that are associated with the specified location."
+          "description": ""
         },
         "status": {
           "type": "string",
@@ -27604,7 +27424,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "ListEmployeesResponse": {
       "type": "object",
@@ -27614,7 +27435,7 @@
           "items": {
             "$ref": "#/definitions/Employee"
           },
-          "description": "List of employees returned from the request."
+          "description": ""
         },
         "cursor": {
           "type": "string",
@@ -27629,7 +27450,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "ListInvoicesRequest": {
       "type": "object",
@@ -28340,6 +28162,96 @@
             "plan_id": "6JHXF3B2CW3YKHDV4XEM674H"
           }
         ]
+      }
+    },
+    "ListTeamMemberWagesRequest": {
+      "type": "object",
+      "properties": {
+        "team_member_id": {
+          "type": "string",
+          "description": "Filter wages returned to only those that are associated with the\nspecified team member."
+        },
+        "limit": {
+          "maximum": 200,
+          "minimum": 1,
+          "type": "integer",
+          "description": "Maximum number of Team Member Wages to return per page. Can range between\n1 and 200. The default is the maximum at 200."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "Pointer to the next page of Employee Wage results to fetch."
+        }
+      },
+      "description": "A request for a set of `TeamMemberWage` objects",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "request_params": "?team_member_id\u003d33fJchumvVdJwxV0H6L9\u0026limit\u003d4\u0026cursor\u003ds4R0Z6ecFTzTC4jz8sUDBQTudX3KE313OT9fCt3VUgsXM4sMgED"
+      }
+    },
+    "ListTeamMemberWagesResponse": {
+      "type": "object",
+      "properties": {
+        "team_member_wages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TeamMemberWage"
+          },
+          "description": "A page of Team Member Wage results."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "Value supplied in the subsequent request to fetch the next next page\nof Team Member Wage results."
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Any errors that occurred during the request."
+        }
+      },
+      "description": "The response to a request for a set of `TeamMemberWage` objects. Contains\na set of `TeamMemberWage`.",
+      "x-release-status": "PUBLIC",
+      "example": {
+        "team_member_wages": [
+          {
+            "id": "pXS3qCv7BERPnEGedM4S8mhm",
+            "team_member_id": "33fJchumvVdJwxV0H6L9",
+            "title": "Manager",
+            "hourly_rate": {
+              "amount": 3250,
+              "currency": "USD"
+            }
+          },
+          {
+            "id": "rZduCkzYDUVL3ovh1sQgbue6",
+            "team_member_id": "33fJchumvVdJwxV0H6L9",
+            "title": "Cook",
+            "hourly_rate": {
+              "amount": 2600,
+              "currency": "USD"
+            }
+          },
+          {
+            "id": "FxLbs5KpPUHa8wyt5ctjubDX",
+            "team_member_id": "33fJchumvVdJwxV0H6L9",
+            "title": "Barista",
+            "hourly_rate": {
+              "amount": 1600,
+              "currency": "USD"
+            }
+          },
+          {
+            "id": "vD1wCgijMDR3cX5TPnu7VXto",
+            "team_member_id": "33fJchumvVdJwxV0H6L9",
+            "title": "Cashier",
+            "hourly_rate": {
+              "amount": 1700,
+              "currency": "USD"
+            }
+          }
+        ],
+        "cursor": "2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED"
       }
     },
     "ListTransactionsRequest": {
@@ -29553,20 +29465,6 @@
       "description": "Represents a Square seller.",
       "x-release-status": "PUBLIC"
     },
-    "MethodErrorCodes": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "\nSee [ErrorCode](#type-errorcode) for possible values"
-        }
-      },
-      "description": "",
-      "x-release-status": "PUBLIC"
-    },
     "Money": {
       "type": "object",
       "properties": {
@@ -29843,7 +29741,8 @@
           "type": "integer",
           "description": "Version number which is incremented each time an update is committed to the order.\nOrders that were not created through the API will not include a version and\nthus cannot be updated.\n\n[Read more about working with versions](https://developer.squareup.com/docs/orders-api/manage-orders#update-orders).",
           "x-release-status": "BETA",
-          "x-is-beta": true
+          "x-is-beta": true,
+          "x-read-only": true
         },
         "total_money": {
           "$ref": "#/definitions/Money",
@@ -29858,6 +29757,11 @@
         "total_discount_money": {
           "$ref": "#/definitions/Money",
           "description": "The total discount amount of money to collect for the order.",
+          "x-read-only": true
+        },
+        "total_tip_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The total tip amount of money to collect for the order.",
           "x-read-only": true
         },
         "total_service_charge_money": {
@@ -29904,7 +29808,8 @@
         },
         "created_at": {
           "type": "string",
-          "description": "Timestamp for when the order was created in RFC 3339 format."
+          "description": "Timestamp for when the order was created in RFC 3339 format.",
+          "x-read-only": true
         }
       },
       "description": "",
@@ -29934,7 +29839,8 @@
           "type": "integer",
           "description": "Version number which is incremented each time an update is committed to the order.\nOrders that were not created through the API will not include a version and\nthus cannot be updated.\n\n[Read more about working with versions](https://developer.squareup.com/docs/orders-api/manage-orders#update-orders).",
           "x-release-status": "BETA",
-          "x-is-beta": true
+          "x-is-beta": true,
+          "x-read-only": true
         },
         "location_id": {
           "type": "string",
@@ -30087,7 +29993,7 @@
         },
         "buyer_arrived_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\",\nindicating when the buyer arrived and is waiting for pickup."
+          "description": "The [timestamp](#workingwithdates) in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\",\nindicating when the buyer arrived and is waiting for pickup."
         }
       },
       "description": "Specific details for curbside pickup.",
@@ -30161,31 +30067,31 @@
         },
         "placed_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating when the shipment was\nrequested. Must be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "The [timestamp](#workingwithdates) indicating when the shipment was\nrequested. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
           "x-read-only": true
         },
         "in_progress_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating when this fulfillment was\nmoved to the `RESERVED` state. Indicates that preparation of this shipment has begun.\nMust be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "The [timestamp](#workingwithdates) indicating when this fulfillment was\nmoved to the `RESERVED` state. Indicates that preparation of this shipment has begun.\nMust be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
           "x-read-only": true
         },
         "packaged_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating when this fulfillment\nwas moved to the `PREPARED` state. Indicates that the fulfillment is packaged.\nMust be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "The [timestamp](#workingwithdates) indicating when this fulfillment\nwas moved to the `PREPARED` state. Indicates that the fulfillment is packaged.\nMust be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
           "x-read-only": true
         },
         "expected_shipped_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating when the shipment is\nexpected to be delivered to the shipping carrier. Must be in RFC3339 timestamp\nformat, e.g., \"2016-09-04T23:59:33.123Z\"."
+          "description": "The [timestamp](#workingwithdates) indicating when the shipment is\nexpected to be delivered to the shipping carrier. Must be in RFC 3339 timestamp\nformat, e.g., \"2016-09-04T23:59:33.123Z\"."
         },
         "shipped_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating when this fulfillment\nwas moved to the `COMPLETED`state. Indicates that the fulfillment has been given\nto the shipping carrier. Must be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
+          "description": "The [timestamp](#workingwithdates) indicating when this fulfillment\nwas moved to the `COMPLETED`state. Indicates that the fulfillment has been given\nto the shipping carrier. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".",
           "x-read-only": true
         },
         "canceled_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating the shipment was canceled.\nMust be in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\"."
+          "description": "The [timestamp](#workingwithdates) indicating the shipment was canceled.\nMust be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\"."
         },
         "cancel_reason": {
           "maxLength": 100,
@@ -30194,7 +30100,7 @@
         },
         "failed_at": {
           "type": "string",
-          "description": "The [timestamp](#workingwithdates) indicating when the shipment\nfailed to be completed. Must be in RFC3339 timestamp format, e.g.,\n\"2016-09-04T23:59:33.123Z\".",
+          "description": "The [timestamp](#workingwithdates) indicating when the shipment\nfailed to be completed. Must be in RFC 3339 timestamp format, e.g.,\n\"2016-09-04T23:59:33.123Z\".",
           "x-read-only": true
         },
         "failure_reason": {
@@ -30228,11 +30134,13 @@
         },
         "created_at": {
           "type": "string",
-          "description": "Timestamp for when the order was created in RFC 3339 format."
+          "description": "Timestamp for when the order was created in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "type": "string",
-          "description": "Timestamp for when the order was last updated in RFC 3339 format."
+          "description": "Timestamp for when the order was last updated in RFC 3339 format.",
+          "x-read-only": true
         },
         "fulfillment_update": {
           "type": "array",
@@ -31154,11 +31062,13 @@
         },
         "created_at": {
           "type": "string",
-          "description": "Timestamp for when the order was created in RFC 3339 format."
+          "description": "Timestamp for when the order was created in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "type": "string",
-          "description": "Timestamp for when the order was last updated in RFC 3339 format."
+          "description": "Timestamp for when the order was last updated in RFC 3339 format.",
+          "x-read-only": true
         }
       },
       "description": "",
@@ -32518,14 +32428,15 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "RetrieveEmployeeResponse": {
       "type": "object",
       "properties": {
         "employee": {
           "$ref": "#/definitions/Employee",
-          "description": "The response object."
+          "description": ""
         },
         "errors": {
           "type": "array",
@@ -32536,7 +32447,8 @@
         }
       },
       "description": "",
-      "x-release-status": "PUBLIC"
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "RetrieveInventoryAdjustmentRequest": {
       "type": "object",
@@ -34615,6 +34527,7 @@
         "shifts": [
           {
             "id": "X714F3HA6D1PT",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
             "employee_id": "ormj0jJJZ5OZIzxrZYJI",
             "location_id": "PAA1RJZZKXBFG",
             "timezone": "America/New_York",
@@ -34645,6 +34558,7 @@
           },
           {
             "id": "GDHYBZYWK0P2V",
+            "team_member_id": "33fJchumvVdJwxV0H6L9",
             "employee_id": "33fJchumvVdJwxV0H6L9",
             "location_id": "PAA1RJZZKXBFG",
             "timezone": "America/New_York",
@@ -35171,7 +35085,6 @@
     "Shift": {
       "type": "object",
       "required": [
-        "employee_id",
         "start_at"
       ],
       "properties": {
@@ -35181,9 +35094,10 @@
           "description": "UUID for this object"
         },
         "employee_id": {
-          "minLength": 1,
           "type": "string",
-          "description": "The ID of the employee this shift belongs to."
+          "description": "The ID of the employee this shift belongs to. DEPRECATED at version 2020-08-26. Use `team_member_id` instead",
+          "x-release-status": "DEPRECATED",
+          "x-is-deprecated": true
         },
         "location_id": {
           "type": "string",
@@ -35200,7 +35114,7 @@
         },
         "end_at": {
           "type": "string",
-          "description": "RFC 3339; shifted to timezone + offset. Precision up to the minute is\nrespected; seconds are truncated. The `end_at` minute is not\ncounted when the shift length is calculated. For example, a shift from `00:00`\nto `08:01` is considered an 8 hour shift (midnight to 8am)."
+          "description": "RFC 3339; shifted to timezone + offset. Precision up to the minute is\nrespected; seconds are truncated."
         },
         "wage": {
           "$ref": "#/definitions/ShiftWage",
@@ -35223,11 +35137,17 @@
         },
         "created_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format; presented in UTC."
+          "description": "A read-only timestamp in RFC 3339 format; presented in UTC.",
+          "x-read-only": true
         },
         "updated_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format; presented in UTC."
+          "description": "A read-only timestamp in RFC 3339 format; presented in UTC.",
+          "x-read-only": true
+        },
+        "team_member_id": {
+          "type": "string",
+          "description": "The ID of the team member this shift belongs to. Replaced `employee_id` at version \"2020-08-26\""
         }
       },
       "description": "A record of the hourly rate, start, and end times for a single work shift\nfor an employee. May include a record of the start and end times for breaks\ntaken during the shift.",
@@ -35235,10 +35155,15 @@
     },
     "ShiftFilter": {
       "type": "object",
+      "required": [
+        "location_ids",
+        "team_member_ids"
+      ],
       "properties": {
         "location_ids": {
           "type": "array",
           "items": {
+            "minLength": 1,
             "type": "string"
           },
           "description": "Fetch shifts for the specified location."
@@ -35248,7 +35173,9 @@
           "items": {
             "type": "string"
           },
-          "description": "Fetch shifts for the specified employee."
+          "description": "Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use `team_member_ids` instead",
+          "x-release-status": "DEPRECATED",
+          "x-is-deprecated": true
         },
         "status": {
           "type": "string",
@@ -35265,6 +35192,14 @@
         "workday": {
           "$ref": "#/definitions/ShiftWorkday",
           "description": "Fetch the `Shift`s based on workday date range."
+        },
+        "team_member_ids": {
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": "Fetch shifts for the specified team members. Replaced `employee_ids` at version \"2020-08-26\""
         }
       },
       "description": "Defines a filter used in a search for `Shift` records. `AND` logic is\nused by Square\u0027s servers to apply each filter property specified.",
@@ -35331,7 +35266,7 @@
           "description": "Location-specific timezones convert workdays to datetime filters.\nEvery location included in the query must have a timezone, or this field\nmust be provided as a fallback. Format: the IANA timezone database\nidentifier for the relevant timezone."
         }
       },
-      "description": "A `Shift` search query filter parameter that sets a range of days that \na `Shift` must start or end in before passing the filter condition.",
+      "description": "A `Shift` search query filter parameter that sets a range of days that\na `Shift` must start or end in before passing the filter condition.",
       "x-release-status": "PUBLIC"
     },
     "SourceApplication": {
@@ -35500,8 +35435,7 @@
         "version": {
           "type": "integer",
           "format": "int64",
-          "description": "The version of the object. When updating an object, the version\nsupplied must match the version in the database, otherwise the write will\nbe rejected as conflicting.",
-          "x-read-only": true
+          "description": "The version of the object. When updating an object, the version\nsupplied must match the version in the database, otherwise the write will\nbe rejected as conflicting."
         },
         "created_at": {
           "type": "string",
@@ -35566,18 +35500,15 @@
       "properties": {
         "uid": {
           "type": "string",
-          "description": "The Square-assigned ID of the subscription phase.",
-          "x-read-only": true
+          "description": "The Square-assigned ID of the subscription phase. This field cannot be changed after a `SubscriptionPhase` is created."
         },
         "cadence": {
           "type": "string",
-          "description": "The billing cadence of the phase. For example, weekly or monthly.\nSee [SubscriptionCadence](#type-subscriptioncadence) for possible values",
-          "x-read-only": true
+          "description": "The billing cadence of the phase. For example, weekly or monthly. This field cannot be changed after a `SubscriptionPhase` is created.\nSee [SubscriptionCadence](#type-subscriptioncadence) for possible values"
         },
         "periods": {
           "type": "integer",
-          "description": "The number of `cadence`s the phase lasts. If not set, the phase never ends. Only the last phase can be indefinite.",
-          "x-read-only": true
+          "description": "The number of `cadence`s the phase lasts. If not set, the phase never ends. Only the last phase can be indefinite. This field cannot be changed after a `SubscriptionPhase` is created."
         },
         "recurring_price_money": {
           "$ref": "#/definitions/Money",
@@ -35586,8 +35517,7 @@
         "ordinal": {
           "type": "integer",
           "format": "int64",
-          "description": "The position this phase appears in the sequence of phases defined for the plan, indexed from 0.",
-          "x-read-only": true
+          "description": "The position this phase appears in the sequence of phases defined for the plan, indexed from 0. This field cannot be changed after a `SubscriptionPhase` is created."
         }
       },
       "description": "Describes a phase in a subscription plan. For more information, see\n[Set Up and Manage a Subscription Plan](/docs/subscriptions-api/setup-plan).",
@@ -35667,6 +35597,29 @@
       "description": "An object that represents a team member\u0027s assignment to locations.",
       "x-release-status": "PUBLIC"
     },
+    "TeamMemberWage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "UUID for this object."
+        },
+        "team_member_id": {
+          "type": "string",
+          "description": "The `Team Member` that this wage is assigned to."
+        },
+        "title": {
+          "type": "string",
+          "description": "The job title that this wage relates to."
+        },
+        "hourly_rate": {
+          "$ref": "#/definitions/Money",
+          "description": "Can be a custom-set hourly wage or the calculated effective hourly\nwage based on annual wage and hours worked per week."
+        }
+      },
+      "description": "The hourly wage rate that a team member will earn on a `Shift` for doing the job\nspecified by the `title` property of this object.",
+      "x-release-status": "PUBLIC"
+    },
     "Tender": {
       "type": "object",
       "required": [
@@ -35691,7 +35644,8 @@
         "created_at": {
           "maxLength": 32,
           "type": "string",
-          "description": "The timestamp for when the tender was created, in RFC 3339 format."
+          "description": "The timestamp for when the tender was created, in RFC 3339 format.",
+          "x-read-only": true
         },
         "note": {
           "maxLength": 500,
@@ -35727,6 +35681,10 @@
           "$ref": "#/definitions/TenderCashDetails",
           "description": "The details of the cash tender.\n\nThis value is present only if the value of `type` is `CASH`."
         },
+        "bank_transfer_details": {
+          "$ref": "#/definitions/TenderBankTransferDetails",
+          "description": "The details of the bank transfer tender.\n\nThis value is present only if the value of `type` is `BANK_TRANSFER`."
+        },
         "additional_recipients": {
           "type": "array",
           "items": {
@@ -35741,6 +35699,17 @@
         }
       },
       "description": "Represents a tender (i.e., a method of payment) used in a Square transaction.",
+      "x-release-status": "PUBLIC"
+    },
+    "TenderBankTransferDetails": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "The bank transfer\u0027s current state.\n\nSee `TenderBankTransferDetailsStatus` for possible values.\nSee [TenderBankTransferDetailsStatus](#type-tenderbanktransferdetailsstatus) for possible values"
+        }
+      },
+      "description": "Represents the details of a tender with `type` `BANK_TRANSFER`.\n\nSee [PaymentBankTransferDetails](#type-paymentbanktransferdetails) for more exposed details of a bank transfer payment.",
       "x-release-status": "PUBLIC"
     },
     "TenderCardDetails": {
@@ -35897,14 +35866,14 @@
       "properties": {
         "start_at": {
           "type": "string",
-          "description": "A datetime value in RFC-3339 format indicating when the time range\nstarts."
+          "description": "A datetime value in RFC 3339 format indicating when the time range\nstarts."
         },
         "end_at": {
           "type": "string",
-          "description": "A datetime value in RFC-3339 format indicating when the time range\nends."
+          "description": "A datetime value in RFC 3339 format indicating when the time range\nends."
         }
       },
-      "description": "Represents a generic time range. The start and end values are\nrepresented in RFC-3339 format. Time ranges are customized to be\ninclusive or exclusive based on the needs of a particular endpoint.\nRefer to the relevent endpoint-specific documentation to determine\nhow time ranges are handled.",
+      "description": "Represents a generic time range. The start and end values are\nrepresented in RFC 3339 format. Time ranges are customized to be\ninclusive or exclusive based on the needs of a particular endpoint.\nRefer to the relevant endpoint-specific documentation to determine\nhow time ranges are handled.",
       "x-release-status": "PUBLIC"
     },
     "TipSettings": {
@@ -36500,6 +36469,7 @@
           "location": {
             "name": "Updated nickname",
             "description": "Updated description",
+            "facebook_url": null,
             "twitter_username": "twitter",
             "instagram_username": "instagram",
             "address": {
@@ -36772,7 +36742,7 @@
       "example": {
         "request_body": {
           "shift": {
-            "employee_id": "ormj0jJJZ5OZIzxrZYJI",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
             "location_id": "PAA1RJZZKXBFG",
             "start_at": "2019-01-25T03:11:00-05:00",
             "end_at": "2019-01-25T13:11:00-05:00",
@@ -36819,6 +36789,7 @@
       "example": {
         "shift": {
           "id": "K0YH4CV5462JB",
+          "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
           "employee_id": "ormj0jJJZ5OZIzxrZYJI",
           "location_id": "PAA1RJZZKXBFG",
           "timezone": "America/New_York",
@@ -36864,6 +36835,7 @@
         "request_body": {
           "subscription": {
             "version": 1594155459464,
+            "tax_percentage": null,
             "price_override_money": {
               "amount": 2000,
               "currency": "USD"
@@ -40022,11 +39994,13 @@
         },
         "created_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format; presented in UTC"
+          "description": "A read-only timestamp in RFC 3339 format; presented in UTC",
+          "x-read-only": true
         },
         "updated_at": {
           "type": "string",
-          "description": "A read-only timestamp in RFC 3339 format; presented in UTC"
+          "description": "A read-only timestamp in RFC 3339 format; presented in UTC",
+          "x-read-only": true
         }
       },
       "description": "Sets the Day of the week and hour of the day that a business starts a\nwork week. Used for the calculation of overtime pay.",
