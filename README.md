@@ -40,6 +40,21 @@ Generating an SDK for a new language is possible. You'll need to have a working 
     ```
 5. (Optional) Add custom templates for your generator. Check [Swagger Codegen Readme](https://github.com/swagger-api/swagger-codegen#modifying-the-client-library-format).
 
+Generating and Downloading New Swagger Specs
+--------------------------------------------
+
+Swagger specifications are now generated in our new pipeline, using the [`oas-pipeline` tool](https://git.sqcorp.co/projects/XP/repos/oas-pipeline/browse/cli). You will need the build id for an `OAS` generated with the tool in production. The Swagger Spec can then be generated with the following command:
+```
+oas-pipeline generate swagger <build_id>
+```
+
+Once the Swagger generation has succeeded, the spec files can be downloaded and pushed to a release branch with the following command:
+```
+./script/internal/download-swagger-specs.sh <build_id>
+```
+
+Note: the build id must be from a production environment build.
+
 Contributing
 ------------
 

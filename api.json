@@ -82,7 +82,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -121,7 +121,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -165,7 +165,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -201,7 +201,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\nFor more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [],
         "parameters": [
           {
@@ -237,7 +237,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -268,7 +268,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -364,7 +364,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -405,7 +405,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -442,7 +442,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -491,7 +491,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -525,7 +525,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -579,7 +579,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -620,7 +620,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -657,7 +657,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -706,7 +706,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -828,7 +828,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -870,7 +870,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -909,7 +909,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -948,7 +948,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -998,7 +998,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1042,7 +1042,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1086,7 +1086,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1135,7 +1135,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1203,7 +1203,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1252,7 +1252,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1294,7 +1294,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1344,7 +1344,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1391,7 +1391,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1449,7 +1449,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1491,7 +1491,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1541,7 +1541,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1588,7 +1588,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1646,7 +1646,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1688,7 +1688,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1738,7 +1738,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1785,7 +1785,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1843,7 +1843,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1903,7 +1903,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -1961,7 +1961,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2011,7 +2011,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2061,7 +2061,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2108,7 +2108,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2155,7 +2155,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2213,7 +2213,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2268,7 +2268,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2325,7 +2325,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2380,7 +2380,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2437,7 +2437,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2495,7 +2495,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2550,7 +2550,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2616,7 +2616,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2658,7 +2658,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2708,7 +2708,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2755,7 +2755,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2802,7 +2802,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2860,7 +2860,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2918,7 +2918,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -2973,7 +2973,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3039,7 +3039,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3103,7 +3103,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3148,7 +3148,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3204,7 +3204,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3246,7 +3246,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3296,7 +3296,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3343,7 +3343,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3401,7 +3401,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3464,7 +3464,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3521,7 +3521,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3605,7 +3605,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3651,7 +3651,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3726,7 +3726,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3774,7 +3774,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3858,7 +3858,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3902,7 +3902,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": []
@@ -3941,7 +3941,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -3994,7 +3994,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4033,7 +4033,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4072,7 +4072,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4146,7 +4146,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4192,7 +4192,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4252,7 +4252,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4293,7 +4293,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4334,7 +4334,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4375,7 +4375,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4406,7 +4406,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4452,7 +4452,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4493,7 +4493,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4530,7 +4530,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4576,7 +4576,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4618,7 +4618,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4659,7 +4659,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4700,7 +4700,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4741,7 +4741,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4792,7 +4792,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4834,7 +4834,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4873,7 +4873,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4915,7 +4915,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4954,7 +4954,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -4994,7 +4994,7 @@
           "CUSTOMERS_WRITE",
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5044,7 +5044,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5086,7 +5086,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5127,7 +5127,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5167,7 +5167,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5204,7 +5204,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5241,7 +5241,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5289,7 +5289,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5337,7 +5337,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5384,7 +5384,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5431,7 +5431,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5480,7 +5480,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5535,7 +5535,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5577,7 +5577,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5618,7 +5618,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5675,7 +5675,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5710,13 +5710,13 @@
         ],
         "summary": "AcceptDispute",
         "operationId": "AcceptDispute",
-        "description": "Accepts loss on a dispute. Square returns\nthe disputed amount to the cardholder and updates the\ndispute state to ACCEPTED.\n\nSquare debits the disputed amount from the seller’s Square\naccount. If the Square account balance does not have\nsufficient funds, Square debits the associated bank account.\nFor an overview of the Disputes API, see [Overview](/docs/disputes-api/overview).",
+        "description": "Accepts loss on a dispute. Square returns\nthe disputed amount to the cardholder and updates the\ndispute state to ACCEPTED.\n\nSquare debits the disputed amount from the seller’s Square\naccount. If the Square account balance does not have\nsufficient funds, Square debits the associated bank account.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5757,7 +5757,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5798,7 +5798,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5845,7 +5845,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5888,13 +5888,13 @@
         ],
         "summary": "CreateDisputeEvidenceText",
         "operationId": "CreateDisputeEvidenceText",
-        "description": "Uploads text to use as evidence for a dispute challenge. For more information, see\n[Challenge a Dispute](/docs/disputes-api/process-disputes#challenge-a-dispute).",
+        "description": "Uploads text to use as evidence for a dispute challenge.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5938,13 +5938,13 @@
         ],
         "summary": "SubmitEvidence",
         "operationId": "SubmitEvidence",
-        "description": "Submits evidence to the cardholder\u0027s bank.\n\nBefore submitting evidence, Square compiles all available evidence. This includes\nevidence uploaded using the\n[CreateDisputeEvidenceFile](/reference/square/disputes-api/create-dispute-evidence-file) and\n[CreateDisputeEvidenceText](/reference/square/disputes-api/create-dispute-evidence-text) endpoints,\nand evidence automatically provided by Square, when\navailable. For more information, see\n[Challenge a Dispute](/docs/disputes-api/process-disputes#challenge-a-dispute).",
+        "description": "Submits evidence to the cardholder\u0027s bank.\n\nBefore submitting evidence, Square compiles all available evidence. This includes\nevidence uploaded using the\n[CreateDisputeEvidenceFile](/reference/square/disputes-api/create-dispute-evidence-file) and\n[CreateDisputeEvidenceText](/reference/square/disputes-api/create-dispute-evidence-text) endpoints,\nand evidence automatically provided by Square, when\navailable.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -5985,7 +5985,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6050,7 +6050,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6090,7 +6090,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6129,7 +6129,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6170,7 +6170,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6211,7 +6211,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6252,7 +6252,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6291,7 +6291,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6344,7 +6344,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6392,13 +6392,13 @@
         ],
         "summary": "ListInvoices",
         "operationId": "ListInvoices",
-        "description": "Returns a list of invoices for a given location. The response \nis paginated. If truncated, the response includes a `cursor` that you    \nuse in a subsequent request to fetch the next set of invoices.\nFor more information about retrieving invoices, see [Retrieve invoices](/docs/invoices-api/overview#retrieve-invoices).",
+        "description": "Returns a list of invoices for a given location. The response \nis paginated. If truncated, the response includes a `cursor` that you    \nuse in a subsequent request to fetch the next set of invoices.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6447,14 +6447,14 @@
         ],
         "summary": "CreateInvoice",
         "operationId": "CreateInvoice",
-        "description": "Creates a draft [invoice](#type-invoice) \nfor an order created using the Orders API.\n\nA draft invoice remains in your account and no action is taken. \nYou must publish the invoice before Square can process it (send it to the customer\u0027s email address or charge the customer’s card on file). \nFor more information, see [Manage Invoices Using the Invoices API](/docs/invoices-api/overview).",
+        "description": "Creates a draft [invoice](#type-invoice) \nfor an order created using the Orders API.\n\nA draft invoice remains in your account and no action is taken. \nYou must publish the invoice before Square can process it (send it to the customer\u0027s email address or charge the customer’s card on file).",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6491,13 +6491,13 @@
         ],
         "summary": "SearchInvoices",
         "operationId": "SearchInvoices",
-        "description": "Searches for invoices from a location specified in \nthe filter. You can optionally specify customers in the filter for whom to \nretrieve invoices. In the current implementation, you can only specify one location and \noptionally one customer.\n\nThe response is paginated. If truncated, the response includes a `cursor` \nthat you use in a subsequent request to fetch the next set of invoices. \nFor more information about retrieving invoices, see [Retrieve invoices](/docs/invoices-api/overview#retrieve-invoices).",
+        "description": "Searches for invoices from a location specified in \nthe filter. You can optionally specify customers in the filter for whom to \nretrieve invoices. In the current implementation, you can only specify one location and \noptionally one customer.\n\nThe response is paginated. If truncated, the response includes a `cursor` \nthat you use in a subsequent request to fetch the next set of invoices.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6540,7 +6540,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6588,7 +6588,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6621,14 +6621,14 @@
         ],
         "summary": "UpdateInvoice",
         "operationId": "UpdateInvoice",
-        "description": "Updates an invoice by modifying field values, clearing field values, or both \nas specified in the request. \nThere are no restrictions to updating an invoice in a draft state. \nHowever, there are guidelines for updating a published invoice. \nFor more information, see [Update an invoice](/docs/invoices-api/overview#update-an-invoice).",
+        "description": "Updates an invoice by modifying field values, clearing field values, or both \nas specified in the request. \nThere are no restrictions to updating an invoice in a draft state. \nHowever, there are guidelines for updating a published invoice.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6680,7 +6680,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6725,14 +6725,14 @@
         ],
         "summary": "PublishInvoice",
         "operationId": "PublishInvoice",
-        "description": "Publishes the specified draft invoice. \n\nAfter an invoice is published, Square \nfollows up based on the invoice configuration. For example, Square \nsends the invoice to the customer\u0027s email address, charges the customer\u0027s card on file, or does \nnothing. Square also makes the invoice available on a Square-hosted invoice page. \n\nThe invoice `status` also changes from `DRAFT` to a status \nbased on the invoice configuration. For example, the status changes to `UNPAID` if \nSquare emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the \ninvoice amount).\n\nFor more information, see \n[Create and publish an invoice](/docs/invoices-api/overview#create-and-publish-an-invoice).",
+        "description": "Publishes the specified draft invoice. \n\nAfter an invoice is published, Square \nfollows up based on the invoice configuration. For example, Square \nsends the invoice to the customer\u0027s email address, charges the customer\u0027s card on file, or does \nnothing. Square also makes the invoice available on a Square-hosted invoice page. \n\nThe invoice `status` also changes from `DRAFT` to a status \nbased on the invoice configuration. For example, the status changes to `UNPAID` if \nSquare emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the \ninvoice amount).",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6782,7 +6782,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6833,7 +6833,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6874,7 +6874,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6911,7 +6911,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6949,7 +6949,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -6999,7 +6999,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7056,7 +7056,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7096,7 +7096,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7137,7 +7137,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7178,7 +7178,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7215,7 +7215,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7253,7 +7253,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7302,7 +7302,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7355,7 +7355,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7394,7 +7394,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7441,7 +7441,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7490,7 +7490,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7520,7 +7520,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7561,7 +7561,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7599,7 +7599,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7649,7 +7649,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7699,7 +7699,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7772,7 +7772,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7843,7 +7843,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7893,7 +7893,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7942,7 +7942,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -7991,7 +7991,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8049,7 +8049,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8098,7 +8098,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8140,7 +8140,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8182,7 +8182,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8223,7 +8223,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8273,7 +8273,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8323,7 +8323,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8365,7 +8365,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8397,7 +8397,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8447,7 +8447,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8489,7 +8489,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8531,7 +8531,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8570,7 +8570,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8611,7 +8611,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8660,7 +8660,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8699,7 +8699,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8733,12 +8733,12 @@
         ],
         "summary": "CreateOrder",
         "operationId": "CreateOrder",
-        "description": "Creates a new [Order](#type-order) which can include information on products for\npurchase and settings to apply to the purchase.\n\nTo pay for a created order, please refer to the [Pay for Orders](/orders-api/pay-for-orders)\nguide.\n\nYou can modify open orders using the [UpdateOrder](#endpoint-orders-updateorder) endpoint.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/orders-api/what-it-does).",
+        "description": "Creates a new [Order](#type-order) which can include information on products for\npurchase and settings to apply to the purchase.\n\nTo pay for a created order, please refer to the [Pay for Orders](/orders-api/pay-for-orders)\nguide.\n\nYou can modify open orders using the [UpdateOrder](#endpoint-orders-updateorder) endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8779,7 +8779,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8819,7 +8819,7 @@
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": []
@@ -8858,7 +8858,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8894,13 +8894,13 @@
         ],
         "summary": "UpdateOrder",
         "operationId": "UpdateOrder",
-        "description": "Updates an open [Order](#type-order) by adding, replacing, or deleting\nfields. Orders with a `COMPLETED` or `CANCELED` state cannot be updated.\n\nAn UpdateOrder request requires the following:\n\n- The `order_id` in the endpoint path, identifying the order to update.\n- The latest `version` of the order to update.\n- The [sparse order](/orders-api/manage-orders#sparse-order-objects)\ncontaining only the fields to update and the version the update is\nbeing applied to.\n- If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation)\nidentifying fields to clear.\n\nTo pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.\n\nTo learn more about the Orders API, see the\n[Orders API Overview](/orders-api/what-it-does).",
+        "description": "Updates an open [Order](#type-order) by adding, replacing, or deleting\nfields. Orders with a `COMPLETED` or `CANCELED` state cannot be updated.\n\nAn UpdateOrder request requires the following:\n\n- The `order_id` in the endpoint path, identifying the order to update.\n- The latest `version` of the order to update.\n- The [sparse order](/orders-api/manage-orders#sparse-order-objects)\ncontaining only the fields to update and the version the update is\nbeing applied to.\n- If deleting fields, the [dot notation paths](/orders-api/manage-orders#on-dot-notation)\nidentifying fields to clear.\n\nTo pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -8944,14 +8944,14 @@
         ],
         "summary": "PayOrder",
         "operationId": "PayOrder",
-        "description": "Pay for an [order](#type-order) using one or more approved [payments](#type-payment),\nor settle an order with a total of `0`.\n\nThe total of the `payment_ids` listed in the request must be equal to the order\ntotal. Orders with a total amount of `0` can be marked as paid by specifying an empty\narray of `payment_ids` in the request.\n\nTo be used with PayOrder, a payment must:\n\n- Reference the order by specifying the `order_id` when [creating the payment](#endpoint-payments-createpayment).\nAny approved payments that reference the same `order_id` not specified in the\n`payment_ids` will be canceled.\n- Be approved with [delayed capture](/payments-api/take-payments#delayed-capture).\nUsing a delayed capture payment with PayOrder will complete the approved payment.\n\nLearn how to [pay for orders with a single payment using the Payments API](/orders-api/pay-for-orders).",
+        "description": "Pay for an [order](#type-order) using one or more approved [payments](#type-payment),\nor settle an order with a total of `0`.\n\nThe total of the `payment_ids` listed in the request must be equal to the order\ntotal. Orders with a total amount of `0` can be marked as paid by specifying an empty\narray of `payment_ids` in the request.\n\nTo be used with PayOrder, a payment must:\n\n- Reference the order by specifying the `order_id` when [creating the payment](#endpoint-payments-createpayment).\nAny approved payments that reference the same `order_id` not specified in the\n`payment_ids` will be canceled.\n- Be approved with [delayed capture](/payments-api/take-payments#delayed-capture).\nUsing a delayed capture payment with PayOrder will complete the approved payment.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9001,7 +9001,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9040,7 +9040,7 @@
           },
           {
             "name": "location_id",
-            "description": "Limit results to the location supplied. By default, results are returned\nfor all locations associated with the merchant.",
+            "description": "Limit results to the location supplied. By default, results are returned\nfor the default (main) location associated with the merchant.",
             "type": "string",
             "in": "query",
             "required": false
@@ -9066,6 +9066,13 @@
             "type": "string",
             "in": "query",
             "required": false
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of results to be returned in a single page.\nIt is possible to receive fewer results than the specified limit on a given page.\n\nIf the supplied value is greater than 100, at most 100 results will be returned.\n\nDefault: `100`",
+            "type": "integer",
+            "in": "query",
+            "required": false
           }
         ],
         "responses": {
@@ -9083,12 +9090,12 @@
         ],
         "summary": "CreatePayment",
         "operationId": "CreatePayment",
-        "description": "Charges a payment source, for example, a card \nrepresented by customer\u0027s card on file or a card nonce. In addition \nto the payment source, the request must also include the \namount to accept for the payment.\n\nThere are several optional parameters that you can include in the request. \nFor example, tip money, whether to autocomplete the payment, or a reference ID\nto correlate this payment with another system. \nFor more information about these \npayment options, see [Take Payments](/payments-api/take-payments).\n\nThe `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required\nto enable application fees.",
+        "description": "Charges a payment source, for example, a card \nrepresented by customer\u0027s card on file or a card nonce. In addition \nto the payment source, the request must also include the \namount to accept for the payment.\n\nThere are several optional parameters that you can include in the request. \nFor example, tip money, whether to autocomplete the payment, or a reference ID\nto correlate this payment with another system. \n\nThe `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required\nto enable application fees.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9129,7 +9136,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9170,7 +9177,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9204,12 +9211,12 @@
         ],
         "summary": "CancelPayment",
         "operationId": "CancelPayment",
-        "description": "Cancels (voids) a payment. If you set `autocomplete` to false when creating a payment, \nyou can cancel the payment using this endpoint. For more information, see \n[Delayed Payments](/payments-api/take-payments#delayed-payments).",
+        "description": "Cancels (voids) a payment. If you set `autocomplete` to false when creating a payment, \nyou can cancel the payment using this endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9243,12 +9250,12 @@
         ],
         "summary": "CompletePayment",
         "operationId": "CompletePayment",
-        "description": "Completes (captures) a payment.\n\nBy default, payments are set to complete immediately after they are created. \nIf you set autocomplete to false when creating a payment, you can complete (capture) \nthe payment using this endpoint. For more information, see\n[Delayed Payments](/payments-api/take-payments#delayed-payments).",
+        "description": "Completes (captures) a payment.\n\nBy default, payments are set to complete immediately after they are created. \nIf you set autocomplete to false when creating a payment, you can complete (capture) \nthe payment using this endpoint.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9287,7 +9294,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9344,6 +9351,13 @@
             "type": "string",
             "in": "query",
             "required": false
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of results to be returned in a single page.\nIt is possible to receive fewer results than the specified limit on a given page.\n\nIf the supplied value is greater than 100, at most 100 results will be returned.\n\nDefault: `100`",
+            "type": "integer",
+            "in": "query",
+            "required": false
           }
         ],
         "responses": {
@@ -9361,12 +9375,12 @@
         ],
         "summary": "RefundPayment",
         "operationId": "RefundPayment",
-        "description": "Refunds a payment. You can refund the entire payment amount or a \nportion of it. For more information, see \n[Payments and Refunds Overview](/payments-api/overview).",
+        "description": "Refunds a payment. You can refund the entire payment amount or a \nportion of it.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9407,7 +9421,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9452,7 +9466,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9499,7 +9513,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9541,7 +9555,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9585,7 +9599,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9640,7 +9654,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9681,7 +9695,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9737,7 +9751,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9778,7 +9792,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9819,7 +9833,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9860,7 +9874,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9901,7 +9915,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9938,7 +9952,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -9986,7 +10000,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -10023,7 +10037,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -10072,7 +10086,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -10114,7 +10128,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -10156,7 +10170,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -10197,7 +10211,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-08-26",
+        "x-sq-version": "2020-09-23",
         "security": [
           {
             "oauth2": [
@@ -14429,12 +14443,13 @@
         "PARTIALLY_REFUNDED",
         "REFUNDED",
         "CANCELED",
-        "FAILED"
+        "FAILED",
+        "PAYMENT_PENDING"
       ],
       "x-enum-elements": [
         {
           "name": "DRAFT",
-          "description": "The invoice is a draft. You must publish a draft invoice before Square can process it.\nA draft invoice has no public_url, so it is not available to customers."
+          "description": "The invoice is a draft. You must publish a draft invoice before Square can process it.\nA draft invoice has no `public_url`, so it is not available to customers."
         },
         {
           "name": "UNPAID",
@@ -14442,7 +14457,7 @@
         },
         {
           "name": "SCHEDULED",
-          "description": "The invoice is scheduled to be processed. On scheduled date,\nSquare emails the invoice (if the `request_method` is EMAIL),\ncharge the customer\u0027s card (if `request_method` is CHARGE_CARD_ON_FILE),\nor take no action (if the `request_method` is SHARE_MANUALLY).\nThe invoice status then changes accordingly (`UNPAID`, `PAID`, or `PARTIALLY_PAID`)."
+          "description": "The invoice is scheduled to be processed. On the scheduled date,\nSquare emails the invoice (if the `request_method` is `EMAIL`),\ncharges the customer\u0027s card (if the `request_method` is `CHARGE_CARD_ON_FILE`),\nor takes no action (if the `request_method` is `SHARE_MANUALLY`).\nThe invoice status then changes accordingly (`UNPAID`, `PAID`, or `PARTIALLY_PAID`)."
         },
         {
           "name": "PARTIALLY_PAID",
@@ -14467,6 +14482,10 @@
         {
           "name": "FAILED",
           "description": "Square canceled the invoice due to suspicious activity."
+        },
+        {
+          "name": "PAYMENT_PENDING",
+          "description": "A payment on the invoice was initiated but has not yet been processed. \n\nWhen in this state, invoices cannot be updated and other payments cannot be initiated."
         }
       ],
       "description": "Indicates the status of an invoice.",
@@ -23712,7 +23731,7 @@
           "minLength": 1,
           "maxLength": 45,
           "type": "string",
-          "description": "A unique string that identifies this CreatePayment request. Keys can be any valid string\nbut must be unique for every CreatePayment request.\n\nMax: 45 characters\n\nSee [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
+          "description": "A unique string that identifies this CreatePayment request. Keys can be any valid string\nbut must be unique for every CreatePayment request.\n\nMax: 45 characters\n\nNote: The number of allowed characters might be less than the stated maximum, if multi-byte\ncharacters are used.\n\nSee [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
@@ -25063,6 +25082,11 @@
           "type": "string",
           "description": "Square-issued ID of the device."
         },
+        "device_installation_id": {
+          "maxLength": 255,
+          "type": "string",
+          "description": "Square-issued installation ID for the device."
+        },
         "device_name": {
           "maxLength": 255,
           "type": "string",
@@ -25120,13 +25144,15 @@
           "minLength": 1,
           "maxLength": 40,
           "type": "string",
-          "description": "Timestamp when the dispute was created, in RFC 3339 format."
+          "description": "Timestamp when the dispute was created, in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "minLength": 1,
           "maxLength": 40,
           "type": "string",
-          "description": "Timestamp when dispute was last updated, in RFC 3339 format."
+          "description": "Timestamp when dispute was last updated, in RFC 3339 format.",
+          "x-read-only": true
         },
         "brand_dispute_id": {
           "minLength": 1,
@@ -27778,6 +27804,10 @@
         "source_type": {
           "type": "string",
           "description": "If provided, only refunds with the given source type are returned.\n- `CARD` - List refunds only for payments where card was specified as payment\nsource.\n\nDefault: If omitted refunds are returned regardless of source type."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of results to be returned in a single page.\nIt is possible to receive fewer results than the specified limit on a given page.\n\nIf the supplied value is greater than 100, at most 100 results will be returned.\n\nDefault: `100`"
         }
       },
       "description": "Retrieves a list of refunds for the account making the request.\n\nMax results per page: 100",
@@ -27883,7 +27913,7 @@
         },
         "location_id": {
           "type": "string",
-          "description": "Limit results to the location supplied. By default, results are returned\nfor all locations associated with the merchant."
+          "description": "Limit results to the location supplied. By default, results are returned\nfor the default (main) location associated with the merchant."
         },
         "total": {
           "minimum": 0,
@@ -27898,6 +27928,10 @@
         "card_brand": {
           "type": "string",
           "description": "The brand of `Payment` card. For example, `VISA`"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of results to be returned in a single page.\nIt is possible to receive fewer results than the specified limit on a given page.\n\nIf the supplied value is greater than 100, at most 100 results will be returned.\n\nDefault: `100`"
         }
       },
       "description": "Retrieves a list of payments taken by the account making the request.\n\nMax results per page: 100",
@@ -30208,7 +30242,7 @@
           "minLength": 1,
           "maxLength": 12,
           "type": "string",
-          "description": "The quantity purchased, formatted as a decimal number.\nFor example: `\"3\"`.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example: `\"1.70000\"`."
+          "description": "The quantity purchased, formatted as a decimal number.\nFor example: `\"3\"`.\n\nLine items with a quantity of `\"0\"` will be automatically removed\nupon paying for or otherwise completing the order.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example: `\"1.70000\"`."
         },
         "quantity_unit": {
           "$ref": "#/definitions/OrderQuantityUnit",
@@ -31301,17 +31335,20 @@
         "id": {
           "maxLength": 192,
           "type": "string",
-          "description": "Unique ID for the payment."
+          "description": "Unique ID for the payment.",
+          "x-read-only": true
         },
         "created_at": {
           "maxLength": 32,
           "type": "string",
-          "description": "Timestamp of when the payment was created, in RFC 3339 format."
+          "description": "Timestamp of when the payment was created, in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "maxLength": 32,
           "type": "string",
-          "description": "Timestamp of when the payment was last updated, in RFC 3339 format."
+          "description": "Timestamp of when the payment was last updated, in RFC 3339 format.",
+          "x-read-only": true
         },
         "amount_money": {
           "$ref": "#/definitions/Money",
@@ -31323,7 +31360,8 @@
         },
         "total_money": {
           "$ref": "#/definitions/Money",
-          "description": "The total money for the payment, including `amount_money` and `tip_money`.\nSpecified in the smallest denomination of the applicable currency.\nFor example, US dollar amounts are specified in cents."
+          "description": "The total money for the payment, including `amount_money` and `tip_money`.\nSpecified in the smallest denomination of the applicable currency.\nFor example, US dollar amounts are specified in cents.",
+          "x-read-only": true
         },
         "app_fee_money": {
           "$ref": "#/definitions/Money",
@@ -31334,109 +31372,130 @@
           "items": {
             "$ref": "#/definitions/ProcessingFee"
           },
-          "description": "Processing fees and fee adjustments assessed by Square on this payment."
+          "description": "Processing fees and fee adjustments assessed by Square on this payment.",
+          "x-read-only": true
         },
         "refunded_money": {
           "$ref": "#/definitions/Money",
-          "description": "Total amount of the payment refunded to-date. Specified\nin the smallest denomination of the applicable currency. For example, US\ndollar amounts are specified in cents."
+          "description": "Total amount of the payment refunded to-date. Specified\nin the smallest denomination of the applicable currency. For example, US\ndollar amounts are specified in cents.",
+          "x-read-only": true
         },
         "status": {
           "maxLength": 50,
           "type": "string",
-          "description": "Indicates whether the payment is `APPROVED`, `COMPLETED`, `CANCELED`, or `FAILED`."
+          "description": "Indicates whether the payment is `APPROVED`, `COMPLETED`, `CANCELED`, or `FAILED`.",
+          "x-read-only": true
         },
         "delay_duration": {
           "type": "string",
           "description": "The duration of time after the payment\u0027s creation when Square automatically applies the\n`delay_action` to the payment. This automatic `delay_action` applies only to payments that\ndon\u0027t reach a terminal state (COMPLETED, CANCELED, or FAILED) before the `delay_duration`\ntime period.\n\nThis field is specified as a time duration, in RFC 3339 format.\n\nNotes:\nThis feature is only supported for card payments.\n\nDefault:\n\n- Card Present payments: \"PT36H\" (36 hours) from the creation time.\n- Card Not Present payments: \"P7D\" (7 days) from the creation time.",
           "x-release-status": "BETA",
-          "x-is-beta": true
+          "x-is-beta": true,
+          "x-read-only": true
         },
         "delay_action": {
           "type": "string",
           "description": "The action to be applied to the payment when the `delay_duration` has elapsed. This field\nis read only.\n\nCurrent values include:\n`CANCEL`",
           "x-release-status": "BETA",
-          "x-is-beta": true
+          "x-is-beta": true,
+          "x-read-only": true
         },
         "delayed_until": {
           "type": "string",
           "description": "Read only timestamp of when the `delay_action` will automatically be applied,\nin RFC 3339 format.\n\nNote that this field is calculated by summing the payment\u0027s `delay_duration` and `created_at`\nfields. The `created_at` field is generated by Square and may not exactly match the\ntime on your local machine.",
           "x-release-status": "BETA",
-          "x-is-beta": true
+          "x-is-beta": true,
+          "x-read-only": true
         },
         "source_type": {
           "maxLength": 50,
           "type": "string",
-          "description": "The source type for this payment\n\nCurrent values include: `CARD`."
+          "description": "The source type for this payment\n\nCurrent values include: `CARD`.",
+          "x-read-only": true
         },
         "card_details": {
           "$ref": "#/definitions/CardPaymentDetails",
-          "description": "Non-confidential details about the source. Only populated if the\n`source_type` is `CARD`."
+          "description": "Non-confidential details about the source. Only populated if the\n`source_type` is `CARD`.",
+          "x-read-only": true
         },
         "location_id": {
           "maxLength": 50,
           "type": "string",
-          "description": "ID of the location associated with the payment."
+          "description": "ID of the location associated with the payment.",
+          "x-read-only": true
         },
         "order_id": {
           "maxLength": 192,
           "type": "string",
-          "description": "ID of the order associated with this payment."
+          "description": "ID of the order associated with this payment.",
+          "x-read-only": true
         },
         "reference_id": {
           "maxLength": 40,
           "type": "string",
-          "description": "An optional ID that associates this payment with an entity in\nanother system."
+          "description": "An optional ID that associates this payment with an entity in\nanother system.",
+          "x-read-only": true
         },
         "customer_id": {
           "maxLength": 191,
           "type": "string",
-          "description": "The `Customer` ID of the customer associated with the payment."
+          "description": "The `Customer` ID of the customer associated with the payment.",
+          "x-read-only": true
         },
         "employee_id": {
           "maxLength": 192,
           "type": "string",
-          "description": "An optional ID of the employee associated with taking this payment."
+          "description": "An optional ID of the employee associated with taking this payment.",
+          "x-read-only": true
         },
         "refund_ids": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "List of `refund_id`s identifying refunds for this payment."
+          "description": "List of `refund_id`s identifying refunds for this payment.",
+          "x-read-only": true
         },
         "buyer_email_address": {
           "maxLength": 255,
           "type": "string",
-          "description": "The buyer\u0027s e-mail address"
+          "description": "The buyer\u0027s e-mail address",
+          "x-read-only": true
         },
         "billing_address": {
           "$ref": "#/definitions/Address",
-          "description": "The buyer\u0027s billing address"
+          "description": "The buyer\u0027s billing address",
+          "x-read-only": true
         },
         "shipping_address": {
           "$ref": "#/definitions/Address",
-          "description": "The buyer\u0027s shipping address"
+          "description": "The buyer\u0027s shipping address",
+          "x-read-only": true
         },
         "note": {
           "maxLength": 500,
           "type": "string",
-          "description": "An optional note to include when creating a payment"
+          "description": "An optional note to include when creating a payment",
+          "x-read-only": true
         },
         "statement_description_identifier": {
           "type": "string",
           "description": "Additional payment information that gets added on the customer\u0027s card statement\nas part of the statement description.\n\nNote that the `statement_description_identifier` may get truncated on the statement description\nto fit the required information including the Square identifier (SQ *) and name of the\nmerchant taking the payment.",
           "x-release-status": "BETA",
-          "x-is-beta": true
+          "x-is-beta": true,
+          "x-read-only": true
         },
         "receipt_number": {
           "maxLength": 4,
           "type": "string",
-          "description": "The payment\u0027s receipt number.\nThe field will be missing if a payment is CANCELED"
+          "description": "The payment\u0027s receipt number.\nThe field will be missing if a payment is CANCELED",
+          "x-read-only": true
         },
         "receipt_url": {
           "maxLength": 255,
           "type": "string",
-          "description": "The URL for the payment\u0027s receipt.\nThe field will only be populated for COMPLETED payments."
+          "description": "The URL for the payment\u0027s receipt.\nThe field will only be populated for COMPLETED payments.",
+          "x-read-only": true
         }
       },
       "description": "Represents a payment processed by the Square API.",
@@ -31510,12 +31569,14 @@
         "created_at": {
           "maxLength": 32,
           "type": "string",
-          "description": "Timestamp of when the refund was created, in RFC 3339 format."
+          "description": "Timestamp of when the refund was created, in RFC 3339 format.",
+          "x-read-only": true
         },
         "updated_at": {
           "maxLength": 32,
           "type": "string",
-          "description": "Timestamp of when the refund was last updated, in RFC 3339 format."
+          "description": "Timestamp of when the refund was last updated, in RFC 3339 format.",
+          "x-read-only": true
         }
       },
       "description": "Represents a refund of a payment made using Square. Contains information on\nthe original payment and the amount of money refunded.",
