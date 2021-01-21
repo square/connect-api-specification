@@ -82,7 +82,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE_IN_PERSON"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -121,7 +121,7 @@
         "description": "`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see\n[Renew OAuth Token](https://developer.squareup.com/docs/oauth-api/cookbook/renew-oauth-tokens).\n\n\nRenews an OAuth access token before it expires.\n\nOAuth access tokens besides your application\u0027s personal access token expire after __30 days__.\nYou can also renew expired tokens within __15 days__ of their expiration.\nYou cannot renew an access token that has been expired for more than 15 days.\nInstead, the associated user must re-complete the OAuth flow from the beginning.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [application dashboard](https://connect.squareup.com/apps).",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -165,7 +165,7 @@
         "operationId": "RevokeToken",
         "description": "Revokes an access token generated with the OAuth flow.\n\nIf an account has more than one OAuth access token for your application, this\nendpoint revokes all of them, regardless of which token you specify. When an\nOAuth access token is revoked, all of the active subscriptions associated\nwith that OAuth token are canceled immediately.\n\n__Important:__ The `Authorization` header for this endpoint must have the\nfollowing format:\n\n```\nAuthorization: Client APPLICATION_SECRET\n```\n\nReplace `APPLICATION_SECRET` with the application secret on the Credentials\npage in the [Developer Dashboard](https://developer.squareup.com/apps).",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2ClientSecret": []
@@ -201,7 +201,7 @@
         "operationId": "ObtainToken",
         "description": "Returns an OAuth access token.\n\nThe endpoint supports distinct methods of obtaining OAuth access tokens.\nApplications specify a method by adding the `grant_type` parameter\nin the request and also provide relevant information.\n\n__Note:__ Regardless of the method application specified,\nthe endpoint always returns two items; an OAuth access token and\na refresh token in the response.\n\n__OAuth tokens should only live on secure servers. Application clients\nshould never interact directly with OAuth tokens__.",
         "x-release-status": "PUBLIC",
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [],
         "parameters": [
           {
@@ -236,7 +236,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -332,7 +332,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -373,7 +373,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -410,7 +410,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -458,7 +458,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -512,7 +512,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -553,7 +553,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -590,7 +590,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -639,7 +639,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -761,7 +761,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -803,7 +803,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -836,13 +836,13 @@
         ],
         "summary": "RetrieveTimecard",
         "operationId": "RetrieveTimecard",
-        "description": "Provides the details for a single timecard.\n\n\n\u003caside\u003e\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.\n\u003c/aside\u003e",
+        "description": "Provides the details for a single timecard.\n\n\nOnly approved accounts can manage their employees with Square.\nUnapproved accounts cannot use employee management features with the\nAPI.",
         "x-release-status": "DEPRECATED",
         "x-is-deprecated": true,
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -881,7 +881,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -931,7 +931,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -975,7 +975,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1019,7 +1019,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1068,7 +1068,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1136,7 +1136,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1185,7 +1185,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1227,7 +1227,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1277,7 +1277,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1324,7 +1324,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1382,7 +1382,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1424,7 +1424,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1474,7 +1474,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1521,7 +1521,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1579,7 +1579,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1621,7 +1621,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1671,7 +1671,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1718,7 +1718,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1776,7 +1776,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1836,7 +1836,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1894,7 +1894,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1944,7 +1944,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -1994,7 +1994,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2041,7 +2041,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2088,7 +2088,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2146,7 +2146,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2201,7 +2201,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2258,7 +2258,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2313,7 +2313,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2370,7 +2370,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2428,7 +2428,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2483,7 +2483,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2549,7 +2549,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2591,7 +2591,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2641,7 +2641,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2688,7 +2688,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2735,7 +2735,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2793,7 +2793,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2851,7 +2851,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2906,7 +2906,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -2972,7 +2972,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3036,7 +3036,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3081,7 +3081,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3137,7 +3137,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3179,7 +3179,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3229,7 +3229,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3276,7 +3276,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3334,7 +3334,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3397,7 +3397,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3454,7 +3454,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3538,7 +3538,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3584,7 +3584,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3659,7 +3659,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3707,7 +3707,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3791,7 +3791,7 @@
         "x-oauthpermissions": [
           "SETTLEMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3835,7 +3835,7 @@
         "description": "Activates a domain for use with Web Apple Pay and Square. A validation\nwill be performed on this domain by Apple to ensure is it properly set up as\nan Apple Pay enabled domain.\n\nThis endpoint provides an easy way for platform developers to bulk activate\nWeb Apple Pay with Square for merchants using their platform.\n\nTo learn more about Apple Pay on Web see the Apple Pay section in the\n[Square Payment Form Walkthrough](/docs/payment-form/payment-form-walkthrough).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": []
@@ -3874,7 +3874,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3927,7 +3927,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -3966,7 +3966,7 @@
         "x-oauthpermissions": [
           "BANK_ACCOUNTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4006,7 +4006,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4048,7 +4048,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4090,7 +4090,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_BUSINESS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4122,7 +4122,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_BUSINESS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4187,7 +4187,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_BUSINESS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4228,7 +4228,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4267,7 +4267,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4317,7 +4317,7 @@
         "x-oauthpermissions": [
           "APPOINTMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4366,7 +4366,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4440,7 +4440,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4486,7 +4486,7 @@
         "x-oauthpermissions": [
           "CASH_DRAWER_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4546,7 +4546,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4587,7 +4587,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4628,7 +4628,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4669,7 +4669,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4700,7 +4700,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4755,7 +4755,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4796,7 +4796,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4833,7 +4833,7 @@
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4883,12 +4883,12 @@
         ],
         "summary": "SearchCatalogObjects",
         "operationId": "SearchCatalogObjects",
-        "description": "Searches for [CatalogObject](#type-CatalogObject) of any types against supported search attribute values,\nexcluding custom attribute values on items or item variations, against one or more of the specified query expressions,\n\nThis (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints have different call conventions, including the query filter formats.",
+        "description": "Searches for [CatalogObject](#type-CatalogObject) of any type by matching supported search attribute values,\nexcluding custom attribute values on items or item variations, against one or more of the specified query expressions.\n\nThis (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints have different call conventions, including the query filter formats.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4924,13 +4924,13 @@
         ],
         "summary": "SearchCatalogItems",
         "operationId": "SearchCatalogItems",
-        "description": "Searches for catalog items or item variations by matching supported search attribute values, including\ncustom attribute values, against one or more of the specified query expressions,\n\nThis (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints use different call conventions, including the query filter formats.",
+        "description": "Searches for catalog items or item variations by matching supported search attribute values, including\ncustom attribute values, against one or more of the specified query expressions.\n\nThis (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints use different call conventions, including the query filter formats.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "ITEMS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -4971,7 +4971,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5012,7 +5012,7 @@
         "x-oauthpermissions": [
           "ITEMS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5053,7 +5053,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5104,7 +5104,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5145,7 +5145,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5182,7 +5182,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5223,7 +5223,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5260,7 +5260,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5298,7 +5298,7 @@
           "CUSTOMERS_WRITE",
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5347,7 +5347,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5388,7 +5388,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5427,7 +5427,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5466,7 +5466,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5503,7 +5503,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5540,7 +5540,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5588,7 +5588,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5636,7 +5636,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5682,7 +5682,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5726,7 +5726,7 @@
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5772,7 +5772,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5830,7 +5830,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5871,7 +5871,7 @@
         "x-oauthpermissions": [
           "DEVICE_CREDENTIAL_MANAGEMENT"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5911,7 +5911,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -5968,7 +5968,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6009,7 +6009,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6050,7 +6050,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6091,7 +6091,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6138,7 +6138,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6187,7 +6187,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6237,7 +6237,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6278,7 +6278,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6343,7 +6343,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6383,7 +6383,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6422,7 +6422,7 @@
         "x-oauthpermissions": [
           "INVENTORY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6463,7 +6463,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6504,7 +6504,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6545,7 +6545,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6584,7 +6584,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6637,7 +6637,7 @@
         "x-oauthpermissions": [
           "INVENTORY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6691,7 +6691,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6747,7 +6747,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6790,7 +6790,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6833,7 +6833,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6881,7 +6881,7 @@
         "x-oauthpermissions": [
           "INVOICES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6921,7 +6921,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -6966,14 +6966,14 @@
         ],
         "summary": "CancelInvoice",
         "operationId": "CancelInvoice",
-        "description": "Cancels an invoice. The seller cannot collect payments for \nthe canceled invoice.\n\nYou cannot cancel an invoice in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.",
+        "description": "Cancels an invoice. The seller cannot collect payments for \nthe canceled invoice.\n\nYou cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.",
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7025,7 +7025,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7075,7 +7075,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7126,7 +7126,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7167,7 +7167,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7204,7 +7204,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7242,7 +7242,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7292,7 +7292,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7349,7 +7349,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7389,7 +7389,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7430,7 +7430,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7471,7 +7471,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7508,7 +7508,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7546,7 +7546,7 @@
           "TIMECARDS_WRITE",
           "TIMECARDS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7595,7 +7595,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7648,7 +7648,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7687,7 +7687,7 @@
         "x-oauthpermissions": [
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7734,7 +7734,7 @@
           "TIMECARDS_SETTINGS_WRITE",
           "TIMECARDS_SETTINGS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7783,7 +7783,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7813,7 +7813,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7854,7 +7854,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7892,7 +7892,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7942,7 +7942,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -7992,7 +7992,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8065,7 +8065,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8136,7 +8136,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8186,7 +8186,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8235,7 +8235,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8284,7 +8284,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8342,7 +8342,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8391,7 +8391,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8433,7 +8433,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8475,7 +8475,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8516,7 +8516,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8566,7 +8566,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8616,7 +8616,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8658,7 +8658,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8690,7 +8690,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8740,7 +8740,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8782,7 +8782,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8824,7 +8824,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8863,7 +8863,7 @@
         "x-oauthpermissions": [
           "LOYALTY_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8904,7 +8904,7 @@
         "x-oauthpermissions": [
           "LOYALTY_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8953,7 +8953,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -8992,7 +8992,7 @@
         "x-oauthpermissions": [
           "MERCHANT_PROFILE_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9031,7 +9031,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9072,7 +9072,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9112,7 +9112,7 @@
         "x-release-status": "BETA",
         "x-is-beta": true,
         "x-oauthpermissions": [],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": []
@@ -9151,7 +9151,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9192,7 +9192,7 @@
         "x-oauthpermissions": [
           "ORDERS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9230,7 +9230,7 @@
         "x-oauthpermissions": [
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9281,7 +9281,7 @@
           "PAYMENTS_WRITE",
           "ORDERS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9331,7 +9331,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9425,7 +9425,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9466,7 +9466,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9507,7 +9507,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9546,7 +9546,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9585,7 +9585,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9624,7 +9624,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9710,7 +9710,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9751,7 +9751,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9796,7 +9796,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9843,7 +9843,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9885,7 +9885,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9929,7 +9929,7 @@
           "ORDERS_WRITE",
           "INVOICES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -9984,7 +9984,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10025,7 +10025,7 @@
         "x-oauthpermissions": [
           "SUBSCRIPTIONS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10081,7 +10081,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10122,7 +10122,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10163,7 +10163,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10204,7 +10204,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10245,7 +10245,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10282,7 +10282,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10330,7 +10330,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10367,7 +10367,7 @@
         "x-oauthpermissions": [
           "EMPLOYEES_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10415,7 +10415,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10456,7 +10456,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10497,7 +10497,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10536,7 +10536,7 @@
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10571,12 +10571,11 @@
         "summary": "CreateTerminalRefund",
         "operationId": "CreateTerminalRefund",
         "description": "Creates a request to refund an Interac payment completed on a Square Terminal.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10613,12 +10612,11 @@
         "summary": "SearchTerminalRefunds",
         "operationId": "SearchTerminalRefunds",
         "description": "Retrieves a filtered list of Terminal Interac refund requests created by the seller making the request.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10655,12 +10653,11 @@
         "summary": "GetTerminalRefund",
         "operationId": "GetTerminalRefund",
         "description": "Retrieves an Interac terminal refund object by ID.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_READ"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10672,7 +10669,6 @@
           {
             "name": "terminal_refund_id",
             "description": "Unique ID for the desired `TerminalRefund`",
-            "x-is-beta": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -10696,12 +10692,11 @@
         "summary": "CancelTerminalRefund",
         "operationId": "CancelTerminalRefund",
         "description": "Cancels an Interac terminal refund request by refund request ID if the status of the request permits it.",
-        "x-release-status": "BETA",
-        "x-is-beta": true,
+        "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "PAYMENTS_WRITE"
         ],
-        "x-sq-version": "2020-12-16",
+        "x-sq-version": "2021-01-21",
         "security": [
           {
             "oauth2": [
@@ -10713,7 +10708,6 @@
           {
             "name": "terminal_refund_id",
             "description": "Unique ID for the desired `TerminalRefund`",
-            "x-is-beta": true,
             "type": "string",
             "in": "path",
             "required": true
@@ -15054,6 +15048,31 @@
       "description": "Indicates the state of a tracked item quantity in the lifecycle of goods.",
       "x-release-status": "PUBLIC"
     },
+    "InvoiceAutomaticPaymentSource": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "CARD_ON_FILE",
+        "BANK_ON_FILE"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "NONE",
+          "description": "An automatic payment is not configured for the payment request."
+        },
+        {
+          "name": "CARD_ON_FILE",
+          "description": "Use a card on file as the automatic payment method. On the due date, Square charges the card\nfor the amount of the payment request.\n\nFor `CARD_ON_FILE` payments, the invoice delivery method must be `EMAIL` and `card_id` must be\nspecified for the payment request before the invoice can be published."
+        },
+        {
+          "name": "BANK_ON_FILE",
+          "description": "Use a bank account on file as the automatic payment method. On the due date, Square charges the bank\naccount for the amount of the payment request.\n\nThis payment method applies only to recurring invoices that sellers create in the Seller Dashboard or other\nSquare first-party application. The bank account is provided by the customer during the payment flow. \n\nYou cannot set `BANK_ON_FILE` as a payment method using the Invoices API, but you can change a `BANK_ON_FILE`\npayment method to `NONE` or `CARD_ON_FILE`. For `BANK_ON_FILE` payments, the invoice delivery method must be `EMAIL`."
+        }
+      ],
+      "description": "Indicates the automatic payment method for an `invoice payment request`.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
     "InvoiceCustomFieldPlacement": {
       "type": "string",
       "enum": [
@@ -15071,6 +15090,26 @@
         }
       ],
       "description": "Indicates where to render a custom field on the Square-hosted invoice page and in emailed or PDF \ncopies of the invoice.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "InvoiceDeliveryMethod": {
+      "type": "string",
+      "enum": [
+        "EMAIL",
+        "SHARE_MANUALLY"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "EMAIL",
+          "description": "Directs Square to send the invoice, reminders, and receipts to the customer using email."
+        },
+        {
+          "name": "SHARE_MANUALLY",
+          "description": "Directs Square to take no action on the invoice. In this case, the seller\nor application developer follows up with the customer for payment. For example,\na seller might collect a payment in the Seller Dashboard or Point of Sale (POS) application.\nThe seller might also share the URL of the Square-hosted invoice page (`public_url`) with the customer to request payment."
+        }
+      ],
+      "description": "Indicates how Square delivers the `invoice` to the customer.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -15125,9 +15164,9 @@
           "description": "Directs Square to charge the bank account on file on the `due_date` specified in the\npayment request, after the invoice is published.\n\nThis payment method applies only to recurring invoices that sellers create in the Seller Dashboard or other\nSquare first-party application. The bank account is provided by the customer during the payment flow. You \ncannot set `CHARGE_BANK_ON_FILE` as a payment source using the Invoices API."
         }
       ],
-      "description": "Specifies the action for Square to take for processing the invoice. For example, \nemail the invoice, charge a customer\u0027s card on file, or do nothing.",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "description": "Specifies the action for Square to take for processing the invoice. For example, \nemail the invoice, charge a customer\u0027s card on file, or do nothing. DEPRECATED at version 2021-01-21. The corresponding `request_method` field is replaced by the `Invoice.delivery_method` and `InvoicePaymentRequest.automatic_payment_source` fields.",
+      "x-release-status": "DEPRECATED",
+      "x-is-deprecated": true
     },
     "InvoiceRequestType": {
       "type": "string",
@@ -15194,7 +15233,7 @@
         },
         {
           "name": "SCHEDULED",
-          "description": "The invoice is scheduled to be processed. On the scheduled date,\nSquare sends the invoice, initiates an automatic payment, or takes no action, depending on the settings\nfor the invoice payment requests. Square also sets the invoice status to the appropriate state:\n`UNPAID`, `PAID`, `PARTIALLY_PAID`, or `PAYMENT_PENDING`."
+          "description": "The invoice is scheduled to be processed. On the scheduled date,\nSquare sends the invoice, initiates an automatic payment, or takes no action, depending on the delivery method and payment request settings. Square also sets the invoice status to the appropriate state:\n`UNPAID`, `PAID`, `PARTIALLY_PAID`, or `PAYMENT_PENDING`."
         },
         {
           "name": "PARTIALLY_PAID",
@@ -19891,13 +19930,13 @@
         "location_types": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BusinessAppointmentSettingsBookingLocationType"
+            "type": "string"
           },
-          "description": "Types of the location allowed for bookings."
+          "description": "Types of the location allowed for bookings.\nSee [BusinessAppointmentSettingsBookingLocationType](#type-businessappointmentsettingsbookinglocationtype) for possible values"
         },
         "alignment_time": {
-          "$ref": "#/definitions/BusinessAppointmentSettingsAlignmentTime",
-          "description": "The time unit of the service duration for bookings."
+          "type": "string",
+          "description": "The time unit of the service duration for bookings.\nSee [BusinessAppointmentSettingsAlignmentTime](#type-businessappointmentsettingsalignmenttime) for possible values"
         },
         "min_booking_lead_time_seconds": {
           "type": "integer",
@@ -19916,8 +19955,8 @@
           "description": "Indicates whether a customer can book multiple services in a single online booking."
         },
         "max_appointments_per_day_limit_type": {
-          "$ref": "#/definitions/BusinessAppointmentSettingsMaxAppointmentsPerDayLimitType",
-          "description": "Indicates whether the daily appointment limit applies to team members or to\nbusiness locations."
+          "type": "string",
+          "description": "Indicates whether the daily appointment limit applies to team members or to\nbusiness locations.\nSee [BusinessAppointmentSettingsMaxAppointmentsPerDayLimitType](#type-businessappointmentsettingsmaxappointmentsperdaylimittype) for possible values"
         },
         "max_appointments_per_day_limit": {
           "type": "integer",
@@ -19929,11 +19968,11 @@
         },
         "cancellation_fee_money": {
           "$ref": "#/definitions/Money",
-          "description": "The flat-fee ammount charged for a no-show booking."
+          "description": "The flat-fee amount charged for a no-show booking."
         },
         "cancellation_policy": {
-          "$ref": "#/definitions/BusinessAppointmentSettingsCancellationPolicy",
-          "description": "The cancellation policy adopted by the seller."
+          "type": "string",
+          "description": "The cancellation policy adopted by the seller.\nSee [BusinessAppointmentSettingsCancellationPolicy](#type-businessappointmentsettingscancellationpolicy) for possible values"
         },
         "cancellation_policy_text": {
           "type": "string",
@@ -19965,12 +20004,12 @@
           "description": "Indicates whether the seller is open for booking."
         },
         "customer_timezone_choice": {
-          "$ref": "#/definitions/BusinessBookingProfileCustomerTimezoneChoice",
-          "description": "The choice of customer\u0027s time zone information of a booking.\nThe Square online booking site and all notifications to customers uses either the seller location’s time zone\nor the time zone the customer chooses at booking."
+          "type": "string",
+          "description": "The choice of customer\u0027s time zone information of a booking.\nThe Square online booking site and all notifications to customers uses either the seller location’s time zone\nor the time zone the customer chooses at booking.\nSee [BusinessBookingProfileCustomerTimezoneChoice](#type-businessbookingprofilecustomertimezonechoice) for possible values"
         },
         "booking_policy": {
-          "$ref": "#/definitions/BusinessBookingProfileBookingPolicy",
-          "description": "The policy for the seller to automatically accept booking requests (`ACCEPT_ALL`) or not (`REQUIRES_ACCEPTANCE`)."
+          "type": "string",
+          "description": "The policy for the seller to automatically accept booking requests (`ACCEPT_ALL`) or not (`REQUIRES_ACCEPTANCE`).\nSee [BusinessBookingProfileBookingPolicy](#type-businessbookingprofilebookingpolicy) for possible values"
         },
         "allow_user_cancel": {
           "type": "boolean",
@@ -20391,7 +20430,6 @@
           "payment_requests": [
             {
               "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-              "request_method": "EMAIL",
               "request_type": "BALANCE",
               "due_date": "2030-01-24",
               "tipping_enabled": true,
@@ -20410,7 +20448,8 @@
               "total_completed_amount_money": {
                 "amount": 0,
                 "currency": "USD"
-              }
+              },
+              "automatic_payment_source": "NONE"
             }
           ],
           "invoice_number": "inv-100",
@@ -20439,7 +20478,8 @@
               "value": "The terms of service are...",
               "placement": "BELOW_LINE_ITEMS"
             }
-          ]
+          ],
+          "delivery_method": "EMAIL"
         }
       }
     },
@@ -20646,8 +20686,7 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {}
       }
@@ -20668,8 +20707,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "refund": {
           "id": "g6ycb6HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY",
@@ -22068,7 +22106,7 @@
           "x-is-beta": true
         }
       },
-      "description": "The wrapper object for the Catalog entries of a given object type.\n\nThe type of a particular `CatalogObject` is determined by the value of the\n`type` attribute and only the corresponding data attribute can be set on the `CatalogObject` instance.\nFor example, the following list shows some instances of `CatalogObject` of a given `type` and\ntheir corresponding data atrribute that can be set:\n- For a `CatalogObject` of the `ITEM` type, set the `item_data` attribute to yield the `CatalogItem` object.\n- For a `CatalogObject` of the `ITEM_VARIATION` type, set the `item_variation_data` attribute to yield the `CatalogItemVariation` object.\n- For a `CatalogObject` of the `MODIFIER` type, set the `modifier_data` attribute to yield the `CatalogModifier` object.\n- For a `CatalogObject` of the `MODIFIER_LIST` type, set the `modifier_list_data` attribute to yield the `CatalogModifierList` object.\n- For a `CatalogObject` of the `CATEGORY` type, set the `category_data` attribute to yield the `CatalogCategory` object.\n- For a `CatalogObject` of the `DISCOUNT` type, set the `discount_data` attribute to yield the `CatalogDiscount` object.\n- For a `CatalogObject` of the `TAX` type, set the `tax_data` attribute to yield the `CatalogTax` object.\n- For a `CatalogObject` of the `IMAGE` type, set the `image_data` attribute to yield the `CatalogImageData`  object.\n- For a `CatalogObject` of the `QUICK_AMOUNTS_SETTINGS` type, set the `quick_amounts_settings_data` attribute to yield the `CatalogQuickAmountsSettings` object.\n- For a `CatalogObject` of the `PRICING_RULE` type, set the `pricing_rule_data` attribute to yield the `CatalogPricingRule` object.\n- For a `CatalogObject` of the `TIME_PERIOD` type, set the `time_period_data` attribute to yield the `CatalogTimePeriod` object.\n- For a `CatalogObject` of the `PRODUCT_SET` type, set the `product_set_data` attribute to yield the `CatalogProductSet`  object.\n- For a `CatalogObject` of the `SUBSCRIPTION_PLAN` type, set the `subscription_plan_data` attribute to yield the `CatalogSubscriptionPlan` object.\n\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
+      "description": "The wrapper object for the Catalog entries of a given object type.\n\nThe type of a particular `CatalogObject` is determined by the value of the\n`type` attribute and only the corresponding data attribute can be set on the `CatalogObject` instance.\nFor example, the following list shows some instances of `CatalogObject` of a given `type` and\ntheir corresponding data attribute that can be set:\n- For a `CatalogObject` of the `ITEM` type, set the `item_data` attribute to yield the `CatalogItem` object.\n- For a `CatalogObject` of the `ITEM_VARIATION` type, set the `item_variation_data` attribute to yield the `CatalogItemVariation` object.\n- For a `CatalogObject` of the `MODIFIER` type, set the `modifier_data` attribute to yield the `CatalogModifier` object.\n- For a `CatalogObject` of the `MODIFIER_LIST` type, set the `modifier_list_data` attribute to yield the `CatalogModifierList` object.\n- For a `CatalogObject` of the `CATEGORY` type, set the `category_data` attribute to yield the `CatalogCategory` object.\n- For a `CatalogObject` of the `DISCOUNT` type, set the `discount_data` attribute to yield the `CatalogDiscount` object.\n- For a `CatalogObject` of the `TAX` type, set the `tax_data` attribute to yield the `CatalogTax` object.\n- For a `CatalogObject` of the `IMAGE` type, set the `image_data` attribute to yield the `CatalogImageData`  object.\n- For a `CatalogObject` of the `QUICK_AMOUNTS_SETTINGS` type, set the `quick_amounts_settings_data` attribute to yield the `CatalogQuickAmountsSettings` object.\n- For a `CatalogObject` of the `PRICING_RULE` type, set the `pricing_rule_data` attribute to yield the `CatalogPricingRule` object.\n- For a `CatalogObject` of the `TIME_PERIOD` type, set the `time_period_data` attribute to yield the `CatalogTimePeriod` object.\n- For a `CatalogObject` of the `PRODUCT_SET` type, set the `product_set_data` attribute to yield the `CatalogProductSet`  object.\n- For a `CatalogObject` of the `SUBSCRIPTION_PLAN` type, set the `subscription_plan_data` attribute to yield the `CatalogSubscriptionPlan` object.\n\n\nFor a more detailed discussion of the Catalog data model, please see the\n[Design a Catalog](/catalog-api/design-a-catalog) guide.",
       "x-release-status": "PUBLIC",
       "example": {
         "catalog_object": {
@@ -22229,7 +22267,7 @@
         },
         "all_products": {
           "type": "boolean",
-          "description": "If set to `true`, the product set will include every item in the catalog.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set."
+          "description": "If set to `true`, the product set will include every item in the catalog.\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set."
         }
       },
       "description": "Represents a collection of catalog objects for the purpose of applying a\n`PricingRule`. Including a catalog object will include all of its subtypes.\nFor example, including a category in a product set will include all of its\nitems and associated item variations in the product set. Including an item in\na product set will also include its item variations.",
@@ -22252,15 +22290,15 @@
         },
         "prefix_query": {
           "$ref": "#/definitions/CatalogQueryPrefix",
-          "description": "A prefix query expression to return objects with attribute values\nthat have a prefix matching the specified string value. Value maching is case insensitive."
+          "description": "A prefix query expression to return objects with attribute values\nthat have a prefix matching the specified string value. Value matching is case insensitive."
         },
         "range_query": {
           "$ref": "#/definitions/CatalogQueryRange",
-          "description": "A range query expression to return objects with numberic values\nthat lie in the specified range."
+          "description": "A range query expression to return objects with numeric values\nthat lie in the specified range."
         },
         "text_query": {
           "$ref": "#/definitions/CatalogQueryText",
-          "description": "A text query expression to return objectd whose searchable attributes contain all of the given\nkeywords, irrespective of their order. For example, if a `CatalogItem` contains custom attribute values of\n`{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, the query filter of `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`\nreturns this item."
+          "description": "A text query expression to return objects whose searchable attributes contain all of the given\nkeywords, irrespective of their order. For example, if a `CatalogItem` contains custom attribute values of\n`{\"name\": \"t-shirt\"}` and `{\"description\": \"Small, Purple\"}`, the query filter of `{\"keywords\": [\"shirt\", \"sma\", \"purp\"]}`\nreturns this item."
         },
         "items_for_tax_query": {
           "$ref": "#/definitions/CatalogQueryItemsForTax",
@@ -22268,7 +22306,7 @@
         },
         "items_for_modifier_list_query": {
           "$ref": "#/definitions/CatalogQueryItemsForModifierList",
-          "description": "A query expression to return items that have any of the given modifier list (as identifieid by the coresponding `CatalogModifierList`s IDs) enabled."
+          "description": "A query expression to return items that have any of the given modifier list (as identified by the corresponding `CatalogModifierList`s IDs) enabled."
         },
         "items_for_item_options_query": {
           "$ref": "#/definitions/CatalogQueryItemsForItemOptions",
@@ -22283,7 +22321,7 @@
           "x-is-beta": true
         }
       },
-      "description": "A query composed of one or more different types of filters to narrow the scope of targeted objects when calling the `SearchCatalogObjects` endpoint.\n\nAlthough a query can have multiple filters, only certain query types can be combined per call to [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects).\nAny combination of the following types may be used together:\n- [exact_query](#type-CatalogExactQuery)\n- [prefix_query](#type-CatalogPrefixQuery)\n- [range_query](#type-CatalogRangeQuery)\n- [sorted_attribute_query](#type-CatalogSortedAttribute)\n- [text_query](#type-CatalogTextQuery)\nAll other query types cannot be combined with any others.\n\nWhen a query filter is based on an attribute, the attribute must be searchable.\nSearchable attributes are listed as follows, along their parent types that can be searched for with applicable query filters.\n\n* Searchable attribute and objects queryable by searchable attributes **\n- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatelogCatogry`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, \u0027CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`\n- `description`: `CatalogItem`, `CatalogItemOptionValue`\n- `abbreviation`: `CatalogItem`\n- `upc`: `CatalogItemVariation`\n- `sku`: `CatalogItemVariation`\n- `caption`: `CatalogImage`\n- `display_name`: `CatalogItemOption`\n\nFor example, to search for [CatalogItem](#type-CatalogItem) objects by searchable attributes, you can use\nthe `\"name\"`, `\"description\"`, or `\"abbreviation\"` attribute in an applicable query filter.",
+      "description": "A query composed of one or more different types of filters to narrow the scope of targeted objects when calling the `SearchCatalogObjects` endpoint.\n\nAlthough a query can have multiple filters, only certain query types can be combined per call to [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects).\nAny combination of the following types may be used together:\n- [exact_query](#type-CatalogExactQuery)\n- [prefix_query](#type-CatalogPrefixQuery)\n- [range_query](#type-CatalogRangeQuery)\n- [sorted_attribute_query](#type-CatalogSortedAttribute)\n- [text_query](#type-CatalogTextQuery)\nAll other query types cannot be combined with any others.\n\nWhen a query filter is based on an attribute, the attribute must be searchable.\nSearchable attributes are listed as follows, along their parent types that can be searched for with applicable query filters.\n\n* Searchable attribute and objects queryable by searchable attributes **\n- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, \u0027CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`\n- `description`: `CatalogItem`, `CatalogItemOptionValue`\n- `abbreviation`: `CatalogItem`\n- `upc`: `CatalogItemVariation`\n- `sku`: `CatalogItemVariation`\n- `caption`: `CatalogImage`\n- `display_name`: `CatalogItemOption`\n\nFor example, to search for [CatalogItem](#type-CatalogItem) objects by searchable attributes, you can use\nthe `\"name\"`, `\"description\"`, or `\"abbreviation\"` attribute in an applicable query filter.",
       "x-release-status": "PUBLIC"
     },
     "CatalogQueryExact": {
@@ -23740,7 +23778,7 @@
           "minLength": 1,
           "maxLength": 128,
           "type": "string",
-          "description": "A unique string that identifies this CreateCheckout request. Keys can be any valid string but\nmust be unique for every CreateCheckout request.\n\nSee [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
+          "description": "A unique string that identifies this CreateDeviceCode request. Keys can\nbe any valid string but must be unique for every CreateDeviceCode request.\n\nSee [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information."
         },
         "device_code": {
           "$ref": "#/definitions/DeviceCode",
@@ -23882,12 +23920,13 @@
             "primary_recipient": {
               "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4"
             },
+            "delivery_method": "EMAIL",
             "payment_requests": [
               {
-                "request_method": "EMAIL",
                 "request_type": "BALANCE",
                 "due_date": "2030-01-24",
                 "tipping_enabled": true,
+                "automatic_payment_source": "NONE",
                 "reminders": [
                   {
                     "message": "Your invoice is due tomorrow",
@@ -23942,7 +23981,6 @@
           "payment_requests": [
             {
               "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-              "request_method": "EMAIL",
               "request_type": "BALANCE",
               "due_date": "2030-01-24",
               "tipping_enabled": true,
@@ -23961,7 +23999,8 @@
               "total_completed_amount_money": {
                 "amount": 0,
                 "currency": "USD"
-              }
+              },
+              "automatic_payment_source": "NONE"
             }
           ],
           "invoice_number": "inv-100",
@@ -23990,7 +24029,8 @@
               "value": "The terms of service are...",
               "placement": "BELOW_LINE_ITEMS"
             }
-          ]
+          ],
+          "delivery_method": "EMAIL"
         }
       }
     },
@@ -25263,8 +25303,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "idempotency_key": "402a640b-b26f-401f-b406-46f839590c04",
@@ -25296,8 +25335,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "refund": {
           "id": "009DP5HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY",
@@ -25500,7 +25538,7 @@
         },
         "phone_number": {
           "$ref": "#/definitions/CustomerTextFilter",
-          "description": "A filter to [select customers by their phone numbers](https://developer.squareup.com/docs/docs/customers-api/cookbook/search-customers#search-by-phone-number) visible to the seller. \nThis filter is case insensitive. \n\nFor [exact matching](https://developer.squareup.com/docs/docs/customers-api/cookbook/search-customers#exact-search-by-phone-number), \nthis filter causes the search to return customers whose phone number\nmatches the specified query expression. The number in the query must be of an E.164-compliant\nform. In particular, it must include the leading `+` sign followed by a contry code and then a\nsubscriber number. The standard E.614 form of a US phone number is `+12061112222` of\nthe domestic version or `+0012061112222` of the international version. The E.164-compliant\nvariations include `+1 (206) 111-2222` or `+001 (206) 111-2222`, respectively. To match\nthe query expression, stored customers\u0027 phone numbers are converted to the standard\nE.164 form of the national and internationalized versions.\n\n\nFor [fuzzy matching](https://developer.squareup.com/docs/docs/customers-api/cookbook/search-customers#fuzzy-search-by-phone-number), \nthis filter causes the search to return customers whose phone number matches partially \nthe token or tokens provided in the query expression. For example, if the search query contains \n`415-123-45`, the filter selects those customers with phone numbers of `415-123-4567` or \n`234-151-2345`. The search does not return customers with the phone number of `415-123-4678`.\nSimilarly, if the search query contains `415` as part of the phone number, the search returns\nthose customers with phone numbers of `(415)-123-4567`, `(123) 415-1567`, and `1 (415) 123-4567`."
+          "description": "A filter to [select customers by their phone numbers](https://developer.squareup.com/docs/docs/customers-api/cookbook/search-customers#search-by-phone-number) visible to the seller. \nThis filter is case insensitive. \n\nFor [exact matching](https://developer.squareup.com/docs/docs/customers-api/cookbook/search-customers#exact-search-by-phone-number), \nthis filter causes the search to return customers whose phone number\nmatches the specified query expression. The number in the query must be of an E.164-compliant\nform. In particular, it must include the leading `+` sign followed by a country code and then a\nsubscriber number. The standard E.614 form of a US phone number is `+12061112222` of\nthe domestic version or `+0012061112222` of the international version. The E.164-compliant\nvariations include `+1 (206) 111-2222` or `+001 (206) 111-2222`, respectively. To match\nthe query expression, stored customers\u0027 phone numbers are converted to the standard\nE.164 form of the national and internationalized versions.\n\n\nFor [fuzzy matching](https://developer.squareup.com/docs/docs/customers-api/cookbook/search-customers#fuzzy-search-by-phone-number), \nthis filter causes the search to return customers whose phone number matches partially \nthe token or tokens provided in the query expression. For example, if the search query contains \n`415-123-45`, the filter selects those customers with phone numbers of `415-123-4567` or \n`234-151-2345`. The search does not return customers with the phone number of `415-123-4678`.\nSimilarly, if the search query contains `415` as part of the phone number, the search returns\nthose customers with phone numbers of `(415)-123-4567`, `(123) 415-1567`, and `1 (415) 123-4567`."
         },
         "reference_id": {
           "$ref": "#/definitions/CustomerTextFilter",
@@ -25537,7 +25575,7 @@
         },
         "updated_at": {
           "type": "string",
-          "description": "The timesamp when the customer group was last updated, in RFC 3339 format.",
+          "description": "The timestamp when the customer group was last updated, in RFC 3339 format.",
           "x-read-only": true
         }
       },
@@ -25869,7 +25907,8 @@
       },
       "description": "Describes a `DeleteInvoice` response.",
       "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-is-beta": true,
+      "example": {}
     },
     "DeleteLoyaltyRewardRequest": {
       "type": "object",
@@ -26557,7 +26596,6 @@
           "payment_requests": [
             {
               "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-              "request_method": "EMAIL",
               "request_type": "BALANCE",
               "due_date": "2030-01-24",
               "tipping_enabled": true,
@@ -26576,7 +26614,8 @@
               "total_completed_amount_money": {
                 "amount": 0,
                 "currency": "USD"
-              }
+              },
+              "automatic_payment_source": "NONE"
             }
           ],
           "invoice_number": "inv-100",
@@ -26605,7 +26644,8 @@
               "value": "The terms of service are...",
               "placement": "BELOW_LINE_ITEMS"
             }
-          ]
+          ],
+          "delivery_method": "EMAIL"
         }
       }
     },
@@ -26892,8 +26932,7 @@
       "type": "object",
       "properties": {},
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {}
       }
@@ -26914,8 +26953,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "refund": {
           "id": "009DP5HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY",
@@ -27256,6 +27294,10 @@
           },
           "description": "The payment schedule for the invoice, represented by one or more payment requests that\ndefine payment settings, such as amount due and due date. You can specify a maximum of 13\npayment requests, with up to 12 `INSTALLMENT` request types. For more information, see\n[Payment requests](https://developer.squareup.com/docs/docs/invoices-api/overview#payment-requests).\n\nThis field is required when creating an invoice. It must contain at least one payment request."
         },
+        "delivery_method": {
+          "$ref": "#/definitions/invoice_delivery_methodInvoiceDeliveryMethod",
+          "description": "The delivery method that Square uses to send the invoice, reminders, and receipts to\nthe customer. After the invoice is published, Square processes the invoice based on the delivery\nmethod and payment request settings, either immediately or at the `scheduled_at` date, if specified.\nFor example, Square might send the invoice or receipt for an automatic payment. For invoices with automatic payments, this field must be set to `EMAIL`.\n\nOne of the following is required when creating an invoice:\n- (Recommended) This `delivery_method` field. To configure an automatic payment, the `automatic_payment_source` field of the payment request is also required.\n- The deprecated `request_method` field of the payment request. Note that `invoice` objects returned in responses do not include `request_method`."
+        },
         "invoice_number": {
           "minLength": 1,
           "maxLength": 191,
@@ -27276,7 +27318,7 @@
         },
         "scheduled_at": {
           "type": "string",
-          "description": "The timestamp when the invoice is scheduled for processing, in RFC 3339 format.\nAfter the invoice is published, Square processes the invoice on the specified date,\nbased on the settings for the invoice payment requests.\n\nIf the field is not set, Square processes the invoice immediately after it is published."
+          "description": "The timestamp when the invoice is scheduled for processing, in RFC 3339 format.\nAfter the invoice is published, Square processes the invoice on the specified date, according to the delivery method and payment request settings.\n\nIf the field is not set, Square processes the invoice immediately after it is published."
         },
         "public_url": {
           "type": "string",
@@ -27316,7 +27358,7 @@
           "description": "Additional seller-defined fields to render on the invoice. These fields are visible to sellers and buyers\non the Square-hosted invoice page and in emailed or PDF copies of invoices. For more information, see\n[Custom fields](https://developer.squareup.com/docs/docs/invoices-api/overview#custom-fields).\n\nMax: 2 custom fields"
         }
       },
-      "description": "Stores information about an invoice. You use the Invoices API to create and process\ninvoices. For more information, see [Manage Invoices Using the Invoices API](/docs/invoices-api/overview).",
+      "description": "Stores information about an invoice. You use the Invoices API to create and manage\ninvoices. For more information, see [Manage Invoices Using the Invoices API](/docs/invoices-api/overview).",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -27414,15 +27456,17 @@
         },
         "request_method": {
           "type": "string",
-          "description": "Indicates how Square processes the payment request.\nSee [InvoiceRequestMethod](#type-invoicerequestmethod) for possible values"
+          "description": "Indicates how Square processes the payment request. DEPRECATED at version 2021-01-21. Replaced by the `Invoice.delivery_method` and `InvoicePaymentRequest.automatic_payment_source` fields.\n\nOne of the following is required when creating an invoice:\n- (Recommended) The `delivery_method` field of the invoice. To configure an automatic payment, the `automatic_payment_source` field of the payment request is also required.\n- This `request_method` field. Note that `invoice` objects returned in responses do not include `request_method`.\nSee [InvoiceRequestMethod](#type-invoicerequestmethod) for possible values",
+          "x-release-status": "DEPRECATED",
+          "x-is-deprecated": true
         },
         "request_type": {
           "type": "string",
-          "description": "Identifies the payment request type. This type defines how the payment request amount is determined.\nSee [InvoiceRequestType](#type-invoicerequesttype) for possible values"
+          "description": "Identifies the payment request type. This type defines how the payment request amount is determined. This field is required to create a payment request.\nSee [InvoiceRequestType](#type-invoicerequesttype) for possible values"
         },
         "due_date": {
           "type": "string",
-          "description": "The due date (in the invoice location\u0027s time zone) for the payment request. \nAfter this date, the invoice becomes overdue."
+          "description": "The due date (in the invoice location\u0027s time zone) for the payment request, in `YYYY-MM-DD` format. \nAfter this date, the invoice becomes overdue. This field is required to create a payment request."
         },
         "fixed_amount_requested_money": {
           "$ref": "#/definitions/Money",
@@ -27435,6 +27479,10 @@
         "tipping_enabled": {
           "type": "boolean",
           "description": "If set to true, the Square-hosted invoice page (the `public_url` field of the invoice) \nprovides a place for the customer to pay a tip. \n\nThis field is allowed only on the final payment request  \nand the payment `request_type` must be `BALANCE` or `INSTALLMENT`."
+        },
+        "automatic_payment_source": {
+          "type": "string",
+          "description": "The payment method for an automatic payment.\n\nThe default value is `NONE`.\nSee [InvoiceAutomaticPaymentSource](#type-invoiceautomaticpaymentsource) for possible values"
         },
         "card_id": {
           "minLength": 1,
@@ -28589,7 +28637,6 @@
               "payment_requests": [
                 {
                   "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-                  "request_method": "EMAIL",
                   "request_type": "BALANCE",
                   "due_date": "2030-01-24",
                   "tipping_enabled": true,
@@ -28608,7 +28655,8 @@
                   "total_completed_amount_money": {
                     "amount": 0,
                     "currency": "USD"
-                  }
+                  },
+                  "automatic_payment_source": "NONE"
                 }
               ],
               "invoice_number": "inv-100",
@@ -28637,7 +28685,8 @@
                   "value": "The terms of service are...",
                   "placement": "BELOW_LINE_ITEMS"
                 }
-              ]
+              ],
+              "delivery_method": "EMAIL"
             }
           }
         ],
@@ -32828,7 +32877,7 @@
         "payment_id": {
           "maxLength": 192,
           "type": "string",
-          "description": "The ID of the payment assocated with this refund."
+          "description": "The ID of the payment associated with this refund."
         },
         "order_id": {
           "maxLength": 192,
@@ -32928,7 +32977,6 @@
           "payment_requests": [
             {
               "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-              "request_method": "EMAIL",
               "request_type": "BALANCE",
               "due_date": "2030-01-24",
               "tipping_enabled": true,
@@ -32947,7 +32995,8 @@
               "total_completed_amount_money": {
                 "amount": 0,
                 "currency": "USD"
-              }
+              },
+              "automatic_payment_source": "NONE"
             }
           ],
           "invoice_number": "inv-100",
@@ -32976,7 +33025,8 @@
               "value": "The terms of service are...",
               "placement": "BELOW_LINE_ITEMS"
             }
-          ]
+          ],
+          "delivery_method": "EMAIL"
         }
       }
     },
@@ -34901,11 +34951,12 @@
       "properties": {
         "created_at": {
           "type": "string",
-          "description": "The timestamp when payment risk was evaluated, in RFC3339 format."
+          "description": "The timestamp when payment risk was evaluated, in RFC 3339 format.",
+          "x-read-only": true
         },
         "risk_level": {
-          "$ref": "#/definitions/RiskEvaluationRiskLevel",
-          "description": "The risk level associated with the payment"
+          "type": "string",
+          "description": "The risk level associated with the payment\nSee [RiskEvaluationRiskLevel](#type-riskevaluationrisklevel) for possible values"
         }
       },
       "description": "Represents fraud risk information for the associated payment.\n\nWhen you take a payment through Square\u0027s Payments API (using the `CreatePayment`\nendpoint), Square evaluates it and assigns a risk level to the payment. Sellers\ncan use this information to determine the course of action (for example,\nprovide the goods/services or refund the payment).",
@@ -35889,7 +35940,6 @@
               "payment_requests": [
                 {
                   "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-                  "request_method": "EMAIL",
                   "request_type": "BALANCE",
                   "due_date": "2030-01-24",
                   "tipping_enabled": true,
@@ -35908,7 +35958,8 @@
                   "total_completed_amount_money": {
                     "amount": 0,
                     "currency": "USD"
-                  }
+                  },
+                  "automatic_payment_source": "NONE"
                 }
               ],
               "invoice_number": "inv-100",
@@ -35937,7 +35988,8 @@
                   "value": "The terms of service are...",
                   "placement": "BELOW_LINE_ITEMS"
                 }
-              ]
+              ],
+              "delivery_method": "EMAIL"
             }
           }
         ],
@@ -37055,6 +37107,8 @@
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query.\nSee [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information."
         },
         "limit": {
+          "maximum": 100,
+          "minimum": 1,
           "type": "integer",
           "description": "Limit the number of results returned for a single request."
         }
@@ -37162,13 +37216,14 @@
           "description": "A pagination cursor returned by a previous call to this endpoint.\nProvide this to retrieve the next set of results for the original query."
         },
         "limit": {
+          "maximum": 100,
+          "minimum": 1,
           "type": "integer",
           "description": "Limit the number of results returned for a single request."
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
           "limit": 1,
@@ -37203,8 +37258,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true,
+      "x-release-status": "PUBLIC",
       "example": {
         "refunds": [
           {
@@ -37942,6 +37996,8 @@
       ],
       "properties": {
         "id": {
+          "minLength": 10,
+          "maxLength": 255,
           "type": "string",
           "description": "A unique ID for this `TerminalCheckout`",
           "x-read-only": true
@@ -38053,6 +38109,8 @@
       ],
       "properties": {
         "id": {
+          "minLength": 10,
+          "maxLength": 255,
           "type": "string",
           "description": "A unique ID for this `TerminalRefund`",
           "x-read-only": true
@@ -38111,24 +38169,22 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "TerminalRefundQuery": {
       "type": "object",
       "properties": {
         "filter": {
           "$ref": "#/definitions/TerminalRefundQueryFilter",
-          "description": ""
+          "description": "Filter for terminal refund query."
         },
         "sort": {
           "$ref": "#/definitions/TerminalRefundQuerySort",
-          "description": ""
+          "description": "Sort order for terminal refund query."
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "TerminalRefundQueryFilter": {
       "type": "object",
@@ -38147,8 +38203,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "TerminalRefundQuerySort": {
       "type": "object",
@@ -38159,8 +38214,7 @@
         }
       },
       "description": "",
-      "x-release-status": "BETA",
-      "x-is-beta": true
+      "x-release-status": "PUBLIC"
     },
     "TimeRange": {
       "type": "object",
@@ -38621,7 +38675,6 @@
           "payment_requests": [
             {
               "uid": "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-              "request_method": "EMAIL",
               "request_type": "BALANCE",
               "due_date": "2030-01-24",
               "tipping_enabled": false,
@@ -38632,7 +38685,8 @@
               "total_completed_amount_money": {
                 "amount": 0,
                 "currency": "USD"
-              }
+              },
+              "automatic_payment_source": "NONE"
             }
           ],
           "invoice_number": "inv-100",
@@ -38665,7 +38719,8 @@
               "value": "The terms of service are...",
               "placement": "BELOW_LINE_ITEMS"
             }
-          ]
+          ],
+          "delivery_method": "EMAIL"
         }
       }
     },
