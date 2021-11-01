@@ -16587,7 +16587,7 @@
       "type": "object",
       "properties": {
         "square_product": {
-          "$ref": "#/definitions/ExternalSquareProduct",
+          "$ref": "#/definitions/ApplicationDetailsExternalSquareProduct",
           "description": "The Square product, such as Square Point of Sale (POS), \nSquare Invoices, or Square Virtual Terminal."
         },
         "application_id": {
@@ -26500,7 +26500,7 @@
           "x-read-only": true
         },
         "type": {
-          "$ref": "#/definitions/Type",
+          "$ref": "#/definitions/GiftCardType",
           "description": "Indicates the gift card type."
         },
         "gan_source": {
@@ -26509,7 +26509,7 @@
           "x-read-only": true
         },
         "state": {
-          "$ref": "#/definitions/Status",
+          "$ref": "#/definitions/GiftCardStatus",
           "description": "The current gift card state.",
           "x-read-only": true
         },
@@ -26554,7 +26554,7 @@
           "x-read-only": true
         },
         "type": {
-          "$ref": "#/definitions/Type",
+          "$ref": "#/definitions/GiftCardActivityType",
           "description": "The type of the gift card activity."
         },
         "location_id": {
@@ -27282,7 +27282,7 @@
           "description": "The payment schedule for the invoice, represented by one or more payment requests that\ndefine payment settings, such as amount due and due date. An invoice supports the following payment request combinations:\n- One balance\n- One deposit with one balance\n- 2–12 installments \n- One deposit with 2–12 installments\n\nThis field is required when creating an invoice. It must contain at least one payment request. \nAll payment requests for the invoice must equal the total order amount. For more information, see \n[Payment requests](https://developer.squareup.com/docs/invoices-api/overview#payment-requests).\n\nAdding `INSTALLMENT` payment requests to an invoice requires an \n[Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription)."
         },
         "delivery_method": {
-          "$ref": "#/definitions/invoice_delivery_methodInvoiceDeliveryMethod",
+          "$ref": "#/definitions/InvoiceDeliveryMethod",
           "description": "The delivery method that Square uses to send the invoice, reminders, and receipts to\nthe customer. After the invoice is published, Square processes the invoice based on the delivery\nmethod and payment request settings, either immediately or on the `scheduled_at` date, if specified.\nFor example, Square might send the invoice or receipt for an automatic payment. For invoices with\nautomatic payments, this field must be set to `EMAIL`.\n\nOne of the following is required when creating an invoice:\n- (Recommended) This `delivery_method` field. To configure an automatic payment, the\n`automatic_payment_source` field of the payment request is also required.\n- The deprecated `request_method` field of the payment request. Note that `invoice`\nobjects returned in responses do not include `request_method`."
         },
         "invoice_number": {
