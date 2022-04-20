@@ -36148,7 +36148,7 @@
           "description": "The timestamp of when the payout entry affected the balance, in RFC 3339 format."
         },
         "type": {
-          "$ref": "#/definitions/squareuppaymentbalancesActivityType",
+          "$ref": "#/definitions/ActivityType",
           "description": "The type of activity associated with this payout entry."
         },
         "gross_amount_money": {
@@ -41270,11 +41270,11 @@
       "type": "object",
       "properties": {
         "filter": {
-          "$ref": "#/definitions/Filter",
+          "$ref": "#/definitions/SearchVendorsRequestFilter",
           "description": "Specifies a filter used to search for vendors."
         },
         "sort": {
-          "$ref": "#/definitions/Sort",
+          "$ref": "#/definitions/SearchVendorsRequestSort",
           "description": "Specifies a sorter used to sort the returned vendors."
         },
         "cursor": {
@@ -41332,7 +41332,7 @@
       "type": "object",
       "properties": {
         "field": {
-          "$ref": "#/definitions/Field",
+          "$ref": "#/definitions/SearchVendorsRequestSortField",
           "description": "Specifies the sort key to sort the returned vendors."
         },
         "order": {
@@ -45468,7 +45468,7 @@
           "description": "The version of the [Vendor](https://developer.squareup.com/reference/square_2022-04-20/objects/Vendor)."
         },
         "status": {
-          "$ref": "#/definitions/Status",
+          "$ref": "#/definitions/VendorStatus",
           "description": "The status of the [Vendor](https://developer.squareup.com/reference/square_2022-04-20/objects/Vendor)."
         }
       },
