@@ -26308,11 +26308,11 @@
           "description": "Describes the `Order` for which to create a checkout link. \nFor more information, \nsee [Square Order Checkout](https://developer.squareup.com/docs/checkout-api/square-order-checkout)."
         },
         "checkout_options": {
-          "$ref": "#/definitions/online_checkoutresourceCheckoutOptions",
+          "$ref": "#/definitions/CheckoutOptions",
           "description": "Describes optional fields to add to the resulting checkout page.\nFor more information, \nsee [Optional Checkout Configurations](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations)."
         },
         "pre_populated_data": {
-          "$ref": "#/definitions/online_checkoutresourcePrePopulatedData",
+          "$ref": "#/definitions/PrePopulatedData",
           "description": "Describes fields to prepopulate in the resulting checkout page. \nFor more information, see [Prepopulate the shipping address](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations#prepopulate-the-shipping-address)."
         },
         "source": {
@@ -26352,7 +26352,7 @@
           "description": "Any errors that occurred during the request."
         },
         "payment_link": {
-          "$ref": "#/definitions/online_checkoutresourcePaymentLink",
+          "$ref": "#/definitions/PaymentLink",
           "description": "The created payment link."
         }
       },
@@ -33005,7 +33005,7 @@
         "payment_links": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/online_checkoutresourcePaymentLink"
+            "$ref": "#/definitions/PaymentLink"
           },
           "description": "The list of payment links."
         },
@@ -40555,7 +40555,7 @@
           "description": "Any errors that occurred during the request."
         },
         "payment_link": {
-          "$ref": "#/definitions/online_checkoutresourcePaymentLink",
+          "$ref": "#/definitions/PaymentLink",
           "description": "The payment link that is retrieved."
         }
       },
@@ -46124,7 +46124,7 @@
       ],
       "properties": {
         "payment_link": {
-          "$ref": "#/definitions/online_checkoutresourcePaymentLink",
+          "$ref": "#/definitions/PaymentLink",
           "description": "The `payment_link` object describing the updates to apply. \nFor more information, see [Update a payment link](https://developer.squareup.com/docs/checkout-api/manage-checkout#update-a-payment-link)."
         }
       },
@@ -46152,7 +46152,7 @@
           "description": "Any errors that occurred when updating the payment link."
         },
         "payment_link": {
-          "$ref": "#/definitions/online_checkoutresourcePaymentLink",
+          "$ref": "#/definitions/PaymentLink",
           "description": "The updated payment link."
         }
       },
