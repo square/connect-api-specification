@@ -27367,7 +27367,7 @@
           "x-read-only": true
         },
         "visibility": {
-          "$ref": "#/definitions/Visibility",
+          "$ref": "#/definitions/CustomAttributeDefinitionVisibility",
           "description": "Specifies how the custom attribute definition and its values should be shared with\nthe seller and other applications. If no value is specified, the value defaults to `VISIBILITY_HIDDEN`."
         },
         "version": {
