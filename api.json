@@ -44684,7 +44684,7 @@
           "x-read-only": true
         },
         "type": {
-          "$ref": "#/definitions/ActionType",
+          "$ref": "#/definitions/TerminalActionActionType",
           "description": "Represents the type of the action."
         },
         "save_card_options": {
