@@ -35339,13 +35339,15 @@
           "items": {
             "type": "string"
           },
-          "description": "A JSON list of strings representing the permissions that the application is requesting.\nFor example, \"`[\"MERCHANT_PROFILE_READ\",\"PAYMENTS_READ\",\"BANK_ACCOUNTS_READ\"]`\".\n\nThe access token returned in the response is granted the permissions\nthat comprise the intersection between the requested list of permissions and those\nthat belong to the provided refresh token.",
-          "x-release-status": "BETA",
-          "x-is-beta": true
+          "description": "A JSON list of strings representing the permissions that the application is requesting.\nFor example, \"`[\"MERCHANT_PROFILE_READ\",\"PAYMENTS_READ\",\"BANK_ACCOUNTS_READ\"]`\".\n\nThe access token returned in the response is granted the permissions\nthat comprise the intersection between the requested list of permissions and those\nthat belong to the provided refresh token."
         },
         "short_lived": {
           "type": "boolean",
-          "description": "A Boolean indicating a request for a short-lived access token.\n\nThe short-lived access token returned in the response expires in 24 hours.",
+          "description": "A Boolean indicating a request for a short-lived access token.\n\nThe short-lived access token returned in the response expires in 24 hours."
+        },
+        "code_verifier": {
+          "type": "string",
+          "description": "Must be provided when using PKCE OAuth flow. The `code_verifier` will be used to verify against the\n`code_challenge` associated with the `authorization_code`.",
           "x-release-status": "BETA",
           "x-is-beta": true
         }
@@ -35418,9 +35420,7 @@
         },
         "short_lived": {
           "type": "boolean",
-          "description": "A Boolean indicating that the access token is a short-lived access token.\nThe short-lived access token returned in the response expires in 24 hours.",
-          "x-release-status": "BETA",
-          "x-is-beta": true
+          "description": "A Boolean indicating that the access token is a short-lived access token.\nThe short-lived access token returned in the response expires in 24 hours."
         },
         "errors": {
           "type": "array",
@@ -35428,6 +35428,20 @@
             "$ref": "#/definitions/Error"
           },
           "description": "Any errors that occurred during the request."
+        },
+        "refresh_token_expires_at": {
+          "minLength": 20,
+          "maxLength": 48,
+          "type": "string",
+          "description": "The date when the `refresh_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format."
+        },
+        "app_subscription_id": {
+          "type": "string",
+          "description": "The subscription id of a v2 subscription the merchant signed up\nfor. The subscription id is only present if the merchant signed up for a subscription during authorization."
+        },
+        "app_plan_id": {
+          "type": "string",
+          "description": "The plan id of a v2 subscription plan the merchant signed up\nfor. The plan id is only present if the merchant signed up for a subscription plan during authorization."
         }
       },
       "description": "",
