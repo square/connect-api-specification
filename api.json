@@ -31220,7 +31220,7 @@
           "description": "A client-specified ID that associates the gift card activity with an entity in another system. \n\nApplications that use a custom payment processing system can use this field to track information\nrelated to an order or payment."
         },
         "status": {
-          "$ref": "#/definitions/Status",
+          "$ref": "#/definitions/GiftCardActivityRedeemStatus",
           "description": "The status of the gift card redemption. Gift cards redeemed from Square Point of Sale or the \nSquare Seller Dashboard use a two-state process: `PENDING` \nto `COMPLETED` or `PENDING` to  `CANCELED`. Gift cards redeemed using the Gift Card Activities API \nalways have a `COMPLETED` status.",
           "x-read-only": true
         }
