@@ -22151,7 +22151,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/DeleteCustomAttribute"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map of requests that correspond to individual delete operations for custom attributes."
         }
@@ -22696,7 +22696,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/CustomerCustomAttributeUpsertRequest"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map containing 1 to 25 individual upsert requests. For each request, provide an\narbitrary ID that is unique for this `BulkUpsertCustomerCustomAttributes` request and the\ninformation needed to create or update a custom attribute."
         }
@@ -22776,7 +22776,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/CustomerCustomAttributeUpsertResponse"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map of responses that correspond to individual upsert requests. Each response has the\nsame ID as the corresponding request and contains either a `customer_id` and `custom_attribute` or an `errors` field."
         },
@@ -22892,7 +22892,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/UpsertCustomAttribute"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map of requests that correspond to individual upsert operations for custom attributes."
         }
@@ -31472,7 +31472,7 @@
       "type": "object",
       "properties": {
         "card_details": {
-          "$ref": "#/definitions/CardRefundDetails",
+          "$ref": "#/definitions/AnyCodable",
           "description": "Details about a card refund. Only populated if the destination_type is `CARD`."
         }
       },
@@ -42410,8 +42410,8 @@
           "description": "Details about the application that took the payment.",
           "x-read-only": true
         },
-        "version_token": {
-          "type": "string",
+        "version": {
+			"type": "integer",
           "description": "Used for optimistic concurrency. This opaque token identifies a specific version of the\n`Payment` object."
         }
       },
