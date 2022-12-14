@@ -22162,17 +22162,13 @@
       "example": {
         "request_body": {
           "values": {
-            "entry-1": {
-              "key": "wayne-test-15",
-              "order_id": "VilxhxZHuWEqDC6GQNgiLNshRMYZY"
+            "table-number": {
+              "key": "table-number",
+              "order_id": "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
             },
-            "entry-2": {
-              "key": "wayne-test-13",
-              "order_id": "XNWR6zjcEXWQy6kbsIsQRTxS0wOZY"
-            },
-            "entry-3": {
-              "key": "ca-key5",
-              "order_id": "9QC9RohBVxfsaSOtYjY7KhmjqrLZY"
+            "cover-count": {
+              "key": "cover-count",
+              "order_id": "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
             }
           }
         }
@@ -22225,9 +22221,8 @@
       "x-is-beta": true,
       "example": {
         "values": {
-          "entry-1": {},
-          "entry-2": {},
-          "entry-3": {}
+          "table-number": {},
+          "cover-count": {}
         }
       }
     },
@@ -22903,19 +22898,21 @@
       "example": {
         "request_body": {
           "values": {
-            "entry-1": {
+            "table-number": {
+              "order_id": "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
               "custom_attribute": {
-                "key": "wayne-test-15",
-                "value": "blah"
-              },
-              "order_id": "VilxhxZHuWEqDC6GQNgiLNshRMYZY"
+                "key": "table-number",
+                "value": "11",
+                "version": 4
+              }
             },
-            "entry-2": {
+            "cover-count": {
+              "order_id": "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
               "custom_attribute": {
-                "key": "wayne-test-16",
-                "value": "string"
-              },
-              "order_id": "VilxhxZHuWEqDC6GQNgiLNshRMYZY"
+                "key": "cover-count",
+                "value": "6",
+                "version": 2
+              }
             }
           }
         }
@@ -22972,23 +22969,21 @@
       "x-is-beta": true,
       "example": {
         "values": {
-          "entry-1": {
+          "table-number": {
             "custom_attribute": {
-              "key": "wayne-test-15",
-              "version": 1,
-              "updated_at": "2022-11-10T17:35:23.754Z",
-              "value": "blah",
-              "created_at": "2022-11-10T17:35:23.754Z",
-              "visibility": "VISIBILITY_READ_WRITE_VALUES"
+              "key": "table-number",
+              "updated_at": "2022-11-22T21:28:35.726Z",
+              "value": "11",
+              "created_at": "2022-11-22T21:24:57.823Z",
+              "visibility": "VISIBILITY_HIDDEN"
             }
           },
-          "entry-2": {
+          "cover-count": {
             "custom_attribute": {
-              "key": "wayne-test-16",
-              "version": 1,
-              "updated_at": "2022-11-10T17:35:23.754Z",
-              "value": "blah",
-              "created_at": "2022-11-10T17:35:23.754Z",
+              "key": "cover-count",
+              "updated_at": "2022-11-22T21:28:35.721Z",
+              "value": "6",
+              "created_at": "2022-11-22T21:27:33.429Z",
               "visibility": "VISIBILITY_READ_WRITE_VALUES"
             }
           }
@@ -28641,17 +28636,17 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "custom_attribute_definition": {
-          "key": "wayne-test-16",
-          "name": "wayne-test",
-          "description": "wayne test",
-          "version": 1,
-          "updated_at": "2022-11-10T18:04:57.039Z",
-          "schema": {
-            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+        "request_body": {
+          "custom_attribute_definition": {
+            "key": "cover-count",
+            "name": "Cover count",
+            "description": "The number of people seated at a table",
+            "schema": {
+              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
+            },
+            "visibility": "VISIBILITY_READ_WRITE_VALUES"
           },
-          "created_at": "2022-11-10T18:04:57.039Z",
-          "visibility": "VISIBILITY_READ_WRITE_VALUES"
+          "idempotency_key": "IDEMPOTENCY_KEY"
         }
       }
     },
@@ -28675,15 +28670,15 @@
       "x-is-beta": true,
       "example": {
         "custom_attribute_definition": {
-          "key": "wayne-test-16",
-          "name": "wayne-test",
-          "description": "wayne test",
+          "key": "cover-count",
+          "name": "Cover count",
+          "description": "The number of people seated at a table",
           "version": 1,
-          "updated_at": "2022-11-10T18:04:57.039Z",
+          "updated_at": "2022-10-06T16:53:23.141Z",
           "schema": {
-            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
           },
-          "created_at": "2022-11-10T18:04:57.039Z",
+          "created_at": "2022-10-06T16:53:23.141Z",
           "visibility": "VISIBILITY_READ_WRITE_VALUES"
         }
       }
@@ -31137,7 +31132,7 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "request_body": {}
+        "request_params": "?key\u003dtable-number"
       }
     },
     "DeleteOrderCustomAttributeDefinitionResponse": {
@@ -31163,7 +31158,7 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "request_body": {}
+        "request_params": "?order_id\u003d7BbXGEIWNldxAzrtGf9GPVZTwZ4F\u0026key\u003dseat-number"
       }
     },
     "DeleteOrderCustomAttributeResponse": {
@@ -31904,101 +31899,6 @@
         "evidence_type": {
           "type": "string",
           "description": "The type of the evidence."
-        }
-      },
-      "description": "",
-      "x-release-status": "PUBLIC"
-    },
-    "DisputeEvidenceCreatedWebhook": {
-      "type": "object",
-      "properties": {
-        "merchant_id": {
-          "type": "string",
-          "description": "The ID of the target merchant associated with the event."
-        },
-        "location_id": {
-          "type": "string",
-          "description": "The ID of the target location associated with the event."
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of event this represents."
-        },
-        "event_id": {
-          "type": "string",
-          "description": "A unique ID for the webhook event."
-        },
-        "created_at": {
-          "type": "string",
-          "description": "Timestamp of when the webhook event was created, in RFC 3339 format.",
-          "x-read-only": true
-        },
-        "data": {
-          "$ref": "#/definitions/DisputeEvidenceCreatedWebhookData",
-          "description": "Data associated with the event."
-        }
-      },
-      "description": "Published when evidence is added to a [Dispute](https://developer.squareup.com/reference/square_2022-11-16/objects/Dispute)\nfrom the Disputes Dashboard in the Seller Dashboard, the Square Point of Sale app,\nor by calling either [CreateDisputeEvidenceFile](https://developer.squareup.com/reference/square_2022-11-16/disputes-api/create-dispute-evidence-file) or [CreateDisputeEvidenceText](https://developer.squareup.com/reference/square_2022-11-16/disputes-api/create-dispute-evidence-text).",
-      "x-release-status": "PUBLIC",
-      "example": {
-        "merchant_id": "0HPGX5JYE6EE1",
-        "location_id": "VJDQQP3CG14EY",
-        "type": "dispute.evidence.created",
-        "event_id": "6f606f30-53d0-495a-87f0-958576fc954f",
-        "created_at": "2020-02-19T21:27:28.851Z",
-        "data": {
-          "type": "dispute",
-          "id": "ORSEVtZAJxb37RA1EiGw",
-          "object": {
-            "dispute": {
-              "amount_money": {
-                "amount": 8801,
-                "currency": "USD"
-              },
-              "brand_dispute_id": "r9rKGSBBQbywBNnWWIiGFg",
-              "card_brand": "VISA",
-              "created_at": "2020-02-19T21:24:53.258Z",
-              "id": "ORSEVtZAJxb37RA1EiGw",
-              "disputed_payment": {
-                "payment_id": "fbmsaEOpoARDKxiSGH1fqPuqoqFZY"
-              },
-              "due_at": "2020-03-04T00:00:00.000Z",
-              "location_id": "VJDQQP3CG14EY",
-              "reason": "AMOUNT_DIFFERS",
-              "reported_at": "2020-02-19T00:00:00.000Z",
-              "state": "EVIDENCE_REQUIRED",
-              "updated_at": "2020-02-19T21:27:28.851Z",
-              "version": 2
-            }
-          }
-        }
-      }
-    },
-    "DisputeEvidenceCreatedWebhookData": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string",
-          "description": "Name of the affected dispute\u0027s type."
-        },
-        "id": {
-          "type": "string",
-          "description": "ID of the affected dispute."
-        },
-        "object": {
-          "$ref": "#/definitions/DisputeEvidenceCreatedWebhookObject",
-          "description": "An object containing fields and values relevant to the event."
-        }
-      },
-      "description": "",
-      "x-release-status": "PUBLIC"
-    },
-    "DisputeEvidenceCreatedWebhookObject": {
-      "type": "object",
-      "properties": {
-        "object": {
-          "$ref": "#/definitions/Dispute",
-          "description": "The dispute object."
         }
       },
       "description": "",
@@ -36996,7 +36896,7 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "request_body": {}
+        "request_params": "?limit\u003d4"
       }
     },
     "ListOrderCustomAttributeDefinitionsResponse": {
@@ -37030,207 +36930,42 @@
       "example": {
         "custom_attribute_definitions": [
           {
-            "key": "111627037215791390475626806237509578915",
+            "key": "cover-count",
+            "name": "Cover count",
+            "description": "The number of people seated at a table",
             "version": 1,
-            "updated_at": "2022-08-30T19:40:34.096Z",
+            "updated_at": "2022-11-16T18:03:44.051Z",
             "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
             },
-            "created_at": "2022-08-30T19:40:34.096Z",
-            "visibility": "VISIBILITY_HIDDEN"
+            "created_at": "2022-11-16T18:03:44.051Z",
+            "visibility": "VISIBILITY_READ_WRITE_VALUES"
           },
           {
-            "key": "126152675641607375924561306264587662207",
+            "key": "seat-number",
+            "name": "Seat number",
+            "description": "The identifier for a particular seat",
             "version": 1,
-            "updated_at": "2022-08-30T19:52:19.288Z",
+            "updated_at": "2022-11-16T18:04:32.059Z",
             "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
             },
-            "created_at": "2022-08-30T19:52:19.288Z",
-            "visibility": "VISIBILITY_HIDDEN"
+            "created_at": "2022-11-16T18:04:32.059Z",
+            "visibility": "VISIBILITY_READ_WRITE_VALUES"
           },
           {
-            "key": "132229360713474508832800935172665181309",
+            "key": "table-number",
+            "name": "Table number",
+            "description": "The identifier for a particular table",
             "version": 1,
-            "updated_at": "2022-08-30T19:52:21.972Z",
+            "updated_at": "2022-11-16T18:04:21.912Z",
             "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
             },
-            "created_at": "2022-08-30T19:52:21.972Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "133736670883961047350849618723256277335",
-            "version": 1,
-            "updated_at": "2022-08-30T19:22:45.403Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:22:45.403Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "134023462651854972506633162970243971159",
-            "version": 1,
-            "updated_at": "2022-08-30T19:30:09.394Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:30:09.394Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "136212061194607338159028472153646132916",
-            "version": 1,
-            "updated_at": "2022-08-30T19:48:16.264Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:48:16.264Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "141651596820259452775504067410577872889",
-            "version": 1,
-            "updated_at": "2022-08-30T20:14:26.317Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:14:26.317Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "147272735064661946811911175641629624380",
-            "version": 1,
-            "updated_at": "2022-08-30T20:08:22.614Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:08:22.614Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "154293667112513202074149596622396659965",
-            "version": 1,
-            "updated_at": "2022-08-30T19:33:37.879Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:33:37.879Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "157514410686015059150439042434283096945",
-            "version": 1,
-            "updated_at": "2022-08-30T20:09:25.463Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:09:25.463Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "158803051939659258729577878113914994658",
-            "version": 1,
-            "updated_at": "2022-08-30T20:14:41.596Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:14:41.596Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "163654764750506925634649781514923867276",
-            "version": 1,
-            "updated_at": "2022-08-30T20:08:59.863Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:08:59.863Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "163996750485893483971604258547094799623",
-            "version": 1,
-            "updated_at": "2022-08-30T19:53:19.633Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:53:19.633Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "17116545288175190772020212470402879991",
-            "version": 1,
-            "updated_at": "2022-08-30T19:59:35.662Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:59:35.662Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "176575831392330233624899250004453426584",
-            "version": 1,
-            "updated_at": "2022-08-30T20:17:53.666Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:17:53.666Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "183970498782451227782092030924459084339",
-            "version": 1,
-            "updated_at": "2022-08-30T20:29:06.224Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:29:06.224Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "188539637539839368124250660866497721857",
-            "version": 1,
-            "updated_at": "2022-08-30T19:53:03.686Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T19:53:03.686Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "193396595413170011456682562082471783073",
-            "version": 1,
-            "updated_at": "2022-08-30T20:15:32.204Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:15:32.204Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "19521320534979629313284826964274790274",
-            "version": 1,
-            "updated_at": "2022-08-30T20:15:31.096Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:15:31.096Z",
-            "visibility": "VISIBILITY_HIDDEN"
-          },
-          {
-            "key": "196282042176236836075541927350443201675",
-            "version": 1,
-            "updated_at": "2022-08-30T20:29:03.093Z",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "created_at": "2022-08-30T20:29:03.093Z",
-            "visibility": "VISIBILITY_HIDDEN"
+            "created_at": "2022-11-16T18:04:21.912Z",
+            "visibility": "VISIBILITY_READ_WRITE_VALUES"
           }
-        ],
-        "cursor": "aVM2BkhPMhCwTeh26dbFSsNMgHBbCpYF87NsAMd5scluQYoVTXFG1cimzDWzWjQsGSILbIsMW8xgvDXvGu0a2hzcxnSET9uqO8SPNIwJwiG5ZlPZhudh035I74RPMYomwk2TH4ZyzRIFU6DuBGBwBMwiYpTjAnSCYNQnLL5aqopIcIFoJcBpQxJ8MzC"
+        ]
       }
     },
     "ListOrderCustomAttributesRequest": {
@@ -37259,7 +36994,7 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "request_body": {}
+        "request_params": "?order_id\u003d7BbXGEIWNldxAzrtGf9GPVZTwZ4F\u0026with_definitions\u003dtrue\u0026visibility_filter\u003dALL\u0026limit\u003d4"
       }
     },
     "ListOrderCustomAttributesResponse": {
@@ -45408,7 +45143,7 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "request_body": {}
+        "request_parameters": "?key\u003dcover-count"
       }
     },
     "RetrieveOrderCustomAttributeDefinitionResponse": {
@@ -45431,15 +45166,15 @@
       "x-is-beta": true,
       "example": {
         "custom_attribute_definition": {
-          "key": "wayne-test-15",
-          "name": "wayne-test-15",
-          "description": "updated",
-          "version": 2,
-          "updated_at": "2022-11-09T21:25:45.592Z",
+          "key": "cover-count",
+          "name": "Cover count",
+          "description": "The number of people seated at a table",
+          "version": 1,
+          "updated_at": "2022-10-06T16:53:23.141Z",
           "schema": {
-            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
           },
-          "created_at": "2022-11-09T21:25:28.693Z",
+          "created_at": "2022-10-06T16:53:23.141Z",
           "visibility": "VISIBILITY_READ_WRITE_VALUES"
         }
       }
@@ -45460,7 +45195,7 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
-        "request_body": {}
+        "request_params": "?order_id\u003d7BbXGEIWNldxAzrtGf9GPVZTwZ4F\u0026key\u003dcover-count"
       }
     },
     "RetrieveOrderCustomAttributeResponse": {
@@ -45483,11 +45218,11 @@
       "x-is-beta": true,
       "example": {
         "custom_attribute": {
-          "key": "wayne-test-15",
+          "key": "cover-count",
           "version": 1,
-          "updated_at": "2022-11-10T17:31:36.111Z",
-          "value": "TEST",
-          "created_at": "2022-11-10T17:31:36.111Z",
+          "updated_at": "2022-11-22T21:28:35.721Z",
+          "value": "6",
+          "created_at": "2022-11-22T21:27:33.429Z",
           "visibility": "VISIBILITY_READ_WRITE_VALUES"
         }
       }
@@ -51313,17 +51048,14 @@
       "x-release-status": "BETA",
       "x-is-beta": true,
       "example": {
+        "request_params": "?key\u003dcover-count",
         "request_body": {
           "custom_attribute_definition": {
-            "key": "wayne-test-15",
-            "name": "wayne-test-15",
-            "version": 2,
-            "description": "updated",
-            "schema": {
-              "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
-            },
-            "visibility": "VISIBILITY_READ_WRITE_VALUES"
-          }
+            "visibility": "VISIBILITY_READ_ONLY",
+            "key": "cover-count",
+            "version": 1
+          },
+          "idempotency_key": "IDEMPOTENCY_KEY"
         }
       }
     },
@@ -51347,16 +51079,16 @@
       "x-is-beta": true,
       "example": {
         "custom_attribute_definition": {
-          "key": "wayne-test-15",
-          "name": "wayne-test-15",
-          "description": "updated",
-          "version": 3,
-          "updated_at": "2022-11-10T18:00:02.929Z",
+          "key": "cover-count",
+          "name": "Cover count",
+          "description": "The number of people seated at a table",
+          "version": 2,
+          "updated_at": "2022-11-16T17:44:11.436Z",
           "schema": {
-            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
           },
-          "created_at": "2022-11-09T21:25:28.693Z",
-          "visibility": "VISIBILITY_READ_WRITE_VALUES"
+          "created_at": "2022-11-16T16:53:23.141Z",
+          "visibility": "VISIBILITY_READ_ONLY"
         }
       }
     },
@@ -52564,8 +52296,9 @@
       "example": {
         "request_body": {
           "custom_attribute": {
-            "key": "wayne-test-15",
-            "value": "TEST"
+            "value": "42",
+            "key": "table-number",
+            "version": 1
           }
         }
       }
@@ -52590,11 +52323,11 @@
       "x-is-beta": true,
       "example": {
         "custom_attribute": {
-          "key": "wayne-test-15",
+          "key": "table-number",
           "version": 1,
-          "updated_at": "2022-11-10T17:31:36.111Z",
-          "value": "TEST",
-          "created_at": "2022-11-10T17:31:36.111Z",
+          "updated_at": "2022-10-06T20:41:22.673Z",
+          "value": "42",
+          "created_at": "2022-10-06T20:41:22.673Z",
           "visibility": "VISIBILITY_READ_WRITE_VALUES"
         }
       }
