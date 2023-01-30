@@ -22772,7 +22772,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeDeleteRequest"
+            "$ref": "#/definitions/DeleteLocationCustomAttributeRequest"
           },
           "description": "The data used to update the `CustomAttribute` objects.\nThe keys must be unique and are used to map to the corresponding response."
         }
@@ -22822,7 +22822,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeDeleteResponse"
+            "$ref": "#/definitions/DeleteLocationCustomAttributeResponse"
           },
           "description": "A map of responses that correspond to individual delete requests. Each response has the\nsame key as the corresponding request."
         },
@@ -23622,7 +23622,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeUpsertRequest"
+            "$ref": "#/definitions/UpsertLocationCustomAttributeRequest"
           },
           "description": "A map containing 1 to 25 individual upsert requests. For each request, provide an\narbitrary ID that is unique for this `BulkUpsertLocationCustomAttributes` request and the\ninformation needed to create or update a custom attribute."
         }
@@ -23690,7 +23690,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeUpsertResponse"
+            "$ref": "#/definitions/UpsertLocationCustomAttributeResponse"
           },
           "description": "A map of responses that correspond to individual upsert requests. Each response has the\nsame ID as the corresponding request and contains either a `location_id` and `custom_attribute` or an `errors` field."
         },
