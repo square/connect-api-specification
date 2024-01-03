@@ -29959,20 +29959,20 @@
         "policies": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Policy"
+            "$ref": "#/definitions/CheckoutLocationSettingsPolicy"
           },
           "description": "Policy information is displayed at the bottom of the checkout pages.\nYou can set a maximum of two policies."
         },
         "branding": {
-          "$ref": "#/definitions/Branding",
+          "$ref": "#/definitions/CheckoutLocationSettingsBranding",
           "description": "The branding settings for this location."
         },
         "tipping": {
-          "$ref": "#/definitions/Tipping",
+          "$ref": "#/definitions/CheckoutLocationSettingsTipping",
           "description": "The tip settings for this location."
         },
         "coupons": {
-          "$ref": "#/definitions/Coupons",
+          "$ref": "#/definitions/CheckoutLocationSettingsCoupons",
           "description": "The coupon settings for this location."
         },
         "updated_at": {
@@ -30081,7 +30081,7 @@
       "type": "object",
       "properties": {
         "payment_methods": {
-          "$ref": "#/definitions/PaymentMethods",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethods",
           "description": "The set of payment methods accepted for the merchant\u0027s account."
         },
         "updated_at": {
@@ -30098,19 +30098,19 @@
       "type": "object",
       "properties": {
         "apple_pay": {
-          "$ref": "#/definitions/PaymentMethod",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
           "description": ""
         },
         "google_pay": {
-          "$ref": "#/definitions/PaymentMethod",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
           "description": ""
         },
         "cash_app": {
-          "$ref": "#/definitions/PaymentMethod",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
           "description": ""
         },
         "afterpay_clearpay": {
-          "$ref": "#/definitions/AfterpayClearpay",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay",
           "description": ""
         }
       },
@@ -30122,11 +30122,11 @@
       "type": "object",
       "properties": {
         "order_eligibility_range": {
-          "$ref": "#/definitions/EligibilityRange",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange",
           "description": "Afterpay is shown as an option for order totals falling within the configured range."
         },
         "item_eligibility_range": {
-          "$ref": "#/definitions/EligibilityRange",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange",
           "description": "Afterpay is shown as an option for item totals falling within the configured range."
         },
         "enabled": {
@@ -35884,7 +35884,7 @@
           "description": "The battery charge percentage as displayed on the device."
         },
         "external_power": {
-          "$ref": "#/definitions/ExternalPower",
+          "$ref": "#/definitions/DeviceComponentDetailsExternalPower",
           "description": "The status of external_power."
         }
       },
@@ -35964,7 +35964,7 @@
           "description": "The security protocol for a secure connection (e.g. WPA2). None provided if the connection\nis unsecured."
         },
         "signal_strength": {
-          "$ref": "#/definitions/Measurement",
+          "$ref": "#/definitions/DeviceComponentDetailsMeasurement",
           "description": "A representation of signal strength of the WIFI network connection."
         }
       },
