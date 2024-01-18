@@ -28545,7 +28545,7 @@
           "x-is-beta": true
         },
         "food_and_beverage_details": {
-          "$ref": "#/definitions/FoodAndBeverageDetails",
+          "$ref": "#/definitions/CatalogItemFoodAndBeverageDetails",
           "description": "The food and beverage-specific details for the `FOOD_AND_BEV` item."
         },
         "reporting_category": {
@@ -28581,14 +28581,14 @@
         "dietary_preferences": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DietaryPreference"
+            "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsDietaryPreference"
           },
           "description": "The dietary preferences for the `FOOD_AND_BEV` item."
         },
         "ingredients": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Ingredient"
+            "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsIngredient"
           },
           "description": "The ingredients for the `FOOD_AND_BEV` type item."
         }
@@ -28600,7 +28600,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "$ref": "#/definitions/DietaryPreferenceType",
+          "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsDietaryPreferenceType",
           "description": "The dietary preference type. Supported values include `STANDARD` and `CUSTOM` as specified in `FoodAndBeverageDetails.DietaryPreferenceType`."
         },
         "standard_name": {
@@ -28619,7 +28619,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "$ref": "#/definitions/DietaryPreferenceType",
+          "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsDietaryPreferenceType",
           "description": "The dietary preference type of the ingredient. Supported values include `STANDARD` and `CUSTOM` as specified in `FoodAndBeverageDetails.DietaryPreferenceType`."
         },
         "standard_name": {
