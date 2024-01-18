@@ -3346,7 +3346,7 @@
         ],
         "summary": "BulkUpsertCustomerCustomAttributes",
         "operationId": "BulkUpsertCustomerCustomAttributes",
-        "description": "Creates or updates [custom attributes](https://developer.squareup.com/reference/square_2024-01-18/objects/CustomAttribute) for customer profiles as a bulk operation.\n\nUse this endpoint to set the value of one or more custom attributes for one or more customer profiles.\nA custom attribute is based on a custom attribute definition in a Square seller account, which is\ncreated using the [CreateCustomerCustomAttributeDefinition](https://developer.squareup.com/reference/square_2024-01-18/customer-custom-attributes-api/create-customer-custom-attribute-definition) endpoint.\n\nThis `BulkUpsertCustomerCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert \nrequests and returns a map of individual upsert responses. Each upsert request has a unique ID \nand provides a customer ID and custom attribute. Each upsert response is returned with the ID \nof the corresponding request.\n\nTo create or update a custom attribute owned by another application, the `visibility` setting\nmust be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes\n(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.",
+        "description": "Creates or updates [custom attributes](https://developer.squareup.com/reference/square_2024-01-18/objects/CustomAttribute) for customer profiles as a bulk operation.\n\nUse this endpoint to set the value of one or more custom attributes for one or more customer profiles.\nA custom attribute is based on a custom attribute definition in a Square seller account, which is\ncreated using the [CreateCustomerCustomAttributeDefinition](https://developer.squareup.com/reference/square_2024-01-18/customer-custom-attributes-api/create-customer-custom-attribute-definition) endpoint.\n\nThis `BulkUpsertCustomerCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert\nrequests and returns a map of individual upsert responses. Each upsert request has a unique ID\nand provides a customer ID and custom attribute. Each upsert response is returned with the ID\nof the corresponding request.\n\nTo create or update a custom attribute owned by another application, the `visibility` setting\nmust be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes\n(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
@@ -3720,7 +3720,7 @@
         ],
         "summary": "DeleteCustomer",
         "operationId": "DeleteCustomer",
-        "description": "Deletes a customer profile from a business. This operation also unlinks any associated cards on file. \n\nAs a best practice, include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.\nIf included, the value must be set to the current version of the customer profile. \n\nTo delete a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.",
+        "description": "Deletes a customer profile from a business. This operation also unlinks any associated cards on file.\n\nAs a best practice, include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.\nIf included, the value must be set to the current version of the customer profile.\n\nTo delete a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
@@ -3802,7 +3802,7 @@
         ],
         "summary": "UpdateCustomer",
         "operationId": "UpdateCustomer",
-        "description": "Updates a customer profile. This endpoint supports sparse updates, so only new or changed fields are required in the request.\nTo add or update a field, specify the new value. To remove a field, specify `null` and include the `X-Clear-Null` header set to `true`\n(recommended) or specify an empty string (string fields only).\n\nAs a best practice, include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.\nIf included, the value must be set to the current version of the customer profile.\n\nTo update a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.\n\nYou cannot use this endpoint to change cards on file. To make changes, use the [Cards API](https://developer.squareup.com/reference/square_2024-01-18/cards-api) or [Gift Cards API](https://developer.squareup.com/reference/square_2024-01-18/gift-cards-api).",
+        "description": "Updates a customer profile. This endpoint supports sparse updates, so only new or changed fields are required in the request.\nTo add or update a field, specify the new value. To remove a field, specify `null`\n(recommended) or specify an empty string (string fields only).\n\nAs a best practice, include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.\nIf included, the value must be set to the current version of the customer profile.\n\nTo update a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.\n\nYou cannot use this endpoint to change cards on file. To make changes, use the [Cards API](https://developer.squareup.com/reference/square_2024-01-18/cards-api) or [Gift Cards API](https://developer.squareup.com/reference/square_2024-01-18/gift-cards-api).",
         "x-release-status": "PUBLIC",
         "x-oauthpermissions": [
           "CUSTOMERS_WRITE"
@@ -6221,6 +6221,52 @@
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/UpdateInvoiceResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/invoices/{invoice_id}/attachments/{attachment_id}": {
+      "delete": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "DeleteInvoiceAttachment",
+        "operationId": "DeleteInvoiceAttachment",
+        "description": "Removes an attachment from an invoice and permanently deletes the file. Attachments can be removed only\nfrom invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.",
+        "x-release-status": "PUBLIC",
+        "x-oauthpermissions": [
+          "INVOICES_WRITE"
+        ],
+        "x-sq-version": "2024-01-18",
+        "security": [
+          {
+            "oauth2": [
+              "INVOICES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "description": "The ID of the [invoice](https://developer.squareup.com/reference/square_2024-01-18/objects/Invoice) to delete the attachment from.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "attachment_id",
+            "description": "The ID of the [attachment](https://developer.squareup.com/reference/square_2024-01-18/objects/InvoiceAttachment) to delete.",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeleteInvoiceAttachmentResponse"
             }
           }
         }
@@ -14699,12 +14745,160 @@
       "description": "How to apply a CatalogDiscount to a CatalogItem.",
       "x-release-status": "PUBLIC"
     },
+    "CatalogItemFoodAndBeverageDetailsDietaryPreferenceStandardDietaryPreference": {
+      "type": "string",
+      "enum": [
+        "DAIRY_FREE",
+        "GLUTEN_FREE",
+        "HALAL",
+        "KOSHER",
+        "NUT_FREE",
+        "VEGAN",
+        "VEGETARIAN"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "DAIRY_FREE",
+          "description": ""
+        },
+        {
+          "name": "GLUTEN_FREE",
+          "description": ""
+        },
+        {
+          "name": "HALAL",
+          "description": ""
+        },
+        {
+          "name": "KOSHER",
+          "description": ""
+        },
+        {
+          "name": "NUT_FREE",
+          "description": ""
+        },
+        {
+          "name": "VEGAN",
+          "description": ""
+        },
+        {
+          "name": "VEGETARIAN",
+          "description": ""
+        }
+      ],
+      "description": "Standard dietary preferences for food and beverage items that are recommended on item creation.",
+      "x-release-status": "PUBLIC"
+    },
+    "CatalogItemFoodAndBeverageDetailsDietaryPreferenceType": {
+      "type": "string",
+      "enum": [
+        "STANDARD",
+        "CUSTOM"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "STANDARD",
+          "description": "A standard value from a pre-determined list."
+        },
+        {
+          "name": "CUSTOM",
+          "description": "A user-defined custom value."
+        }
+      ],
+      "description": "The type of dietary preference for the `FOOD_AND_BEV` type of items and integredients.",
+      "x-release-status": "PUBLIC"
+    },
+    "CatalogItemFoodAndBeverageDetailsIngredientStandardIngredient": {
+      "type": "string",
+      "enum": [
+        "CELERY",
+        "CRUSTACEANS",
+        "EGGS",
+        "FISH",
+        "GLUTEN",
+        "LUPIN",
+        "MILK",
+        "MOLLUSCS",
+        "MUSTARD",
+        "PEANUTS",
+        "SESAME",
+        "SOY",
+        "SULPHITES",
+        "TREE_NUTS"
+      ],
+      "x-enum-elements": [
+        {
+          "name": "CELERY",
+          "description": ""
+        },
+        {
+          "name": "CRUSTACEANS",
+          "description": ""
+        },
+        {
+          "name": "EGGS",
+          "description": ""
+        },
+        {
+          "name": "FISH",
+          "description": ""
+        },
+        {
+          "name": "GLUTEN",
+          "description": ""
+        },
+        {
+          "name": "LUPIN",
+          "description": ""
+        },
+        {
+          "name": "MILK",
+          "description": ""
+        },
+        {
+          "name": "MOLLUSCS",
+          "description": ""
+        },
+        {
+          "name": "MUSTARD",
+          "description": ""
+        },
+        {
+          "name": "PEANUTS",
+          "description": ""
+        },
+        {
+          "name": "SESAME",
+          "description": ""
+        },
+        {
+          "name": "SOY",
+          "description": ""
+        },
+        {
+          "name": "SULPHITES",
+          "description": ""
+        },
+        {
+          "name": "TREE_NUTS",
+          "description": ""
+        }
+      ],
+      "description": "Standard ingredients for food and beverage items that are recommended on item creation.",
+      "x-release-status": "PUBLIC"
+    },
     "CatalogItemProductType": {
       "type": "string",
       "enum": [
         "REGULAR",
         "GIFT_CARD",
-        "APPOINTMENTS_SERVICE"
+        "APPOINTMENTS_SERVICE",
+        "FOOD_AND_BEV",
+        "EVENT",
+        "DIGITAL",
+        "DONATION",
+        "LEGACY_SQUARE_ONLINE_SERVICE",
+        "LEGACY_SQUARE_ONLINE_MEMBERSHIP"
       ],
       "x-enum-elements": [
         {
@@ -14718,6 +14912,30 @@
         {
           "name": "APPOINTMENTS_SERVICE",
           "description": "A service that can be booked using the Square Appointments app."
+        },
+        {
+          "name": "FOOD_AND_BEV",
+          "description": "A food or beverage item that can be sold by restaurants and other food venues."
+        },
+        {
+          "name": "EVENT",
+          "description": "An event which tickets can be sold for, including location, address, and times."
+        },
+        {
+          "name": "DIGITAL",
+          "description": "A digital item like an ebook or song."
+        },
+        {
+          "name": "DONATION",
+          "description": "A donation which site visitors can send for any cause."
+        },
+        {
+          "name": "LEGACY_SQUARE_ONLINE_SERVICE",
+          "description": "A legacy Square Online service that is manually fulfilled. This corresponds to the `Other` item type displayed in the Square Seller Dashboard and Square POS apps."
+        },
+        {
+          "name": "LEGACY_SQUARE_ONLINE_MEMBERSHIP",
+          "description": "A legacy Square Online membership that is manually fulfilled. This corresponds to the `Membership` item type displayed in the Square Seller Dashboard and Square POS apps."
         }
       ],
       "description": "The type of a CatalogItem. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items.",
@@ -14762,7 +14980,8 @@
         "ITEM_OPTION_VAL",
         "CUSTOM_ATTRIBUTE_DEFINITION",
         "QUICK_AMOUNTS_SETTINGS",
-        "SUBSCRIPTION_PLAN"
+        "SUBSCRIPTION_PLAN",
+        "AVAILABILITY_PERIOD"
       ],
       "x-enum-elements": [
         {
@@ -14836,6 +15055,10 @@
         {
           "name": "SUBSCRIPTION_PLAN",
           "description": "The `CatalogObject` instance is of the [CatalogSubscriptionPlan](https://developer.squareup.com/reference/square_2024-01-18/objects/CatalogSubscriptionPlan) type and represents a subscription plan.\nThe subscription plan specific data must be stored on the `subscription_plan_data` field."
+        },
+        {
+          "name": "AVAILABILITY_PERIOD",
+          "description": "The `CatalogObject` instance is of the [CatalogAvailabilityPeriod](https://developer.squareup.com/reference/square_2024-01-18/objects/CatalogAvailabilityPeriod) type and represents an availability period.\nThe availability period specific data must be stored on the `availability_period_data` field."
         }
       ],
       "description": "Possible types of CatalogObjects returned from the catalog, each\ncontaining type-specific properties in the `*_data` field corresponding to the specified object type.",
@@ -28227,7 +28450,7 @@
         },
         "category_id": {
           "type": "string",
-          "description": "The ID of the item\u0027s category, if any. Deprecated since 2024-01-18. Use `CatalogItem.categories`, instead.",
+          "description": "The ID of the item\u0027s category, if any. Deprecated since 2023-12-13. Use `CatalogItem.categories`, instead.",
           "x-release-status": "DEPRECATED",
           "x-is-deprecated": true
         },
@@ -28254,7 +28477,7 @@
         },
         "product_type": {
           "type": "string",
-          "description": "The product type of the item. May not be changed once an item has been created.\n\nOnly items of product type `REGULAR` or `APPOINTMENTS_SERVICE` may be created by this API; items with other product\ntypes are read-only."
+          "description": "The product type of the item. Once set, the `product_type` value cannot be modified.\n\nItems of the `LEGACY_SQUARE_ONLINE_SERVICE` and `LEGACY_SQUARE_ONLINE_MEMBERSHIP` product types can be updated\nbut cannot be created using the API."
         },
         "skip_modifier_screen": {
           "type": "boolean",
@@ -28321,6 +28544,10 @@
           "x-release-status": "BETA",
           "x-is-beta": true
         },
+        "food_and_beverage_details": {
+          "$ref": "#/definitions/FoodAndBeverageDetails",
+          "description": "The food and beverage-specific details for the `FOOD_AND_BEV` item."
+        },
         "reporting_category": {
           "$ref": "#/definitions/CatalogObjectCategory",
           "description": "The item\u0027s reporting category.",
@@ -28343,6 +28570,69 @@
           }
         }
       }
+    },
+    "CatalogItemFoodAndBeverageDetails": {
+      "type": "object",
+      "properties": {
+        "calorie_count": {
+          "type": "integer",
+          "description": "The calorie count (in the unit of kcal) for the `FOOD_AND_BEV` type of items."
+        },
+        "dietary_preferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DietaryPreference"
+          },
+          "description": "The dietary preferences for the `FOOD_AND_BEV` item."
+        },
+        "ingredients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ingredient"
+          },
+          "description": "The ingredients for the `FOOD_AND_BEV` type item."
+        }
+      },
+      "description": "The food and beverage-specific details of a `FOOD_AND_BEV` item.",
+      "x-release-status": "PUBLIC"
+    },
+    "CatalogItemFoodAndBeverageDetailsDietaryPreference": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/DietaryPreferenceType",
+          "description": "The dietary preference type. Supported values include `STANDARD` and `CUSTOM` as specified in `FoodAndBeverageDetails.DietaryPreferenceType`."
+        },
+        "standard_name": {
+          "type": "string",
+          "description": "The name of the dietary preference from a standard pre-defined list. This should be null if it\u0027s a custom dietary preference."
+        },
+        "custom_name": {
+          "type": "string",
+          "description": "The name of a user-defined custom dietary preference. This should be null if it\u0027s a standard dietary preference."
+        }
+      },
+      "description": "Dietary preferences that can be assigned to an `FOOD_AND_BEV` item and its ingredients.",
+      "x-release-status": "PUBLIC"
+    },
+    "CatalogItemFoodAndBeverageDetailsIngredient": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/DietaryPreferenceType",
+          "description": "The dietary preference type of the ingredient. Supported values include `STANDARD` and `CUSTOM` as specified in `FoodAndBeverageDetails.DietaryPreferenceType`."
+        },
+        "standard_name": {
+          "type": "string",
+          "description": "The name of the ingredient from a standard pre-defined list. This should be null if it\u0027s a custom dietary preference."
+        },
+        "custom_name": {
+          "type": "string",
+          "description": "The name of a custom user-defined ingredient. This should be null if it\u0027s a standard dietary preference."
+        }
+      },
+      "description": "Describes the ingredient used in a `FOOD_AND_BEV` item.",
+      "x-release-status": "PUBLIC"
     },
     "CatalogItemModifierListInfo": {
       "type": "object",
@@ -35155,6 +35445,27 @@
       "x-release-status": "PUBLIC",
       "example": {}
     },
+    "DeleteInvoiceAttachmentRequest": {
+      "type": "object",
+      "properties": {},
+      "description": "Represents a [DeleteInvoiceAttachment](https://developer.squareup.com/reference/square_2024-01-18/invoices-api/delete-invoice-attachment) request.",
+      "x-release-status": "PUBLIC"
+    },
+    "DeleteInvoiceAttachmentResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          },
+          "description": "Information about errors encountered during the request."
+        }
+      },
+      "description": "Represents a [DeleteInvoiceAttachment](https://developer.squareup.com/reference/square_2024-01-18/invoices-api/delete-invoice-attachment) response.",
+      "x-release-status": "PUBLIC",
+      "example": {}
+    },
     "DeleteInvoiceRequest": {
       "type": "object",
       "properties": {
@@ -36829,13 +37140,13 @@
         },
         "shipment_details": {
           "$ref": "#/definitions/FulfillmentShipmentDetails",
-          "description": "Contains details for a shipment fulfillment. These details are required when the fulfillment type\nis `SHIPMENT`.\n\nA shipment fulfillment\u0027s relationship to fulfillment `state`:\n`PROPOSED`: A shipment is requested.\n`RESERVED`: Fulfillment accepted. Shipment processing.\n`PREPARED`: Shipment packaged. Shipping label created.\n`COMPLETED`: Package has been shipped.\n`CANCELED`: Shipment has been canceled.\n`FAILED`: Shipment has failed.",
+          "description": "Contains details for a shipment fulfillment. These details are required when the fulfillment type\nis `SHIPMENT`.\n\nA shipment fulfillment\u0027s relationship to fulfillment `state`:\n`PROPOSED`: A shipment is requested.\n`RESERVED`: Fulfillment in progress. Shipment processing.\n`PREPARED`: Shipment packaged. Shipping label created.\n`COMPLETED`: Package has been shipped.\n`CANCELED`: Shipment has been canceled.\n`FAILED`: Shipment has failed.",
           "x-release-status": "BETA",
           "x-is-beta": true
         },
         "delivery_details": {
           "$ref": "#/definitions/FulfillmentDeliveryDetails",
-          "description": "",
+          "description": "Describes delivery details of an order fulfillment.",
           "x-release-status": "BETA",
           "x-is-beta": true
         }
@@ -36865,11 +37176,11 @@
         },
         "prep_time_duration": {
           "type": "string",
-          "description": "The duration of time it takes to prepare and deliver this fulfillment.\nThe timestamp must be in RFC 3339 format (for example, \"P1W3D\")."
+          "description": "The duration of time it takes to prepare and deliver this fulfillment.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\")."
         },
         "delivery_window_duration": {
           "type": "string",
-          "description": "The time period after the `deliver_at` timestamp in which to deliver the order.\nApplications can set this field when the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state\nsuch as `COMPLETED`, `CANCELED`, and `FAILED`).\n\nThe timestamp must be in RFC 3339 format (for example, \"P1W3D\")."
+          "description": "The time period after `deliver_at` in which to deliver the order.\nApplications can set this field when the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state\nsuch as `COMPLETED`, `CANCELED`, and `FAILED`).\n\nThe duration must be in RFC 3339 format (for example, \"P1W3D\")."
         },
         "note": {
           "maxLength": 550,
@@ -36916,7 +37227,7 @@
         },
         "courier_pickup_window_duration": {
           "type": "string",
-          "description": "The period of time in which the order should be picked up by the courier after the\n`courier_pickup_at` timestamp.\nThe time must be in RFC 3339 format (for example, \"P1W3D\")."
+          "description": "The time period after `courier_pickup_at` in which the courier should pick up the order.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\")."
         },
         "is_no_contact_delivery": {
           "type": "boolean",
@@ -37000,11 +37311,11 @@
         },
         "expires_at": {
           "type": "string",
-          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when this fulfillment expires if it is not accepted. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\"). The expiration time can only be set up to 7 days in the future.\nIf `expires_at` is not set, this pickup fulfillment is automatically accepted when\nplaced."
+          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when this fulfillment expires if it is not marked in progress. The timestamp must be\nin RFC 3339 format (for example, \"2016-09-04T23:59:33.123Z\"). The expiration time can only be set\nup to 7 days in the future. If `expires_at` is not set, any new payments attached to the order\nare automatically completed."
         },
         "auto_complete_duration": {
           "type": "string",
-          "description": "The duration of time after which an open and accepted pickup fulfillment\nis automatically moved to the `COMPLETED` state. The duration must be in RFC 3339\nformat (for example, \"P1W3D\").\n\nIf not set, this pickup fulfillment remains accepted until it is canceled or completed."
+          "description": "The duration of time after which an in progress pickup fulfillment is automatically moved\nto the `COMPLETED` state. The duration must be in RFC 3339 format (for example, \"P1W3D\").\n\nIf not set, this pickup fulfillment remains in progress until it is canceled or completed."
         },
         "schedule_type": {
           "type": "string",
@@ -37034,7 +37345,7 @@
         },
         "accepted_at": {
           "type": "string",
-          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was accepted. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
+          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was marked in progress. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
           "x-read-only": true
         },
         "rejected_at": {
@@ -38971,6 +39282,14 @@
         "store_payment_method_enabled": {
           "type": "boolean",
           "description": "Indicates whether to allow a customer to save a credit or debit card as a card on file or a bank transfer as a\nbank account on file. If `true`, Square displays a __Save my card on file__ or __Save my bank on file__ checkbox on the\ninvoice payment page. Stored payment information can be used for future automatic payments. The default value is `false`."
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceAttachment"
+          },
+          "description": "Metadata about the attachments on the invoice. Invoice attachments are managed using the\n[CreateInvoiceAttachment](https://developer.squareup.com/reference/square_2024-01-18/invoices-api/create-invoice-attachment) and [DeleteInvoiceAttachment](https://developer.squareup.com/reference/square_2024-01-18/invoices-api/delete-invoice-attachment) endpoints.",
+          "x-read-only": true
         }
       },
       "description": "Stores information about an invoice. You use the Invoices API to create and manage\ninvoices. For more information, see [Invoices API Overview](https://developer.squareup.com/docs/invoices-api/overview).",
@@ -39001,6 +39320,48 @@
         }
       },
       "description": "The payment methods that customers can use to pay an [invoice](https://developer.squareup.com/reference/square_2024-01-18/objects/Invoice) on the Square-hosted invoice payment page.",
+      "x-release-status": "PUBLIC"
+    },
+    "InvoiceAttachment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Square-assigned ID of the attachment.",
+          "x-read-only": true
+        },
+        "filename": {
+          "type": "string",
+          "description": "The file name of the attachment, which is displayed on the invoice.",
+          "x-read-only": true
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the attachment, which is displayed on the invoice.\nThis field maps to the seller-defined **Message** field.",
+          "x-read-only": true
+        },
+        "filesize": {
+          "type": "integer",
+          "description": "The file size of the attachment in bytes.",
+          "x-read-only": true
+        },
+        "hash": {
+          "type": "string",
+          "description": "The MD5 hash that was generated from the file contents.",
+          "x-read-only": true
+        },
+        "mime_type": {
+          "type": "string",
+          "description": "The mime type of the attachment.\nThe following mime types are supported: \nimage/gif, image/jpeg, image/png, image/tiff, image/bmp, application/pdf.",
+          "x-read-only": true
+        },
+        "uploaded_at": {
+          "type": "string",
+          "description": "The timestamp when the attachment was uploaded, in RFC 3339 format.",
+          "x-read-only": true
+        }
+      },
+      "description": "Represents a file attached to an [invoice](https://developer.squareup.com/reference/square_2024-01-18/objects/Invoice).",
       "x-release-status": "PUBLIC"
     },
     "InvoiceCustomField": {
@@ -41371,7 +41732,7 @@
         "invoices": [
           {
             "id": "inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
-            "version": 0,
+            "version": 1,
             "location_id": "ES0RJRZYEC39A",
             "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
             "payment_requests": [
@@ -41405,8 +41766,8 @@
             "scheduled_at": "2030-01-13T10:00:00Z",
             "status": "DRAFT",
             "timezone": "America/Los_Angeles",
-            "created_at": "2020-06-18T17:45:13Z",
-            "updated_at": "2020-06-18T17:45:13Z",
+            "created_at": "2030-01-13T17:45:13Z",
+            "updated_at": "2030-01-13T21:24:10Z",
             "primary_recipient": {
               "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
               "given_name": "Amelia",
@@ -41435,7 +41796,18 @@
             ],
             "delivery_method": "EMAIL",
             "sale_or_service_date": "2030-01-24",
-            "store_payment_method_enabled": false
+            "store_payment_method_enabled": false,
+            "attachments": [
+              {
+                "id": "inva:0-3bB9ZuDHiziThQhuC4fwWt",
+                "filename": "file.jpg",
+                "description": "Service contract",
+                "filesize": 102705,
+                "hash": "273ee02cb6f5f8a3a8ca23604930dd53",
+                "mime_type": "image/jpeg",
+                "uploaded_at": "2030-01-13T21:24:10Z"
+              }
+            ]
           },
           {
             "id": "inv:0-ChC366qAfskpGrBI_1bozs9mEA3",
@@ -44511,7 +44883,7 @@
       "properties": {
         "scope": {
           "type": "string",
-          "description": "Indicates the scope of the reward tier. DEPRECATED at version 2020-12-16. You can find this information in the\n`discount_target_scope` field of the `PRICING_RULE` catalog object and the `product_set_data` field of the `PRODUCT_SET`\ncatalog object referenced by the pricing rule. For `ORDER` scopes, the target scope is `WHOLE_PURCHASE` and `all_products`\nis true. For `ITEM_VARIATION` and `CATEGORY` scopes, the target scope is `LINE_ITEM` and `product_ids_any` is a list of\ncatalog object IDs of the given type.",
+          "description": "Indicates the scope of the reward tier. DEPRECATED at version 2020-12-16. You can find this information in the\n`product_set_data` field of the `PRODUCT_SET` catalog object referenced by the pricing rule. For `ORDER` scopes,\n`all_products` is true. For `ITEM_VARIATION` or `CATEGORY` scopes, `product_ids_any` is a list of\ncatalog object IDs of the given type.",
           "x-read-only": true
         },
         "discount_type": {
@@ -44630,7 +45002,7 @@
         },
         "name": {
           "minLength": 1,
-          "maxLength": 50,
+          "maxLength": 70,
           "type": "string",
           "description": "The name of the promotion."
         },
@@ -45428,7 +45800,7 @@
           "description": "The location ID the order belongs to."
         }
       },
-      "description": "A lightweight description of an [order](https://developer.squareup.com/reference/square_2024-01-18/objects/Order) that is returned when \n`returned_entries` is `true` on a [SearchOrdersRequest](https://developer.squareup.com/reference/square_2024-01-18/orders-api/search-orders).",
+      "description": "A lightweight description of an [order](https://developer.squareup.com/reference/square_2024-01-18/objects/Order) that is returned when\n`returned_entries` is `true` on a [SearchOrdersRequest](https://developer.squareup.com/reference/square_2024-01-18/orders-api/search-orders).",
       "x-release-status": "PUBLIC"
     },
     "OrderFulfillment": {
@@ -45481,7 +45853,7 @@
         },
         "shipment_details": {
           "$ref": "#/definitions/OrderFulfillmentShipmentDetails",
-          "description": "Contains details for a shipment fulfillment. These details are required when the fulfillment type\nis `SHIPMENT`.\nA shipment fulfillment\u0027s relationship to fulfillment `state`:\n`PROPOSED`: A shipment is requested.\n`RESERVED`: Fulfillment accepted. Shipment processing.\n`PREPARED`: Shipment packaged. Shipping label created.\n`COMPLETED`: Package has been shipped.\n`CANCELED`: Shipment has been canceled.\n`FAILED`: Shipment has failed.",
+          "description": "Contains details for a shipment fulfillment. These details are required when the fulfillment type\nis `SHIPMENT`.\nA shipment fulfillment\u0027s relationship to fulfillment `state`:\n`PROPOSED`: A shipment is requested.\n`RESERVED`: Fulfillment in progress. Shipment processing.\n`PREPARED`: Shipment packaged. Shipping label created.\n`COMPLETED`: Package has been shipped.\n`CANCELED`: Shipment has been canceled.\n`FAILED`: Shipment has failed.",
           "x-release-status": "BETA",
           "x-is-beta": true
         },
@@ -45517,11 +45889,11 @@
         },
         "prep_time_duration": {
           "type": "string",
-          "description": "The duration of time it takes to prepare and deliver this fulfillment.\nThe timestamp must be in RFC 3339 format (for example, \"P1W3D\")."
+          "description": "The duration of time it takes to prepare and deliver this fulfillment.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\")."
         },
         "delivery_window_duration": {
           "type": "string",
-          "description": "The time period after the `deliver_at` timestamp in which to deliver the order.\nApplications can set this field when the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state\nsuch as `COMPLETED`, `CANCELED`, and `FAILED`).\nThe timestamp must be in RFC 3339 format (for example, \"P1W3D\")."
+          "description": "The time period after `deliver_at` in which to deliver the order.\nApplications can set this field when the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state\nsuch as `COMPLETED`, `CANCELED`, and `FAILED`).\nThe duration must be in RFC 3339 format (for example, \"P1W3D\")."
         },
         "note": {
           "maxLength": 550,
@@ -45568,7 +45940,7 @@
         },
         "courier_pickup_window_duration": {
           "type": "string",
-          "description": "The period of time in which the order should be picked up by the courier after the\n`courier_pickup_at` timestamp.\nThe time must be in RFC 3339 format (for example, \"P1W3D\")."
+          "description": "The time period after `courier_pickup_at` in which the courier should pick up the order.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\")."
         },
         "is_no_contact_delivery": {
           "type": "boolean",
@@ -45652,11 +46024,11 @@
         },
         "expires_at": {
           "type": "string",
-          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when this fulfillment expires if it is not accepted. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\"). The expiration time can only be set up to 7 days in the future.\nIf `expires_at` is not set, this pickup fulfillment is automatically accepted when\nplaced."
+          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when this fulfillment expires if it is not marked in progress. The timestamp must be\nin RFC 3339 format (for example, \"2016-09-04T23:59:33.123Z\"). The expiration time can only be set\nup to 7 days in the future. If `expires_at` is not set, any new payments attached to the order\nare automatically completed."
         },
         "auto_complete_duration": {
           "type": "string",
-          "description": "The duration of time after which an open and accepted pickup fulfillment\nis automatically moved to the `COMPLETED` state. The duration must be in RFC 3339\nformat (for example, \"P1W3D\").\nIf not set, this pickup fulfillment remains accepted until it is canceled or completed."
+          "description": "The duration of time after which an in progress pickup fulfillment is automatically moved\nto the `COMPLETED` state. The duration must be in RFC 3339 format (for example, \"P1W3D\").\n\nIf not set, this pickup fulfillment remains in progress until it is canceled or completed."
         },
         "schedule_type": {
           "type": "string",
@@ -45686,7 +46058,7 @@
         },
         "accepted_at": {
           "type": "string",
-          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was accepted. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
+          "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was marked in progress. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
           "x-read-only": true
         },
         "rejected_at": {
@@ -45960,16 +46332,16 @@
           "minLength": 1,
           "maxLength": 12,
           "type": "string",
-          "description": "The quantity purchased, formatted as a decimal number.\nFor example, `\"3\"`.\n\nLine items with a quantity of `\"0\"` are automatically removed\nwhen paying for or otherwise completing the order.\n\nLine items with a `quantity_unit` can have non-integer quantities.\nFor example, `\"1.70000\"`."
+          "description": "The count, or measurement, of a line item being purchased:\n\nIf `quantity` is a whole number, and `quantity_unit` is not specified, then `quantity` denotes an item count.  For example: `3` apples.\n\nIf `quantity` is a whole or decimal number, and `quantity_unit` is also specified, then `quantity` denotes a measurement.  For example: `2.25` pounds of broccoli.  \n\nFor more information, see [Specify item quantity and measurement unit](https://developer.squareup.com/docs/orders-api/create-orders#specify-item-quantity-and-measurement-unit).\n\nLine items with a quantity of `0` are automatically removed\nwhen paying for or otherwise completing the order."
         },
         "quantity_unit": {
           "$ref": "#/definitions/OrderQuantityUnit",
-          "description": "The unit and precision that this line item\u0027s quantity is measured in."
+          "description": "The measurement unit and decimal precision that this line item\u0027s quantity is measured in."
         },
         "note": {
           "maxLength": 2000,
           "type": "string",
-          "description": "The note of the line item."
+          "description": "An optional note associated with the line item."
         },
         "catalog_object_id": {
           "maxLength": 192,
@@ -46044,7 +46416,7 @@
         },
         "gross_sales_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of money made in gross sales for this line item.\nThe amount is calculated as the sum of the variation\u0027s total price and each modifier\u0027s total price.",
+          "description": "The amount of money made in gross sales for this line item.\nThe amount is calculated as the sum of the variation\u0027s total price and each modifier\u0027s total price.\nFor inclusive tax items in the US and Japan, tax is deducted from `gross_sales_money`. For Europe and \nAustralia, inclusive tax remains as part of the gross sale calculation.",
           "x-read-only": true
         },
         "total_tax_money": {
@@ -46508,22 +46880,30 @@
           "items": {
             "$ref": "#/definitions/OrderReturnServiceCharge"
           },
-          "description": "A collection of service charges that are being returned.",
-          "x-read-only": true
+          "description": "A collection of service charges that are being returned."
         },
         "return_taxes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/OrderReturnTax"
           },
-          "description": "A collection of references to taxes being returned for an order, including the total\napplied tax amount to be returned. The taxes must reference a top-level tax ID from the source\norder."
+          "description": "A collection of references to taxes being returned for an order, including the total\napplied tax amount to be returned. The taxes must reference a top-level tax ID from the source\norder.",
+          "x-read-only": true
         },
         "return_discounts": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/OrderReturnDiscount"
           },
-          "description": "A collection of references to discounts being returned for an order, including the total\napplied discount amount to be returned. The discounts must reference a top-level discount ID\nfrom the source order."
+          "description": "A collection of references to discounts being returned for an order, including the total\napplied discount amount to be returned. The discounts must reference a top-level discount ID\nfrom the source order.",
+          "x-read-only": true
+        },
+        "return_tips": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderReturnTip"
+          },
+          "description": "A collection of references to tips being returned for an order."
         },
         "rounding_adjustment": {
           "$ref": "#/definitions/OrderRoundingAdjustment",
@@ -46581,7 +46961,8 @@
         },
         "applied_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of discount actually applied to this line item. When an amount-based\ndiscount is at the order level, this value is different from `amount_money` because the discount\nis distributed across the line items."
+          "description": "The amount of discount actually applied to this line item. When an amount-based\ndiscount is at the order level, this value is different from `amount_money` because the discount\nis distributed across the line items.",
+          "x-read-only": true
         },
         "scope": {
           "type": "string",
@@ -46836,8 +47217,7 @@
           "type": "string",
           "description": "The treatment type of the service charge.",
           "x-release-status": "BETA",
-          "x-is-beta": true,
-          "x-read-only": true
+          "x-is-beta": true
         },
         "scope": {
           "type": "string",
@@ -46888,7 +47268,8 @@
         },
         "applied_money": {
           "$ref": "#/definitions/Money",
-          "description": "The amount of money applied by the tax in an order."
+          "description": "The amount of money applied by the tax in an order.",
+          "x-read-only": true
         },
         "scope": {
           "type": "string",
@@ -46896,6 +47277,34 @@
         }
       },
       "description": "Represents a tax being returned that applies to one or more return line items in an order.\n\nFixed-amount, order-scoped taxes are distributed across all non-zero return line item totals.\nThe amount distributed to each return line item is relative to that item’s contribution to the\norder subtotal.",
+      "x-release-status": "BETA",
+      "x-is-beta": true
+    },
+    "OrderReturnTip": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "maxLength": 60,
+          "type": "string",
+          "description": "A unique ID that identifies the tip only within this order."
+        },
+        "applied_money": {
+          "$ref": "#/definitions/Money",
+          "description": "The amount of tip being returned\n--",
+          "x-read-only": true
+        },
+        "source_tender_uid": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The tender `uid` from the order that contains the original application of this tip."
+        },
+        "source_tender_id": {
+          "maxLength": 192,
+          "type": "string",
+          "description": "The tender `id` from the order that contains the original application of this tip."
+        }
+      },
+      "description": "A tip being returned.",
       "x-release-status": "BETA",
       "x-is-beta": true
     },
@@ -47026,8 +47435,7 @@
           "type": "string",
           "description": "The treatment type of the service charge.",
           "x-release-status": "BETA",
-          "x-is-beta": true,
-          "x-read-only": true
+          "x-is-beta": true
         },
         "scope": {
           "type": "string",
@@ -53422,7 +53830,7 @@
           "items": {
             "type": "string"
           },
-          "description": "A list of customer IDs to filter by.\n\nMax: 10 customer IDs."
+          "description": "A list of customer IDs to filter by.\n\nMax: 10 customer ids."
         }
       },
       "description": "A filter based on the order `customer_id` and any tender `customer_id`\nassociated with the order. It does not filter based on the\n[FulfillmentRecipient](https://developer.squareup.com/reference/square_2024-01-18/objects/FulfillmentRecipient) `customer_id`.",
@@ -53521,7 +53929,7 @@
           "items": {
             "type": "string"
           },
-          "description": "The location IDs for the orders to query. All locations must belong to\nthe same merchant.\n\nMin: 1 location ID.\n\nMax: 10 location IDs."
+          "description": "The location IDs for the orders to query. All locations must belong to\nthe same merchant.\n\nMax: 10 location IDs."
         },
         "cursor": {
           "type": "string",
@@ -53532,16 +53940,16 @@
           "description": "Query conditions used to filter or sort the results. Note that when\nretrieving additional pages using a cursor, you must use the original query."
         },
         "limit": {
-          "minimum": 1,
+          "minimum": 0,
           "type": "integer",
-          "description": "The maximum number of results to be returned in a single page. It is\npossible to receive fewer results than the specified limit on a given page.\n\nDefault: `500`"
+          "description": "The maximum number of results to be returned in a single page.\n\nDefault: `500`\nMax: `1000`"
         },
         "return_entries": {
           "type": "boolean",
           "description": "A Boolean that controls the format of the search results. If `true`,\n`SearchOrders` returns [OrderEntry](https://developer.squareup.com/reference/square_2024-01-18/objects/OrderEntry) objects. If `false`, `SearchOrders`\nreturns complete order objects.\n\nDefault: `false`."
         }
       },
-      "description": "The request does not have any required fields. When given no query criteria,\n`SearchOrders` returns all results for all of the seller\u0027s locations. When retrieving additional\npages using a `cursor`, the `query` must be equal to the `query` used to retrieve the first page of\nresults.",
+      "description": "",
       "x-release-status": "PUBLIC",
       "example": {
         "request_body": {
@@ -53592,7 +54000,7 @@
         },
         "cursor": {
           "type": "string",
-          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\nFor more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)."
+          "description": "The pagination cursor to be used in a subsequent request. If unset,\nthis is the final response.\nFor more information, see [Pagination](https://developer.squareup.com/docs/basics/build-basics/common-api-patterns/pagination)."
         },
         "errors": {
           "type": "array",
