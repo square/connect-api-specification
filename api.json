@@ -44709,7 +44709,7 @@
           "maxLength": 36,
           "type": "string",
           "description": "The ID of the [loyalty program](https://developer.squareup.com/reference/square_2024-08-21/objects/LoyaltyProgram).",
-          "x-read-only": true
+          "x-read-only": false
         },
         "points": {
           "minimum": 1,
