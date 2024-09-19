@@ -23908,7 +23908,7 @@
         },
         "location_type": {
           "type": "string",
-          "description": "The type of location where the booking is held.\nAccess to this field requires seller-level permissions."
+          "description": "The type of location where the booking is held."
         },
         "creator_details": {
           "$ref": "#/definitions/BookingCreatorDetails",
@@ -23919,6 +23919,10 @@
           "type": "string",
           "description": "The source of the booking.\nAccess to this field requires seller-level permissions.",
           "x-read-only": true
+        },
+        "address": {
+          "$ref": "#/definitions/Address",
+          "description": "Stores a customer address if the location type is `CUSTOMER_LOCATION`."
         }
       },
       "description": "Represents a booking as a time-bound service contract for a seller\u0027s staff member to provide a specified service\nat a given location to a requesting customer in one or more appointment segments.",
@@ -34900,7 +34904,7 @@
           "items": {
             "$ref": "#/definitions/Card"
           },
-          "description": "Payment details of the credit, debit, and gift cards stored on file for the customer profile. \n\nDEPRECATED at version 2021-06-16. Replaced by calling [ListCards](https://developer.squareup.com/reference/square_2024-09-19/cards-api/list-cards) (for credit and debit cards on file) \nor [ListGiftCards](https://developer.squareup.com/reference/square_2024-09-19/gift-cards-api/list-gift-cards) (for gift cards on file) and including the `customer_id` query parameter. \nFor more information, see [Migration notes](https://developer.squareup.com/docs/customers-api/what-it-does#migrate-customer-cards).",
+          "description": "Payment details of the credit, debit, and gift cards stored on file for the customer profile. \n\nDEPRECATED at version 2021-06-16 and will be RETIRED at version 2024-12-18. Replaced by calling [ListCards](https://developer.squareup.com/reference/square_2024-09-19/cards-api/list-cards) (for credit and debit cards on file) \nor [ListGiftCards](https://developer.squareup.com/reference/square_2024-09-19/gift-cards-api/list-gift-cards) (for gift cards on file) and including the `customer_id` query parameter. \nFor more information, see [Migration notes](https://developer.squareup.com/docs/customers-api/what-it-does#migrate-customer-cards).",
           "x-release-status": "DEPRECATED",
           "x-is-deprecated": true
         },
@@ -48350,6 +48354,13 @@
           "x-is-beta": true,
           "x-read-only": true
         },
+        "terminal_checkout_id": {
+          "type": "string",
+          "description": "An optional ID for a Terminal checkout that is associated with the payment.",
+          "x-release-status": "BETA",
+          "x-is-beta": true,
+          "x-read-only": true
+        },
         "buyer_email_address": {
           "maxLength": 255,
           "type": "string",
@@ -57572,7 +57583,15 @@
       "example": {
         "booking": {
           "version": 1,
-          "customer_note": "I would like to sit near the window please"
+          "customer_note": "I would like to sit near the window please",
+          "location_type": "CUSTOMER_LOCATION",
+          "address": {
+            "address_line_1": "1955 Broadway",
+            "address_line_2": "Suite 600",
+            "locality": "Oakland",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94612"
+          }
         }
       }
     },
@@ -57605,6 +57624,14 @@
           "customer_note": "I would like to sit near the window please",
           "seller_note": "",
           "start_at": "2020-11-26T13:00:00Z",
+          "location_type": "CUSTOMER_LOCATION",
+          "address": {
+            "address_line_1": "1955 Broadway",
+            "address_line_2": "Suite 600",
+            "locality": "Oakland",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94612"
+          },
           "appointment_segments": [
             {
               "duration_minutes": 60,
