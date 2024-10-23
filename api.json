@@ -36164,11 +36164,11 @@
           "description": "Details about a card refund. Only populated if the destination_type is `CARD`."
         },
         "cash_details": {
-          "$ref": "#/definitions/CashRefundDetails",
+          "$ref": "#/definitions/DestinationDetailsCashRefundDetails",
           "description": "Details about a cash refund. Only populated if the destination_type is `CASH`."
         },
         "external_details": {
-          "$ref": "#/definitions/ExternalRefundDetails",
+          "$ref": "#/definitions/DestinationDetailsExternalRefundDetails",
           "description": "Details about an external refund. Only populated if the destination_type is `EXTERNAL`."
         }
       },
