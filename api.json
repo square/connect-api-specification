@@ -24733,7 +24733,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeDeleteRequest"
+            "$ref": "#/definitions/DeleteLocationCustomAttributeRequest"
           },
           "description": "The data used to update the `CustomAttribute` objects.\nThe keys must be unique and are used to map to the corresponding response."
         }
@@ -24783,7 +24783,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeDeleteResponse"
+            "$ref": "#/definitions/DeleteLocationCustomAttributeResponse"
           },
           "description": "A map of responses that correspond to individual delete requests. Each response has the\nsame key as the corresponding request."
         },
@@ -24949,7 +24949,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/DeleteCustomAttribute"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map of requests that correspond to individual delete operations for custom attributes."
         }
@@ -25975,7 +25975,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/CustomerCustomAttributeUpsertRequest"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map containing 1 to 25 individual upsert requests. For each request, provide an\narbitrary ID that is unique for this `BulkUpsertCustomerCustomAttributes` request and the\ninformation needed to create or update a custom attribute."
         }
@@ -26055,7 +26055,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/CustomerCustomAttributeUpsertResponse"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map of responses that correspond to individual upsert requests. Each response has the\nsame ID as the corresponding request and contains either a `customer_id` and `custom_attribute` or an `errors` field."
         },
@@ -26171,7 +26171,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeUpsertRequest"
+            "$ref": "#/definitions/UpsertLocationCustomAttributeRequest"
           },
           "description": "A map containing 1 to 25 individual upsert requests. For each request, provide an\narbitrary ID that is unique for this `BulkUpsertLocationCustomAttributes` request and the\ninformation needed to create or update a custom attribute."
         }
@@ -26239,7 +26239,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/LocationCustomAttributeUpsertResponse"
+            "$ref": "#/definitions/UpsertLocationCustomAttributeResponse"
           },
           "description": "A map of responses that correspond to individual upsert requests. Each response has the\nsame ID as the corresponding request and contains either a `location_id` and `custom_attribute` or an `errors` field."
         },
@@ -26481,7 +26481,7 @@
         "values": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/UpsertCustomAttribute"
+            "$ref": "#/definitions/AnyCodable"
           },
           "description": "A map of requests that correspond to individual upsert operations for custom attributes."
         }
@@ -28714,7 +28714,7 @@
           "description": "The SEO data for a seller\u0027s Square Online store."
         },
         "food_and_beverage_details": {
-          "$ref": "#/definitions/FoodAndBeverageDetails",
+          "$ref": "#/definitions/CatalogItemFoodAndBeverageDetails",
           "description": "The food and beverage-specific details for the `FOOD_AND_BEV` item."
         },
         "reporting_category": {
@@ -28748,14 +28748,14 @@
         "dietary_preferences": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DietaryPreference"
+            "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsDietaryPreference"
           },
           "description": "The dietary preferences for the `FOOD_AND_BEV` item."
         },
         "ingredients": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Ingredient"
+            "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsIngredient"
           },
           "description": "The ingredients for the `FOOD_AND_BEV` type item."
         }
@@ -28767,7 +28767,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "$ref": "#/definitions/DietaryPreferenceType",
+          "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsDietaryPreferenceType",
           "description": "The dietary preference type. Supported values include `STANDARD` and `CUSTOM` as specified in `FoodAndBeverageDetails.DietaryPreferenceType`."
         },
         "standard_name": {
@@ -28786,7 +28786,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "$ref": "#/definitions/DietaryPreferenceType",
+          "$ref": "#/definitions/CatalogItemFoodAndBeverageDetailsDietaryPreferenceType",
           "description": "The dietary preference type of the ingredient. Supported values include `STANDARD` and `CUSTOM` as specified in `FoodAndBeverageDetails.DietaryPreferenceType`."
         },
         "standard_name": {
@@ -30444,20 +30444,20 @@
         "policies": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Policy"
+            "$ref": "#/definitions/CheckoutLocationSettingsPolicy"
           },
           "description": "Policy information is displayed at the bottom of the checkout pages.\nYou can set a maximum of two policies."
         },
         "branding": {
-          "$ref": "#/definitions/Branding",
+          "$ref": "#/definitions/CheckoutLocationSettingsBranding",
           "description": "The branding settings for this location."
         },
         "tipping": {
-          "$ref": "#/definitions/Tipping",
+          "$ref": "#/definitions/CheckoutLocationSettingsTipping",
           "description": "The tip settings for this location."
         },
         "coupons": {
-          "$ref": "#/definitions/Coupons",
+          "$ref": "#/definitions/CheckoutLocationSettingsCoupons",
           "description": "The coupon settings for this location."
         },
         "updated_at": {
@@ -30566,7 +30566,7 @@
       "type": "object",
       "properties": {
         "payment_methods": {
-          "$ref": "#/definitions/PaymentMethods",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethods",
           "description": "The set of payment methods accepted for the merchant\u0027s account."
         },
         "updated_at": {
@@ -30583,19 +30583,19 @@
       "type": "object",
       "properties": {
         "apple_pay": {
-          "$ref": "#/definitions/PaymentMethod",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
           "description": ""
         },
         "google_pay": {
-          "$ref": "#/definitions/PaymentMethod",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
           "description": ""
         },
         "cash_app": {
-          "$ref": "#/definitions/PaymentMethod",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
           "description": ""
         },
         "afterpay_clearpay": {
-          "$ref": "#/definitions/AfterpayClearpay",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay",
           "description": ""
         }
       },
@@ -30607,11 +30607,11 @@
       "type": "object",
       "properties": {
         "order_eligibility_range": {
-          "$ref": "#/definitions/EligibilityRange",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange",
           "description": "Afterpay is shown as an option for order totals falling within the configured range."
         },
         "item_eligibility_range": {
-          "$ref": "#/definitions/EligibilityRange",
+          "$ref": "#/definitions/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange",
           "description": "Afterpay is shown as an option for item totals falling within the configured range."
         },
         "enabled": {
@@ -36160,15 +36160,15 @@
       "type": "object",
       "properties": {
         "card_details": {
-          "$ref": "#/definitions/CardRefundDetails",
+          "$ref": "#/definitions/DestinationDetailsCardRefundDetails",
           "description": "Details about a card refund. Only populated if the destination_type is `CARD`."
         },
         "cash_details": {
-          "$ref": "#/definitions/CashRefundDetails",
+          "$ref": "#/definitions/DestinationDetailsCashRefundDetails",
           "description": "Details about a cash refund. Only populated if the destination_type is `CASH`."
         },
         "external_details": {
-          "$ref": "#/definitions/ExternalRefundDetails",
+          "$ref": "#/definitions/DestinationDetailsExternalRefundDetails",
           "description": "Details about an external refund. Only populated if the destination_type is `EXTERNAL`."
         }
       },
@@ -36451,7 +36451,7 @@
           "description": "The battery charge percentage as displayed on the device."
         },
         "external_power": {
-          "$ref": "#/definitions/ExternalPower",
+          "$ref": "#/definitions/DeviceComponentDetailsExternalPower",
           "description": "The status of external_power."
         }
       },
@@ -36531,7 +36531,7 @@
           "description": "The security protocol for a secure connection (e.g. WPA2). None provided if the connection\nis unsecured."
         },
         "signal_strength": {
-          "$ref": "#/definitions/Measurement",
+          "$ref": "#/definitions/DeviceComponentDetailsMeasurement",
           "description": "A representation of signal strength of the WIFI network connection."
         }
       },
@@ -38690,15 +38690,16 @@
           "x-read-only": true
         },
         "type": {
-          "type": "string",
+          "$ref": "#/definitions/GiftCardType",
           "description": "The gift card type."
         },
         "gan_source": {
-          "type": "string",
-          "description": "The source that generated the gift card account number (GAN). The default value is `SQUARE`."
+          "$ref": "#/definitions/GiftCardGANSource",
+          "description": "Indicates whether the gift card account number (GAN) is generated by Square or \nimported from a non-Square system. For more information, see \n[Third-party gift cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#third-party-gift-cards).",
+          "x-read-only": true
         },
         "state": {
-          "type": "string",
+          "$ref": "#/definitions/GiftCardStatus",
           "description": "The current gift card state.",
           "x-read-only": true
         },
@@ -38742,8 +38743,8 @@
           "x-read-only": true
         },
         "type": {
-          "type": "string",
-          "description": "The type of gift card activity."
+          "$ref": "#/definitions/GiftCardActivityType",
+          "description": "The type of the gift card activity."
         },
         "location_id": {
           "type": "string",
@@ -38879,8 +38880,8 @@
           "description": "The amount deducted from the gift card balance. This value is a positive integer."
         },
         "reason": {
-          "type": "string",
-          "description": "The reason the gift card balance was adjusted."
+          "$ref": "#/definitions/GiftCardActivityAdjustDecrementReason",
+          "description": "The reason to decrease the gift card balance."
         }
       },
       "description": "Represents details about an `ADJUST_DECREMENT` [gift card activity type](https://developer.squareup.com/reference/square_2024-10-17/objects/GiftCardActivityType).",
@@ -38898,8 +38899,8 @@
           "description": "The amount added to the gift card balance. This value is a positive integer."
         },
         "reason": {
-          "type": "string",
-          "description": "The reason the gift card balance was adjusted."
+          "$ref": "#/definitions/GiftCardActivityAdjustIncrementReason",
+          "description": "The reason to increase the balance."
         }
       },
       "description": "Represents details about an `ADJUST_INCREMENT` [gift card activity type](https://developer.squareup.com/reference/square_2024-10-17/objects/GiftCardActivityType).",
@@ -38912,8 +38913,8 @@
       ],
       "properties": {
         "reason": {
-          "type": "string",
-          "description": "The reason the gift card was blocked."
+          "$ref": "#/definitions/GiftCardActivityBlockReason",
+          "description": "The reason to block the gift card."
         }
       },
       "description": "Represents details about a `BLOCK` [gift card activity type](https://developer.squareup.com/reference/square_2024-10-17/objects/GiftCardActivityType).",
@@ -38926,8 +38927,8 @@
       ],
       "properties": {
         "reason": {
-          "type": "string",
-          "description": "The reason the gift card balance was cleared."
+          "$ref": "#/definitions/GiftCardActivityClearBalanceReason",
+          "description": "The reason to decrease the gift card balance."
         }
       },
       "description": "Represents details about a `CLEAR_BALANCE` [gift card activity type](https://developer.squareup.com/reference/square_2024-10-17/objects/GiftCardActivityType).",
@@ -38940,8 +38941,8 @@
       ],
       "properties": {
         "reason": {
-          "type": "string",
-          "description": "The reason the gift card was deactivated."
+          "$ref": "#/definitions/GiftCardActivityDeactivateReason",
+          "description": "The reason to decrease the balance."
         }
       },
       "description": "Represents details about a `DEACTIVATE` [gift card activity type](https://developer.squareup.com/reference/square_2024-10-17/objects/GiftCardActivityType).",
@@ -39025,7 +39026,7 @@
           "description": "A client-specified ID that associates the gift card activity with an entity in another system. \n\nApplications that use a custom payment processing system can use this field to track information\nrelated to an order or payment."
         },
         "status": {
-          "type": "string",
+          "$ref": "#/definitions/GiftCardActivityRedeemStatus",
           "description": "The status of the gift card redemption. Gift cards redeemed from Square Point of Sale or the \nSquare Seller Dashboard use a two-state process: `PENDING` \nto `COMPLETED` or `PENDING` to  `CANCELED`. Gift cards redeemed using the Gift Card Activities API \nalways have a `COMPLETED` status.",
           "x-read-only": true
         }
@@ -39102,8 +39103,8 @@
       ],
       "properties": {
         "reason": {
-          "type": "string",
-          "description": "The reason the gift card was unblocked."
+          "$ref": "#/definitions/GiftCardActivityUnblockReason",
+          "description": "The reason to unblock a gift card."
         }
       },
       "description": "Represents details about an `UNBLOCK` [gift card activity type](https://developer.squareup.com/reference/square_2024-10-17/objects/GiftCardActivityType).",
@@ -39521,7 +39522,7 @@
           "description": "The payment schedule for the invoice, represented by one or more payment requests that\ndefine payment settings, such as amount due and due date. An invoice supports the following payment request combinations:\n- One balance\n- One deposit with one balance\n- 2–12 installments \n- One deposit with 2–12 installments\n\nThis field is required when creating an invoice. It must contain at least one payment request. \nAll payment requests for the invoice must equal the total order amount. For more information, see \n[Configuring payment requests](https://developer.squareup.com/docs/invoices-api/create-publish-invoices#payment-requests).\n\nAdding `INSTALLMENT` payment requests to an invoice requires an \n[Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription)."
         },
         "delivery_method": {
-          "type": "string",
+          "$ref": "#/definitions/InvoiceDeliveryMethod",
           "description": "The delivery method that Square uses to send the invoice, reminders, and receipts to\nthe customer. After the invoice is published, Square processes the invoice based on the delivery\nmethod and payment request settings, either immediately or on the `scheduled_at` date, if specified.\nFor example, Square might send the invoice or receipt for an automatic payment. For invoices with\nautomatic payments, this field must be set to `EMAIL`.\n\nOne of the following is required when creating an invoice:\n- (Recommended) This `delivery_method` field. To configure an automatic payment, the\n`automatic_payment_source` field of the payment request is also required.\n- The deprecated `request_method` field of the payment request. Note that `invoice`\nobjects returned in responses do not include `request_method`."
         },
         "invoice_number": {
@@ -44763,8 +44764,8 @@
         "loyalty_program_id": {
           "maxLength": 36,
           "type": "string",
-          "description": "The ID of the [loyalty program](https://developer.squareup.com/reference/square_2024-10-17/objects/LoyaltyProgram).",
-          "x-read-only": true
+          "description": "The ID of the [loyalty program](https://developer.squareup.com/reference/square_2024-09-19/objects/LoyaltyProgram).",
+          "x-read-only": false
         },
         "points": {
           "minimum": 1,
@@ -44823,8 +44824,8 @@
         "loyalty_program_id": {
           "maxLength": 36,
           "type": "string",
-          "description": "The Square-assigned ID of the [loyalty program](https://developer.squareup.com/reference/square_2024-10-17/objects/LoyaltyProgram).",
-          "x-read-only": true
+          "description": "The Square-assigned ID of the [loyalty program](https://developer.squareup.com/reference/square_2024-09-19/objects/LoyaltyProgram).",
+          "x-read-only": false
         },
         "points": {
           "type": "integer",
@@ -48482,6 +48483,10 @@
         "version_token": {
           "type": "string",
           "description": "Used for optimistic concurrency. This opaque token identifies a specific version of the\n`Payment` object."
+        },
+        "version": {
+			"type": "integer",
+          "description": "Used for optimistic concurrency. This opaque token identifies a specific version of the\n`Payment` object."
         }
       },
       "description": "Represents a payment processed by the Square API.",
@@ -49055,7 +49060,7 @@
           "description": "The timestamp of when the payout entry affected the balance, in RFC 3339 format."
         },
         "type": {
-          "type": "string",
+          "$ref": "#/definitions/ActivityType",
           "description": "The type of activity associated with this payout entry."
         },
         "gross_amount_money": {
@@ -55451,11 +55456,11 @@
       "type": "object",
       "properties": {
         "filter": {
-          "$ref": "#/definitions/Filter",
+          "$ref": "#/definitions/SearchVendorsRequestFilter",
           "description": "Specifies a filter used to search for vendors."
         },
         "sort": {
-          "$ref": "#/definitions/Sort",
+          "$ref": "#/definitions/SearchVendorsRequestSort",
           "description": "Specifies a sorter used to sort the returned vendors."
         },
         "cursor": {
@@ -55513,7 +55518,7 @@
       "type": "object",
       "properties": {
         "field": {
-          "type": "string",
+          "$ref": "#/definitions/SearchVendorsRequestSortField",
           "description": "Specifies the sort key to sort the returned vendors."
         },
         "order": {
@@ -56323,7 +56328,7 @@
           "x-read-only": true
         },
         "info": {
-          "$ref": "#/definitions/Info",
+          "$ref": "#/definitions/SubscriptionEventInfo",
           "description": "Additional information about the subscription event."
         },
         "phases": {
@@ -56349,7 +56354,7 @@
           "description": "A human-readable explanation for the event."
         },
         "code": {
-          "$ref": "#/definitions/InfoCode",
+          "$ref": "#/definitions/SubscriptionEventInfoCode",
           "description": "An info code indicating the subscription event that occurred."
         }
       },
@@ -56944,7 +56949,7 @@
           "x-read-only": true
         },
         "type": {
-          "type": "string",
+          "$ref": "#/definitions/TerminalActionActionType",
           "description": "Represents the type of the action."
         },
         "qr_code_options": {
@@ -60551,8 +60556,8 @@
           "description": "The version of the [Vendor](https://developer.squareup.com/reference/square_2024-10-17/objects/Vendor)."
         },
         "status": {
-          "type": "string",
-          "description": "The status of the [Vendor](https://developer.squareup.com/reference/square_2024-10-17/objects/Vendor)."
+          "$ref": "#/definitions/VendorStatus",
+          "description": "The status of the [Vendor](https://developer.squareup.com/reference/square_2024-01-18/objects/Vendor)."
         }
       },
       "description": "Represents a supplier to a seller.",
