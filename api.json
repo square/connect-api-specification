@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2024-11-20"
+              "default": "2024-12-18"
             }
           }
         ],
@@ -3036,7 +3036,7 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/CreateTeamMemberRequest"
             },
-            "description": "The data used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. The maximum number of create objects is 25."
+            "description": "The data used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`.\nThe maximum number of create objects is 25.\n\nIf you include a team member's `wage_setting`, you must provide `job_id` for each job assignment. To get job IDs,\ncall [ListJobs](api-endpoint:Team-ListJobs)."
           }
         },
         "example": {
@@ -3221,8 +3221,7 @@
               "version": 1
             }
           },
-          "errors": [],
-          "vendors": {
+          "responses": {
             "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe": {
               "vendor": {
                 "account_number": "4025391",
@@ -3952,8 +3951,7 @@
           }
         },
         "example": {
-          "errors": [],
-          "vendors": {
+          "responses": {
             "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4": {
               "vendor": {
                 "account_number": "4025391",
@@ -4212,7 +4210,7 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/UpdateTeamMemberRequest"
             },
-            "description": "The data used to update the `TeamMember` objects. Each key is the `team_member_id` that maps to the `UpdateTeamMemberRequest`. The maximum number of update objects is 25."
+            "description": "The data used to update the `TeamMember` objects. Each key is the `team_member_id` that maps to the `UpdateTeamMemberRequest`.\nThe maximum number of update objects is 25.\n\nFor each team member, include the fields to add, change, or clear. Fields can be cleared using a null value.\nTo update `wage_setting.job_assignments`, you must provide the complete list of job assignments. If needed,\ncall [ListJobs](api-endpoint:Team-ListJobs) to get the required `job_id` values."
           }
         },
         "example": {
@@ -4373,57 +4371,61 @@
           }
         },
         "example": {
-          "vendors": {
+          "responses": {
             "INV_V_FMCYHBWT1TPL8MFH52PBMEN92A": {
-              "address": {
-                "address_line_1": "202 Mill St",
-                "administrative_district_level_1": "NJ",
-                "country": "US",
-                "locality": "Moorestown",
-                "postal_code": "08057"
-              },
-              "contacts": [
-                {
-                  "email_address": "annie@annieshotsauce.com",
-                  "id": "INV_VC_ABYYHBWT1TPL8MFH52PBMENPJ4",
-                  "name": "Annie Thomas",
-                  "ordinal": 0,
-                  "phone_number": "1-212-555-4250"
-                }
-              ],
-              "created_at": "2022-03-16T10:21:54.859Z",
-              "id": "INV_V_FMCYHBWT1TPL8MFH52PBMEN92A",
-              "name": "Annie’s Hot Sauce",
-              "status": "ACTIVE",
-              "updated_at": "2022-03-16T20:21:54.859Z",
-              "version": 11
+              "vendor": {
+                "address": {
+                  "address_line_1": "202 Mill St",
+                  "administrative_district_level_1": "NJ",
+                  "country": "US",
+                  "locality": "Moorestown",
+                  "postal_code": "08057"
+                },
+                "contacts": [
+                  {
+                    "email_address": "annie@annieshotsauce.com",
+                    "id": "INV_VC_ABYYHBWT1TPL8MFH52PBMENPJ4",
+                    "name": "Annie Thomas",
+                    "ordinal": 0,
+                    "phone_number": "1-212-555-4250"
+                  }
+                ],
+                "created_at": "2022-03-16T10:21:54.859Z",
+                "id": "INV_V_FMCYHBWT1TPL8MFH52PBMEN92A",
+                "name": "Annie’s Hot Sauce",
+                "status": "ACTIVE",
+                "updated_at": "2022-03-16T20:21:54.859Z",
+                "version": 11
+              }
             },
             "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4": {
-              "account_number": "4025391",
-              "address": {
-                "address_line_1": "505 Electric Ave",
-                "address_line_2": "Suite 600",
-                "administrative_district_level_1": "NY",
-                "country": "US",
-                "locality": "New York",
-                "postal_code": "10003"
-              },
-              "contacts": [
-                {
-                  "email_address": "joe@joesfreshseafood.com",
-                  "id": "INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A",
-                  "name": "Joe Burrow",
-                  "ordinal": 0,
-                  "phone_number": "1-212-555-4250"
-                }
-              ],
-              "created_at": "2022-03-16T10:10:54.859Z",
-              "id": "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4",
-              "name": "Joe's Fresh Seafood",
-              "note": "favorite vendor",
-              "status": "ACTIVE",
-              "updated_at": "2022-03-16T20:21:54.859Z",
-              "version": 31
+              "vendor": {
+                "account_number": "4025391",
+                "address": {
+                  "address_line_1": "505 Electric Ave",
+                  "address_line_2": "Suite 600",
+                  "administrative_district_level_1": "NY",
+                  "country": "US",
+                  "locality": "New York",
+                  "postal_code": "10003"
+                },
+                "contacts": [
+                  {
+                    "email_address": "joe@joesfreshseafood.com",
+                    "id": "INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A",
+                    "name": "Joe Burrow",
+                    "ordinal": 0,
+                    "phone_number": "1-212-555-4250"
+                  }
+                ],
+                "created_at": "2022-03-16T10:10:54.859Z",
+                "id": "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4",
+                "name": "Joe's Fresh Seafood",
+                "note": "favorite vendor",
+                "status": "ACTIVE",
+                "updated_at": "2022-03-16T20:21:54.859Z",
+                "version": 31
+              }
             }
           }
         }
@@ -10504,7 +10506,8 @@
           "FELICA_QUICPAY",
           "FELICA_TRANSPORTATION_GROUP",
           "FELICA_ALL",
-          "PAYPAY"
+          "PAYPAY",
+          "QR_CODE"
         ],
         "x-enum-elements": [
           {
@@ -10533,7 +10536,11 @@
           },
           {
             "name": "PAYPAY",
-            "description": "Launches the PayPay checkout screen for the buyer to complete."
+            "description": "Replaced by `QR_CODE`."
+          },
+          {
+            "name": "QR_CODE",
+            "description": "Launches Square's QR Code checkout screen for the buyer to complete.\nDisplays a single code that supports all digital wallets connected to the target\nSeller location (e.g. PayPay)"
           }
         ],
         "x-release-status": "PUBLIC"
@@ -13856,6 +13863,62 @@
           }
         }
       },
+      "CreateJobRequest": {
+        "type": "object",
+        "description": "Represents a [CreateJob]($e/Team/CreateJob) request.",
+        "x-release-status": "BETA",
+        "required": [
+          "job",
+          "idempotency_key"
+        ],
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job",
+            "description": "The job to create. The `title` field is required and `is_tip_eligible` defaults to true."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique identifier for the `CreateJob` request. Keys can be any valid string,\nbut must be unique for each request. For more information, see\n[Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).",
+            "minLength": 1,
+            "maxLength": 45
+          }
+        },
+        "example": {
+          "idempotency_key": "idempotency-key-0",
+          "job": {
+            "is_tip_eligible": true,
+            "title": "Cashier"
+          }
+        }
+      },
+      "CreateJobResponse": {
+        "type": "object",
+        "description": "Represents a [CreateJob]($e/Team/CreateJob) response. Either `job` or `errors`\nis present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job",
+            "description": "The new job."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "The errors that occurred during the request."
+          }
+        },
+        "example": {
+          "job": {
+            "created_at": "2021-06-11T22:55:45Z",
+            "id": "1yJlHapkseYnNPETIU1B",
+            "is_tip_eligible": true,
+            "title": "Cashier",
+            "updated_at": "2021-06-11T22:55:45Z",
+            "version": 1
+          }
+        }
+      },
       "CreateLocationCustomAttributeDefinitionRequest": {
         "type": "object",
         "description": "Represents a [CreateLocationCustomAttributeDefinition]($e/LocationCustomAttributes/CreateLocationCustomAttributeDefinition) request.",
@@ -14989,6 +15052,10 @@
             "description": "The buyer's email address.",
             "maxLength": 255
           },
+          "buyer_phone_number": {
+            "type": "string",
+            "description": "The buyer's phone number.\nMust follow the following format:\n1. A leading + symbol (followed by a country code)\n2. The phone number can contain spaces and the special characters `(` , `)` , `-` , and `.`.\nAlphabetical characters aren't allowed.\n3. The phone number must contain between 9 and 16 digits."
+          },
           "billing_address": {
             "$ref": "#/components/schemas/Address",
             "description": "The buyer's billing address."
@@ -15480,7 +15547,7 @@
           },
           "team_member": {
             "$ref": "#/components/schemas/TeamMember",
-            "description": "**Required** The data used to create the `TeamMember` object."
+            "description": "**Required** The data used to create the `TeamMember` object. If you include `wage_setting`, you must provide\n`job_id` for each job assignment. To get job IDs, call [ListJobs](api-endpoint:Team-ListJobs)."
           }
         },
         "example": {
@@ -15498,7 +15565,29 @@
             "given_name": "Joe",
             "phone_number": "+14159283333",
             "reference_id": "reference_id_1",
-            "status": "ACTIVE"
+            "status": "ACTIVE",
+            "wage_setting": {
+              "is_overtime_exempt": true,
+              "job_assignments": [
+                {
+                  "annual_rate": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                  "pay_type": "SALARY",
+                  "weekly_hours": 40
+                },
+                {
+                  "hourly_rate": {
+                    "amount": 2000,
+                    "currency": "USD"
+                  },
+                  "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                  "pay_type": "HOURLY"
+                }
+              ]
+            }
           }
         }
       },
@@ -15537,7 +15626,39 @@
             "phone_number": "+14159283333",
             "reference_id": "reference_id_1",
             "status": "ACTIVE",
-            "updated_at": "2021-06-11T22:55:45Z"
+            "updated_at": "2021-06-11T22:55:45Z",
+            "wage_setting": {
+              "created_at": "2021-06-11T22:55:45Z",
+              "is_overtime_exempt": true,
+              "job_assignments": [
+                {
+                  "annual_rate": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "hourly_rate": {
+                    "amount": 1443,
+                    "currency": "USD"
+                  },
+                  "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                  "job_title": "Manager",
+                  "pay_type": "SALARY",
+                  "weekly_hours": 40
+                },
+                {
+                  "hourly_rate": {
+                    "amount": 2000,
+                    "currency": "USD"
+                  },
+                  "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                  "job_title": "Cashier",
+                  "pay_type": "HOURLY"
+                }
+              ],
+              "team_member_id": "1yJlHapkseYnNPETIU1B",
+              "updated_at": "2021-06-11T22:55:45Z",
+              "version": 1
+            }
           }
         }
       },
@@ -15820,7 +15941,6 @@
           }
         },
         "example": {
-          "errors": [],
           "vendor": {
             "account_number": "4025391",
             "address": {
@@ -24551,19 +24671,54 @@
           }
         }
       },
+      "Job": {
+        "type": "object",
+        "description": "Represents a job that can be assigned to [team members]($m/TeamMember). This object defines the\njob's title and tip eligibility. Compensation is defined in a [job assignment]($m/JobAssignment)\nin a team member's wage setting.",
+        "x-release-status": "BETA",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "**Read only** The unique Square-assigned ID of the job. If you need a job ID for an API request,\ncall [ListJobs](api-endpoint:Team-ListJobs) or use the ID returned when you created the job.\nYou can also get job IDs from a team member's wage setting."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the job.",
+            "maxLength": 150,
+            "nullable": true
+          },
+          "is_tip_eligible": {
+            "type": "boolean",
+            "description": "Indicates whether team members can earn tips for the job.",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp when the job was created, in RFC 3339 format.",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp when the job was last updated, in RFC 3339 format.",
+            "readOnly": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "**Read only** The current version of the job. Include this field in `UpdateJob` requests to enable\n[optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)\ncontrol and avoid overwrites from concurrent requests. Requests fail if the provided version doesn't\nmatch the server version at the time of the request."
+          }
+        }
+      },
       "JobAssignment": {
         "type": "object",
-        "description": "An object describing a job that a team member is assigned to.",
+        "description": "Represents a job assigned to a [team member]($m/TeamMember), including the compensation the team\nmember earns for the job. Job assignments are listed in the team member's [wage setting]($m/WageSetting).",
         "x-release-status": "PUBLIC",
         "required": [
-          "job_title",
           "pay_type"
         ],
         "properties": {
           "job_title": {
             "type": "string",
             "description": "The title of the job.",
-            "minLength": 1
+            "nullable": true
           },
           "pay_type": {
             "$ref": "#/components/schemas/JobAssignmentPayType",
@@ -24571,7 +24726,7 @@
           },
           "hourly_rate": {
             "$ref": "#/components/schemas/Money",
-            "description": "The hourly pay rate of the job.",
+            "description": "The hourly pay rate of the job. For `SALARY` pay types, Square calculates the hourly rate based on\n`annual_rate` and `weekly_hours`.",
             "nullable": true
           },
           "annual_rate": {
@@ -24582,6 +24737,12 @@
           "weekly_hours": {
             "type": "integer",
             "description": "The planned hours per week for the job. Set if the job `PayType` is `SALARY`.",
+            "nullable": true
+          },
+          "job_id": {
+            "type": "string",
+            "description": "The ID of the [job]($m/Job).",
+            "x-release-status": "BETA",
             "nullable": true
           }
         }
@@ -26865,6 +27026,64 @@
           ]
         }
       },
+      "ListJobsRequest": {
+        "type": "object",
+        "description": "Represents a [ListJobs]($e/Team/ListJobs) request.",
+        "x-release-status": "BETA",
+        "properties": {
+          "cursor": {
+            "type": "string",
+            "description": "The pagination cursor returned by the previous call to this endpoint. Provide this\ncursor to retrieve the next page of results for your original request. For more information,\nsee [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).",
+            "nullable": true
+          }
+        },
+        "example": {}
+      },
+      "ListJobsResponse": {
+        "type": "object",
+        "description": "Represents a [ListJobs]($e/Team/ListJobs) response. Either `jobs` or `errors`\nis present in the response. If additional results are available, the `cursor` field is also present.",
+        "x-release-status": "BETA",
+        "properties": {
+          "jobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Job"
+            },
+            "description": "The retrieved jobs. A single paged response contains up to 100 jobs."
+          },
+          "cursor": {
+            "type": "string",
+            "description": "An opaque cursor used to retrieve the next page of results. This field is present only\nif the request succeeded and additional results are available. For more information, see\n[Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "The errors that occurred during the request."
+          }
+        },
+        "example": {
+          "jobs": [
+            {
+              "created_at": "2021-06-11T22:55:45Z",
+              "id": "VDNpRv8da51NU8qZFC5zDWpF",
+              "is_tip_eligible": true,
+              "title": "Cashier",
+              "updated_at": "2021-06-11T22:55:45Z",
+              "version": 2
+            },
+            {
+              "created_at": "2021-06-11T22:55:45Z",
+              "id": "FjS8x95cqHiMenw4f1NAUH4P",
+              "is_tip_eligible": false,
+              "title": "Chef",
+              "updated_at": "2021-06-11T22:55:45Z",
+              "version": 1
+            }
+          ]
+        }
+      },
       "ListLocationBookingProfilesRequest": {
         "type": "object",
         "x-release-status": "PUBLIC",
@@ -27915,7 +28134,7 @@
           },
           "sort_order": {
             "type": "string",
-            "description": "The order in which results are listed by `Payment.created_at`:\n- `ASC` - Oldest to newest.\n- `DESC` - Newest to oldest (default).",
+            "description": "The order in which results are listed by `ListPaymentsRequest.sort_field`:\n- `ASC` - Oldest to newest.\n- `DESC` - Newest to oldest (default).",
             "nullable": true
           },
           "cursor": {
@@ -27962,6 +28181,21 @@
           "offline_end_time": {
             "type": "string",
             "description": "Indicates the end of the time range for which to retrieve offline payments, in RFC 3339\nformat for timestamps. The range is determined using the\n`offline_payment_details.client_created_at` field for each Payment. If set, payments without a\nvalue set in `offline_payment_details.client_created_at` will not be returned.\n\nDefault: The current time.",
+            "nullable": true
+          },
+          "updated_at_begin_time": {
+            "type": "string",
+            "description": "Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The\nrange is determined using the `updated_at` field for each Payment.",
+            "nullable": true
+          },
+          "updated_at_end_time": {
+            "type": "string",
+            "description": "Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The\nrange is determined using the `updated_at` field for each Payment.",
+            "nullable": true
+          },
+          "sort_field": {
+            "$ref": "#/components/schemas/PaymentSortField",
+            "description": "The field used to sort results by. The default is `CREATED_AT`.\nSee [PaymentSortField](#type-paymentsortfield) for possible values",
             "nullable": true
           }
         },
@@ -34894,6 +35128,29 @@
           }
         }
       },
+      "PaymentSortField": {
+        "type": "string",
+        "enum": [
+          "CREATED_AT",
+          "OFFLINE_CREATED_AT",
+          "UPDATED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "CREATED_AT",
+            "description": ""
+          },
+          {
+            "name": "OFFLINE_CREATED_AT",
+            "description": ""
+          },
+          {
+            "name": "UPDATED_AT",
+            "description": ""
+          }
+        ],
+        "x-release-status": "PUBLIC"
+      },
       "Payout": {
         "type": "object",
         "description": "An accounting of the amount owed the seller and record of the actual transfer to their\nexternal bank account or to the Square balance.",
@@ -37290,6 +37547,41 @@
           }
         }
       },
+      "RetrieveJobRequest": {
+        "type": "object",
+        "description": "Represents a [RetrieveJob]($e/Team/RetrieveJob) request.",
+        "x-release-status": "BETA",
+        "properties": {},
+        "example": {}
+      },
+      "RetrieveJobResponse": {
+        "type": "object",
+        "description": "Represents a [RetrieveJob]($e/Team/RetrieveJob) response. Either `job` or `errors`\nis present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job",
+            "description": "The retrieved job."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "The errors that occurred during the request."
+          }
+        },
+        "example": {
+          "job": {
+            "created_at": "2021-06-11T22:55:45Z",
+            "id": "1yJlHapkseYnNPETIU1B",
+            "is_tip_eligible": true,
+            "title": "Cashier 1",
+            "updated_at": "2021-06-11T22:55:45Z",
+            "version": 2
+          }
+        }
+      },
       "RetrieveLocationBookingProfileRequest": {
         "type": "object",
         "x-release-status": "PUBLIC",
@@ -38388,7 +38680,39 @@
             "phone_number": "+14159283333",
             "reference_id": "reference_id_1",
             "status": "ACTIVE",
-            "updated_at": "2021-06-15T17:38:05Z"
+            "updated_at": "2021-06-15T17:38:05Z",
+            "wage_setting": {
+              "created_at": "2021-06-11T22:55:45Z",
+              "is_overtime_exempt": true,
+              "job_assignments": [
+                {
+                  "annual_rate": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "hourly_rate": {
+                    "amount": 1443,
+                    "currency": "USD"
+                  },
+                  "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                  "job_title": "Manager",
+                  "pay_type": "SALARY",
+                  "weekly_hours": 40
+                },
+                {
+                  "hourly_rate": {
+                    "amount": 2000,
+                    "currency": "USD"
+                  },
+                  "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                  "job_title": "Cashier",
+                  "pay_type": "HOURLY"
+                }
+              ],
+              "team_member_id": "1yJlHapkseYnNPETIU1B",
+              "updated_at": "2021-06-11T22:55:45Z",
+              "version": 1
+            }
           }
         }
       },
@@ -38551,7 +38875,6 @@
           }
         },
         "example": {
-          "errors": [],
           "vendor": {
             "account_number": "4025391",
             "address": {
@@ -41135,7 +41458,39 @@
               "is_owner": false,
               "reference_id": "12345678",
               "status": "ACTIVE",
-              "updated_at": "2020-04-28T21:49:28Z"
+              "updated_at": "2020-04-28T21:49:28Z",
+              "wage_setting": {
+                "created_at": "2021-06-11T22:55:45Z",
+                "is_overtime_exempt": true,
+                "job_assignments": [
+                  {
+                    "annual_rate": {
+                      "amount": 3000000,
+                      "currency": "USD"
+                    },
+                    "hourly_rate": {
+                      "amount": 1443,
+                      "currency": "USD"
+                    },
+                    "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                    "job_title": "Manager",
+                    "pay_type": "SALARY",
+                    "weekly_hours": 40
+                  },
+                  {
+                    "hourly_rate": {
+                      "amount": 2000,
+                      "currency": "USD"
+                    },
+                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                    "job_title": "Cashier",
+                    "pay_type": "HOURLY"
+                  }
+                ],
+                "team_member_id": "-3oZQKPKVk6gUXU_V5Qa",
+                "updated_at": "2021-06-11T22:55:45Z",
+                "version": 1
+              }
             },
             {
               "assigned_locations": {
@@ -41149,7 +41504,25 @@
               "phone_number": "+14155552671",
               "reference_id": "abcded",
               "status": "ACTIVE",
-              "updated_at": "2020-06-09T17:38:05Z"
+              "updated_at": "2020-06-09T17:38:05Z",
+              "wage_setting": {
+                "created_at": "2020-03-24T18:14:01Z",
+                "is_overtime_exempt": true,
+                "job_assignments": [
+                  {
+                    "hourly_rate": {
+                      "amount": 2400,
+                      "currency": "USD"
+                    },
+                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                    "job_title": "Cashier",
+                    "pay_type": "HOURLY"
+                  }
+                ],
+                "team_member_id": "1AVJj0DjkzbmbJw5r4KK",
+                "updated_at": "2020-06-09T17:38:05Z",
+                "version": 2
+              }
             },
             {
               "assigned_locations": {
@@ -41161,7 +41534,25 @@
               "id": "2JCmiJol_KKFs9z2Evim",
               "is_owner": false,
               "status": "ACTIVE",
-              "updated_at": "2020-03-24T01:11:25Z"
+              "updated_at": "2020-03-24T01:11:25Z",
+              "wage_setting": {
+                "created_at": "2020-03-24T01:09:25Z",
+                "is_overtime_exempt": true,
+                "job_assignments": [
+                  {
+                    "hourly_rate": {
+                      "amount": 2400,
+                      "currency": "USD"
+                    },
+                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                    "job_title": "Cashier",
+                    "pay_type": "HOURLY"
+                  }
+                ],
+                "team_member_id": "2JCmiJol_KKFs9z2Evim",
+                "updated_at": "2020-03-24T01:09:25Z",
+                "version": 1
+              }
             },
             {
               "assigned_locations": {
@@ -41198,7 +41589,25 @@
               "is_owner": false,
               "phone_number": "+14155552671",
               "status": "ACTIVE",
-              "updated_at": "2020-03-24T18:18:03Z"
+              "updated_at": "2020-03-24T18:18:03Z",
+              "wage_setting": {
+                "created_at": "2020-03-24T18:14:03Z",
+                "is_overtime_exempt": true,
+                "job_assignments": [
+                  {
+                    "hourly_rate": {
+                      "amount": 2000,
+                      "currency": "USD"
+                    },
+                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                    "job_title": "Cashier",
+                    "pay_type": "HOURLY"
+                  }
+                ],
+                "team_member_id": "5MRPTTp8MMBLVSmzrGha",
+                "updated_at": "2020-03-24T18:14:03Z",
+                "version": 1
+              }
             },
             {
               "assigned_locations": {
@@ -41252,7 +41661,25 @@
               "is_owner": false,
               "phone_number": "+14155552671",
               "status": "ACTIVE",
-              "updated_at": "2020-03-24T18:18:00Z"
+              "updated_at": "2020-03-24T18:18:00Z",
+              "wage_setting": {
+                "created_at": "2020-03-24T18:14:00Z",
+                "is_overtime_exempt": true,
+                "job_assignments": [
+                  {
+                    "hourly_rate": {
+                      "amount": 2000,
+                      "currency": "USD"
+                    },
+                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                    "job_title": "Cashier",
+                    "pay_type": "HOURLY"
+                  }
+                ],
+                "team_member_id": "9UglUjOXQ13-hMFypCft",
+                "updated_at": "2020-03-24T18:14:03Z",
+                "version": 1
+              }
             }
           ]
         }
@@ -41658,7 +42085,6 @@
           }
         },
         "example": {
-          "errors": [],
           "vendors": [
             {
               "account_number": "4025391",
@@ -43160,7 +43586,7 @@
           },
           "email_address": {
             "type": "string",
-            "description": "The email address associated with the team member.",
+            "description": "The email address associated with the team member. After accepting the invitation\nfrom Square, only the team member can change this value.",
             "nullable": true
           },
           "phone_number": {
@@ -43170,17 +43596,23 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The timestamp, in RFC 3339 format, describing when the team member was created.\nFor example, \"2018-10-04T04:00:00-07:00\" or \"2019-02-05T12:00:00Z\".",
+            "description": "The timestamp when the team member was created, in RFC 3339 format.",
             "readOnly": true
           },
           "updated_at": {
             "type": "string",
-            "description": "The timestamp, in RFC 3339 format, describing when the team member was last updated.\nFor example, \"2018-10-04T04:00:00-07:00\" or \"2019-02-05T12:00:00Z\".",
+            "description": "The timestamp when the team member was last updated, in RFC 3339 format.",
             "readOnly": true
           },
           "assigned_locations": {
             "$ref": "#/components/schemas/TeamMemberAssignedLocations",
             "description": "Describes the team member's assigned locations.",
+            "nullable": true
+          },
+          "wage_setting": {
+            "$ref": "#/components/schemas/WageSetting",
+            "description": "Information about the team member's overtime exemption status, job assignments, and compensation.",
+            "x-release-status": "BETA",
             "nullable": true
           }
         }
@@ -45299,6 +45731,54 @@
           "ruby": "/sdk_samples/Catalog/UpdateItemTaxes/UpdateItemTaxesResponse.ruby"
         }
       },
+      "UpdateJobRequest": {
+        "type": "object",
+        "description": "Represents an [UpdateJob]($e/Team/UpdateJob) request.",
+        "x-release-status": "BETA",
+        "required": [
+          "job"
+        ],
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job",
+            "description": "The job with the updated fields, either `title`, `is_tip_eligible`, or both. Only changed fields need\nto be included in the request. Optionally include `version` to enable optimistic concurrency control."
+          }
+        },
+        "example": {
+          "job": {
+            "is_tip_eligible": true,
+            "title": "Cashier 1"
+          }
+        }
+      },
+      "UpdateJobResponse": {
+        "type": "object",
+        "description": "Represents an [UpdateJob]($e/Team/UpdateJob) response. Either `job` or `errors`\nis present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/Job",
+            "description": "The updated job."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "The errors that occurred during the request."
+          }
+        },
+        "example": {
+          "job": {
+            "created_at": "2021-06-11T22:55:45Z",
+            "id": "1yJlHapkseYnNPETIU1B",
+            "is_tip_eligible": true,
+            "title": "Cashier 1",
+            "updated_at": "2021-06-13T12:55:45Z",
+            "version": 2
+          }
+        }
+      },
       "UpdateLocationCustomAttributeDefinitionRequest": {
         "type": "object",
         "description": "Represents an [UpdateLocationCustomAttributeDefinition]($e/LocationCustomAttributes/UpdateLocationCustomAttributeDefinition) request.",
@@ -46255,7 +46735,7 @@
         "properties": {
           "team_member": {
             "$ref": "#/components/schemas/TeamMember",
-            "description": "The data used to update the `TeamMember` object.",
+            "description": "The team member fields to add, change, or clear. Fields can be cleared using a null value. To update\n`wage_setting.job_assignments`, you must provide the complete list of job assignments. If needed, call\n[ListJobs](api-endpoint:Team-ListJobs) to get the required `job_id` values.",
             "nullable": true
           }
         },
@@ -46266,7 +46746,29 @@
               "location_ids": [
                 "YSGH2WBKG94QZ",
                 "GA2Y9HSJ8KRYT"
-              ]
+              ],
+              "wage_setting": {
+                "is_overtime_exempt": true,
+                "job_assignments": [
+                  {
+                    "annual_rate": {
+                      "amount": 3000000,
+                      "currency": "USD"
+                    },
+                    "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                    "pay_type": "SALARY",
+                    "weekly_hours": 40
+                  },
+                  {
+                    "hourly_rate": {
+                      "amount": 1200,
+                      "currency": "USD"
+                    },
+                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                    "pay_type": "HOURLY"
+                  }
+                ]
+              }
             },
             "email_address": "joe_doe@gmail.com",
             "family_name": "Doe",
@@ -46312,7 +46814,39 @@
             "phone_number": "+14159283333",
             "reference_id": "reference_id_1",
             "status": "ACTIVE",
-            "updated_at": "2021-06-15T17:38:05Z"
+            "updated_at": "2021-06-15T17:38:05Z",
+            "wage_setting": {
+              "created_at": "2021-06-11T22:55:45Z",
+              "is_overtime_exempt": true,
+              "job_assignments": [
+                {
+                  "annual_rate": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "hourly_rate": {
+                    "amount": 1443,
+                    "currency": "USD"
+                  },
+                  "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                  "job_title": "Manager",
+                  "pay_type": "SALARY",
+                  "weekly_hours": 40
+                },
+                {
+                  "hourly_rate": {
+                    "amount": 1200,
+                    "currency": "USD"
+                  },
+                  "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                  "job_title": "Cashier",
+                  "pay_type": "HOURLY"
+                }
+              ],
+              "team_member_id": "1yJlHapkseYnNPETIU1B",
+              "updated_at": "2021-06-11T22:55:45Z",
+              "version": 1
+            }
           }
         }
       },
@@ -46363,7 +46897,6 @@
           }
         },
         "example": {
-          "errors": [],
           "vendor": {
             "account_number": "4025391",
             "address": {
@@ -46402,7 +46935,7 @@
         "properties": {
           "wage_setting": {
             "$ref": "#/components/schemas/WageSetting",
-            "description": "The new `WageSetting` object that completely replaces the existing one."
+            "description": "The complete `WageSetting` object. For all job assignments, specify one of the following:\n- `job_id` (recommended) - If needed, call [ListJobs](api-endpoint:Team-ListJobs) to get a list of all jobs.\nRequires Square API version 2024-12-18 or later.\n- `job_title` - Use the exact, case-sensitive spelling of an existing title unless you want to create a new job.\nThis value is ignored if `job_id` is also provided."
           }
         },
         "example": {
@@ -46420,7 +46953,7 @@
               },
               {
                 "hourly_rate": {
-                  "amount": 1200,
+                  "amount": 2000,
                   "currency": "USD"
                 },
                 "job_title": "Cashier",
@@ -46467,7 +47000,7 @@
               },
               {
                 "hourly_rate": {
-                  "amount": 1200,
+                  "amount": 2000,
                   "currency": "USD"
                 },
                 "job_title": "Cashier",
@@ -47898,12 +48431,12 @@
       },
       "WageSetting": {
         "type": "object",
-        "description": "An object representing a team member's wage information.",
+        "description": "Represents information about the overtime exemption status, job assignments, and compensation\nfor a [team member]($m/TeamMember).",
         "x-release-status": "PUBLIC",
         "properties": {
           "team_member_id": {
             "type": "string",
-            "description": "The unique ID of the `TeamMember` whom this wage setting describes.",
+            "description": "The ID of the team member associated with the wage setting.",
             "nullable": true
           },
           "job_assignments": {
@@ -47911,7 +48444,7 @@
             "items": {
               "$ref": "#/components/schemas/JobAssignment"
             },
-            "description": "Required. The ordered list of jobs that the team member is assigned to.\nThe first job assignment is considered the team member's primary job.\n\nThe minimum length is 1 and the maximum length is 12.",
+            "description": "**Required** The ordered list of jobs that the team member is assigned to.\nThe first job assignment is considered the team member's primary job.",
             "nullable": true
           },
           "is_overtime_exempt": {
@@ -47921,16 +48454,16 @@
           },
           "version": {
             "type": "integer",
-            "description": "Used for resolving concurrency issues. The request fails if the version\nprovided does not match the server version at the time of the request. If not provided,\nSquare executes a blind write, potentially overwriting data from another write. For more information,\nsee [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)."
+            "description": "**Read only** Used for resolving concurrency issues. The request fails if the version\nprovided does not match the server version at the time of the request. If not provided,\nSquare executes a blind write, potentially overwriting data from another write. For more information,\nsee [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)."
           },
           "created_at": {
             "type": "string",
-            "description": "The timestamp, in RFC 3339 format, describing when the wage setting object was created.\nFor example, \"2018-10-04T04:00:00-07:00\" or \"2019-02-05T12:00:00Z\".",
+            "description": "The timestamp when the wage setting was created, in RFC 3339 format.",
             "readOnly": true
           },
           "updated_at": {
             "type": "string",
-            "description": "The timestamp, in RFC 3339 format, describing when the wage setting object was last updated.\nFor example, \"2018-10-04T04:00:00-07:00\" or \"2019-02-05T12:00:00Z\".",
+            "description": "The timestamp when the wage setting was last updated, in RFC 3339 format.",
             "readOnly": true
           }
         }
@@ -48073,6 +48606,400 @@
             "readOnly": true
           }
         }
+      }
+    },
+    "x-apis": {
+      "ApplePay": {
+        "name": "Apple Pay",
+        "summary": "Apple Pay support APIs",
+        "description": "\nThe Apple Pay APIs provides an easy way for platform developers\nto bulk activate Web Apple Pay with Square for merchants using their platform.\n\nFor more information, see the following guides:\n- [Web Payments SDK](https://developer.squareup.com/docs/web-payments/apple-pay)\n- [In-App Payments SDK](https://developer.squareup.com/docs/in-app-payments-sdk/add-digital-wallets/apple-pay)"
+      },
+      "BankAccounts": {
+        "name": "Bank Accounts",
+        "summary": "Get a list of a seller's bank accounts.",
+        "description": "\nThe Bank Accounts API allows you to get basic details about a seller's bank account, such as the\nlast few digits of the account number and the routing number. It can be paired with the Payouts API to understand the\npattern of deposits and withdrawals from a seller's bank account.\n\nFor more information, see the following guides:\n - [Bank Accounts](https://developer.squareup.com/docs/bank-accounts-api)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)\n"
+      },
+      "BookingCustomAttributes": {
+        "name": "Booking Custom Attributes",
+        "summary": "Create and manage booking-related custom attribute definitions and custom attributes.",
+        "description": "\nUse the Booking Custom Attributes API to create and manage custom attributes for bookings to store properties or \nmetadata to support seller-specific customizations of and extensions to the `Booking` object. \n\nFor more information, see the following guides: \n - [Booking Custom Attributes](https://developer.squareup.com/docs/booking-custom-attributes-api/overview).\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)\n"
+      },
+      "Bookings": {
+        "name": "Bookings",
+        "summary": "Create and manage bookings for Square sellers.",
+        "description": "\nThe Bookings API allows you to create, retrieve, update, and cancel appointments online. When used with other Square APIs (such as the Locations API, Team API, Catalog API, and Customers API), the Bookings API lets you create online-booking applications for users to book services provided by Square sellers.   \n\nFor more information, see the following guides:\n - [Bookings](https://developer.squareup.com/docs/bookings-api/what-it-is)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)\n"
+      },
+      "Cards": {
+        "name": "Cards",
+        "summary": "Use the Cards API to save a credit or debit card on file.",
+        "description": "\nYou can use the [CreateCard](/reference/square/cards-api/create-card) endpoint to save a credit or debit card to a Square account.\nDevelopers can integrate the Cards API in their application to let Square sellers:\n\n- **Save a card that can be charged by any Square seller who uses your application.** Your application specifies the organization access token in the `CreateCard` request.\n- **Save a card that can be charged by a single Square seller.**  Your application specifies the access token of the specific seller account in the `CreateCard` request.\n\nThe Cards API also supports other endpoints to manage the cards.\n\nFor more information, see the following guides:\n - [Cards](https://developer.squareup.com/docs/cards-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "CashDrawers": {
+        "name": "Cash Drawers",
+        "summary": "Get details about cash drawer shifts.",
+        "description": "\nCash drawer shifts track cash transactions so that the total money in the cash drawers can be reconciled for a\nspecific period of time (a cash drawer shift), for a particular device, in a particular location. The Cash Drawer Shifts API\nenables you to list and retrieve information about cash drawer shifts.\n\nFor more information, see the following guide:\n - [Cash Drawer Shifts](https://developer.squareup.com/docs/cashdrawershift-api/reporting)"
+      },
+      "Catalog": {
+        "name": "Catalog",
+        "summary": "Programmatically catalogs a Square seller’s products for sale and services for hire.",
+        "description": "\nThe Catalog API allows you to programmatically catalog products or services, including items, variations, categories, discounts, taxes, modifiers, and more.\n\nFor more information, see the following guides:\n - [Catalog](https://developer.squareup.com/docs/catalog-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Checkout": {
+        "name": "Checkout",
+        "summary": "Accept payments through a pre-built, Square-hosted checkout page. No frontend required.",
+        "description": "\nWith the Square Checkout API, your customers can pay for a purchase through a simple, Square-hosted checkout page. It can be integrated into any payments workflow with minimal coding. \n\nYou can create and configure your checkout page through a `CreatePaymentLink` request, specifying the accepted payment methods and checkout options like tipping and custom fields.  You can also configure a URL for customers to be redirected to once they complete their purchase. \n\nFirst time Square developers should utilize the payment link endpoints to create, update, retrieve, and list checkout pages. \n\nFor more information, see the following guide:\n - [Checkout](https://developer.squareup.com/docs/checkout-api-overview)"
+      },
+      "CustomerCustomAttributes": {
+        "name": "Customer Custom Attributes",
+        "summary": "Create and manage customer-related custom attribute definitions and custom attributes.",
+        "description": "\nUse the Customer Custom Attributes API to create and manage custom attributes for customer profiles. Custom attributes can be used to store properties or metadata that simplify integration, synchronization, and personalization workflows. After a custom attribute definition is created in a Square seller account, the custom attribute value can be set for customer profiles in the seller's Customer Directory.\n\nFor more information, see the following guides:\n - [Customer Custom Attributes](https://developer.squareup.com/docs/customer-custom-attributes-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "CustomerGroups": {
+        "name": "Customer Groups",
+        "summary": "Create and manage customer groups to streamline and automate workflows and help personalize customer interactions.",
+        "description": "\nThe Customer Groups API lets you create and manage customer groups to provide targeted promotions or take other customized actions based on group membership. For example, you can create Weekly, Monthly, and Quarterly customer groups and add customers to them based on their preferences to receive marketing promotions on a weekly, monthly, and quarterly basis. You can then use the information to manage your marketing email schedule. \n\nYou can use the Customer Groups API to retrieve and manage customer groups. You can use the Customers API to add customers to and remove customers from groups and search for customers based on group membership.\n\nFor more information, see the following guide:\n - [Customer Groups](https://developer.squareup.com/docs/customer-groups-api/what-it-does)"
+      },
+      "CustomerSegments": {
+        "name": "Customer Segments",
+        "summary": "Retrieve customer segments (also called smart groups) in a business account.",
+        "description": "\nThe Customer Segments API lets you retrieve information about the segments defined for a business. Square sellers can create customer segments in the Seller Dashboard or Point of Sale by defining filters for the segment. For example, a segment can include customers who have visited more than 10 times. Customers are automatically added to and removed from the segment over time based on this criterion. \n\nYou can inspect the customer's `segment_ids` property to determine which segments a customer belongs to. Then, you can use the Customer Segments API to retrieve basic details about each segment, such as the segment name and the time when it was created.\n\nFor more information, see the following guide:\n - [Customer Segments](https://developer.squareup.com/docs/customer-segments-api/what-it-does)"
+      },
+      "Customers": {
+        "name": "Customers",
+        "summary": "Create and manage customer profiles and sync CRM systems with Square.",
+        "description": "\nThe Customers API enables you to create and manage customer profiles, as well as search for customers based on various criteria (including customer group membership). You can also use the API to sync contacts between your CRM system and Square.\n\nFor more information, see the following guides:\n - [Customers](https://developer.squareup.com/docs/customers-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Devices": {
+        "name": "Devices",
+        "summary": "Create device codes used to connect Square Terminal with a 3rd-party point of sale system, and get details about all connected Terminals. ",
+        "description": "\nFor more information, see the following guides:\n - [Devices](https://developer.squareup.com/docs/terminal-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Disputes": {
+        "name": "Disputes",
+        "summary": "Use the Disputes API to manage disputes (chargebacks).",
+        "description": "\nA seller has the following options to process a dispute:\n\n- Accept the dispute using the [AcceptDispute](/reference/square/disputes-api/accept-dispute) endpoint. Square returns the disputed amount from the account balance of the Square account.\n- Challenge the dispute using the [SubmitEvidence](/reference/square/disputes-api/submit-evidence) endpoint. If the payment was valid, you can contest the disputed payment.\nYou submit supporting evidence you have about the transaction, such as receipts, invoices, email correspondence, proof of delivery, or photos.\nYou upload evidence using the [CreateDisputeEvidenceFile](/reference/square/disputes-api/create-dispute-evidence-file) endpoint.\n\nThe Disputes API also supports other endpoints useful in dispute management.\n\nFor more information, see the following guides:\n - [Disputes](https://developer.squareup.com/docs/disputes-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Employees": {
+        "name": "Employees",
+        "summary": "Pull employee data into accounting and payroll systems with the Employees API.",
+        "description": "\nThe Employees API allows applications to retrieve a roster of employees registered in the Square Point\nof Sale system, which can be useful in payroll and account contexts.\n\nPrior to 2020-08-26, the Employees API was best used in conjunction with the Labor API, where you provide employee IDs to\nmanage shifts, breaks, and wages. After that deprecation date, the Team API should be used.\n\nFor information about migrating your code to the Team API, see [Migrate from the Square Employees API](https://developer.squareup.com/docs/team/migrate-from-v2-employees?environment=master\u0026preview=true)"
+      },
+      "Events": {
+        "name": "Events",
+        "summary": "Search for Square API events that occur within a 28-day timeframe.",
+        "description": "\nIf you don't need a real-time response to data changes or need a disaster recovery or reconciliation mechanism for missed webhook events (caused by server outages, misconfigured webhook subscriptions, network errors, and other events), you can use the Events API instead of webhook subscriptions managed manually or through the Webhook Subscriptions API.\n\nBecause Square events are owned by the application and not any one seller, you cannot use OAuth access tokens with the Events API. You must use the application’s [personal access token](/docs/build-basics/access-tokens).\n\nFor more information, see:\n - [Events API](https://developer.squareup.com/docs/events-api/overview) \n"
+      },
+      "GiftCardActivities": {
+        "name": "Gift Card Activities",
+        "summary": "Create and retrieve gift card activities.",
+        "description": "\nUse the Gift Card Activities API to create activities for a Square gift card (such as activating or reloading the gift card) and to track gift card activities. The Gift Card Activities API is used with the [Gift Cards API](https://developer.squareup.com/reference/square/gift-cards-api) to manage the gift card program for a Square seller.\n\nFor more information, see the following guides:\n - [Gift Card Activities](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "GiftCards": {
+        "name": "Gift Cards",
+        "summary": "Create and retrieve gift cards and manage gift cards on file.",
+        "description": "\n[Square Gift Cards](https://squareup.com/gift-cards) enable sellers to boost sales and attract new customers. Customers can purchase gift cards and redeem them at any of the seller's locations. Sellers can manage gift cards and track activity.\n\nUse the Gift Cards API to create and retrieve gift cards (for example, to get the gift card balance) and manage gift cards on file by linking or unlinking gift cards with customers. After creating a gift card, use the [Gift Card Activities API](https://developer.squareup.com/reference/square/gift-card-activities-api) to activate the gift card with an initial balance and manage other activities.\n\nFor more information, see the following guides:\n - [Gift Cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Inventory": {
+        "name": "Inventory",
+        "summary": "Programmatically manages a Square seller’s inventory of catalog items.",
+        "description": "\nThe Inventory API allows you to programmatically manage inventory counts and inventory changes of products or services.\n\nFor more information, see the following guides:\n - [Inventory](https://developer.squareup.com/docs/inventory-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Invoices": {
+        "name": "Invoices",
+        "summary": "Create, configure, and publish invoices for orders that were created using the Orders API.",
+        "description": "\n[Square Invoices](https://squareup.com/invoices) makes it easy for sellers to request and collect payments from their customers. Square notifies customers and processes invoice payments.\n\nUse the Invoices API to create and manage invoices for orders that were created using the Orders API. After you create the invoice and configure its delivery method, payment schedule, and other invoice settings, you can publish the invoice. Depending on the invoice settings, Square can send the invoice to the customer or automatically charge a card on file. Square hosts each invoice on a web page where customers can pay for it.\n\nFor more information, see the following guides:\n - [Invoices](https://developer.squareup.com/docs/invoices-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Labor": {
+        "name": "Labor",
+        "summary": "Manage shifts, breaks, and wages for employees in Square Point of Sale.",
+        "description": "\nThe Labor API allows you to see when employees clocked in and out, how much they worked during different\nperiods, and how many breaks they took. You can also call the API to register a past break, adjust a shift,\nor update a wage.\n\nThis API is used in conjunction with the Team API.\n\nFor more information, see the following guides:\n - [Labor](https://developer.squareup.com/docs/labor-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "LocationCustomAttributes": {
+        "name": "Location Custom Attributes",
+        "summary": "Create and manage location-related custom attribute definitions and custom attributes.",
+        "description": "\nUse the Location Custom Attributes API to create and manage custom attributes for locations. Custom attributes can be used to store properties or metadata that simplify integration, synchronization, and personalization workflows. After a custom attribute definition is created in a Square seller account, the custom attribute value can be set for locations.\n\nFor more information, see the following guides:\n - [Location Custom Attributes](https://developer.squareup.com/docs/location-custom-attributes-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Locations": {
+        "name": "Locations",
+        "summary": "Create and manage the locations of a seller's business.",
+        "description": "\nMany sellers use multiple locations to track where they make sales. The Locations API allows you to\ncreate and manage data about those locations, such as their addresses, names, and business hours.\n\nFor more information, see the following guides:\n - [Locations](https://developer.squareup.com/docs/locations-api)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Loyalty": {
+        "name": "Loyalty",
+        "summary": "Enroll buyers in a Square loyalty program, view program settings, manage and track loyalty activity, and create and manage promotions.",
+        "description": "\nSellers subscribe to [Square Loyalty](https://squareup.com/software/loyalty) to offer a loyalty program that can increase repeat visits to their business by rewarding customers.\n\nUse the Loyalty API to create loyalty accounts for buyers and enable them to earn points for purchases and redeem points for reward discounts. Also use the Loyalty API to retrieve details about the loyalty program, create and manage loyalty promotions that extend the base program, and track balance-changing events for loyalty accounts.\n\nFor more information, see the following guides:\n - [Loyalty](https://developer.squareup.com/docs/loyalty-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "MerchantCustomAttributes": {
+        "name": "Merchant Custom Attributes",
+        "summary": "Create and manage merchant-related custom attribute definitions and custom attributes.",
+        "description": "\nUse the Merchant Custom Attributes API to create and manage custom attributes for merchants that connect to your application. Custom attributes can be used to store properties or metadata that simplify integration, synchronization, and personalization workflows.\n\nFor more information, see the following guides:\n - [Merchant Custom Attributes](https://developer.squareup.com/docs/merchant-custom-attributes-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Merchants": {
+        "name": "Merchants",
+        "summary": "Retrieve information about an organization that sells with Square.",
+        "description": "\nThe Merchants API groups individual seller locations into larger organizations, allowing them to operate as a single entity. Each merchant represents one organization or business that sells with Square. Use this API to retrieve core information about the organization connecting to your application such as the merchant ID, language preferences, country, account status, and the name of the overall business.\n\nFor more information, see the following guide:\n - [Merchants](https://developer.squareup.com/docs/merchants-api)"
+      },
+      "MobileAuthorization": {
+        "name": "Mobile Authorization",
+        "summary": "Authorize Reader SDK applications to take in-person payments.",
+        "description": "\nThe Mobile Authorization API accepts an account credential (an OAuth token or a personal access token) and a\nlocation ID and returns an authorization code that custom mobile applications can use to initialize Square mobile\nsolutions, like Reader SDK, to accept payments using Square hardware.\n\nFor more information, see the following guide:\n - [Mobile Authorization](https://developer.squareup.com/docs/mobile-authz/what-it-does)"
+      },
+      "OAuth": {
+        "name": "OAuth",
+        "summary": "Allow your application to gain programmatic access to other seller accounts.",
+        "description": "\nThe Square OAuth API lets applications request and obtain permission from a Square account to make API\ncalls on behalf of that account. Applications can request individual permissions so that users do not need\nto grant full access to their Square accounts.\n\nFor more information, see the following guides:\n - [OAuth](https://developer.squareup.com/docs/oauth-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "OrderCustomAttributes": {
+        "name": "Order Custom Attributes",
+        "summary": "Create and manage order-related custom attribute definitions and custom attributes.",
+        "description": "\nUse the Order Custom Attributes API to create and manage custom attributes for orders. Custom attributes can be used to store properties or metadata that simplify integration, synchronization, and personalization workflows. After a custom attribute definition is created in a Square seller account, the custom attribute value can be set for orders.\n\nFor more information, see the following guides:\n - [Order Custom Attributes](https://developer.squareup.com/docs/orders-custom-attributes-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Orders": {
+        "name": "Orders",
+        "summary": "Get sales data for a Square seller, itemize payments, push orders to POS, and more.",
+        "description": "\nThe Orders API is your one-stop shop for adding rich functionality to payments. You can itemize\npayments using custom line items or catalog objects, send orders to physical Point of Sale devices\nto be fulfilled, attach a customer to a payment, and more.\n\nIn addition, the Orders API lets you search through all of a seller's past sales and returns itemization\ndata, customer references, and other details from sales made using POS or online.\n\nIf you use the Square Orders API with a non-Square payments provider, Square charges a transaction fee. For more information, see [Orders API fee structure.](https://developer.squareup.com/docs/payments-pricing#orders-api-fee-structure)\n\nFor more information, see the following guides:\n - [Orders](https://developer.squareup.com/docs/orders-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Payments": {
+        "name": "Payments",
+        "summary": "The Payments API lets developers take and manage payments.",
+        "description": "\nApplications need the following input to take a payment:\n\n- The amount to charge.\n- The payment recipient. The payment goes to the account identified by the Authorization header in the API request.\n- The payment source. The source can be a payment token or card on file.\n\n  You can generate a payment token using the Web Payments SDK and the In-App Payments SDK. For working code examples, see [Square Connect API Examples](https://github.com/square/connect-api-examples).\n\n  A card on file is a credit card, debit card, or gift card that is associated with a customer. \n  You can create a customer and add a card on file using Square APIs, the Square Seller Dashboard, or the Square Point of Sale application.\n\n  For more information, see the following guides:\n - [Payments](https://developer.squareup.com/docs/payments-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Payouts": {
+        "name": "Payouts",
+        "summary": "Get a list of deposits and withdrawals from a seller's bank accounts.",
+        "description": "\nThe Payouts API allows you to see a complete list of payouts made to a seller's banking destination,\nwith a list of payout entries that describe the payments associated with each payout. It can be paired with the\nBank Accounts API to add detail about which bank account each payout was made to.\n\nFor more information, see the following guide:\n - [Payouts](https://developer.squareup.com/docs/payouts/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Refunds": {
+        "name": "Refunds",
+        "summary": "Manage and issue refunds for payments made to Square sellers.",
+        "description": "\nThe following applies to refunds:\n\n- You cannot refund more than what was originally collected.\n- The refund amount must be available in the account's Square balance. If the amount is not available, Square attempts to take money out of\n  the associated bank account. Refunds are in a state of PENDING until the funds are secured.\n- If funds cannot be secured, the refund is not completed and the buyer does not receive a credit. The refund has \n  a status of FAILED. Future refunds to this payment are not allowed and the buyer should be reimbursed by other means.\n- You can refund only payments with status COMPLETED. You cannot refund an APPROVED payment; however, you can cancel\n  an approved payment.\n\nFor more information, see the following guides:\n - [Refunds](https://developer.squareup.com/docs/payments-api/refund-payments)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Reporting": {
+        "name": "Reporting",
+        "summary": "Deprecated - Use the Orders and Payments APIs instead.",
+        "description": "\nPrior to 2019/08/15, the Reporting API was the way to review multi-party payments taken with the Transactions\nAPI. The Payments API now includes an \"application fee\" parameter you can use to replace this functionality."
+      },
+      "Settlements": {
+        "name": "Settlements",
+        "summary": "Get a list of deposits and withdrawals from a seller's bank accounts.",
+        "description": "\n__The V1 Settlements API has been deprecated__. The Settlements API allows you to see a complete list of settlements made to a seller's bank account,\nwith a list of settlement entries that describe the payments associated with each settlement. It can be paired with the\nBank Accounts API to add detail about which bank account each settlement was made to.\n\nFor information about migrating your code to the Payouts API, see [Migrate from the Square Settlements API\n](https://developer.squareup.com/docs/migrate-from-v1/guides/v1-settlements)"
+      },
+      "Sites": {
+        "name": "Sites",
+        "summary": "Get details about Square Online sites that belong to Square sellers.",
+        "description": "\nSquare sellers use Square Online to build eCommerce websites. The Sites API lets you get basic details about Square Online sites, such as the site ID, title, and domain. You can use the Sites API with the Snippets API to manage snippets that extend Square Online features.\n\n __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).\n\n For more information, see the following guide:\n - [Sites](https://developer.squareup.com/docs/sites-api/overview)"
+      },
+      "Snippets": {
+        "name": "Snippets",
+        "summary": "Manage snippets for Square Online sites.",
+        "description": "\nThe Snippets API lets you manage snippets that add custom functionality to Square Online sites. A snippet is HTML, CSS, and JavaScript that is injected into the `head` element of all pages on a site, except for checkout pages. You can use the Snippets API to create applications that help meet the many needs of Square sellers.\n\n __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).\n\n For more information, see the following guide:\n - [Snippets](https://developer.squareup.com/docs/snippets-api/overview)"
+      },
+      "Subscriptions": {
+        "name": "Subscriptions",
+        "summary": "Create and manage subscriptions.",
+        "description": "\nSubscriptions enable sellers to generate a reliable cash flow and recurring revenue to grow their businesses. Square offers the Subscriptions API for developers to embed subscription functionality in their applications. You first create a subscription plan using the Catalog API and then use the Subscriptions API to create and manage subscriptions. \n\nFor more information, see the following guides:\n - [Subscriptions](https://developer.squareup.com/docs/subscriptions/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Team": {
+        "name": "Team",
+        "summary": "Manage a roster of team members and pull employee data into accounting and payroll systems.",
+        "description": "\nThe Team API allows applications to manage team members and job definitions, which can be useful\nin payroll and accounting contexts.\n\nThe Team API integrates closely with the Labor API for timecard management.\n\nFor more information, see the following guide:\n - [Team](https://developer.squareup.com/docs/team/overview)\n - [Square Webhooks](https://developer.squareup.com/docs/webhooks-overview)\n"
+      },
+      "Terminal": {
+        "name": "Terminal",
+        "summary": "Requests a checkout from a paired Square Terminal.",
+        "description": "\nThe Terminal API allows you to manage sending and receiving requests and responses from a paired Square Terminal. For a Terminal checkout, refund, or action, you can create a request, check its status, cancel the request, search for in-process requests, and get the results of the request after it is completed. In the current implementation, refunds are only supported for Interac debit cards in Canada.\n\nFor more information, see the following guides:\n - [Terminal](https://developer.squareup.com/docs/terminal-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "Transactions": {
+        "name": "Transactions",
+        "summary": "Deprecated - Use the Orders and Payments APIs instead.",
+        "description": "\nPrior to 2019/08/15, the Transactions API was the way to take online payments. Going forward, the Payments API \nand Refunds API (together with the Orders API) replace the Transactions API. For information about migrating your code to the Payments API, see [Migrate from Transactions](https://developer.squareup.com/docs/payments-api/migrate-from-transactions-api)"
+      },
+      "V1Webhooks": {
+        "name": "V1Webhooks",
+        "summary": "Deprecated - Use V2 Webhooks.",
+        "description": "\nIf you are working with V1 (deprecated) webhooks, you use the Webhooks API to subscribe to events for each seller you are interested in receiving events for.\n\nIf you are working with V2 webhooks, you do not need to use this API.\nInstead, you subscribe to events using the [Developer Dashboard](/apps) or the [Webhook Subscriptions API](/reference/square/webhook-subscriptions-api).\nLearn how to subscribe to V2 webhooks using the [dashboard](/docs/webhooks/step2subscribe) or the [API](/docs/webhooks/webhook-subscriptions-api)."
+      },
+      "Vendors": {
+        "name": "Vendors",
+        "summary": "Manages a seller's suppliers.",
+        "description": "The Vendors API allows applications to create, retrieve, and update vendors as suppliers to a seller.\n\nFor more information, see the following guides:\n - [Vendors](https://developer.squareup.com/docs/vendors-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
+      "WebhookSubscriptions": {
+        "name": "Webhook Subscriptions",
+        "summary": "Create and manage webhook subscriptions.",
+        "description": "\nThe Webhook Subscriptions API allows you to create, retrieve, update, and delete webhook subscriptions. Because Webhook subscriptions are owned by the application and not any one seller, you cannot use OAuth Access Tokens with the Webhook Subscriptions API. You must use the application’s [personal access token](/docs/build-basics/access-tokens).\n\nFor more information, see the following guide the following guide:\n - [Webhook Subscriptions](https://developer.squareup.com/docs/webhooks/webhook-subscriptions-api)"
+      }
+    },
+    "x-categories": {
+      "Commerce": {
+        "name": "Commerce",
+        "summary": "Process orders, manage catalogs, track inventory, book reservations, and manage vendors. ",
+        "description": "",
+        "apis": [
+          "#/components/x-apis/Orders",
+          "#/components/x-apis/OrderCustomAttributes",
+          "#/components/x-apis/Catalog",
+          "#/components/x-apis/Inventory",
+          "#/components/x-apis/Bookings",
+          "#/components/x-apis/Booking Custom Attributes",
+          "#/components/x-apis/Vendors",
+          "#/components/x-apis/Sites",
+          "#/components/x-apis/Snippets",
+          "#/components/x-apis/Cash Drawers"
+        ]
+      },
+      "Customers": {
+        "name": "Customers",
+        "summary": "Securely manage customer data and integrate engagement features to increase repeat business and attract new customers.",
+        "description": "\n",
+        "apis": [
+          "#/components/x-apis/Customers",
+          "#/components/x-apis/CustomerCustomAttributes",
+          "#/components/x-apis/CustomerGroups",
+          "#/components/x-apis/CustomerSegments",
+          "#/components/x-apis/Loyalty",
+          "#/components/x-apis/GiftCards",
+          "#/components/x-apis/GiftCardActivities"
+        ]
+      },
+      "Dev Essentials": {
+        "name": "Dev Essentials",
+        "summary": "Authenticate your app, provide secure delegated access to Square account data, and manage webhook subscriptions.",
+        "description": "",
+        "apis": [
+          "#/components/x-apis/OAuth",
+          "#/components/x-apis/WebhookSubscriptions",
+          "#/components/x-apis/Events"
+        ]
+      },
+      "Merchants": {
+        "name": "Merchants",
+        "summary": "Manage a seller's core business information used for business, and suppliers.",
+        "description": "",
+        "apis": [
+          "#/components/x-apis/Merchants",
+          "#/components/x-apis/MerchantCustomAttributes",
+          "#/components/x-apis/Locations",
+          "#/components/x-apis/LocationCustomAttributes"
+        ]
+      },
+      "Payments": {
+        "name": "Payments",
+        "summary": "Take payments, process refunds, manage disputes, enable subscriptions, and get paid for your sales.",
+        "description": "\n",
+        "apis": [
+          "#/components/x-apis/Payments",
+          "#/components/x-apis/Refunds",
+          "#/components/x-apis/Checkout",
+          "#/components/x-apis/Terminal",
+          "#/components/x-apis/Disputes",
+          "#/components/x-apis/Invoices",
+          "#/components/x-apis/Cards",
+          "#/components/x-apis/Subscriptions",
+          "#/components/x-apis/BankAccounts",
+          "#/components/x-apis/Payouts",
+          "#/components/x-apis/MobileAuthorization",
+          "#/components/x-apis/Devices",
+          "#/components/x-apis/ApplePay"
+        ]
+      },
+      "Staff": {
+        "name": "Staff",
+        "summary": "Manage team members and jobs, and track shift hours.",
+        "description": "",
+        "apis": [
+          "#/components/x-apis/Labor",
+          "#/components/x-apis/Team"
+        ]
+      }
+    },
+    "x-categories-order": [
+      "Dev Essentials",
+      "Payments",
+      "Commerce",
+      "Customers",
+      "Staff",
+      "Merchants"
+    ],
+    "x-v1-api-mappings": {
+      "V1Employees": {
+        "V1CreateEmployee": "Employees",
+        "V1CreateEmployeeRole": "Employees",
+        "V1CreateTimecard": "Labor",
+        "V1DeleteTimecard": "Labor",
+        "V1ListCashDrawerShifts": "CashDrawers",
+        "V1ListEmployeeRoles": "Employees",
+        "V1ListEmployees": "Employees",
+        "V1ListTimecardEvents": "Labor",
+        "V1ListTimecards": "Labor",
+        "V1RetrieveCashDrawerShift": "CashDrawers",
+        "V1RetrieveEmployee": "Employees",
+        "V1RetrieveEmployeeRole": "Employees",
+        "V1RetrieveTimecard": "Labor",
+        "V1UpdateEmployee": "Employees",
+        "V1UpdateEmployeeRole": "Employees",
+        "V1UpdateTimecard": "Labor"
+      },
+      "V1Items": {
+        "V1AdjustInventory": "Inventory",
+        "V1ApplyFee": "Catalog",
+        "V1ApplyModifierList": "Catalog",
+        "V1CreateCategory": "Catalog",
+        "V1CreateDiscount": "Catalog",
+        "V1CreateFee": "Catalog",
+        "V1CreateItem": "Catalog",
+        "V1CreateModifierList": "Catalog",
+        "V1CreateModifierOption": "Catalog",
+        "V1CreatePage": "Catalog",
+        "V1CreateVariation": "Catalog",
+        "V1DeleteCategory": "Catalog",
+        "V1DeleteDiscount": "Catalog",
+        "V1DeleteFee": "Catalog",
+        "V1DeleteItem": "Catalog",
+        "V1DeleteModifierList": "Catalog",
+        "V1DeleteModifierOption": "Catalog",
+        "V1DeletePage": "Catalog",
+        "V1DeletePageCell": "Catalog",
+        "V1DeleteVariation": "Catalog",
+        "V1ListCategories": "Catalog",
+        "V1ListDiscounts": "Catalog",
+        "V1ListFees": "Catalog",
+        "V1ListInventory": "Inventory",
+        "V1ListItems": "Catalog",
+        "V1ListModifierLists": "Catalog",
+        "V1ListPages": "Catalog",
+        "V1RemoveFee": "Catalog",
+        "V1RemoveModifierList": "Catalog",
+        "V1RetrieveItem": "Catalog",
+        "V1RetrieveModifierList": "Catalog",
+        "V1UpdateCategory": "Catalog",
+        "V1UpdateDiscount": "Catalog",
+        "V1UpdateFee": "Catalog",
+        "V1UpdateItem": "Catalog",
+        "V1UpdateModifierList": "Catalog",
+        "V1UpdateModifierOption": "Catalog",
+        "V1UpdatePage": "Catalog",
+        "V1UpdatePageCell": "Catalog",
+        "V1UpdateVariation": "Catalog",
+        "V1UploadItemImage": "Catalog"
+      },
+      "V1Locations": {
+        "V1ListLocations": "Locations",
+        "V1RetrieveBusiness": "Merchants"
+      },
+      "V1Transactions": {
+        "V1CreateRefund": "Refunds",
+        "V1ListBankAccounts": "BankAccounts",
+        "V1ListPayments": "Payments",
+        "V1ListRefunds": "Refunds",
+        "V1ListSettlements": "Settlements",
+        "V1RetrieveBankAccount": "BankAccounts",
+        "V1RetrievePayment": "Payments",
+        "V1RetrieveSettlement": "Settlements"
+      },
+      "V1Webhooks": {
+        "V1ListWebhooks": "V1Webhooks",
+        "V1UpdateWebhooks": "V1Webhooks"
       }
     }
   },
@@ -59918,7 +60845,7 @@
           },
           {
             "name": "sort_order",
-            "description": "The order in which results are listed by `Payment.created_at`:\n- `ASC` - Oldest to newest.\n- `DESC` - Newest to oldest (default).",
+            "description": "The order in which results are listed by `ListPaymentsRequest.sort_field`:\n- `ASC` - Oldest to newest.\n- `DESC` - Newest to oldest (default).",
             "schema": {
               "type": "string"
             },
@@ -60004,6 +60931,33 @@
             "description": "Indicates the end of the time range for which to retrieve offline payments, in RFC 3339\nformat for timestamps. The range is determined using the\n`offline_payment_details.client_created_at` field for each Payment. If set, payments without a\nvalue set in `offline_payment_details.client_created_at` will not be returned.\n\nDefault: The current time.",
             "schema": {
               "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "updated_at_begin_time",
+            "description": "Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The\nrange is determined using the `updated_at` field for each Payment.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "updated_at_end_time",
+            "description": "Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The\nrange is determined using the `updated_at` field for each Payment.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_field",
+            "description": "The field used to sort results by. The default is `CREATED_AT`.",
+            "schema": {
+              "$ref": "#/components/schemas/PaymentSortField"
             },
             "in": "query",
             "required": false
@@ -60815,6 +61769,9 @@
           },
           {
             "error-code": "PAYMENT_NOT_REFUNDABLE"
+          },
+          {
+            "error-code": "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE"
           },
           {
             "error-code": "REFUND_AMOUNT_INVALID"
@@ -61787,6 +62744,12 @@
         "x-endpoint-errors": [
           {
             "error-code": "INVALID_EMAIL_ADDRESS"
+          },
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "FORBIDDEN"
           }
         ]
       }
@@ -61830,7 +62793,15 @@
               }
             }
           }
-        }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "FORBIDDEN"
+          }
+        ]
       }
     },
     "/v2/team-members/bulk-update": {
@@ -61872,6 +62843,186 @@
               }
             }
           }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "FORBIDDEN"
+          }
+        ]
+      }
+    },
+    "/v2/team-members/jobs": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "ListJobs",
+        "operationId": "ListJobs",
+        "description": "Lists jobs in a seller account. Results are sorted by title in ascending order.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "EMPLOYEES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cursor",
+            "description": "The pagination cursor returned by the previous call to this endpoint. Provide this\ncursor to retrieve the next page of results for your original request. For more information,\nsee [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListJobsResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "CreateJob",
+        "operationId": "CreateJob",
+        "description": "Creates a job in a seller account. A job defines a title and tip eligibility. Note that\ncompensation is defined in a [job assignment]($m/JobAssignment) in a team member's wage setting.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "EMPLOYEES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateJobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateJobResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/team-members/jobs/{job_id}": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "RetrieveJob",
+        "operationId": "RetrieveJob",
+        "description": "Retrieves a specified job.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "EMPLOYEES_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "description": "The ID of the job to retrieve.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveJobResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "UpdateJob",
+        "operationId": "UpdateJob",
+        "description": "Updates the title or tip eligibility of a job. Changes to the title propagate to all\n`JobAssignment`, `Shift`, and `TeamMemberWage` objects that reference the job ID. Changes to\ntip eligibility propagate to all `TeamMemberWage` objects that reference the job ID.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "EMPLOYEES_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "description": "The ID of the job to update.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateJobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateJobResponse"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -61882,7 +63033,7 @@
         ],
         "summary": "SearchTeamMembers",
         "operationId": "SearchTeamMembers",
-        "description": "Returns a paginated list of `TeamMember` objects for a business.\nThe list can be filtered by the following:\n- location IDs\n- `status`",
+        "description": "Returns a paginated list of `TeamMember` objects for a business. \nThe list can be filtered by location IDs, `ACTIVE` or `INACTIVE` status, or whether\nthe team member is the Square account owner.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -62009,6 +63160,12 @@
         "x-endpoint-errors": [
           {
             "error-code": "INVALID_EMAIL_ADDRESS"
+          },
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "FORBIDDEN"
           }
         ]
       }
@@ -62020,7 +63177,7 @@
         ],
         "summary": "RetrieveWageSetting",
         "operationId": "RetrieveWageSetting",
-        "description": "Retrieves a `WageSetting` object for a team member specified\nby `TeamMember.id`.\nLearn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).",
+        "description": "Retrieves a `WageSetting` object for a team member specified\nby `TeamMember.id`. For more information, see\n[Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).\n\nSquare recommends using [RetrieveTeamMember]($e/Team/RetrieveTeamMember) or [SearchTeamMembers]($e/Team/SearchTeamMembers)\nto get this information directly from the `TeamMember.wage_setting` field.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -62059,7 +63216,7 @@
         ],
         "summary": "UpdateWageSetting",
         "operationId": "UpdateWageSetting",
-        "description": "Creates or updates a `WageSetting` object. The object is created if a\n`WageSetting` with the specified `team_member_id` does not exist. Otherwise,\nit fully replaces the `WageSetting` object for the team member.\nThe `WageSetting` is returned on a successful update.\nLearn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).",
+        "description": "Creates or updates a `WageSetting` object. The object is created if a\n`WageSetting` with the specified `team_member_id` doesn't exist. Otherwise,\nit fully replaces the `WageSetting` object for the team member.\nThe `WageSetting` is returned on a successful update. For more information, see\n[Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).\n\nSquare recommends using [CreateTeamMember]($e/Team/CreateTeamMember) or [UpdateTeamMember]($e/Team/UpdateTeamMember)\nto manage the `TeamMember.wage_setting` field directly.",
         "x-release-status": "PUBLIC",
         "security": [
           {
