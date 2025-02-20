@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2025-01-23"
+              "default": "2025-02-20"
             }
           }
         ],
@@ -171,6 +171,8 @@
               "CUSTOMERS_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to customer information. For example, to create and update\ncustomer profiles.",
               "DEVICES_READ": "__HTTP Method__: `GET`\n\nGrants read access to device information. For example, to\ncall the `GetDevice` and `ListDevices` endpoints.",
               "DEVICE_CREDENTIAL_MANAGEMENT": "__HTTP Method__: `POST`, `GET`\n\nGrants read/write access to device credentials information. For example, to\ncall the CreateDeviceCode endpoint.",
+              "DISCOUNT_CODES_READ": "__HTTP Method__: `GET`\n\nGrants read access to Discount Codes API. For example, to call the `RetrieveDiscountCode` and `RetrieveRedemption` endpoints.",
+              "DISCOUNT_CODES_WRITE": "__HTTP Method__: `POST`\n\nGrants write access to Discount Codes API.",
               "DISPUTES_READ": "__HTTP Method__: `GET`\n\nGrants read access to dispute information. For example, to call the RetrieveDispute\nendpoint.",
               "DISPUTES_WRITE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to dispute information. For example, to call the SubmitEvidence\nendpoint.",
               "EMPLOYEES_READ": "__HTTP Method__: `GET`\n\nGrants read access to employee profile information. For example, to call the\nConnect v1 Employees API.",
@@ -14329,7 +14331,7 @@
       "CreateMobileAuthorizationCodeRequest": {
         "type": "object",
         "description": "Defines the body parameters that can be provided in a request to the\n`CreateMobileAuthorizationCode` endpoint.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "location_id": {
             "type": "string",
@@ -14345,7 +14347,7 @@
       "CreateMobileAuthorizationCodeResponse": {
         "type": "object",
         "description": "Defines the fields that are included in the response body of\na request to the `CreateMobileAuthorizationCode` endpoint.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "authorization_code": {
             "type": "string",
@@ -18810,7 +18812,6 @@
           "show_itemized_cart": {
             "type": "boolean",
             "description": "Show the itemization screen prior to taking a payment. This field is only meaningful when the\ncheckout includes an order ID. Defaults to true.",
-            "x-release-status": "BETA",
             "nullable": true
           }
         }
@@ -20168,6 +20169,7 @@
           "PAN_FAILURE",
           "EXPIRATION_FAILURE",
           "CARD_NOT_SUPPORTED",
+          "READER_DECLINED",
           "INVALID_PIN",
           "MISSING_PIN",
           "MISSING_ACCOUNT_TYPE",
@@ -20190,6 +20192,7 @@
           "REFUND_ALREADY_PENDING",
           "PAYMENT_NOT_REFUNDABLE",
           "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE",
+          "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION",
           "REFUND_DECLINED",
           "INSUFFICIENT_PERMISSIONS_FOR_REFUND",
           "INVALID_CARD_DATA",
@@ -20641,6 +20644,11 @@
             "error-category": "PAYMENT_METHOD_ERROR"
           },
           {
+            "name": "READER_DECLINED",
+            "description": "The Square Card Reader declined the payment for an unknown reason.",
+            "error-category": "PAYMENT_METHOD_ERROR"
+          },
+          {
             "name": "INVALID_PIN",
             "description": "The card issuer declined the request because the PIN is invalid.",
             "error-category": "PAYMENT_METHOD_ERROR"
@@ -20748,6 +20756,11 @@
           {
             "name": "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE",
             "description": "The payment is not refundable because it has been disputed.",
+            "error-category": "REFUND_ERROR"
+          },
+          {
+            "name": "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION",
+            "description": "The payment is not refundable because the payment is approved and needs to be completed first before the refund is issued.",
             "error-category": "REFUND_ERROR"
           },
           {
@@ -28037,9 +28050,42 @@
             "type": "integer",
             "description": "The maximum number of results to be returned in a single page.\n\nIt is possible to receive fewer results than the specified limit on a given page.\n\nIf the supplied value is greater than 100, no more than 100 results are returned.\n\nDefault: 100",
             "nullable": true
+          },
+          "updated_at_begin_time": {
+            "type": "string",
+            "description": "Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC 3339\nformat.  The range is determined using the `updated_at` field for each `PaymentRefund`.\n\nDefault: If omitted, the time range starts at `begin_time`.",
+            "nullable": true
+          },
+          "updated_at_end_time": {
+            "type": "string",
+            "description": "Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC 3339\nformat.  The range is determined using the `updated_at` field for each `PaymentRefund`.\n\nDefault: The current time.",
+            "nullable": true
+          },
+          "sort_field": {
+            "$ref": "#/components/schemas/ListPaymentRefundsRequestSortField",
+            "description": "The field used to sort results by. The default is `CREATED_AT`.\nSee [SortField](#type-sortfield) for possible values",
+            "nullable": true
           }
         },
         "example": {}
+      },
+      "ListPaymentRefundsRequestSortField": {
+        "type": "string",
+        "enum": [
+          "CREATED_AT",
+          "UPDATED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "CREATED_AT",
+            "description": ""
+          },
+          {
+            "name": "UPDATED_AT",
+            "description": ""
+          }
+        ],
+        "x-release-status": "PUBLIC"
       },
       "ListPaymentRefundsResponse": {
         "type": "object",
@@ -28172,12 +28218,35 @@
             "nullable": true
           },
           "sort_field": {
-            "$ref": "#/components/schemas/PaymentSortField",
-            "description": "The field used to sort results by. The default is `CREATED_AT`.\nSee [PaymentSortField](#type-paymentsortfield) for possible values",
+            "$ref": "#/components/schemas/ListPaymentsRequestSortField",
+            "description": "The field used to sort results by. The default is `CREATED_AT`.\nSee [SortField](#type-sortfield) for possible values",
             "nullable": true
           }
         },
         "example": {}
+      },
+      "ListPaymentsRequestSortField": {
+        "type": "string",
+        "enum": [
+          "CREATED_AT",
+          "OFFLINE_CREATED_AT",
+          "UPDATED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "CREATED_AT",
+            "description": ""
+          },
+          {
+            "name": "OFFLINE_CREATED_AT",
+            "description": ""
+          },
+          {
+            "name": "UPDATED_AT",
+            "description": ""
+          }
+        ],
+        "x-release-status": "PUBLIC"
       },
       "ListPaymentsResponse": {
         "type": "object",
@@ -35105,29 +35174,6 @@
             "x-release-status": "BETA"
           }
         }
-      },
-      "PaymentSortField": {
-        "type": "string",
-        "enum": [
-          "CREATED_AT",
-          "OFFLINE_CREATED_AT",
-          "UPDATED_AT"
-        ],
-        "x-enum-elements": [
-          {
-            "name": "CREATED_AT",
-            "description": ""
-          },
-          {
-            "name": "OFFLINE_CREATED_AT",
-            "description": ""
-          },
-          {
-            "name": "UPDATED_AT",
-            "description": ""
-          }
-        ],
-        "x-release-status": "PUBLIC"
       },
       "Payout": {
         "type": "object",
@@ -44410,7 +44456,7 @@
           },
           "order_id": {
             "type": "string",
-            "description": "The reference to the Square order ID for the checkout request. Supported only in the US.",
+            "description": "The reference to the Square order ID for the checkout request.",
             "nullable": true
           },
           "payment_options": {
@@ -48606,8 +48652,8 @@
       },
       "Bookings": {
         "name": "Bookings",
-        "summary": "Create and manage bookings for Square sellers.",
-        "description": "\nThe Bookings API allows you to create, retrieve, update, and cancel appointments online. When used with other Square APIs (such as the Locations API, Team API, Catalog API, and Customers API), the Bookings API lets you create online-booking applications for users to book services provided by Square sellers.   \n\nFor more information, see the following guides:\n - [Bookings](https://developer.squareup.com/docs/bookings-api/what-it-is)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)\n"
+        "summary": "Create and manage bookings for Square sellers with the Bookings API.",
+        "description": "\nThe Bookings API allows you to create, retrieve, update, and cancel appointments online. When used with other Square APIs (such as the Locations API, Team API, Catalog API, and Customers API), the Bookings API lets you create online-booking applications for users to book services provided by Square sellers.   \n\n\n## Why Use the Bookings API?\nThe Bookings API simplifies the scheduling process for Square sellers and their customers. By integrating with Square’s broader ecosystem, it offers a robust solution for managing appointments. Key Bookings API benefits include:\n\n\n* Comprehensive calendar control for sellers, with permissions that allow flexibility in creating bookings.\n* Streamlined buyer-level operations with secure and limited access.\n* Compatibility with Square’s Appointments subscription plans, offering additional features and functionality.\n* Custom attributes to personalize the booking experience.\n* Seamless integration with other Square APIs, such as [Customers API](https://developer.squareup.com/docs/customers-api/what-it-does), [Locations API](https://developer.squareup.com/docs/locations-api), [Team API](https://developer.squareup.com/docs/team/overview), and [Catalog API](https://developer.squareup.com/docs/catalog-api/what-it-does).\n\n\nFor more information, see the following guides:\n - [Bookings API Guide](https://developer.squareup.com/docs/bookings-api/what-it-is)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)\n"
       },
       "Cards": {
         "name": "Cards",
@@ -48721,8 +48767,8 @@
       },
       "MobileAuthorization": {
         "name": "Mobile Authorization",
-        "summary": "Authorize Reader SDK applications to take in-person payments.",
-        "description": "\nThe Mobile Authorization API accepts an account credential (an OAuth token or a personal access token) and a\nlocation ID and returns an authorization code that custom mobile applications can use to initialize Square mobile\nsolutions, like Reader SDK, to accept payments using Square hardware.\n\nFor more information, see the following guide:\n - [Mobile Authorization](https://developer.squareup.com/docs/mobile-authz/what-it-does)"
+        "summary": "Authorize Reader SDK applications to take in-person payments.",
+        "description": "\n**Deprecated** - Developers should update their Reader SDK integration to use the \n[Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods. \n\nThe Mobile Authorization API accepts an account credential (an OAuth token or a personal access token) and a\nlocation ID and returns an authorization code that custom mobile applications can use to initialize Square mobile\nsolutions, like Reader SDK, to accept payments using Square hardware.\n\nFor more information, see the following guide:\n - [Mobile Authorization](https://developer.squareup.com/docs/mobile-authz/what-it-does)"
       },
       "OAuth": {
         "name": "OAuth",
@@ -48991,8 +49037,10 @@
         ],
         "summary": "CreateMobileAuthorizationCode",
         "operationId": "CreateMobileAuthorizationCode",
-        "description": "Generates code to authorize a mobile application to connect to a Square card reader.\n\nAuthorization codes are one-time-use codes and expire 60 minutes after being issued.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Bearer ACCESS_TOKEN\n```\n\nReplace `ACCESS_TOKEN` with a\n[valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).",
-        "x-release-status": "PUBLIC",
+        "description": "__Note:__ This endpoint is used by the deprecated Reader SDK. \nDevelopers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods. \n\nGenerates code to authorize a mobile application to connect to a Square card reader.\n\nAuthorization codes are one-time-use codes and expire 60 minutes after being issued.\n\nThe `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Bearer ACCESS_TOKEN\n```\n\nReplace `ACCESS_TOKEN` with a\n[valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).",
+        "x-release-status": "DEPRECATED",
+        "deprecated": true,
+        "x-deprecation": {},
         "security": [
           {
             "oauth2": [
@@ -60937,7 +60985,7 @@
             "name": "sort_field",
             "description": "The field used to sort results by. The default is `CREATED_AT`.",
             "schema": {
-              "$ref": "#/components/schemas/PaymentSortField"
+              "$ref": "#/components/schemas/ListPaymentsRequestSortField"
             },
             "in": "query",
             "required": false
@@ -61671,6 +61719,33 @@
             },
             "in": "query",
             "required": false
+          },
+          {
+            "name": "updated_at_begin_time",
+            "description": "Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC 3339\nformat.  The range is determined using the `updated_at` field for each `PaymentRefund`.\n\nDefault: If omitted, the time range starts at `begin_time`.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "updated_at_end_time",
+            "description": "Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC 3339\nformat.  The range is determined using the `updated_at` field for each `PaymentRefund`.\n\nDefault: The current time.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "sort_field",
+            "description": "The field used to sort results by. The default is `CREATED_AT`.",
+            "schema": {
+              "$ref": "#/components/schemas/ListPaymentRefundsRequestSortField"
+            },
+            "in": "query",
+            "required": false
           }
         ],
         "responses": {
@@ -61761,6 +61836,9 @@
           },
           {
             "error-code": "REFUND_DECLINED"
+          },
+          {
+            "error-code": "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION"
           },
           {
             "error-code": "UNSUPPORTED_CARD_BRAND"
@@ -64643,7 +64721,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2025-01-23\"\u003e"
+      "type": "literal\u003c\"2025-02-20\"\u003e"
     }
   ]
 }
