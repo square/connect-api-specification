@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2025-02-20"
+              "default": "2025-03-19"
             }
           }
         ],
@@ -6349,7 +6349,7 @@
           },
           "billing_address": {
             "$ref": "#/components/schemas/Address",
-            "description": "The billing address for this card.",
+            "description": "The billing address for this card. `US` postal codes can be provided as a 5-digit zip code\nor 9-digit ZIP+4 (example: `12345-6789`). For a full list of field meanings by country, see\n[Working with Addresses](https://developer.squareup.com/docs/build-basics/common-data-types/working-with-addresses).",
             "nullable": true
           },
           "fingerprint": {
@@ -6360,7 +6360,7 @@
           },
           "customer_id": {
             "type": "string",
-            "description": "**Required** The ID of a customer created using the Customers API to be associated with the card.",
+            "description": "**Required** The ID of a [customer](entity:Customer) to be associated with the card.",
             "nullable": true
           },
           "merchant_id": {
@@ -6386,7 +6386,7 @@
           },
           "prepaid_type": {
             "$ref": "#/components/schemas/CardPrepaidType",
-            "description": "Indicates whether the Card is prepaid or not.\nThe Card object includes this field only in response to Payments API calls.\nSee [CardPrepaidType](#type-cardprepaidtype) for possible values",
+            "description": "Indicates whether the card is prepaid or not.\nSee [CardPrepaidType](#type-cardprepaidtype) for possible values",
             "readOnly": true
           },
           "bin": {
@@ -6404,6 +6404,24 @@
             "$ref": "#/components/schemas/CardCoBrand",
             "description": "The card's co-brand if available. For example, an Afterpay virtual card would have a\nco-brand of AFTERPAY.\nSee [CardCoBrand](#type-cardcobrand) for possible values",
             "readOnly": true
+          },
+          "issuer_alert": {
+            "$ref": "#/components/schemas/CardIssuerAlert",
+            "description": "An alert from the issuing bank about the card status. Alerts can indicate whether\nfuture charges to the card are likely to fail. For more information, see\n[Manage Card on File Declines](https://developer.squareup.com/docs/cards-api/manage-card-on-file-declines).\n\nThis field is present only if there's an active issuer alert.\nSee [IssuerAlert](#type-issueralert) for possible values",
+            "readOnly": true,
+            "x-release-status": "BETA"
+          },
+          "issuer_alert_at": {
+            "type": "string",
+            "description": "The timestamp of when the current issuer alert was received and processed, in\nRFC 3339 format.\n\nThis field is present only if there's an active issuer alert.",
+            "readOnly": true,
+            "x-release-status": "BETA"
+          },
+          "hsa_fsa": {
+            "type": "boolean",
+            "description": "Indicates whether the card is linked to a Health Savings Account (HSA) or Flexible\nSpending Account (FSA), based on the card BIN.",
+            "readOnly": true,
+            "x-release-status": "BETA"
           }
         }
       },
@@ -6509,6 +6527,20 @@
         ],
         "description": "Indicates the brand for a co-branded card.",
         "x-release-status": "PUBLIC"
+      },
+      "CardIssuerAlert": {
+        "type": "string",
+        "enum": [
+          "ISSUER_ALERT_CARD_CLOSED"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "ISSUER_ALERT_CARD_CLOSED",
+            "description": "The underlying account of the card was closed, which is a strong signal that future\ncharges to the card are likely to fail."
+          }
+        ],
+        "description": "Indicates the type of issuer alert for a [card on file](entity:Card).",
+        "x-release-status": "BETA"
       },
       "CardPaymentDetails": {
         "type": "object",
@@ -12618,6 +12650,7 @@
             "exp_month": 11,
             "exp_year": 2022,
             "fingerprint": "ex-p-cs80EK9Flz7LsCMv-szbptQ_ssAGrhemzSTsPFgt9nzyE6t7okiLIQc-qw_quqKX4Q",
+            "hsa_fsa": false,
             "id": "ccof:uIbfJXhXETSP197M3GB",
             "last_4": "1111",
             "merchant_id": "6SSW7HV8K2ST5",
@@ -19256,6 +19289,7 @@
             "exp_month": 11,
             "exp_year": 2022,
             "fingerprint": "ex-p-cs80EK9Flz7LsCMv-szbptQ_ssAGrhemzSTsPFgt9nzyE6t7okiLIQc-qw_quqKX4Q",
+            "hsa_fsa": false,
             "id": "ccof:uIbfJXhXETSP197M3GB",
             "last_4": "1111",
             "merchant_id": "6SSW7HV8K2ST5",
@@ -20200,6 +20234,7 @@
           "SOURCE_EXPIRED",
           "UNSUPPORTED_LOYALTY_REWARD_TIER",
           "LOCATION_MISMATCH",
+          "ORDER_UNPAID_NOT_RETURNABLE",
           "IDEMPOTENCY_KEY_REUSED",
           "UNEXPECTED_VALUE",
           "SANDBOX_NOT_SUPPORTED",
@@ -20796,6 +20831,11 @@
           {
             "name": "LOCATION_MISMATCH",
             "description": "Generic error - the given location does not matching what is expected.",
+            "error-category": "INVALID_REQUEST_ERROR"
+          },
+          {
+            "name": "ORDER_UNPAID_NOT_RETURNABLE",
+            "description": "The order attempting to be returned is not yet paid and cannot be returned.",
             "error-category": "INVALID_REQUEST_ERROR"
           },
           {
@@ -24041,6 +24081,11 @@
             },
             "description": "Metadata about the attachments on the invoice. Invoice attachments are managed using the\n[CreateInvoiceAttachment](api-endpoint:Invoices-CreateInvoiceAttachment) and [DeleteInvoiceAttachment](api-endpoint:Invoices-DeleteInvoiceAttachment) endpoints.",
             "readOnly": true
+          },
+          "creator_team_member_id": {
+            "type": "string",
+            "description": "The ID of the [team member](entity:TeamMember) who created the invoice.\nThis field is present only on invoices created in the Square Dashboard or Square Invoices app by a logged-in team member.",
+            "readOnly": true
           }
         }
       },
@@ -25293,6 +25338,7 @@
               "exp_month": 11,
               "exp_year": 2022,
               "fingerprint": "ex-p-cs80EK9Flz7LsCMv-szbptQ_ssAGrhemzSTsPFgt9nzyE6t7okiLIQc-qw_quqKX4Q",
+              "hsa_fsa": false,
               "id": "ccof:uIbfJXhXETSP197M3GB",
               "last_4": "1111",
               "merchant_id": "6SSW7HV8K2ST5",
@@ -29833,6 +29879,7 @@
           "reason": {
             "type": "string",
             "description": "The reason for the adjustment of points.",
+            "maxLength": 3500,
             "nullable": true
           }
         }
@@ -31379,6 +31426,7 @@
       },
       "ObtainTokenRequest": {
         "type": "object",
+        "description": "Represents an [ObtainToken](api-endpoint:OAuth-ObtainToken) request.",
         "x-release-status": "PUBLIC",
         "required": [
           "client_id",
@@ -31387,44 +31435,44 @@
         "properties": {
           "client_id": {
             "type": "string",
-            "description": "The Square-issued ID of your application, which is available on the **OAuth** page in the\n[Developer Dashboard](https://developer.squareup.com/apps).",
+            "description": "The Square-issued ID of your application, which is available as the **Application ID**\non the **OAuth** page in the [Developer Console](https://developer.squareup.com/apps).\n\nRequired for the code flow and PKCE flow for any grant type.",
             "maxLength": 191
           },
           "client_secret": {
             "type": "string",
-            "description": "The Square-issued application secret for your application, which is available on the **OAuth** page\nin the [Developer Dashboard](https://developer.squareup.com/apps). This parameter is only required when \nyou're not using the [OAuth PKCE (Proof Key for Code Exchange) flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow).\nThe PKCE flow requires a `code_verifier` instead of a `client_secret` when `grant_type` is set to `authorization_code`. \nIf `grant_type` is set to `refresh_token` and the `refresh_token` is obtained uaing PKCE, the PKCE flow only requires `client_id`, \n`grant_type`, and `refresh_token`.",
+            "description": "The secret key for your application, which is available as the **Application secret**\non the **OAuth** page in the [Developer Console](https://developer.squareup.com/apps).\n\nRequired for the code flow for any grant type. Don't confuse your client secret with your\npersonal access token.",
             "minLength": 2,
             "maxLength": 1024,
             "nullable": true
           },
           "code": {
             "type": "string",
-            "description": "The authorization code to exchange.\nThis code is required if `grant_type` is set to `authorization_code` to indicate that\nthe application wants to exchange an authorization code for an OAuth access token.",
+            "description": "The authorization code to exchange for an OAuth access token. This is the `code`\nvalue that Square sent to your redirect URL in the authorization response.\n\nRequired for the code flow and PKCE flow if `grant_type` is `authorization_code`.",
             "maxLength": 191,
             "nullable": true
           },
           "redirect_uri": {
             "type": "string",
-            "description": "The redirect URL assigned on the **OAuth** page for your application in the [Developer Dashboard](https://developer.squareup.com/apps).",
+            "description": "The redirect URL for your application, which you registered as the **Redirect URL**\non the **OAuth** page in the [Developer Console](https://developer.squareup.com/apps).\n\nRequired for the code flow and PKCE flow if `grant_type` is `authorization_code` and\nyou provided the `redirect_uri` parameter in your authorization URL.",
             "maxLength": 2048,
             "nullable": true
           },
           "grant_type": {
             "type": "string",
-            "description": "Specifies the method to request an OAuth access token.\nValid values are `authorization_code`, `refresh_token`, and `migration_token`.",
+            "description": "The method used to obtain an OAuth access token. The request must include the\ncredential that corresponds to the specified grant type. Valid values are:\n- `authorization_code` - Requires the `code` field.\n- `refresh_token` - Requires the `refresh_token` field.\n- `migration_token` - LEGACY for access tokens obtained using a Square API version prior\nto 2019-03-13. Requires the `migration_token` field.",
             "minLength": 10,
             "maxLength": 20
           },
           "refresh_token": {
             "type": "string",
-            "description": "A valid refresh token for generating a new OAuth access token.\n\nA valid refresh token is required if `grant_type` is set to `refresh_token`\nto indicate that the application wants a replacement for an expired OAuth access token.",
+            "description": "A valid refresh token used to generate a new OAuth access token. This is a\nrefresh token that was returned in a previous `ObtainToken` response.\n\nRequired for the code flow and PKCE flow if `grant_type` is `refresh_token`.",
             "minLength": 2,
             "maxLength": 1024,
             "nullable": true
           },
           "migration_token": {
             "type": "string",
-            "description": "A legacy OAuth access token obtained using a Connect API version prior\nto 2019-03-13. This parameter is required if `grant_type` is set to\n`migration_token` to indicate that the application wants to get a replacement\nOAuth access token. The response also returns a refresh token.\nFor more information, see [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).",
+            "description": "__LEGACY__ A valid access token (obtained using a Square API version prior to 2019-03-13)\nused to generate a new OAuth access token.\n\nRequired if `grant_type` is `migration_token`. For more information, see\n[Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).",
             "minLength": 2,
             "maxLength": 1024,
             "nullable": true
@@ -31434,24 +31482,24 @@
             "items": {
               "type": "string"
             },
-            "description": "A JSON list of strings representing the permissions that the application is requesting.\nFor example, \"`[\"MERCHANT_PROFILE_READ\",\"PAYMENTS_READ\",\"BANK_ACCOUNTS_READ\"]`\".\n\nThe access token returned in the response is granted the permissions\nthat comprise the intersection between the requested list of permissions and those\nthat belong to the provided refresh token.",
+            "description": "The list of permissions that are explicitly requested for the access token.\nFor example, [\"MERCHANT_PROFILE_READ\",\"PAYMENTS_READ\",\"BANK_ACCOUNTS_READ\"].\n\nThe returned access token is limited to the permissions that are the intersection\nof these requested permissions and those authorized by the provided `refresh_token`.\n\nOptional for the code flow and PKCE flow if `grant_type` is `refresh_token`.",
             "nullable": true
           },
           "short_lived": {
             "type": "boolean",
-            "description": "A Boolean indicating a request for a short-lived access token.\n\nThe short-lived access token returned in the response expires in 24 hours.",
+            "description": "Indicates whether the returned access token should expire in 24 hours.\n\nOptional for the code flow and PKCE flow for any grant type. The default value is `false`.",
             "nullable": true
           },
           "code_verifier": {
             "type": "string",
-            "description": "Must be provided when using the PKCE OAuth flow if `grant_type` is set to `authorization_code`. The `code_verifier` is used to verify against the\n`code_challenge` associated with the `authorization_code`.",
+            "description": "The secret your application generated for the authorization request used to\nobtain the authorization code. This is the source of the `code_challenge` hash you\nprovided in your authorization URL.\n\nRequired for the PKCE flow if `grant_type` is `authorization_code`.",
             "nullable": true
           }
         },
         "example": {
-          "client_id": "APPLICATION_ID",
-          "client_secret": "APPLICATION_SECRET",
-          "code": "CODE_FROM_AUTHORIZE",
+          "client_id": "sq0idp-uaPHILoPzWZk3tlJqlML0g",
+          "client_secret": "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
+          "code": "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
           "grant_type": "authorization_code"
         },
         "x-sq-sdk-sample-code": {
@@ -31465,54 +31513,55 @@
       },
       "ObtainTokenResponse": {
         "type": "object",
+        "description": "Represents an [ObtainToken](api-endpoint:OAuth-ObtainToken) response.",
         "x-release-status": "PUBLIC",
         "properties": {
           "access_token": {
             "type": "string",
-            "description": "A valid OAuth access token. \nProvide the access token in a header with every request to Connect API\nendpoints. For more information, see [OAuth API: Walkthrough](https://developer.squareup.com/docs/oauth-api/walkthrough).",
+            "description": "An OAuth access token used to authorize Square API requests on behalf of the seller.\nInclude this token as a bearer token in the `Authorization` header of your API requests.\n\nOAuth access tokens expire in 30 days (except `short_lived` access tokens). You should call\n`ObtainToken` and provide the returned `refresh_token` to get a new access token well before\nthe current one expires. For more information, see [OAuth API: Walkthrough](https://developer.squareup.com/docs/oauth-api/walkthrough).",
             "minLength": 2,
             "maxLength": 1024
           },
           "token_type": {
             "type": "string",
-            "description": "This value is always _bearer_.",
+            "description": "The type of access token. This value is always `bearer`.",
             "minLength": 2,
             "maxLength": 10
           },
           "expires_at": {
             "type": "string",
-            "description": "The date when the `access_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format.",
+            "description": "The timestamp of when the `access_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format.",
             "minLength": 20,
             "maxLength": 48
           },
           "merchant_id": {
             "type": "string",
-            "description": "The ID of the authorizing merchant's business.",
+            "description": "The ID of the authorizing [merchant](entity:Merchant) (seller), which represents a business.",
             "minLength": 8,
             "maxLength": 191
           },
           "subscription_id": {
             "type": "string",
-            "description": "__LEGACY FIELD__. The ID of a subscription plan the merchant signed up\nfor. The ID is only present if the merchant signed up for a subscription plan during authorization."
+            "description": "__LEGACY__ The ID of merchant's subscription.\nThe ID is only present if the merchant signed up for a subscription plan during authorization."
           },
           "plan_id": {
             "type": "string",
-            "description": "__LEGACY FIELD__. The ID of the subscription plan the merchant signed\nup for. The ID is only present if the merchant signed up for a subscription plan during\nauthorization."
+            "description": "__LEGACY__ The ID of the subscription plan the merchant signed\nup for. The ID is only present if the merchant signed up for a subscription plan during\nauthorization."
           },
           "id_token": {
             "type": "string",
-            "description": "The OpenID token belonging to this person. This token is only present if the\nOPENID scope is included in the authorization request.",
+            "description": "The OpenID token that belongs to this person. This token is only present if the\n`OPENID` scope is included in the authorization request.\n\nDeprecated at version 2021-09-15. Square doesn't support OpenID or other single sign-on (SSO)\nprotocols on top of OAuth.",
             "x-release-status": "DEPRECATED"
           },
           "refresh_token": {
             "type": "string",
-            "description": "A refresh token. \nFor more information, see [Refresh, Revoke, and Limit the Scope of OAuth Tokens](https://developer.squareup.com/docs/oauth-api/refresh-revoke-limit-scope).",
+            "description": "A refresh token that can be used in an `ObtainToken` request to generate a new access token.\n\nWith the code flow:\n- For the `authorization_code` grant type, the refresh token is multi-use and never expires.\n- For the `refresh_token` grant type, the response returns the same refresh token.\n\nWith the PKCE flow:\n- For the `authorization_code` grant type, the refresh token is single-use and expires in 90 days.\n- For the `refresh_token` grant type, the refresh token is a new single-use refresh token that expires in 90 days.\n\nFor more information, see [Refresh, Revoke, and Limit the Scope of OAuth Tokens](https://developer.squareup.com/docs/oauth-api/refresh-revoke-limit-scope).",
             "minLength": 2,
             "maxLength": 1024
           },
           "short_lived": {
             "type": "boolean",
-            "description": "A Boolean indicating that the access token is a short-lived access token.\nThe short-lived access token returned in the response expires in 24 hours."
+            "description": "Indicates whether the access_token is short lived. If `true`, the access token expires\nin 24 hours. If `false`, the access token expires in 30 days."
           },
           "errors": {
             "type": "array",
@@ -31523,16 +31572,17 @@
           },
           "refresh_token_expires_at": {
             "type": "string",
-            "description": "The date when the `refresh_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format.",
+            "description": "The timestamp of when the `refresh_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm)\nformat.\n\nThis field is only returned for the PKCE flow.",
             "minLength": 20,
             "maxLength": 48
           }
         },
         "example": {
-          "access_token": "ACCESS_TOKEN",
-          "expires_at": "2006-01-02T15:04:05Z",
-          "merchant_id": "MERCHANT_ID",
-          "refresh_token": "REFRESH_TOKEN",
+          "access_token": "EAAl3ikZIe18J-2-cHlV2bL4-EaZHGoJUhtEBT7QA6-7AgwIHw8Xe1IoUvGsNxA",
+          "expires_at": "2025-04-03T18:31:06Z",
+          "merchant_id": "MLQW2MYBY81PZ",
+          "refresh_token": "EQAAl0OcByu3IYJYScGGg-8E5YNf0r0b6jCTCMy5nOcRZ4ok0wbWAL8vY3tZWNcc",
+          "short_lived": false,
           "token_type": "bearer"
         },
         "x-sq-sdk-sample-code": {
@@ -36581,6 +36631,7 @@
             "exp_month": 11,
             "exp_year": 2022,
             "fingerprint": "ex-p-cs80EK9Flz7LsCMv-szbptQ_ssAGrhemzSTsPFgt9nzyE6t7okiLIQc-qw_quqKX4Q",
+            "hsa_fsa": false,
             "id": "ccof:uIbfJXhXETSP197M3GB",
             "last_4": "1111",
             "merchant_id": "6SSW7HV8K2ST5",
@@ -40262,6 +40313,7 @@
           }
         },
         "example": {
+          "limit": 100,
           "query": {
             "filter": {
               "customer_ids": [
@@ -40271,7 +40323,6 @@
                 "ES0RJRZYEC39A"
               ]
             },
-            "limit": 100,
             "sort": {
               "field": "INVOICE_SORT_DATE",
               "order": "DESC"
@@ -46771,36 +46822,36 @@
               "location_ids": [
                 "YSGH2WBKG94QZ",
                 "GA2Y9HSJ8KRYT"
-              ],
-              "wage_setting": {
-                "is_overtime_exempt": true,
-                "job_assignments": [
-                  {
-                    "annual_rate": {
-                      "amount": 3000000,
-                      "currency": "USD"
-                    },
-                    "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
-                    "pay_type": "SALARY",
-                    "weekly_hours": 40
-                  },
-                  {
-                    "hourly_rate": {
-                      "amount": 1200,
-                      "currency": "USD"
-                    },
-                    "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
-                    "pay_type": "HOURLY"
-                  }
-                ]
-              }
+              ]
             },
             "email_address": "joe_doe@gmail.com",
             "family_name": "Doe",
             "given_name": "Joe",
             "phone_number": "+14159283333",
             "reference_id": "reference_id_1",
-            "status": "ACTIVE"
+            "status": "ACTIVE",
+            "wage_setting": {
+              "is_overtime_exempt": true,
+              "job_assignments": [
+                {
+                  "annual_rate": {
+                    "amount": 3000000,
+                    "currency": "USD"
+                  },
+                  "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+                  "pay_type": "SALARY",
+                  "weekly_hours": 40
+                },
+                {
+                  "hourly_rate": {
+                    "amount": 1200,
+                    "currency": "USD"
+                  },
+                  "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+                  "pay_type": "HOURLY"
+                }
+              ]
+            }
           }
         }
       },
@@ -48805,11 +48856,6 @@
         "summary": "Deprecated - Use the Orders and Payments APIs instead.",
         "description": "\nPrior to 2019/08/15, the Reporting API was the way to review multi-party payments taken with the Transactions\nAPI. The Payments API now includes an \"application fee\" parameter you can use to replace this functionality."
       },
-      "Settlements": {
-        "name": "Settlements",
-        "summary": "Get a list of deposits and withdrawals from a seller's bank accounts.",
-        "description": "\n__The V1 Settlements API has been deprecated__. The Settlements API allows you to see a complete list of settlements made to a seller's bank account,\nwith a list of settlement entries that describe the payments associated with each settlement. It can be paired with the\nBank Accounts API to add detail about which bank account each settlement was made to.\n\nFor information about migrating your code to the Payouts API, see [Migrate from the Square Settlements API\n](https://developer.squareup.com/docs/migrate-from-v1/guides/v1-settlements)"
-      },
       "Sites": {
         "name": "Sites",
         "summary": "Get details about Square Online sites that belong to Square sellers.",
@@ -48828,7 +48874,7 @@
       "Team": {
         "name": "Team",
         "summary": "Manage a roster of team members and pull employee data into accounting and payroll systems.",
-        "description": "\nThe Team API allows applications to manage team members and job definitions, which can be useful\nin payroll and accounting contexts.\n\nThe Team API integrates closely with the Labor API for timecard management.\n\nFor more information, see the following guide:\n - [Team](https://developer.squareup.com/docs/team/overview)\n - [Square Webhooks](https://developer.squareup.com/docs/webhooks-overview)\n"
+        "description": "\nThe Team API allows applications to manage team members and job definitions for Square sellers. \nThis includes creating and managing team member profiles, wage settings, and job data. The Team API \nsupports synchronization of team member data with accounting and payroll systems, which is useful \nfor applications that handle payroll, scheduling, and other team member-related activities. \nNote that some operations, such as setting permissions and passcodes, still need to be done directly \nthrough the Square Dashboard.\n\nThe Team API integrates closely with the Labor API for timecard management.\n\nFor more information, see the following guide:\n - [Team](https://developer.squareup.com/docs/team/overview)\n - [Square Webhooks](https://developer.squareup.com/docs/webhooks-overview)\n"
       },
       "Terminal": {
         "name": "Terminal",
@@ -49018,10 +49064,10 @@
         "V1ListBankAccounts": "BankAccounts",
         "V1ListPayments": "Payments",
         "V1ListRefunds": "Refunds",
-        "V1ListSettlements": "Settlements",
+        "V1ListSettlements": "Payouts",
         "V1RetrieveBankAccount": "BankAccounts",
         "V1RetrievePayment": "Payments",
-        "V1RetrieveSettlement": "Settlements"
+        "V1RetrieveSettlement": "Payouts"
       },
       "V1Webhooks": {
         "V1ListWebhooks": "V1Webhooks",
@@ -49121,7 +49167,7 @@
         ],
         "summary": "ObtainToken",
         "operationId": "ObtainToken",
-        "description": "Returns an OAuth access token and a refresh token unless the \n`short_lived` parameter is set to `true`, in which case the endpoint \nreturns only an access token.\n\nThe `grant_type` parameter specifies the type of OAuth request. If \n`grant_type` is `authorization_code`, you must include the authorization \ncode you received when a seller granted you authorization. If `grant_type` \nis `refresh_token`, you must provide a valid refresh token. If you're using \nan old version of the Square APIs (prior to March 13, 2019), `grant_type` \ncan be `migration_token` and you must provide a valid migration token.\n\nYou can use the `scopes` parameter to limit the set of permissions granted \nto the access token and refresh token. You can use the `short_lived` parameter \nto create an access token that expires in 24 hours.\n\n__Note:__ OAuth tokens should be encrypted and stored on a secure server. \nApplication clients should never interact directly with OAuth tokens.",
+        "description": "Returns an OAuth access token and refresh token using the `authorization_code`\nor `refresh_token` grant type.\n\nWhen `grant_type` is `authorization_code`:\n- With the [code flow](https://developer.squareup.com/docs/oauth-api/overview#code-flow),\nprovide `code`, `client_id`, and `client_secret`.\n- With the [PKCE flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow),\nprovide `code`, `client_id`, and `code_verifier`. \n\nWhen `grant_type` is `refresh_token`:\n- With the code flow, provide `refresh_token`, `client_id`, and `client_secret`.\nThe response returns the same refresh token provided in the request.\n- With the PKCE flow, provide `refresh_token` and `client_id`. The response returns\na new refresh token.\n\nYou can use the `scopes` parameter to limit the set of permissions authorized by the\naccess token. You can use the `short_lived` parameter to create an access token that\nexpires in 24 hours.\n\n__Important:__ OAuth tokens should be encrypted and stored on a secure server.\nApplication clients should never interact directly with OAuth tokens.",
         "x-release-status": "PUBLIC",
         "security": [],
         "parameters": [],
@@ -50754,9 +50800,7 @@
         "x-release-status": "PUBLIC",
         "security": [
           {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
+            "oauth2": []
           }
         ],
         "parameters": [
@@ -50830,9 +50874,7 @@
         "x-release-status": "PUBLIC",
         "security": [
           {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
+            "oauth2": []
           }
         ],
         "parameters": [],
@@ -50892,9 +50934,7 @@
         "x-release-status": "PUBLIC",
         "security": [
           {
-            "oauth2": [
-              "PAYMENTS_READ"
-            ]
+            "oauth2": []
           }
         ],
         "parameters": [
@@ -50938,9 +50978,7 @@
         "x-release-status": "PUBLIC",
         "security": [
           {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
+            "oauth2": []
           }
         ],
         "parameters": [
@@ -55879,7 +55917,7 @@
         ],
         "summary": "CreateInvoiceAttachment",
         "operationId": "CreateInvoiceAttachment",
-        "description": "Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file uploads\nwith a JSON `request` part and a `file` part. The `file` part must be a `readable stream` that contains a file\nin a supported format: GIF, JPEG, PNG, TIFF, BMP, or PDF.\n\nInvoices can have up to 10 attachments with a total file size of 25 MB. Attachments can be added only to invoices\nin the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.",
+        "description": "Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file uploads\nwith a JSON `request` part and a `file` part. The `file` part must be a `readable stream` that contains a file\nin a supported format: GIF, JPEG, PNG, TIFF, BMP, or PDF.\n\nInvoices can have up to 10 attachments with a total file size of 25 MB. Attachments can be added only to invoices\nin the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.\n\n__NOTE:__ When testing in the Sandbox environment, the total file size is limited to 1 KB.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -64721,7 +64759,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2025-02-20\"\u003e"
+      "type": "literal\u003c\"2025-03-19\"\u003e"
     }
   ]
 }
