@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2025-09-24"
+              "default": "2025-10-16"
             }
           }
         ],
@@ -4993,6 +4993,104 @@
           "errors": []
         }
       },
+      "BulkRetrieveChannelsRequest": {
+        "type": "object",
+        "description": "Defines the fields that are included in the request body for the\n[BulkRetrieveChannels](api-endpoint:Channels-BulkRetrieveChannels) endpoint.",
+        "x-release-status": "BETA",
+        "required": [
+          "channel_ids"
+        ],
+        "properties": {
+          "channel_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "example": {
+          "channel_ids": [
+            "CH_9C03D0B59",
+            "CH_6X139B5MN",
+            "NOT_EXISTING"
+          ]
+        }
+      },
+      "BulkRetrieveChannelsRequestConstants": {
+        "type": "string",
+        "enum": [
+          "MAX_BATCH_SIZE"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "MAX_BATCH_SIZE",
+            "description": ""
+          }
+        ],
+        "x-release-status": "BETA"
+      },
+      "BulkRetrieveChannelsResponse": {
+        "type": "object",
+        "description": "Defines the fields that are included in the request body for the\n[BulkRetrieveChannels](api-endpoint:Channels-BulkRetrieveChannels) endpoint.",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information about errors encountered during the request."
+          },
+          "responses": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/RetrieveChannelResponse"
+            },
+            "description": "A map of channel IDs to channel responses which tell whether\nretrieval for a specific channel is success or not.\nChannel response of a success retrieval would contain channel info\nwhereas channel response of a failed retrieval would have error info."
+          }
+        },
+        "example": {
+          "responses": {
+            "CH_6X139B5MN": {
+              "channel": {
+                "created_at": "2022-10-25T16:27:00Z",
+                "id": "CH_6X139B5MN",
+                "merchant_id": "ML64FACEA",
+                "name": "Contoso Fulfillment Application",
+                "reference": {
+                  "id": "OA_9C03D0444",
+                  "type": "OAUTH_APPLICATION"
+                },
+                "status": "ACTIVE",
+                "updated_at": "2022-10-25T16:48:00Z",
+                "version": 1
+              }
+            },
+            "CH_9C03D0B59": {
+              "channel": {
+                "created_at": "2022-10-25T16:27:00Z",
+                "id": "CH_9C03D0B59",
+                "merchant_id": "ML64FACEA",
+                "name": "State Street Store",
+                "reference": {
+                  "id": "OA_9C03D0B59",
+                  "type": "LOCATION"
+                },
+                "status": "ACTIVE",
+                "updated_at": "2022-10-25T16:48:00Z",
+                "version": 1
+              }
+            },
+            "NOT_EXISTING": {
+              "errors": [
+                {
+                  "code": "NOT_FOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
       "BulkRetrieveCustomersRequest": {
         "type": "object",
         "description": "Defines the body parameters that can be included in requests to the\n[BulkRetrieveCustomers](api-endpoint:Customers-BulkRetrieveCustomers) endpoint.",
@@ -7466,6 +7564,85 @@
             "reason": "reason",
             "status": "CANCELED",
             "updated_at": "2020-10-21T22:47:30.096Z"
+          }
+        }
+      },
+      "CancelTransferOrderRequest": {
+        "type": "object",
+        "description": "Request to cancel a transfer order, marking any unreceived quantities as canceled",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique string that identifies this UpdateTransferOrder request. Keys can be\nany valid string but must be unique for every UpdateTransferOrder request.",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version for optimistic concurrency",
+            "format": "int64"
+          }
+        },
+        "example": {
+          "idempotency_key": "65cc0586-3e82-4d08-b524-3885cffd52",
+          "transfer_order_id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+          "version": 1753117449752
+        }
+      },
+      "CancelTransferOrderResponse": {
+        "type": "object",
+        "description": "Response for canceling a transfer order",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The updated transfer order with status changed to CANCELED"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "transfer_order": {
+            "completed_at": "2025-01-15T10:45:00Z",
+            "created_at": "2025-01-15T10:30:00Z",
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+            "expected_at": "2025-11-09T05:00:00Z",
+            "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_canceled": "5",
+                "quantity_damaged": "0",
+                "quantity_ordered": "5",
+                "quantity_pending": "0",
+                "quantity_received": "0",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                "quantity_canceled": "3",
+                "quantity_damaged": "0",
+                "quantity_ordered": "3",
+                "quantity_pending": "0",
+                "quantity_received": "0",
+                "uid": "2"
+              }
+            ],
+            "notes": "Example transfer order for inventory redistribution between locations",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+            "status": "CANCELED",
+            "tracking_number": "TRACK123456789",
+            "updated_at": "2025-01-15T10:45:00Z",
+            "version": 1753117461842
           }
         }
       },
@@ -11821,6 +11998,70 @@
           }
         ],
         "description": "Supported timings when a pending change, as an action, takes place to a subscription.",
+        "x-release-status": "BETA"
+      },
+      "Channel": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The channel's unique ID.",
+            "readOnly": true
+          },
+          "merchant_id": {
+            "type": "string",
+            "description": "The unique ID of the merchant this channel belongs to.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the channel.",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "The version number which is incremented each time an update is made to the channel.",
+            "readOnly": true
+          },
+          "reference": {
+            "$ref": "#/components/schemas/Reference",
+            "description": "Represents an entity the channel is associated with.",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ChannelStatus",
+            "description": "Status of the channel.\nSee [Status](#type-status) for possible values",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp for when the channel was created, in RFC 3339 format (for example, \"2016-09-04T23:59:33.123Z\").\nFor more information, see [Working with Dates](https://developer.squareup.com/docs/build-basics/working-with-dates).",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp for when the channel was last updated, in RFC 3339 format (for example, \"2016-09-04T23:59:33.123Z\").\nFor more information, see [Working with Dates](https://developer.squareup.com/docs/build-basics/working-with-dates).",
+            "readOnly": true
+          }
+        }
+      },
+      "ChannelStatus": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "INACTIVE"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "ACTIVE",
+            "description": ""
+          },
+          {
+            "name": "INACTIVE",
+            "description": ""
+          }
+        ],
         "x-release-status": "BETA"
       },
       "ChargeRequestAdditionalRecipient": {
@@ -17710,6 +17951,178 @@
           }
         }
       },
+      "CreateTransferOrderData": {
+        "type": "object",
+        "description": "Data for creating a new transfer order to move [CatalogItemVariation](entity:CatalogItemVariation)s\nbetween [Location](entity:Location)s. Used with the [CreateTransferOrder](api-endpoint:TransferOrders-CreateTransferOrder)\nendpoint.",
+        "x-release-status": "BETA",
+        "required": [
+          "source_location_id",
+          "destination_location_id"
+        ],
+        "properties": {
+          "source_location_id": {
+            "type": "string",
+            "description": "The source [Location](entity:Location) that will send the items. Must be an active location\nin your Square account with sufficient inventory of the requested items.",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "destination_location_id": {
+            "type": "string",
+            "description": "The destination [Location](entity:Location) that will receive the items. Must be an active location\nin your Square account",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "expected_at": {
+            "type": "string",
+            "description": "Expected transfer date in RFC 3339 format (e.g. \"2023-10-01T12:00:00Z\").",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional notes about the transfer",
+            "maxLength": 4096,
+            "nullable": true
+          },
+          "tracking_number": {
+            "type": "string",
+            "description": "Optional shipment tracking number",
+            "maxLength": 64,
+            "nullable": true
+          },
+          "created_by_team_member_id": {
+            "type": "string",
+            "description": "ID of the [TeamMember](entity:TeamMember) creating this transfer order. Used for tracking\nand auditing purposes.",
+            "maxLength": 64,
+            "nullable": true
+          },
+          "line_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateTransferOrderLineData"
+            },
+            "description": "List of [CatalogItemVariation](entity:CatalogItemVariation)s to transfer, including quantities",
+            "nullable": true
+          }
+        }
+      },
+      "CreateTransferOrderLineData": {
+        "type": "object",
+        "description": "Data for creating a new transfer order line item. Each line item specifies a \n[CatalogItemVariation](entity:CatalogItemVariation) and quantity to transfer.",
+        "x-release-status": "BETA",
+        "required": [
+          "item_variation_id",
+          "quantity_ordered"
+        ],
+        "properties": {
+          "item_variation_id": {
+            "type": "string",
+            "description": "ID of the [CatalogItemVariation](entity:CatalogItemVariation) to transfer. Must reference a valid\nitem variation in the [Catalog](api:Catalog). The item variation must be:\n- Active and available for sale\n- Enabled for inventory tracking\n- Available at the source location",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "quantity_ordered": {
+            "type": "string",
+            "description": "Total quantity ordered",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^(0|[1-9]\\d*)(\\.\\d{1,4})?$"
+          }
+        }
+      },
+      "CreateTransferOrderRequest": {
+        "type": "object",
+        "description": "Request to create a new transfer order.",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key",
+          "transfer_order"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique string that identifies this CreateTransferOrder request. Keys can be\nany valid string but must be unique for every CreateTransferOrder request.",
+            "minLength": 1
+          },
+          "transfer_order": {
+            "$ref": "#/components/schemas/CreateTransferOrderData",
+            "description": "The transfer order to create"
+          }
+        },
+        "example": {
+          "idempotency_key": "65cc0586-3e82-384s-b524-3885cffd52",
+          "transfer_order": {
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+            "expected_at": "2025-11-09T05:00:00Z",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_ordered": "5"
+              },
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                "quantity_ordered": "3"
+              }
+            ],
+            "notes": "Example transfer order for inventory redistribution between locations",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+            "tracking_number": "TRACK123456789"
+          }
+        }
+      },
+      "CreateTransferOrderResponse": {
+        "type": "object",
+        "description": "Response for creating a transfer order.",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The created transfer order"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "transfer_order": {
+            "created_at": "2025-01-15T10:30:00Z",
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+            "expected_at": "2025-11-09T05:00:00Z",
+            "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "5",
+                "quantity_pending": "5",
+                "quantity_received": "0",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "3",
+                "quantity_pending": "3",
+                "quantity_received": "0",
+                "uid": "2"
+              }
+            ],
+            "notes": "Example transfer order for inventory redistribution between locations",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+            "status": "DRAFT",
+            "tracking_number": "TRACK123456789",
+            "updated_at": "2025-01-15T10:30:00Z",
+            "version": 1753109537351
+          }
+        }
+      },
       "CreateVendorRequest": {
         "type": "object",
         "description": "Represents an input to a call to [CreateVendor](api-endpoint:Vendors-CreateVendor).",
@@ -21869,6 +22282,21 @@
               "$ref": "#/components/schemas/Error"
             },
             "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {}
+      },
+      "DeleteTransferOrderResponse": {
+        "type": "object",
+        "description": "Response for deleting a transfer order",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
           }
         },
         "example": {}
@@ -32604,6 +33032,60 @@
           "php": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.php",
           "python": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.python",
           "ruby": "/sdk_samples/Catalog/ListCatalog/ListCatalogResponse.ruby"
+        }
+      },
+      "ListChannelsRequestConstants": {
+        "type": "string",
+        "enum": [
+          "MAX_PAGE_SIZE"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "MAX_PAGE_SIZE",
+            "description": ""
+          }
+        ],
+        "x-release-status": "BETA"
+      },
+      "ListChannelsResponse": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information about errors encountered during the request."
+          },
+          "channels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Channel"
+            },
+            "description": "List of requested Channel."
+          },
+          "cursor": {
+            "type": "string",
+            "description": "The token required to retrieve the next page of results."
+          }
+        },
+        "example": {
+          "channels": [
+            {
+              "created_at": "2022-10-25T16:27:00Z",
+              "id": "CH_9C03D0B59",
+              "merchant_id": "ML64FACEA",
+              "name": "Contoso Fulfillment Application",
+              "reference": {
+                "id": "OA_9C03D0444",
+                "type": "OAUTH_APPLICATION"
+              },
+              "status": "ACTIVE",
+              "updated_at": "2022-10-25T16:48:00Z",
+              "version": 1
+            }
+          ]
         }
       },
       "ListCustomerCustomAttributeDefinitionsResponse": {
@@ -45297,6 +45779,105 @@
           }
         }
       },
+      "ReceiveTransferOrderRequest": {
+        "type": "object",
+        "description": "Request to record receipt of items for a transfer order",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key",
+          "receipt"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique key to make this request idempotent",
+            "minLength": 1
+          },
+          "receipt": {
+            "$ref": "#/components/schemas/TransferOrderGoodsReceipt",
+            "description": "The receipt details"
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version for optimistic concurrency",
+            "format": "int64"
+          }
+        },
+        "example": {
+          "idempotency_key": "EXAMPLE_IDEMPOTENCY_KEY_101",
+          "receipt": {
+            "line_items": [
+              {
+                "quantity_canceled": "1",
+                "quantity_damaged": "1",
+                "quantity_received": "3",
+                "uid": "1"
+              },
+              {
+                "quantity_canceled": "1",
+                "quantity_received": "2",
+                "uid": "2"
+              }
+            ]
+          },
+          "transfer_order_id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+          "version": 1753118664873
+        }
+      },
+      "ReceiveTransferOrderResponse": {
+        "type": "object",
+        "description": "Response for receiving items for a transfer order",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The updated transfer order"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "transfer_order": {
+            "completed_at": "2025-01-15T10:55:00Z",
+            "created_at": "2025-01-15T10:30:00Z",
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+            "expected_at": "2025-11-09T05:00:00Z",
+            "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_canceled": "1",
+                "quantity_damaged": "1",
+                "quantity_ordered": "5",
+                "quantity_pending": "0",
+                "quantity_received": "3",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                "quantity_canceled": "1",
+                "quantity_damaged": "0",
+                "quantity_ordered": "3",
+                "quantity_pending": "0",
+                "quantity_received": "2",
+                "uid": "2"
+              }
+            ],
+            "notes": "Example transfer order for inventory redistribution between locations",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+            "status": "COMPLETED",
+            "tracking_number": "TRACK123456789",
+            "updated_at": "2025-01-15T10:55:00Z",
+            "version": 1753118667248
+          }
+        }
+      },
       "RedeemLoyaltyRewardRequest": {
         "type": "object",
         "description": "A request to redeem a loyalty reward.",
@@ -45355,6 +45936,105 @@
             "type": "REDEEM_REWARD"
           }
         }
+      },
+      "Reference": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ReferenceType",
+            "description": "The type of entity a channel is associated with.\nSee [Type](#type-type) for possible values",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "The id of the entity a channel is associated with."
+          }
+        }
+      },
+      "ReferenceType": {
+        "type": "string",
+        "enum": [
+          "UNKNOWN_TYPE",
+          "LOCATION",
+          "FIRST_PARTY_INTEGRATION",
+          "OAUTH_APPLICATION",
+          "ONLINE_SITE",
+          "ONLINE_CHECKOUT",
+          "INVOICE",
+          "GIFT_CARD",
+          "GIFT_CARD_MARKETPLACE",
+          "RECURRING_SUBSCRIPTION",
+          "ONLINE_BOOKING_FLOW",
+          "SQUARE_ASSISTANT",
+          "CASH_LOCAL",
+          "POINT_OF_SALE",
+          "KIOSK"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "UNKNOWN_TYPE",
+            "description": ""
+          },
+          {
+            "name": "LOCATION",
+            "description": ""
+          },
+          {
+            "name": "FIRST_PARTY_INTEGRATION",
+            "description": ""
+          },
+          {
+            "name": "OAUTH_APPLICATION",
+            "description": ""
+          },
+          {
+            "name": "ONLINE_SITE",
+            "description": ""
+          },
+          {
+            "name": "ONLINE_CHECKOUT",
+            "description": ""
+          },
+          {
+            "name": "INVOICE",
+            "description": ""
+          },
+          {
+            "name": "GIFT_CARD",
+            "description": ""
+          },
+          {
+            "name": "GIFT_CARD_MARKETPLACE",
+            "description": ""
+          },
+          {
+            "name": "RECURRING_SUBSCRIPTION",
+            "description": ""
+          },
+          {
+            "name": "ONLINE_BOOKING_FLOW",
+            "description": ""
+          },
+          {
+            "name": "SQUARE_ASSISTANT",
+            "description": ""
+          },
+          {
+            "name": "CASH_LOCAL",
+            "description": ""
+          },
+          {
+            "name": "POINT_OF_SALE",
+            "description": ""
+          },
+          {
+            "name": "KIOSK",
+            "description": ""
+          }
+        ],
+        "description": "The type of platform concept a channel can represent.",
+        "x-release-status": "BETA"
       },
       "Refund": {
         "type": "object",
@@ -46313,6 +46993,38 @@
           "php": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.php",
           "python": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.python",
           "ruby": "/sdk_samples/Catalog/RetrieveCatalogObject/RetrieveCatalogObjectResponse.ruby"
+        }
+      },
+      "RetrieveChannelResponse": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information about errors encountered during the request."
+          },
+          "channel": {
+            "$ref": "#/components/schemas/Channel",
+            "description": "The requested Channel."
+          }
+        },
+        "example": {
+          "channel": {
+            "created_at": "2022-10-25T16:27:00Z",
+            "id": "CH_9C03D0B59",
+            "merchant_id": "ML64FACEA",
+            "name": "Contoso Fulfillment Application",
+            "reference": {
+              "id": "OA_9C03D0444",
+              "type": "OAUTH_APPLICATION"
+            },
+            "status": "ACTIVE",
+            "updated_at": "2022-10-25T16:48:00Z",
+            "version": 1
+          }
         }
       },
       "RetrieveCustomerCustomAttributeDefinitionResponse": {
@@ -48092,6 +48804,59 @@
           "php": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.php",
           "python": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.python",
           "ruby": "/sdk_samples/RetrieveTransaction/RetrieveTransactionResponse.ruby"
+        }
+      },
+      "RetrieveTransferOrderResponse": {
+        "type": "object",
+        "description": "Response containing the requested transfer order",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The requested transfer order"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "transfer_order": {
+            "created_at": "2025-01-15T10:30:00Z",
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+            "expected_at": "2025-11-09T05:00:00Z",
+            "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "5",
+                "quantity_pending": "5",
+                "quantity_received": "0",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "3",
+                "quantity_pending": "3",
+                "quantity_received": "0",
+                "uid": "2"
+              }
+            ],
+            "notes": "Example transfer order for inventory redistribution between locations",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+            "status": "STARTED",
+            "tracking_number": "TRACK123456789",
+            "updated_at": "2025-01-15T10:35:00Z",
+            "version": 1753117449752
+          }
         }
       },
       "RetrieveVendorResponse": {
@@ -51727,6 +52492,125 @@
           ]
         }
       },
+      "SearchTransferOrdersRequest": {
+        "type": "object",
+        "description": "Request to search transfer orders",
+        "x-release-status": "BETA",
+        "properties": {
+          "query": {
+            "$ref": "#/components/schemas/TransferOrderQuery",
+            "description": "The search query"
+          },
+          "cursor": {
+            "type": "string",
+            "description": "Pagination cursor from a previous search response"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum number of results to return (1-100)",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "example": {
+          "cursor": "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9",
+          "limit": 10,
+          "query": {
+            "filter": {
+              "destination_location_ids": [
+                "EXAMPLE_DEST_LOCATION_ID_456"
+              ],
+              "source_location_ids": [
+                "EXAMPLE_SOURCE_LOCATION_ID_123"
+              ],
+              "statuses": [
+                "STARTED",
+                "PARTIALLY_RECEIVED"
+              ]
+            },
+            "sort": {
+              "field": "UPDATED_AT",
+              "order": "DESC"
+            }
+          }
+        }
+      },
+      "SearchTransferOrdersResponse": {
+        "type": "object",
+        "description": "Response for searching transfer orders",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferOrder"
+            },
+            "description": "List of transfer orders matching the search criteria"
+          },
+          "cursor": {
+            "type": "string",
+            "description": "Pagination cursor for fetching the next page of results"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "cursor": "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTU1NDBfMTIzfQ==",
+          "transfer_orders": [
+            {
+              "created_at": "2025-01-15T10:30:00Z",
+              "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+              "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+              "expected_at": "2025-11-09T05:00:00Z",
+              "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+              "line_items": [
+                {
+                  "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                  "quantity_canceled": "0",
+                  "quantity_damaged": "0",
+                  "quantity_ordered": "5",
+                  "quantity_pending": "5",
+                  "quantity_received": "0",
+                  "uid": "1"
+                }
+              ],
+              "notes": "Inventory rebalance between stores",
+              "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+              "status": "STARTED",
+              "tracking_number": "TRACK123456789",
+              "updated_at": "2025-01-15T10:32:00Z",
+              "version": 1753118664873
+            },
+            {
+              "created_at": "2025-01-14T14:20:00Z",
+              "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+              "expected_at": "2025-11-08T12:00:00Z",
+              "id": "EXAMPLE_TRANSFER_ORDER_ID_456",
+              "line_items": [
+                {
+                  "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                  "quantity_canceled": "0",
+                  "quantity_damaged": "0",
+                  "quantity_ordered": "10",
+                  "quantity_pending": "3",
+                  "quantity_received": "7",
+                  "uid": "1"
+                }
+              ],
+              "notes": "Seasonal stock transfer",
+              "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+              "status": "PARTIALLY_RECEIVED",
+              "updated_at": "2025-01-15T09:45:00Z",
+              "version": 1753115540123
+            }
+          ]
+        }
+      },
       "SearchVendorsRequest": {
         "type": "object",
         "description": "Represents an input into a call to [SearchVendors](api-endpoint:Vendors-SearchVendors).",
@@ -52503,6 +53387,84 @@
             "type": "string",
             "description": "IETF language tag.",
             "nullable": true
+          }
+        }
+      },
+      "StartTransferOrderRequest": {
+        "type": "object",
+        "description": "Request to start a transfer order, changing its status from DRAFT to STARTED.",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique string that identifies this UpdateTransferOrder request. Keys can be\nany valid string but must be unique for every UpdateTransferOrder request.",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version for optimistic concurrency",
+            "format": "int64"
+          }
+        },
+        "example": {
+          "idempotency_key": "EXAMPLE_IDEMPOTENCY_KEY_789",
+          "transfer_order_id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+          "version": 1753109537351
+        }
+      },
+      "StartTransferOrderResponse": {
+        "type": "object",
+        "description": "Response for starting a transfer order.",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The updated transfer order with status changed to STARTED"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "transfer_order": {
+            "created_at": "2025-01-15T10:30:00Z",
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_456",
+            "expected_at": "2025-11-09T05:00:00Z",
+            "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "5",
+                "quantity_pending": "5",
+                "quantity_received": "0",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_002",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "3",
+                "quantity_pending": "3",
+                "quantity_received": "0",
+                "uid": "2"
+              }
+            ],
+            "notes": "Example transfer order for inventory redistribution between locations",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_123",
+            "status": "STARTED",
+            "tracking_number": "TRACK123456789",
+            "updated_at": "2025-01-15T10:32:00Z",
+            "version": 1753118664873
           }
         }
       },
@@ -56126,6 +57088,509 @@
         "description": "The transaction type used in the disputed payment.",
         "x-release-status": "PUBLIC"
       },
+      "TransferOrder": {
+        "type": "object",
+        "description": "Represents a transfer order for moving [CatalogItemVariation](entity:CatalogItemVariation)s \nbetween [Location](entity:Location)s. Transfer orders track the entire lifecycle of an inventory \ntransfer, including:\n- What items and quantities are being moved\n- Source and destination locations\n- Current [TransferOrderStatus](entity:TransferOrderStatus)\n- Shipping information and tracking\n- Which [TeamMember](entity:TeamMember) initiated the transfer\n\nThis object is commonly used to:\n- Track [CatalogItemVariation](entity:CatalogItemVariation) movements between [Location](entity:Location)s\n- Reconcile expected vs received quantities\n- Monitor transfer progress and shipping status\n- Audit inventory movement history",
+        "x-release-status": "BETA",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique system-generated identifier for this transfer order. Use this ID for:\n- Retrieving transfer order details\n- Tracking status changes via webhooks\n- Linking transfers in external systems",
+            "readOnly": true
+          },
+          "source_location_id": {
+            "type": "string",
+            "description": "The source [Location](entity:Location) sending the [CatalogItemVariation](entity:CatalogItemVariation)s.\nThis location must:\n- Be active in your Square organization\n- Have sufficient inventory for the items being transferred\n- Not be the same as the destination location\n\nThis field is not updatable.",
+            "nullable": true
+          },
+          "destination_location_id": {
+            "type": "string",
+            "description": "The destination [Location](entity:Location) receiving the [CatalogItemVariation](entity:CatalogItemVariation)s.\nThis location must:\n- Be active in your Square organization\n- Not be the same as the source location\n\nThis field is not updatable.",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TransferOrderStatus",
+            "description": "Current [TransferOrderStatus](entity:TransferOrderStatus) indicating where the order is in its lifecycle.\nStatus transitions follow this progression:\n1. [DRAFT](entity:TransferOrderStatus) -\u003e [STARTED](entity:TransferOrderStatus) via [StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder)\n2. [STARTED](entity:TransferOrderStatus) -\u003e [PARTIALLY_RECEIVED](entity:TransferOrderStatus) via [ReceiveTransferOrder](api-endpoint:TransferOrders-ReceiveTransferOrder)\n3. [PARTIALLY_RECEIVED](entity:TransferOrderStatus) -\u003e [COMPLETED](entity:TransferOrderStatus) after all items received\n\nOrders can be [CANCELED](entity:TransferOrderStatus) from [STARTED](entity:TransferOrderStatus) or \n[PARTIALLY_RECEIVED](entity:TransferOrderStatus) status.\n\nThis field is read-only and reflects the current state of the transfer order, and cannot be updated directly. Use the appropriate\nendpoints (e.g. [StartPurchaseOrder](api-endpoint:TransferOrders-StartTransferOrder), to change the status.\nSee [TransferOrderStatus](#type-transferorderstatus) for possible values",
+            "readOnly": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the transfer order was created, in RFC 3339 format.\nUsed for:\n- Auditing transfer history\n- Tracking order age\n- Reporting and analytics",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the transfer order was last updated, in RFC 3339 format.\nUpdated when:\n- Order status changes\n- Items are received\n- Notes or metadata are modified",
+            "readOnly": true
+          },
+          "expected_at": {
+            "type": "string",
+            "description": "Expected transfer completion date, in RFC 3339 format.\nUsed for:\n- Planning inventory availability\n- Scheduling receiving staff\n- Monitoring transfer timeliness",
+            "nullable": true
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "Timestamp when the transfer order was completed or canceled, in RFC 3339 format (e.g. \"2023-10-01T12:00:00Z\").",
+            "readOnly": true
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional notes about the transfer.",
+            "nullable": true
+          },
+          "tracking_number": {
+            "type": "string",
+            "description": "Shipment tracking number for monitoring transfer progress.",
+            "nullable": true
+          },
+          "created_by_team_member_id": {
+            "type": "string",
+            "description": "ID of the [TeamMember](entity:TeamMember) who created this transfer order. This field is not writeable by the Connect V2 API.",
+            "readOnly": true
+          },
+          "line_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferOrderLine"
+            },
+            "description": "List of [CatalogItemVariation](entity:CatalogItemVariation)s being transferred.",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version for optimistic concurrency control. This is a monotonically increasing integer\nthat changes whenever the transfer order is modified. Use this when calling \n[UpdateTransferOrder](api-endpoint:TransferOrders-UpdateTransferOrder) and other endpoints to ensure you're\nnot overwriting concurrent changes.",
+            "format": "int64"
+          }
+        }
+      },
+      "TransferOrderCreatedEvent": {
+        "type": "object",
+        "description": "Published when a transfer_order is created.",
+        "x-release-status": "BETA",
+        "properties": {
+          "merchant_id": {
+            "type": "string",
+            "description": "The ID of the target merchant associated with the event.",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of event this represents, `\"transfer_order.created\"`.",
+            "nullable": true
+          },
+          "event_id": {
+            "type": "string",
+            "description": "A unique ID for the event.",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp of when the event was created, in RFC 3339 format.",
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TransferOrderCreatedEventData",
+            "description": "Data associated with the event.",
+            "nullable": true
+          }
+        },
+        "x-webhook": {
+          "event": "transfer_order.created",
+          "scopes": [
+            "INVENTORY_READ",
+            "INVENTORY_WRITE"
+          ]
+        },
+        "x-api": "#/components/x-apis/TransferOrder"
+      },
+      "TransferOrderCreatedEventData": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Name of the affected object’s type, `\"transfer_order\"`.",
+            "maxLength": 50,
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of the affected transfer_order.",
+            "maxLength": 192
+          },
+          "object": {
+            "$ref": "#/components/schemas/TransferOrderCreatedEventObject",
+            "description": "An object containing the created transfer_order.",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderCreatedEventObject": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The created transfer_order.",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderDeletedEvent": {
+        "type": "object",
+        "description": "Published when a transfer_order is deleted.",
+        "x-release-status": "BETA",
+        "properties": {
+          "merchant_id": {
+            "type": "string",
+            "description": "The ID of the target merchant associated with the event.",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of event this represents, `\"transfer_order.deleted\"`.",
+            "nullable": true
+          },
+          "event_id": {
+            "type": "string",
+            "description": "A unique ID for the event.",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp of when the event was created, in RFC 3339 format.",
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TransferOrderDeletedEventData",
+            "description": "Data associated with the event.",
+            "nullable": true
+          }
+        },
+        "x-webhook": {
+          "event": "transfer_order.deleted",
+          "scopes": [
+            "INVENTORY_WRITE"
+          ]
+        },
+        "x-api": "#/components/x-apis/TransferOrder"
+      },
+      "TransferOrderDeletedEventData": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Name of the affected object’s type, `\"transfer_order\"`.",
+            "maxLength": 50,
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of the affected transfer_order.",
+            "maxLength": 192
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Is true if the affected object was deleted. Otherwise absent.",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderFilter": {
+        "type": "object",
+        "description": "Filter criteria for searching transfer orders",
+        "x-release-status": "BETA",
+        "properties": {
+          "source_location_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by source location IDs",
+            "nullable": true
+          },
+          "destination_location_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Filter by destination location IDs",
+            "nullable": true
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferOrderStatus"
+            },
+            "description": "Filter by order statuses\nSee [TransferOrderStatus](#type-transferorderstatus) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderGoodsReceipt": {
+        "type": "object",
+        "description": "The goods receipt details for a transfer order. This object represents a single receipt\nof goods against a transfer order, tracking:\n\n- Which [CatalogItemVariation](entity:CatalogItemVariation)s were received\n- Quantities received in good condition\n- Quantities damaged during transit/handling\n- Quantities canceled during receipt\n\nMultiple goods receipts can be created for a single transfer order to handle:\n- Partial deliveries\n- Multiple shipments\n- Split receipts across different dates\n- Cancellations of specific quantities\n\nEach receipt automatically:\n- Updates the transfer order status\n- Adjusts received quantities\n- Updates inventory levels at both source and destination [Location](entity:Location)s",
+        "x-release-status": "BETA",
+        "properties": {
+          "line_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransferOrderGoodsReceiptLineItem"
+            },
+            "description": "Line items being received. Each line item specifies:\n- The item being received\n- Quantity received in good condition\n- Quantity received damaged\n- Quantity canceled\n\nConstraints:\n- Must include at least one line item\n- Maximum of 1000 line items per receipt\n- Each line item must reference a valid item from the transfer order\n- Total of received, damaged, and canceled quantities cannot exceed ordered quantity",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderGoodsReceiptLineItem": {
+        "type": "object",
+        "description": "A simplified line item for goods receipts in transfer orders",
+        "x-release-status": "BETA",
+        "required": [
+          "transfer_order_line_uid"
+        ],
+        "properties": {
+          "transfer_order_line_uid": {
+            "type": "string",
+            "description": "The unique identifier of the Transfer Order line being received",
+            "maxLength": 64
+          },
+          "quantity_received": {
+            "type": "string",
+            "description": "The quantity received for this line item as a decimal string (e.g. \"10.5\").\nThese items will be added to the destination [Location](entity:Location)'s inventory with [InventoryState](entity:InventoryState) of IN_STOCK.",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^(0|[1-9]\\d*)(\\.\\d{1,4})?$",
+            "nullable": true
+          },
+          "quantity_damaged": {
+            "type": "string",
+            "description": "The quantity that was damaged during shipping/handling as a decimal string (e.g. \"1.5\").\nThese items will be added to the destination [Location](entity:Location)'s inventory with [InventoryState](entity:InventoryState) of WASTE.",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^(0|[1-9]\\d*)(\\.\\d{1,4})?$",
+            "nullable": true
+          },
+          "quantity_canceled": {
+            "type": "string",
+            "description": "The quantity that was canceled during shipping/handling as a decimal string (e.g. \"1.5\"). These will be immediately added to inventory in the source location.",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^(0|[1-9]\\d*)(\\.\\d{1,4})?$",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderLine": {
+        "type": "object",
+        "description": "Represents a line item in a transfer order. Each line item tracks a specific \n[CatalogItemVariation](entity:CatalogItemVariation) being transferred, including ordered quantities\nand receipt status.",
+        "x-release-status": "BETA",
+        "required": [
+          "item_variation_id",
+          "quantity_ordered"
+        ],
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "Unique system-generated identifier for the line item. Provide when updating/removing a line via [UpdateTransferOrder](api-endpoint:TransferOrders-UpdateTransferOrder).",
+            "readOnly": true
+          },
+          "item_variation_id": {
+            "type": "string",
+            "description": "The required identifier of the [CatalogItemVariation](entity:CatalogItemVariation) being transferred. Must reference\na valid catalog item variation that exists in the [Catalog](api:Catalog).",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9_:\\-]+$"
+          },
+          "quantity_ordered": {
+            "type": "string",
+            "description": "Total quantity ordered, formatted as a decimal string (e.g. \"10 or 10.0000\"). Required to be a positive number.\n\nTo remove a line item, set `remove` to `true` in [UpdateTransferOrder](api-endpoint:TransferOrders-UpdateTransferOrder).",
+            "minLength": 1,
+            "pattern": "^\\d*\\.?\\d*$"
+          },
+          "quantity_pending": {
+            "type": "string",
+            "description": "Calculated quantity of this line item's yet to be received stock. This is the difference between the total quantity ordered and the sum of quantities received, canceled, and damaged.",
+            "readOnly": true
+          },
+          "quantity_received": {
+            "type": "string",
+            "description": "Quantity received at destination. These items are added to the destination\n[Location](entity:Location)'s inventory with [InventoryState](entity:InventoryState) of IN_STOCK.\n\nThis field cannot be updated directly in Create/Update operations, instead use [ReceiveTransferOrder](api-endpoint:TransferOrders-ReceiveTransferOrder).",
+            "readOnly": true
+          },
+          "quantity_damaged": {
+            "type": "string",
+            "description": "Quantity received in damaged condition. These items are added to the destination\n[Location](entity:Location)'s inventory with [InventoryState](entity:InventoryState) of WASTE.\n\nThis field cannot be updated directly in Create/Update operations, instead use [ReceiveTransferOrder](api-endpoint:TransferOrders-ReceiveTransferOrder).",
+            "readOnly": true
+          },
+          "quantity_canceled": {
+            "type": "string",
+            "description": "Quantity that was canceled. These items will be immediately added to inventory in the source location.\n\nThis field cannot be updated directly in Create/Update operations, instead use [ReceiveTransferOrder](api-endpoint:TransferOrders-ReceiveTransferOrder) or [CancelTransferOrder](api-endpoint:TransferOrders-CancelTransferOrder).",
+            "readOnly": true
+          }
+        }
+      },
+      "TransferOrderQuery": {
+        "type": "object",
+        "description": "Query parameters for searching transfer orders",
+        "x-release-status": "BETA",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/TransferOrderFilter",
+            "description": "Filter criteria",
+            "nullable": true
+          },
+          "sort": {
+            "$ref": "#/components/schemas/TransferOrderSort",
+            "description": "Sort configuration",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderSort": {
+        "type": "object",
+        "description": "Sort configuration for search results",
+        "x-release-status": "BETA",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/TransferOrderSortField",
+            "description": "Field to sort by\nSee [TransferOrderSortField](#type-transferordersortfield) for possible values",
+            "nullable": true
+          },
+          "order": {
+            "$ref": "#/components/schemas/SortOrder",
+            "description": "Sort order direction\nSee [SortOrder](#type-sortorder) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderSortField": {
+        "type": "string",
+        "enum": [
+          "CREATED_AT",
+          "UPDATED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "CREATED_AT",
+            "description": "Sort by creation date (created_at field). Useful for:\n- Finding newest transfers\n- Chronological order processing\n- Historical analysis\n- Auditing transfer patterns"
+          },
+          {
+            "name": "UPDATED_AT",
+            "description": "Sort by last update date (updated_at field). Useful for:\n- Finding recently modified transfers\n- Tracking status changes\n- Monitoring receiving progress\n- Synchronizing with external systems"
+          }
+        ],
+        "description": "Fields that can be used for sorting [TransferOrder](entity:TransferOrder)s in search results.\nUsed with [SearchTransferOrders](api-endpoint:TransferOrders-SearchTransferOrders) to control\nthe order of returned results.",
+        "x-release-status": "BETA"
+      },
+      "TransferOrderStatus": {
+        "type": "string",
+        "enum": [
+          "DRAFT",
+          "STARTED",
+          "PARTIALLY_RECEIVED",
+          "COMPLETED",
+          "CANCELED"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "DRAFT",
+            "description": "Initial status when transfer order is created via [CreateTransferOrder](api-endpoint:TransferOrders-CreateTransferOrder).\nOrder can be modified or deleted. No inventory impact at this stage."
+          },
+          {
+            "name": "STARTED",
+            "description": "Transfer order has been started via [StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder).\nOrder can no longer be deleted. [CatalogItemVariation](entity:CatalogItemVariation)s are decremented \nfrom source [Location](entity:Location) and marked as in-transit to destination."
+          },
+          {
+            "name": "PARTIALLY_RECEIVED",
+            "description": "Some items have been received via [ReceiveTransferOrder](api-endpoint:TransferOrders-ReceiveTransferOrder)\nbut there are still pending quantities. Additional receipts are allowed.\n[CatalogItemVariation](entity:CatalogItemVariation)s are incrementally added to destination \n[Location](entity:Location) inventory as they are received."
+          },
+          {
+            "name": "COMPLETED",
+            "description": "All items have been received or canceled, no pending quantities remain. \nOnly metadata modifications are allowed. Final inventory adjustments are complete\nat both source and destination [Location](entity:Location)s."
+          },
+          {
+            "name": "CANCELED",
+            "description": "Transfer order was canceled via [CancelTransferOrder](api-endpoint:TransferOrders-CancelTransferOrder).\nAny pending quantities are no longer receivable and are returned to source [Location](entity:Location). \nOnly metadata modifications are allowed."
+          }
+        ],
+        "description": "Status values for transfer orders. Represents the current state of a \n[TransferOrder](entity:TransferOrder) in its lifecycle from creation to completion.\nEach status determines what actions are available and how inventory is affected.",
+        "x-release-status": "BETA"
+      },
+      "TransferOrderUpdatedEvent": {
+        "type": "object",
+        "description": "Published when a transfer_order is updated.",
+        "x-release-status": "BETA",
+        "properties": {
+          "merchant_id": {
+            "type": "string",
+            "description": "The ID of the target merchant associated with the event.",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of event this represents, `\"transfer_order.updated\"`.",
+            "nullable": true
+          },
+          "event_id": {
+            "type": "string",
+            "description": "A unique ID for the event.",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp of when the event was created, in RFC 3339 format.",
+            "readOnly": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/TransferOrderUpdatedEventData",
+            "description": "Data associated with the event.",
+            "nullable": true
+          }
+        },
+        "x-webhook": {
+          "event": "transfer_order.updated",
+          "scopes": [
+            "INVENTORY_READ",
+            "INVENTORY_WRITE"
+          ]
+        },
+        "x-api": "#/components/x-apis/TransferOrder"
+      },
+      "TransferOrderUpdatedEventData": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Name of the affected object’s type, `\"transfer_order\"`.",
+            "maxLength": 50,
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of the affected transfer_order.",
+            "maxLength": 192
+          },
+          "object": {
+            "$ref": "#/components/schemas/TransferOrderUpdatedEventObject",
+            "description": "An object containing the updated transfer_order.",
+            "nullable": true
+          }
+        }
+      },
+      "TransferOrderUpdatedEventObject": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The updated transfer_order.",
+            "nullable": true
+          }
+        }
+      },
       "UnlinkCustomerFromGiftCardRequest": {
         "type": "object",
         "description": "A request to unlink a customer from a gift card.",
@@ -58213,6 +59678,190 @@
           }
         }
       },
+      "UpdateTransferOrderData": {
+        "type": "object",
+        "description": "Data model for updating a transfer order. All fields are optional.",
+        "x-release-status": "BETA",
+        "properties": {
+          "source_location_id": {
+            "type": "string",
+            "description": "The source [Location](entity:Location) that will send the items. Must be an active location\nin your Square account with sufficient inventory of the requested items.",
+            "minLength": 1,
+            "maxLength": 64,
+            "nullable": true
+          },
+          "destination_location_id": {
+            "type": "string",
+            "description": "The destination [Location](entity:Location) that will receive the items. Must be an active location\nin your Square account.",
+            "minLength": 1,
+            "maxLength": 64,
+            "nullable": true
+          },
+          "expected_at": {
+            "type": "string",
+            "description": "Expected transfer date in RFC 3339 format (e.g. \"2023-10-01T12:00:00Z\").",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional notes about the transfer",
+            "maxLength": 4096,
+            "nullable": true
+          },
+          "tracking_number": {
+            "type": "string",
+            "description": "Shipment tracking number",
+            "maxLength": 64,
+            "nullable": true
+          },
+          "line_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateTransferOrderLineData"
+            },
+            "description": "List of items being transferred",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateTransferOrderLineData": {
+        "type": "object",
+        "description": "Represents a line item update in a transfer order",
+        "x-release-status": "BETA",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "Line item id being updated. Required for updating/removing existing line items, but should not be set for new line items.",
+            "minLength": 1,
+            "maxLength": 64,
+            "nullable": true
+          },
+          "item_variation_id": {
+            "type": "string",
+            "description": "Catalog item variation being transferred\n\nRequired for new line items, but otherwise is not updatable.",
+            "minLength": 1,
+            "maxLength": 64,
+            "nullable": true
+          },
+          "quantity_ordered": {
+            "type": "string",
+            "description": "Total quantity ordered",
+            "minLength": 1,
+            "maxLength": 16,
+            "pattern": "^(0|[1-9]\\d*)(\\.\\d{1,4})?$",
+            "nullable": true
+          },
+          "remove": {
+            "type": "boolean",
+            "description": "Flag to remove the line item during update. Must include `uid` in removal request",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateTransferOrderRequest": {
+        "type": "object",
+        "description": "Request to update a transfer order",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key",
+          "transfer_order"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique string that identifies this UpdateTransferOrder request. Keys must contain only alphanumeric characters, dashes and underscores",
+            "minLength": 1
+          },
+          "transfer_order": {
+            "$ref": "#/components/schemas/UpdateTransferOrderData",
+            "description": "The transfer order updates to apply"
+          },
+          "version": {
+            "type": "integer",
+            "description": "Version for optimistic concurrency",
+            "format": "int64"
+          }
+        },
+        "example": {
+          "idempotency_key": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "transfer_order": {
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_101",
+            "expected_at": "2025-11-10T08:00:00Z",
+            "line_items": [
+              {
+                "quantity_ordered": "7",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_NEW_ITEM_VARIATION_ID_003",
+                "quantity_ordered": "2"
+              },
+              {
+                "remove": true,
+                "uid": "2"
+              }
+            ],
+            "notes": "Updated: Priority transfer due to low stock at destination",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_789",
+            "tracking_number": "TRACK987654321"
+          },
+          "transfer_order_id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+          "version": 1753109537351
+        }
+      },
+      "UpdateTransferOrderResponse": {
+        "type": "object",
+        "description": "Response for updating a transfer order",
+        "x-release-status": "BETA",
+        "properties": {
+          "transfer_order": {
+            "$ref": "#/components/schemas/TransferOrder",
+            "description": "The updated transfer order"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request"
+          }
+        },
+        "example": {
+          "transfer_order": {
+            "created_at": "2025-01-15T10:30:00Z",
+            "created_by_team_member_id": "EXAMPLE_TEAM_MEMBER_ID_789",
+            "destination_location_id": "EXAMPLE_DEST_LOCATION_ID_101",
+            "expected_at": "2025-11-10T08:00:00Z",
+            "id": "EXAMPLE_TRANSFER_ORDER_ID_123",
+            "line_items": [
+              {
+                "item_variation_id": "EXAMPLE_ITEM_VARIATION_ID_001",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "7",
+                "quantity_pending": "7",
+                "quantity_received": "0",
+                "uid": "1"
+              },
+              {
+                "item_variation_id": "EXAMPLE_NEW_ITEM_VARIATION_ID_003",
+                "quantity_canceled": "0",
+                "quantity_damaged": "0",
+                "quantity_ordered": "2",
+                "quantity_pending": "2",
+                "quantity_received": "0",
+                "uid": "3"
+              }
+            ],
+            "notes": "Updated: Priority transfer due to low stock at destination",
+            "source_location_id": "EXAMPLE_SOURCE_LOCATION_ID_789",
+            "status": "DRAFT",
+            "tracking_number": "TRACK987654321",
+            "updated_at": "2025-01-15T11:15:00Z",
+            "version": 1753122900456
+          }
+        }
+      },
       "UpdateVendorRequest": {
         "type": "object",
         "description": "Represents an input to a call to [UpdateVendor](api-endpoint:Vendors-UpdateVendor).",
@@ -60185,6 +61834,11 @@
         "summary": "Programmatically catalogs a Square seller’s products for sale and services for hire.",
         "description": "\nThe Catalog API allows you to programmatically catalog products or services, including items, variations, categories, discounts, taxes, modifiers, and more.\n\nFor more information, see the following guides:\n - [Catalog](https://developer.squareup.com/docs/catalog-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
       },
+      "Channels": {
+        "name": "Channels",
+        "summary": "Returns a seller's sales, marketing, and fulfillment channels.",
+        "description": "The Channels API allows applications to retrieve the channels that a seller has assigned catalog items to.\n\nFor more information, see the following guides:\n - [Channels](https://developer.squareup.com/docs/channels-api)\n"
+      },
       "Checkout": {
         "name": "Checkout",
         "summary": "Accept payments through a pre-built, Square-hosted checkout page. No frontend required.",
@@ -60350,6 +62004,11 @@
         "summary": "Deprecated - Use the Orders and Payments APIs instead.",
         "description": "\nPrior to 2019/08/15, the Transactions API was the way to take online payments. Going forward, the Payments API \nand Refunds API (together with the Orders API) replace the Transactions API. For information about migrating your code to the Payments API, see [Migrate from Transactions](https://developer.squareup.com/docs/payments-api/migrate-from-transactions-api)"
       },
+      "TransferOrder": {
+        "name": "Transfer Order",
+        "summary": "Programmatically manages a Square seller’s location stock transfers.",
+        "description": "\nThe Trasfer Orders API allows you to programmatically manage inventory transfers of products between seller locations.\n\nFor more information, see the following guides:\n - [Get Started with Transfer Orders](https://developer.squareup.com/docs/commerce)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+      },
       "V1Webhooks": {
         "name": "V1Webhooks",
         "summary": "Deprecated - Use V2 Webhooks.",
@@ -60376,12 +62035,15 @@
           "#/components/x-apis/OrderCustomAttributes",
           "#/components/x-apis/Catalog",
           "#/components/x-apis/Inventory",
+          "#/components/x-apis/TransferOrder",
           "#/components/x-apis/Bookings",
           "#/components/x-apis/Booking Custom Attributes",
           "#/components/x-apis/Vendors",
+          "#/components/x-apis/Channels",
           "#/components/x-apis/Sites",
           "#/components/x-apis/Snippets",
-          "#/components/x-apis/Cash Drawers"
+          "#/components/x-apis/Cash Drawers",
+          "#/components/x-apis/channels"
         ]
       },
       "Customers": {
@@ -63360,6 +65022,202 @@
             }
           }
         }
+      }
+    },
+    "/v2/channels": {
+      "get": {
+        "tags": [
+          "Channels"
+        ],
+        "summary": "ListChannels",
+        "operationId": "ListChannels",
+        "description": "",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "CHANNELS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "reference_type",
+            "description": "Type of reference associated to channel",
+            "schema": {
+              "$ref": "#/components/schemas/ReferenceType"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "reference_id",
+            "description": "id of reference associated to channel",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "status",
+            "description": "Status of channel",
+            "schema": {
+              "$ref": "#/components/schemas/ChannelStatus"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "cursor",
+            "description": "Cursor to fetch the next result",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of results to return.\nWhen not provided the returned results will be cap at 100 channels.",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListChannelsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "FORBIDDEN"
+          },
+          {
+            "error-code": "MISSING_REQUIRED_PARAMETER"
+          }
+        ]
+      }
+    },
+    "/v2/channels/bulk-retrieve": {
+      "post": {
+        "tags": [
+          "Channels"
+        ],
+        "summary": "BulkRetrieveChannels",
+        "operationId": "BulkRetrieveChannels",
+        "description": "",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "CHANNELS_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkRetrieveChannelsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkRetrieveChannelsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "FORBIDDEN"
+          },
+          {
+            "error-code": "MISSING_REQUIRED_PARAMETER"
+          }
+        ]
+      }
+    },
+    "/v2/channels/{channel_id}": {
+      "get": {
+        "tags": [
+          "Channels"
+        ],
+        "summary": "RetrieveChannel",
+        "operationId": "RetrieveChannel",
+        "description": "",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "CHANNELS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channel_id",
+            "description": "A channel id",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveChannelResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "FORBIDDEN"
+          },
+          {
+            "error-code": "MISSING_REQUIRED_PARAMETER"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
       }
     },
     "/v2/customers": {
@@ -76179,6 +78037,542 @@
         ]
       }
     },
+    "/v2/transfer-orders": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "CreateTransferOrder",
+        "operationId": "CreateTransferOrder",
+        "description": "Creates a new transfer order in [DRAFT](entity:TransferOrderStatus) status. A transfer order represents the intent \nto move [CatalogItemVariation](entity:CatalogItemVariation)s from one [Location](entity:Location) to another. \nThe source and destination locations must be different and must belong to your Square account.\n\nIn [DRAFT](entity:TransferOrderStatus) status, you can:\n- Add or remove items\n- Modify quantities\n- Update shipping information\n- Delete the entire order via [DeleteTransferOrder](api-endpoint:TransferOrders-DeleteTransferOrder)\n\nThe request requires source_location_id and destination_location_id.\nInventory levels are not affected until the order is started via \n[StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder).\n\nCommon integration points:\n- Sync with warehouse management systems\n- Automate regular stock transfers\n- Initialize transfers from inventory optimization systems\n\nCreates a [transfer_order.created](webhook:transfer_order.created) webhook event.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ",
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransferOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      }
+    },
+    "/v2/transfer-orders/search": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "SearchTransferOrders",
+        "operationId": "SearchTransferOrders",
+        "description": "Searches for transfer orders using filters. Returns a paginated list of matching\n[TransferOrder](entity:TransferOrder)s sorted by creation date.\n\nCommon search scenarios:\n- Find orders for a source [Location](entity:Location)\n- Find orders for a destination [Location](entity:Location)\n- Find orders in a particular [TransferOrderStatus](entity:TransferOrderStatus)",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchTransferOrdersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchTransferOrdersResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      }
+    },
+    "/v2/transfer-orders/{transfer_order_id}": {
+      "delete": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "DeleteTransferOrder",
+        "operationId": "DeleteTransferOrder",
+        "description": "Deletes a transfer order in [DRAFT](entity:TransferOrderStatus) status.\nOnly draft orders can be deleted. Once an order is started via \n[StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder), it can no longer be deleted.\n\nCreates a [transfer_order.deleted](webhook:transfer_order.deleted) webhook event.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "transfer_order_id",
+            "description": "The ID of the transfer order to delete",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "version",
+            "description": "Version for optimistic concurrency",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "RetrieveTransferOrder",
+        "operationId": "RetrieveTransferOrder",
+        "description": "Retrieves a specific [TransferOrder](entity:TransferOrder) by ID. Returns the complete\norder details including:\n\n- Basic information (status, dates, notes)\n- Line items with ordered and received quantities\n- Source and destination [Location](entity:Location)s\n- Tracking information (if available)",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "transfer_order_id",
+            "description": "The ID of the transfer order to retrieve",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "UpdateTransferOrder",
+        "operationId": "UpdateTransferOrder",
+        "description": "Updates an existing transfer order. This endpoint supports sparse updates,\nallowing you to modify specific fields without affecting others.\n\nCreates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ",
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "transfer_order_id",
+            "description": "The ID of the transfer order to update",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTransferOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "VERSION_MISMATCH"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      }
+    },
+    "/v2/transfer-orders/{transfer_order_id}/cancel": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "CancelTransferOrder",
+        "operationId": "CancelTransferOrder",
+        "description": "Cancels a transfer order in [STARTED](entity:TransferOrderStatus) or \n[PARTIALLY_RECEIVED](entity:TransferOrderStatus) status. Any unreceived quantities will no\nlonger be receivable and will be immediately returned to the source [Location](entity:Location)'s inventory.\n\nCommon reasons for cancellation:\n- Items no longer needed at destination\n- Source location needs the inventory\n- Order created in error\n\nCreates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ",
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "transfer_order_id",
+            "description": "The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelTransferOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      }
+    },
+    "/v2/transfer-orders/{transfer_order_id}/receive": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "ReceiveTransferOrder",
+        "operationId": "ReceiveTransferOrder",
+        "description": "Records receipt of [CatalogItemVariation](entity:CatalogItemVariation)s for a transfer order.\nThis endpoint supports partial receiving - you can receive items in multiple batches.\n\nFor each line item, you can specify:\n- Quantity received in good condition (added to destination inventory with [InventoryState](entity:InventoryState) of IN_STOCK)\n- Quantity damaged during transit/handling (added to destination inventory with [InventoryState](entity:InventoryState) of WASTE)\n- Quantity canceled (returned to source location's inventory)\n\nThe order must be in [STARTED](entity:TransferOrderStatus) or [PARTIALLY_RECEIVED](entity:TransferOrderStatus) status.\nReceived quantities are added to the destination [Location](entity:Location)'s inventory according to their condition.\nCanceled quantities are immediately returned to the source [Location](entity:Location)'s inventory.\n\nWhen all items are either received, damaged, or canceled, the order moves to\n[COMPLETED](entity:TransferOrderStatus) status.\n\nCreates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ",
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "transfer_order_id",
+            "description": "The ID of the transfer order to receive items for",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceiveTransferOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReceiveTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      }
+    },
+    "/v2/transfer-orders/{transfer_order_id}/start": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "summary": "StartTransferOrder",
+        "operationId": "StartTransferOrder",
+        "description": "Changes a [DRAFT](entity:TransferOrderStatus) transfer order to [STARTED](entity:TransferOrderStatus) status.\nThis decrements inventory at the source [Location](entity:Location) and marks it as in-transit.\n\nThe order must be in [DRAFT](entity:TransferOrderStatus) status and have all required fields populated.\nOnce started, the order can no longer be deleted, but it can be canceled via \n[CancelTransferOrder](api-endpoint:TransferOrders-CancelTransferOrder).\n\nCreates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ",
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "transfer_order_id",
+            "description": "The ID of the transfer order to start. Must be in DRAFT status.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartTransferOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StartTransferOrderResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          },
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "INSUFFICIENT_PERMISSIONS"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "RATE_LIMITED"
+          }
+        ]
+      }
+    },
     "/v2/vendors/bulk-create": {
       "post": {
         "tags": [
@@ -76845,7 +79239,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2025-09-24\"\u003e"
+      "type": "literal\u003c\"2025-10-16\"\u003e"
     }
   ]
 }
