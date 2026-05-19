@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2025-10-16"
+              "default": "2026-05-20"
             }
           }
         ],
@@ -200,6 +200,7 @@
               "PAYMENTS_WRITE_IN_PERSON": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nGrants write access to payments and refunds information. For example, to\nprocess in-person payments.",
               "PAYMENTS_WRITE_SHARED_ONFILE": "__HTTP Method__: `POST`, `PUT`, `DELETE`\n\nAllows the developer to process payments on behalf of a seller using a shared on file payment method.",
               "PAYOUTS_READ": "__HTTP Method__: `GET`\n\nGrants read access to payouts and payout entries information. For example,\nto call the Connect v2 `ListPayouts` endpoint.",
+              "PAYOUTS_WRITE": "__HTTP Method__: `POST`\n\nGrants access to schedule a payout.",
               "PERMISSION_SETS_READ": "__HTTP Method__: `GET`\n\nGrants read access to Permission Sets. For example, to\ncall the `ListPermissionSets` and `RetrievePermissionSet` endpoints.",
               "PERMISSION_SETS_WRITE": "__HTTP Method__: `PUT`\n\nGrants write access to Permission Sets.",
               "RESERVATIONS_READ": "__HTTP Method__: `GET`\n\nGrants read access to reservation information, for example, when calling the\n`RetrieveReservation` endpoint.",
@@ -1207,6 +1208,12 @@
             "description": "Read only. Name of actual financial institution. \nFor example \"Bank of America\".",
             "maxLength": 100,
             "nullable": true
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "The ID of the customer who owns the bank account",
+            "readOnly": true,
+            "x-release-status": "BETA"
           }
         }
       },
@@ -4746,7 +4753,6 @@
             "type": "string",
             "description": "The key of the custom attribute to delete.  This key must match the key \nof an existing custom attribute definition.",
             "minLength": 1,
-            "pattern": "^([a-zA-Z0-9_-]+:)?[a-zA-Z0-9_-]{1,60}$",
             "readOnly": true
           },
           "order_id": {
@@ -6787,6 +6793,14 @@
             "$ref": "#/components/schemas/ClearpayDetails",
             "description": "Details about a Clearpay payment. These details are only populated if the `brand` is\n`CLEARPAY`.",
             "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information about errors encountered during the payment.",
+            "readOnly": true
           }
         }
       },
@@ -7757,6 +7771,16 @@
             "maxLength": 6,
             "readOnly": true
           },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp for when the card object was created on Square’s servers. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+            "readOnly": true
+          },
+          "disabled_at": {
+            "type": "string",
+            "description": "Timestamp for when the card object was disabled on Square’s servers. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".",
+            "readOnly": true
+          },
           "version": {
             "type": "integer",
             "description": "Current version number of the card. Increments with each card update. Requests to update an\nexisting Card object will be rejected unless the version in the request matches the current\nversion for the Card.",
@@ -8468,6 +8492,18 @@
             },
             "description": "Information about errors encountered during the request.",
             "readOnly": true
+          },
+          "applied_card_surcharge_details": {
+            "$ref": "#/components/schemas/CardSurchargeDetails",
+            "description": "Additional information about a card_surcharge on the payment.",
+            "readOnly": true
+          },
+          "wallet_type": {
+            "type": "string",
+            "description": "The type of digital wallet used for this card payment, if applicable.\nCurrently only populated for in-person Apple Pay payments. Detection has no false\npositives but may have false negatives (some Apple Pay payments may not be detected).\n\nFor payments with `source_type` of `WALLET`, see `DigitalWalletDetails` instead.\n\nValues: `APPLE_PAY`",
+            "maxLength": 50,
+            "readOnly": true,
+            "x-release-status": "BETA"
           }
         }
       },
@@ -8516,6 +8552,18 @@
         ],
         "description": "Indicates a card's prepaid type, such as `NOT_PREPAID` or `PREPAID`.",
         "x-release-status": "PUBLIC"
+      },
+      "CardSurchargeDetails": {
+        "type": "object",
+        "description": "Details related to an attempt to apply a card surcharge to this payment.  When surcharge\neligibility is not known in advance, such as when the card type (debit or credit) is required\nto make the eligibility determination, proposed_card_surcharge_money and\nproposed_additional_amount_money will match the values in the request, while card_surcharge_money\nand additional_amount_money are present only when the payment has a surcharge applied.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "card_surcharge_money": {
+            "$ref": "#/components/schemas/Money",
+            "description": "A specific surcharge levied by the merchant, if a card payment is used, instead of cash or\nsome other payment type. Should only include the base surcharge amount. Any additional fees related\nto the surcharge (e.g. taxes on the surcharge) should only be included in the additional_amount_money.\nThis amount is specified in the smallest denomination of the applicable currency (for example,\nUS dollar amounts are specified in cents). For more information, see\n[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).\nThe currency code must match the currency associated with the business that is accepting the\npayment.",
+            "nullable": true
+          }
+        }
       },
       "CardType": {
         "type": "string",
@@ -9723,6 +9771,12 @@
             "x-release-status": "DEPRECATED",
             "nullable": true
           },
+          "buyer_facing_name": {
+            "type": "string",
+            "description": "The override to a product name to display to users",
+            "maxLength": 512,
+            "nullable": true
+          },
           "tax_ids": {
             "type": "array",
             "items": {
@@ -9814,6 +9868,12 @@
             "description": "A server-generated plaintext version of the `description_html` field, without formatting tags.",
             "maxLength": 65535,
             "readOnly": true
+          },
+          "kitchen_name": {
+            "type": "string",
+            "description": "(Optional) Name that the restaurant wants to display to their kitchen workers\ninstead of the customer-facing name.\ne.g., customer name might be \"Big John's Mega Burger\" and the\nkitchen name is \"12oz beef burger\"",
+            "x-release-status": "BETA",
+            "nullable": true
           },
           "channels": {
             "type": "array",
@@ -10418,6 +10478,12 @@
             "description": "The unit conversion rule, as prescribed by the [CatalogStockConversion](entity:CatalogStockConversion) type,\nthat describes how this non-stockable (i.e., sellable/receivable) item variation is converted\nto/from the stockable item variation sharing the same parent item. With the stock conversion,\nyou can accurately track inventory when an item variation is sold in one unit, but stocked in\nanother unit.",
             "x-release-status": "BETA",
             "nullable": true
+          },
+          "kitchen_name": {
+            "type": "string",
+            "description": "(Optional) Name that the restaurant wants to display to their kitchen workers\ninstead of the customer-facing name.\ne.g., customer name might be \"Mega-Jumbo Triplesized\" and the\nkitchen name is \"Large container\"",
+            "x-release-status": "BETA",
+            "nullable": true
           }
         }
       },
@@ -10476,6 +10542,12 @@
               "$ref": "#/components/schemas/ModifierLocationOverrides"
             },
             "description": "Location-specific price overrides.",
+            "nullable": true
+          },
+          "kitchen_name": {
+            "type": "string",
+            "description": "(Optional) Name that the restaurant wants to display to their kitchen workers\ninstead of the customer-facing name.\ne.g., customer name might be \"Double Baconize\" and the\nkitchen name is \"Add 2x bacon\"",
+            "x-release-status": "BETA",
             "nullable": true
           },
           "image_id": {
@@ -10717,6 +10789,30 @@
             "nullable": true
           }
         }
+      },
+      "CatalogModifierToggleOverrideType": {
+        "type": "string",
+        "enum": [
+          "NO",
+          "YES",
+          "NOT_SET"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "NO",
+            "description": "False override"
+          },
+          {
+            "name": "YES",
+            "description": "True override"
+          },
+          {
+            "name": "NOT_SET",
+            "description": "No override"
+          }
+        ],
+        "description": "Item level overrides for bool attributes",
+        "x-release-status": "BETA"
       },
       "CatalogObject": {
         "type": "object",
@@ -11184,7 +11280,7 @@
             "items": {
               "type": "string"
             },
-            "description": " Unique IDs for any `CatalogObject` included in this product set. Any\nnumber of these catalog objects can be in an order for a pricing rule to apply.\n\nThis can be used with `product_ids_all` in a parent `CatalogProductSet` to\nmatch groups of products for a bulk discount, such as a discount for an\nentree and side combo.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.\n\nMax: 500 catalog object IDs.",
+            "description": " Unique IDs for any `CatalogObject` included in this product set. Any\nnumber of these catalog objects can be in an order for a pricing rule to apply.\n\nThis can be used with `product_ids_all` in a parent `CatalogProductSet` to\nmatch groups of products for a bulk discount, such as a discount for an\nentree and side combo.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.\n\nMax: 5000 catalog object IDs.",
             "nullable": true
           },
           "product_ids_all": {
@@ -11192,7 +11288,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Unique IDs for any `CatalogObject` included in this product set.\nAll objects in this set must be included in an order for a pricing rule to apply.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.\n\nMax: 500 catalog object IDs.",
+            "description": "Unique IDs for any `CatalogObject` included in this product set.\nAll objects in this set must be included in an order for a pricing rule to apply.\n\nOnly one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.\n\nMax: 5000 catalog object IDs.",
             "nullable": true
           },
           "quantity_exact": {
@@ -14373,6 +14469,70 @@
         "description": "Indicates the country associated with another entity, such as a business.\nValues are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).",
         "x-release-status": "PUBLIC"
       },
+      "CreateBankAccountRequest": {
+        "type": "object",
+        "description": "Request object for linking a bank account to a Square account",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key",
+          "source_id"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "Unique ID. For more information, see the\n[Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency)."
+          },
+          "source_id": {
+            "type": "string",
+            "description": "The ID of the source that represents the bank account information to be stored. This field\naccepts the payment token created by WebSDK"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "The ID of the customer associated with the bank account to be stored."
+          }
+        },
+        "example": {
+          "customer_id": "HM3B2D5JKGZ69359BTEHXM2V8M",
+          "idempotency_key": "4e43559a-f0fd-47d3-9da2-7ea1f97d94be",
+          "source_id": "bnon:CA4SEHsQwr0rx6DbWLD5BQaqMnoYAQ"
+        }
+      },
+      "CreateBankAccountResponse": {
+        "type": "object",
+        "description": "Response object returned by CreateBankAccount.",
+        "x-release-status": "BETA",
+        "properties": {
+          "bank_account": {
+            "$ref": "#/components/schemas/BankAccount",
+            "description": "The 'BankAccount' that was created."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information on errors encountered during the request."
+          }
+        },
+        "example": {
+          "bank_account": {
+            "account_number_suffix": "000",
+            "account_type": "CHECKING",
+            "bank_name": "Citizens Bank",
+            "country": "US",
+            "creditable": true,
+            "currency": "USD",
+            "customer_id": "HM3B2D5JKGZ69359BTEHXM2V8M",
+            "debitable": true,
+            "fingerprint": "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+            "holder_name": "Nicola Snow",
+            "id": "bact:OxfBTiXgByaXds1K4GB",
+            "primary_bank_identification_number": "011401533",
+            "status": "VERIFIED",
+            "version": 2
+          }
+        }
+      },
       "CreateBookingCustomAttributeDefinitionRequest": {
         "type": "object",
         "description": "Represents a [CreateBookingCustomAttributeDefinition](api-endpoint:BookingCustomAttributes-CreateBookingCustomAttributeDefinition) request.",
@@ -16336,51 +16496,6 @@
           }
         }
       },
-      "CreateMobileAuthorizationCodeRequest": {
-        "type": "object",
-        "description": "Defines the body parameters that can be provided in a request to the\n`CreateMobileAuthorizationCode` endpoint.",
-        "x-release-status": "DEPRECATED",
-        "properties": {
-          "location_id": {
-            "type": "string",
-            "description": "The Square location ID that the authorization code should be tied to.",
-            "minLength": 1,
-            "maxLength": 191
-          }
-        },
-        "example": {
-          "location_id": "YOUR_LOCATION_ID"
-        }
-      },
-      "CreateMobileAuthorizationCodeResponse": {
-        "type": "object",
-        "description": "Defines the fields that are included in the response body of\na request to the `CreateMobileAuthorizationCode` endpoint.",
-        "x-release-status": "DEPRECATED",
-        "properties": {
-          "authorization_code": {
-            "type": "string",
-            "description": "The generated authorization code that connects a mobile application instance\nto a Square account.",
-            "maxLength": 191
-          },
-          "expires_at": {
-            "type": "string",
-            "description": "The timestamp when `authorization_code` expires, in\n[RFC 3339](https://tools.ietf.org/html/rfc3339) format (for example, \"2016-09-04T23:59:33.123Z\").",
-            "minLength": 20,
-            "maxLength": 48
-          },
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "description": "Any errors that occurred during the request."
-          }
-        },
-        "example": {
-          "authorization_code": "YOUR_MOBILE_AUTHORIZATION_CODE",
-          "expires_at": "2019-01-10T19:42:08Z"
-        }
-      },
       "CreateOrderCustomAttributeDefinitionRequest": {
         "type": "object",
         "description": "Represents a create request for an order custom attribute definition.",
@@ -16997,11 +17112,18 @@
           },
           "tip_money": {
             "$ref": "#/components/schemas/Money",
-            "description": "The amount designated as a tip, in addition to `amount_money`.\n\nThe amount must be specified in the smallest denomination of the applicable currency\n(for example, US dollar amounts are specified in cents). For more information, see\n[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).\n\nThe currency code must match the currency associated with the business\nthat is accepting the payment."
+            "description": "The amount designated as a tip, in addition to `amount_money`.\n\nThe amount must be specified in the smallest denomination of the applicable currency\n(for example, US dollar amounts are specified in cents). For more information, see\n[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).\n\nTips for external vendors such as a 3rd party delivery courier must be recorded using Order.service_charges.\n\nThe currency code must match the currency associated with the business\nthat is accepting the payment."
           },
           "app_fee_money": {
             "$ref": "#/components/schemas/Money",
             "description": "The amount of money that the developer is taking as a fee\nfor facilitating the payment on behalf of the seller.\n\nThe amount cannot be more than 90% of the total amount of the payment.\n\nThe amount must be specified in the smallest denomination of the applicable currency\n(for example, US dollar amounts are specified in cents). For more information, see\n[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).\n\nThe fee currency code must match the currency associated with the seller\nthat is accepting the payment. The application must be from a developer\naccount in the same country and using the same currency code as the seller.\n\nFor more information about the application fee scenario, see\n[Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).\n\nTo set this field, `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required.\nFor more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions)."
+          },
+          "app_fee_allocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppFeeAllocation"
+            },
+            "description": "Details pertaining to recipients of the application fee. The sum of the amounts in the\napp_fee_allocations must equal the app_fee_money amount, if present. If populated, an\nallocation must be present for every party that expects to receive a portion of the application\nfee, including the application developer."
           },
           "delay_duration": {
             "type": "string",
@@ -22579,6 +22701,12 @@
             "type": "boolean",
             "description": "Show the itemization screen prior to taking a payment. This field is only meaningful when the\ncheckout includes an order ID. Defaults to true.",
             "nullable": true
+          },
+          "allow_auto_card_surcharge": {
+            "type": "boolean",
+            "description": "Controls whether the mobile client applies Auto Card Surcharge (ACS) during checkout.\nIf true, ACS is applied based on Dashboard configuration.\nIf false, ACS is not applied regardless of that configuration.\nFor more information, see [Add a Card Surcharge](https://developer.squareupstaging.com/docs/terminal-api/additional-payment-checkout-features#add-a-card-surcharge).",
+            "x-release-status": "BETA",
+            "nullable": true
           }
         }
       },
@@ -23207,7 +23335,7 @@
           },
           "brand": {
             "type": "string",
-            "description": "The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY`, `ALIPAY`,\n`RAKUTEN_PAY`, `AU_PAY`, `D_BARAI`, `MERPAY`, `WECHAT_PAY` or `UNKNOWN`.",
+            "description": "The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY`, `ALIPAY`,\n`RAKUTEN_PAY`, `AU_PAY`, `D_BARAI`, `MERPAY`, `WECHAT_PAY`, `LIGHTNING` or `UNKNOWN`.",
             "maxLength": 50,
             "nullable": true
           },
@@ -23215,6 +23343,55 @@
             "$ref": "#/components/schemas/CashAppDetails",
             "description": "Brand-specific details for payments with the `brand` of `CASH_APP`.",
             "nullable": true
+          },
+          "lightning_details": {
+            "$ref": "#/components/schemas/LightningDetails",
+            "description": "Brand-specific details for payments with the `brand` of `LIGHTNING`.",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information about errors encountered during the payment.",
+            "readOnly": true
+          }
+        }
+      },
+      "DisableBankAccountResponse": {
+        "type": "object",
+        "description": "Response object returned by `DisableBankAccount`.",
+        "x-release-status": "BETA",
+        "properties": {
+          "bank_account": {
+            "$ref": "#/components/schemas/BankAccount",
+            "description": "The disabled 'BankAccount'"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information on errors encountered during the request."
+          }
+        },
+        "example": {
+          "bank_account": {
+            "account_number_suffix": "000",
+            "account_type": "CHECKING",
+            "bank_name": "Citizens Bank",
+            "country": "US",
+            "creditable": true,
+            "currency": "USD",
+            "customer_id": "HM3B2D5JKGZ69359BTEHXM2V8M",
+            "debitable": true,
+            "fingerprint": "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+            "holder_name": "Nicola Snow",
+            "id": "bact:OxfBTiXgByaXds1K4GB",
+            "primary_bank_identification_number": "011401533",
+            "status": "DISABLED",
+            "version": 3
           }
         }
       },
@@ -24629,6 +24806,18 @@
         "description": "Determines item visibility in Ecom (Online Store) and Online Checkout.",
         "x-release-status": "PUBLIC"
       },
+      "ElectronicMoneyDetails": {
+        "type": "object",
+        "description": "Details specific to electronic money payments.",
+        "x-release-status": "BETA",
+        "properties": {
+          "felica_details": {
+            "$ref": "#/components/schemas/FelicaDetails",
+            "description": "Details specific to FeliCa payments.",
+            "nullable": true
+          }
+        }
+      },
       "Employee": {
         "type": "object",
         "description": "An employee object that is used by the external API.\n\nDEPRECATED at version 2020-08-26. Replaced by [TeamMember](entity:TeamMember).",
@@ -24939,6 +25128,7 @@
           "UNSUPPORTED_LOYALTY_REWARD_TIER",
           "LOCATION_MISMATCH",
           "ORDER_UNPAID_NOT_RETURNABLE",
+          "PARTIAL_PAYMENT_DELAY_CAPTURE_NOT_SUPPORTED",
           "IDEMPOTENCY_KEY_REUSED",
           "UNEXPECTED_VALUE",
           "SANDBOX_NOT_SUPPORTED",
@@ -24954,6 +25144,7 @@
           "PLAID_ERROR",
           "PLAID_ERROR_ITEM_LOGIN_REQUIRED",
           "PLAID_ERROR_RATE_LIMIT",
+          "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET",
           "CARD_DECLINED",
           "VERIFY_CVV_FAILURE",
           "VERIFY_AVS_FAILURE",
@@ -25424,7 +25615,7 @@
           },
           {
             "name": "GIFT_CARD_AVAILABLE_AMOUNT",
-            "description": "When a Gift Card is a payment source, you can allow taking a partial payment\nby adding the `accept_partial_authorization` parameter in the request.\nHowever, taking such a partial payment does not work if your request also includes\n`tip_money`, `app_fee_money`, or both. Square declines such payments and returns\nthe `GIFT_CARD_AVAILABLE_AMOUNT` error.\nFor more information, see\n[CreatePayment errors (additional information)](https://developer.squareup.com/docs/payments-api/error-codes#createpayment-errors-additional-information).",
+            "description": "Provides the available balance on a Square gift card when a gift card payment fails due to insufficient funds.\nThis error is returned with an `INSUFFICIENT_FUNDS` error and contains the balance in the smallest denomination\nof the applicable currency. [Learn more](https://developer.squareup.com/docs/payments-api/error-codes#gift_card_available_amount)\nabout this error code.\n\nYou can use the `accept_partial_authorization` field in a `CreatePayment` request to configure a payment flow that uses\nthe available balance and allows collecting additional payments.",
             "error-category": "PAYMENT_METHOD_ERROR"
           },
           {
@@ -25543,6 +25734,11 @@
             "error-category": "INVALID_REQUEST_ERROR"
           },
           {
+            "name": "PARTIAL_PAYMENT_DELAY_CAPTURE_NOT_SUPPORTED",
+            "description": "Delay capture of a partial payment is not supported.",
+            "error-category": "INVALID_REQUEST_ERROR"
+          },
+          {
             "name": "IDEMPOTENCY_KEY_REUSED",
             "description": "The provided idempotency key has already been used.",
             "error-category": "INVALID_REQUEST_ERROR"
@@ -25616,6 +25812,11 @@
             "name": "PLAID_ERROR_RATE_LIMIT",
             "description": "Plaid error - RATE_LIMIT",
             "error-category": "EXTERNAL_VENDOR_ERROR"
+          },
+          {
+            "name": "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET",
+            "description": "The provided merchant or location is not enabled to accept\nthe requested payment source.",
+            "error-category": "INVALID_REQUEST_ERROR"
           },
           {
             "name": "CARD_DECLINED",
@@ -25902,6 +26103,58 @@
           }
         }
       },
+      "FelicaDetails": {
+        "type": "object",
+        "description": "Details for Felica payments.",
+        "x-release-status": "BETA",
+        "properties": {
+          "terminal_id": {
+            "type": "string",
+            "description": "The terminal id for a Felica payment.",
+            "maxLength": 255,
+            "nullable": true
+          },
+          "felica_masked_card_number": {
+            "type": "string",
+            "description": "The masked card number for a Felica payment.",
+            "nullable": true
+          },
+          "felica_brand": {
+            "$ref": "#/components/schemas/FelicaDetailsFelicaBrand",
+            "description": "The Felica sub-brand of the payment.\nSee [FelicaBrand](#type-felicabrand) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "FelicaDetailsFelicaBrand": {
+        "type": "string",
+        "enum": [
+          "UNKNOWN",
+          "FELICA_ID",
+          "FELICA_TRANSPORTATION",
+          "FELICA_QP"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "UNKNOWN",
+            "description": ""
+          },
+          {
+            "name": "FELICA_ID",
+            "description": ""
+          },
+          {
+            "name": "FELICA_TRANSPORTATION",
+            "description": ""
+          },
+          {
+            "name": "FELICA_QP",
+            "description": ""
+          }
+        ],
+        "description": "A Felica card's \"sub-brand\"--the actual brand on the Felica card",
+        "x-release-status": "BETA"
+      },
       "FilterValue": {
         "type": "object",
         "description": "A filter to select resources based on an exact field value. For any given\nvalue, the value can only be in one property. Depending on the field, either\nall properties can be set or only a subset will be available.\n\nRefer to the documentation of the field.",
@@ -26027,7 +26280,7 @@
           },
           "schedule_type": {
             "$ref": "#/components/schemas/FulfillmentDeliveryDetailsOrderFulfillmentDeliveryDetailsScheduleType",
-            "description": "Indicates the fulfillment delivery schedule type. If `SCHEDULED`, then\n`deliver_at` is required. If `ASAP`, then `prep_time_duration` is required. The default is `SCHEDULED`.\nSee [OrderFulfillmentDeliveryDetailsScheduleType](#type-orderfulfillmentdeliverydetailsscheduletype) for possible values",
+            "description": "Indicates the fulfillment delivery schedule type. If `SCHEDULED`, then\n`deliver_at` is required. The default is `SCHEDULED`.\nSee [OrderFulfillmentDeliveryDetailsScheduleType](#type-orderfulfillmentdeliverydetailsscheduletype) for possible values",
             "nullable": true
           },
           "placed_at": {
@@ -26037,17 +26290,17 @@
           },
           "deliver_at": {
             "type": "string",
-            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nthat represents the start of the delivery period.\nWhen the fulfillment `schedule_type` is `ASAP`, the field is automatically\nset to the current time plus the `prep_time_duration`.\nOtherwise, the application can set this field while the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the\nterminal state such as `COMPLETED`, `CANCELED`, and `FAILED`).\n\nThe timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nthat represents the start of the delivery period.\nThe application can set this field while the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the\nterminal state such as `COMPLETED`, `CANCELED`, and `FAILED`).\n\nThe timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").\n\nFor fulfillments with the schedule type `ASAP`, this is automatically set\nto the current time plus `prep_time_duration`, if available.",
             "nullable": true
           },
           "prep_time_duration": {
             "type": "string",
-            "description": "The duration of time it takes to prepare and deliver this fulfillment.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\").",
+            "description": "The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)\nneeded to prepare and deliver this fulfillment.\nThe duration must be in RFC 3339 format (for example, \"PT30M\" for 30 minutes). Don't confuse\n\"M\" for months with \"M\" for minutes. \"P5M\" means 5 months, while \"PT5M\" means 5 minutes.",
             "nullable": true
           },
           "delivery_window_duration": {
             "type": "string",
-            "description": "The time period after `deliver_at` in which to deliver the order.\nApplications can set this field when the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state\nsuch as `COMPLETED`, `CANCELED`, and `FAILED`).\n\nThe duration must be in RFC 3339 format (for example, \"P1W3D\").",
+            "description": "The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)\nafter `deliver_at` in which to deliver the order.\nApplications can set this field when the fulfillment `state` is\n`PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state\nsuch as `COMPLETED`, `CANCELED`, and `FAILED`).\n\nThe duration must be in RFC 3339 format (for example, \"PT30M\" for 30 minutes). Don't confuse\n\"M\" for months with \"M\" for minutes. \"P5M\" means 5 months, while \"PT5M\" means 5 minutes.",
             "nullable": true
           },
           "note": {
@@ -26099,7 +26352,7 @@
           },
           "courier_pickup_window_duration": {
             "type": "string",
-            "description": "The time period after `courier_pickup_at` in which the courier should pick up the order.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\").",
+            "description": "The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)\nafter `courier_pickup_at` in which the courier should pick up the order.\nThe duration must be in RFC 3339 format (for example, \"PT30M\" for 30 minutes). Don't confuse\n\"M\" for months with \"M\" for minutes. \"P5M\" means 5 months, while \"PT5M\" means 5 minutes.",
             "nullable": true
           },
           "is_no_contact_delivery": {
@@ -26235,7 +26488,7 @@
           },
           "auto_complete_duration": {
             "type": "string",
-            "description": "The duration of time after which an in progress pickup fulfillment is automatically moved\nto the `COMPLETED` state. The duration must be in RFC 3339 format (for example, \"P1W3D\").\n\nIf not set, this pickup fulfillment remains in progress until it is canceled or completed.",
+            "description": "The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)\nafter which an in-progress pickup fulfillment is automatically moved\nto the `COMPLETED` state. The duration must be in RFC 3339 format (for example, \"PT4H\" for 4 hours).\n\nIf not set, this pickup fulfillment remains in progress until it is canceled or completed.",
             "nullable": true
           },
           "schedule_type": {
@@ -26245,17 +26498,17 @@
           },
           "pickup_at": {
             "type": "string",
-            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nthat represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g.,\n\"2016-09-04T23:59:33.123Z\".\n\nFor fulfillments with the schedule type `ASAP`, this is automatically set\nto the current time plus the expected duration to prepare the fulfillment.",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nthat represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g.,\n\"2016-09-04T23:59:33.123Z\".\n\nFor fulfillments with the schedule type `ASAP`, this is automatically set\nto the current time plus `prep_time_duration`, if available.",
             "nullable": true
           },
           "pickup_window_duration": {
             "type": "string",
-            "description": "The window of time in which the order should be picked up after the `pickup_at` timestamp.\nMust be in RFC 3339 duration format, e.g., \"P1W3D\". Can be used as an\ninformational guideline for merchants.",
+            "description": "The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)\nin which the order should be picked up after the `pickup_at` timestamp.\nThe duration must be in RFC 3339 format (for example, \"PT30M\" for 30 minutes). Don't confuse\n\"M\" for months with \"M\" for minutes. \"P5M\" means 5 months, while \"PT5M\" means 5 minutes.\n\nCan be used as an informational guideline for merchants.",
             "nullable": true
           },
           "prep_time_duration": {
             "type": "string",
-            "description": "The duration of time it takes to prepare this fulfillment.\nThe duration must be in RFC 3339 format (for example, \"P1W3D\").",
+            "description": "The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)\nneeded to prepare this fulfillment.\nThe duration must be in RFC 3339 format (for example, \"PT30M\" for 30 minutes). Don't confuse\n\"M\" for months with \"M\" for minutes. \"P5M\" means 5 months, while \"PT5M\" means 5 minutes.",
             "nullable": true
           },
           "note": {
@@ -26585,33 +26838,34 @@
         "description": "Response object returned by `GetBankAccount`.",
         "x-release-status": "PUBLIC",
         "properties": {
+          "bank_account": {
+            "$ref": "#/components/schemas/BankAccount",
+            "description": "The requested `BankAccount` object."
+          },
           "errors": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Error"
             },
             "description": "Information on errors encountered during the request."
-          },
-          "bank_account": {
-            "$ref": "#/components/schemas/BankAccount",
-            "description": "The requested `BankAccount` object."
           }
         },
         "example": {
           "bank_account": {
-            "account_number_suffix": "971",
+            "account_number_suffix": "000",
             "account_type": "CHECKING",
-            "bank_name": "Bank Name",
+            "bank_name": "Citizens Bank",
             "country": "US",
-            "creditable": false,
+            "creditable": true,
             "currency": "USD",
-            "debitable": false,
-            "holder_name": "Jane Doe",
-            "id": "w3yRgCGYQnwmdl0R3GB",
-            "location_id": "S8GWD5example",
-            "primary_bank_identification_number": "112200303",
-            "status": "VERIFICATION_IN_PROGRESS",
-            "version": 5
+            "customer_id": "HM3B2D5JKGZ69359BTEHXM2V8M",
+            "debitable": true,
+            "fingerprint": "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+            "holder_name": "Nicola Snow",
+            "id": "bact:OxfBTiXgByaXds1K4GB",
+            "primary_bank_identification_number": "011401533",
+            "status": "VERIFIED",
+            "version": 2
           }
         }
       },
@@ -32459,6 +32713,18 @@
           }
         }
       },
+      "LightningDetails": {
+        "type": "object",
+        "description": "Additional details about `WALLET` type payments with the `brand` of `LIGHTNING`.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "payment_url": {
+            "type": "string",
+            "description": "Payment URL for the lightning payment, a.k.a. the invoice.",
+            "nullable": true
+          }
+        }
+      },
       "LinkCustomerToGiftCardRequest": {
         "type": "object",
         "description": "A request to link a customer to a gift card.",
@@ -32519,13 +32785,6 @@
         "description": "Response object returned by ListBankAccounts.",
         "x-release-status": "PUBLIC",
         "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "description": "Information on errors encountered during the request."
-          },
           "bank_accounts": {
             "type": "array",
             "items": {
@@ -32533,42 +32792,51 @@
             },
             "description": "List of BankAccounts associated with this account."
           },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Information on errors encountered during the request."
+          },
           "cursor": {
             "type": "string",
-            "description": "When a response is truncated, it includes a cursor that you can \nuse in a subsequent request to fetch next set of bank accounts.\nIf empty, this is the final response.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)."
+            "description": "When a response is truncated, it includes a cursor that you can\nuse in a subsequent request to fetch next set of bank accounts.\nIf empty, this is the final response.\n\nFor more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)."
           }
         },
         "example": {
           "bank_accounts": [
             {
-              "account_number_suffix": "971",
+              "account_number_suffix": "000",
               "account_type": "CHECKING",
-              "bank_name": "Bank Name",
+              "bank_name": "Citizens Bank",
               "country": "US",
-              "creditable": false,
+              "creditable": true,
               "currency": "USD",
-              "debitable": false,
-              "holder_name": "Jane Doe",
-              "id": "ao6iaQ9vhDiaQD7n3GB",
-              "location_id": "S8GWD5example",
-              "primary_bank_identification_number": "112200303",
-              "status": "VERIFICATION_IN_PROGRESS",
-              "version": 5
+              "customer_id": "HM3B2D5JKGZ69359BTEHXM2V8M",
+              "debitable": true,
+              "fingerprint": "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+              "holder_name": "Nicola Snow",
+              "id": "bact:OxfBTiXgByaXds1K4GB",
+              "primary_bank_identification_number": "011401533",
+              "status": "VERIFIED",
+              "version": 2
             },
             {
-              "account_number_suffix": "972",
+              "account_number_suffix": "118",
               "account_type": "CHECKING",
-              "bank_name": "Bank Name",
+              "bank_name": "Bank of America",
               "country": "US",
-              "creditable": false,
+              "creditable": true,
               "currency": "USD",
-              "debitable": false,
-              "holder_name": "Jane Doe",
-              "id": "4x7WXuaxrkQkVlka3GB",
-              "location_id": "S8GWD5example",
-              "primary_bank_identification_number": "112200303",
-              "status": "VERIFICATION_IN_PROGRESS",
-              "version": 5
+              "customer_id": "HM3B2D5JKGZ69359BTEHXM2V8M",
+              "debitable": true,
+              "fingerprint": "sq-1-Poacr0bohmds1N--OseZUsG5kPwfCGxqYKlb-Q1Rxwsk0lxd1JLs4yaPDuMqIae7Qg",
+              "holder_name": "Nicola Snow",
+              "id": "bact:Msdfa2kgUDR9lMgk4GB",
+              "primary_bank_identification_number": "100210004",
+              "status": "DISABLED",
+              "version": 3
             }
           ]
         }
@@ -40303,6 +40571,11 @@
             "type": "string",
             "description": "The secret your application generated for the authorization request used to\nobtain the authorization code. This is the source of the `code_challenge` hash you\nprovided in your authorization URL.\n\nRequired for the PKCE flow if `grant_type` is `authorization_code`.",
             "nullable": true
+          },
+          "use_jwt": {
+            "type": "boolean",
+            "description": "Indicates whether to use a JWT (JSON Web Token) as the OAuth access token.\nWhen set to `true`, the OAuth flow returns a JWT to your application, used in the\nsame way as a regular token. The default value is `false`.",
+            "nullable": true
           }
         },
         "example": {
@@ -40599,7 +40872,7 @@
           "ticket_name": {
             "type": "string",
             "description": "A short-term identifier for the order (such as a customer first name,\ntable number, or auto-generated order number that resets daily).",
-            "maxLength": 30,
+            "maxLength": 255,
             "x-release-status": "BETA",
             "nullable": true
           },
@@ -40623,6 +40896,25 @@
             "readOnly": true
           }
         }
+      },
+      "OrderCardSurchargeTreatmentType": {
+        "type": "string",
+        "enum": [
+          "LINE_ITEM_TREATMENT",
+          "APPORTIONED_TREATMENT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "LINE_ITEM_TREATMENT",
+            "description": ""
+          },
+          {
+            "name": "APPORTIONED_TREATMENT",
+            "description": ""
+          }
+        ],
+        "description": "Indicates whether the card surcharge will be treated as a value-holding line item or\napportioned across all line items.",
+        "x-release-status": "BETA"
       },
       "OrderCreated": {
         "type": "object",
@@ -41765,12 +42057,12 @@
           },
           "base_price_money": {
             "$ref": "#/components/schemas/Money",
-            "description": "The base price for a single unit of the line item.",
+            "description": "The base price for a single unit of the line item. Note - If inclusive tax is set on\nthis item it will be included in this value.",
             "nullable": true
           },
           "variation_total_price_money": {
             "$ref": "#/components/schemas/Money",
-            "description": "The total price of all item variations sold in this line item.\nThe price is calculated as `base_price_money` multiplied by `quantity`.\nIt does not include modifiers.",
+            "description": "The total price of all item variations sold in this line item.\nThe price is calculated as `base_price_money` multiplied by `quantity`.\nIt does not include modifiers. Note - If inclusive tax is set on\nthis item it will be included in this value.",
             "readOnly": true
           },
           "gross_sales_money": {
@@ -41883,6 +42175,11 @@
           "applied_money": {
             "$ref": "#/components/schemas/Money",
             "description": "The amount of money applied by the tax to the line item.",
+            "readOnly": true
+          },
+          "auto_applied": {
+            "type": "boolean",
+            "description": "Indicates whether the tax was automatically applied to the order based on\nthe catalog configuration. For an example, see\n[Automatically Apply Taxes to an Order](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts/auto-apply-taxes).",
             "readOnly": true
           }
         }
@@ -42126,6 +42423,14 @@
             },
             "description": "A list of taxes blocked from applying to the line item.\nTaxes can be blocked by the `tax_uid` (for ad hoc taxes) or\nthe `tax_catalog_object_id` (for catalog taxes).",
             "nullable": true
+          },
+          "blocked_service_charges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderLineItemPricingBlocklistsBlockedServiceCharge"
+            },
+            "description": "A list of service charges blocked from applying to the line item.\nService charges can be blocked by the `service_charge_uid` (for ad hoc\nservice charges) or the `service_charge_catalog_object_id` (for catalog\nservice charges).",
+            "nullable": true
           }
         }
       },
@@ -42149,6 +42454,31 @@
           "discount_catalog_object_id": {
             "type": "string",
             "description": "The `catalog_object_id` of the discount that should be blocked.\nUse this field to block catalog discounts. For ad hoc discounts, use the\n`discount_uid` field.",
+            "maxLength": 192,
+            "nullable": true
+          }
+        }
+      },
+      "OrderLineItemPricingBlocklistsBlockedServiceCharge": {
+        "type": "object",
+        "description": "A service charge to block from applying to a line item. The service charge\nmust be identified by either `service_charge_uid` or\n`service_charge_catalog_object_id`, but not both.",
+        "x-release-status": "BETA",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "A unique ID of the `BlockedServiceCharge` within the order.",
+            "maxLength": 60,
+            "nullable": true
+          },
+          "service_charge_uid": {
+            "type": "string",
+            "description": "The `uid` of the service charge that should be blocked. Use this field to\nblock ad hoc service charges. For catalog service charges, use the \n`service_charge_catalog_object_id` field.",
+            "maxLength": 60,
+            "nullable": true
+          },
+          "service_charge_catalog_object_id": {
+            "type": "string",
+            "description": "The `catalog_object_id` of the service charge that should be blocked.\nUse this field to block catalog service charges. For ad hoc service charges,\nuse the `service_charge_uid` field.",
             "maxLength": 192,
             "nullable": true
           }
@@ -42411,7 +42741,7 @@
               "$ref": "#/components/schemas/OrderReturnTax"
             },
             "description": "A collection of references to taxes being returned for an order, including the total\napplied tax amount to be returned. The taxes must reference a top-level tax ID from the source\norder.",
-            "readOnly": true
+            "nullable": true
           },
           "return_discounts": {
             "type": "array",
@@ -42419,7 +42749,7 @@
               "$ref": "#/components/schemas/OrderReturnDiscount"
             },
             "description": "A collection of references to discounts being returned for an order, including the total\napplied discount amount to be returned. The discounts must reference a top-level discount ID\nfrom the source order.",
-            "readOnly": true
+            "nullable": true
           },
           "return_tips": {
             "type": "array",
@@ -42774,7 +43104,7 @@
           },
           "treatment_type": {
             "$ref": "#/components/schemas/OrderServiceChargeTreatmentType",
-            "description": "The treatment type of the service charge.\nSee [OrderServiceChargeTreatmentType](#type-orderservicechargetreatmenttype) for possible values",
+            "description": "Indicates whether the service charge will be treated as a value-holding line item or apportioned toward a line item.\nSee [OrderServiceChargeTreatmentType](#type-orderservicechargetreatmenttype) for possible values",
             "x-release-status": "BETA",
             "nullable": true
           },
@@ -42783,6 +43113,11 @@
             "description": "Indicates the level at which the apportioned service charge applies. For `ORDER`\nscoped service charges, Square generates references in `applied_service_charges` on\nall order line items that do not have them. For `LINE_ITEM` scoped service charges,\nthe service charge only applies to line items with a service charge reference in their\n`applied_service_charges` field.\n\nThis field is immutable. To change the scope of an apportioned service charge, you must delete\nthe apportioned service charge and re-add it as a new apportioned service charge.\nSee [OrderServiceChargeScope](#type-orderservicechargescope) for possible values",
             "x-release-status": "BETA",
             "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/OrderServiceChargeType",
+            "description": "The type of the service charge.\nSee [OrderServiceChargeType](#type-orderservicechargetype) for possible values",
+            "readOnly": true
           }
         }
       },
@@ -42932,7 +43267,7 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the service charge.",
+            "description": "The name of the service charge. This is unused and null for AUTO_GRATUITY to match the behavior on Bills.",
             "maxLength": 512,
             "nullable": true
           },
@@ -43009,7 +43344,7 @@
           },
           "treatment_type": {
             "$ref": "#/components/schemas/OrderServiceChargeTreatmentType",
-            "description": "The treatment type of the service charge.\nSee [OrderServiceChargeTreatmentType](#type-orderservicechargetreatmenttype) for possible values",
+            "description": "Indicates whether the service charge will be treated as a value-holding line item or apportioned toward a line item.\nSee [OrderServiceChargeTreatmentType](#type-orderservicechargetreatmenttype) for possible values",
             "x-release-status": "BETA",
             "nullable": true
           },
@@ -43626,6 +43961,14 @@
             "description": "The amount the developer is taking as a fee for facilitating the payment on behalf\nof the seller. This amount is specified in the smallest denomination of the applicable currency\n(for example, US dollar amounts are specified in cents). For more information,\nsee [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).\n\nThe amount cannot be more than 90% of the `total_money` value.\n\nTo set this field, `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required.\nFor more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).",
             "nullable": true
           },
+          "app_fee_allocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppFeeAllocation"
+            },
+            "description": "Details pertaining to recipients of the application fee.",
+            "nullable": true
+          },
           "approved_money": {
             "$ref": "#/components/schemas/Money",
             "description": "The amount of money approved for this payment. This value may change if Square chooses to\nobtain reauthorization as part of a call to [UpdatePayment](api-endpoint:Payments-UpdatePayment).",
@@ -43685,6 +44028,12 @@
             "$ref": "#/components/schemas/BankAccountPaymentDetails",
             "description": "Details about a bank account payment. These details are only populated if the source_type is `BANK_ACCOUNT`.",
             "readOnly": true
+          },
+          "electronic_money_details": {
+            "$ref": "#/components/schemas/ElectronicMoneyDetails",
+            "description": "Details specific to electronic money payments.",
+            "x-release-status": "BETA",
+            "nullable": true
           },
           "external_details": {
             "$ref": "#/components/schemas/ExternalPaymentDetails",
@@ -43818,6 +44167,11 @@
           "application_details": {
             "$ref": "#/components/schemas/ApplicationDetails",
             "description": "Details about the application that took the payment.",
+            "readOnly": true
+          },
+          "buyer_currency_exchange": {
+            "$ref": "#/components/schemas/CurrencyExchange",
+            "description": "Details about the currency exchange for payments where the currency the buyer\npaid with differs from the currency the merchant received (e.g., bitcoin lightning payments).\n\nThis field will only be present when the buyer paid in a different currency than\nthe one used in the payment's total_money/amount_money fields.",
             "readOnly": true
           },
           "is_offline_payment": {
@@ -44487,6 +44841,14 @@
             "$ref": "#/components/schemas/Money",
             "description": "The amount of money the application developer contributed to help cover the refunded amount.\nThis amount is specified in the smallest denomination of the applicable currency (for example,\nUS dollar amounts are specified in cents). For more information, see\n[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).",
             "nullable": true
+          },
+          "app_fee_allocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppFeeAllocation"
+            },
+            "description": "Details pertaining to contributors to the refund of the application fee.",
+            "readOnly": true
           },
           "processing_fee": {
             "type": "array",
@@ -45811,12 +46173,12 @@
                 "quantity_canceled": "1",
                 "quantity_damaged": "1",
                 "quantity_received": "3",
-                "uid": "1"
+                "transfer_order_line_uid": "1"
               },
               {
                 "quantity_canceled": "1",
                 "quantity_received": "2",
-                "uid": "2"
+                "transfer_order_line_uid": "2"
               }
             ]
           },
@@ -46226,6 +46588,14 @@
             "$ref": "#/components/schemas/Money",
             "description": "The amount of money the developer contributes to help cover the refunded amount.\nThis amount is specified in the smallest denomination of the applicable currency (for example,\nUS dollar amounts are specified in cents).\n\nThe value cannot be more than the `amount_money`.\n\nYou can specify this parameter in a refund request only if the same parameter was also included\nwhen taking the payment. This is part of the application fee scenario the API supports. For more\ninformation, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).\n\nTo set this field, `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission is required.\nFor more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).",
             "x-release-status": "BETA",
+            "nullable": true
+          },
+          "app_fee_allocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppFeeAllocation"
+            },
+            "description": "Details pertaining to contributors to the refund of the application fee.\nThe sum of the amounts in the app_fee_allocations must equal the app_fee_money amount, if\npresent. If populated, an allocation must be present for every party that expects to contribute\na portion of the refunded application fee, including the application developer.",
             "nullable": true
           },
           "payment_id": {
@@ -57194,6 +57564,39 @@
             "nullable": true
           }
         },
+        "example": {
+          "created_at": "2025-12-11T19:46:04.617Z",
+          "data": {
+            "id": "DKFUE94JS8H14",
+            "object": {
+              "transfer_order": {
+                "created_at": "2025-12-11T19:46:04.617Z",
+                "created_by_team_member_id": "SJFe94qu73J",
+                "destination_location_id": "Q85PI2QS5BZQGH",
+                "id": "DKFUE94JS8H14",
+                "line_items": [
+                  {
+                    "item_variation_id": "DJF38FJSSIDO38JEWNXLOGUEYWW",
+                    "quantity_canceled": "0",
+                    "quantity_damaged": "0",
+                    "quantity_ordered": "3",
+                    "quantity_pending": "3",
+                    "quantity_received": "0",
+                    "uid": "CPWUT73UXJ39LP"
+                  }
+                ],
+                "source_location_id": "SKS93J2008Z6A",
+                "status": "DRAFT",
+                "updated_at": "2025-12-11T19:46:04.617Z",
+                "version": 1765482364617
+              }
+            },
+            "type": "transfer_order"
+          },
+          "event_id": "116038d3-2939-439f-8679-fc86dbf80f69",
+          "merchant_id": "5S9MXCS9Y99KK",
+          "type": "transfer_order.created"
+        },
         "x-webhook": {
           "event": "transfer_order.created",
           "scopes": [
@@ -57201,7 +57604,8 @@
             "INVENTORY_WRITE"
           ]
         },
-        "x-api": "#/components/x-apis/TransferOrder"
+        "x-api": "#/components/x-apis/TransferOrder",
+        "x-since": "2025-10-16"
       },
       "TransferOrderCreatedEventData": {
         "type": "object",
@@ -57267,13 +57671,25 @@
             "nullable": true
           }
         },
+        "example": {
+          "created_at": "2025-12-11T20:00:00.000Z",
+          "data": {
+            "deleted": true,
+            "id": "DKFUE94JS8H14",
+            "type": "transfer_order"
+          },
+          "event_id": "303so93-2948-439f-8679-fc86dbf80f71",
+          "merchant_id": "5S9MXCS9Y99KK",
+          "type": "transfer_order.deleted"
+        },
         "x-webhook": {
           "event": "transfer_order.deleted",
           "scopes": [
             "INVENTORY_WRITE"
           ]
         },
-        "x-api": "#/components/x-apis/TransferOrder"
+        "x-api": "#/components/x-apis/TransferOrder",
+        "x-since": "2025-10-16"
       },
       "TransferOrderDeletedEventData": {
         "type": "object",
@@ -57549,6 +57965,39 @@
             "nullable": true
           }
         },
+        "example": {
+          "created_at": "2025-12-11T19:50:12.845Z",
+          "data": {
+            "id": "DKFUE94JS8H14",
+            "object": {
+              "transfer_order": {
+                "created_at": "2025-12-11T19:46:04.617Z",
+                "created_by_team_member_id": "SJFe94qu73J",
+                "destination_location_id": "Q85PI2QS5BZQGH",
+                "id": "DKFUE94JS8H14",
+                "line_items": [
+                  {
+                    "item_variation_id": "DJF38FJSSIDO38JEWNXLOGUEYWW",
+                    "quantity_canceled": "0",
+                    "quantity_damaged": "0",
+                    "quantity_ordered": "5",
+                    "quantity_pending": "5",
+                    "quantity_received": "0",
+                    "uid": "CPWUT73UXJ39LP"
+                  }
+                ],
+                "source_location_id": "SKS93J2008Z6A",
+                "status": "PENDING",
+                "updated_at": "2025-12-11T19:50:12.845Z",
+                "version": 1765482612845
+              }
+            },
+            "type": "transfer_order"
+          },
+          "event_id": "333oleuu-2948-439f-8679-fc86dbf80f70",
+          "merchant_id": "5S9MXCS9Y99KK",
+          "type": "transfer_order.updated"
+        },
         "x-webhook": {
           "event": "transfer_order.updated",
           "scopes": [
@@ -57556,7 +58005,8 @@
             "INVENTORY_WRITE"
           ]
         },
-        "x-api": "#/components/x-apis/TransferOrder"
+        "x-api": "#/components/x-apis/TransferOrder",
+        "x-since": "2025-10-16"
       },
       "TransferOrderUpdatedEventData": {
         "type": "object",
@@ -61934,11 +62384,6 @@
         "summary": "Retrieve information about an organization that sells with Square.",
         "description": "\nThe Merchants API groups individual seller locations into larger organizations, allowing them to operate as a single entity. Each merchant represents one organization or business that sells with Square. Use this API to retrieve core information about the organization connecting to your application such as the merchant ID, language preferences, country, account status, and the name of the overall business.\n\nFor more information, see the following guide:\n - [Merchants](https://developer.squareup.com/docs/merchants-api)"
       },
-      "MobileAuthorization": {
-        "name": "Mobile Authorization",
-        "summary": "Authorize Reader SDK applications to take in-person payments.",
-        "description": "\n**Deprecated** - Developers should update their Reader SDK integration to use the \n[Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods. \n\nThe Mobile Authorization API accepts an account credential (an OAuth token or a personal access token) and a\nlocation ID and returns an authorization code that custom mobile applications can use to initialize Square mobile\nsolutions, like Reader SDK, to accept payments using Square hardware.\n\nFor more information, see the following guide:\n - [Mobile Authorization](https://developer.squareup.com/docs/mobile-authz/what-it-does)"
-      },
       "OAuth": {
         "name": "OAuth",
         "summary": "Allow your application to gain programmatic access to Square seller accounts.",
@@ -62042,8 +62487,7 @@
           "#/components/x-apis/Channels",
           "#/components/x-apis/Sites",
           "#/components/x-apis/Snippets",
-          "#/components/x-apis/Cash Drawers",
-          "#/components/x-apis/channels"
+          "#/components/x-apis/Cash Drawers"
         ]
       },
       "Customers": {
@@ -62096,7 +62540,6 @@
           "#/components/x-apis/Subscriptions",
           "#/components/x-apis/BankAccounts",
           "#/components/x-apis/Payouts",
-          "#/components/x-apis/MobileAuthorization",
           "#/components/x-apis/Devices",
           "#/components/x-apis/ApplePay"
         ]
@@ -62202,50 +62645,6 @@
     }
   },
   "paths": {
-    "/mobile/authorization-code": {
-      "post": {
-        "tags": [
-          "MobileAuthorization"
-        ],
-        "summary": "CreateMobileAuthorizationCode",
-        "operationId": "CreateMobileAuthorizationCode",
-        "description": "__Note:__ This endpoint is used by the deprecated Reader SDK. \nDevelopers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods. \n\nGenerates code to authorize a mobile application to connect to a Square card reader.\n\nAuthorization codes are one-time-use codes and expire 60 minutes after being issued.\n\nThe `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Bearer ACCESS_TOKEN\n```\n\nReplace `ACCESS_TOKEN` with a\n[valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).",
-        "x-release-status": "DEPRECATED",
-        "deprecated": true,
-        "x-deprecation": {},
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_WRITE_IN_PERSON"
-            ]
-          }
-        ],
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateMobileAuthorizationCodeRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateMobileAuthorizationCodeResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/oauth2/revoke": {
       "post": {
         "tags": [
@@ -62599,7 +62998,7 @@
         "parameters": [
           {
             "name": "cursor",
-            "description": "The pagination cursor returned by a previous call to this endpoint.\nUse it in the next `ListBankAccounts` request to retrieve the next set \nof results.\n\nSee the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.",
+            "description": "The pagination cursor returned by a previous call to this endpoint.\nUse it in the next `ListBankAccounts` request to retrieve the next set\nof results.\n\nSee the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.",
             "schema": {
               "type": "string"
             },
@@ -62608,7 +63007,7 @@
           },
           {
             "name": "limit",
-            "description": "Upper limit on the number of bank accounts to return in the response. \nCurrently, 1000 is the largest supported limit. You can specify a limit \nof up to 1000 bank accounts. This is also the default limit.",
+            "description": "Upper limit on the number of bank accounts to return in the response.\nCurrently, 1000 is the largest supported limit. You can specify a limit\nof up to 1000 bank accounts. This is also the default limit.",
             "schema": {
               "type": "integer"
             },
@@ -62617,7 +63016,16 @@
           },
           {
             "name": "location_id",
-            "description": "Location ID. You can specify this optional filter \nto retrieve only the linked bank accounts belonging to a specific location.",
+            "description": "Location ID. You can specify this optional filter\nto retrieve only the linked bank accounts belonging to a specific location.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "customer_id",
+            "description": "Customer ID. You can specify this optional filter\nto retrieve only the linked bank accounts belonging to a specific customer.",
             "schema": {
               "type": "string"
             },
@@ -62636,7 +63044,66 @@
               }
             }
           }
-        }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "INTERNAL_SERVER_ERROR"
+          },
+          {
+            "error-code": "BAD_REQUEST"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "BankAccounts"
+        ],
+        "summary": "CreateBankAccount",
+        "operationId": "CreateBankAccount",
+        "description": "Store a bank account on file for a square account",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "BANK_ACCOUNTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBankAccountRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateBankAccountResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
       }
     },
     "/v2/bank-accounts/by-v1-id/{v1_bank_account_id}": {
@@ -62687,7 +63154,7 @@
         ],
         "summary": "GetBankAccount",
         "operationId": "GetBankAccount",
-        "description": "Returns details of a [BankAccount](entity:BankAccount)\nlinked to a Square account.",
+        "description": "Retrieve details of a [BankAccount](entity:BankAccount) bank account linked to a Square account.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -62718,7 +63185,70 @@
               }
             }
           }
-        }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "INTERNAL_SERVER_ERROR"
+          },
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
+      }
+    },
+    "/v2/bank-accounts/{bank_account_id}/disable": {
+      "post": {
+        "tags": [
+          "BankAccounts"
+        ],
+        "summary": "DisableBankAccount",
+        "operationId": "DisableBankAccount",
+        "description": "Disable a bank account.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "BANK_ACCOUNTS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bank_account_id",
+            "description": "The ID of the bank account to disable.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DisableBankAccountResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "UNAUTHORIZED"
+          },
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
       }
     },
     "/v2/bookings": {
@@ -75109,6 +75639,9 @@
             "error-code": "PAYMENT_LIMIT_EXCEEDED"
           },
           {
+            "error-code": "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET"
+          },
+          {
             "error-code": "TEMPORARY_ERROR"
           },
           {
@@ -79239,7 +79772,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2025-10-16\"\u003e"
+      "type": "literal\u003c\"2026-05-20\"\u003e"
     }
   ]
 }
