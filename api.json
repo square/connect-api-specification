@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2026-05-20"
+              "default": "2026-07-15"
             }
           }
         ],
@@ -2085,6 +2085,21 @@
             "minimum": 1,
             "maximum": 1000,
             "nullable": true
+          },
+          "sort": {
+            "$ref": "#/components/schemas/BatchRetrieveInventoryChangesSort",
+            "description": "Specification of how returned inventory changes should be ordered.\n\nCurrently, inventory changes can only be ordered by the occurred_at field.\nThe default sort order for occurred_at is ASC (changes are returned oldest-first by default).",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "reason_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InventoryAdjustmentReasonId"
+            },
+            "description": "The filter to return `ADJUSTMENT` query results by inventory\nadjustment reason. This filter is only applied when set. The request cannot\ninclude both `reason_ids` and `states`.",
+            "x-release-status": "BETA",
+            "nullable": true
           }
         },
         "example": {
@@ -2160,6 +2175,35 @@
           ],
           "errors": []
         }
+      },
+      "BatchRetrieveInventoryChangesSort": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/BatchRetrieveInventoryChangesSortField",
+            "description": "The field to sort inventory changes by.\nSee [Field](#type-field) for possible values",
+            "nullable": true
+          },
+          "order": {
+            "$ref": "#/components/schemas/SortOrder",
+            "description": "The order to sort inventory changes by.\nSee [SortOrder](#type-sortorder) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "BatchRetrieveInventoryChangesSortField": {
+        "type": "string",
+        "enum": [
+          "OCCURRED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "OCCURRED_AT",
+            "description": ""
+          }
+        ],
+        "x-release-status": "BETA"
       },
       "BatchRetrieveInventoryCountsRequest": {
         "type": "object",
@@ -9102,7 +9146,7 @@
           },
           "parent_category": {
             "$ref": "#/components/schemas/CatalogObjectCategory",
-            "description": "The ID of the parent category of this category instance.",
+            "description": "The parent category of this category instance. This includes the parent category ID and an ordinal\nvalue that determines the category's relative position among sibling categories with the same parent.",
             "nullable": true
           },
           "is_top_level": {
@@ -9854,7 +9898,7 @@
             "items": {
               "$ref": "#/components/schemas/CatalogObjectCategory"
             },
-            "description": "The list of categories.",
+            "description": "The list of categories to which this item belongs. Each entry includes the category ID and an ordinal\nvalue that determines the item's relative position within that category.",
             "nullable": true
           },
           "description_html": {
@@ -10175,7 +10219,7 @@
           },
           "ordinal": {
             "type": "integer",
-            "description": "The position of this `CatalogItemModifierListInfo` object within the `modifier_list_info` list applied \nto a `CatalogItem` instance.",
+            "description": "The position of this `CatalogItemModifierListInfo` object within the `modifier_list_info` list applied\nto a `CatalogItem` instance.",
             "x-release-status": "BETA",
             "nullable": true
           },
@@ -10399,17 +10443,17 @@
           },
           "track_inventory": {
             "type": "boolean",
-            "description": "If `true`, inventory tracking is active for the variation.",
+            "description": "If `true`, inventory tracking is active for the variation at all locations by default.\nThis value can be overridden for specific locations using `ItemVariationLocationOverrides.track_inventory`.\nIf unset at both levels, inventory tracking is disabled.",
             "nullable": true
           },
           "inventory_alert_type": {
             "$ref": "#/components/schemas/InventoryAlertType",
-            "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal\nto its `inventory_alert_threshold`.\nSee [InventoryAlertType](#type-inventoryalerttype) for possible values",
+            "description": "Indicates whether the item variation displays an alert when its inventory quantity is less than or equal\nto its `inventory_alert_threshold`.\n\nDeprecated because this field has never been global.\nSee [InventoryAlertType](#type-inventoryalerttype) for possible values",
             "nullable": true
           },
           "inventory_alert_threshold": {
             "type": "integer",
-            "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.\n\nThis value is always an integer.",
+            "description": "If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`\nis `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard. This value is always an integer.\n\nDeprecated because this field has never been global.",
             "format": "int64",
             "nullable": true
           },
@@ -10483,6 +10527,37 @@
             "type": "string",
             "description": "(Optional) Name that the restaurant wants to display to their kitchen workers\ninstead of the customer-facing name.\ne.g., customer name might be \"Mega-Jumbo Triplesized\" and the\nkitchen name is \"Large container\"",
             "x-release-status": "BETA",
+            "nullable": true
+          },
+          "vendor_information": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatalogItemVariationVendorInformation"
+            },
+            "description": "Details of the vendor this product is purchased from.\nThis field can be set only if the seller has an active subscription\nto either Square for Retail Premium or Square for Restaurants Premium.",
+            "x-release-status": "BETA",
+            "nullable": true
+          }
+        }
+      },
+      "CatalogItemVariationVendorInformation": {
+        "type": "object",
+        "description": "Information about the vendor of an item variation.",
+        "x-release-status": "BETA",
+        "properties": {
+          "vendor_id": {
+            "type": "string",
+            "description": "ID of the [Vendor](entity:Vendor) linked to a default cost of this product.\nWhen the product is added to a purchase order, the default cost is pre-filled.\nThis field is not validated. Clients should gracefully handle cases where the vendor_id\ndoes not match any existing vendor.",
+            "nullable": true
+          },
+          "vendor_code": {
+            "type": "string",
+            "description": "Unique identifier of this product in the specified vendor's' inventory system.\nWhen the product is added to a purchase order, the vendor code is pre-filled based\non the selected vendor.",
+            "nullable": true
+          },
+          "unit_cost_money": {
+            "$ref": "#/components/schemas/Money",
+            "description": "The unit cost of the linked product, when purchased from the linked vendor.",
             "nullable": true
           }
         }
@@ -10584,7 +10659,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The name of the `CatalogModifierList` instance. This is a searchable attribute for use in applicable query filters, and its value length is of \nUnicode code points.",
+            "description": "The name of the `CatalogModifierList` instance. This is a searchable attribute for use in applicable query filters, and its value length is of\nUnicode code points.",
             "maxLength": 255,
             "nullable": true
           },
@@ -10604,7 +10679,7 @@
             "items": {
               "$ref": "#/components/schemas/CatalogObject"
             },
-            "description": "A non-empty list of `CatalogModifier` objects to be included in the `CatalogModifierList`, \nfor non text-based modifiers when the `modifier_type` attribute is `LIST`. Each element of this list \nis a `CatalogObject` instance of the `MODIFIER` type, containing the following attributes:\n```\n{\n\"id\": \"{{catalog_modifier_id}}\",\n\"type\": \"MODIFIER\", \n\"modifier_data\": {{a CatalogModifier instance\u003e}} \n}\n```",
+            "description": "A non-empty list of `CatalogModifier` objects to be included in the `CatalogModifierList`,\nfor non text-based modifiers when the `modifier_type` attribute is `LIST`. Each element of this list\nis a `CatalogObject` instance of the `MODIFIER` type, containing the following attributes:\n```\n{\n\"id\": \"{{catalog_modifier_id}}\",\n\"type\": \"MODIFIER\",\n\"modifier_data\": {{a CatalogModifier instance\u003e}}\n}\n```",
             "nullable": true
           },
           "image_ids": {
@@ -10629,13 +10704,13 @@
           },
           "modifier_type": {
             "$ref": "#/components/schemas/CatalogModifierListModifierType",
-            "description": "The type of the modifier. \n\nWhen this `modifier_type` value is `TEXT`,  the `CatalogModifierList` represents a text-based modifier. \nWhen this `modifier_type` value is `LIST`, the `CatalogModifierList` contains a list of `CatalogModifier` objects.\nSee [CatalogModifierListModifierType](#type-catalogmodifierlistmodifiertype) for possible values",
+            "description": "The type of the modifier.\n\nWhen this `modifier_type` value is `TEXT`,  the `CatalogModifierList` represents a text-based modifier.\nWhen this `modifier_type` value is `LIST`, the `CatalogModifierList` contains a list of `CatalogModifier` objects.\nSee [CatalogModifierListModifierType](#type-catalogmodifierlistmodifiertype) for possible values",
             "x-release-status": "BETA",
             "nullable": true
           },
           "max_length": {
             "type": "integer",
-            "description": "The maximum length, in Unicode points, of the text string of the text-based modifier as represented by \nthis `CatalogModifierList` object with the `modifier_type` set to `TEXT`.",
+            "description": "The maximum length, in Unicode points, of the text string of the text-based modifier as represented by\nthis `CatalogModifierList` object with the `modifier_type` set to `TEXT`.",
             "x-release-status": "BETA",
             "nullable": true
           },
@@ -10647,7 +10722,7 @@
           },
           "internal_name": {
             "type": "string",
-            "description": "A note for internal use by the business.   \n\nFor example, for a text-based modifier applied to a T-shirt item, if the buyer-supplied text of \"Hello, Kitty!\"  \nis to be printed on the T-shirt, this `internal_name` attribute can be \"Use italic face\" as \nan instruction for the business to follow.  \n\nFor non text-based modifiers, this `internal_name` attribute can be \nused to include SKUs, internal codes, or supplemental descriptions for internal use.",
+            "description": "A note for internal use by the business.\n\nFor example, for a text-based modifier applied to a T-shirt item, if the buyer-supplied text of \"Hello, Kitty!\"\nis to be printed on the T-shirt, this `internal_name` attribute can be \"Use italic face\" as\nan instruction for the business to follow.\n\nFor non text-based modifiers, this `internal_name` attribute can be\nused to include SKUs, internal codes, or supplemental descriptions for internal use.",
             "maxLength": 512,
             "x-release-status": "BETA",
             "nullable": true
@@ -10839,7 +10914,7 @@
           },
           "version": {
             "type": "integer",
-            "description": "The version of the object. When updating an object, the version supplied\nmust match the version in the database, otherwise the write will be rejected as conflicting.",
+            "description": "The version of the object. When updating an object, the version supplied should match\nthe version in the database. If it does not, the server attempts a three-way merge. If the\nclient's changes and the concurrent changes don't overlap, the merge succeeds silently. A\n`VERSION_MISMATCH` error is only returned when both sides changed the same field to different\nvalues.\n\nUse the same API version (`Square-Version` header) for both reading and writing catalog\nobjects. The server uses the API version on a write request to determine which missing fields\nthe client intentionally cleared versus which fields the client simply could not see at that\nversion. If a client reads an object at an older API version and writes it back at a newer\nversion, fields that were introduced between those two versions will be absent from the\nrequest, and the server will interpret that absence as an intentional clear.",
             "format": "int64"
           },
           "is_deleted": {
@@ -10865,7 +10940,7 @@
           },
           "present_at_all_locations": {
             "type": "boolean",
-            "description": "If `true`, this object is present at all locations (including future locations), except where specified in\nthe `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations),\nexcept where specified in the `present_at_location_ids` field. If not specified, defaults to `true`.",
+            "description": "Controls whether this object is present at all locations, including future locations.\n\nMost object types have independent location control, including `TAX`, `DISCOUNT`, and\n`MODIFIER_LIST`.\n\n`ITEM` and `ITEM_VARIATION` have separate settings, but a variation can only be enabled\nat locations where its parent item is enabled. Disabling a variation everywhere is valid\neven when the parent item is enabled at specific locations.\n\n`MODIFIER` objects nested within a `MODIFIER_LIST` inherit location settings from their parent.\nSome object types, including `CATEGORY`, `IMAGE`, and `CUSTOM_ATTRIBUTE_DEFINITION`, must\nalways be globally enabled and cannot use location-specific fields.\n\nThe field operates in two modes. When true (the default), the object is available at\nall current and future locations except those in `absent_at_location_ids`. When false,\nthe object is available only at locations in `present_at_location_ids`. The unused\nlist in each mode is ignored.",
             "nullable": true
           },
           "present_at_location_ids": {
@@ -10873,7 +10948,7 @@
             "items": {
               "type": "string"
             },
-            "description": "A list of locations where the object is present, even if `present_at_all_locations` is `false`.\nThis can include locations that are deactivated.",
+            "description": "Locations where the object is present, used when `present_at_all_locations` is false.\n\nWhen `present_at_all_locations` is true, this field is ignored since the object is\nalready present everywhere. Can include deactivated locations. Empty strings are rejected.",
             "nullable": true
           },
           "absent_at_location_ids": {
@@ -10881,7 +10956,7 @@
             "items": {
               "type": "string"
             },
-            "description": "A list of locations where the object is not present, even if `present_at_all_locations` is `true`.\nThis can include locations that are deactivated.",
+            "description": "Locations where the object is not present, used when `present_at_all_locations` is true.\n\nWhen `present_at_all_locations` is false, this field is ignored since the object is\nalready absent everywhere except those in `present_at_location_ids`. Can include\ndeactivated locations. Empty strings are rejected.",
             "nullable": true
           },
           "item_data": {
@@ -11039,7 +11114,7 @@
           },
           "ordinal": {
             "type": "integer",
-            "description": "The order of the object within the context of the category.",
+            "description": "The position of this object within the specified category. When an item is assigned to a category,\nthe ordinal determines the item's position relative to other items in the same category. When used for a\nparent category reference, the ordinal determines the category's position among its sibling categories.",
             "format": "int64",
             "nullable": true
           }
@@ -15811,6 +15886,69 @@
             "state": "PENDING",
             "type": "DIGITAL"
           }
+        }
+      },
+      "CreateInventoryAdjustmentReasonRequest": {
+        "type": "object",
+        "description": "Represents an input to a call to [CreateInventoryAdjustmentReason](api-endpoint:Inventory-CreateInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key",
+          "adjustment_reason"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A client-supplied, universally unique identifier to make this\n[CreateInventoryAdjustmentReason](api-endpoint:Inventory-CreateInventoryAdjustmentReason)\nrequest idempotent.",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The custom inventory adjustment reason to create. Only custom\nadjustment reasons can be created."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "direction": "DECREASE",
+            "id": {
+              "type": "CUSTOM"
+            },
+            "name": "Donated to charity"
+          },
+          "idempotency_key": "27b2f2b1-1c2a-4b9e-8f3a-0d9c3a1e5b47"
+        }
+      },
+      "CreateInventoryAdjustmentReasonResponse": {
+        "type": "object",
+        "description": "Represents an output from a call to [CreateInventoryAdjustmentReason](api-endpoint:Inventory-CreateInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Errors encountered when the request fails."
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The successfully created inventory adjustment reason."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "created_at": "2026-07-15T18:24:31.000Z",
+            "direction": "DECREASE",
+            "id": {
+              "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+              "type": "CUSTOM"
+            },
+            "is_deleted": false,
+            "name": "Donated to charity",
+            "updated_at": "2026-07-15T18:24:31.000Z"
+          },
+          "errors": []
         }
       },
       "CreateInvoiceAttachmentRequest": {
@@ -22160,6 +22298,58 @@
         },
         "example": {}
       },
+      "DeleteInventoryAdjustmentReasonRequest": {
+        "type": "object",
+        "description": "Represents an input to a call to [DeleteInventoryAdjustmentReason](api-endpoint:Inventory-DeleteInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "required": [
+          "reason_id"
+        ],
+        "properties": {
+          "reason_id": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonId",
+            "description": "The identifier of the custom inventory adjustment reason to soft delete."
+          }
+        },
+        "example": {
+          "reason_id": {
+            "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+            "type": "CUSTOM"
+          }
+        }
+      },
+      "DeleteInventoryAdjustmentReasonResponse": {
+        "type": "object",
+        "description": "Represents an output from a call to [DeleteInventoryAdjustmentReason](api-endpoint:Inventory-DeleteInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Errors encountered when the request fails."
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The successfully soft-deleted inventory adjustment reason."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "created_at": "2026-07-15T18:24:31.000Z",
+            "direction": "DECREASE",
+            "id": {
+              "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+              "type": "CUSTOM"
+            },
+            "is_deleted": true,
+            "name": "Charitable donation",
+            "updated_at": "2026-07-15T19:05:44.000Z"
+          },
+          "errors": []
+        }
+      },
       "DeleteInvoiceAttachmentResponse": {
         "type": "object",
         "description": "Represents a [DeleteInvoiceAttachment](api-endpoint:Invoices-DeleteInvoiceAttachment) response.",
@@ -22704,7 +22894,7 @@
           },
           "allow_auto_card_surcharge": {
             "type": "boolean",
-            "description": "Controls whether the mobile client applies Auto Card Surcharge (ACS) during checkout.\nIf true, ACS is applied based on Dashboard configuration.\nIf false, ACS is not applied regardless of that configuration.\nFor more information, see [Add a Card Surcharge](https://developer.squareupstaging.com/docs/terminal-api/additional-payment-checkout-features#add-a-card-surcharge).",
+            "description": "Controls whether the mobile client applies Auto Card Surcharge (ACS) during checkout.\nIf true, ACS is applied based on Dashboard configuration.\nIf false, ACS is not applied regardless of that configuration.\nFor more information, see [Add a Card Surcharge](https://developer.squareup.com/docs/terminal-api/additional-payment-checkout-features#add-a-card-surcharge).",
             "x-release-status": "BETA",
             "nullable": true
           }
@@ -26056,7 +26246,8 @@
         "type": "string",
         "enum": [
           "LEAST_EXPENSIVE",
-          "MOST_EXPENSIVE"
+          "MOST_EXPENSIVE",
+          "MOST_EXPENSIVE_LOWEST_VALUE"
         ],
         "x-enum-elements": [
           {
@@ -26066,6 +26257,10 @@
           {
             "name": "MOST_EXPENSIVE",
             "description": "The most expensive matched product is excluded from the pricing rule.\nIf multiple products have the same price and all qualify as least expensive,\none will be excluded at random.\n\nThis guarantees that the most expensive product is purchased at full price."
+          },
+          {
+            "name": "MOST_EXPENSIVE_LOWEST_VALUE",
+            "description": "Like MOST_EXPENSIVE, the most expensive matched product is excluded and\npurchased at full price. However, instead of maximizing the discount value on\nthe remaining products (standard BOGO), the discount is applied to the CHEAPEST\nremaining eligible product.\n\nUsed by the \"lowest-value free item\" coupon shape where the intent is to make\nthe least expensive item free, not the most valuable one."
           }
         ],
         "description": "Indicates which products matched by a CatalogPricingRule\nwill be excluded if the pricing rule uses an exclude set.",
@@ -26263,6 +26458,12 @@
           "delivery_details": {
             "$ref": "#/components/schemas/FulfillmentDeliveryDetails",
             "description": "Describes delivery details of an order fulfillment.",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "in_store_details": {
+            "$ref": "#/components/schemas/FulfillmentInStoreDetails",
+            "description": "Contains details for an in-store fulfillment. These details are required when the fulfillment\ntype is `IN_STORE`.",
             "x-release-status": "BETA",
             "nullable": true
           }
@@ -26471,6 +26672,49 @@
         "description": "The `line_item_application` describes what order line items this fulfillment applies\nto. It can be `ALL` or `ENTRY_LIST` with a supplied list of fulfillment entries.",
         "x-release-status": "BETA"
       },
+      "FulfillmentInStoreDetails": {
+        "type": "object",
+        "description": "Contains the details necessary to fulfill an in-store order.",
+        "x-release-status": "BETA",
+        "properties": {
+          "note": {
+            "type": "string",
+            "description": "A note to provide additional instructions about the in-store fulfillment\ndisplayed in the Square Point of Sale application and set by the API.",
+            "maxLength": 550,
+            "nullable": true
+          },
+          "recipient": {
+            "$ref": "#/components/schemas/FulfillmentRecipient",
+            "description": "Information about the person to receive this in-store fulfillment.",
+            "nullable": true
+          },
+          "placed_at": {
+            "type": "string",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was placed. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
+            "nullable": true
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was completed. This field is automatically set when the\nfulfillment `state` changes to `COMPLETED`. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
+            "readOnly": true
+          },
+          "in_progress_at": {
+            "type": "string",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicates when the seller started processing the fulfillment.\nThis field is automatically set when the fulfillment `state` changes to `RESERVED`.\nThe timestamp must be in RFC 3339 format (for example, \"2016-09-04T23:59:33.123Z\").",
+            "readOnly": true
+          },
+          "prepared_at": {
+            "type": "string",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was moved to the `PREPARED` state, which indicates that the\nfulfillment is ready. The timestamp must be in RFC 3339 format (for example, \"2016-09-04T23:59:33.123Z\").",
+            "readOnly": true
+          },
+          "canceled_at": {
+            "type": "string",
+            "description": "The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)\nindicating when the fulfillment was canceled. This field is automatically set when the\nfulfillment `state` changes to `CANCELED`. The timestamp must be in RFC 3339 format\n(for example, \"2016-09-04T23:59:33.123Z\").",
+            "readOnly": true
+          }
+        }
+      },
       "FulfillmentPickupDetails": {
         "type": "object",
         "description": "Contains details necessary to fulfill a pickup order.",
@@ -26635,7 +26879,7 @@
           "phone_number": {
             "type": "string",
             "description": "The phone number of the fulfillment recipient. This field is required.\n\nIf provided, the phone number overrides the corresponding customer profile value\nindicated by `customer_id`.",
-            "maxLength": 17,
+            "maxLength": 18,
             "nullable": true
           },
           "address": {
@@ -26671,7 +26915,7 @@
           "shipping_type": {
             "type": "string",
             "description": "A description of the type of shipping product purchased from the carrier\n(such as First Class, Priority, or Express).",
-            "maxLength": 50,
+            "maxLength": 255,
             "nullable": true
           },
           "tracking_number": {
@@ -26779,7 +27023,8 @@
         "enum": [
           "PICKUP",
           "SHIPMENT",
-          "DELIVERY"
+          "DELIVERY",
+          "IN_STORE"
         ],
         "x-enum-elements": [
           {
@@ -26793,6 +27038,10 @@
           {
             "name": "DELIVERY",
             "description": "A courier to deliver the fulfillment."
+          },
+          {
+            "name": "IN_STORE",
+            "description": "A customer to receive the fulfillment within the seller's physical [location](entity:Location)."
           }
         ],
         "description": "The type of fulfillment.",
@@ -28921,9 +29170,15 @@
             "description": "The [inventory state](entity:InventoryState) of the related quantity\nof items after the adjustment.\nSee [InventoryState](#type-inventorystate) for possible values",
             "nullable": true
           },
-          "location_id": {
+          "from_location_id": {
             "type": "string",
-            "description": "The Square-generated ID of the [Location](entity:Location) where the related\nquantity of items is being tracked.",
+            "description": "The Square-generated ID of the [Location](entity:Location) where the related\nquantity of items is being tracked before the adjustment.",
+            "maxLength": 100,
+            "nullable": true
+          },
+          "to_location_id": {
+            "type": "string",
+            "description": "The Square-generated ID of the [Location](entity:Location) where the related\nquantity of items is being tracked after the adjustment.",
             "maxLength": 100,
             "nullable": true
           },
@@ -29008,6 +29263,31 @@
             "description": "An adjustment group bundling the related adjustments of item variations through stock conversions in a single inventory event.",
             "readOnly": true,
             "x-release-status": "BETA"
+          },
+          "cost_money": {
+            "$ref": "#/components/schemas/Money",
+            "description": "The total amount paid by the merchant to the supplying vendor for these units of the product.\nThis field is only applicable for stock receive adjustments that introduce stock into the system (from_state is NONE or UNLINKED_RETURN).\nMay be empty.\nThis field will only accept writes if the merchant has an active subscription for either Retail Plus, Restaurants Plus, or Restaurants Premium.",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "vendor_id": {
+            "type": "string",
+            "description": "The Square-generated ID of the Vendor from which the merchant purchased this product.\nThis field is only applicable for stock receive adjustments that introduce stock into the system (from_state is NONE or UNLINKED_RETURN).\nThis field will only accept writes if the merchant has an active subscription for either Retail Plus, Restaurants Plus, or Restaurants Premium.",
+            "maxLength": 100,
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "physical_count_id": {
+            "type": "string",
+            "description": "The Square-generated ID of the InventoryPhysicalCount (recount) that generated this adjustment, if applicable.\nThe quantity of an adjustment generated by a physical count cannot be edited.",
+            "readOnly": true,
+            "x-release-status": "BETA"
+          },
+          "reason_id": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonId",
+            "description": "Identifies the reason for this inventory adjustment.",
+            "x-release-status": "BETA",
+            "nullable": true
           }
         }
       },
@@ -29038,6 +29318,175 @@
             "readOnly": true
           }
         }
+      },
+      "InventoryAdjustmentReason": {
+        "type": "object",
+        "description": "Represents an inventory adjustment reason.",
+        "x-release-status": "BETA",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonId",
+            "description": "The identifier for this inventory adjustment reason."
+          },
+          "name": {
+            "type": "string",
+            "description": "The seller-facing name for a custom inventory adjustment reason. This\nfield is empty for standard and system-generated adjustment reasons.",
+            "maxLength": 50,
+            "nullable": true
+          },
+          "direction": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonDirection",
+            "description": "Indicates whether this inventory adjustment reason increases or\ndecreases inventory. This field is set for custom reasons and for standard\nseller-selectable reasons. It is empty for system-generated inventory\nevents.\nSee [Direction](#type-direction) for possible values",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "An RFC 3339-formatted timestamp that indicates when the custom\nadjustment reason was created. This field is empty for standard\nadjustment reasons.",
+            "maxLength": 34,
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "An RFC 3339-formatted timestamp that indicates when the custom\nadjustment reason was last updated. This field is empty for standard\nadjustment reasons.",
+            "maxLength": 34,
+            "readOnly": true
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "description": "Indicates whether this custom inventory adjustment reason has been\ndeleted. Deleted custom reasons can still be retrieved by ID, but are\nomitted from list responses unless deleted reasons are explicitly included.\nTo restore a deleted custom reason, call\n[RestoreInventoryAdjustmentReason](api-endpoint:Inventory-RestoreInventoryAdjustmentReason).\nThis field is always `false` for standard and system-generated adjustment\nreasons.",
+            "nullable": true
+          }
+        }
+      },
+      "InventoryAdjustmentReasonDirection": {
+        "type": "string",
+        "enum": [
+          "INCREASE",
+          "DECREASE"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "INCREASE",
+            "description": ""
+          },
+          {
+            "name": "DECREASE",
+            "description": ""
+          }
+        ],
+        "x-release-status": "BETA"
+      },
+      "InventoryAdjustmentReasonId": {
+        "type": "object",
+        "description": "Identifies a standard or custom inventory adjustment reason.",
+        "x-release-status": "BETA",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonIdType",
+            "description": "The adjustment reason type.\nSee [Type](#type-type) for possible values"
+          },
+          "custom_reason_id": {
+            "type": "string",
+            "description": "The Square-generated ID of the custom adjustment reason. This field\nis only set when `type` is `CUSTOM`.",
+            "maxLength": 100,
+            "nullable": true
+          }
+        }
+      },
+      "InventoryAdjustmentReasonIdType": {
+        "type": "string",
+        "enum": [
+          "RECEIVED",
+          "DAMAGED",
+          "THEFT",
+          "LOST",
+          "RETURNED",
+          "SPOILAGE_WASTE",
+          "SAMPLES_PROMOTIONAL",
+          "INTERNAL_USE",
+          "VENDOR_RETURN",
+          "PRODUCTION_WASTE",
+          "SALE",
+          "RECOUNT",
+          "TRANSFER",
+          "IN_TRANSIT",
+          "CANCELED_SALE",
+          "CUSTOM"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "RECEIVED",
+            "description": ""
+          },
+          {
+            "name": "DAMAGED",
+            "description": ""
+          },
+          {
+            "name": "THEFT",
+            "description": ""
+          },
+          {
+            "name": "LOST",
+            "description": ""
+          },
+          {
+            "name": "RETURNED",
+            "description": ""
+          },
+          {
+            "name": "SPOILAGE_WASTE",
+            "description": ""
+          },
+          {
+            "name": "SAMPLES_PROMOTIONAL",
+            "description": ""
+          },
+          {
+            "name": "INTERNAL_USE",
+            "description": ""
+          },
+          {
+            "name": "VENDOR_RETURN",
+            "description": ""
+          },
+          {
+            "name": "PRODUCTION_WASTE",
+            "description": ""
+          },
+          {
+            "name": "SALE",
+            "description": ""
+          },
+          {
+            "name": "RECOUNT",
+            "description": ""
+          },
+          {
+            "name": "TRANSFER",
+            "description": ""
+          },
+          {
+            "name": "IN_TRANSIT",
+            "description": ""
+          },
+          {
+            "name": "CANCELED_SALE",
+            "description": ""
+          },
+          {
+            "name": "CUSTOM",
+            "description": ""
+          }
+        ],
+        "description": "The type of inventory adjustment reason.\n\nCustom reasons use `CUSTOM` and include a `custom_reason_id`. Standard\nseller-selectable reasons use `RECEIVED`, `DAMAGED`, `THEFT`, `LOST`,\n`RETURNED`, `SPOILAGE_WASTE`, `SAMPLES_PROMOTIONAL`, `INTERNAL_USE`,\n`VENDOR_RETURN`, or `PRODUCTION_WASTE`.\n\nThe writable standard reasons with direction `INCREASE` are `RECEIVED`\nand `RETURNED`. The writable standard reasons with direction `DECREASE`\nare `DAMAGED`, `THEFT`, `LOST`, `SPOILAGE_WASTE`,\n`SAMPLES_PROMOTIONAL`, `INTERNAL_USE`, `VENDOR_RETURN`, and\n`PRODUCTION_WASTE`.\n\nThe `SALE`, `RECOUNT`, `TRANSFER`, `IN_TRANSIT`, and `CANCELED_SALE`\nvalues identify system-generated inventory events. These values can be\nreturned by Square, but cannot be used when writing inventory adjustments.",
+        "x-release-status": "BETA"
       },
       "InventoryAlertType": {
         "type": "string",
@@ -29078,11 +29527,6 @@
             "description": "Contains details about the inventory adjustment when `type` is\n`ADJUSTMENT`, and is unset for all other change types.",
             "nullable": true
           },
-          "transfer": {
-            "$ref": "#/components/schemas/InventoryTransfer",
-            "description": "Contains details about the inventory transfer when `type` is\n`TRANSFER`, and is unset for all other change types.\n\n_Note:_ An [InventoryTransfer](entity:InventoryTransfer) object can only be set in the input to the\n[BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) endpoint when the seller has an active Retail Plus subscription.",
-            "nullable": true
-          },
           "measurement_unit": {
             "$ref": "#/components/schemas/CatalogMeasurementUnit",
             "description": "The [CatalogMeasurementUnit](entity:CatalogMeasurementUnit) object representing the catalog measurement unit associated with the inventory change.",
@@ -29099,8 +29543,7 @@
         "type": "string",
         "enum": [
           "PHYSICAL_COUNT",
-          "ADJUSTMENT",
-          "TRANSFER"
+          "ADJUSTMENT"
         ],
         "x-enum-elements": [
           {
@@ -29110,10 +29553,6 @@
           {
             "name": "ADJUSTMENT",
             "description": "The change occurred as part of the normal lifecycle of goods\n(e.g., as an inventory adjustment)."
-          },
-          {
-            "name": "TRANSFER",
-            "description": "The change occurred as part of an inventory transfer."
           }
         ],
         "description": "Indicates how the inventory change was applied to a tracked product quantity.",
@@ -29121,7 +29560,7 @@
       },
       "InventoryCount": {
         "type": "object",
-        "description": "Represents Square-estimated quantity of items in a particular state at a\nparticular seller location based on the known history of physical counts and\ninventory adjustments.",
+        "description": "Represents Square-estimated quantity of items in a particular state at a\nparticular seller location based on the known history of physical counts and\ninventory adjustments. The absence of an inventory count indicates that the\ncatalog object hasn't interacted with the given inventory state at the given location.",
         "x-release-status": "PUBLIC",
         "properties": {
           "catalog_object_id": {
@@ -29336,6 +29775,12 @@
             "description": "An RFC 3339-formatted timestamp that indicates when the physical count is received.",
             "maxLength": 34,
             "readOnly": true
+          },
+          "adjustment_id": {
+            "type": "string",
+            "description": "The Square-generated ID of the InventoryAdjustment that was generated by this physical count in order to\nadjust the current stock count to reflect the re-counted quantity.\nThis field may be empty if the merchant does not have an active subscription for either Retail Plus, Restaurants Plus, or Restaurants Premium.",
+            "readOnly": true,
+            "x-release-status": "BETA"
           }
         }
       },
@@ -29357,7 +29802,8 @@
           "COMPOSED",
           "DECOMPOSED",
           "SUPPORTED_BY_NEWER_VERSION",
-          "IN_TRANSIT"
+          "IN_TRANSIT",
+          "UNTRACKED"
         ],
         "x-enum-elements": [
           {
@@ -29423,92 +29869,14 @@
           {
             "name": "IN_TRANSIT",
             "description": "The related quantity of items are in transit between locations. **READ-ONLY:** the Inventory API cannot currently be used to move quantities to or from this inventory state."
+          },
+          {
+            "name": "UNTRACKED",
+            "description": "The related quantity of items are untracked."
           }
         ],
         "description": "Indicates the state of a tracked item quantity in the lifecycle of goods.",
         "x-release-status": "PUBLIC"
-      },
-      "InventoryTransfer": {
-        "type": "object",
-        "description": "Represents the transfer of a quantity of product inventory at a\nparticular time from one location to another.",
-        "x-release-status": "PUBLIC",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "A unique ID generated by Square for the\n`InventoryTransfer`.",
-            "maxLength": 100
-          },
-          "reference_id": {
-            "type": "string",
-            "description": "An optional ID provided by the application to tie the\n`InventoryTransfer` to an external system.",
-            "maxLength": 255,
-            "nullable": true
-          },
-          "state": {
-            "$ref": "#/components/schemas/InventoryState",
-            "description": "The [inventory state](entity:InventoryState) for the quantity of\nitems being transferred.\nSee [InventoryState](#type-inventorystate) for possible values",
-            "nullable": true
-          },
-          "from_location_id": {
-            "type": "string",
-            "description": "The Square-generated ID of the [Location](entity:Location) where the related\nquantity of items was tracked before the transfer.",
-            "maxLength": 100,
-            "nullable": true
-          },
-          "to_location_id": {
-            "type": "string",
-            "description": "The Square-generated ID of the [Location](entity:Location) where the related\nquantity of items was tracked after the transfer.",
-            "maxLength": 100,
-            "nullable": true
-          },
-          "catalog_object_id": {
-            "type": "string",
-            "description": "The Square-generated ID of the\n[CatalogObject](entity:CatalogObject) being tracked.",
-            "maxLength": 100,
-            "nullable": true
-          },
-          "catalog_object_type": {
-            "type": "string",
-            "description": "The [type](entity:CatalogObjectType) of the [CatalogObject](entity:CatalogObject) being tracked. \n\nThe Inventory API supports setting and reading the `\"catalog_object_type\": \"ITEM_VARIATION\"` field value. \nIn addition, it can also read the `\"catalog_object_type\": \"ITEM\"` field value that is set by the Square Restaurants app.",
-            "maxLength": 14,
-            "nullable": true
-          },
-          "quantity": {
-            "type": "string",
-            "description": "The number of items affected by the transfer as a decimal string.\nCan support up to 5 digits after the decimal point.",
-            "maxLength": 26,
-            "nullable": true
-          },
-          "occurred_at": {
-            "type": "string",
-            "description": "A client-generated RFC 3339-formatted timestamp that indicates when\nthe transfer took place. For write actions, the `occurred_at` timestamp\ncannot be older than 24 hours or in the future relative to the time of the\nrequest.",
-            "maxLength": 34,
-            "nullable": true
-          },
-          "created_at": {
-            "type": "string",
-            "description": "An RFC 3339-formatted timestamp that indicates when Square\nreceived the transfer request.",
-            "maxLength": 34,
-            "readOnly": true
-          },
-          "source": {
-            "$ref": "#/components/schemas/SourceApplication",
-            "description": "Information about the application that initiated the\ninventory transfer.",
-            "readOnly": true
-          },
-          "employee_id": {
-            "type": "string",
-            "description": "The Square-generated ID of the [Employee](entity:Employee) responsible for the\ninventory transfer.",
-            "maxLength": 100,
-            "nullable": true
-          },
-          "team_member_id": {
-            "type": "string",
-            "description": "The Square-generated ID of the [Team Member](entity:TeamMember) responsible for the\ninventory transfer.",
-            "maxLength": 100,
-            "nullable": true
-          }
-        }
       },
       "Invoice": {
         "type": "object",
@@ -31391,7 +31759,7 @@
           },
           "track_inventory": {
             "type": "boolean",
-            "description": "If `true`, inventory tracking is active for the `CatalogItemVariation` at this `Location`.",
+            "description": "Indicates whether inventory tracking is active for the `CatalogItemVariation` at this `Location`.\nWhen set, this value explicitly overrides the global `track_inventory` setting. When unset, the location\nshould use the global value. If both global and location-level values are unset, inventory tracking is disabled.",
             "nullable": true
           },
           "inventory_alert_type": {
@@ -34184,6 +34552,55 @@
               "type": "DIGITAL"
             }
           ]
+        }
+      },
+      "ListInventoryAdjustmentReasonsResponse": {
+        "type": "object",
+        "description": "Represents an output from a call to [ListInventoryAdjustmentReasons](api-endpoint:Inventory-ListInventoryAdjustmentReasons).",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Errors encountered when the request fails."
+          },
+          "adjustment_reasons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InventoryAdjustmentReason"
+            },
+            "description": "The standard, system-generated, and custom inventory adjustment\nreasons available to the seller."
+          }
+        },
+        "example": {
+          "adjustment_reasons": [
+            {
+              "direction": "INCREASE",
+              "id": {
+                "type": "RECEIVED"
+              }
+            },
+            {
+              "direction": "DECREASE",
+              "id": {
+                "type": "DAMAGED"
+              }
+            },
+            {
+              "created_at": "2026-07-15T18:24:31.000Z",
+              "direction": "DECREASE",
+              "id": {
+                "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+                "type": "CUSTOM"
+              },
+              "is_deleted": false,
+              "name": "Donated to charity",
+              "updated_at": "2026-07-15T18:24:31.000Z"
+            }
+          ],
+          "errors": []
         }
       },
       "ListInvoicesResponse": {
@@ -40715,7 +41132,7 @@
           },
           "source": {
             "$ref": "#/components/schemas/OrderSource",
-            "description": "The origination details of the order.",
+            "description": "The latest source details of the order.\n\nThis field reflects the most recent source that interacted with or modified the order,\nand may change during the order lifecycle. For example:\n- An order created via API (source.name = \"MyPOS\") paid with Square Terminal may have\nsource updated to reflect the Terminal application (which uses REGISTER, like POS)\n- An order updated or completed by a different application may have source updated\nto reflect that application.\n\nTo preserve the original source from order creation regardless of subsequent updates,\nuse the `creation_source` field instead.",
             "nullable": true
           },
           "customer_id": {
@@ -42399,6 +42816,12 @@
             },
             "description": "Application-defined data attached to this order. Metadata fields are intended\nto store descriptive references or associations with an entity in another system or store brief\ninformation about the object. Square does not process this field; it only stores and returns it\nin relevant API calls. Do not use metadata to store any sensitive information (such as personally\nidentifiable information or card details).\n\nKeys written by applications must be 60 characters or less and must be in the character set\n`[a-zA-Z0-9_-]`. Entries can also include metadata generated by Square. These keys are prefixed\nwith a namespace, separated from the key with a ':' character.\n\nValues have a maximum length of 255 characters.\n\nAn application can have up to 10 entries per metadata field.\n\nEntries written by applications are private and can only be read or modified by the same\napplication.\n\nFor more information, see  [Metadata](https://developer.squareup.com/docs/build-basics/metadata).",
             "x-release-status": "BETA",
+            "nullable": true
+          },
+          "parent_modifier_uid": {
+            "type": "string",
+            "description": "The `uid` of the parent modifier, if this modifier is nested under another modifier.",
+            "maxLength": 60,
             "nullable": true
           }
         }
@@ -46933,6 +47356,58 @@
         },
         "example": {}
       },
+      "RestoreInventoryAdjustmentReasonRequest": {
+        "type": "object",
+        "description": "Represents an input to a call to [RestoreInventoryAdjustmentReason](api-endpoint:Inventory-RestoreInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "required": [
+          "reason_id"
+        ],
+        "properties": {
+          "reason_id": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonId",
+            "description": "The identifier of the soft-deleted custom inventory adjustment reason\nto restore."
+          }
+        },
+        "example": {
+          "reason_id": {
+            "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+            "type": "CUSTOM"
+          }
+        }
+      },
+      "RestoreInventoryAdjustmentReasonResponse": {
+        "type": "object",
+        "description": "Represents an output from a call to [RestoreInventoryAdjustmentReason](api-endpoint:Inventory-RestoreInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Errors encountered when the request fails."
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The successfully restored inventory adjustment reason."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "created_at": "2026-07-15T18:24:31.000Z",
+            "direction": "DECREASE",
+            "id": {
+              "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+              "type": "CUSTOM"
+            },
+            "is_deleted": false,
+            "name": "Charitable donation",
+            "updated_at": "2026-07-15T19:07:12.000Z"
+          },
+          "errors": []
+        }
+      },
       "ResumeSubscriptionRequest": {
         "type": "object",
         "description": "Defines input parameters in a request to the\n[ResumeSubscription](api-endpoint:Subscriptions-ResumeSubscription) endpoint.",
@@ -47786,6 +48261,58 @@
           }
         }
       },
+      "RetrieveInventoryAdjustmentReasonRequest": {
+        "type": "object",
+        "description": "Represents an input to a call to [RetrieveInventoryAdjustmentReason](api-endpoint:Inventory-RetrieveInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "required": [
+          "reason_id"
+        ],
+        "properties": {
+          "reason_id": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonId",
+            "description": "The identifier of the inventory adjustment reason to retrieve."
+          }
+        },
+        "example": {
+          "reason_id": {
+            "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+            "type": "CUSTOM"
+          }
+        }
+      },
+      "RetrieveInventoryAdjustmentReasonResponse": {
+        "type": "object",
+        "description": "Represents an output from a call to [RetrieveInventoryAdjustmentReason](api-endpoint:Inventory-RetrieveInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Errors encountered when the request fails."
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The successfully retrieved inventory adjustment reason. Deleted custom\nreasons can be retrieved by ID and have `is_deleted` set to `true`."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "created_at": "2026-07-15T18:24:31.000Z",
+            "direction": "DECREASE",
+            "id": {
+              "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+              "type": "CUSTOM"
+            },
+            "is_deleted": false,
+            "name": "Donated to charity",
+            "updated_at": "2026-07-15T18:24:31.000Z"
+          },
+          "errors": []
+        }
+      },
       "RetrieveInventoryAdjustmentResponse": {
         "type": "object",
         "x-release-status": "PUBLIC",
@@ -47955,44 +48482,6 @@
             "team_member_id": "LRK57NSQ5X7PUD05"
           },
           "errors": []
-        }
-      },
-      "RetrieveInventoryTransferResponse": {
-        "type": "object",
-        "x-release-status": "BETA",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "description": "Any errors that occurred during the request."
-          },
-          "transfer": {
-            "$ref": "#/components/schemas/InventoryTransfer",
-            "description": "The requested [InventoryTransfer](entity:InventoryTransfer)."
-          }
-        },
-        "example": {
-          "errors": [],
-          "transfer": {
-            "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
-            "catalog_object_type": "ITEM_VARIATION",
-            "created_at": "2016-11-17T13:02:15.142Z",
-            "from_location_id": "C6W5YS5QM06F5",
-            "id": "UDMOEO78BG6GYWA2XDRYX3KB",
-            "occurred_at": "2016-11-16T25:44:22.837Z",
-            "quantity": "7",
-            "reference_id": "4a366069-4096-47a2-99a5-0084ac879509",
-            "source": {
-              "application_id": "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
-              "name": "Square Point of Sale 4.37",
-              "product": "SQUARE_POS"
-            },
-            "state": "IN_STOCK",
-            "team_member_id": "LRK57NSQ5X7PUD05",
-            "to_location_id": "59TNP9SA8VGDA"
-          }
         }
       },
       "RetrieveJobResponse": {
@@ -58556,6 +59045,147 @@
           "ruby": "/sdk_samples/UpdateCustomer/UpdateCustomerResponse.ruby"
         }
       },
+      "UpdateInventoryAdjustmentReasonRequest": {
+        "type": "object",
+        "description": "Represents an input to a call to [UpdateInventoryAdjustmentReason](api-endpoint:Inventory-UpdateInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "required": [
+          "reason_id",
+          "adjustment_reason"
+        ],
+        "properties": {
+          "reason_id": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReasonId",
+            "description": "The identifier of the custom inventory adjustment reason to update."
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The requested custom inventory adjustment reason update. Only the\n`name` field can be updated. Deleted custom reasons cannot be updated. To\nrestore a deleted custom reason, call\n[RestoreInventoryAdjustmentReason](api-endpoint:Inventory-RestoreInventoryAdjustmentReason)."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "id": {
+              "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+              "type": "CUSTOM"
+            },
+            "name": "Charitable donation"
+          },
+          "reason_id": {
+            "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+            "type": "CUSTOM"
+          }
+        }
+      },
+      "UpdateInventoryAdjustmentReasonResponse": {
+        "type": "object",
+        "description": "Represents an output from a call to [UpdateInventoryAdjustmentReason](api-endpoint:Inventory-UpdateInventoryAdjustmentReason).",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Errors encountered when the request fails."
+          },
+          "adjustment_reason": {
+            "$ref": "#/components/schemas/InventoryAdjustmentReason",
+            "description": "The successfully updated inventory adjustment reason."
+          }
+        },
+        "example": {
+          "adjustment_reason": {
+            "created_at": "2026-07-15T18:24:31.000Z",
+            "direction": "DECREASE",
+            "id": {
+              "custom_reason_id": "R5BX3PDCZ6EXAMPLE",
+              "type": "CUSTOM"
+            },
+            "is_deleted": false,
+            "name": "Charitable donation",
+            "updated_at": "2026-07-15T19:02:07.000Z"
+          },
+          "errors": []
+        }
+      },
+      "UpdateInventoryAdjustmentRequest": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key",
+          "adjustment"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A client-supplied, universally unique identifier (UUID) for the\nrequest.\n\nSee [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency) in the\n[Build Basics](https://developer.squareup.com/docs/buildbasics) section for more\ninformation.",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "adjustment": {
+            "$ref": "#/components/schemas/InventoryAdjustment",
+            "description": "Represents the updates being written to a past/existing inventory adjustment.\nThis works using sparse updates, meaning that any fields omitted from the inputted InventoryAdjustment\nwill retain their values.\n\nOnly updates to the quantity, cost_money, vendor_id, and reason_id fields of an InventoryAdjustment can be made here.\nNote that the quantity field must be provided, but it can be identical to the current quantity if there are no desired quantity changes.\ncost_money and vendor_id can only be written to adjustments that add stock to the system (from_state of NONE or UNLINKED_RETURN) and to untracked sale adjustments.\nreason_id can be changed to any reason that is valid for the adjustment's state transition. The reason of a system-generated adjustment (for example, SALE or RECOUNT) cannot be changed.\nAdjustments generated by Square from other records cannot be updated. This includes inferred adjustments created by physical counts, transfer-like cross-location adjustments, and component adjustments.\nAdjustments linked to purchase orders cannot be updated. Adjustments linked to sales can only have cost_money and vendor_id updated, and only for untracked sales.\nRestock adjustments linked to an itemized return can have their quantity updated, up to the quantity remaining on the return.\nAdjustments older than one year cannot be updated."
+          }
+        },
+        "example": {
+          "idempotency_key": "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+          "update": {
+            "adjustment_id": "UDMOEO78BG6GYWA2XDRYX3KB",
+            "quantity": "7.5"
+          }
+        },
+        "x-sq-sdk-sample-code": {
+          "csharp": "/sdk_samples/Inventory/UpdateInventoryAdjustment/UpdateInventoryAdjustmentRequest.csharp",
+          "java": "/sdk_samples/Inventory/UpdateInventoryAdjustment/UpdateInventoryAdjustmentRequest.java",
+          "javascript": "/sdk_samples/Inventory/UpdateInventoryAdjustment/UpdateInventoryAdjustmentRequest.javascript",
+          "php": "/sdk_samples/Inventory/UpdateInventoryAdjustment/UpdateInventoryAdjustmentRequest.php",
+          "python": "/sdk_samples/Inventory/UpdateInventoryAdjustment/UpdateInventoryAdjustmentRequest.python",
+          "ruby": "/sdk_samples/Inventory/UpdateInventoryAdjustment/UpdateInventoryAdjustmentRequest.ruby"
+        }
+      },
+      "UpdateInventoryAdjustmentResponse": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          },
+          "adjustment": {
+            "$ref": "#/components/schemas/InventoryAdjustment",
+            "description": "The newly updated adjustment."
+          }
+        },
+        "example": {
+          "adjustment": {
+            "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+            "catalog_object_type": "ITEM_VARIATION",
+            "created_at": "2016-11-17T13:02:15.142Z",
+            "from_state": "IN_STOCK",
+            "id": "UDMOEO78BG6GYWA2XDRYX3KB",
+            "location_id": "C6W5YS5QM06F5",
+            "occurred_at": "2016-11-16T25:44:22.837Z",
+            "quantity": "7.5",
+            "reference_id": "4a366069-4096-47a2-99a5-0084ac879509",
+            "source": {
+              "application_id": "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+              "name": "Square Point of Sale 4.37",
+              "product": "SQUARE_POS"
+            },
+            "team_member_id": "LRK57NSQ5X7PUD05",
+            "to_state": "SOLD",
+            "total_price_money": {
+              "amount": 4550,
+              "currency": "USD"
+            }
+          },
+          "errors": []
+        }
+      },
       "UpdateInvoiceRequest": {
         "type": "object",
         "description": "Describes a `UpdateInvoice` request.",
@@ -62416,8 +63046,8 @@
       },
       "Reporting": {
         "name": "Reporting",
-        "summary": "Deprecated - Use the Orders and Payments APIs instead.",
-        "description": "\nPrior to 2019/08/15, the Reporting API was the way to review multi-party payments taken with the Transactions\nAPI. The Payments API now includes an \"application fee\" parameter you can use to replace this functionality."
+        "summary": "Use the Square Reporting API to generate complex reports from a single data surface.",
+        "description": "\nThe Square Reporting API lets you generate complex reports from one consistent data surface,\nwithout stitching together multiple API calls. Use it to recreate the reports you already rely\non, build entirely new ones, and access data you couldn't get before.\n\nTo get started:\n\n- **Overview and guides:** https://developer.squareup.com/docs/reporting-api/overview\n- **Schema explorer:** https://reporting-schema-explorer-production-f.squarecdn.com/index.html\n\nThe legacy Reporting API has been retired. Prior to 2019/08/15, it was the way to review\nmulti-party payments taken with the Transactions API; that functionality is now covered by the\n\"application fee\" parameter in the Payments API.\n"
       },
       "Sites": {
         "name": "Sites",
@@ -64962,7 +65592,7 @@
         ],
         "summary": "BatchUpsertCatalogObjects",
         "operationId": "BatchUpsertCatalogObjects",
-        "description": "Creates or updates up to 10,000 target objects based on the provided\nlist of objects. The target objects are grouped into batches and each batch is\ninserted/updated in an all-or-nothing manner. If an object within a batch is\nmalformed in some way, or violates a database constraint, the entire batch\ncontaining that item will be disregarded. However, other batches in the same\nrequest may still succeed. Each batch may contain up to 1,000 objects, and\nbatches will be processed in order as long as the total object count for the\nrequest (items, variations, modifier lists, discounts, and taxes) is no more\nthan 10,000.\n\nTo ensure consistency, only one update request is processed at a time per seller account.\nWhile one (batch or non-batch) update request is being processed, other (batched and non-batched)\nupdate requests are rejected with the `429` error code.",
+        "description": "Creates or updates up to 10,000 target objects based on the provided\nlist of objects. The target objects are grouped into batches and each batch is\ninserted/updated in an all-or-nothing manner. If an object within a batch is\nmalformed in some way, or violates a database constraint, the entire batch\ncontaining that item will be disregarded. However, other batches in the same\nrequest may still succeed. Each batch may contain up to 1,000 objects, and\nbatches will be processed in order as long as the total object count for the\nrequest (items, variations, modifier lists, discounts, and taxes) is no more\nthan 10,000.\n\nThis endpoint uses full-replacement semantics. The client must send the complete object, and any\nfield absent from the request is interpreted as an intentional clear. This logic applies to\nnested objects as well. For example, omitting inlined children like variations will delete them.\n\nTo ensure consistency, only one update request is processed at a time per seller account.\nWhile one (batch or non-batch) update request is being processed, other (batched and non-batched)\nupdate requests are rejected with the `429` error code. Prefer batching related changes into a\nsingle call rather than issuing many small writes, since each write acquires the lock separately\nand parallel writes to the same seller will contend with each other, producing `429` errors.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -65173,7 +65803,7 @@
         ],
         "summary": "ListCatalog",
         "operationId": "ListCatalog",
-        "description": "Returns a list of all [CatalogObject](entity:CatalogObject)s of the specified types in the catalog.\n\nThe `types` parameter is specified as a comma-separated list of the [CatalogObjectType](entity:CatalogObjectType) values,\nfor example, \"`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`\".\n\n__Important:__ ListCatalog does not return deleted catalog items. To retrieve\ndeleted catalog items, use [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects)\nand set the `include_deleted_objects` attribute value to `true`.",
+        "description": "Returns a list of all [CatalogObject](entity:CatalogObject)s of the specified types in the catalog.\n\nThe `types` parameter is specified as a comma-separated list of the [CatalogObjectType](entity:CatalogObjectType) values,\nfor example, \"`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`\".\nAlways specify `types` explicitly. When upgrading to a newer API version, omitting `types` may\ncause new object types to appear in results that were not returned under the previous version.\n\n__Important:__ ListCatalog does not return deleted catalog items. To retrieve\ndeleted catalog items, use [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects)\nand set the `include_deleted_objects` attribute value to `true`.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -65233,7 +65863,7 @@
         ],
         "summary": "UpsertCatalogObject",
         "operationId": "UpsertCatalogObject",
-        "description": "Creates a new or updates the specified [CatalogObject](entity:CatalogObject).\n\nTo ensure consistency, only one update request is processed at a time per seller account.\nWhile one (batch or non-batch) update request is being processed, other (batched and non-batched)\nupdate requests are rejected with the `429` error code.",
+        "description": "Creates a new or updates the specified [CatalogObject](entity:CatalogObject).\n\nThis endpoint uses full-replacement semantics. The client must send the complete object, and any\nfield absent from the request is interpreted as an intentional clear. This logic applies to\nnested objects as well. For example, omitting inlined children like variations will delete them.\n\nTo ensure consistency, only one update request is processed at a time per seller account.\nWhile one (batch or non-batch) update request is being processed, other (batched and non-batched)\nupdate requests are rejected with the `429` error code.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -65393,7 +66023,7 @@
         ],
         "summary": "SearchCatalogObjects",
         "operationId": "SearchCatalogObjects",
-        "description": "Searches for [CatalogObject](entity:CatalogObject) of any type by matching supported search attribute values,\nexcluding custom attribute values on items or item variations, against one or more of the specified query filters.\n\nThis (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](api-endpoint:Catalog-SearchCatalogItems)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints have different call conventions, including the query filter formats.",
+        "description": "Searches for [CatalogObject](entity:CatalogObject) of any type by matching supported search attribute values,\nexcluding custom attribute values on items or item variations, against one or more of the specified query filters.\n\nThis (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](api-endpoint:Catalog-SearchCatalogItems)\nendpoint in the following aspects:\n\n- `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.\n- `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.\n- `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.\n- The both endpoints have different call conventions, including the query filter formats.\n\nThe `object_types` parameter is specified as a list of [CatalogObjectType](entity:CatalogObjectType) values.\nAlways specify `object_types` explicitly. When upgrading to a newer API version, omitting\n`object_types` may cause new object types to appear in results that were not returned under\nthe previous version.",
         "x-release-status": "PUBLIC",
         "security": [
           {
@@ -68849,6 +69479,268 @@
         }
       }
     },
+    "/v2/inventory/adjustment-reasons": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "ListInventoryAdjustmentReasons",
+        "operationId": "ListInventoryAdjustmentReasons",
+        "description": "Returns the standard and custom inventory adjustment reasons available\nto the seller.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "include_deleted",
+            "description": "Indicates whether the response should include deleted custom inventory\nadjustment reasons. The default value is `false`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "include_system_codes",
+            "description": "Indicates whether the response should include Square-generated system\ninventory adjustment reason codes that cannot be used to write adjustments\nfrom the Connect API, such as `SALE`, `RECOUNT`, `TRANSFER`, `IN_TRANSIT`,\nand `CANCELED_SALE`. The default value is `false`.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListInventoryAdjustmentReasonsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/adjustment-reasons/create": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "CreateInventoryAdjustmentReason",
+        "operationId": "CreateInventoryAdjustmentReason",
+        "description": "Creates a custom inventory adjustment reason.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInventoryAdjustmentReasonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateInventoryAdjustmentReasonResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/adjustment-reasons/delete": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "DeleteInventoryAdjustmentReason",
+        "operationId": "DeleteInventoryAdjustmentReason",
+        "description": "Soft deletes a custom inventory adjustment reason.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteInventoryAdjustmentReasonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteInventoryAdjustmentReasonResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/adjustment-reasons/restore": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "RestoreInventoryAdjustmentReason",
+        "operationId": "RestoreInventoryAdjustmentReason",
+        "description": "Restores a soft-deleted custom inventory adjustment reason.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestoreInventoryAdjustmentReasonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestoreInventoryAdjustmentReasonResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/adjustment-reasons/retrieve": {
+      "post": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "RetrieveInventoryAdjustmentReason",
+        "operationId": "RetrieveInventoryAdjustmentReason",
+        "description": "Returns the inventory adjustment reason identified by the provided\n`reason_id`. Deleted custom reasons can be retrieved by ID.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrieveInventoryAdjustmentReasonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveInventoryAdjustmentReasonResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/adjustment-reasons/update": {
+      "put": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "UpdateInventoryAdjustmentReason",
+        "operationId": "UpdateInventoryAdjustmentReason",
+        "description": "Updates a custom inventory adjustment reason.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateInventoryAdjustmentReasonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateInventoryAdjustmentReasonResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/inventory/adjustment/{adjustment_id}": {
       "get": {
         "tags": [
@@ -68889,6 +69781,48 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RetrieveInventoryAdjustmentResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/inventory/adjustments/update": {
+      "put": {
+        "tags": [
+          "Inventory"
+        ],
+        "summary": "UpdateInventoryAdjustment",
+        "operationId": "UpdateInventoryAdjustment",
+        "description": "Applies an update to the provided adjustment.\n\nOn success: returns the newly updated adjustment.\nOn failure: returns a list of related errors.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "INVENTORY_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateInventoryAdjustmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateInventoryAdjustmentResponse"
                 }
               }
             }
@@ -69288,47 +70222,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RetrieveInventoryPhysicalCountResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/inventory/transfers/{transfer_id}": {
-      "get": {
-        "tags": [
-          "Inventory"
-        ],
-        "summary": "RetrieveInventoryTransfer",
-        "operationId": "RetrieveInventoryTransfer",
-        "description": "Returns the [InventoryTransfer](entity:InventoryTransfer) object\nwith the provided `transfer_id`.",
-        "x-release-status": "BETA",
-        "security": [
-          {
-            "oauth2": [
-              "INVENTORY_READ"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "transfer_id",
-            "description": "ID of the [InventoryTransfer](entity:InventoryTransfer) to retrieve.",
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RetrieveInventoryTransferResponse"
                 }
               }
             }
@@ -79772,7 +80665,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2026-05-20\"\u003e"
+      "type": "literal\u003c\"2026-07-15\"\u003e"
     }
   ]
 }
