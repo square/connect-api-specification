@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2026-08-19"
+              "default": "2026-09-16"
             }
           }
         ],
@@ -7713,29 +7713,6 @@
             "updated_at": "2025-01-15T10:45:00Z",
             "version": 1753117461842
           }
-        }
-      },
-      "CaptureTransactionResponse": {
-        "type": "object",
-        "description": "Defines the fields that are included in the response body of\na request to the [CaptureTransaction](api-endpoint:Transactions-CaptureTransaction) endpoint.",
-        "x-release-status": "DEPRECATED",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "description": "Any errors that occurred during the request."
-          }
-        },
-        "example": {},
-        "x-sq-sdk-sample-code": {
-          "csharp": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.csharp",
-          "java": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.java",
-          "javascript": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.javascript",
-          "php": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.php",
-          "python": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.python",
-          "ruby": "/sdk_samples/CaptureTransaction/CaptureTransactionResponse.ruby"
         }
       },
       "Card": {
@@ -62884,29 +62861,6 @@
         "description": "Enumeration of visibility-filter values used to set the ability to view custom attributes or custom attribute definitions.",
         "x-release-status": "PUBLIC"
       },
-      "VoidTransactionResponse": {
-        "type": "object",
-        "description": "Defines the fields that are included in the response body of\na request to the [VoidTransaction](api-endpoint:Transactions-VoidTransaction) endpoint.",
-        "x-release-status": "DEPRECATED",
-        "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "description": "Any errors that occurred during the request."
-          }
-        },
-        "example": {},
-        "x-sq-sdk-sample-code": {
-          "csharp": "/sdk_samples/VoidTransaction/VoidTransactionResponse.csharp",
-          "java": "/sdk_samples/VoidTransaction/VoidTransactionResponse.java",
-          "javascript": "/sdk_samples/VoidTransaction/VoidTransactionResponse.javascript",
-          "php": "/sdk_samples/VoidTransaction/VoidTransactionResponse.php",
-          "python": "/sdk_samples/VoidTransaction/VoidTransactionResponse.python",
-          "ruby": "/sdk_samples/VoidTransaction/VoidTransactionResponse.ruby"
-        }
-      },
       "WageSetting": {
         "type": "object",
         "description": "Represents information about the overtime exemption status, job assignments, and compensation\nfor a [team member](entity:TeamMember).",
@@ -73453,136 +73407,6 @@
         }
       }
     },
-    "/v2/locations/{location_id}/transactions/{transaction_id}/capture": {
-      "post": {
-        "tags": [
-          "Transactions"
-        ],
-        "summary": "CaptureTransaction",
-        "operationId": "CaptureTransaction",
-        "description": "Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)\nendpoint with a `delay_capture` value of `true`.\n\n\nSee [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)\nfor more information.",
-        "x-release-status": "DEPRECATED",
-        "deprecated": true,
-        "x-deprecation": {
-          "deprecationDate": "2019-08-15",
-          "retirementDate": "TBD",
-          "replacedBy": "CompletePayment",
-          "guideUrl": "https://developer.squareup.com/docs/payments-api/migrate-from-transactions-api"
-        },
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "",
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "transaction_id",
-            "description": "",
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CaptureTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "x-endpoint-errors": [
-          {
-            "error-code": "DELAYED_TRANSACTION_CANCELED"
-          },
-          {
-            "error-code": "DELAYED_TRANSACTION_EXPIRED"
-          }
-        ]
-      }
-    },
-    "/v2/locations/{location_id}/transactions/{transaction_id}/void": {
-      "post": {
-        "tags": [
-          "Transactions"
-        ],
-        "summary": "VoidTransaction",
-        "operationId": "VoidTransaction",
-        "description": "Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)\nendpoint with a `delay_capture` value of `true`.\n\n\nSee [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)\nfor more information.",
-        "x-release-status": "DEPRECATED",
-        "deprecated": true,
-        "x-deprecation": {
-          "deprecationDate": "2019-08-15",
-          "retirementDate": "TBD",
-          "replacedBy": "CancelPayment",
-          "guideUrl": "https://developer.squareup.com/docs/payments-api/migrate-from-transactions-api"
-        },
-        "security": [
-          {
-            "oauth2": [
-              "PAYMENTS_WRITE"
-            ]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "location_id",
-            "description": "",
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "transaction_id",
-            "description": "",
-            "schema": {
-              "type": "string"
-            },
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VoidTransactionResponse"
-                }
-              }
-            }
-          }
-        },
-        "x-endpoint-errors": [
-          {
-            "error-code": "DELAYED_TRANSACTION_CAPTURED"
-          },
-          {
-            "error-code": "DELAYED_TRANSACTION_EXPIRED"
-          }
-        ]
-      }
-    },
     "/v2/loyalty/accounts": {
       "post": {
         "tags": [
@@ -80873,7 +80697,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2026-08-19\"\u003e"
+      "type": "literal\u003c\"2026-09-16\"\u003e"
     }
   ]
 }
