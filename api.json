@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2026-09-16"
+              "default": "2026-11-18"
             }
           }
         ],
@@ -314,6 +314,11 @@
           "afterpay_clearpay": {
             "type": "boolean",
             "description": "Whether Afterpay/Clearpay is accepted at checkout.",
+            "nullable": true
+          },
+          "bank_account": {
+            "type": "boolean",
+            "description": "Whether ACH bank transfer payments are accepted at checkout.\nWhen enabled, buyers can pay directly from their bank account via Plaid.\nThis payment method is supported only for seller locations in the United States.\nWhen omitted from CreatePaymentLink, ACH is enabled for eligible one-time USD\npayments unless the seller has disabled ACH in their merchant settings.\nSet this field to false to disable ACH for the link. Existing links retain\ntheir saved setting when this field is omitted from an update.",
             "nullable": true
           }
         }
@@ -10650,7 +10655,13 @@
             "items": {
               "type": "string"
             },
-            "description": "Child `CatalogModifierList`s that this `CatalogModifier` nests for multi-step choices.\nWhen a customer or staff member selects this modifier, the relevant follow-up modifier list appears.\nFor example, selecting \"Hummus\" reveals a secondary \"Choose Hummus Flavor\" set, and selecting a flavor\ncould reveal a third-level portion size set.\n\nEach entry references a child modifier list. Each modifier can nest up to 5 child modifier list, and\nsupports up to 3 levels of nesting depth. The order in `child_modifier_list_ids` determines display order\nduring checkout.",
+            "description": "Child `CatalogModifierList`s that this `CatalogModifier` nests for multi-step choices.\nWhen a customer or staff member selects this modifier, the relevant follow-up modifier list appears.\nFor example, selecting \"Hummus\" reveals a secondary \"Choose Hummus Flavor\" set, and selecting a flavor\ncould reveal a third-level portion size set.\n\nEach entry references a child modifier list. Each modifier can nest up to 15 child modifier lists, and\nsupports up to 3 levels of nesting depth. The order in `child_modifier_list_ids` determines display order\nduring checkout.",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "kitchen_color": {
+            "$ref": "#/components/schemas/CatalogModifierColor",
+            "description": "The text color for this modifier on Kitchen Display System (KDS) tickets. Kitchen staff use the color to identify important modifiers quickly.\nSee [CatalogModifierColor](#type-catalogmodifiercolor) for possible values",
             "x-release-status": "BETA",
             "nullable": true
           }
@@ -10668,6 +10679,130 @@
             "type": "MODIFIER"
           }
         }
+      },
+      "CatalogModifierColor": {
+        "type": "string",
+        "enum": [
+          "BURGUNDY",
+          "TAUPE",
+          "BROWN",
+          "FOREST",
+          "TEAL",
+          "SKY",
+          "ORANGE",
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "PURPLE",
+          "PINK",
+          "GOLD",
+          "BURGUNDY_DARK",
+          "RED_DARK",
+          "BROWN_DARK",
+          "FOREST_DARK",
+          "BLUE_BRIGHT",
+          "PURPLE_DARK",
+          "PINK_BRIGHT",
+          "ORANGE_DARK",
+          "SKY_DARK",
+          "PURPLE_MID"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "BURGUNDY",
+            "description": "Burgundy color."
+          },
+          {
+            "name": "TAUPE",
+            "description": "Taupe color."
+          },
+          {
+            "name": "BROWN",
+            "description": "Brown color."
+          },
+          {
+            "name": "FOREST",
+            "description": "Forest color."
+          },
+          {
+            "name": "TEAL",
+            "description": "Teal color."
+          },
+          {
+            "name": "SKY",
+            "description": "Sky color."
+          },
+          {
+            "name": "ORANGE",
+            "description": "Orange color."
+          },
+          {
+            "name": "YELLOW",
+            "description": "Yellow color."
+          },
+          {
+            "name": "GREEN",
+            "description": "Green color."
+          },
+          {
+            "name": "BLUE",
+            "description": "Blue color."
+          },
+          {
+            "name": "PURPLE",
+            "description": "Purple color."
+          },
+          {
+            "name": "PINK",
+            "description": "Pink color."
+          },
+          {
+            "name": "GOLD",
+            "description": "Gold color."
+          },
+          {
+            "name": "BURGUNDY_DARK",
+            "description": "Dark burgundy color."
+          },
+          {
+            "name": "RED_DARK",
+            "description": "Dark red color."
+          },
+          {
+            "name": "BROWN_DARK",
+            "description": "Dark brown color."
+          },
+          {
+            "name": "FOREST_DARK",
+            "description": "Dark forest color."
+          },
+          {
+            "name": "BLUE_BRIGHT",
+            "description": "Bright blue color."
+          },
+          {
+            "name": "PURPLE_DARK",
+            "description": "Dark purple color."
+          },
+          {
+            "name": "PINK_BRIGHT",
+            "description": "Bright pink color."
+          },
+          {
+            "name": "ORANGE_DARK",
+            "description": "Dark orange color."
+          },
+          {
+            "name": "SKY_DARK",
+            "description": "Dark sky color."
+          },
+          {
+            "name": "PURPLE_MID",
+            "description": "Mid purple color."
+          }
+        ],
+        "description": "The text color for a `CatalogModifier` on Kitchen Display System (KDS) tickets.",
+        "x-release-status": "BETA"
       },
       "CatalogModifierList": {
         "type": "object",
@@ -12569,18 +12704,27 @@
         "properties": {
           "apple_pay": {
             "$ref": "#/components/schemas/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
+            "description": "Apple Pay.",
             "nullable": true
           },
           "google_pay": {
             "$ref": "#/components/schemas/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
+            "description": "Google Pay.",
             "nullable": true
           },
           "cash_app": {
             "$ref": "#/components/schemas/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
+            "description": "Cash App Pay.",
+            "nullable": true
+          },
+          "bank_account": {
+            "$ref": "#/components/schemas/CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
+            "description": "Bank account (ACH). Enabled by default for eligible sellers who have\nnot saved an ACH preference. A saved enabled or disabled choice takes precedence.",
             "nullable": true
           },
           "afterpay_clearpay": {
             "$ref": "#/components/schemas/CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay",
+            "description": "Afterpay/Clearpay.",
             "nullable": true
           }
         }
@@ -12617,10 +12761,12 @@
         ],
         "properties": {
           "min": {
-            "$ref": "#/components/schemas/Money"
+            "$ref": "#/components/schemas/Money",
+            "description": "The lower bound of the range."
           },
           "max": {
-            "$ref": "#/components/schemas/Money"
+            "$ref": "#/components/schemas/Money",
+            "description": "The upper bound of the range."
           }
         }
       },
@@ -12700,6 +12846,11 @@
             "type": "boolean",
             "description": "Indicates whether to include the `REWARDS` section for the buyer to opt in to loyalty, redeem rewards in the payment form, or both.",
             "nullable": true
+          },
+          "phone_collection": {
+            "$ref": "#/components/schemas/CheckoutOptionsPhoneCollection",
+            "description": "Indicates how the buyer's phone number is collected on the checkout page.\nWhen `REQUIRED` (default), the buyer must provide a phone number to complete checkout.\nWhen `OPTIONAL`, the phone field is shown but not required. When `HIDDEN`, the field\nis not shown. Leaving this field unset preserves the historical behavior (`REQUIRED`).\nSee [PhoneCollection](#type-phonecollection) for possible values",
+            "nullable": true
           }
         }
       },
@@ -12747,6 +12898,29 @@
           {
             "name": "QR_CODE",
             "description": "Launches Square's QR Code checkout screen for the buyer to complete.\nDisplays a single code that supports all digital wallets connected to the target\nSeller location (e.g. PayPay)"
+          }
+        ],
+        "x-release-status": "PUBLIC"
+      },
+      "CheckoutOptionsPhoneCollection": {
+        "type": "string",
+        "enum": [
+          "REQUIRED",
+          "OPTIONAL",
+          "HIDDEN"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "REQUIRED",
+            "description": "The buyer must enter a phone number to complete checkout. Default."
+          },
+          {
+            "name": "OPTIONAL",
+            "description": "The phone field is shown but not required."
+          },
+          {
+            "name": "HIDDEN",
+            "description": "The phone field is not shown."
           }
         ],
         "x-release-status": "PUBLIC"
@@ -17121,7 +17295,7 @@
           },
           "payment_note": {
             "type": "string",
-            "description": "A note for the payment. After processing the payment, Square adds this note to the resulting `Payment`.",
+            "description": "A note for the payment. After processing the payment, Square adds this note to the resulting `Payment` as well as the post payment confirmation email.",
             "maxLength": 500
           }
         },
@@ -22533,7 +22707,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Error"
-            }
+            },
+            "description": "Any errors that occurred during the request."
           },
           "id": {
             "type": "string",
@@ -45297,15 +45472,17 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The timestamp when the payment link was created, in RFC 3339 format."
+            "description": "The timestamp when the payment link was created, in RFC 3339 format.",
+            "readOnly": true
           },
           "updated_at": {
             "type": "string",
-            "description": "The timestamp when the payment link was last updated, in RFC 3339 format."
+            "description": "The timestamp when the payment link was last updated, in RFC 3339 format.",
+            "readOnly": true
           },
           "payment_note": {
             "type": "string",
-            "description": "An optional note. After Square processes the payment, this note is added to the\nresulting `Payment`.",
+            "description": "A note for the payment. After processing the payment, Square adds this note to the resulting `Payment` as well as the post payment confirmation email.",
             "maxLength": 500,
             "nullable": true
           }
@@ -80697,7 +80874,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2026-09-16\"\u003e"
+      "type": "literal\u003c\"2026-11-18\"\u003e"
     }
   ]
 }
